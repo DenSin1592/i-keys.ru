@@ -1,0 +1,13 @@
+.field-wrapper .select2-container {
+    display: inline-block;
+}
+
+.select2-container--bootstrap .select2-selection {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.select2-container--bootstrap .select2-dropdown,
+.select2-container--bootstrap .select2-search--dropdown .select2-search__field {
+    font-size: 12px;
+}

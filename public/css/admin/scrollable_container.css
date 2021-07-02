@@ -1,0 +1,37 @@
+.scrollable-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.element-list.scrollable-container {
+    max-height: calc(100vh - 225px);
+}
+
+.node-list .element-list.scrollable-container,
+.category-list .element-list.scrollable-container {
+    max-height: calc(100vh - 225px);
+}
+.product-list .element-list.scrollable-container {
+    max-height: calc(100vh - 235px);
+}
+
+#order-list .element-list.scrollable-container {
+    max-height: calc(100vh - 245px);
+}
+
+form.scrollable-container {
+    padding-right: 20px;
+    max-height: calc(100vh - 200px);
+}
+
+.main-menu .scrollable-container {
+    max-height: calc(100vh - 150px);
+    position: static;
+}
+
+.additional-menu .scrollable-container {
+    overflow-y: auto;
+    margin-bottom: 10px;
+    max-height: calc(100vh - 190px);
+}

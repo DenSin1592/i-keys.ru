@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2021-06-24 12:15">
+    <shop>
+        <name>MarketMatrasov.ru</name>
+        <company>MarketMatrasov.ru</company>
+        <url>https://www.marketmatrasov.ru</url>
+        <currencies>
+            <currency id="RUB" rate="1"/>
+        </currencies>
+        <categories>
+            <category id="1">Матрасы</category>
+        </categories>
+        <offers>
+            <offer id="146237" available="true" group_id="2373">
+                <url>https://www.marketmatrasov.ru/catalog/matrasyi/rayton/natura/rayton-ortobio-f-trikotaj-linen</url>
+                <name>Райтон OrtoBio F 80x190</name>
+                <price>43200.00</price>
+                <currencyId>RUB</currencyId>
+                <categoryId>1</categoryId>
+                <vendor>Райтон</vendor>
+                <oldprice>61720.00</oldprice>
+                <description><![CDATA[<p>Односторонний жесткий матрас на основе пружинного блока из 760 пружин.</p>
+<p>Гарантия - 1.5 года. При покупке и эксплуатации с наматрасником с бортами - 15 лет.</p>]]></description>
+                <picture>https://www.marketmatrasov.ru/storage/gallery_images/0000634.jpeg</picture>
+                <param name="Размер">80x190</param>
+                <param name="Состав">Сизаль</param>
+                <param name="Состав">Термовойлок</param>
+                <param name="Состав">Сизаль</param>
+                <param name="Состав">Пружинный блок EVS760</param>
+                <param name="Состав">Raitex</param>
+                <param name="Состав для подбора">Сизаль</param>
+                <param name="Состав для подбора">Войлок</param>
+                <param name="Жесткость">жёсткий</param>
+                <param name="Пружинный блок">мультипакет</param>
+                <param name="Вес на одно место">свыше 140 кг</param>
+                <param name="Жесткость стороны 1">жесткая</param>
+                <param name="Высота" unit=" см">25</param>
+                <param name="Гарантия">10 лет</param>
+            </offer>
+        </offers>
+    </shop>
+</yml_catalog>
+
+
+
+

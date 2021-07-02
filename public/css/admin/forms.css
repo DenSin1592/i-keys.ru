@@ -1,0 +1,222 @@
+.loaded-image {
+    margin: 1px;
+}
+
+.loaded-image .glyphicon-remove,
+.loaded-file .glyphicon-remove {
+    color: #ca3b37;
+}
+
+.loaded-image a,
+.loaded-file a {
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+.loaded-image img {
+
+    border-radius: 3px;
+}
+
+/* Or buttons could stick on small screens */
+.form-group .btn {
+    margin-bottom: 5px;
+}
+
+/* not enormous select in forms */
+.form-control.half {
+    width: 50%;
+    min-width: 500px;
+}
+.form-control.inline {
+    width: auto;
+    display: inline-block;
+}
+
+/* container to upload files */
+.form-group .file-upload-container {
+    overflow: hidden;
+}
+.form-group .file-upload-container > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+.form-group .file-upload-container input[type="text"] {
+    width: 25em;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    height: 28px;
+}
+
+
+fieldset.bordered-group {
+    border: 1px solid #ccc;
+    padding: 0 1em 0 1em;
+    border-radius: 5px;
+    margin-bottom: 2em;
+}
+
+fieldset.bordered-group > legend {
+    display: inline-block;
+    width: auto;
+    border: none;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    padding: 5px 10px;
+}
+
+
+.label-tooltip {
+    display: inline-block;
+    border-bottom: 1px dashed;
+}
+.label-tooltip:hover {
+    border-bottom-color: transparent;
+}
+
+
+
+/* Multi file upload */
+.file-list-uploader > li:first-child {
+    display: none;
+}
+
+.file-list-uploader input[type="file"] {
+    display: none;
+}
+
+.file-list-uploader .remove {
+    cursor: pointer;
+}
+
+.simple-image-list .simple-image-element {
+    display: inline-block;
+    margin-right: 1em;
+}
+.simple-image-list .simple-image-element .remove {
+    cursor: pointer;
+}
+/* Multi file upload - end */
+
+
+
+
+/* List of grouped fields */
+.grouped-field-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.grouped-field-list > li {
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    float: left;
+    display: inline-block;
+    width: auto;
+}
+
+.grouped-field-list .controls {
+    margin-bottom: 10px;
+}
+
+.grouped-field-list .toggle-info {
+    cursor: pointer;
+}
+
+.grouped-field-list .toggle-short-info {
+    display: none;
+}
+.grouped-field-list .toggle-full-info {
+    display: inline-block;
+}
+
+.grouped-field-list .show-full-info .toggle-short-info {
+    display: inline-block;
+}
+.grouped-field-list .show-full-info .toggle-full-info {
+    display: none;
+}
+
+.grouped-field-list .remove {
+    float: right;
+    cursor: pointer;
+}
+
+.grouped-field-list .full-info {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+.grouped-field-list .show-full-info {
+    width: 100%;
+    height: auto;
+}
+.grouped-field-list .show-full-info .short-info {
+    visibility: hidden;
+    height: 0;
+}
+.grouped-field-list .show-full-info .full-info {
+    visibility: visible;
+    height: auto;
+    width: auto;
+}
+
+.grouped-field-list-add {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+/* List of grouped fields - end */
+
+
+
+/* Multi checkbox */
+
+.multi-checkbox {
+    display: table;
+}
+.multi-checkbox .variants-container {
+    display: inline-block;
+}
+.multi-checkbox .edit-variants-container {
+    float: right;
+    padding-top: 2px;
+}
+
+.multi-checkbox-row {
+    display: table-row;
+}
+.multi-checkbox-element {
+    display: table-cell;
+    padding-right: 1em;
+}
+
+/* Multi checkbox - end */
+
+
+.remove-element {
+    cursor: pointer;
+    color: #AF294D;
+}
+.remove-element.right {
+    float: right;
+}
+
+
+
+/* Field hints */
+
+.field-hint-block {
+    color: gray;
+    font-size: 10px;
+}
+
+.control-label + .field-hint-block {
+    margin-top: -5px;
+    margin-bottom: 5px;
+}

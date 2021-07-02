@@ -1,0 +1,2 @@
+<a href="<?php echo e(route('cc.attributes.index', [$category->id])); ?>" class="btn btn-default btn-xs attributes">Параметры</a>
+<?php /**PATH /home/kristinayudina/works/da-you.ru/www/resources/views/admin/categories/list/_attributes_button.blade.php ENDPATH**/ ?>

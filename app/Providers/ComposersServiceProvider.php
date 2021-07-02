@@ -1,0 +1,27 @@
+<?php namespace App\Providers;
+
+use App\Services\Composers\AdminAlertComposer;
+use App\Services\Composers\AdminMainMenuComposer;
+use App\Services\Composers\CurrentAdminUserComposer;
+use Illuminate\Support\ServiceProvider;
+
+class ComposersServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        \View::composers([
+            // Admin composers
+            AdminAlertComposer::class => 'admin.layouts._alerts',
+            CurrentAdminUserComposer::class => [
+                'admin.layouts._top_nav',
+                'client.layouts._auth_menu',
+            ],
+            AdminMainMenuComposer::class => 'admin.layouts._main_menu',
+        ]);
+    }
+}

@@ -1,0 +1,1 @@
+[2021-06-23 18:50:56] import.INFO: Imported images for product #159368: saved: 0, not modified: 1, failed: 0, total: 1,  {"context":{"shop":{"name":"www.lstr-shop.ru","url":"http://localhost:65003/test/test.xml"},"total":1,"number":1,"offerId":200359,"productId":159368},"not_modified":[{"url":"https://www.lstr-shop.ru/uploads/catalog_products/image/image-200359_1.jpeg"}]} 

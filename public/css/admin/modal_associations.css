@@ -1,0 +1,59 @@
+.modal-associations-editor .editor-elements-container {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.modal-associations-editor .element {
+    display: flex;
+    padding: 2px 5px;
+}
+
+.modal-associations-editor .element:hover {
+    background: #e2e2e2;
+}
+
+.modal-associations-editor .element .name-container {
+    flex-grow: 1;
+}
+
+.modal-associations-editor .element .sorting-container {
+    width: 2em;
+}
+
+.modal-associations-editor .element .sorting-container > span {
+    cursor: move;
+}
+
+.modal-associations-editor .element .control-container {
+    width: 2em;
+    text-align: right;
+}
+
+.modal-associations-editor .element .control-container > span {
+    cursor: pointer;
+}
+
+.modal-associations-editor .editor-elements-search {
+    margin-bottom: 5px;
+}
+
+.modal-associations-editor .editor-block-title {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+/* Disabled editor */
+.modal-associations-editor .editor-elements-container.disabled .control-container {
+    display: none;
+}
+
+
+/* Active element */
+
+.modal-associations-editor .element.active {
+    background: #e2e2e2;
+}
+
+.modal-associations-editor .element.active .control-container {
+    display: none;
+}
