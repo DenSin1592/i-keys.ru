@@ -1,2 +1,0 @@
-
-<?php echo $__env->make('client.layouts._compare_icon', ['target' => 'offcanvas'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/kristinayudina/works/da-you.ru/www/resources/views/client/layouts/_compare_icon_offcanvas.blade.php ENDPATH**/ ?>

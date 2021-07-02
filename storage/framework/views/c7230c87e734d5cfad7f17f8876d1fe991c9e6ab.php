@@ -1,1 +1,0 @@
-<div class="sorting">Сортировка</div><?php /**PATH /home/kristinayudina/works/da-you.ru/www/resources/views/admin/resource_list_sortable/_list_sorting_header.blade.php ENDPATH**/ ?>

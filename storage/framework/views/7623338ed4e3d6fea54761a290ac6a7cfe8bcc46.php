@@ -1,2 +1,0 @@
-<a target="_blank" href="<?php echo e($url); ?>" class="btn btn-default"><?php echo e(trans('interactions.show_on_site')); ?></a>
-<?php /**PATH /home/kristinayudina/works/l-keys.ru_2021/www/resources/views/admin/shared/_show_on_site_button.blade.php ENDPATH**/ ?>
