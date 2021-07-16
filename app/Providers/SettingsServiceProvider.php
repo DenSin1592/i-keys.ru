@@ -100,7 +100,7 @@ class SettingsServiceProvider extends ServiceProvider
                     new SettingValue(
                         'admin.site_name',
                         'Название сайта',
-                        'project.net',
+                        'l-keys.ru',
                         'Используется для вывода в оконе авторизации и в шапке системы администрирования',
                         SettingValue::TYPE_TEXT,
                         ['nullable']
@@ -130,8 +130,8 @@ class SettingsServiceProvider extends ServiceProvider
                         'redirects_rules',
                         'Правила редиректов',
                         [],
-                        '<div style="text-align: left; display: inline-block;">                       
-<i><strong>Формат описания правил</strong>: <br />  
+                        '<div style="text-align: left; display: inline-block;">
+<i><strong>Формат описания правил</strong>: <br />
 {правило} - регулярное выражение<br />
 {ссылка} - целевая ссылка <br />
 </i><br />

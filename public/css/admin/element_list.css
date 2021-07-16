@@ -16,6 +16,15 @@
     width: 100%;
     table-layout: fixed;
 }
+.element-list-wrapper .total-count {
+    margin-right: 10px;
+    float: right;
+}
+
+.element-list-wrapper .total-count div {
+    display: inline-block;
+
+}
 
 .element-list-wrapper .element-container > div {
     display: table-cell;
@@ -40,10 +49,24 @@
     width: 4.5rem;
 }
 
+.element-list-wrapper .element-container > .total-products-count,
+.element-list-wrapper .element-container > .available-products-count {
+    text-align: center;
+    width: 8rem;
+}
+
 .element-list-wrapper .element-container > .buttons {
     padding: 0;
     vertical-align: middle;
-    width: 31rem;
+    width: 62rem;
+}
+
+.element-list-wrapper .element-container > .buttons .btn {
+    width: 15rem;
+}
+
+.type-list.element-list-wrapper .element-container > .buttons .btn {
+    float: right;
 }
 
 .element-list-wrapper .header-container > div {
@@ -68,9 +91,36 @@
     cursor: default;
 }
 
+
 /* name field */
 .element-list-wrapper .element-container > .name > a {
     display: block;
+}
+
+.element-list-wrapper .element-container > .name > a .glyphicon {
+    margin-left: 5px;
+}
+
+.element-list-wrapper .element-container > .order-number {
+    width: 10rem;
+    text-align: center;
+}
+
+.element-list-wrapper .element-container > .device-type {
+    width: 12rem;
+    text-align: center;
+}
+
+.element-list-wrapper .element-container > .phone {
+    width: 15rem;
+}
+
+.element-list-wrapper .element-container > .order-date {
+    width: 15rem;
+}
+
+.element-list-wrapper .element-container > .id {
+    width: 10rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -97,6 +147,11 @@
     width: 24rem;
 }
 
+.element-list-wrapper .element-container > .icon {
+    width: 10rem;
+    text-align: center;
+}
+
 /* controls */
 .element-list-wrapper .element-container > .control {
     width: 8rem;
@@ -109,8 +164,27 @@
 }
 
 /* flags */
-.element-list-wrapper .element-container > .publish-status,  .element-list-wrapper .element-container > .publish {
+.element-list-wrapper .element-container > .publish-status,
+.element-list-wrapper .element-container > .publish,
+.element-list-wrapper .element-container > .on_home_page-status {
     width: 8rem;
+}
+
+.element-list-wrapper .element-container > .on_production_page {
+    width: 16rem;
+}
+
+.element-list-wrapper .element-container > .import_disabled-status {
+    width: 13rem;
+}
+
+.element-list-wrapper .element-container > .bestseller-status {
+    width: 13rem;
+}
+
+.element-list-wrapper .element-container > .show_in_manufacturers_block_on_main-status {
+    width: 18rem;
+    text-align: center;
 }
 
 .element-list-wrapper .element-container > .position {

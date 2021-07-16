@@ -43,5 +43,13 @@ class ValidationServiceProvider extends ServiceProvider
 
 
         Validator::extend('regular_expression', ValidationRules\Redirects::class . '@validateRegularExpression');
+
+        Validator::extend('local_or_remote_file', ValidationRules\File::class . '@validateLocalOrRemoteFile');
+        Validator::replacer(
+            'local_or_remote_file',
+            function ($message, $attribute, $rule, $parameters) {
+                return '';
+            }
+        );
     }
 }

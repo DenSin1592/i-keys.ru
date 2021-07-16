@@ -1,4 +1,4 @@
-@if (isset($formData['allowedValues']))
+@if (isset($formData['hasAllowedValues']))
     @include('admin.attributes.form.allowed_values._block')
 @endif
 @if (isset($formData['isDecimal']))

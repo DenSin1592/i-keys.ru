@@ -197,15 +197,22 @@ return [
 
         'attribute_type' => 'Тип параметра',
         'units' => 'Единицы измерения',
+        'use_in_filter' => 'Использовать в фильтре',
+        'for_admin_filter' => 'Для фильтра администратора',
         'decimal_scale' => 'Количество знаков после запятой',
         'value' => 'Значение',
         'allowed_values' => 'Разрешённые значения',
+        'icon_file' => 'Изображение',
+        'filter_name' => 'Название для фильтра',
 
         'rule' => 'Правило',
         'url' => 'Ссылка',
     ],
 
     'model_attributes' => [
+        'attribute' => [
+            'hidden' => 'Скрытый атрибут',
+        ],
         'category' => [
             'catalog_type' => [
                 'image_are_important' => 'Картинка важнее',

@@ -1,16 +1,23 @@
 <?php namespace App\Models;
 
-use App\Models\Helpers\DeleteHelpers;
-use App\Models\Category;
 use App\Models\Attribute\AllowedValue;
 use App\Models\Attribute\StringValue;
 use App\Models\Attribute\SingleValue;
 use App\Models\Attribute\MultipleValue;
 use App\Models\Attribute\IntegerValue;
 use App\Models\Attribute\DecimalValue;
+use App\Models\Helpers\AliasHelpers;
+use App\Models\Helpers\DeleteHelpers;
+use Diol\Fileclip\UploaderIntegrator;
+use Diol\Fileclip\Eloquent\Glue;
+use Diol\Fileclip\Version\OutBoundVersion;
+use Diol\FileclipExif\FileclipExif;
 
 class Attribute extends \Eloquent
 {
+    use Glue;
+    use FileclipExif;
+
     const TYPE_STRING = 'string';
     const TYPE_SINGLE = 'single';
     const TYPE_MULTIPLE = 'multiple';
@@ -25,7 +32,7 @@ class Attribute extends \Eloquent
         self::TYPE_DECIMAL => 'дробное число',
     ];
 
-    protected $fillable = ['category_id', 'attribute_type', 'name', 'position', 'decimal_scale', 'units'];
+    protected $fillable = ['category_id', 'attribute_type', 'name', 'position', 'decimal_scale', 'units', 'icon_file', 'icon_remove', 'use_in_filter', 'for_admin_filter', 'filter_name', 'alias', 'hidden'];
 
 
     /**
@@ -122,6 +129,10 @@ class Attribute extends \Eloquent
     {
         parent::boot();
 
+        self::mountUploader('icon', UploaderIntegrator::getUploader('uploads/attributes/icons', [
+            'thumb' => new OutBoundVersion(50, 50),
+        ]));
+
         self::deleting(function (self $attribute) {
             DeleteHelpers::deleteRelatedAll($attribute->allowedValues());
             DeleteHelpers::deleteRelatedAll($attribute->stringValues());
@@ -129,6 +140,9 @@ class Attribute extends \Eloquent
             DeleteHelpers::deleteRelatedAll($attribute->decimalValues());
             DeleteHelpers::deleteRelatedAll($attribute->singleValues());
             DeleteHelpers::deleteRelatedAll($attribute->multipleValues());
+        });
+        self::saving(function (self $attribute) {
+            AliasHelpers::setAlias($attribute);
         });
     }
 }

@@ -1,14 +1,19 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Admin\Features\ToggleFlags;
 use App\Http\Controllers\Controller;
+use App\Models\Attribute;
 use App\Services\Admin\Breadcrumbs\Breadcrumbs;
 use App\Services\DataProviders\AttributeForm\AttributeForm;
 use App\Services\FormProcessors\Attribute\AttributeFormProcessor;
 use App\Services\Repositories\Attribute\EloquentAttributeRepository;
 use App\Services\Repositories\Category\EloquentCategoryRepository;
+use Request;
 
 class AttributesController extends Controller
 {
+    use ToggleFlags;
+
     private $categoryRepository;
     private $attributeRepository;
     private $attributeFormProcessor;
@@ -29,126 +34,119 @@ class AttributesController extends Controller
         $this->breadcrumbs = $breadcrumbs;
     }
 
-    public function index($categoryId)
+    public function index()
     {
-        $category = $this->getCategory($categoryId);
-        $attributeList = $this->attributeRepository->allForCategory($category);
-        $breadcrumbs = $this->breadcrumbs->getFor('category.attributes', $category);
-
+        $attributeList = $this->attributeRepository->all();
         if (\Request::ajax()) {
-            $content = \View::make('admin.attributes._attribute_list')
-                ->with('attributeList', $attributeList)->with('lvl', 0)
-                ->with('category', $category)
+            $content = view('admin.attributes._attribute_list')
+                ->with('attributeList', $attributeList)
                 ->render();
 
             return \Response::json(['element_list' => $content]);
 
         } else {
-            return \View::make('admin.attributes.index')
-                ->with('breadcrumbs', $breadcrumbs)
-                ->with('category', $category)
+            return view('admin.attributes.index')
                 ->with('attributeList', $attributeList);
         }
     }
 
-    public function create($categoryId)
+    public function create()
     {
-        $category = $this->getCategory($categoryId);
-        $attribute = $this->attributeRepository->newInstanceWith($category);
-        $formData = $this->attributeFormDataProvider->provideDataFor($attribute, \Request::old());
-        $breadcrumbs = $this->breadcrumbs->getFor('category.attribute.create', $category);
+        $formData = $this->attributeFormDataProvider->provideDataFor(new Attribute, \Request::old());
+        $attributeList = $this->attributeRepository->all();
 
-        return \View::make('admin.attributes.create')
-            ->with('breadcrumbs', $breadcrumbs)
+        return view('admin.attributes.create')
+            ->with('attributeList', $attributeList)
             ->with('formData', $formData);
     }
 
-    public function store($categoryId)
+    public function store()
     {
-        $category = $this->getCategory($categoryId);
-        if (null === $category) {
-            \App::abort(404, 'Category is not found');
-        }
-
         $attribute = $this->attributeFormProcessor->create(\Request::except('redirect_to'));
         if (is_null($attribute)) {
-            return \Redirect::route('cc.attributes.create', $categoryId)
+            return \Redirect::route('cc.attributes.create')
                 ->withErrors($this->attributeFormProcessor->errors())->withInput();
         } else {
             if (\Request::get('redirect_to') == 'index') {
-                $redirect = \Redirect::route('cc.attributes.index', $category->id);
+                $redirect = \Redirect::route('cc.attributes.index');
             } else {
-                $redirect = \Redirect::route('cc.attributes.edit', [$category->id, $attribute->id]);
+                $redirect = \Redirect::route('cc.attributes.edit', [$attribute->id]);
             }
 
             return $redirect->with('alert_success', 'Параметр создан');
         }
     }
 
-    public function edit($categoryId, $attributeId)
+    public function edit($attributeId)
     {
-        $category = $this->getCategory($categoryId);
-        $attribute = $this->attributeRepository->findById($attributeId);
+        $attribute = $this->getAttribute($attributeId);
         if (is_null($attribute)) {
             \App::abort(404, 'Attribute not found');
         }
 
         $formData = $this->attributeFormDataProvider->provideDataFor($attribute, \Request::old());
-        $breadcrumbs = $this->breadcrumbs->getFor('category.attribute.edit', [$category, $attribute]);
+        $attributeList = $this->attributeRepository->all();
 
-        return \View::make('admin.attributes.edit')
-            ->with('breadcrumbs', $breadcrumbs)
+        return view('admin.attributes.edit')
+            ->with('attributeList', $attributeList)
             ->with('formData', $formData);
     }
 
-    public function update($categoryId, $attributeId)
+    public function update($attributeId)
     {
-        $category = $this->getCategory($categoryId);
         $attribute = $this->getAttribute($attributeId);
-        $success = $this->attributeFormProcessor->update($attribute, \Request::except('redirect_to'));
+        if (is_null($attribute)) {
+            \App::abort(404, 'Attribute not found');
+        }
 
+        $success = $this->attributeFormProcessor->update($attribute, \Request::except('redirect_to'));
         if (!$success) {
-            return \Redirect::route('cc.attributes.edit', [$category->id, $attribute->id])
+            return \Redirect::route('cc.attributes.edit', [$attribute->id])
                 ->withErrors($this->attributeFormProcessor->errors())->withInput();
         } else {
             if (\Request::get('redirect_to') == 'index') {
-                $redirect = \Redirect::route('cc.attributes.index', [$category->id]);
+                $redirect = \Redirect::route('cc.attributes.index');
             } else {
-                $redirect = \Redirect::route('cc.attributes.edit', [$category->id, $attribute->id]);
+                $redirect = \Redirect::route('cc.attributes.edit', [$attribute->id]);
             }
 
             return $redirect->with('alert_success', 'Параметр обновлён');
         }
     }
 
-    public function destroy($categoryId, $attributeId)
+    public function destroy($attributeId)
     {
-        $category = $this->getCategory($categoryId);
         $attribute = $this->getAttribute($attributeId);
-        $this->attributeRepository->delete($attribute);
 
-        return \Redirect::route('cc.attributes.index', $category->id)->with('alert_success', 'Товар удалён');
+        $attributeRepository = $this->attributeRepository->delete($attribute);
+
+        return \Redirect::route('cc.attributes.index')
+            ->with('alert_success', 'Параметр будет удалён в ближайшее время');
     }
 
     public function updatePositions()
     {
         $this->attributeRepository->updatePositions(\Request::get('positions', []));
+        if (\Request::ajax()) {
+            return \Response::json(['status' => 'alert_success']);
+        } else {
+            return \Redirect::back();
+        }
     }
 
-    /**
-     * Get category by id or throw error 404.
-     *
-     * @param $categoryId
-     * @return \App\Models\Category
-     */
-    private function getCategory($categoryId)
+    public function toggleAttribute($attributeId, $field)
     {
-        $category = $this->categoryRepository->findById($categoryId);
-        if (is_null($category)) {
-            \App::abort(404, 'Category not found');
+        if (!in_array($field, ['use_in_filter', 'for_admin_filter', 'hidden'])) {
+            \App::abort(404, "Not allowed to toggle this attribute");
         }
+        $attribute = $this->getAttribute($attributeId);
+        $this->attributeRepository->toggleAttribute($attribute, $field);
 
-        return $category;
+        return $this->toggleFlagResponse(
+            route('cc.attributes.toggle-attribute', [$attributeId, $field]),
+            $attribute,
+            $field
+        );
     }
 
     /**

@@ -148,6 +148,15 @@ class MenuServiceProvider extends ServiceProvider
                     )
                 );
 
+                $menu->addMenuElement(
+                    new MenuElement(
+                        'Характеристики товаров',
+                        'glyphicon-align-left',
+                        route('cc.attributes.index'),
+                        [AttributesController::class]
+                    )
+                );
+
                 return $menu;
             }
         );
