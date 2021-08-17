@@ -20,7 +20,7 @@
             @include('admin.products._delete_product', ['product' => $product])
             <a href="{{ route('cc.products.index', $product->category->id) }}" class="btn btn-default">{{ trans('interactions.back_to_list') }}</a>
             @if ($product->publish && $product->category->in_tree_publish)
-                <!-- todo: site url -->
+                @include('admin.shared._show_on_site_button', ['url' => \CatalogUrlBuilder::getUrl($product)])
             @endif
         </div>
 

@@ -100,7 +100,7 @@ class SettingsServiceProvider extends ServiceProvider
                     new SettingValue(
                         'admin.site_name',
                         'Название сайта',
-                        'l-keys.ru',
+                        'project.net',
                         'Используется для вывода в оконе авторизации и в шапке системы администрирования',
                         SettingValue::TYPE_TEXT,
                         ['nullable']

@@ -60,6 +60,9 @@ return [
                 'css/admin/scrollable_container.css',
                 'css/admin/select2_customisation.css',
                 'css/admin/modal_associations.css',
+                'css/admin/product_type_page.css',
+                'css/admin/catalog_tree.css',
+                'css/admin/associated_products.css',
             ],
             'filters' => ['css_min', 'embed_css', 'strip_bom', 'css_url_rebase'],
             'output' => 'css/compiled/admin.css'
@@ -85,6 +88,8 @@ return [
                 'js/admin/action_bar.js',
                 'js/admin/datetimepicker_init.js',
                 'js/admin/fancybox.init.js',
+                'js/admin/product_type_page.js',
+                'js/admin/catalog_tree.js',
                 'js/admin/menu.js',
                 'js/admin/hooks.js',
                 'js/admin/sortable_tree.js',
@@ -97,6 +102,8 @@ return [
                 'js/admin/element_list.js',
                 'js/admin/redirects.js',
                 'js/admin/attributes.js',
+                'js/admin/associated_products.js',
+                'js/admin/modal_associations.js',
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
             'output' => 'js/compiled/admin.js'

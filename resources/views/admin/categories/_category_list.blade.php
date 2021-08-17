@@ -4,15 +4,11 @@
             <div class="element-container">
                 @include('admin.shared.resource_list.sorting._list_controls', ['model' => $category])
                 <div class="name">
-                    <a href="{{ route('cc.categories.show', $category->id) }}"
+                    <a href="{{ route('cc.products.index', $category->id) }}"
                        style="margin-left: {{ $lvl * 0.5 }}em;">{{ $category->name }}</a>
                 </div>
-                <div class="buttons">
-                    <a href="{{ route('cc.categories.show', [$category->id]) }}" class="btn btn-default btn-xs">Подкатегории</a>
-                    <a href="{{ route('cc.products.index', [$category->id]) }}" class="btn btn-default btn-xs">Товары</a>
-                    <a href="{{ route('cc.attributes.index', [$category->id]) }}" class="btn btn-default btn-xs">Параметры</a>
-                </div>
                 @include('admin.shared._list_flag', ['element' => $category, 'action' => route('cc.categories.toggle-attribute', [$category->id, 'publish']), 'attribute' => 'publish'])
+                @include('admin.shared._list_flag', ['element' => $category, 'action' => route('cc.categories.toggle-attribute', [$category->id, 'menu_top']), 'attribute' => 'menu_top'])
                 <div class="alias">
                     {{ $category->alias }}
                 </div>
@@ -20,6 +16,9 @@
                     @include('admin.categories._control_block', ['category' => $category])
                 </div>
             </div>
+            @if (count($category->children) > 0)
+                @include('admin.categories._category_list', ['categoryTree' => $category->children, 'lvl' => $lvl + 3])
+            @endif
         </li>
     @endforeach
 </ul>

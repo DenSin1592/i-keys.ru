@@ -16,7 +16,6 @@ class CategoryLaravelValidator extends AbstractLaravelValidator
         $rules['name'] = 'required';
         $rules['alias'] = "unique:categories,alias,{$this->currentId},id,parent_id,{$parentId}";
         $rules['parent_id'] = ['nullable', 'exists:categories,id'];
-        $rules['catalog_type'] = ['required', 'in:' . implode(',', Category::getCatalogTypes())];
 
         return $rules;
     }

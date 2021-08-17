@@ -23,19 +23,50 @@ class Product extends \Eloquent
         'meta_title',
         'meta_keywords',
         'meta_description',
-        'extra_description  ',
+        'extra_description',
+        'code_1c'
     ];
 
+    public function getNameWithCode1cAttribute()
+    {
+        $name = '';
+        if (isset($this->code_1c) && $this->code_1c !== '') {
+            $name .= "[{$this->code_1c}] ";
+        }
+        $name .= $this->name;
+
+        return $name;
+    }
 
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function relatedProducts()
+    {
+        return $this->belongsToMany(
+            Product::class,
+            'related_products',
+            'product_id',
+            'attached_product_id'
+        );
+    }
+
 
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function relatedProductsReverse()
+    {
+        return $this->belongsToMany(
+            Product::class,
+            'related_products',
+            'attached_product_id',
+            'product_id'
+        );
     }
 
 
@@ -45,6 +76,8 @@ class Product extends \Eloquent
 
         self::deleting(function (self $product) {
             DeleteHelpers::deleteRelatedAll($product->images());
+            $product->relatedProducts()->detach();
+            $product->relatedProductsReverse()->detach();
         });
     }
 }

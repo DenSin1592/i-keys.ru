@@ -1,4 +1,4 @@
-@extends('admin.categories.inner')
+@extends('admin.layouts.default')
 
 @section('title')
     Список параметров

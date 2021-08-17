@@ -1,0 +1,70 @@
+.catalog-tree .category .category-toggle {
+    border-bottom: 1px dashed;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.catalog-tree .category .final-category {
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0;
+}
+
+.catalog-tree .category .category-toggle:hover {
+    border-bottom-color: transparent;
+}
+
+.catalog-tree .category .category-content {
+    display: none;
+}
+
+.catalog-tree .category .category-content.visible {
+    display: block;
+}
+
+.catalog-tree .product {
+    font-weight: normal;
+    margin: 0;
+}
+
+.catalog-tree ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.catalog-tree ul li {
+    padding-left: 2em;
+}
+
+.catalog-tree ul li .loader {
+    padding-left: 5px;
+}
+
+.catalog-tree ul li.category {
+    padding-bottom: 0;
+}
+
+.catalog-tree ul li label .form-group {
+    margin: 0;
+}
+
+.catalog-tree .category-content .bordered-group {
+    margin: 0;
+    padding: 5px 15px 10px;
+    width: 60%
+}
+
+.catalog-tree .category-content .bordered-group .checkbox-inline {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.catalog-tree .additional-fields {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.catalog-tree .additional-fields .form-group {
+    margin: 0;
+}

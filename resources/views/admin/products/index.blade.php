@@ -11,7 +11,6 @@
             @include('admin.shared.resource_list.sorting._list_header')
             <div class="name">{{ trans('validation.attributes.name') }}</div>
             <div class="publish-status">{{ trans('validation.attributes.publish') }}</div>
-            <div class="alias">{{ trans('validation.attributes.alias') }}</div>
             <div class="control">{{ trans('interactions.controls') }}</div>
         </div>
 
@@ -21,5 +20,8 @@
         </div>
 
         @include('admin.shared.resource_list.sorting._commit', ['updateUrl' => route('cc.products.update-positions', $category->id), 'reloadUrl' => route('cc.products.index', $category->id)])
+        <div>
+            <a href="{{ route('cc.products.create', $category->id) }}" class="btn btn-success btn-xs">Добавить товар</a>
+        </div>
     </div>
 @stop

@@ -204,9 +204,17 @@ return [
         'allowed_values' => 'Разрешённые значения',
         'icon_file' => 'Изображение',
         'filter_name' => 'Название для фильтра',
-
+        'filter_category_id' => 'Категория для фильтра',
+        'product_list_way' => 'Способ формирования списка товаров',
+        'filter_query' => 'Строка фильтра',
         'rule' => 'Правило',
         'url' => 'Ссылка',
+        'code_1c' => 'Код 1с',
+        'description' => 'Описание',
+        'related_products' => 'Сопутствующие товары',
+        'image_file' => 'Изображение',
+        'image' => 'Изображение',
+        'comment' => 'Комментарий',
     ],
 
     'model_attributes' => [

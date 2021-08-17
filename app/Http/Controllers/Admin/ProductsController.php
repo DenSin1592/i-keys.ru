@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\Features\ToggleFlags;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Services\Admin\Breadcrumbs\Breadcrumbs;
 use App\Services\DataProviders\ProductForm\ProductForm;
 use App\Services\FormProcessors\Product\ProductFormProcessor;
@@ -68,6 +69,32 @@ class ProductsController extends Controller
         }
     }
 
+    public function create($categoryId)
+    {
+        $category = $this->getCategory($categoryId);
+        $product = $this->productRepository->newInstanceWithCategory($category);
+        $productList = $this->getProductList($category);
+        $formData = $this->formDataProvider->provideDataFor($product, \Request::old());
+        $breadcrumbs = $this->breadcrumbs->getFor('category.product.create', $product);
+
+        return \View::make('admin.products.create')
+            ->with('breadcrumbs', $breadcrumbs)
+            ->with('category', $category)
+            ->with('product', $product)
+            ->with('productList', $productList)
+            ->with('formData', $formData);
+    }
+
+    private function getProductList(Category $category)
+    {
+        return $this->flexPaginator->make(
+            function ($page, $limit) use ($category) {
+                return $this->productRepository->allInCategoryByPage($category->id, $page, $limit);
+            },
+            "product-pagination-page-{$category->id}",
+            'product-pagination-limit'
+        );
+    }
 
     public function updatePositions($categoryId)
     {
@@ -102,7 +129,7 @@ class ProductsController extends Controller
     {
         $category = $this->getCategory($categoryId);
         $product = $this->getProduct($categoryId, $productId);
-        $productList = $this->productRepository->allForCategory($category);
+        $productList = $this->getProductList($category);
         $formData = $this->formDataProvider->provideDataFor($product, \Request::old());
         $breadcrumbs = $this->breadcrumbs->getFor('category.product.edit', $product);
 
@@ -179,5 +206,23 @@ class ProductsController extends Controller
         }
 
         return $product;
+    }
+
+    public function store($categoryId)
+    {
+        $category = $this->getCategory($categoryId);
+        $product = $this->formProcessor->create(\Request::except('redirect_to'));
+        if (is_null($product)) {
+            return \Redirect::route('cc.products.create', [$category->id])
+                ->withErrors($this->formProcessor->errors())->withInput();
+        } else {
+            if (\Request::get('redirect_to') == 'index') {
+                $redirect = \Redirect::route('cc.products.index', [$category->id]);
+            } else {
+                $redirect = \Redirect::route('cc.products.edit', [$product->category_id, $product->id]);
+            }
+
+            return $redirect->with('alert_success', "Товар создан");
+        }
     }
 }

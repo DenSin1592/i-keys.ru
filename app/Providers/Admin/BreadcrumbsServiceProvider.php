@@ -7,7 +7,7 @@ use App\Models\MetaPage;
 use App\Models\Node;
 use App\Models\Product;
 use App\Models\TextPage;
-use App\Models\Type;
+use App\Models\ProductTypePage;
 use App\Services\Admin\Breadcrumbs\Breadcrumbs;
 use App\Services\Admin\Breadcrumbs\Path;
 use Illuminate\Support\ServiceProvider;
@@ -27,7 +27,7 @@ class BreadcrumbsServiceProvider extends ServiceProvider
 
                 $this->addStructureBuilders($breadcrumbs);
                 $this->addCatalogBuilders($breadcrumbs);
-                $this->addTypesBuilders($breadcrumbs);
+                $this->addProductTypePagesBuilders($breadcrumbs);
 
                 return $breadcrumbs;
             }
@@ -99,6 +99,17 @@ class BreadcrumbsServiceProvider extends ServiceProvider
         );
 
         $breadcrumbs->addBuilder(
+            'category.product.create',
+            function (Product $product) {
+                $category = $product->category;
+                $path = $this->createCategoryParentPath($category, true);
+                $path->add('Создание товара');
+
+                return $path;
+            }
+        );
+
+        $breadcrumbs->addBuilder(
             'category.product.edit',
             function (Product $product) {
                 $category = $product->category;
@@ -137,39 +148,6 @@ class BreadcrumbsServiceProvider extends ServiceProvider
                 $path = $this->createCategoryParentPath($category, true);
                 $path->add('Список параметров', route('cc.attributes.index', $category->id));
                 $path->add($attribute->name . ' - редактирование параметра');
-
-                return $path;
-            }
-        );
-    }
-
-    private function addTypesBuilders(Breadcrumbs $breadcrumbs): void
-    {
-        $breadcrumbs->addBuilder(
-            'type.show',
-            function (Type $type) {
-                $path = $this->createTypeParentPath($type);
-                $path->add($type->name);
-
-                return $path;
-            }
-        );
-
-        $breadcrumbs->addBuilder(
-            'type.create',
-            function (Type $type = null) {
-                $path = $this->createTypeParentPath($type);
-                $path->add('Создание типа товаров');
-
-                return $path;
-            }
-        );
-
-        $breadcrumbs->addBuilder(
-            'type.edit',
-            function (Type $type) {
-                $path = $this->createTypeParentPath($type);
-                $path->add($type->name . ' - редактирование типа товаров');
 
                 return $path;
             }
@@ -224,21 +202,36 @@ class BreadcrumbsServiceProvider extends ServiceProvider
         return $path;
     }
 
-    private function createTypeParentPath(Type $type = null, $withSelf = false): Path
+    private function addProductTypePagesBuilders(Breadcrumbs $breadcrumbs): void
+    {
+        $breadcrumbs->addBuilder(
+            'product_type_page.create',
+            function (ProductTypePage $productTypePage) {
+                $path = $this->createProductTypePageParentPath($productTypePage);
+                $path->add('Создание типа товаров');
+
+                return $path;
+            }
+        );
+
+        $breadcrumbs->addBuilder(
+            'product_type_page.edit',
+            function (ProductTypePage $productTypePage) {
+                $path = $this->createProductTypePageParentPath($productTypePage);
+                $path->add($productTypePage->name . ' - редактирование типа товаров');
+
+                return $path;
+            }
+        );
+    }
+
+    private function createProductTypePageParentPath(ProductTypePage $productTypePage): Path
     {
         $path = new Path();
-
-        $path->add('Типы товаров', route('cc.types.index'));
-        if (null !== $type) {
-            $typesPath = $type->extractParentPath();
-
-            if ($withSelf) {
-                $typesPath[] = $type;
-            }
-
-            foreach ($typesPath as $typeInPath) {
-                $path->add($typeInPath->name, route('cc.types.show', $typeInPath->id));
-            }
+        $path->add('Типы товаров', route('cc.product-type-pages.index'));
+        $productTypePagesPath = $productTypePage->extractParentPath();
+        foreach ($productTypePagesPath as $productTypePageInPath) {
+            $path->add($productTypePageInPath->name, route('cc.product-type-pages.edit', $productTypePageInPath->id));
         }
 
         return $path;

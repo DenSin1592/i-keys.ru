@@ -80,7 +80,8 @@ class CategoriesController extends Controller
 
         return \View::make('admin.categories.create')
             ->with('breadcrumbs', $breadcrumbs)
-            ->with('formData', $formData);
+            ->with('formData', $formData)
+            ->with('categoryTree', $this->repository->getCollapsedTree());
     }
 
 
@@ -95,7 +96,8 @@ class CategoriesController extends Controller
 
         return \View::make('admin.categories.edit')
             ->with('breadcrumbs', $breadcrumbs)
-            ->with('formData', $formData);
+            ->with('formData', $formData)
+            ->with('categoryTree', $this->repository->getCollapsedTree($category));
     }
 
 

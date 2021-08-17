@@ -16,6 +16,18 @@ trait TreeParentPath
      */
     protected $parentPath;
 
+    /**
+     * Extract full path - parent path with itself
+     *
+     * @return array
+     */
+    public function extractPath(): array
+    {
+        $path = $this->extractParentPath();
+        $path[] = $this;
+
+        return $path;
+    }
 
     /**
      * Extract parent path.

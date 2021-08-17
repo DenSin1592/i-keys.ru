@@ -6,7 +6,9 @@
 
 @section('content')
 
-    @include('admin.layouts._breadcrumbs', ['breadcrumbs' => $breadcrumbs])
+    @if (isset($breadcrumbs))
+        @include('admin.shared._catalog_breadcrumbs', ['breadcrumbs' => $breadcrumbs])
+    @endif
 
     {!! Form::tbModelWithErrors($formData['category'], $errors, ['url' => route('cc.categories.update', [$formData['category']->id]), 'method' => 'put', 'files' => true, 'autocomplete' => 'off']) !!}
 
@@ -24,7 +26,7 @@
                 <a href="{{ route('cc.categories.index') }}" class="btn btn-default">{{ trans('interactions.back_to_list') }}</a>
             @endif
             @if ($formData['category']->in_tree_publish)
-                <!-- todo: site url -->
+                @include('admin.shared._show_on_site_button', ['url' => CatalogUrlBuilder::buildCategoryUrl($formData['category'])])
             @endif
         </div>
 

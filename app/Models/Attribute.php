@@ -32,7 +32,7 @@ class Attribute extends \Eloquent
         self::TYPE_DECIMAL => 'дробное число',
     ];
 
-    protected $fillable = ['category_id', 'attribute_type', 'name', 'position', 'decimal_scale', 'units', 'icon_file', 'icon_remove', 'use_in_filter', 'for_admin_filter', 'filter_name', 'alias', 'hidden'];
+    protected $fillable = ['attribute_type', 'name', 'position', 'decimal_scale', 'units', 'icon_file', 'icon_remove', 'use_in_filter', 'for_admin_filter', 'filter_name', 'alias', 'hidden'];
 
 
     /**
@@ -55,6 +55,11 @@ class Attribute extends \Eloquent
     public function allowedValues()
     {
         return $this->hasMany(AllowedValue::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 
     public function stringValues()

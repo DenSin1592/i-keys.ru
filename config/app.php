@@ -244,6 +244,8 @@ return [
 
         'Setting' => App\Facades\Setting::class,
         'TypeContainer' => App\Facades\TypeContainer::class,
+        'CatalogUrlBuilder' => App\Facades\CatalogUrlBuilder::class,
+        'Helper' => App\Facades\Helper::class,
     ],
 
 ];

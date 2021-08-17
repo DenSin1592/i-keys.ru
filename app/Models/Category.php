@@ -75,7 +75,7 @@ class Category extends \Eloquent
             DeleteHelpers::deleteRelatedAll($category->children());
             DeleteHelpers::deleteRelatedAll($category->attributes());
 
-            Type::where('category_id', $category->id)->update(['category_id' => null]);
+            ProductTypePage::where('category_id', $category->id)->update(['category_id' => null]);
         });
     }
 }

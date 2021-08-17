@@ -7,9 +7,6 @@
                     <a href="{{ route('cc.products.edit', [$product->category->id, $product->id]) }}">{{ $product->name }}</a>
                 </div>
                 @include('admin.shared._list_flag', ['element' => $product, 'action' => route('cc.products.toggle-attribute', [$product->category->id, $product->id, 'publish']), 'attribute' => 'publish'])
-                <div class="alias">
-                    {{ $product->alias }}
-                </div>
                 <div class="control">
                     @include('admin.products._control_block', ['product' => $product])
                 </div>

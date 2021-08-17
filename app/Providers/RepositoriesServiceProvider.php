@@ -2,7 +2,7 @@
 
 use App\Services\Repositories\Category\EloquentCategoryRepository;
 use App\Services\Repositories\Node\EloquentNodeRepository;
-use App\Services\Repositories\Type\EloquentTypeRepository;
+use App\Services\Repositories\ProductTypePage\EloquentProductTypePageRepository;
 use App\Services\RepositoryFeatures\Order\OrderScopesInterface;
 use App\Services\RepositoryFeatures\Order\PositionOrderScopes;
 use App\Services\RepositoryFeatures\Tree\PublishedTreeBuilder;
@@ -32,10 +32,10 @@ class RepositoriesServiceProvider extends ServiceProvider
             return new PublishedTreeBuilder(new PositionOrderScopes());
         });
 
-        $this->app->when(EloquentTypeRepository::class)->needs(OrderScopesInterface::class)->give(function () {
+        $this->app->when(EloquentProductTypePageRepository::class)->needs(OrderScopesInterface::class)->give(function () {
             return new PositionOrderScopes();
         });
-        $this->app->when(EloquentTypeRepository::class)->needs(TreeBuilderInterface::class)->give(function () {
+        $this->app->when(EloquentProductTypePageRepository::class)->needs(TreeBuilderInterface::class)->give(function () {
             return new PublishedTreeBuilder(new PositionOrderScopes());
         });
     }

@@ -100,7 +100,8 @@ class EloquentAttributeRepository
             $categoryIds[] = $category->id;
         }
         $attributes = Attribute::query()
-            ->whereIn('attributes.category_id', $categoryIds)
+            ->join('attribute_category', 'attribute_category.attribute_id', '=', 'attributes.id')
+            ->whereIn('attribute_category.category_id', $categoryIds)
             ->orderBy('attributes.position')->select('attributes.*')->distinct()->get();
 
         return $attributes;

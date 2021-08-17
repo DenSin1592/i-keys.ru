@@ -1,9 +1,3 @@
-<?php
-$options = [];
-if (!empty($disabled)) {
-    $options['disabled'] = true;
-}
-?>
 <div>
     <div class="multi-checkbox">
         <div class="variants-container">
@@ -12,7 +6,7 @@ if (!empty($disabled)) {
                     @foreach ($chunk as $allowedId => $allowedName)
                         <div class="multi-checkbox-element">
                             <label class="checkbox-inline">
-                                {!! Form::checkbox("attributes[{$attribute['attribute']->id}][]", $allowedId, in_array($allowedId, $attribute['data']), $options) !!}
+                                {!! Form::checkbox("attributes[{$attribute['attribute']->id}][]", $allowedId, in_array($allowedId, $attribute['data'])) !!}
                                 {{ $allowedName }}
                             </label>
                         </div>

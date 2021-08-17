@@ -3,10 +3,9 @@
 @section('title', 'Создание категории')
 
 @section('content')
+    {{-- @include('admin.layouts._breadcrumbs', ['breadcrumbs' => $breadcrumbs, 'category' => $formData['category']]) --}}
 
-    @include('admin.layouts._breadcrumbs', ['breadcrumbs' => $breadcrumbs])
-
-    {!! Form::tbModelWithErrors($formData['category'], $errors, ['url' => route('cc.categories.store'), 'method' => 'post', 'files' => true]) !!}
+    {!! Form::tbModelWithErrors($formData['category'], $errors, ['url' => route('cc.categories.store', object_get($formData['parent'], 'id')), 'method' => 'post', 'files' => true]) !!}
 
         @include('admin.categories._form_fields')
 

@@ -21,7 +21,7 @@ class CreateProductImages extends Migration
             $table->string('image')->nullable();
             $table->integer('position')->default(0);
             $table->boolean('publish')->default(false);
-            $table->string('comment')->nullable();
+            $table->text('comment')->nullable();
         });
     }
 

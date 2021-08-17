@@ -1,5 +1,6 @@
 <?php namespace App\Services\Repositories\Category;
 
+use App\Models\Attribute;
 use App\Models\Category;
 use App\Services\RepositoryFeatures\Attribute\EloquentAttributeToggler;
 use App\Services\RepositoryFeatures\Attribute\PositionUpdater;
@@ -71,6 +72,13 @@ class EloquentCategoryRepository
         return $category->delete();
     }
 
+    public function allForAttribute(Attribute $attribute)
+    {
+        $query = $attribute->categories();
+        $this->orderScope->scopeOrdered($query);
+
+        return $query->get();
+    }
     public function updatePositions(array $positions)
     {
         $this->positionUpdater->updatePositions(new Category(), $positions);

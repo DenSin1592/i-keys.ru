@@ -18,4 +18,6 @@
         '<br /> Также определяет приоритет, какие из 4-ёх параметров попадут в динамически формируемых заголовок (h1) на странице фильтра'
 ]) !!}
 
+@include('admin.attributes.form.categories._block')
+
 @include('admin.shared._model_timestamps', ['model' => $formData['attribute']])

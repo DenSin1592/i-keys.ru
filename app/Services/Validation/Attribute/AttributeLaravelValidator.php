@@ -9,9 +9,12 @@ class AttributeLaravelValidator extends AbstractLaravelValidator
     {
         return [
             'name' => 'required',
+            'position' => ['nullable', 'integer'],
             'attribute_type' => ['required', 'in:' . implode(',', Attribute::getTypes())],
-            'categories' => ['exists:categories,id'],
+            'decimal_scale' => ['sometimes', 'required', 'integer', 'between:0,3'],
+            'categories.*.id' => ['exists:categories,id'],
             'allowed_values.*.value' => ['sometimes', 'required'],
+            'allowed_values.*.position' => ['nullable', 'integer'],
         ];
     }
 
@@ -19,6 +22,7 @@ class AttributeLaravelValidator extends AbstractLaravelValidator
     {
         return [
             'allowed_values.*.value' => trans('validation.attributes.value'),
+            'allowed_values.*.position' => trans('validation.attributes.position'),
         ];
     }
 }
