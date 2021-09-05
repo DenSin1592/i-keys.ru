@@ -192,6 +192,46 @@ class EloquentProductRepository
         return $query->orderBy('products.position', 'ASC');
     }
 
+    public function getProductsForReviewBySearch($searchString, $page = 1, $limit = 20)
+    {
+        $searchString = trim($searchString);
+        if ($searchString == '') {
+            return [
+                'items' => Collection::make([]),
+                'total' => 0,
+                'page' => $page,
+                'limit' => $limit,
+            ];
+        }
+
+        $query = Product::where('name', 'LIKE', '%' . $searchString . '%');
+
+        $selectQuery = clone $query;
+        $countQuery = clone $query;
+        $products = $selectQuery
+            ->skip($limit * ($page - 1))
+            ->take($limit)
+            ->get();
+        $total = $this->selectProductCount($countQuery);
+
+        return [
+            'items' => $products,
+            'total' => $total,
+            'page' => $page,
+            'limit' => $limit,
+        ];
+    }
+
+    private function selectProductCount($query)
+    {
+        $total = $query
+            ->select(\DB::raw('COUNT(DISTINCT(products.id)) AS count'))
+            ->pluck('count')
+            ->first();
+
+        return $total;
+    }
+
     public function allInCategoryLvlByCategoryIds(array $categoryIds)
     {
         if (count($categoryIds) === 0) {

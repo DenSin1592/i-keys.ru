@@ -215,6 +215,15 @@ return [
         'image_file' => 'Изображение',
         'image' => 'Изображение',
         'comment' => 'Комментарий',
+        'keep_review_date' => 'Не перестраивать дату отзыва',
+        'review_date' => 'Дата отзыва',
+        'review_id' => 'id отзыва',
+        'review_name' => 'Имя',
+        'review_content' => 'Текст отзыва',
+        'review_content_answer' => 'Ответ от магазина',
+        'review_score' => 'Оценка',
+        'email' => 'E-mail',
+        'on_home_page' => 'Выводить на главной странице',
     ],
 
     'model_attributes' => [

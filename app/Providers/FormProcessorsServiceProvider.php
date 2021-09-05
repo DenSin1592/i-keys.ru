@@ -7,9 +7,11 @@ use App\Services\FormProcessors\ProductTypePage\ProductTypePageFormProcessor;
 use App\Services\FormProcessors\Node\NodeFormProcessor;
 use App\Services\FormProcessors\Product\ProductFormProcessor;
 use App\Services\FormProcessors\Product\SubProcessor as ProductSubProcessor;
+use App\Services\FormProcessors\Review\AdminReviewFormProcessor;
 use App\Services\FormProcessors\Settings\SettingsFormProcessor;
 use App\Services\FormProcessors\Attribute\SubProcessor as AttributeSubProcessor;
 use App\Services\Repositories\ProductTypePage\CreateUpdateWrapper as ProductTypePageCreateUpdateWrapper;
+use App\Services\Repositories\Review\CreateUpdateWrapper as ReviewCreateUpdateWrapper;
 use App\Services\Repositories\Setting\EloquentSettingRepository;
 use App\Services\Repositories\AdminUser\CreateUpdateWrapper as AdminUserCrudWrapper;
 use App\Services\Repositories\Node\CreateUpdateWrapper as NodeCreateUpdateWrapper;
@@ -24,6 +26,7 @@ use App\Services\Validation\Category\CategoryLaravelValidator;
 use App\Services\Validation\ProductTypePage\ProductTypePageLaravelValidator;
 use App\Services\Validation\Node\NodeLaravelValidator;
 use App\Services\Validation\Product\ProductLaravelValidator;
+use App\Services\Validation\Review\AdminReviewValidator;
 use App\Services\Validation\Setting\SettingsLaravelValidator;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -47,6 +50,13 @@ class FormProcessorsServiceProvider extends ServiceProvider
                 );
             }
         );
+
+        $this->app->bind(AdminReviewFormProcessor::class, function (Application $app) {
+            return new AdminReviewFormProcessor(
+                new AdminReviewValidator($app['validator']),
+                $app->make(ReviewCreateUpdateWrapper::class)
+            );
+        });
 
         $this->app->bind(
             NodeFormProcessor::class,

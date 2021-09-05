@@ -190,6 +190,7 @@ return [
         App\Providers\ControllersServiceProvider::class,
         App\Providers\DataProvidersServiceProvider::class,
         App\Providers\PaginationServiceProvider::class,
+        App\Providers\ReviewRenewalServiceProvider::class,
 
     ],
 

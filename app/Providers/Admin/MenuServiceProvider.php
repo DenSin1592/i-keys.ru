@@ -1,6 +1,7 @@
 <?php namespace App\Providers\Admin;
 
 use App\Http\Controllers\Admin\ProductTypePagesController;
+use App\Http\Controllers\Admin\ReviewsController;
 use Arr;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\AttributesController;
@@ -84,6 +85,15 @@ class MenuServiceProvider extends ServiceProvider
                         'glyphicon-copyright-mark',
                         route('cc.settings.edit'),
                         [SettingsController::class]
+                    )
+                );
+
+                $menu->addMenuElement(
+                    new MenuElement(
+                        'Отзывы',
+                        'glyphicon-thumbs-up',
+                        route('cc.reviews.index'),
+                        [ReviewsController::class]
                     )
                 );
 
