@@ -306,4 +306,13 @@ class EloquentProductRepository
     {
         return Product::find($id);
     }
+
+    /**
+     * @param $code1c
+     * @return Product|null
+     */
+    public function findByCode1c($code1c)
+    {
+        return Product::query()->where('code_1c', $code1c)->first();
+    }
 }

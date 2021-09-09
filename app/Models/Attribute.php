@@ -32,7 +32,7 @@ class Attribute extends \Eloquent
         self::TYPE_DECIMAL => 'дробное число',
     ];
 
-    protected $fillable = ['attribute_type', 'name', 'position', 'decimal_scale', 'units', 'icon_file', 'icon_remove', 'use_in_filter', 'for_admin_filter', 'filter_name', 'alias', 'hidden'];
+    protected $fillable = ['attribute_type', 'name', 'position', 'decimal_scale', 'units', 'code_1c', 'icon_file', 'icon_remove', 'use_in_filter', 'for_admin_filter', 'filter_name', 'alias', 'hidden', 'imported'];
 
 
     /**

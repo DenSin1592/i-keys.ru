@@ -51,6 +51,7 @@ return [
                 'vendor/jquery.raty/jquery.raty.css',
                 'css/admin/base.css',
                 'css/admin/element_list.css',
+                'css/admin/exchange.css',
                 'css/admin/forms.css',
                 'css/admin/guest.css',
                 'css/admin/menu.css',
@@ -108,6 +109,7 @@ return [
                 'js/admin/associated_products.js',
                 'js/admin/modal_associations.js',
                 'js/common/jquery_raty_init.js',
+                'js/common/exchange.js',
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
             'output' => 'js/compiled/admin.js'

@@ -1,0 +1,66 @@
+.exchange-error {
+    color: #AF294D;
+}
+
+.exchange-status-container {
+    margin: 25px 0;
+}
+
+.exchange-status-container > div {
+    margin: 10px 0;
+}
+
+.exchange-status-container > div .title {
+    font-weight: bold;
+}
+
+.exchange-logs .title {
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.exchange-logs .element-list-wrapper .header-container {
+    font-weight: bold;
+}
+
+.exchange-logs .element-list-wrapper .element-container > .type {
+    width: 14rem;
+}
+
+#export-logs.exchange-logs .element-list-wrapper .element-container > .type {
+    width: 8rem;
+}
+
+.exchange-logs .element-list-wrapper .element-container > .file_name {
+    width: 20rem;
+}
+
+.exchange-logs .element-list-wrapper .element-container > .line_number {
+    width: 7rem;
+}
+
+.exchange-logs .element-list-wrapper .element-container > .created_at {
+    width: 16rem;
+}
+
+.exchange-logs.loading {
+    background: transparent url("../../images/common/ajax-loader/big_black.gif") no-repeat scroll 50% 50%;
+}
+
+.exchange-logs.loading > * {
+    opacity: 0.1;
+}
+
+.exchange-logs .logs-refresh {
+    font-size: 14px;
+    color: #337ab7;
+    border-bottom: 1px #337ab7 dotted;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.exchange-logs .logs-refresh:hover {
+    border-bottom-color: transparent;
+    text-decoration: none;
+}

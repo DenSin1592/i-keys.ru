@@ -51,5 +51,6 @@ class ValidationServiceProvider extends ServiceProvider
                 return '';
             }
         );
+        Validator::extend('stored_file', ValidationRules\File::class . '@validateStoredFile');
     }
 }

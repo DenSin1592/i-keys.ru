@@ -32,6 +32,7 @@ class Category extends \Eloquent
         'meta_keywords',
         'meta_description',
         'catalog_type',
+        'code_1c',
     ];
 
     public static function getCatalogTypes()

@@ -1,5 +1,6 @@
 <?php namespace App\Providers\Admin;
 
+use App\Http\Controllers\Admin\ExchangeController;
 use App\Http\Controllers\Admin\ProductTypePagesController;
 use App\Http\Controllers\Admin\ReviewsController;
 use Arr;
@@ -85,6 +86,15 @@ class MenuServiceProvider extends ServiceProvider
                         'glyphicon-copyright-mark',
                         route('cc.settings.edit'),
                         [SettingsController::class]
+                    )
+                );
+
+                $menu->addMenuElement(
+                    new MenuElement(
+                        'Обмен с 1С',
+                        'glyphicon-refresh',
+                        route('cc.exchange.show'),
+                        [ExchangeController::class]
                     )
                 );
 

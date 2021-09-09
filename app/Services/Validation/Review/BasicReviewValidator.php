@@ -12,6 +12,7 @@ abstract class BasicReviewValidator extends AbstractLaravelValidator
             'email' => 'email',
             'product_id' => 'exists:products,id',
             'content' => 'required',
+            'score' => ['required', 'numeric', 'between:1,5'],
         ];
     }
 

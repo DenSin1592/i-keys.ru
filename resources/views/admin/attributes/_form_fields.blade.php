@@ -1,6 +1,11 @@
 
 {!! Form::tbTextBlock('name') !!}
 
+{!! Form::tbFormGroupOpen('code_1c') !!}
+    {!! Form::tbLabel('code_1c', trans('validation.attributes.code_1c')) !!}
+    {!! Form::tbText('code_1c') !!}
+{!! Form::tbFormGroupClose() !!}
+
 @include('admin.shared._model_image_field', ['model' => $formData['attribute'], 'field' => 'icon'])
 
 {!! Form::tbCheckboxBlock('hidden', trans('validation.model_attributes.attribute.hidden'), null, ['hint' => 'Параметр не будет выводиться на странице товара, но по прежнему может участвовать в фильтре.']) !!}

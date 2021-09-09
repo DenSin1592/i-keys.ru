@@ -191,7 +191,7 @@ return [
         App\Providers\DataProvidersServiceProvider::class,
         App\Providers\PaginationServiceProvider::class,
         App\Providers\ReviewRenewalServiceProvider::class,
-
+        App\Providers\ExchangeServiceProvider::class,
     ],
 
     /*

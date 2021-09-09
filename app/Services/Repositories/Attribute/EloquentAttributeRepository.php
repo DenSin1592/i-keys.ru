@@ -31,6 +31,17 @@ class EloquentAttributeRepository
         return Attribute::create($data);
     }
 
+    public function getRelatedCategoriesIdsGroupByAttributeId(): array
+    {
+        $attributes = Attribute::query()->with('categories')->get();
+        $categoriesIdsGroupByAttributeId = [];
+        foreach ($attributes as $attribute) {
+            $categoriesIdsGroupByAttributeId[$attribute->id] = $attribute->categories->pluck('id')->all();
+        }
+
+        return $categoriesIdsGroupByAttributeId;
+    }
+
 
     public function update(Attribute $attribute, array $data)
     {
@@ -47,6 +58,65 @@ class EloquentAttributeRepository
     public function newInstance(array $data = [])
     {
         return Attribute::newModelInstance($data);
+    }
+
+    /**
+     * @param $code1c
+     * @return Attribute|null
+     */
+    public function findByCode1c($code1c)
+    {
+        return Attribute::query()->where('code_1c', $code1c)->first();
+    }
+
+    /**
+     * Mark all attributes as not imported
+     * use \DB::table update in order not to change update_at
+     * and not to run handlers for Model update
+     *
+     * @return int
+     */
+    public function resetAllImported()
+    {
+        return \DB::table('attributes')
+            ->where('imported', true)
+            ->update(['imported' => false]);
+    }
+
+    /**
+     * Get type for attribute by code 1c if attributes does not exist
+     *
+     * @param $code1C
+     * @return string
+     */
+    public function getDefaultAttributeTypeForCode1c($code1C): string
+    {
+        // пока возвращаю тип "string", после появления файла надо подправить
+        return Attribute::TYPE_STRING;
+    }
+
+    /**
+     * Mark attribute as imported by id
+     * use \DB::table update in order not to change update_at
+     * and not to run handlers for Model update
+     *
+     * @param $id
+     * @return int
+     */
+    public function markAsImportedById($id)
+    {
+        return \DB::table('attributes')
+            ->where('id', $id)
+            ->update(['imported' => true]);
+    }
+
+    public function getAllNotImportedWithNotEmptyCode1c()
+    {
+        return Attribute::query()
+            ->where('imported', false)
+            ->whereNotNull('code_1c')
+            ->where('code_1c', '<>', '')
+            ->get();
     }
 
     public function newInstanceWith(Category $category, array $data = [])

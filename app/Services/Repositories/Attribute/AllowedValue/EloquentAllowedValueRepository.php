@@ -19,6 +19,26 @@ class EloquentAllowedValueRepository
         return $attribute->allowedValues()->orderBy('position')->get();
     }
 
+    /**
+     * @param Attribute $attribute
+     * @param $value
+     * @return AllowedValue|null
+     */
+    public function findForAttributeByValueOrCreate(Attribute $attribute, $value)
+    {
+        $allowedValue = $attribute->allowedValues()->where('value', $value)->first();
+        if (is_null($allowedValue)) {
+            $allowedValue = new AllowedValue();
+            $allowedValue->attribute()->associate($attribute);
+            $data = ['value' => $value,];
+
+            $allowedValue->fill($data);
+            $allowedValue->save();
+            $attribute->touch();
+        }
+
+        return $allowedValue;
+    }
 
     public function createOrUpdateForAttribute(Attribute $attribute, array $data = [])
     {

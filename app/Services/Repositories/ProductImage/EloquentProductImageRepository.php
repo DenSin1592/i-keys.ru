@@ -20,6 +20,32 @@ class EloquentProductImageRepository
         return $product->images()->orderBy('position')->get();
     }
 
+    public function createOrUpdateForProductByNumber(Product $product, array $data = [])
+    {
+        $number = \Arr::get($data, 'number');
+        $image = $product->images()->where('number', $number)->first();
+        if (is_null($image)) {
+            $image = new ProductImage();
+            $image->product()->associate($product);
+        }
+
+        if (\Arr::get($data, 'position') === null) {
+            $maxPosition = $product->images()->max('position');
+            if (is_null($maxPosition)) {
+                $maxPosition = 0;
+            }
+            $data['position'] = $maxPosition + self::POSITION_STEP;
+        }
+
+        $image->fill($data);
+        if ($image->isDirty()) {
+            $product->touch();
+        }
+        $image->save();
+
+        return $image;
+    }
+
     public function createOrUpdateForProduct(Product $product, array $data = [])
     {
         $id = \Arr::get($data, 'id');

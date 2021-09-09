@@ -59,5 +59,12 @@ class StringServiceProvider extends ServiceProvider
                 return $highlighted;
             }
         );
+
+        \Str::macro(
+            'formatDate',
+            function ($dateString, $format = 'Y-m-d') {
+                return date($format, strtotime($dateString));
+            }
+        );
     }
 }

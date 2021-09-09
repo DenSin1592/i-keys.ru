@@ -49,6 +49,11 @@ class EloquentCategoryRepository
         return Category::find($id);
     }
 
+    public function findByCode1c($codeIc)
+    {
+        return Category::query()->where('code_1c', $codeIc)->first();
+    }
+
     public function create(array $data)
     {
         if (\Arr::get($data, 'position') === null) {

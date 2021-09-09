@@ -236,5 +236,22 @@ return [
                 'characteristics_are_important' => 'Характеристики важнее',
             ]
         ],
+        'exchange_status' => [
+            \App\Models\Exchange\StatusConstants::NEW => 'Новый',
+            \App\Models\Exchange\StatusConstants::CHANGED => 'Изменен',
+            \App\Models\Exchange\StatusConstants::EXPORTED => 'Выгружен',
+        ],
+        'exchange' => [
+            'type' => [
+                \App\Models\ExchangeLog::TYPE_ERROR => 'ERROR',
+                \App\Models\ExchangeLog::TYPE_CATEGORY => 'категории',
+                \App\Models\ExchangeLog::TYPE_PRODUCT => 'товары',
+                \App\Models\ExchangeLog::TYPE_ATTRIBUTE => 'параметры',
+                \App\Models\ExchangeLog::TYPE_ATTRIBUTE_VALUE => 'значения параметров',
+                \App\Models\ExchangeLog::TYPE_PRODUCT_IMAGE => 'изображения товаров',
+                \App\Models\ExchangeLog::TYPE_CLIENT => 'клиенты',
+                \App\Models\ExchangeLog::TYPE_ORDER => 'заказы',
+            ],
+        ],
     ]
 ];

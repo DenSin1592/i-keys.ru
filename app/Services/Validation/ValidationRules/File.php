@@ -1,6 +1,7 @@
 <?php namespace App\Services\Validation\ValidationRules;
 
 use Arr;
+use Diol\Fileclip\InputFileWrapper\Wrapper\LocalSystemFile;
 use Diol\Fileclip\InputFileWrapper\WrapperFactory\HttpFileFactory;
 use Illuminate\Validation\Validator;
 use Illuminate\Validation\Factory as ValidatorFactory;
@@ -67,6 +68,32 @@ class File
                 $validator->getMessageBag()->add($attribute, $message);
                 return false;
             }
+        }
+    }
+
+    /**
+     * Validate already stored file
+     *
+     * @param $attribute
+     * @param $value
+     * @param $parameters
+     * @param Validator $validator
+     * @return bool
+     */
+    public function validateStoredFile($attribute, $value, $parameters, Validator $validator)
+    {
+        $file = new LocalSystemFile($value);
+        if (in_array($file->getExtension(), $parameters)) {
+            return true;
+        } else {
+            $message = preg_replace(
+                ['/:attribute/', '/:values/'],
+                [trans("validation.attributes.{$attribute}"), implode(', ', $parameters)],
+                trans('validation.mimes')
+            );
+            $validator->getMessageBag()->add($attribute, $message);
+
+            return false;
         }
     }
 }
