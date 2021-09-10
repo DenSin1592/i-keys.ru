@@ -1,5 +1,4 @@
 {{-- Image field for model --}}
-
 {!! Form::tbFormGroupOpen("{$field}_file") !!}
 {{ Form::label("{$field}_file", trans("validation.model_attributes.order.{$field}_file")) }}
 @if (!is_null($model->$field))
@@ -12,8 +11,8 @@
             удалить
         </label>
     </div>
-    <div class="file-upload-container">
-        {!! Form::file("{$field}_file") !!}
-    </div>
 @endif
+<div class="file-upload-container">
+    {!! Form::file("{$field}_file") !!}
+</div>
 {!! Form::tbFormGroupClose() !!}
