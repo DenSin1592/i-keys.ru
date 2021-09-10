@@ -65,6 +65,7 @@ return [
                 'css/admin/product_type_page.css',
                 'css/admin/catalog_tree.css',
                 'css/admin/associated_products.css',
+                'css/admin/orders.css',
             ],
             'filters' => ['css_min', 'embed_css', 'strip_bom', 'css_url_rebase'],
             'output' => 'css/compiled/admin.css'
@@ -110,6 +111,7 @@ return [
                 'js/admin/modal_associations.js',
                 'js/common/jquery_raty_init.js',
                 'js/common/exchange.js',
+                'js/admin/orders.js',
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
             'output' => 'js/compiled/admin.js'

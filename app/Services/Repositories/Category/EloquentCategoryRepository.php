@@ -54,6 +54,28 @@ class EloquentCategoryRepository
         return Category::query()->where('code_1c', $codeIc)->first();
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function findPublishedById($id)
+    {
+        return Category::where('id', $id)->treePublished()->first();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPublishedTree(Category $category = null)
+    {
+        return $this->treeBuilder->getTree(
+            new Category(),
+            data_get($category, 'id'),
+            function ($query) {
+                return $query->treePublished();
+            }
+        );
+    }
+
     public function create(array $data)
     {
         if (\Arr::get($data, 'position') === null) {

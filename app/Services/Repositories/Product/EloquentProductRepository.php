@@ -55,6 +55,24 @@ class EloquentProductRepository
     }
 
     /**
+     * @inheritDoc
+     */
+    public function getPublishedForCategoryInLvl($categoryId = null)
+    {
+        $query = Product::where('category_id', $categoryId);
+        $this->scopePublished($query);
+        $this->scopeNameOrdered($query);
+
+        return $query->get();
+    }
+
+    private function scopePublished($query)
+    {
+        return $query->where('products.publish', true);
+    }
+
+
+    /**
      * Get all products for root categories, grouped by root categories.
      *
      * @param null $excludeProductId

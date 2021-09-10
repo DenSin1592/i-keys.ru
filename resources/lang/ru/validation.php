@@ -224,6 +224,26 @@ return [
         'review_score' => 'Оценка',
         'email' => 'E-mail',
         'on_home_page' => 'Выводить на главной странице',
+        'device_type' => 'Тип устройства',
+        'user_agent' => 'Заголовок браузера',
+        'payment_status' => 'Статус оплаты',
+        'payment_method' => 'Способ оплаты',
+        'delivery_method' => 'Способ доставки',
+        'postcode' => 'Почтовый индекс',
+        'region_id' => 'Регион',
+        'city' => 'Город',
+        'street' => 'Улица',
+        'building' => 'Дом, корпус/строение',
+        'flat' => 'Офис/квартира',
+        'order_items' => 'Состав заказа',
+        'count' => 'Количество',
+        'sum' => 'Сумма',
+        'not_chosen' => 'Не выбрано',
+        'full_name' => 'ФИО',
+        'phone' => 'Телефон',
+        'status' => 'Статус',
+        'id' => 'Номер',
+        'exchange_status' => 'Статус обмена с 1С',
     ],
 
     'model_attributes' => [
@@ -253,5 +273,33 @@ return [
                 \App\Models\ExchangeLog::TYPE_ORDER => 'заказы',
             ],
         ],
+        'order' =>
+            [
+                'status' => [
+                    \App\Models\Order\StatusConstants::NOVEL => 'Новый',
+                    \App\Models\Order\StatusConstants::CANCELLED => 'Отменен',
+                    \App\Models\Order\StatusConstants::PROCESSED => 'Обработан',
+                    \App\Models\Order\StatusConstants::TRANSFERRED_TO_DELIVERY_SERVICE => 'Передан в службу доставки',
+                    \App\Models\Order\StatusConstants::CLOSED => 'Закрыт',
+                ],
+                'type' => [
+                    \App\Models\Order\TypeConstants::FROM_SITE => 'Заказ с сайта',
+                    \App\Models\Order\TypeConstants::FAST => 'Быстрый заказ',
+                ],
+                'payment_status' => [
+                    \App\Models\Order\PaymentStatusConstants::UNPAID => 'Не оплачен',
+                    \App\Models\Order\PaymentStatusConstants::PAID => 'Оплачен',
+                    \App\Models\Order\PaymentStatusConstants::PARTLY_PAID => 'Частично оплачен',
+                ],
+                'payment_method' => [
+                    \App\Models\Order\PaymentMethodConstants::CASH => 'Наличный расчет',
+                    \App\Models\Order\PaymentMethodConstants::CASHLESS => 'Безналичный платеж',
+                ],
+                'delivery_method' => [
+                    \App\Models\Order\DeliveryMethodConstants::SELF_DELIVERY => 'Самовывоз',
+                    \App\Models\Order\DeliveryMethodConstants::COURIER => 'Курьером/Служба доставки',
+                    \App\Models\Order\DeliveryMethodConstants::TRANSPORT_COMPANY => 'Транспортной компанией',
+                ],
+            ],
     ]
 ];

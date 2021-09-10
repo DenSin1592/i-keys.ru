@@ -60,6 +60,28 @@ class StringServiceProvider extends ServiceProvider
             }
         );
 
+        \Str::macro('formatDecimal', function (
+            float $number,
+            string $decPoint = ',',
+            string $thousandsSep = ' ',
+            bool $decZeros = true
+        ): string {
+            $fractionalPart = round($number - floor($number), 2);
+            $formattedString = (string)number_format($number, 0 === $fractionalPart ? 0 : 2, $decPoint, $thousandsSep);
+
+            if (!$decZeros) {
+                $strArray = explode($decPoint, $formattedString);
+                if (isset($strArray[1])) {
+                    $strArray[1] = rtrim($strArray[1], '0');
+                }
+
+                $formattedString = implode($decPoint, $strArray);
+                $formattedString = rtrim($formattedString, $decPoint);
+            }
+
+            return $formattedString;
+        });
+
         \Str::macro(
             'formatDate',
             function ($dateString, $format = 'Y-m-d') {

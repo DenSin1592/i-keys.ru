@@ -1,0 +1,1 @@
+{{ Str::formatDecimal($totalPrice) }}

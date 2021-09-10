@@ -1,6 +1,7 @@
 <?php namespace App\Providers\Admin;
 
 use App\Http\Controllers\Admin\ExchangeController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductTypePagesController;
 use App\Http\Controllers\Admin\ReviewsController;
 use Arr;
@@ -104,6 +105,15 @@ class MenuServiceProvider extends ServiceProvider
                         'glyphicon-thumbs-up',
                         route('cc.reviews.index'),
                         [ReviewsController::class]
+                    )
+                );
+
+                $menu->addMenuElement(
+                    new MenuElement(
+                        'Заказы',
+                        'glyphicon-shopping-cart',
+                        route('cc.orders.index'),
+                        [OrdersController::class]
                     )
                 );
 

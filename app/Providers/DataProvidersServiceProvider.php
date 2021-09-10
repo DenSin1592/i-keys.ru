@@ -4,6 +4,8 @@ use App\Services\DataProviders\AttributeForm\AttributeForm;
 use App\Services\DataProviders\AttributeForm\AttributeSubForm;
 use App\Services\DataProviders\ClientProductList\ClientProductList;
 use App\Services\DataProviders\ClientProductList\Plugins as ClientProductListPlugins;
+use App\Services\DataProviders\OrderForm\OrderForm;
+use App\Services\DataProviders\OrderForm\OrderSubForm;
 use App\Services\DataProviders\ProductForm\ProductForm;
 use App\Services\DataProviders\ProductForm\ProductSubForm;
 use Illuminate\Foundation\Application;
@@ -32,6 +34,17 @@ class DataProvidersServiceProvider extends ServiceProvider
 
             return $form;
         });
+
+        $this->app->bind(OrderForm::class);
+        $this->app->extend(
+            OrderForm::class,
+            function (OrderForm $form) {
+                $form->addSubForm($this->app->make(OrderSubForm\OrderItems::class));
+                $form->addSubForm($this->app->make(OrderSubForm\Regions::class));
+
+                return $form;
+            }
+        );
 
 
         //Client

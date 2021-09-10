@@ -3,6 +3,7 @@
 use App\Services\FormProcessors\AdminUser\AdminUserFormProcessor;
 use App\Services\FormProcessors\Attribute\AttributeFormProcessor;
 use App\Services\FormProcessors\Category\CategoryFormProcessor;
+use App\Services\FormProcessors\Order\OrderFormProcessor;
 use App\Services\FormProcessors\ProductTypePage\ProductTypePageFormProcessor;
 use App\Services\FormProcessors\Node\NodeFormProcessor;
 use App\Services\FormProcessors\Product\ProductFormProcessor;
@@ -10,6 +11,7 @@ use App\Services\FormProcessors\Product\SubProcessor as ProductSubProcessor;
 use App\Services\FormProcessors\Review\AdminReviewFormProcessor;
 use App\Services\FormProcessors\Settings\SettingsFormProcessor;
 use App\Services\FormProcessors\Attribute\SubProcessor as AttributeSubProcessor;
+use App\Services\Repositories\Order\CreateUpdateWrapper as OrderCreateUpdateWrapper;
 use App\Services\Repositories\ProductTypePage\CreateUpdateWrapper as ProductTypePageCreateUpdateWrapper;
 use App\Services\Repositories\Review\CreateUpdateWrapper as ReviewCreateUpdateWrapper;
 use App\Services\Repositories\Setting\EloquentSettingRepository;
@@ -23,6 +25,7 @@ use App\Services\Settings\SettingContainer;
 use App\Services\Validation\AdminUser\AdminUserLaravelValidator;
 use App\Services\Validation\Attribute\AttributeLaravelValidator;
 use App\Services\Validation\Category\CategoryLaravelValidator;
+use App\Services\Validation\Order\OrderLaravelValidator;
 use App\Services\Validation\ProductTypePage\ProductTypePageLaravelValidator;
 use App\Services\Validation\Node\NodeLaravelValidator;
 use App\Services\Validation\Product\ProductLaravelValidator;
@@ -31,6 +34,7 @@ use App\Services\Validation\Setting\SettingsLaravelValidator;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use App\Services\FormProcessors\ProductTypePage\SubProcessor as ProductTypePageSubProcessor;
+use App\Services\FormProcessors\Order\SubProcessor;
 
 class FormProcessorsServiceProvider extends ServiceProvider
 {
@@ -96,6 +100,17 @@ class FormProcessorsServiceProvider extends ServiceProvider
             $formProcessor->addSubProcessor($app->make(ProductSubProcessor\Images::class));
             $formProcessor->addSubProcessor($app->make(ProductSubProcessor\Attributes::class));
             $formProcessor->addSubProcessor($app->make(ProductSubProcessor\RelatedProducts::class));
+
+            return $formProcessor;
+        });
+
+        $this->app->bind(OrderFormProcessor::class, function (Application $app) {
+            $formProcessor = new OrderFormProcessor(
+                $app->make(OrderLaravelValidator::class),
+                $app->make(OrderCreateUpdateWrapper::class)
+            );
+
+            $formProcessor->addSubProcessor($app->make(SubProcessor\OrderItems::class));
 
             return $formProcessor;
         });

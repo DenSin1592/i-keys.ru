@@ -172,6 +172,13 @@ class FormBuilderServiceProvider extends ServiceProvider
         );
 
         Form::macro(
+            'tbNumber',
+            function ($name, $value = null, $options = []) {
+                return Form::number($name, $value, app(Helpers::class)->addClass($options, 'form-control'));
+            }
+        );
+
+        Form::macro(
             'tbStateCheckbox',
             function ($name, $fieldName, $checked = null, $options = []) {
                 $hintBlock = app(Helpers::class)->getFieldHintBlock($options);

@@ -1,0 +1,274 @@
+#order-list .element-container > .status {
+    width: 7em;
+}
+
+#order-list .element-container > .name {
+    width: 15rem;
+}
+
+#order-list .element-container > .payment_status {
+    width: 10rem;
+}
+
+#order-list .element-container > .type {
+    width: 12rem;
+}
+
+#order-list .element-container > .created_at {
+    width: 15rem;
+}
+
+#order-form .print-link {
+    float: right;
+}
+
+table.order-items {
+    width: auto;
+    font-size: 12px;
+}
+
+table.order-items > thead > tr > th:first-child, table.order-items > tbody > tr > td:first-child {
+    text-align: left;
+}
+
+table.order-items > thead > tr > th, table.order-items > tbody > tr > td {
+    padding: 0.3em;
+    vertical-align: top;
+    text-align: center;
+}
+
+table.order-items > thead > tr > th.sum, table.order-items > tbody > tr > td.sum {
+    text-align: right;
+}
+
+table.order-items > tbody > tr > td.sum {
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    vertical-align: middle;
+}
+
+table.order-items > tbody > tr > td.sum-title {
+    text-align: left;
+    font-weight: bold;
+}
+
+table.order-items > tbody > tr > td.delete,
+table.order-items > tbody > tr > td.code-1c {
+    vertical-align: middle;
+}
+
+table.order-items input {
+    display: inline-block;
+}
+table.order-items > thead > tr > th.name,
+table.order-items > tbody > tr > td.name {
+    width: 25em;
+}
+table.order-items > tbody > tr > td.name input.name{
+    width: -webkit-calc(100% - 38px);
+    width: -moz-calс(100% - 38px);
+    width: -o-calс(100% - 38px);
+    width: calc(100% - 38px);
+}
+
+table.order-items th.date {
+    width: 10em;
+}
+
+table.order-items th.cost {
+    width: 12em;
+}
+
+table.order-items td .cost {
+    width: 8em;
+}
+
+table.order-items td .sum {
+    width: 10em;
+}
+
+table.order-items .highlighted {
+    background-color: #dff0d8;
+}
+
+table.order-items .form-group {
+    margin-bottom: 0;
+}
+
+#popup-order-items .left-column {
+    width: 300px;
+    height: 500px;
+    float: left;
+    overflow-y: scroll;
+}
+
+#popup-order-items .right-column {
+    width: 560px;
+    height: 500px;
+    float: left;
+    padding-left: 20px;
+}
+
+#popup-order-items [data-element-list].wait {
+    background: url("../../images/common/ajax-loader/big_black.gif") no-repeat scroll 50% 50% #ffffff;
+}
+
+#popup-order-items [data-element-list].wait > * {
+    opacity: 0.1;
+}
+
+#popup-order-items .left-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#popup-order-items .left-column ul li {
+    padding-left: 2em;
+}
+
+#popup-order-items .element-list-wrapper label {
+    font-weight: normal;
+}
+
+#popup-order-items .element-list-wrapper .toggleable {
+    cursor: pointer;
+}
+
+#popup-order-items .element-list-wrapper .toggleable.active {
+    background-color: #efefef;
+    font-weight: bold;
+}
+
+#popup-order-items [data-element-list="header"] {
+    padding-bottom: 10px;
+}
+
+#popup-order-items [data-element-list="available"] {
+    height: 210px;
+    overflow-y: scroll;
+}
+
+#popup-order-items [data-element-list="selected"] {
+    height: 210px;
+    overflow-y: scroll;
+}
+
+#popup-order-items [data-element-list="available"] table {
+    width: 100%;
+}
+
+#popup-order-items [data-element-list="available"] td {
+    padding-top: 6px;
+}
+
+#popup-order-items .name {
+    padding-right: 10px;
+    width: -webkit-calc(100% - 210px);
+    width: -moz-calс(100% - 210px);
+    width: -o-calс(100% - 210px);
+    width: calc(100% - 210px);
+}
+
+#popup-order-items .count {
+    width: 70px;
+}
+
+#popup-order-items th.add, #popup-order-items th.delete,
+#popup-order-items td.add, #popup-order-items td.delete {
+    width: 34px;
+}
+#popup-order-items .add, #popup-order-items .delete {
+    padding-right: 10px;
+    width: 24px;
+}
+
+#popup-order-items .count span {
+    padding-left: 7px
+}
+
+#popup-order-items [data-element-list="available"] td.count input {
+    font-size: 12px;
+    height: 28px;
+    padding: 2px 9px;
+    width: 60px;
+}
+#popup-order-items [data-element-list="available"] .services-container td.title {
+    width: 38%;
+}
+
+#popup-order-items [data-element-list="available"] .services-container td.name input {
+    width: 95%;
+}
+
+#popup-order-items [data-element-list="selected"] .added-item {
+    clear: both;
+    height: 30px;
+    padding: 0 10px 10px 0;
+}
+
+#popup-order-items [data-element-list="selected"] .added-item div.name {
+    float: left;
+    width: 80%;
+}
+
+#popup-order-items [data-element-list="selected"] .added-item div.count {
+    float: left;
+}
+
+#popup-order-items [data-element-list="selected"] .added-item div.delete {
+    float: right;
+}
+
+#popup-order-items .category .category-toggle {
+    border-bottom: 1px dashed;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#popup-order-items .modal-header {
+    border-bottom: none;
+    padding-right: 25px;
+}
+
+.send-link-container .send-link {
+    line-height: 35px;
+}
+
+.send-link a + .ajax-loader {
+    display: none;
+}
+
+.send-link a.wait + .ajax-loader {
+    display: inline;
+}
+
+#order-form #psbank-payments {
+    margin: 10px 0 20px 0;
+}
+
+#order-form #psbank-payments table {
+    margin-top: 5px;
+}
+
+#order-form #psbank-payments th,
+#order-form #psbank-payments td {
+    padding: 2px;
+    border: 1px solid #ddd;
+}
+
+
+#order-form #psbank-payments th.rrn,
+#order-form #psbank-payments td.rrn {
+    width: 150px;
+}
+
+#order-form #psbank-payments th.date_at,
+#order-form #psbank-payments td.date_at {
+    width: 120px;
+}
+
+#order-form #psbank-payments th.summ,
+#order-form #psbank-payments td.summ {
+    min-width: 150px;
+}
