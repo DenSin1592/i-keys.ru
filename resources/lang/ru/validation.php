@@ -244,6 +244,7 @@ return [
         'status' => 'Статус',
         'id' => 'Номер',
         'exchange_status' => 'Статус обмена с 1С',
+        '' => '',
     ],
 
     'model_attributes' => [
@@ -300,6 +301,7 @@ return [
                     \App\Models\Order\DeliveryMethodConstants::COURIER => 'Курьером/Служба доставки',
                     \App\Models\Order\DeliveryMethodConstants::TRANSPORT_COMPANY => 'Транспортной компанией',
                 ],
+                'icon_file' => 'Реквизиты'
             ],
     ]
 ];

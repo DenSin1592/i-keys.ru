@@ -5,6 +5,9 @@ use App\Models\Order\ExchangeStatus;
 use App\Models\Order\PaymentMethodConstants;
 use App\Models\Order\PaymentStatusConstants;
 use App\Models\Order\StatusConstants;
+use Diol\Fileclip\UploaderIntegrator;
+use Diol\Fileclip\Version\BoxVersion;
+use Diol\FileclipExif\Glue;
 
 /**
  * \App\Models\Order
@@ -83,6 +86,7 @@ class Order extends \Eloquent
     private const CODE_1C_PREFIX = 'CSO';
 
     use ExchangeStatus;
+    use Glue;
 
     protected $fillable = [
         'client_id',
@@ -105,6 +109,8 @@ class Order extends \Eloquent
         'user_agent',
         'device_type',
         'exchange_status',
+        'icon_file',
+        'icon_remove',
     ];
 
     public function items()
@@ -137,6 +143,11 @@ class Order extends \Eloquent
                 $order->status = StatusConstants::NOVEL;
                 $order->uid = \Str::random();
             }
+        );
+
+        self::mountUploader(
+            'icon',
+            UploaderIntegrator::getUploader('uploads/attributes', ['thumb' => new BoxVersion(25, 25)])
         );
 
         static::deleting(

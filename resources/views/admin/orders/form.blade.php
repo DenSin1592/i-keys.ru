@@ -77,19 +77,19 @@
         </fieldset>
         {!! Form::tbTextareaBlock('comment') !!}
 
-        @include('admin.orders.form.order_items._field', [
-            'order' => $formData['order'],
-            'orderItems' => $formData['orderItems'],
-            'totalPrice' => $formData['totalPrice'],
-        ])
+       @include('admin.orders.form._model_image_field', ['model' =>  $formData['order'], 'field' => 'icon'])
+       @include('admin.orders.form.order_items._field', [
+           'order' => $formData['order'],
+           'orderItems' => $formData['orderItems'],
+           'totalPrice' => $formData['totalPrice'],
+       ])
 
-        @include('admin.orders.form._psbank_payment_link._link_block', ['order' => $formData['order']])
-        @include('admin.shared._model_timestamps', ['model' => $formData['order']])
+       @include('admin.shared._model_timestamps', ['model' => $formData['order']])
 
-        <div class="action-bar">
-            @yield('submit_block')
-        </div>
+       <div class="action-bar">
+           @yield('submit_block')
+       </div>
 
-    {!! Form::close() !!}
+   {!! Form::close() !!}
 
 @stop

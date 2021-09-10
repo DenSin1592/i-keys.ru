@@ -55,6 +55,7 @@ class OrderLaravelValidator extends AbstractLaravelValidator
                 )
             ],
             'order_items' => ['required'],
+            'icon_file' => 'mimes:jpg,pdf,doc,xls',
             'order_items.*.name' => ['required_without:order_items.*.code_1c'],
             'order_items.*.product_id' => ['exists:products,id'],
             'order_items.*.count' => ['required', 'integer', 'more_than:0'],
