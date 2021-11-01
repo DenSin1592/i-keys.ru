@@ -23,20 +23,24 @@ return [
      */
 
     'groups' => [
+
         'client_css' => [
             'assets' => [
-                //
+                'css/client/auth_menu.css',
             ],
             'filters' => ['css_min', 'embed_css', 'strip_bom', 'css_url_rebase'],
             'output' => 'css/compiled/client.css'
         ],
+
         'client_js' => [
             'assets' => [
-                //
+                'vendor/jquery-2.1.3.min.js',
+                'js/client/auth_menu.js',
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
             'output' => 'js/compiled/client.js'
         ],
+
         'admin_css' => [
             'assets' => [
                 'vendor/twitter-bootstrap/css/bootstrap.min.css',
@@ -70,6 +74,7 @@ return [
             'filters' => ['css_min', 'embed_css', 'strip_bom', 'css_url_rebase'],
             'output' => 'css/compiled/admin.css'
         ],
+
         'admin_js' => [
             'assets' => [
                 'vendor/jquery-2.1.3.min.js',
