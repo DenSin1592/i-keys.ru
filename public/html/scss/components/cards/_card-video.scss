@@ -1,0 +1,43 @@
+.card-video {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+
+    &-thumbnail {
+        position: relative;
+        padding-bottom: 65%;
+
+        &::before {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba($c-black, .5);
+            content: '';
+        }
+
+        &::after {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $c-secondary;
+            font-family: 'icomoon';
+            font-size: 80px;
+            content: '\e906';
+        }
+    }
+
+    &-media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}

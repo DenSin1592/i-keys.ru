@@ -1,0 +1,26 @@
+ $grid-breakpoints: (
+	xs: 0,
+	sm: 480px,
+	md: 750px,
+	lg: 970px,
+	xl: 1200px,
+	xxl: 1680px
+);
+
+// container width
+$container-lg: 970px;
+$container-xl: 1175px;
+$container-xxl: 1720px;
+
+// colors
+$c-default: #3f3f3f;
+$c-secondary: #c55100;
+$c-primary: #10203c;
+$c-black: #000;
+$c-white: #fff;
+$c-gray: #dcdcdc;
+
+
+// fonts
+$f-default: 'Proxima Nova';
+$f-secondary: 'Conthrax', sans-serif;

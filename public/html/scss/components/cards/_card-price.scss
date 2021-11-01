@@ -1,0 +1,23 @@
+.card-price {
+    width: 100%;
+    padding: 15px 15px 20px;
+    background-color: $c-secondary;
+    color: $c-white;
+    font-size: 17px;
+    line-height: 25px;
+    @include media-breakpoint-up(xl) {
+        padding: 20px 20px 30px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding: 45px 40px 35px;
+    }
+
+    &-title {
+        margin: 0 0 10px;
+        font-family: $f-secondary;
+        @include media-breakpoint-up(xxl) {
+            font-size: 35px;
+            line-height: 50px;
+        }
+    }
+}

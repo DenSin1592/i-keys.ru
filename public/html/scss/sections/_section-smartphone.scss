@@ -1,0 +1,119 @@
+.section-smartphone {
+    position: relative;
+    z-index: 1;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: $c-white;
+    &::before {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba($c-black, .5);
+        content: '';
+    }
+
+    .smartphone-typography-container,
+    .smartphone-instruction-container {
+        margin-top: 30px;
+        margin-bottom: 40px;
+        @include media-breakpoint-up(lg) {
+            margin-top: 50px;
+            margin-bottom: 60px;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+    }
+
+    .section-header {
+        margin-bottom: 15px;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+
+.smartphone-steps-grid {
+    margin-bottom: -15px;
+    @include media-breakpoint-up(xl) {
+        margin-bottom: -20px;
+    }
+
+    .smartphone-step-item {
+        margin-bottom: 15px;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.smartphone-steps-hint {
+    margin-top: 15px;
+    @include media-breakpoint-up(xl) {
+        margin-top: 30px;
+    }
+    @include media-breakpoint-up(xxl) {
+        font-size: 17px;
+        line-height: 25px;
+    }
+}
+
+.smartphone-media-figure {
+    width: 290px;
+    height: 345px;
+    margin: auto auto 0;
+    @include media-breakpoint-up(lg) {
+        width: 380px;
+        height: 480px;
+    }
+    @include media-breakpoint-up(xl) {
+        width: 460px;
+        height: 600px;
+    }
+    @include media-breakpoint-up(xxl) {
+        width: 556px;
+        height: 735px;
+    }
+
+    .smartphone-media {
+        width: 290px;
+        height: 345px;
+        @include media-breakpoint-up(lg) {
+            width: 380px;
+            height: 451px;
+        }
+        @include media-breakpoint-up(xl) {
+            width: 460px;
+            height: 546px;
+        }
+        @include media-breakpoint-up(xxl) {
+            width: 556px;
+            height: 661px;
+        }
+    }
+}
+
+.smartphone-instruction-block {
+    .smartphone-instruction-headline {
+        margin-bottom: 10px;
+    }
+
+    .smartphone-instruction-hint {
+        margin-top: 15px;
+        @include media-breakpoint-up(xl) {
+            margin-top: 20px;
+        }
+        @include media-breakpoint-up(xxl) {
+            font-size: 17px;
+            line-height: 25px;
+        }
+    }
+}

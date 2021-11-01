@@ -1,0 +1,17 @@
+.header-burger-toggle {
+    cursor: pointer;
+    width: 24px;
+    height: 17px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+
+    > span {
+        display: block;
+        height: 2px;
+        margin: 4px 0;
+        background-color: $c-black;
+    }
+}

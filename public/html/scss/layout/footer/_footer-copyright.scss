@@ -1,0 +1,15 @@
+.footer-copyright-block {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.footer-copyright-text {
+    p {
+        + * {
+            margin-top: 0;
+            @include media-breakpoint-up(md) {
+                margin-top: 20px;
+            }
+        }
+    }
+}

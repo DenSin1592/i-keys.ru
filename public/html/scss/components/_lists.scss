@@ -1,0 +1,93 @@
+.list-dash {
+    position: relative;
+
+    > li {
+        position: relative;
+        padding: 0 0 0 2.5em;
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 1.2em;
+            height: 0.4em;
+            background-color: $c-secondary;
+            transform: translateY(-50%);
+            line-height: 1;
+            content: '';
+        }
+    }
+}
+
+.list-checked {
+    position: relative;
+
+    > li {
+        position: relative;
+        padding: 0 0 0 2em;
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(-25%, -50%);
+            color: $c-secondary;
+            font-family: 'icomoon';
+            font-size: 250%;
+            line-height: 1;
+            content: '\e905';
+        }
+    }
+}
+
+.list-steps {
+    position: relative;
+    counter-reset: step;
+    width: 100%;
+
+    > li {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 70px;
+        padding: 0 0 0 90px;
+        @include media-breakpoint-up(xxl) {
+            padding: 0 0 0 105px;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 15px;
+            @include media-breakpoint-up(xl) {
+                margin-bottom: 25px;
+            }
+            @include media-breakpoint-up(xxl) {
+                margin-bottom: 30px;
+            }
+        }
+
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: $c-secondary;
+            transform: translateY(-50%);
+            color: $c-white;
+            font-family: $f-secondary;
+            font-size: 46px;
+            line-height: 1;
+            counter-increment: step;
+            content: counter(step);
+        }
+    }
+}

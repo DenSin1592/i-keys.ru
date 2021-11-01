@@ -1,0 +1,46 @@
+.header-account-list {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include media-breakpoint-up(lg) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+}
+
+
+.header-account {
+    position: relative;
+
+    &-thumbnail {
+        flex: 0 0 28px;
+        width: 28px;
+        margin-right: 10px;
+        @include media-breakpoint-up(xl) {
+            margin-right: 20px;
+        }
+    }
+
+    &-media {
+        fill: $c-secondary;
+    }
+
+    &-badge {
+        position: absolute;
+        top: -8px;
+        left: 20px;
+        min-width: 20px;
+        height: 20px;
+        padding: 3px;
+        border: 2px solid $c-white;
+        border-radius: 50%;
+        background: $c-black;
+        color: $c-white;
+        font-size: 11px;
+        line-height: 20px;
+        text-align: center;
+    }
+}

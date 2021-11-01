@@ -1,0 +1,32 @@
+.section-services {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    @include media-breakpoint-up(lg) {
+        padding-top: 50px;
+        padding-bottom: 60px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding-top: 70px;
+        padding-bottom: 85px;
+    }
+
+    .section-header {
+        margin-bottom: 15px;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 25px;
+        }
+    }
+
+    .services-hint {
+        line-height: 1.35;
+    }
+}
+
+
+.services-grid {
+    margin-bottom: -15px;
+
+    .service-item {
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,41 @@
+@import 'vars';
+
+// vendors
+@import '../vendor/bootstrap-4.6.0/scss/bootstrap';
+
+// general
+@import 'fonts';
+@import 'typography';
+
+// components
+@import 'components/search';
+@import 'components/lists';
+@import 'components/contact';
+
+// cards
+@import 'components/cards/card';
+@import 'components/cards/card-intro';
+@import 'components/cards/card-video';
+@import 'components/cards/card-service';
+@import 'components/cards/card-partner';
+@import 'components/cards/card-price';
+@import 'components/cards/card-faq';
+
+// header
+@import 'layout/header/header';
+
+// sections
+@import 'sections/section-intro';
+@import 'sections/section-service';
+@import 'sections/section-smartphone';
+@import 'sections/section-services';
+@import 'sections/section-about';
+@import 'sections/section-partners';
+@import 'sections/section-steps';
+@import 'sections/section-prices';
+@import 'sections/section-faq';
+@import 'sections/section-cases';
+@import 'sections/section-content';
+
+// footer
+@import 'layout/footer/footer';
