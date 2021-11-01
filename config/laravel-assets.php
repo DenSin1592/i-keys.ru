@@ -34,7 +34,10 @@ return [
 
         'client_js' => [
             'assets' => [
-                'vendor/jquery-2.1.3.min.js',
+                'vendor/jquery/jquery-3.6.0.min.js',
+                'vendor/bootstrap-4.6.0/js/dist/util.js',
+                'vendor/bootstrap-4.6.0/js/dist/collapse.js',
+
                 'js/client/auth_menu.js',
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
