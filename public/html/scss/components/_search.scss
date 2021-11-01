@@ -1,0 +1,37 @@
+.search {
+    position: relative;
+
+    &-input {
+        height: 40px;
+        padding: 0 15px 0 50px;
+        border: none;
+        border-bottom: 2px solid currentColor;
+        border-radius: 0;
+        background: none;
+        color: currentColor;
+        font-size: 14px;
+        
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &-button {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 25px;
+        height: 25px;
+        transform: translateY(-50%);
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        color: currentColor;
+
+        &-media {
+            fill: currentColor;
+        }
+    }
+}

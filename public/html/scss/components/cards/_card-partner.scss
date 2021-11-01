@@ -1,0 +1,24 @@
+.card-partner {
+    &-thumbnail {
+        position: relative;
+        padding-bottom: 72%;
+        background-color: $c-white;
+        @include media-breakpoint-up(sm) {
+            padding-bottom: 62%;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-bottom: 72%;
+        }
+    }
+
+    &-media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        max-width: 90%;
+        max-height: 90%;
+    }
+}

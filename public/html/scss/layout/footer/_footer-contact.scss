@@ -1,0 +1,29 @@
+.footer-contact-list {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    .footer-contact-item {
+        &:not(:last-child) {
+            margin-bottom: 5px;
+            @include media-breakpoint-up(lg) {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+.footer-contact {
+    font-size: 14px;
+    font-weight: 600;
+
+    &[href^="tel:"]  {
+        font-size: 20px;
+        font-weight: 700;
+        @include media-breakpoint-up(xl) {
+            font-size: 26px;
+        }
+        @include media-breakpoint-up(xxl) {
+            font-size: 30px;
+        }
+    }
+}

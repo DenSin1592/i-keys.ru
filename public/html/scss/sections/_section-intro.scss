@@ -1,0 +1,65 @@
+.section-intro {
+    position: relative;
+    z-index: 1;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @include media-breakpoint-up(lg) {
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }
+    @include media-breakpoint-up(xl) {
+        padding-top: 35px;
+        padding-bottom: 40px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding-top: 60px;
+        padding-bottom: 70px;
+    }
+
+
+    &::before {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+    }
+
+    .section-header {
+        margin-bottom: 15px;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 30px;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: 40px;
+        }
+    }
+
+    &.section-dark {
+        color: $c-white;
+
+        &::before {
+            background: rgba($c-black, .9);
+        }
+    }
+}
+
+.intro-block {
+    .intro-headline {
+        margin-bottom: 10px;
+        font-family: $f-default;
+    }
+}
+
+.intro-grid {
+    margin-bottom: -15px;
+
+    .intro-item {
+        margin-bottom: 15px;
+    }
+}

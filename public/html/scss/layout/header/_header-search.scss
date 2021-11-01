@@ -1,0 +1,39 @@
+.header-search-toggle {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    color: rgba($c-black, .6);
+    font-size: 14px;
+    line-height: 20px;
+
+    .header-search-thumbnail {
+        flex: 0 0 24px;
+        width: 24px;
+        height: 25px;
+    }
+
+    .header-search-text {
+        margin-left: 15px;
+    }
+}
+
+.header-search {
+    @include media-breakpoint-up(lg) {
+        width: 165px;
+    }
+    @include media-breakpoint-up(xl) {
+        width: 300px;
+    }
+    @include media-breakpoint-up(xxl) {
+        width: 370px;
+    }
+
+    .header-search-input {
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 0;
+    }
+}

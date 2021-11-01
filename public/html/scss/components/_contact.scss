@@ -1,0 +1,43 @@
+.contact-block {
+    @extend .title-h3;
+    line-height: 1.2;
+
+    a[href^="tel:"] {
+        border: none;
+        font-family: $f-secondary;
+    }
+
+    .contact-title {
+        margin: 0 0 18px;
+        font-weight: 700;
+    }
+
+    .contact-text {
+        margin: 0 0 12px;
+    }
+}
+
+.contact-social-button {
+    @extend .title-h3;
+    border: none;
+
+    .contact-social-thumbnail {
+        flex: 0 0 40px;
+        width: 40px;
+        margin-right: 10px;
+    }
+
+    .contact-social-text {
+        display: inline;
+        border-bottom: 1px solid currentColor;
+
+        :hover > & {
+            border-bottom-color: transparent;
+        }
+    }
+
+
+    &.contact-social-whatsapp-button {
+        color: #3e7a4e;
+    }
+}

@@ -1,0 +1,36 @@
+.section-partners {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    @include media-breakpoint-up(lg) {
+        margin-top: 50px;
+        margin-bottom: 60px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-top: 120px;
+        margin-bottom: 110px;
+    }
+
+    .section-header {
+        margin-bottom: 15px;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 25px;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: 35px;
+        }
+    }
+}
+
+.partners-grid {
+    margin-bottom: -15px;
+    @include media-breakpoint-up(xl) {
+        margin-bottom: -30px;
+    }
+
+    .partner-item {
+        margin-bottom: 15px;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 30px;
+        }
+    }
+}

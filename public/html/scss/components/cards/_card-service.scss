@@ -1,0 +1,76 @@
+.card-service {
+    position: relative;
+    display: block;
+    padding: 15px 15px 20px;
+    border: none;
+    border-bottom: 3px solid $c-secondary;
+    background: $c-white;
+    color: $c-black;
+    text-decoration: none;
+    @include media-breakpoint-up(xl) {
+        padding: 20px 20px 30px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding: 30px 30px 40px;
+        border-bottom-width: 5px;
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    &:hover {
+        border-bottom-color: $c-secondary;
+        text-decoration: none;
+    }
+
+    &-thumbnail {
+        position: relative;
+        margin: 0 0 18px;
+        padding-bottom: 54%;
+    }
+
+    &-media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-size: center;
+    }
+
+    &-title {
+        margin: 0 0 5px;
+        font-weight: 700;
+        color: currentColor;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 10px;
+        }
+    }
+
+    &-price {
+        @extend .title-h2;
+        margin: 0 0 10px;
+        font-family: $f-secondary;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 20px;
+        }
+    }
+
+    &-text {
+        margin: 0 0 10px;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 20px;
+        }
+    }
+
+    &-cta {
+        @extend .title-h4;
+        display: inline-block;
+        font-weight: 700;
+        border-bottom: 3px solid $c-secondary;
+
+        :hover > & {
+            border-bottom-color: transparent;
+        }
+    }
+}

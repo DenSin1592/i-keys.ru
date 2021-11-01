@@ -1,0 +1,171 @@
+.section-service {
+    overflow: hidden;
+    position: relative;
+
+    .service-contact-container {
+        position: relative;
+        color: $c-white;
+
+        &::before {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: -15px;
+            right: -15px;
+            height: 100%;
+            background: $c-secondary;
+            content: '';
+
+            @include media-breakpoint-up(lg) {
+                left: 0;
+                right: 0;
+                width: 50vw;
+            }
+        }
+    }
+}
+
+.service-block {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    @include media-breakpoint-up(md) {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+
+    .service-title {
+        margin: 0 0 30px;
+        font-family: $f-default;
+        line-height: normal;
+        font-weight: 700;
+        @include media-breakpoint-up(md) {
+            max-width: 90%;
+        }
+    }
+
+    .service-price {
+        font-family: $f-secondary;
+        font-size: 75%;
+        text-transform: uppercase;
+
+        .service-current-price {
+            font-size: 22px;
+            @include media-breakpoint-up(sm) {
+                font-size: 25px;
+            }
+            @include media-breakpoint-up(md) {
+                font-size: 30px;
+            }
+            @include media-breakpoint-up(lg) {
+                font-size: 35px;
+            }
+            @include media-breakpoint-up(xl) {
+                font-size: 40px;
+            }
+            @include media-breakpoint-up(xxl) {
+                font-size: 50px;
+            }
+        }
+    }
+}
+
+
+.service-articles-grid {
+    margin: 0 -15px -15px;
+    @include media-breakpoint-up(xxl) {
+        margin-left: -45px;
+        margin-right: -45px;
+    }
+
+    .service-article-item {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-bottom: 15px;
+        @include media-breakpoint-up(xxl) {
+            margin-top: 45px;
+            margin-bottom: 45px;
+        }
+    }
+}
+
+.service-article {
+    line-height: 1.5;
+
+    &-thumbnail {
+        height: 80px;
+        font-family: $f-secondary;
+        font-size: 80px;
+        line-height: 1;
+        @include media-breakpoint-up(sm) {
+            font-size: 108px;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-right: 20px;
+            font-size: 150px;
+        }
+    }
+}
+
+
+.service-contact-block {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    @include media-breakpoint-up(md) {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-top: 45px;
+        margin-bottom: 45px;
+        margin-left: 35px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-left: 60px;
+    }
+
+    .service-contact-title {
+        margin: 0 0 15px;
+        font-family: $f-default;
+        font-weight: 700;
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 25px;
+        }
+    
+        a {
+            &[href^="tel:"] {
+                border: none;
+                color: currentColor;
+                font-family: $f-secondary;
+                font-size: 22px;
+                line-height: 1.25;
+                text-decoration: none;
+                @include media-breakpoint-up(sm) {
+                    font-size: 25px;
+                }
+                @include media-breakpoint-up(md) {
+                    font-size: 30px;
+                }
+                @include media-breakpoint-up(lg) {
+                    font-size: 35px;
+                }
+                @include media-breakpoint-up(xl) {
+                    font-size: 40px;
+                }
+                @include media-breakpoint-up(xxl) {
+                    font-size: 50px;
+                }
+            }
+        }
+    }
+    
+    .service-contact-hint {    
+        @include media-breakpoint-up(xxl) {
+            font-size: 20px;
+            line-height: 30px;
+        }
+    }
+}
