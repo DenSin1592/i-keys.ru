@@ -18,3 +18,7 @@ yarn-error.log
 _ide_helper.php
 .env.testing
 public/(css|js)/compiled/
+
+.docker
+docker-compose.yaml
+dump.sql
