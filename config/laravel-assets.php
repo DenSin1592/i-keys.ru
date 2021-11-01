@@ -26,6 +26,7 @@ return [
 
         'client_css' => [
             'assets' => [
+                'html/css/style.css',
                 'css/client/auth_menu.css',
             ],
             'filters' => ['css_min', 'embed_css', 'strip_bom', 'css_url_rebase'],

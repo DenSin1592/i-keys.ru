@@ -2,10 +2,10 @@
 
 
 @section('body_class')
-    class='test-class'
+    class='home-page d-flex flex-column'
 @endsection
 
 
 @section('content')
-test content
+
 @endsection
