@@ -119,7 +119,7 @@ return [
                 'js/admin/associated_products.js',
                 'js/admin/modal_associations.js',
                 'js/common/jquery_raty_init.js',
-                'js/common/exchange.js',
+                'js/admin/exchange.js',
                 'js/admin/orders.js',
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
