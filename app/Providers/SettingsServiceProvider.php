@@ -27,6 +27,60 @@ class SettingsServiceProvider extends ServiceProvider
             function () {
                 $settingContainer = new SettingContainer;
 
+                $general = new SettingGroup('Основные');
+                $settingContainer->addSettingGroup($general);
+
+                $general->addSettingValue(
+                    new SettingValue(
+                        'general.site_name',
+                        'Название сайта',
+                        'l-keys.ru',
+                        'Используется в политике конфиденциальности, окне авторизации системы администрирования и т.д.',
+                        SettingValue::TYPE_TEXT
+                    )
+                );
+
+                $general->addSettingValue(
+                    new SettingValue(
+                        'general.company_name',
+
+                        'Название компании',
+                        'OOO "ЗАМКИ-КЛЮЧИ"',
+                        'Используется в политике конфиденциальности.',
+                        SettingValue::TYPE_TEXT
+                    )
+                );
+
+                $general->addSettingValue(
+                    new SettingValue(
+                        'site_content.phone',
+                        'Номер телефона',
+                        '',
+                        '',
+                        SettingValue::TYPE_TEXT
+                    )
+                );
+
+                $general->addSettingValue(
+                    new SettingValue(
+                        'site_content.wa_phone',
+                        'Номер WhatsApp',
+                        '',
+                        '',
+                        SettingValue::TYPE_TEXT
+                    )
+                );
+
+                $general->addSettingValue(
+                    new SettingValue(
+                        'site_content.telegram_phone',
+                        'Номер Telegram',
+                        '',
+                        '',
+                        SettingValue::TYPE_TEXT
+                    )
+                );
+
                 $notifications = new SettingGroup('Уведомления');
                 $settingContainer->addSettingGroup($notifications);
 
@@ -34,8 +88,8 @@ class SettingsServiceProvider extends ServiceProvider
                     new SettingValue(
                         'mail.feedback.address',
                         'Email обратной связи (кому)',
-                        'diol-test@yandex.ru',
                         '',
+                        'Адрес выводится также в шапке в футере',
                         SettingValue::TYPE_TEXT,
                         ['required', 'email']
                     )
@@ -82,7 +136,7 @@ class SettingsServiceProvider extends ServiceProvider
                     )
                 );
 
-                $notifications->addSettingValue(
+                /*$notifications->addSettingValue(
                     new SettingValue(
                         'mail.for_display.address',
                         'Email для отображения на сайте и в футере писем',
@@ -91,21 +145,10 @@ class SettingsServiceProvider extends ServiceProvider
                         SettingValue::TYPE_TEXT,
                         ['required', 'email']
                     )
-                );
+                );*/
 
                 $admin = new SettingGroup('Система администрирования');
                 $settingContainer->addSettingGroup($admin);
-
-                $admin->addSettingValue(
-                    new SettingValue(
-                        'admin.site_name',
-                        'Название сайта',
-                        'project.net',
-                        'Используется для вывода в оконе авторизации и в шапке системы администрирования',
-                        SettingValue::TYPE_TEXT,
-                        ['nullable']
-                    )
-                );
 
                 $admin->addSettingValue(
                     new SettingValue(

@@ -4,7 +4,7 @@
 @section('title')
     Авторизация
 
-    @if ($siteName = \Setting::get('admin.site_name'))
+    @if ($siteName = \Setting::get('general.site_name'))
         ({!! \Str::lower($siteName) !!})
     @endif
 @stop

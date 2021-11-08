@@ -110,25 +110,31 @@
                 <div class="row">
                     <div class="footer-phone-container col-sm-6 col-lg-12">
                         <ul class="footer-contact-list d-flex flex-column list-unstyled">
-                            <li class="footer-contact-item">
-                                <a href="tel:+74950957797" class="footer-contact">+7 (495) 095-77-97</a>
-                            </li>
+                            @if(trim(Setting::get("site_content.phone")) !== '')
+                                <li class="footer-contact-item col-auto">
+                                    <a href="tel:{{ Setting::get("site_content.phone") }}" class="footer-contact">{{ Setting::get("site_content.phone") }}</a>
+                                </li>
+                            @endif
 
-                            <li class="footer-contact-item">
-                                <a href="mailto:info@l-keys.ru" class="footer-contact">info@l-keys.ru</a>
-                            </li>
+                            @if(trim(Setting::get("mail.feedback.address")) !== '')
+                                <li class="footer-contact-item col-auto d-none d-lg-block">
+                                    <a href="mailto:{{Setting::get("mail.feedback.address")}}" class="footer-contact">{{Setting::get("mail.feedback.address")}}</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
 
                     <div class="footer-social-container col-sm-6 col-lg-12">
                         <div class="footer-social-block">
-                            <a href="#link" class="footer-social footer-social-whatsapp d-flex align-items-center">
-                                <div class="footer-social-thumbnail">
-                                    <img src="images/client/icons/icon-whatsapp.svg" width="25" height="25" alt="WhatsApp" class="footer-social-media">
-                                </div>
+                            @if(trim(Setting::get("site_content.wa_phone")) !== '')
+                                <a href="https://wa.me/{{Setting::get("site_content.wa_phone")}}" target="_blank" class="footer-social footer-social-whatsapp d-flex align-items-center">
+                                    <div class="footer-social-thumbnail">
+                                        <img src="{{asset('/images/client/icons/icon-whatsapp.svg')}}" width="25" height="25" alt="WhatsApp" class="footer-social-media">
+                                    </div>
 
-                                <div class="footer-social-text">Связаться по WhatsApp</div>
-                            </a>
+                                    <div class="footer-social-text">Связаться по WhatsApp</div>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -139,7 +145,7 @@
                     <input type="search" class="footer-search-input search-input" placeholder="Поиск товаров" required="">
                     <button type="button" class="footer-search-button search-button">
                         <svg class="search-button-media" width="24" height="25">
-                            <use xlink:href="/images/sprite.svg#icon-search"></use>
+                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-search')}}"></use>
                         </svg>
                     </button>
                 </form>

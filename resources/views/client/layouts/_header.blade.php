@@ -53,20 +53,28 @@
                 </a>
             </div>
 
+
             <div class="header-contact-container col-auto d-none d-md-block mx-md-auto">
                 <ul class="header-contact-list list-unstyled align-items-center row">
-                    <li class="header-contact-item col-auto">
-                        <a href="tel:+74950957797" class="header-contact">+7 (495) 095-77-97</a>
-                    </li>
+                    @if(trim(Setting::get("site_content.phone")) !== '')
+                        <li class="header-contact-item col-auto">
+                            <a href="tel:{{ Setting::get("site_content.phone") }}" class="header-contact">{{ Setting::get("site_content.phone") }}</a>
+                        </li>
+                    @endif
 
-                    <li class="header-contact-item col-auto d-none d-lg-block">
-                        <a href="mailto:info@l-keys.ru" class="header-contact">info@l-keys.ru</a>
-                    </li>
+                    @if(trim(Setting::get("mail.feedback.address")) !== '')
+                        <li class="header-contact-item col-auto d-none d-lg-block">
+                            <a href="mailto:{{Setting::get("mail.feedback.address")}}" class="header-contact">{{Setting::get("mail.feedback.address")}}</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
 
+
             <div class="header-social-container col-auto mx-md-auto">
-                <a href="#link" class="header-social header-social-whatsapp d-flex align-items-center">
+
+                @if(trim(Setting::get("site_content.wa_phone")) !== '')
+                <a href="https://wa.me/{{Setting::get("site_content.wa_phone")}}" target="_blank" class="header-social header-social-whatsapp d-flex align-items-center">
                     <div class="header-social-thumbnail">
                         <img loading="lazy" src="{{asset('/images/client/icons/icon-whatsapp.svg')}}" width="25"
                              height="25" alt="WhatsApp" class="header-social-media">
@@ -76,13 +84,15 @@
                             class="d-none d-xxl-inline">Связаться по</span> WhatsApp
                     </div>
                 </a>
+                @endif
+
             </div>
 
             <div class="header-search-container col-auto d-none d-sm-block mx-md-auto">
                 <button type="button" class="header-search-toggle d-flex d-lg-none align-items-center">
                         <span class="header-search-thumbnail">
                             <svg class="header-search-media" width="24" height="25">
-                                <use xlink:href="/images/sprite.svg#icon-search"></use>
+                                <use xlink:href="{{asset('/images/client/sprite.svg#icon-search')}}"></use>
                             </svg>
                         </span>
 
