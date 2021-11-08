@@ -31,25 +31,23 @@ class MenuElement
      */
     private $activeResolver;
 
-    /**
-     * Create menu element.
-     *
-     * @param string $name
-     * @param string $icon
-     * @param callable|string $url
-     * @param callable|array|string $activeResolver
-     */
+    private $openLinkInNewTab;
+
+
     public function __construct(
-        $name,
-        $icon,
-        $url,
-        $activeResolver
+        string $name,
+        string $icon,
+        callable|string $url,
+        callable|array|string $activeResolver,
+        bool $targetBlank = false
     ) {
         $this->name = $name;
         $this->icon = $icon;
         $this->url = $url;
         $this->activeResolver = $activeResolver;
+        $this->openLinkInNewTab = $targetBlank;
     }
+
 
     /**
      * Get menu element link.
@@ -109,5 +107,10 @@ class MenuElement
         return $active;
     }
 
+
+    public function getOpenLinkInNewTab(): bool
+    {
+        return $this->openLinkInNewTab;
+    }
 
 }

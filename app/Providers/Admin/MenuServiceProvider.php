@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ExchangeController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductTypePagesController;
 use App\Http\Controllers\Admin\ReviewsController;
+use App\Services\Admin\Menu\MenuGroup;
 use Arr;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\AttributesController;
@@ -116,6 +117,16 @@ class MenuServiceProvider extends ServiceProvider
                         [OrdersController::class]
                     )
                 );
+
+                $groupTech = new MenuGroup('Техническая информация', 'glyphicon-wrench');
+                $menu->addMenuGroup($groupTech);
+                $groupTech->addMenuElement(new MenuElement(
+                    'Логи (Telescope)',
+                    'glyphicon-calendar',
+                    url('telescope'),
+                    [],
+                    true
+                ));
 
                 return $menu;
             }

@@ -14,7 +14,7 @@
             </li>
         @else
             <li>
-                <a href="{{ $menu_element['link'] }}" class="menu-element @if ($menu_element['active']) active @endif">
+                <a href="{{ $menu_element['link'] }}" class="menu-element @if ($menu_element['active']) active @endif" @if ($menu_element['openLinkInNewTab']) target="_blank" @endif>
                     <span class="text">{{ $menu_element['name'] }}</span>
                     <span class="glyphicon {{ $menu_element['icon'] }}" title="{{ $menu_element['name'] }}" data-toggle="tooltip" data-placement="right"></span>
                 </a>

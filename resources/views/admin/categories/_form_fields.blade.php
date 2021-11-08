@@ -10,6 +10,8 @@
 {!! Form::tbTextBlock('alias') !!}
 
 {!! Form::tbCheckboxBlock('publish') !!}
+{!! Form::tbCheckboxBlock('menu_top') !!}
+{!! Form::tbCheckboxBlock('menu_bottom') !!}
 
 @include('admin.shared._header_meta_field')
 

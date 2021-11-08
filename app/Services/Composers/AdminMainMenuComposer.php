@@ -69,6 +69,7 @@ class AdminMainMenuComposer
             'icon' => $menuElement->getIcon(),
             'link' => $menuElement->getUrl(),
             'active' => $menuElement->getActive(),
+            'openLinkInNewTab' => $menuElement->getOpenLinkInNewTab(),
         ];
     }
 }
