@@ -4,7 +4,8 @@
             <div class="header-location-container col-auto d-none d-lg-block">
                 <button type="button" class="header-location-toggle d-flex align-items-center">
                     <div class="header-location-thumbnail d-none d-xl-block">
-                        <img loading="lazy" src="{{asset('/images/client/icons/icon-location.svg')}}" width="27" height="16" alt="" class="header-location-medua">
+                        <img loading="lazy" src="{{asset('/images/client/icons/icon-location.svg')}}" width="27"
+                             height="16" alt="" class="header-location-medua">
                     </div>
 
                     <div class="header-location-text text-truncate">
@@ -14,41 +15,39 @@
             </div>
 
             <div class="header-burger-container col-auto d-xxl-none">
-                <button type="button" class="header-burger-toggle" >
+                <button type="button" class="header-burger-toggle">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
             </div>
 
+
             <div class="header-nav-container col-auto d-none d-xxl-block">
-                <ul class="header-nav-list list-unstyled d-flex flex-wrap">
-                    <li class="header-nav-item">
-                        <a href="#link" class="header-nav-link">Услуги</a>
-                    </li>
+                @if(count($topMenu) > 0)
+                    <ul class="header-nav-list list-unstyled d-flex flex-wrap">
 
-                    <li class="header-nav-item">
-                        <a href="#link" class="header-nav-link">Доставка и оплата</a>
-                    </li>
+                        @foreach($topMenu as $menuElement)
+                            <li class="header-nav-item {{ $menuElement['active']  ? 'active' : '' }}">
+                                <a href="{{ $menuElement['url'] }}"
+                                   class="header-nav-link">{!! $menuElement['name'] !!}</a>
+                            </li>
+                        @endforeach
 
-                    <li class="header-nav-item">
-                        <a href="#link" class="header-nav-link">Гарантии</a>
-                    </li>
-
-                    <li class="header-nav-item">
-                        <a href="#link" class="header-nav-link">О компании</a>
-                    </li>
-                </ul>
+                    </ul>
+                @endif
             </div>
+
 
             <div class="header-logo-container col col-md-auto order-lg-1">
                 <a href="index.html" class="header-logo d-flex align-items-center">
                     <div class="header-logo-thumbnail">
-                        <img src="{{asset('/images/client/logo/logo-dark.svg')}}" width="52" height="44" alt="" class="header-logo-media">
+                        <img src="{{asset('/images/client/logo/logo-dark.svg')}}" width="52" height="44" alt=""
+                             class="header-logo-media">
                     </div>
 
                     <div class="header-logo-text">
-                        <div class="header-logo-title">Замки <br class="d-xl-none" > и Ключи</div>
+                        <div class="header-logo-title">Замки <br class="d-xl-none"> и Ключи</div>
                         <div class="header-logo-subtitle d-none d-xl-block">Магазин дверных замков и фурнитуры</div>
                     </div>
                 </a>
@@ -69,15 +68,18 @@
             <div class="header-social-container col-auto mx-md-auto">
                 <a href="#link" class="header-social header-social-whatsapp d-flex align-items-center">
                     <div class="header-social-thumbnail">
-                        <img loading="lazy" src="{{asset('/images/client/icons/icon-whatsapp.svg')}}" width="25" height="25" alt="WhatsApp" class="header-social-media">
+                        <img loading="lazy" src="{{asset('/images/client/icons/icon-whatsapp.svg')}}" width="25"
+                             height="25" alt="WhatsApp" class="header-social-media">
                     </div>
 
-                    <div class="header-social-text d-none d-md-block"><span class="d-none d-xxl-inline" >Связаться по</span> WhatsApp</div>
+                    <div class="header-social-text d-none d-md-block"><span
+                            class="d-none d-xxl-inline">Связаться по</span> WhatsApp
+                    </div>
                 </a>
             </div>
 
             <div class="header-search-container col-auto d-none d-sm-block mx-md-auto">
-                <button type="button" class="header-search-toggle d-flex d-lg-none align-items-center" >
+                <button type="button" class="header-search-toggle d-flex d-lg-none align-items-center">
                         <span class="header-search-thumbnail">
                             <svg class="header-search-media" width="24" height="25">
                                 <use xlink:href="/images/sprite.svg#icon-search"></use>
@@ -88,9 +90,9 @@
                 </button>
 
                 <form class="header-search search d-none d-lg-block">
-                    <input type="search" class="header-search-input search-input" placeholder="Поиск товаров" required >
+                    <input type="search" class="header-search-input search-input" placeholder="Поиск товаров" required>
 
-                    <button type="button" class="header-search-button search-button" >
+                    <button type="button" class="header-search-button search-button">
                         <svg class="search-button-media" width="24" height="25">
                             <use xlink:href="{{asset('/images/client/sprite.svg#icon-search')}}"></use>
                         </svg>

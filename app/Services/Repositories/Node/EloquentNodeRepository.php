@@ -160,6 +160,16 @@ class EloquentNodeRepository
     }
 
 
+    public function treePublishedBottomMenu()
+    {
+        $query = Node::where('menu_bottom', true);
+        $this->orderScope->scopeOrdered($query);
+        $query->treePublished();
+
+        return $query->get();
+    }
+
+
     public function treePublishedWithAliases($aliases)
     {
         if (count($aliases) === 0) {

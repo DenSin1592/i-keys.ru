@@ -7,7 +7,7 @@ use App\Services\Repositories\Node\EloquentNodeRepository;
 use Illuminate\View\View;
 
 
-class ClientTopMenuComposer
+class ClientBottomMenuComposer
 {
     use NodeMenuBuilder;
 
@@ -19,8 +19,8 @@ class ClientTopMenuComposer
 
     public function compose(View $view)
     {
-        $nodeList = $this->nodeRepository->treePublishedTopMenu();
-        $topMenu = $this->buildMenu($nodeList);
-        $view->with('topMenu', $topMenu);
+        $nodeList = $this->nodeRepository->treePublishedBottomMenu();
+        $bottomMenu = $this->buildMenu($nodeList);
+        $view->with('bottomMenu', $bottomMenu);
     }
 }

@@ -89,25 +89,22 @@
                 </div>
             </div>
 
+
             <div class="footer-nav-container col-lg-2 col-xl-3 col-xxl-2 offset-xxl-1 d-none d-lg-block order-md-5 float-lg-left">
+                @if(count($bottomMenu) > 0)
                 <ul class="footer-nav-list list-unstyled d-flex flex-column flex-wrap">
-                    <li class="footer-nav-item">
-                        <a href="#link" class="footer-nav-link">Услуги</a>
-                    </li>
 
-                    <li class="footer-nav-item">
-                        <a href="#link" class="footer-nav-link">Доставка и оплата</a>
-                    </li>
+                    @foreach($bottomMenu as $menuElement)
+                        <li class="footer-nav-item {{ $menuElement['active']  ? 'active' : '' }}">
+                            <a href="{{ $menuElement['url'] }}"
+                               class="footer-nav-link">{!! $menuElement['name'] !!}</a>
+                        </li>
+                    @endforeach
 
-                    <li class="footer-nav-item">
-                        <a href="#link" class="footer-nav-link">Гарантии</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#link" class="footer-nav-link">О компании</a>
-                    </li>
                 </ul>
+                @endif
             </div>
+
 
             <div class="footer-contact-container col-md-8 col-lg-3 order-md-4 order-lg-6 float-lg-left">
                 <div class="row">
