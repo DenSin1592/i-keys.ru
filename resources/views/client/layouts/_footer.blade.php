@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row d-lg-block d-xxl-flex">
             <div class="footer-logo-container col-sm-6 col-md-4 col-lg-2 col-xl-auto col-xxl-3 order-md-1 float-lg-left">
-                <a href="index.html" class="footer-logo d-flex align-items-center">
+                <a href="{{route('home')}}" class="footer-logo d-flex align-items-center">
                     <div class="footer-logo-thumbnail">
                         <img src="{{asset('/images/client/logo/logo-light.svg')}}" width="52" height="44" alt="Замки и Ключи" class="footer-logo-media">
                     </div>
@@ -83,7 +83,7 @@
             <div class="footer-copyright-container col-sm-6 col-md-4 col-lg-3 col-xl-2 order-md-6 order-lg-4 float-lg-left">
                 <div class="footer-copyright-block">
                     <div class="footer-copyright-text">
-                        <p>&copy;&nbsp;2021</p>
+                        <p>&copy;&nbsp;{{date('Y')}}</p>
                         <p>Все права защищены, при любом копировании материалов ссылка на сайт источник обязательна</p>
                     </div>
                 </div>

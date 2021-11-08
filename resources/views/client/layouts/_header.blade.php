@@ -40,7 +40,7 @@
 
 
             <div class="header-logo-container col col-md-auto order-lg-1">
-                <a href="index.html" class="header-logo d-flex align-items-center">
+                <a href="{{route('home')}}" class="header-logo d-flex align-items-center">
                     <div class="header-logo-thumbnail">
                         <img src="{{asset('/images/client/logo/logo-dark.svg')}}" width="52" height="44" alt=""
                              class="header-logo-media">
