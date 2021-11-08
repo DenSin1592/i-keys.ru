@@ -9,6 +9,7 @@
                 </div>
                 @include('admin.shared._list_flag', ['element' => $category, 'action' => route('cc.categories.toggle-attribute', [$category->id, 'publish']), 'attribute' => 'publish'])
                 @include('admin.shared._list_flag', ['element' => $category, 'action' => route('cc.categories.toggle-attribute', [$category->id, 'menu_top']), 'attribute' => 'menu_top'])
+                @include('admin.shared._list_flag', ['element' => $category, 'action' => route('cc.categories.toggle-attribute', [$category->id, 'menu_bottom']), 'attribute' => 'menu_bottom'])
                 <div class="alias">
                     {{ $category->alias }}
                 </div>

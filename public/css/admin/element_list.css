@@ -165,6 +165,8 @@
 
 /* flags */
 .element-list-wrapper .element-container > .publish-status,
+.element-list-wrapper .element-container > .menu_top-status,
+.element-list-wrapper .element-container > .menu_bottom-status,
 .element-list-wrapper .element-container > .publish,
 .element-list-wrapper .element-container > .on_home_page-status {
     width: 8rem;

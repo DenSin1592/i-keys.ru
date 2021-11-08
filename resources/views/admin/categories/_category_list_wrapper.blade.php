@@ -3,6 +3,8 @@
         @include('admin.shared.resource_list.sorting._list_header')
         <div class="name">{{ trans('validation.attributes.name') }}</div>
         <div class="publish-status">{{ trans('validation.attributes.publish') }}</div>
+        <div class="publish-status">{{ trans('validation.attributes.menu_top') }}</div>
+        <div class="publish-status">{{ trans('validation.attributes.menu_bottom') }}</div>
         <div class="alias">{{ trans('validation.attributes.alias') }}</div>
         <div class="control">{{ trans('interactions.controls') }}</div>
     </div>

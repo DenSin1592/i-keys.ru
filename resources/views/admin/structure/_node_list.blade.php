@@ -9,6 +9,7 @@
                 </div>
                 @include('admin.shared._list_flag', ['element' => $node, 'action' => route('cc.structure.toggle-attribute', [$node->id, 'publish']), 'attribute' => 'publish'])
                 @include('admin.shared._list_flag', ['element' => $node, 'action' => route('cc.structure.toggle-attribute', [$node->id, 'menu_top']), 'attribute' => 'menu_top'])
+                @include('admin.shared._list_flag', ['element' => $node, 'action' => route('cc.structure.toggle-attribute', [$node->id, 'menu_bottom']), 'attribute' => 'menu_bottom'])
                 <div class="alias">
                     <a href="{{ TypeContainer::getClientUrl($node, true) }}" target="_blank">
                         {{ TypeContainer::getClientUrl($node, false) }}

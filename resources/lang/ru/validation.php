@@ -183,6 +183,7 @@ return [
         'position' => 'Позиция',
         'publish' => 'Публикация',
         'menu_top' => 'В верхнем меню',
+        'menu_bottom' => 'В нижнем меню',
         'alias' => 'Псевдоним URL',
         'parent_id' => 'Родитель',
         'type' => 'Тип',

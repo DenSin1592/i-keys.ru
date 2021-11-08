@@ -185,7 +185,7 @@ class CategoriesController extends Controller
 
     public function toggleAttribute($id, $attribute)
     {
-        if (!in_array($attribute, ['publish'])) {
+        if (!in_array($attribute, ['publish', 'menu_top', 'menu_bottom'])) {
             \App::abort(404, 'Not allowed to toggle this attribute');
         }
         $category = $this->repository->findById($id);
