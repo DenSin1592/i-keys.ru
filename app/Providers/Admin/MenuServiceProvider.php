@@ -118,9 +118,22 @@ class MenuServiceProvider extends ServiceProvider
                     )
                 );
 
-                $groupTech = new MenuGroup('Техническая информация', 'glyphicon-wrench');
-                $menu->addMenuGroup($groupTech);
-                $groupTech->addMenuElement(new MenuElement(
+
+                $groupLists = new MenuGroup('Справочники', 'glyphicon-list-alt');
+                $menu->addMenuGroup($groupLists);
+                $groupLists->addMenuElement(new MenuElement(
+                    'Поддомены',
+                    'glyphicon-file',
+                    route('cc.subdomains.index'),
+                    ['App\Controller\Admin\SubdomainsController']
+                ));
+
+
+
+
+                $groupLists = new MenuGroup('Техническая информация', 'glyphicon-wrench');
+                $menu->addMenuGroup($groupLists);
+                $groupLists->addMenuElement(new MenuElement(
                     'Логи (Telescope)',
                     'glyphicon-calendar',
                     url('telescope'),

@@ -32,6 +32,7 @@ Route::prefix('cc')->name('cc.')->namespace('Admin')->group(function () {
         require 'web/admin/reviews.php';
         require 'web/admin/orders.php';
         require 'web/admin/exchange.php';
+        require 'web/admin/subdomains.php';
 
         // all others should show 404 page for admin
         Route::any('/{url}', 'NotFoundController')->where('url', '.*');

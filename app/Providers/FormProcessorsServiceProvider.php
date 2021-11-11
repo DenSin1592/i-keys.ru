@@ -11,6 +11,7 @@ use App\Services\FormProcessors\Product\SubProcessor as ProductSubProcessor;
 use App\Services\FormProcessors\Review\AdminReviewFormProcessor;
 use App\Services\FormProcessors\Settings\SettingsFormProcessor;
 use App\Services\FormProcessors\Attribute\SubProcessor as AttributeSubProcessor;
+use App\Services\FormProcessors\Subdomain\SubdomainFormProcessor;
 use App\Services\Repositories\Order\CreateUpdateWrapper as OrderCreateUpdateWrapper;
 use App\Services\Repositories\ProductTypePage\CreateUpdateWrapper as ProductTypePageCreateUpdateWrapper;
 use App\Services\Repositories\Review\CreateUpdateWrapper as ReviewCreateUpdateWrapper;
@@ -21,6 +22,7 @@ use App\Services\Repositories\Category\CreateUpdateWrapper as CategoryCreateUpda
 use App\Services\Repositories\Setting\CreateUpdateWrapper as SettingCreateUpdateWrapper;
 use App\Services\Repositories\Attribute\CreateUpdateWrapper as AttributeCreateUpdateWrapper;
 use App\Services\Repositories\Product\CreateUpdateWrapper as ProductCreateUpdateWrapper;
+use App\Services\Repositories\Subdomain\CreateUpdateWrapper;
 use App\Services\Settings\SettingContainer;
 use App\Services\Validation\AdminUser\AdminUserLaravelValidator;
 use App\Services\Validation\Attribute\AttributeLaravelValidator;
@@ -31,6 +33,7 @@ use App\Services\Validation\Node\NodeLaravelValidator;
 use App\Services\Validation\Product\ProductLaravelValidator;
 use App\Services\Validation\Review\AdminReviewValidator;
 use App\Services\Validation\Setting\SettingsLaravelValidator;
+use App\Services\Validation\Subdomain\SubdomainValidator;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use App\Services\FormProcessors\ProductTypePage\SubProcessor as ProductTypePageSubProcessor;
@@ -143,6 +146,15 @@ class FormProcessorsServiceProvider extends ServiceProvider
             );
             $formProcessor->addSubProcessor(
                 $app->make(AttributeSubProcessor\Categories::class)
+            );
+
+            return $formProcessor;
+        });
+
+        $this->app->bind(SubdomainFormProcessor::class, function (Application $app) {
+            $formProcessor = new SubdomainFormProcessor(
+                $app->make(SubdomainValidator::class),
+                $app->make(CreateUpdateWrapper::class)
             );
 
             return $formProcessor;

@@ -246,6 +246,16 @@ return [
         'id' => 'Номер',
         'exchange_status' => 'Статус обмена с 1С',
         '' => '',
+
+        'city_name' => 'Город',
+        'header_template' => 'Шаблон вставки региона заголовка h1 {{REG_HEADER}}',
+        'meta_title_template' => 'Шаблон вставки региона для title {{REG_TITLE}}',
+        'meta_description_template' => 'Шаблон вставки региона для description {{REG_DESCRIPTION}}',
+        'meta_keywords_template' => 'Шаблон вставки региона для keywords {{REG_KEYWORDS}}',
+        'robots_txt' => 'robots.txt',
+        'google_analytics' => 'Счетчик Google Analytics',
+        'yandex_metrika' => 'Счетчик Yandex Metrika',
+        'live_internet' => 'Счетчик LiveInternet',
     ],
 
     'model_attributes' => [
