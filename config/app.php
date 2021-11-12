@@ -192,6 +192,7 @@ return [
         App\Providers\PaginationServiceProvider::class,
         App\Providers\ReviewRenewalServiceProvider::class,
         App\Providers\ExchangeServiceProvider::class,
+        App\Providers\SubdomainsServiceProvider::class,
     ],
 
     /*

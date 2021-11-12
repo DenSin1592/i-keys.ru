@@ -3,6 +3,8 @@
 use App\Services\Composers\AdminAlertComposer;
 use App\Services\Composers\AdminMainMenuComposer;
 use App\Services\Composers\ClientBottomMenuComposer;
+use App\Services\Composers\ClientCityHeaderComposer;
+use App\Services\Composers\ClientCityModalComposer;
 use App\Services\Composers\ClientTopMenuComposer;
 use App\Services\Composers\CurrentAdminUserComposer;
 use Illuminate\Support\ServiceProvider;
@@ -27,6 +29,8 @@ class ComposersServiceProvider extends ServiceProvider
 
             ClientTopMenuComposer::class => 'client.layouts._header',
             ClientBottomMenuComposer::class => 'client.layouts._footer',
+//            ClientCityModalComposer::class => 'client.layouts._popups._location',
+            ClientCityHeaderComposer::class => 'client.layouts._header',
         ]);
     }
 }

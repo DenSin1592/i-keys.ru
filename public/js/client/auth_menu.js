@@ -1,6 +1,5 @@
 "use strict";
 
-(function () {
     document.addEventListener('DOMContentLoaded', () => {
 
         let authMenuContainer = document.querySelector('#auth-menu');
@@ -16,4 +15,4 @@
         });
 
     });
-})();
+

@@ -9,7 +9,7 @@
                     </div>
 
                     <div class="header-location-text text-truncate">
-                        <div class="header-location-region">Москва</div>
+                        <div class="header-location-region">{{$currentCity}}</div>
                     </div>
                 </button>
             </div>

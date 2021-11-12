@@ -15,9 +15,27 @@ class EloquentSubdomainRepository
     }
 
 
+    public function allExcept(int $id)
+    {
+        return Subdomain::query()->where('id', '<>', $id)->get();
+    }
+
+
     public function findById(int $id): Subdomain
     {
         return Subdomain::find($id);
+    }
+
+
+    public function findByName($name): Subdomain
+    {
+        return Subdomain::where('name', $name)->first();
+    }
+
+
+    public function getDefault()
+    {
+        return Subdomain::find(Subdomain::DEFAULT_SUBDOMAIN_ID);
     }
 
 

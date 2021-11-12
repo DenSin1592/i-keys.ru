@@ -5,6 +5,8 @@ namespace App\Models;
 
 class Subdomain extends \Eloquent
 {
+    public const DEFAULT_SUBDOMAIN_ID = 1;
+
     protected $fillable = [
         'name',
         'city_name',
