@@ -31,6 +31,8 @@ class ComposersServiceProvider extends ServiceProvider
             ClientBottomMenuComposer::class => 'client.layouts._footer',
 //            ClientCityModalComposer::class => 'client.layouts._popups._location',
             ClientCityHeaderComposer::class => 'client.layouts._header',
+            ClientHeaderCategoryMenuComposer::class => 'client.layouts._header',
+            ClientFooterCategoryComposer::class => 'client.layouts._footer',
         ]);
     }
 }

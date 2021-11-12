@@ -143,65 +143,21 @@
 
             <div class="header-catalog-container col d-none d-md-block order-lg-2">
                 <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between">
+
+                    @foreach($categoriesHeaderMenu as $element)
                     <li class="header-catalog-item col-auto col-xxl">
-                        <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
-                            <div class="header-catalog-thumbnail">
-                                <svg class="header-catalog-media" width="26" height="26">
-                                    <use xlink:href="/images/client/sprite.svg#icon-catalog-lock"></use>
-                                </svg>
-                            </div>
-
-                            <div class="header-catalog-text">Замки</div>
-                        </a>
-                    </li>
-
-                    <li class="header-catalog-item col-auto col-xxl">
-                        <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
-                            <div class="header-catalog-thumbnail">
-                                <svg class="header-catalog-media" width="18" height="25">
-                                    <use xlink:href="/images/client/sprite.svg#icon-catalog-handle"></use>
-                                </svg>
-                            </div>
-
-                            <div class="header-catalog-text">Ручки</div>
-                        </a>
-                    </li>
-
-                    <li class="header-catalog-item col-auto col-xxl">
-                        <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
-                            <div class="header-catalog-thumbnail">
-                                <svg class="header-catalog-media" width="22" height="25">
-                                    <use xlink:href="/images/client/sprite.svg#icon-catalog-furniture"></use>
-                                </svg>
-                            </div>
-
-                            <div class="header-catalog-text">Фурнитура</div>
-                        </a>
-                    </li>
-
-                    <li class="header-catalog-item col-auto col-xxl">
-                        <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
-                            <div class="header-catalog-thumbnail">
-                                <svg class="header-catalog-media" width="19" height="25">
-                                    <use xlink:href="/images/client/sprite.svg#icon-catalog-keys"></use>
-                                </svg>
-                            </div>
-
-                            <div class="header-catalog-text">Копии ключей</div>
-                        </a>
-                    </li>
-
-                    <li class="header-catalog-item col-auto col-xxl">
-                        <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
+                        <a href="{{$element['url']}}" class="header-catalog-link d-flex align-items-center justify-content-center">
                             <div class="header-catalog-thumbnail">
                                 <svg class="header-catalog-media" width="26" height="25">
-                                    <use xlink:href="/images/client/sprite.svg#icon-catalog-master"></use>
+                                    <use xlink:href="{{asset($element['image_path'])}}"></use>
                                 </svg>
                             </div>
 
-                            <div class="header-catalog-text">Мастер-системы</div>
+                            <div class="header-catalog-text">{{$element['name']}}</div>
                         </a>
                     </li>
+                    @endforeach
+
                 </ul>
             </div>
         </div>

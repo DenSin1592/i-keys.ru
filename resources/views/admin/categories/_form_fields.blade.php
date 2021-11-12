@@ -9,6 +9,8 @@
 
 {!! Form::tbTextBlock('alias') !!}
 
+{!! Form::tbTextBlock('path_to_icon') !!}
+
 {!! Form::tbCheckboxBlock('publish') !!}
 {!! Form::tbCheckboxBlock('menu_top') !!}
 {!! Form::tbCheckboxBlock('menu_bottom') !!}

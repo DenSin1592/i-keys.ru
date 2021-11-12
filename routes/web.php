@@ -43,5 +43,8 @@ Route::prefix('cc')->name('cc.')->namespace('Admin')->group(function () {
 // Client routes
 Route::namespace('Client')->group(function () {
     Route::get('/', 'HomeController')->name('home');
+    Route::get('catalog/{url}', 'HomeController')->name('catalog')->where('url', '.*');
+
+
     Route::get('/{url}', 'HomeController')->name('dynamic_page')->where('url', '.*');
 });

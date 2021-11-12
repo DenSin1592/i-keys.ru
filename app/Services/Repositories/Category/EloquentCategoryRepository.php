@@ -1,4 +1,6 @@
-<?php namespace App\Services\Repositories\Category;
+<?php
+
+namespace App\Services\Repositories\Category;
 
 use App\Models\Attribute;
 use App\Models\Category;
@@ -7,6 +9,7 @@ use App\Services\RepositoryFeatures\Attribute\PositionUpdater;
 use App\Services\RepositoryFeatures\Order\OrderScopesInterface;
 use App\Services\RepositoryFeatures\Tree\TreeBuilderInterface;
 use Illuminate\Database\Eloquent\Collection;
+
 
 class EloquentCategoryRepository
 {
@@ -106,6 +109,7 @@ class EloquentCategoryRepository
 
         return $query->get();
     }
+
     public function updatePositions(array $positions)
     {
         $this->positionUpdater->updatePositions(new Category(), $positions);
@@ -173,5 +177,17 @@ class EloquentCategoryRepository
         }
 
         return $variants;
+    }
+
+
+    public function getElementsForHeaderMenu(): Collection
+    {
+        return Category::where('publish', true)->where('menu_top', true)->orderBy('position')->get();
+    }
+
+
+    public function getElementsForFooterMenu(): Collection
+    {
+        return Category::where('publish', true)->where('menu_bottom', true)->orderBy('position')->get();
     }
 }

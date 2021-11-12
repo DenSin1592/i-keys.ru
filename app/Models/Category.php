@@ -33,6 +33,7 @@ class Category extends \Eloquent
         'meta_description',
         'catalog_type',
         'code_1c',
+        'path_to_icon'
     ];
 
     public static function getCatalogTypes()

@@ -3,28 +3,25 @@
 namespace App\Services\UrlBuilder\Catalog;
 
 use App\Models\Category;
-use App\Models\Node;
-use App\Models\Product;
-use App\Models\ProductTypePage;
+
 
 class UrlBuilder
 {
-    /**
-     * Build url for category.
-     *
-     * @param \App\Models\Category $category
-     * @param array $humanFilterData
-     * @param string $sorting
-     * @param string $additional
-     * @return string
-     */
-    public function buildCategoryUrl(Category $category, array $humanFilterData = [], string $sorting = '', string $additional = ''): string
+    public function buildCategoryUrl(Category $category): string
     {
-        return '';
+        $aliasPath = [];
+        foreach ($category->extractParentPath() as $parentCategory) {
+            $aliasPath[] = $parentCategory->alias;
+        }
+        $aliasPath[] = $category->alias;
+
+        return $this->buildCatalogUrlFromAliasPath($aliasPath);
     }
 
-    public function getUrl(\Eloquent $model)
+
+    private function buildCatalogUrlFromAliasPath(array $aliasPath): string
     {
-        return '';
+        $aliasPathStr = implode('/', $aliasPath);
+        return route('catalog', $aliasPathStr);
     }
 }

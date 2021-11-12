@@ -191,6 +191,7 @@ return [
         'content' => 'Содержимое',
         'bottom_content' => 'Содержимое внизу',
         'extra_description' => 'Дополнительное описание',
+        'path_to_icon' => 'Абсолютный путь до иконки (sprite.svg)',
 
         'catalog_type' => 'Тип каталога',
         'category_id' => 'Категория',

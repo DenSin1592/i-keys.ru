@@ -16,65 +16,21 @@
 
             <div class="footer-catalog-container col-lg-10 col-xl-auto col-xxl d-none d-lg-block order-md-2 float-lg-right">
                 <ul class="footer-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between">
-                    <li class="footer-catalog-item col-auto col-xxl">
-                        <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
-                            <div class="footer-catalog-thumbnail">
-                                <svg class="footer-catalog-media" width="26" height="26">
-                                    <use xlink:href="/images/sprite.svg#icon-catalog-lock"></use>
-                                </svg>
-                            </div>
 
-                            <div class="footer-catalog-text">Замки</div>
-                        </a>
-                    </li>
+                    @foreach($categoriesFooterMenu as $element)
+                        <li class="footer-catalog-item col-auto col-xxl">
+                            <a href="{{$element['url']}}" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="footer-catalog-thumbnail">
+                                    <svg class="footer-catalog-media" width="26" height="25">
+                                        <use xlink:href="{{asset($element['image_path'])}}"></use>
+                                    </svg>
+                                </div>
 
-                    <li class="footer-catalog-item col-auto col-xxl">
-                        <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
-                            <div class="footer-catalog-thumbnail">
-                                <svg class="footer-catalog-media" width="18" height="25">
-                                    <use xlink:href="/images/sprite.svg#icon-catalog-handle"></use>
-                                </svg>
-                            </div>
+                                <div class="footer-catalog-text">{{$element['name']}}</div>
+                            </a>
+                        </li>
+                    @endforeach
 
-                            <div class="footer-catalog-text">Ручки</div>
-                        </a>
-                    </li>
-
-                    <li class="footer-catalog-item col-auto col-xxl">
-                        <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
-                            <div class="footer-catalog-thumbnail">
-                                <svg class="footer-catalog-media" width="22" height="25">
-                                    <use xlink:href="/images/sprite.svg#icon-catalog-furniture"></use>
-                                </svg>
-                            </div>
-
-                            <div class="footer-catalog-text">Фурнитура</div>
-                        </a>
-                    </li>
-
-                    <li class="footer-catalog-item col-auto col-xxl">
-                        <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
-                            <div class="footer-catalog-thumbnail">
-                                <svg class="footer-catalog-media" width="19" height="25">
-                                    <use xlink:href="/images/sprite.svg#icon-catalog-keys"></use>
-                                </svg>
-                            </div>
-
-                            <div class="footer-catalog-text">Копии ключей</div>
-                        </a>
-                    </li>
-
-                    <li class="footer-catalog-item col-auto col-xxl">
-                        <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
-                            <div class="footer-catalog-thumbnail">
-                                <svg class="footer-catalog-media" width="26" height="25">
-                                    <use xlink:href="/images/sprite.svg#icon-catalog-master"></use>
-                                </svg>
-                            </div>
-
-                            <div class="footer-catalog-text">Мастер-системы</div>
-                        </a>
-                    </li>
                 </ul>
             </div>
 
