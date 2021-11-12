@@ -71,6 +71,17 @@ class SettingsServiceProvider extends ServiceProvider
                     )
                 );
 
+
+                $general->addSettingValue(
+                    new SettingValue(
+                        'site_content.viber_phone',
+                        'Номер Viber',
+                        '',
+                        '',
+                        SettingValue::TYPE_TEXT
+                    )
+                );
+
                 $general->addSettingValue(
                     new SettingValue(
                         'site_content.telegram_phone',
