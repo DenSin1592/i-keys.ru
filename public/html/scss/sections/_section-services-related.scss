@@ -1,0 +1,36 @@
+.section-services-related {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    @include media-breakpoint-up(lg) {
+        margin-top: 50px;
+        margin-bottom: 60px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-top: 60px;
+        margin-bottom: 105px;
+    }
+
+    .section-header {
+        margin-bottom: 20px;
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 35px;
+        }
+
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: $f-secondary;
+        }
+    }
+}
+
+
+.services-related-grid {
+    margin-bottom: -15px;
+
+    .service-related-item {
+        margin-bottom: 15px;
+    }
+}

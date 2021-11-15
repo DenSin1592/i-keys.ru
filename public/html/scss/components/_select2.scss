@@ -1,0 +1,30 @@
+.select2-container {
+    .select2-selection--single {
+        height: 30px;
+        border: none;
+        border-bottom: 3px solid currentColor;
+        border-radius: 0;
+        background: none;
+        font-size: 15px;
+        line-height: 30px;
+
+        .select2-selection__rendered {
+            padding-left: 0;
+            padding-right: 30px;
+            color: inherit;
+        }
+    }
+
+    .select2-dropdown {
+        border: none;
+        border-radius: 0;
+        font-size: 15px;
+        line-height: 1.25;
+
+        .select2-results__option {
+            &.select2-results__option--highlighted {
+                background-color: $c-secondary;
+            }
+        }
+    }
+}

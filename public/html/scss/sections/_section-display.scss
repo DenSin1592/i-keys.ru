@@ -1,0 +1,29 @@
+.section-display {
+    position: relative;
+    z-index: 1;
+    padding-top: 20px;
+    padding-bottom: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @include media-breakpoint-up(xl) {
+        padding-top: 20px;
+        padding-bottom: 35px;
+    }
+
+    &::before {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($c-black, .8);
+        content: '';
+    }
+
+
+    .display-title {
+        margin: 0;
+    }
+}

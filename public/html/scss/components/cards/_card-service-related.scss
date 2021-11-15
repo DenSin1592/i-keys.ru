@@ -1,0 +1,9 @@
+.card.card-service-related {
+    .card-thumbnail {
+        @include media-breakpoint-up(xl) {
+            flex: 0 0 130px;
+            width: 130px;
+            max-width: 130px;
+        }
+    }
+}

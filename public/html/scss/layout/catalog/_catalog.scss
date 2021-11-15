@@ -1,0 +1,65 @@
+.section-catalog {
+    position: relative;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    background: $c-gray;
+
+    .catalog-aside-container,
+    .catalog-content-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .catalog-aside-container {
+        z-index: 9;
+        @include media-breakpoint-up(xl) {
+            padding-top: 20px;
+            padding-bottom: 40px;
+            background-color: $c-black;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-top: 20px;
+            padding-bottom: 85px;
+        }
+
+        &::before {
+            @include media-breakpoint-up(xl) {
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                right: 0;
+                width: 100vw;
+                height: 100%;
+                background-color: inherit;
+                content: '';
+            }
+        }
+    }
+
+    .catalog-content-container {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        @include media-breakpoint-up(lg) {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+        @include media-breakpoint-up(xl) {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-top: 20px;
+            padding-bottom: 85px;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+}
+
+@import 'catalog-tags';
+@import 'catalog-sort';
+@import 'catalog-view';
+@import 'catalog-selected-options';
+@import 'catalog-products';
+@import 'catalog-contact';
+@import 'catalog-about';

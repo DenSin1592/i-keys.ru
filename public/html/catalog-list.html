@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>L-keys</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="home-page d-flex flex-column" >
+    <header class="header-box flex-shrink-0 flex-grow-1 compensate-for-scrollbar">
+        <div class="container">
+            <div class="row flex-nowrap flex-md-wrap align-items-center">
+                <div class="header-location-container col-auto d-none d-lg-block">
+                    <button type="button" class="header-location-toggle d-flex align-items-center">
+                        <div class="header-location-thumbnail d-none d-xl-block">
+                            <img loading="lazy" src="images/icons/icon-location.png" width="27" height="16" alt="" class="header-location-medua">
+                        </div>
+
+                        <div class="header-location-text text-truncate">
+                            <div class="header-location-region">Москва</div>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="header-burger-container col-auto d-xxl-none">
+                    <button type="button" class="header-burger-toggle" >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
+                <div class="header-nav-container col-auto d-none d-xxl-block">
+                    <ul class="header-nav-list list-unstyled d-flex flex-wrap">
+                        <li class="header-nav-item">
+                            <a href="#link" class="header-nav-link">Услуги</a>
+                        </li>
+
+                        <li class="header-nav-item">
+                            <a href="#link" class="header-nav-link">Доставка и оплата</a>
+                        </li>
+
+                        <li class="header-nav-item">
+                            <a href="#link" class="header-nav-link">Гарантии</a>
+                        </li>
+
+                        <li class="header-nav-item">
+                            <a href="#link" class="header-nav-link">О компании</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="header-logo-container col col-md-auto order-lg-1">
+                    <a href="index.html" class="header-logo d-flex align-items-center">
+                        <div class="header-logo-thumbnail">
+                            <img src="images/logo/logo-dark.svg" width="52" height="44" alt="" class="header-logo-media">
+                        </div>
+
+                        <div class="header-logo-text">
+                            <div class="header-logo-title">Замки <br class="d-xl-none" > и Ключи</div>
+                            <div class="header-logo-subtitle d-none d-xl-block">Магазин дверных замков и фурнитуры</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="header-contact-container col-auto d-none d-md-block mx-md-auto">
+                    <ul class="header-contact-list list-unstyled align-items-center row">
+                        <li class="header-contact-item col-auto">
+                            <a href="tel:+74950957797" class="header-contact">+7 (495) 095-77-97</a>
+                        </li>
+
+                        <li class="header-contact-item col-auto d-none d-lg-block">
+                            <a href="mailto:info@l-keys.ru" class="header-contact">info@l-keys.ru</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="header-social-container col-auto mx-md-auto">
+                    <a href="#link" class="header-social header-social-whatsapp d-flex align-items-center">
+                        <div class="header-social-thumbnail">
+                            <img loading="lazy" src="images/icons/icon-whatsapp.svg" width="25" height="25" alt="WhatsApp" class="header-social-media">
+                        </div>
+
+                        <div class="header-social-text d-none d-md-block"><span class="d-none d-xxl-inline" >Связаться по</span> WhatsApp</div>
+                    </a>
+                </div>
+
+                <div class="header-search-container col-auto d-none d-sm-block mx-md-auto">
+                    <button type="button" class="header-search-toggle d-flex d-lg-none align-items-center" >
+                        <span class="header-search-thumbnail">
+                            <svg class="header-search-media" width="24" height="25">
+                                <use xlink:href="/images/sprite.svg#icon-search"></use>
+                            </svg>
+                        </span>
+
+                        <span class="header-search-text">Поиск</span>
+                    </button>
+
+                    <form class="header-search search d-none d-lg-block">
+                        <input type="search" class="header-search-input search-input" placeholder="Поиск товаров" required >
+                        
+                        <button type="button" class="header-search-button search-button" >
+                            <svg class="search-button-media" width="24" height="25">
+                                <use xlink:href="/images/sprite.svg#icon-search"></use>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="header-account-container col-auto">
+                    <ul class="header-account-list list-unstyled row">
+                        <li class="header-account-item col-auto d-none d-sm-block">
+                            <a href="#link" class="header-account d-flex align-items-center">
+                                <div class="header-account-thumbnail">
+                                    <svg class="header-account-media" width="28" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-compare"></use>
+                                    </svg>
+                                </div>
+
+
+                                <div class="header-account-badge d-flex align-items-center justify-content-center">0</div>
+                            </a>
+                        </li>
+
+                        <li class="header-account-item col-auto">
+                            <a href="#link" class="header-account d-flex align-items-center">
+                                <div class="header-account-thumbnail">
+                                    <svg class="header-account-media" width="28" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="header-account-badge d-flex align-items-center justify-content-center">6</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="header-devider w-100 d-none d-md-block"></div>
+
+                <div class="header-catalog-container col d-none d-md-block order-lg-2">
+                    <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between">
+                        <li class="header-catalog-item col-auto col-xxl">
+                            <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="header-catalog-thumbnail">
+                                    <svg class="header-catalog-media" width="26" height="26">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-lock"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="header-catalog-text">Замки</div>
+                            </a>
+                        </li>
+
+                        <li class="header-catalog-item col-auto col-xxl">
+                            <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="header-catalog-thumbnail">
+                                    <svg class="header-catalog-media" width="18" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-handle"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="header-catalog-text">Ручки</div>
+                            </a>
+                        </li>
+
+                        <li class="header-catalog-item col-auto col-xxl">
+                            <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="header-catalog-thumbnail">
+                                    <svg class="header-catalog-media" width="22" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-furniture"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="header-catalog-text">Фурнитура</div>
+                            </a>
+                        </li>
+
+                        <li class="header-catalog-item col-auto col-xxl">
+                            <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="header-catalog-thumbnail">
+                                    <svg class="header-catalog-media" width="19" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-keys"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="header-catalog-text">Копии ключей</div>
+                            </a>
+                        </li>
+
+                        <li class="header-catalog-item col-auto col-xxl">
+                            <a href="#link" class="header-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="header-catalog-thumbnail">
+                                    <svg class="header-catalog-media" width="26" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-master"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="header-catalog-text">Мастер-системы</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-box flex-shrink-0 flex-grow-1">
+        <section class="section-display section-dark" style="background-image: url('images/sections/section-display/display-keys-bg.jpg');" >
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                          <a href="index.html">Главная</a>
+                        </li>
+                      <li class="breadcrumb-item">
+                          <a href="catalog.html">Каталог</a>
+                        </li>
+                      <li class="breadcrumb-item">
+                          <a href="catalog.html">Замки</a>
+                        </li>
+                      <li class="breadcrumb-item active" aria-current="page">Навесные</li>
+                    </ol>
+                  </nav>
+
+                <h1 class="display-title title-h1 text-uppercase">Замки Врезные</h1>
+            </div>
+        </section>
+
+        <section class="section-catalog">
+            <div class="container">
+                <div class="row">
+                    <div class="catalog-aside-container col-xl-3">
+                        <button type="button" class="filter-toggle d-block d-xl-none text-center" >
+                            <svg class="filter-toggle-media" width="24" height="24">
+                                <use xlink:href="/images/sprite.svg#icon-filter"></use>
+                            </svg>
+                            Фильтр
+                        </button>
+
+                        <div class="filter-block">
+                            <div class="filter-header d-none d-xl-block">
+                                <div class="filter-title title-h3 text-uppercase">
+                                    <svg class="filter-title-media" width="33" height="30">
+                                        <use xlink:href="/images/sprite.svg#icon-filter"></use>
+                                    </svg>
+                                    Фильтр
+                                </div>
+                            </div>
+
+                            <form action="" class="form-filter">
+                                <div class="row">
+                                    <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
+                                        <div class="filter-group filter-category-group">
+                                            <div class="filter-group-content">
+                                                <ul class="filter-options-list list-unstyled">
+                                                    <li class="filter-option-item">
+                                                        <div class="filter-option">
+                                                            <input type="checkbox" id="filter-option-category-1" class="filter-option-input">
+                                                            <label for="filter-option-category-1" class="filter-option-label" >
+                                                                Показать лучшие товары
+                                                                <span class="filter-option-badge">13</span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+    
+                                                    <li class="filter-option-item">
+                                                        <div class="filter-option">
+                                                            <input type="checkbox" id="filter-option-category-2" class="filter-option-input">
+                                                            <label for="filter-option-category-2" class="filter-option-label" >
+                                                                Показать товары со скидками
+                                                                <span class="filter-option-badge">25</span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+    
+                                                    <li class="filter-option-item">
+                                                        <div class="filter-option">
+                                                            <input type="checkbox" id="filter-option-category-3" class="filter-option-input">
+                                                            <label for="filter-option-category-3" class="filter-option-label" >
+                                                                Показать все
+                                                                <span class="filter-option-badge">123</span>
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
+                                        <div class="filter-group">
+                                            <div class="filter-group-header">
+                                                <div class="filter-group-title title-h4">
+                                                    Уровень безопасности 
+                                                    <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button>
+                                                </div>
+                                            </div>
+    
+                                            <div class="filter-group-content">
+                                                <div class="filter-security-list d-flex flex-wrap">
+                                                    <input type="radio" value="1" id="filter-security-1" class="filter-security-input" name="filter-security">
+                                                    <label for="filter-security-1" class="filter-security-label">
+                                                        <svg class="filter-security-media" width="22" height="30">
+                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                        </svg>
+                                                    </label>
+    
+                                                    <input type="radio" value="2" id="filter-security-2" class="filter-security-input" name="filter-security">
+                                                    <label for="filter-security-2" class="filter-security-label">
+                                                        <svg class="filter-security-media" width="22" height="30">
+                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                        </svg>
+                                                    </label>
+    
+                                                    <input type="radio" value="3" id="filter-security-3" class="filter-security-input" name="filter-security">
+                                                    <label for="filter-security-3" class="filter-security-label">
+                                                        <svg class="filter-security-media" width="22" height="30">
+                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                        </svg>
+                                                    </label>
+    
+                                                    <input type="radio" value="4" id="filter-security-4" class="filter-security-input" name="filter-security">
+                                                    <label for="filter-security-4" class="filter-security-label">
+                                                        <svg class="filter-security-media" width="22" height="30">
+                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                        </svg>
+                                                    </label>
+    
+                                                    <input type="radio" value="5" id="filter-security-5" class="filter-security-input" name="filter-security">
+                                                    <label for="filter-security-5" class="filter-security-label">
+                                                        <svg class="filter-security-media" width="22" height="30">
+                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                        </svg>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
+                                        <div class="filter-group">
+                                            <div class="filter-group-header">
+                                                <div class="filter-group-title title-h4">Цвет</div>
+                                            </div>
+    
+                                            <div class="filter-group-content">
+                                                <div class="filter-color-list d-flex flex-wrap">
+                                                    <div class="filter-color custom-control custom-color">
+                                                        <input type="radio" class="custom-control-input" id="filter-color-1" name="filter-color" checked >
+                                                        <label for="filter-color-1" class="custom-control-label">
+                                                            <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="filter-color custom-control custom-color">
+                                                        <input type="radio" class="custom-control-input" id="filter-color-2" name="filter-color" >
+                                                        <label for="filter-color-2" class="custom-control-label">
+                                                            <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="filter-color custom-control custom-color">
+                                                        <input type="radio" class="custom-control-input" id="filter-color-3" name="filter-color" >
+                                                        <label for="filter-color-3" class="custom-control-label">
+                                                            <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="filter-color custom-control custom-color">
+                                                        <input type="radio" class="custom-control-input" id="filter-color-4" name="filter-color" >
+                                                        <label for="filter-color-4" class="custom-control-label">
+                                                            <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="filter-color custom-control custom-color">
+                                                        <input type="radio" class="custom-control-input" id="filter-color-5" name="filter-color" >
+                                                        <label for="filter-color-5" class="custom-control-label">
+                                                            <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="filter-color custom-control custom-color">
+                                                        <input type="radio" class="custom-control-input" id="filter-color-6" name="filter-color" >
+                                                        <label for="filter-color-6" class="custom-control-label">
+                                                            <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
+                                        <div class="filter-group">
+                                            <div class="filter-group-header">
+                                                <div class="filter-group-title title-h4">
+                                                    Типоразмер
+                                                    <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button>
+                                                </div>
+                                            </div>
+    
+                                            <div class="filter-group-content">
+                                                <div class="filter-sheme-options-block">
+                                                    <div class="row flex-nowrap no-gutters">
+                                                        <div class="filter-sheme-option-column col-5">
+                                                            <div class="filter-sheme-option-group">
+                                                                <label for="filter-sheme-option-1" class="filter-sheme-option-title" >Внеш.</label>
+                                                                
+                                                                <select name="" id="filter-sheme-option-1" class="filter-sheme-option-select custom-control custom-select" style="width: 100%;" >
+                                                                    <option value="30мм">30мм</option>
+                                                                    <option value="40мм">40мм</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="filter-sheme-option-column col-7">
+                                                            <div class="filter-sheme-option-group">
+                                                                <label for="filter-sheme-option-2" class="filter-sheme-option-title" >Внутр.</label>
+                                                                
+                                                                <select name="" id="filter-sheme-option-2" class="filter-sheme-option-select custom-control custom-select" style="width: 100%;" >
+                                                                    <option value="75мм">75мм</option>
+                                                                    <option value="85мм">85мм</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="filter-sheme-block">
+                                                    <div class="filter-sheme-thumbnail">
+                                                        <img loading="lazy" src="images/filter/filter-sheme-1.png" width="323" height="130" alt="" class="filter-sheme-media">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
+                                        <div class="filter-group">
+                                            <div class="filter-group-header">
+                                                <div class="filter-group-title title-h4">
+                                                    Конфигурация
+                                                    <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button>
+                                                </div>
+                                            </div>
+    
+                                            <div class="filter-group-content">
+                                                <ul class="filter-options-list list-unstyled">
+                                                    <li class="filter-option-item">
+                                                        <div class="filter-option">
+                                                            <input type="checkbox" id="filter-option-configuration-1" class="filter-option-input">
+                                                            <label for="filter-option-configuration-1" class="filter-option-label">
+                                                                Ключ-ключ
+                                                                <img loading="lazy" src="images/filter/filter-configuration-icon-1.png" width="66" height="16" alt="Ключ-ключ" class="filter-option-media" >
+                                                            </label>
+                                                        </div>
+                                                    </li>
+    
+                                                    <li class="filter-option-item">
+                                                        <div class="filter-option">
+                                                            <input type="checkbox" id="filter-option-configuration-2" class="filter-option-input">
+                                                            <label for="filter-option-configuration-2" class="filter-option-label">
+                                                                Ключ/вертушка
+                                                                <img loading="lazy" src="images/filter/filter-configuration-icon-2.png" width="47" height="16" alt="Ключ/вертушка" class="filter-option-media" >
+                                                            </label>
+                                                        </div>
+                                                    </li>
+    
+                                                    <li class="filter-option-item">
+                                                        <div class="filter-option">
+                                                            <input type="checkbox" id="filter-option-configuration-3" class="filter-option-input">
+                                                            <label for="filter-option-configuration-3" class="filter-option-label">
+                                                                Ключ/шток
+                                                                <img loading="lazy" src="images/filter/filter-configuration-icon-3.png" width="60" height="16" alt="Ключ/шток" class="filter-option-media" >
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
+                                        <div class="filter-group">
+                                            <div class="filter-group-header">
+                                                <div class="filter-group-title title-h4">Цена (руб)</div>
+                                            </div>
+    
+                                            <div class="filter-group-content">
+                                                <div class="filter-range-slider-block">
+                                                    <div class="filter-range-slider" data-decimals="0" data-from="#filter-range-price-from" data-to="#filter-range-price-to" ></div>
+                                                </div>
+
+                                                <div class="filter-range-fields-block">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <input type="number" id="filter-range-price-from" class="filter-range-field form-control" step="any" data-border="100" value="100" >
+                                                        </div>
+    
+                                                        <div class="col-6">
+                                                            <input type="number" id="filter-range-price-to" class="filter-range-field form-control" step="any" data-border="5800" value="5800" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
+                                        <div class="filter-group">
+                                            <div class="filter-group-header">
+                                                <div class="filter-group-title title-h4">Производитель</div>
+                                            </div>
+    
+                                            <div class="filter-group-content">
+                                                <ul class="filter-checkbox-list list-unstyled">
+                                                    <li class="filter-checkbox-item">
+                                                        <div class="filter-checkbox custom-control custom-checkbox">
+                                                            <input type="checkbox" id="filter-manufacturer-1" class="custom-control-input" name="filter-manufacturer" checked >
+                                                            <label for="filter-manufacturer-1" class="custom-control-label">Cisa</label>
+                                                        </div>
+
+                                                        <ul class="filter-checkbox-list list-unstyled">
+                                                            <li class="filter-checkbox-item">
+                                                                <div class="filter-checkbox custom-control custom-checkbox">
+                                                                    <input type="checkbox" id="filter-manufacturer-1-1" class="custom-control-input" name="filter-manufacturer-1-series" >
+                                                                    <label for="filter-manufacturer-1-1" class="custom-control-label">Серия 1</label>
+                                                                </div>
+
+                                                                <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button>
+                                                            </li>
+
+                                                            <li class="filter-checkbox-item">
+                                                                <div class="filter-checkbox custom-control custom-checkbox">
+                                                                    <input type="checkbox" id="filter-manufacturer-1-2" class="custom-control-input" name="filter-manufacturer-1-series" >
+                                                                    <label for="filter-manufacturer-1-2" class="custom-control-label">Серия 2</label>
+                                                                </div>
+
+                                                                <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button>
+                                                            </li>
+
+                                                            <li class="filter-checkbox-item">
+                                                                <div class="filter-checkbox custom-control custom-checkbox">
+                                                                    <input type="checkbox" id="filter-manufacturer-1-3" class="custom-control-input" name="filter-manufacturer-1-series" >
+                                                                    <label for="filter-manufacturer-1-3" class="custom-control-label">Серия 3</label>
+                                                                </div>
+
+                                                                <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+
+                                                    <li class="filter-checkbox-item">
+                                                        <div class="filter-checkbox custom-control custom-checkbox">
+                                                            <input type="checkbox" id="filter-manufacturer-2" class="custom-control-input" name="filter-manufacturer" >
+                                                            <label for="filter-manufacturer-2" class="custom-control-label">Замочный двор</label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="filter-checkbox-item">
+                                                        <div class="filter-checkbox custom-control custom-checkbox">
+                                                            <input type="checkbox" id="filter-manufacturer-3" class="custom-control-input" name="filter-manufacturer" >
+                                                            <label for="filter-manufacturer-3" class="custom-control-label">Замочкин</label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="filter-checkbox-item">
+                                                        <div class="filter-checkbox custom-control custom-checkbox">
+                                                            <input type="checkbox" id="filter-manufacturer-4" class="custom-control-input" name="filter-manufacturer" >
+                                                            <label for="filter-manufacturer-4" class="custom-control-label">Ключково</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
+                                        <div class="filter-group">
+                                            <div class="filter-group-header">
+                                                <div class="filter-group-title title-h4">Тип механизма</div>
+                                            </div>
+    
+                                            <div class="filter-group-content">
+                                                <ul class="filter-checkbox-list list-unstyled">
+                                                    <li class="filter-checkbox-item">
+                                                        <div class="filter-checkbox custom-control custom-checkbox">
+                                                            <input type="checkbox" id="filter-type-1" class="custom-control-input" name="filter-type" >
+                                                            <label for="filter-type-1" class="custom-control-label">Кулачок</label>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="filter-checkbox-item">
+                                                        <div class="filter-checkbox custom-control custom-checkbox">
+                                                            <input type="checkbox" id="filter-type-2" class="custom-control-input" name="filter-type" >
+                                                            <label for="filter-type-2" class="custom-control-label">Шестеренка</label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="catalog-content-container col-xl-9">
+                        <div class="catalog-tags-block">
+                            <ul class="catalog-tags-list list-unstyled d-flex flex-wrap">
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Замки безопасные</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Золотые замки</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Электронные дистанционные замки</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Замки для железных дверей</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Цилиндры</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Замки безопасные</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Золотые замки</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Электронные дистанционные замки</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Замки для железных дверей</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Цилиндры</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Замки безопасные</a>
+                                </li>
+                                <li class="catalog-tag-item">
+                                    <a href="catalog.html" class="catalog-tag-link">Золотые замки</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="catalog-selected-options-block">
+                            <div class="form-row">
+                                <div class="col-auto">
+                                    <div class="catalog-selected-options-title">
+                                        <svg class="catalog-selected-options-media" width="15" height="15">
+                                            <use xlink:href="/images/sprite.svg#icon-filter"></use>
+                                        </svg>
+                                        Выбранные фильтры
+                                    </div>
+                                </div>
+
+                                <div class="col-auto">
+                                    <ul class="catalog-selected-options-list list-unstyled d-flex flex-wrap">
+                                        <li class="catalog-selected-option-item">
+                                            <div class="catalog-selected-option">
+                                                Лучшие товары
+                                                <button type="button" class="catalog-selected-option-remove">
+                                                    <svg class="catalog-selected-option-media" width="8" height="8">
+                                                        <use xlink:href="/images/sprite.svg#icon-close"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </li>
+        
+                                        <li class="catalog-selected-option-item">
+                                            <div class="catalog-selected-option">
+                                                Средняя безопасность
+                                                <button type="button" class="catalog-selected-option-remove">
+                                                    <svg class="catalog-selected-option-media" width="8" height="8">
+                                                        <use xlink:href="/images/sprite.svg#icon-close"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </li>
+        
+                                        <li class="catalog-selected-option-item">
+                                            <div class="catalog-selected-option">
+                                                Медный цвет
+                                                <button type="button" class="catalog-selected-option-remove">
+                                                    <svg class="catalog-selected-option-media" width="8" height="8">
+                                                        <use xlink:href="/images/sprite.svg#icon-close"></use>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </li>
+        
+                                        <li class="catalog-selected-option-item">
+                                            <button type="button" class="catalog-selected-option-reset">
+                                                Сбросить все
+                                                <svg class="catalog-selected-option-media" width="8" height="8">
+                                                    <use xlink:href="/images/sprite.svg#icon-close"></use>
+                                                </svg>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-controls-block">
+                            <div class="row justify-content-between">
+                                <div class="catalog-sort-container col-auto">
+                                    <div class="catalog-sort-block">
+                                        <form action="" class="form-catalog-sort">
+                                            <fieldset>
+                                                <div class="form-row">
+                                                    <div class="col-auto">
+                                                        <label class="catalog-sort-title" for="catalog-sort-select" >Сортировать по</label>
+                                                    </div>
+    
+                                                    <div class="col-auto">
+                                                        <select name="" id="catalog-sort-select" class="catalog-sort-select custom-control custom-select" >
+                                                            <option value="Сначала дешевые">Сначала дешевые</option>
+                                                            <option value="Сначала дороже">Сначала дороже</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="catalog-view-container col-auto">
+                                    <div class="catalog-view-block">
+                                        <ul class="catalog-view-list list-unstyled d-flex flex-wrap">
+                                            <li class="catalog-view-item active">
+                                                <button type="button" class="catalog-view-button" >
+                                                    <svg class="catalog-view-media" width="32" height="32">
+                                                        <use xlink:href="/images/sprite.svg#icon-grid"></use>
+                                                    </svg>
+                                                </button>
+                                            </li>
+    
+                                            <li class="catalog-view-item">
+                                                <button type="button" class="catalog-view-button" >
+                                                    <svg class="catalog-view-media" width="32" height="32">
+                                                        <use xlink:href="/images/sprite.svg#icon-list"></use>
+                                                    </svg>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-products-block">
+                            <div class="catalog-products-list products-list row">
+                                <div class="product-item col-12">
+                                    <div class="card-product card-product-landscape">
+                                        <div class="row">
+                                            <div class="card-product-thumbnail-container col-3 col-sm-2 col-md-auto d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-badges d-flex">
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="39" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                        </svg>
+                                                    </div>
+        
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="45" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="card-product-thumbnail">
+                                                    <img loading="lazy" src="uploads/catalog/product-image-1.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
+                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+        
+                                                <div class="card-product-info-list d-sm-flex">
+                                                    <div class="card-product-size-block card-product-info-block d-flex">
+                                                        <label for="card-product-size-1" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                                                        
+                                                        <select name="" id="card-product-size-1" class="card-product-size custom-control custom-select" style="width: auto;" >
+                                                            <option value="50*60мм">50*60мм</option>
+                                                            <option value="60*70мм">60*70мм</option>
+                                                        </select>
+                                                    </div>
+        
+                                                    <div class="card-product-color-block card-product-info-block d-flex">
+                                                        <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+        
+                                                        <div class="card-product-color-list d-flex flex-wrap">
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-1-1" name="card-product-color-1" checked >
+                                                                <label for="card-product-color-1-1" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+        
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-1-2" name="card-product-color-1" >
+                                                                <label for="card-product-color-1-2" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+        
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-1-3" name="card-product-color-1" >
+                                                                <label for="card-product-color-1-3" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-price-block d-flex flex-wrap">
+                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                </div>
+
+                                                <div class="card-product-sale-price text-danger">Экономия 13%</div>
+                                            </div>
+
+                                            <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                    </svg>
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-item col-12">
+                                    <div class="card-product card-product-landscape">
+                                        <div class="row">
+                                            <div class="card-product-thumbnail-container col-3 col-sm-2 col-md-auto d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-badges d-flex">
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="39" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                        </svg>
+                                                    </div>
+        
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="45" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-product-thumbnail">
+                                                    <img loading="lazy" src="uploads/catalog/product-image-2.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
+                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+
+                                                <div class="card-product-info-list d-sm-flex">
+                                                    <div class="card-product-size-block card-product-info-block d-flex">
+                                                        <label for="card-product-size-2" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                                                        
+                                                        <select name="" id="card-product-size-2" class="card-product-size custom-control custom-select" style="width: auto;" >
+                                                            <option value="50*60мм">50*60мм</option>
+                                                            <option value="60*70мм">60*70мм</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="card-product-color-block card-product-info-block d-flex">
+                                                        <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+
+                                                        <div class="card-product-color-list d-flex flex-wrap">
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-2-1" name="card-product-color-2" checked >
+                                                                <label for="card-product-color-2-1" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-2-2" name="card-product-color-2" >
+                                                                <label for="card-product-color-2-2" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-2-3" name="card-product-color-2" >
+                                                                <label for="card-product-color-2-3" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-price-block d-flex flex-wrap">
+                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                </div>
+
+                                                <div class="card-product-sale-price text-danger">Экономия 13%</div>
+                                            </div>
+
+                                            <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                    </svg>
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-item col-12">
+                                    <div class="card-product card-product-landscape">
+                                        <div class="row">
+                                            <div class="card-product-thumbnail-container col-3 col-sm-2 col-md-auto d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-badges d-flex">
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="39" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                        </svg>
+                                                    </div>
+        
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="45" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-product-thumbnail">
+                                                    <img loading="lazy" src="uploads/catalog/product-image-3.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
+                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+
+                                                <div class="card-product-info-list d-sm-flex">
+                                                    <div class="card-product-size-block card-product-info-block d-flex">
+                                                        <label for="card-product-size-3" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                                                        
+                                                        <select name="" id="card-product-size-3" class="card-product-size custom-control custom-select" style="width: auto;" >
+                                                            <option value="50*60мм">50*60мм</option>
+                                                            <option value="60*70мм">60*70мм</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="card-product-color-block card-product-info-block d-flex">
+                                                        <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+
+                                                        <div class="card-product-color-list d-flex flex-wrap">
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-3-1" name="card-product-color-3" checked >
+                                                                <label for="card-product-color-3-1" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-3-2" name="card-product-color-3" >
+                                                                <label for="card-product-color-3-2" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-3-3" name="card-product-color-3" >
+                                                                <label for="card-product-color-3-3" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-price-block d-flex flex-wrap">
+                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                </div>
+
+                                                <div class="card-product-sale-price text-danger">Экономия 13%</div>
+                                            </div>
+
+                                            <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                    </svg>
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-item col-12">
+                                    <div class="card-product card-product-landscape">
+                                        <div class="row">
+                                            <div class="card-product-thumbnail-container col-3 col-sm-2 col-md-auto d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-badges d-flex">
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="39" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                        </svg>
+                                                    </div>
+        
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="45" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-product-thumbnail">
+                                                    <img loading="lazy" src="uploads/catalog/product-image-2.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
+                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+
+                                                <div class="card-product-info-list d-sm-flex">
+                                                    <div class="card-product-size-block card-product-info-block d-flex">
+                                                        <label for="card-product-size-4" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                                                        
+                                                        <select name="" id="card-product-size-4" class="card-product-size custom-control custom-select" style="width: auto;" >
+                                                            <option value="50*60мм">50*60мм</option>
+                                                            <option value="60*70мм">60*70мм</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="card-product-color-block card-product-info-block d-flex">
+                                                        <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+
+                                                        <div class="card-product-color-list d-flex flex-wrap">
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-4-1" name="card-product-color-4" checked >
+                                                                <label for="card-product-color-4-1" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-4-2" name="card-product-color-4" >
+                                                                <label for="card-product-color-4-2" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-4-3" name="card-product-color-4" >
+                                                                <label for="card-product-color-4-3" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-price-block d-flex flex-wrap">
+                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                </div>
+
+                                                <div class="card-product-sale-price text-danger">Экономия 13%</div>
+                                            </div>
+
+                                            <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                    </svg>
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-item col-12">
+                                    <a href="#link" class="catalog-contact-block catalog-contact-landscape-block catalog-contact-whatsapp-block">
+                                        <div class="row">
+                                            <div class="catalog-contact-thumbnail-container col-2 col-md-1 d-flex justify-content-center">
+                                                <div class="catalog-contact-thumbnail">
+                                                    <img loading="lazy" src="images/icons/icon-whatsapp-white.svg" width="62" height="62" alt="Связаться по WhatsApp" class="catalog-contact-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="catalog-contact-typography-container col-10 col-md-11 align-self-center">
+                                                <div class="catalog-contact-title title-h3">Свяжитесь с нами по WhatsApp</div>
+        
+                                                <div class="catalog-contact-description">Если у вас появились вопросы в выборе замка. Мы с радостью Вас проконсультируем.</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div class="product-item col-12">
+                                    <div class="card-product card-product-landscape">
+                                        <div class="row">
+                                            <div class="card-product-thumbnail-container col-3 col-sm-2 col-md-auto d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-badges d-flex">
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="39" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                        </svg>
+                                                    </div>
+        
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="45" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-product-thumbnail">
+                                                    <img loading="lazy" src="uploads/catalog/product-image-1.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
+                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+
+                                                <div class="card-product-info-list d-sm-flex">
+                                                    <div class="card-product-size-block card-product-info-block d-flex">
+                                                        <label for="card-product-size-5" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                                                        
+                                                        <select name="" id="card-product-size-5" class="card-product-size custom-control custom-select" style="width: auto;" >
+                                                            <option value="50*60мм">50*60мм</option>
+                                                            <option value="60*70мм">60*70мм</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="card-product-color-block card-product-info-block d-flex">
+                                                        <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+
+                                                        <div class="card-product-color-list d-flex flex-wrap">
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-5-1" name="card-product-color-5" checked >
+                                                                <label for="card-product-color-5-1" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-5-2" name="card-product-color-5" >
+                                                                <label for="card-product-color-5-2" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-5-3" name="card-product-color-5" >
+                                                                <label for="card-product-color-5-3" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-price-block d-flex flex-wrap">
+                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                </div>
+
+                                                <div class="card-product-sale-price text-danger">Экономия 13%</div>
+                                            </div>
+
+                                            <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                    </svg>
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-item col-12">
+                                    <div class="card-product card-product-landscape">
+                                        <div class="row">
+                                            <div class="card-product-thumbnail-container col-3 col-sm-2 col-md-auto d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-badges d-flex">
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="39" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                        </svg>
+                                                    </div>
+        
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="45" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-product-thumbnail">
+                                                    <img loading="lazy" src="uploads/catalog/product-image-2.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
+                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+
+                                                <div class="card-product-info-list d-sm-flex">
+                                                    <div class="card-product-size-block card-product-info-block d-flex">
+                                                        <label for="card-product-size-6" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                                                        
+                                                        <select name="" id="card-product-size-6" class="card-product-size custom-control custom-select" style="width: auto;" >
+                                                            <option value="50*60мм">50*60мм</option>
+                                                            <option value="60*70мм">60*70мм</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="card-product-color-block card-product-info-block d-flex">
+                                                        <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+
+                                                        <div class="card-product-color-list d-flex flex-wrap">
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-6-1" name="card-product-color-6" checked >
+                                                                <label for="card-product-color-6-1" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-6-2" name="card-product-color-6" >
+                                                                <label for="card-product-color-6-2" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-6-3" name="card-product-color-6" >
+                                                                <label for="card-product-color-6-3" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-price-block d-flex flex-wrap">
+                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                </div>
+
+                                                <div class="card-product-sale-price text-danger">Экономия 13%</div>
+                                            </div>
+
+                                            <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                    </svg>
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-item col-12">
+                                    <div class="card-product card-product-landscape">
+                                        <div class="row">
+                                            <div class="card-product-thumbnail-container col-3 col-sm-2 col-md-auto d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-badges d-flex">
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="39" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                        </svg>
+                                                    </div>
+        
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="45" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-product-thumbnail">
+                                                    <img loading="lazy" src="uploads/catalog/product-image-3.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
+                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+
+                                                <div class="card-product-info-list d-sm-flex">
+                                                    <div class="card-product-size-block card-product-info-block d-flex">
+                                                        <label for="card-product-size-7" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                                                        
+                                                        <select name="" id="card-product-size-7" class="card-product-size custom-control custom-select" style="width: auto;" >
+                                                            <option value="50*60мм">50*60мм</option>
+                                                            <option value="60*70мм">60*70мм</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="card-product-color-block card-product-info-block d-flex">
+                                                        <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+
+                                                        <div class="card-product-color-list d-flex flex-wrap">
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-7-1" name="card-product-color-7" checked >
+                                                                <label for="card-product-color-7-1" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-7-2" name="card-product-color-7" >
+                                                                <label for="card-product-color-7-2" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-7-3" name="card-product-color-7" >
+                                                                <label for="card-product-color-7-3" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-price-block d-flex flex-wrap">
+                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                </div>
+
+                                                <div class="card-product-sale-price text-danger">Экономия 13%</div>
+                                            </div>
+
+                                            <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                    </svg>
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-item col-12">
+                                    <div class="card-product card-product-landscape">
+                                        <div class="row">
+                                            <div class="card-product-thumbnail-container col-3 col-sm-2 col-md-auto d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-badges d-flex">
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="39" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                        </svg>
+                                                    </div>
+        
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="45" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-product-thumbnail">
+                                                    <img loading="lazy" src="uploads/catalog/product-image-2.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
+                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+
+                                                <div class="card-product-info-list d-sm-flex">
+                                                    <div class="card-product-size-block card-product-info-block d-flex">
+                                                        <label for="card-product-size-8" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                                                        
+                                                        <select name="" id="card-product-size-8" class="card-product-size custom-control custom-select" style="width: auto;" >
+                                                            <option value="50*60мм">50*60мм</option>
+                                                            <option value="60*70мм">60*70мм</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="card-product-color-block card-product-info-block d-flex">
+                                                        <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+
+                                                        <div class="card-product-color-list d-flex flex-wrap">
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-8-1" name="card-product-color-8" checked >
+                                                                <label for="card-product-color-8-1" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-8-2" name="card-product-color-8" >
+                                                                <label for="card-product-color-8-2" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-8-3" name="card-product-color-8" >
+                                                                <label for="card-product-color-8-3" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-price-block d-flex flex-wrap">
+                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                </div>
+
+                                                <div class="card-product-sale-price text-danger">Экономия 13%</div>
+                                            </div>
+
+                                            <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                    </svg>
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="product-item col-12">
+                                    <div class="card-product card-product-landscape">
+                                        <div class="row">
+                                            <div class="card-product-thumbnail-container col-3 col-sm-2 col-md-auto d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-badges d-flex">
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="39" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                        </svg>
+                                                    </div>
+        
+                                                    <div class="card-product-badge">
+                                                        <svg class="card-product-badge-media" width="45" height="45">
+                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-product-thumbnail">
+                                                    <img loading="lazy" src="uploads/catalog/product-image-1.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
+                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+
+                                                <div class="card-product-info-list d-sm-flex">
+                                                    <div class="card-product-size-block card-product-info-block d-flex">
+                                                        <label for="card-product-size-9" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                                                        
+                                                        <select name="" id="card-product-size-9" class="card-product-size custom-control custom-select" style="width: auto;" >
+                                                            <option value="50*60мм">50*60мм</option>
+                                                            <option value="60*70мм">60*70мм</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="card-product-color-block card-product-info-block d-flex">
+                                                        <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+
+                                                        <div class="card-product-color-list d-flex flex-wrap">
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-9-1" name="card-product-color-9" checked >
+                                                                <label for="card-product-color-9-1" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-9-2" name="card-product-color-9" >
+                                                                <label for="card-product-color-9-2" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                                                <input type="radio" class="custom-control-input" id="card-product-color-9-3" name="card-product-color-9" >
+                                                                <label for="card-product-color-9-3" class="custom-control-label">
+                                                                    <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <div class="card-product-price-block d-flex flex-wrap">
+                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                </div>
+
+                                                <div class="card-product-sale-price text-danger">Экономия 13%</div>
+                                            </div>
+
+                                            <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                    </svg>
+                                                    Купить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-pagination-block">
+                            <ul class="pagination list-unstyled d-flex flex-wrap align-items-center">
+                                <li class="page-item active" aria-current="page" >
+                                    <a class="page-link" href="catalog.html">1</a>
+                                </li>
+
+                                <li class="page-item">
+                                    <a class="page-link" href="catalog.html">2</a>
+                                </li>
+
+                                <li class="page-item">
+                                    <a class="page-link" href="catalog.html">3</a>
+                                </li>
+
+                                <li class="page-item">...</li>
+
+                                <li class="page-item">
+                                    <a class="page-link" href="catalog.html">8</a>
+                                </li>
+
+                                <li class="page-item">
+                                    <a class="page-link" href="catalog.html">9</a>
+                                </li>
+
+                                <li class="page-item next" aria-label="Next" >
+                                    <a class="page-link" href="catalog.html">
+                                        <svg class="page-media" width="18" height="18">
+                                            <use xlink:href="/images/sprite.svg#icon-chevron-right-solid"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+
+                                <li class="page-item">
+                                    <a class="page-link page-view-all" href="catalog.html">Смотреть все  <span class="page-badge" >253</span></a>
+                                </li>
+                              </ul>
+                        </div>
+
+                        <div class="catalog-about-block catalog-about-bottom-block">
+                            <div class="catalog-about-title title-h3 text-uppercase">Врезные замки в г Москва</div>
+                            <div class="catalog-about-description">
+                                <p>Замки накладные и врезные и другие товары можно приобрести в Красноярске по низким ценам. Подберите интересующий товар на сайте и купите его в нашем интернет-магазине. Ассортимент товаров, представленных в каталоге, чрезвычайно широк. Среди них наверняка найдется подходящая по всем параметрам позиция. <br> Все представленные в разделе «Замки накладные и врезные» изделия выпускаются известными и отлично зарекомендовавшими себя высоким качеством своей продукции компаниями.</p>
+                                <p>Вы всегда можете сделать заказ и оплатить его онлайн на официальном сайте в России. Для жителей Красноярского края у нас не только низкие цены на товары категории "Замки накладные и врезные", но и быстрая доставка в такие города, как Красноярск, Ачинск, Канск, Железногорск, Минусинск, Зеленогорск, Лесосибирск, Назарово, Сосновоборск, Шарыпово, Дивногорск, Дудинка и Боготол.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-services-related">
+            <div class="container">
+                <div class="section-header">
+                    <div class="row justify-content-between">
+                        <div class="col">
+                            <div class="section-title title-h3">Услуги</div>
+                        </div>
+
+                        <div class="col-auto">
+                            <a href="services.html" class="section-cta">Все услуги</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="services-related-grid row">
+                    <div class="service-related-item col-lg-4">
+                        <div class="card card-service-related">
+                            <div class="row flex-nowrap">
+                                <div class="card-thumbnail col-auto">
+                                    <img loading="lazy" src="uploads/services/service-related-thumbnail-item-1.jpg" width="100" height="100" alt="Заедает замок? Отремонтируем!" class="card-media">
+                                </div>
+
+                                <div class="card-content col align-self-center">
+                                    <a href="#link" class="card-title title-h4" >Заедает замок? <br> Отремонтируем!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-related-item col-lg-4">
+                        <div class="card card-service-related">
+                            <div class="row flex-nowrap">
+                                <div class="card-thumbnail col-auto">
+                                    <img loading="lazy" src="uploads/services/service-related-thumbnail-item-2.jpg" width="100" height="100" alt="Сломался замок? Вскроем дверь и заменим замок!" class="card-media">
+                                </div>
+
+                                <div class="card-content col align-self-center">
+                                    <a href="#link" class="card-title title-h4" >Сломался замок? <br> Вскроем дверь и заменим замок!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-related-item col-lg-4">
+                        <div class="card card-service-related">
+                            <div class="row flex-nowrap">
+                                <div class="card-thumbnail col-auto">
+                                    <img loading="lazy" src="uploads/services/service-related-thumbnail-item-3.jpg" width="100" height="100" alt="Потеряли ключ? Перекодируем замок!" class="card-media">
+                                </div>
+
+                                <div class="card-content col align-self-center">
+                                    <a href="#link" class="card-title title-h4" >Потеряли ключ? <br> Перекодируем замок!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-box section-dark flex-shrink-0 flex-grow-0">
+        <div class="container">
+            <div class="row d-lg-block d-xxl-flex">
+                <div class="footer-logo-container col-sm-6 col-md-4 col-lg-2 col-xl-auto col-xxl-3 order-md-1 float-lg-left">
+                    <a href="index.html" class="footer-logo d-flex align-items-center">
+                        <div class="footer-logo-thumbnail">
+                            <img src="images/logo/logo-light.svg" width="52" height="44" alt="Замки и Ключи" class="footer-logo-media">
+                        </div>
+
+                        <div class="footer-logo-text">
+                            <div class="footer-logo-title">Замки <br class="d-xl-none" > и Ключи</div>
+                            <div class="footer-logo-subtitle d-none d-xl-block">Магазин дверных замков и фурнитуры</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="footer-catalog-container col-lg-10 col-xl-auto col-xxl d-none d-lg-block order-md-2 float-lg-right">
+                    <ul class="footer-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between">
+                        <li class="footer-catalog-item col-auto col-xxl">
+                            <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="footer-catalog-thumbnail">
+                                    <svg class="footer-catalog-media" width="26" height="26">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-lock"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="footer-catalog-text">Замки</div>
+                            </a>
+                        </li>
+
+                        <li class="footer-catalog-item col-auto col-xxl">
+                            <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="footer-catalog-thumbnail">
+                                    <svg class="footer-catalog-media" width="18" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-handle"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="footer-catalog-text">Ручки</div>
+                            </a>
+                        </li>
+
+                        <li class="footer-catalog-item col-auto col-xxl">
+                            <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="footer-catalog-thumbnail">
+                                    <svg class="footer-catalog-media" width="22" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-furniture"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="footer-catalog-text">Фурнитура</div>
+                            </a>
+                        </li>
+
+                        <li class="footer-catalog-item col-auto col-xxl">
+                            <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="footer-catalog-thumbnail">
+                                    <svg class="footer-catalog-media" width="19" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-keys"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="footer-catalog-text">Копии ключей</div>
+                            </a>
+                        </li>
+
+                        <li class="footer-catalog-item col-auto col-xxl">
+                            <a href="#link" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                                <div class="footer-catalog-thumbnail">
+                                    <svg class="footer-catalog-media" width="26" height="25">
+                                        <use xlink:href="/images/sprite.svg#icon-catalog-master"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="footer-catalog-text">Мастер-системы</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-devider w-100 clearfix d-none d-lg-block order-md-3"></div>
+
+                <div class="footer-copyright-container col-sm-6 col-md-4 col-lg-3 col-xl-2 order-md-6 order-lg-4 float-lg-left">
+                    <div class="footer-copyright-block">
+                        <div class="footer-copyright-text">
+                            <p>&copy;&nbsp;2021</p>
+                            <p>Все права защищены, при любом копировани материалов ссылка на сайт источник обязательна</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-nav-container col-lg-2 col-xl-3 col-xxl-2 offset-xxl-1 d-none d-lg-block order-md-5 float-lg-left">
+                    <ul class="footer-nav-list list-unstyled d-flex flex-column flex-wrap">
+                        <li class="footer-nav-item">
+                            <a href="#link" class="footer-nav-link">Услуги</a>
+                        </li>
+
+                        <li class="footer-nav-item">
+                            <a href="#link" class="footer-nav-link">Доставка и оплата</a>
+                        </li>
+
+                        <li class="footer-nav-item">
+                            <a href="#link" class="footer-nav-link">Гарантии</a>
+                        </li>
+
+                        <li class="footer-nav-item">
+                            <a href="#link" class="footer-nav-link">О компании</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact-container col-md-8 col-lg-3 order-md-4 order-lg-6 float-lg-left">
+                    <div class="row">
+                        <div class="footer-phone-container col-sm-6 col-lg-12">
+                            <ul class="footer-contact-list d-flex flex-column list-unstyled">
+                                <li class="footer-contact-item">
+                                    <a href="tel:+74950957797" class="footer-contact">+7 (495) 095-77-97</a>
+                                </li>
+        
+                                <li class="footer-contact-item">
+                                    <a href="mailto:info@l-keys.ru" class="footer-contact">info@l-keys.ru</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-social-container col-sm-6 col-lg-12">
+                            <div class="footer-social-block">
+                                <a href="#link" class="footer-social footer-social-whatsapp d-flex align-items-center">
+                                    <div class="footer-social-thumbnail">
+                                        <img src="images/icons/icon-whatsapp.svg" width="25" height="25" alt="WhatsApp" class="footer-social-media">
+                                    </div>
+            
+                                    <div class="footer-social-text">Связаться по WhatsApp</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-search-container col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 offset-xl-1 offset-xxl-0 col order-md-7 float-lg-left">
+                    <form class="footer-search search">
+                        <input type="search" class="footer-search-input search-input" placeholder="Поиск товаров" required="">
+                        <button type="button" class="footer-search-button search-button">
+                            <svg class="search-button-media" width="24" height="25">
+                                <use xlink:href="/images/sprite.svg#icon-search"></use>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="footer-develop-container col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-1 offset-xl-1 order-md-8 float-lg-right">
+                    <a href="https://www.diol-it.ru/" class="footer-develop-link d-flex align-items-center align-items-xxl-end flex-xxl-column" target="_blank" >
+                        <div class="footer-develop-text text-nowrap">Разаработка сайта</div>
+
+                        <div class="footer-develop-thumbnail">
+                            <img loading="lazy" src="images/develop/logo-diol.svg" width="66" height="39" alt="Diol-it" class="footer-develop-image">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.6.0/js/dist/util.js"></script>
+    <script src="vendor/bootstrap-4.6.0/js/dist/collapse.js"></script>
+    <script src="vendor/bootstrap-4.6.0/js/dist/tooltip.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js"></script>
+
+    <script src="js/forms.js"></script>
+    <script src="js/tooltip.js"></script>
+    <script src="js/filter.js"></script>
+</body>
+</html>
