@@ -1,0 +1,43 @@
+.catalog-products-block {
+    margin-bottom: 30px;
+}
+
+.products-grid {
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -15px;
+    @include media-breakpoint-up(sm) {
+        margin-bottom: -20px;
+    }
+    @include media-breakpoint-up(md) {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-bottom: -30px;
+    }
+
+    .product-item {
+        margin-bottom: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        @include media-breakpoint-up(sm) {
+            margin-bottom: 20px;
+        }
+        @include media-breakpoint-up(md) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 30px;
+        }
+    }
+}
+
+.products-list {
+    margin-bottom: -10px;
+
+    .product-item {
+        margin-bottom: 10px;
+    }
+}

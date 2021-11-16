@@ -2,6 +2,9 @@
 
 // vendors
 @import '../vendor/bootstrap-4.6.0/scss/bootstrap';
+@import '../vendor/select2/select2.min.css';
+@import '../vendor/jquery-ui-1.12.1.custom/jquery-ui.min.css';
+@import '../vendor/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css';
 
 // general
 @import 'fonts';
@@ -11,12 +14,20 @@
 @import 'components/search';
 @import 'components/lists';
 @import 'components/contact';
+@import 'components/breadcrumb';
+@import 'components/pagination';
+@import 'components/forms';
+@import 'components/filter';
+@import 'components/tooltip';
+@import 'components/select2';
 
 // cards
 @import 'components/cards/card';
+@import 'components/cards/card-product';
 @import 'components/cards/card-intro';
 @import 'components/cards/card-video';
 @import 'components/cards/card-service';
+@import 'components/cards/card-service-related';
 @import 'components/cards/card-partner';
 @import 'components/cards/card-price';
 @import 'components/cards/card-faq';
@@ -26,9 +37,11 @@
 
 // sections
 @import 'sections/section-intro';
+@import 'sections/section-display';
+@import 'sections/section-services';
+@import 'sections/section-services-related';
 @import 'sections/section-service';
 @import 'sections/section-smartphone';
-@import 'sections/section-services';
 @import 'sections/section-about';
 @import 'sections/section-partners';
 @import 'sections/section-steps';
@@ -36,6 +49,10 @@
 @import 'sections/section-faq';
 @import 'sections/section-cases';
 @import 'sections/section-content';
+
+
+// pages
+@import 'layout/catalog/catalog';
 
 // footer
 @import 'layout/footer/footer';

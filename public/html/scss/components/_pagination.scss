@@ -1,0 +1,65 @@
+.pagination {
+    margin: 0 -8px -15px;
+    text-align: center;
+}
+
+.page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 3px 5px;
+    border: none;
+    border-radius: 0;
+    background: none;
+    color: $c-black;
+    font-size: 20px;
+    font-family: $f-secondary;
+    font-weight: 700;
+    text-align: center;
+}
+
+.page-view-all {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: $c-white;
+    color: $c-black;
+    font-size: 15px;
+    font-family: $f-default;
+    font-weight: 700;
+}
+
+.page-badge {
+    display: inline-block;
+    margin-left: 5px;
+    color: $c-secondary;
+}
+
+.page-item {
+    min-width: 40px;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-bottom: 15px;
+
+    &:first-child,
+    &:last-child {
+        .page-link {
+            border-radius: 0;
+        }
+    }
+
+    &.active {
+        .page-link {
+            background-color: $c-black;
+            color: $c-white;
+        }
+    }
+
+    &.next {
+        .page-link {
+            background-color: $c-white;
+        }
+    }
+}

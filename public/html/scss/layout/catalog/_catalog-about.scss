@@ -1,0 +1,27 @@
+.catalog-about-block {
+    @include media-breakpoint-up(xxl) {
+        font-size: 15px;
+    }
+
+    p + * {
+        @include media-breakpoint-up(xxl) {
+            margin-top: 25px;
+        }
+    }
+
+    &.catalog-about-bottom-block {
+        margin-top: 35px;
+        @include media-breakpoint-up(lg) {
+            margin-top: 45px;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-top: 65px;
+        }
+    }
+}
+
+
+.catalog-about-title {
+    margin: 0 0 15px;
+    font-family: $f-secondary;
+}

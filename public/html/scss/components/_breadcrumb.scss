@@ -1,0 +1,28 @@
+.breadcrumb {
+    margin: 0 0 15px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    font-size: 12px;
+
+    a {
+        border: none;
+    }
+}
+
+.breadcrumb-item {
+    + .breadcrumb-item {
+        padding-left: 8px;
+
+        &::before {
+            position: relative;
+            top: 50%;
+            width: 10px;
+            height: 1px;
+            margin: 0 8px 0 0;
+            background: currentColor;
+            content: '';
+        }
+    }
+}

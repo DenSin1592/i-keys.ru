@@ -1,0 +1,313 @@
+.card-product {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 13px;
+    background-color: $c-white;
+    @include media-breakpoint-up(xxl) {
+        padding: 20px;
+        font-size: 15px;
+    }
+
+    a {
+        border: none;
+    }
+
+    /* product media */
+    .card-product-thumbnail {
+        position: relative;
+        padding-bottom: 68.5%;
+        @include media-breakpoint-up(sm) {
+            padding-bottom: 95.5%;
+        }
+        @include media-breakpoint-up(md) {
+            padding-bottom: 93.5%;
+        }
+        @include media-breakpoint-up(lg) {
+            padding-bottom: 95.5%;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-bottom: 92%;
+        }
+
+        .card-product-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+        }
+    }
+    /* product media end */
+
+
+    /* product badges */
+    .card-product-badges {
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        left: 10px;
+        margin-left: -5px;
+        margin-right: -5px;
+        @include media-breakpoint-up(xxl) {
+            top: 30px;
+            left: 30px;
+        }
+
+        .card-product-badge {
+            height: 35px;
+            padding-left: 5px;
+            padding-right: 5px;
+
+            @include media-breakpoint-up(xl) {
+                height: 45px;
+            }
+
+            .card-product-badge-media {
+                width: auto;
+                height: auto;
+                max-height: 100%;
+            }
+        }
+    }
+    /* product badges end */
+
+
+    /* product typography */
+    .card-product-title {
+        @extend .title-h4;
+        display: block;
+        margin: 0 0 10px;
+        font-weight: 700;
+
+        &:hover {
+            color: $c-secondary;
+        }
+    }
+    /* product typography end */
+
+
+    /* product info */
+    .card-product-info-block {
+        position: relative;
+    }
+
+    .card-product-info-list {
+        margin-bottom: 5px;
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: 15px;
+        }
+    }
+
+    .card-product-info-title {
+        margin: 0 10px 0 0;
+        font-weight: 700;
+        line-height: 35px;
+    }
+    /* product info end */
+
+
+    /* product price */
+    .card-product-price {
+        font-size: 18px;
+        font-weight: 700;
+        @include media-breakpoint-up(xxl) {
+            font-size: 25px;
+        }
+    }
+
+    .card-product-old-price {
+        color: $c-gray;
+        font-size: 13px;
+        text-decoration: line-through;
+        @include media-breakpoint-up(xxl) {
+            font-size: 15px;
+        }
+    }
+
+    .card-product-sale-price {
+        font-weight: 700;
+    }
+    /* product price end */
+
+
+    /* product order */
+    .card-product-order-block {
+        padding-top: 10px;
+        border-top: 1px solid rgba($c-black, .5);
+        @include media-breakpoint-up(xxl) {
+            padding-top: 25px;
+        }
+    }
+    
+    .card-product-cart {
+        cursor: pointer;
+        position: relative;
+        min-width: 70px;
+        margin: 0;
+        padding: 15px;
+        border: none;
+        border-radius: 0;
+        background: $c-secondary;
+        color: $c-white;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1;
+        @include media-breakpoint-up(xxl) {
+            min-width: 150px;
+            padding: 15px;
+            font-size: 15px;
+        }
+
+        &::after {
+            position: absolute;
+            top: calc(100% + 2px);
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: $c-black;
+            content: '';
+        }
+
+        &-media {
+            margin-right: 5px;
+            fill: currentColor;
+        }
+    }
+    /* product order end */
+
+   
+
+    &.card-product-landscape {
+        @include media-breakpoint-up(md) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .card-product-thumbnail-container,
+        .card-product-summary-container,
+        .card-product-price-container,
+        .card-product-cart-container {
+            @include media-breakpoint-up(md) {
+                padding-top: 18px;
+                padding-bottom: 18px;
+            }
+        }
+
+        .card-product-price-container {
+            @include media-breakpoint-up(md) {
+                border-left: 1px solid rgba($c-black, .3);
+            }
+        }
+
+
+        /* product media */
+        .card-product-thumbnail {
+            width: 54px;
+            padding-bottom: 54px;
+            @include media-breakpoint-up(lg) {
+                width: 68px;
+                padding-bottom: 60px;
+            }
+            @include media-breakpoint-up(xxl) {
+                margin-right: 25px;
+            }
+        }
+        /* product media end */
+
+
+        /* product badges */
+        .card-product-badges {
+            top: 0;
+            left: 5px;
+            margin-left: -4px;
+            margin-right: -4px;
+            @include media-breakpoint-up(md) {
+                top: 10px;
+                left: 8px;
+            }
+
+            .card-product-badge {
+                height: 30px;
+                padding-left: 4px;
+                padding-right: 3px;
+            }
+        }
+        /* product badges end */
+
+
+        /* product typography */
+        .card-product-title {
+            margin: 0 0 5px;
+            font-size: 17px;
+            line-height: 25px;
+        }
+        /* product typography end */
+
+
+        /* product info */
+        .card-product-info-list {
+            margin: 0 -10px;
+            @include media-breakpoint-up(lg) {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+            @include media-breakpoint-up(xxl) {
+                margin-left: -25px;
+                margin-right: -25px;
+            }
+            
+            .card-product-info-block {
+                padding-left: 10px;
+                padding-right: 10px;
+                @include media-breakpoint-up(lg) {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
+                @include media-breakpoint-up(xxl) {
+                    padding-left: 25px;
+                    padding-right: 25px;
+                }
+                
+                + .card-product-info-block {
+                    &::before {
+                        @include media-breakpoint-up(sm) {
+                            position: absolute;
+                            top: 5px;
+                            left: 0;
+                            height: 25px;
+                            border-left: 1px solid rgba($c-black, .3);
+                            content: '';
+                        }
+                    }
+                }
+            }
+        }
+
+        .card-product-info-title {
+            line-height: 30px;
+        }
+        /* product info end */
+
+
+        /* product price */
+        .card-product-price-block {
+            width: 105px;
+            @include media-breakpoint-up(xxl) {
+                width: 155px;
+            }
+        }
+        /* product price end */
+
+
+        /* product order */
+        .card-product-order-block {
+            border: none;
+        }
+        /* product order end */
+    }
+}

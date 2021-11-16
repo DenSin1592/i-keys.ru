@@ -121,6 +121,11 @@ img {
         margin-left: -15px;
         margin-right: -15px;
     }
+
+    &.no-gutters {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 .col,
@@ -139,6 +144,26 @@ img {
 
 .section-subtitle {
     margin-top: 0.6rem;
+}
+
+.section-cta {
+    position: relative;
+    border: none;
+    font-weight: 600;
+    @include media-breakpoint-up(xxl) {
+        font-size: 17px;
+    }
+
+    &::before {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        margin-right: 10px;
+        border-radius: 50%;
+        background: currentColor;
+        vertical-align: middle;
+        content: '';
+    }
 }
 
 .section-gray {
