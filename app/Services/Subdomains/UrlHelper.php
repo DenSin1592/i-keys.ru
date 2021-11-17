@@ -17,6 +17,14 @@ class UrlHelper
 
     public function parseHttpHostAndReturnSubdomenData($httpHost)
     {
+        if (\Str::startsWith($httpHost, '192.168.1.99') || \Str::startsWith($httpHost, '127.0.0.1') ) {
+            return [
+                'main_domain_name' => $httpHost,
+                'subdomain_name' => null,
+                'subdomain_model' => null
+            ];
+        }
+
         $addressParts = explode('.', $httpHost);
 
         if (count($addressParts) < 3) {
