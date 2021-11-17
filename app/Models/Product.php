@@ -67,9 +67,32 @@ class Product extends \Eloquent
     }
 
 
+    public function typePages()
+    {
+        return $this->belongsToMany(
+            ProductTypePage::class,
+            'product_type_page_manual',
+            'product_id',
+            'product_type_page_id',
+        );
+    }
+
+
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+
+    public function orderItem()
+    {
+        return $this->hasOne(OrderItem::class,);
+    }
+
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 
 
@@ -79,8 +102,11 @@ class Product extends \Eloquent
 
         self::deleting(function (self $product) {
             DeleteHelpers::deleteRelatedAll($product->images());
+            DeleteHelpers::deleteRelatedAll($product->orderItem());
+            DeleteHelpers::deleteRelatedAll($product->reviews());
             $product->relatedProducts()->detach();
             $product->relatedProductsReverse()->detach();
+            $product->typePages()->detach();
         });
     }
 }
