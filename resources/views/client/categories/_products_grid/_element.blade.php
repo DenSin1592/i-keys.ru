@@ -2,11 +2,11 @@
     <div class="product-card vertical">
         <div class="product-media">
             <a href="{{ UrlBuilder::getUrl($productData['product']) }}" class="product-thumbnail">
-                @if(isset($productData['image']))
+               --}}{{-- @if(isset($productData['image']))
                     <img src="{{ $productData['image']->getAttachment('image')->getUrl('middle') }}" alt="{{ $productData['product']->name }}" class="product-img">
                 @else
                     @include('client.shared._no_image', ['image_class' => 'product-img'])
-                @endif
+                @endif--}}{{--
             </a>
         </div>
         <div class="product-body">
@@ -27,7 +27,6 @@
     </div>
 </div>--}}
 
-
 <div class="product-item col-sm-6 col-md-4 col-lg-3 col-xl-4 d-flex">
     <div class="card-product card-product-portrait">
         <div class="card-product-badges d-flex">
@@ -45,10 +44,10 @@
         </div>
 
         <div class="card-product-thumbnail">
-            <img loading="lazy" src="uploads/catalog/product-image-1.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+            <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
         </div>
 
-        <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+        <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">{{$productData['product']->name}}</a>
 
         <div class="card-product-info-list">
             <div class="card-product-size-block card-product-info-block d-flex">
@@ -67,21 +66,21 @@
                     <div class="card-product-color custom-control custom-color custom-color-sm">
                         <input type="radio" class="custom-control-input" id="card-product-color-1-1" name="card-product-color-1" checked >
                         <label for="card-product-color-1-1" class="custom-control-label">
-                            <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
+                            <img loading="lazy" src="/uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
                         </label>
                     </div>
 
                     <div class="card-product-color custom-control custom-color custom-color-sm">
                         <input type="radio" class="custom-control-input" id="card-product-color-1-2" name="card-product-color-1" >
                         <label for="card-product-color-1-2" class="custom-control-label">
-                            <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
+                            <img loading="lazy" src="/uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">
                         </label>
                     </div>
 
                     <div class="card-product-color custom-control custom-color custom-color-sm">
                         <input type="radio" class="custom-control-input" id="card-product-color-1-3" name="card-product-color-1" >
                         <label for="card-product-color-1-3" class="custom-control-label">
-                            <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
+                            <img loading="lazy" src="/uploads/colors/color-black.png" alt="Черный" class="custom-control-image">
                         </label>
                     </div>
                 </div>
@@ -92,14 +91,16 @@
             <div class="form-row flex-nowrap">
                 <div class="card-product-price-container col">
                     <div class="card-product-price-block d-flex flex-wrap">
-                        <div class="card-product-price">187<span class="rouble" ></span></div>
+                        <div class="card-product-price"> {!! Helper::priceFormat($productData['product']->price) !!}<span class="rouble" ></span></div>
+                        <div class="card-product-old-price"> {!! Helper::priceFormat($productData['product']->getOldPrice()) !!}<span class="rouble"></span></div>
                     </div>
+                    <div class="card-product-sale-price text-danger">{{$productData['product']->sale_string}}</div>
                 </div>
 
                 <div class="card-product-cart-container col-auto">
                     <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
                         <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                            <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-cart')}}"></use>
                         </svg>
                         Купить
                     </button>

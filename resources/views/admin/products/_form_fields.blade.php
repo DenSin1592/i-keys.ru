@@ -22,6 +22,11 @@
     {!! Form::tbText('price') !!}
 {!! Form::tbFormGroupClose() !!}
 
+{!! Form::tbFormGroupOpen('old_price') !!}
+{!! Form::tbLabel('old_price', trans('validation.attributes.old_price')) !!}
+{!! Form::tbText('old_price') !!}
+{!! Form::tbFormGroupClose() !!}
+
 @include('admin.products.form.images._images')
 
 {!! Form::tbFormGroupOpen('description') !!}

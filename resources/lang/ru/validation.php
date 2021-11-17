@@ -196,6 +196,7 @@ return [
         'catalog_type' => 'Тип каталога',
         'category_id' => 'Категория',
         'price' => 'Цена',
+        'old_price' => 'Старая цена',
 
         'attribute_type' => 'Тип параметра',
         'units' => 'Единицы измерения',

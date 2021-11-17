@@ -26,7 +26,8 @@ class Product extends \Eloquent
         'meta_keywords',
         'meta_description',
         'extra_description',
-        'code_1c'
+        'code_1c',
+        'old_price',
     ];
 
     public function getNameWithCode1cAttribute()
@@ -81,6 +82,32 @@ class Product extends \Eloquent
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+
+    public function getFirstImagePath(string $field, ?string $version, string $noImageVersion): string
+    {
+        $image = $this->images()->first();
+        if($image instanceof ProductImage){
+            return $image->getImgPath($field, $version, $noImageVersion);
+        }
+
+        return asset('/images/common/no-image/' . $noImageVersion);
+    }
+
+
+    public function getOldPrice(): ?string
+    {
+        return $this->old_price > $this->price ? $this->old_price : null;
+    }
+
+
+    public function getSaleStringAttribute(): ?string
+    {
+        if(is_null($this->getOldPrice())) return null;
+
+        $sale = (int) (100 - ($this->price / $this->getOldPrice() * 100));
+        return "Экономия ${sale}%";
     }
 
 
