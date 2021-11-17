@@ -12,7 +12,7 @@ use App\Services\DataProviders\ProductListPage\FilterVariantsProvider;
 use App\Services\Repositories\Category\EloquentCategoryRepository;
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Seo\MetaHelper;
-
+use \Illuminate\Contracts\View\View;
 
 class CatalogController extends Controller
 {
@@ -30,24 +30,13 @@ class CatalogController extends Controller
     ){}
 
 
-    public function showCategory($categoryQuery = null)
+    public function showCategory(string $categoryQuery) : View
     {
         $parsedQuery = $this->parseUrlQuery($categoryQuery);
         $page = $parsedQuery['page'];
         $aliasPath = $parsedQuery['aliasPath'];
-        if (count($aliasPath) === 0) {
-            \App::abort(404, 'Incorrect path to category');
-        }
 
-        $categoryPath = $this->getCategoryPath($aliasPath);
-        if (count($aliasPath) !== count($categoryPath)) {
-            \App::abort(404, 'Incorrect path to category');
-        }
-
-        $category = array_pop($categoryPath);
-        if (is_null($category)) {
-            \App::abort(404, 'Category is not found');
-        }
+        $category = $this->checkPathAndReturnCurrentCategory($aliasPath);
 
         $inputData = $this->prepareInputData();
         $productsView = \Helper::prepareProductsView(\Request::get('view'));
@@ -64,46 +53,36 @@ class CatalogController extends Controller
         $productListData = $productListPageProvider->getProductListData($page);
         $breadcrumbs = $this->getBreadcrumbs($this->breadcrumbs, $category->extractPath());
         $metaData = $this->metaHelper->getRule('category')->metaForObject($category, null, ['paginator' => \Arr::get($productListData, 'paginator')]);
-        $authEditLink = route('cc.categories.edit', $category->id);
 
         return \View::make('client.categories.show')
             ->with($productListData)
             ->with('breadcrumbs', $breadcrumbs)
-            ->with('authEditLink', $authEditLink)
-            ->with('currentCategory', $category)
+            ->with('authEditLink', route('cc.categories.edit', $category->id))
             ->with($metaData);
     }
 
 
-    private function getCategoryPath(array $aliasPath): array
+    private function checkPathAndReturnCurrentCategory(array $aliasPath): Category
     {
-        $categoryPath = [];
         $categories = $this->categoryRepository->getPublishedWithAliases($aliasPath);
         $parentCategory = null;
         foreach ($aliasPath as $alias) {
-            $alias = mb_strtolower($alias);
             $parentCategoryId = is_null($parentCategory) ? null : $parentCategory->id;
             $matchedCategory = null;
-            /** @var Category $category */
+
             foreach ($categories as $category) {
-                if ($category->parent_id === $parentCategoryId && mb_strtolower($category->alias) === $alias) {
+                if ($category->parent_id === $parentCategoryId && ($category->alias) === $alias) {
                     $matchedCategory = $category;
                     break;
                 }
             }
-
             if ($matchedCategory === null) {
                 \App::abort(404, "Wrong category path");
             }
-
-            if ($parentCategory !== null) {
-                $matchedCategory->parent()->associate($parentCategory);
-            }
-            $categoryPath[] = $matchedCategory;
             $parentCategory = $matchedCategory;
         }
 
-        return $categoryPath;
+        return $matchedCategory;
     }
 
 
