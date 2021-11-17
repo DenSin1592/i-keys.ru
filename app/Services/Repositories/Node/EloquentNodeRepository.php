@@ -63,14 +63,14 @@ class EloquentNodeRepository
     }
 
 
-    public function findByType($type, $published = false)
+    public function findByType($type, $published = true)
     {
         $query = Node::where('type', $type);
         if ($published) {
             $query->treePublished();
         }
 
-        return $query->first();
+        return $query->first() ?? Abort(404, 'Node not found');
     }
 
 

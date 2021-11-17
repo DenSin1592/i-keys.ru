@@ -50,7 +50,7 @@ class StructureTypesServiceProvider extends ServiceProvider
                     )
                 );
 
-                $typeContainer->addRepositoryAssociation(
+                /*$typeContainer->addRepositoryAssociation(
                     self::REPO_ERROR_PAGE,
                     new RepositoryAssociation(
                         $this->app->make(EloquentMetaPageRepository::class),
@@ -58,7 +58,7 @@ class StructureTypesServiceProvider extends ServiceProvider
                             return route('cc.meta-pages.edit', [$node->id]);
                         }
                     )
-                );
+                );*/
 
                 $typeContainer->addType(
                     Node::TYPE_HOME_PAGE,
@@ -72,21 +72,20 @@ class StructureTypesServiceProvider extends ServiceProvider
                     )
                 );
 
-                $dynamicPageUrlCallback = function (Node $node) {
-                    return route('dynamic_page', implode('/', $node->getAliasPath()));
-                };
 
-                $typeContainer->addType(
+                /*$typeContainer->addType(
                     Node::TYPE_TEXT_PAGE,
                     new Type(
                         'Текстовая страница',
                         false,
                         self::REPO_TEXT_PAGE,
-                        $dynamicPageUrlCallback
+                        function (Node $node) {
+                            return route('dynamic_page', implode('/', $node->getAliasPath()));
+                        }
                     )
-                );
+                );*/
 
-                $typeContainer->addType(
+               /* $typeContainer->addType(
                     Node::TYPE_ERROR_PAGE,
                     new Type(
                         'Страница 404',
@@ -96,7 +95,7 @@ class StructureTypesServiceProvider extends ServiceProvider
                             return '/page-not-found';
                         }
                     )
-                );
+                );*/
 
                 return $typeContainer;
             }
