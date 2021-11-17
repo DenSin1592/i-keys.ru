@@ -1,15 +1,17 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Models\Product\HasAttributeValues;
 use App\Models\Features\AutoPublish;
 use App\Models\Helpers\DeleteHelpers;
-use App\Models\Category;
-use App\Models\ProductImage;
 
 class Product extends \Eloquent
 {
     use AutoPublish;
     use HasAttributeValues;
+
+    const VIEW_LIST = 'list';
 
     protected $fillable = [
         'category_id',
@@ -54,11 +56,6 @@ class Product extends \Eloquent
     }
 
 
-    public function images()
-    {
-        return $this->hasMany(ProductImage::class);
-    }
-
     public function relatedProductsReverse()
     {
         return $this->belongsToMany(
@@ -67,6 +64,12 @@ class Product extends \Eloquent
             'attached_product_id',
             'product_id'
         );
+    }
+
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class);
     }
 
 

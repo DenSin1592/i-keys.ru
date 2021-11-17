@@ -5,57 +5,24 @@ namespace App\Services\DataProviders\ProductListPage\Catalog;
 use App\Models\Category;
 use App\Services\DataProviders\ClientProductList\ClientProductList;
 use App\Services\DataProviders\ProductListPage\FilterVariantsProvider;
-use App\Services\Pagination\PrettyPaginator\Paginator;
 
 abstract class ProductListPageProvider
 {
-    const ELEMENTS_ON_PAGE = 12;
+    protected const ELEMENTS_ON_PAGE = 11;
 
-    /**
-     * @var FilterVariantsProvider
-     */
-    protected $filterVariantsProvider;
-
-    /**
-     * @var ClientProductList
-     */
-    protected $productListProvider;
-
-    /**
-     * @var Category
-     */
-    protected $category;
-
-    /** @var array */
-    protected $filterData;
-
-    /** @var string|null */
-    protected $sort;
-
-    /** @var  string|null */
-    protected $productsView;
 
     public function __construct(
-        FilterVariantsProvider $filterVariantsProvider,
-        ClientProductList $productListProvider,
-        Category $category,
-        array $filterData,
-        $sort,
-        $productsView
-    ) {
-        $this->productListProvider = $productListProvider;
-        $this->category = $category;
-        $this->filterVariantsProvider = $filterVariantsProvider;
-        $this->filterData = $filterData;
-        $this->sort = $sort;
-        $this->productsView = $productsView;
-    }
+        protected FilterVariantsProvider $filterVariantsProvider,
+        protected ClientProductList $productListProvider,
+        protected Category $category,
+        protected array $filterData,
+        protected ?string $sort,
+        protected ?string $productsView
+    ){}
 
-    /**
-     * @param $page
-     * @return array
-     */
-    public function getProductListData($page) {
+
+    public function getProductListData(?int $page): array
+    {
         $filterVariants = $this->getFilterVariants();
         $paginator = $this->getPaginator($page);
 
@@ -72,6 +39,7 @@ abstract class ProductListPageProvider
         return $data;
     }
 
+
     protected function getFilterVariants()
     {
         return $this->filterVariantsProvider->getFilterVariants(
@@ -87,9 +55,6 @@ abstract class ProductListPageProvider
         return $this->productListProvider->getProductListData($products);
     }
 
-    /**
-     * @param $page
-     * @return \App\Services\Pagination\PrettyPaginator\Paginator
-     */
+
     abstract protected function getPaginator($page);
 }

@@ -15,13 +15,13 @@ class UrlBuilder
         }
         $aliasPath[] = $category->alias;
 
-        return $this->buildCatalogUrlFromAliasPath($aliasPath);
+        return $this->buildCategoryUrlFromAliasPath($aliasPath);
     }
 
 
-    private function buildCatalogUrlFromAliasPath(array $aliasPath): string
+    private function buildCategoryUrlFromAliasPath(array $aliasPath): string
     {
         $aliasPathStr = implode('/', $aliasPath);
-        return route('catalog', $aliasPathStr);
+        return route('category', $aliasPathStr);
     }
 }

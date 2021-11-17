@@ -1,5 +1,8 @@
-<?php namespace App\Models;
+<?php
 
+namespace App\Models;
+
+use App\Models\Features\AliasPath;
 use App\Models\Features\AutoPublish;
 use App\Models\Helpers\DeleteHelpers;
 use App\Models\Features\InTreePublish;
@@ -17,6 +20,7 @@ class Category extends \Eloquent
     use TreeParentPath;
     use TreeAncestors;
     use AutoPublish;
+    use AliasPath;
 
     protected $fillable = [
         'parent_id',

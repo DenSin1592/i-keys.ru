@@ -1,25 +1,31 @@
-<?php namespace App\Services\Repositories\Product;
+<?php
+
+namespace App\Services\Repositories\Product;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\Catalog\Filter\Filter\CatalogFilterFactory;
+use App\Services\Catalog\ListSorting\SortingContainer;
 use App\Services\Repositories\Category\EloquentCategoryRepository;
 use App\Services\RepositoryFeatures\Attribute\EloquentAttributeToggler;
 use App\Services\RepositoryFeatures\Attribute\PositionUpdater;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+
 
 class EloquentProductRepository
 {
     const POSITION_STEP = 10;
 
-    private $positionUpdater;
-    private $attributeToggler;
-    private $categoryRepository;
 
-    public function __construct(PositionUpdater $positionUpdater, EloquentAttributeToggler $attributeToggler, EloquentCategoryRepository $categoryRepository)
+    public function __construct(
+        private PositionUpdater $positionUpdater,
+        private EloquentAttributeToggler $attributeToggler,
+        private EloquentCategoryRepository $categoryRepository,
+        private CatalogFilterFactory $catalogFilterFactory,
+        private SortingContainer $sortingContainer,
+    )
     {
-        $this->positionUpdater = $positionUpdater;
-        $this->attributeToggler = $attributeToggler;
-        $this->categoryRepository = $categoryRepository;
     }
 
 
@@ -332,5 +338,149 @@ class EloquentProductRepository
     public function findByCode1c($code1c)
     {
         return Product::query()->where('code_1c', $code1c)->first();
+    }
+
+
+    public function filterVariants(Category $category, $filterData = []): array
+    {
+        if (!is_array($filterData)) {
+            $filterData = [];
+        }
+        $query = $this->getWithinCategoryPublishedQuery($category->id);
+
+        return $this->catalogFilterFactory->getFilterByCategory($category)->getVariants($query, $filterData);
+    }
+
+
+    private function getWithinCategoryPublishedQuery($categoryId): Builder
+    {
+        $query = $this->getWithinCategoryQuery($categoryId);
+
+        $query->join(
+            'categories',
+            'categories.id',
+            '=',
+            'products.category_id'
+        )
+            ->where('categories.in_tree_publish', true)
+            ->where('products.publish', true);
+
+        return $query;
+    }
+
+
+    public function getSortingVariants($sortingInput = null): array
+    {
+        return $this->sortingContainer->getSortingVariants($sortingInput);
+    }
+
+
+    public function publishedInCategoryTreeByPage(
+        Category $category,
+        int $page = 1,
+        int $limit = 12,
+        array $filterData = [],
+        string $sorting = null
+    ) : array
+    {
+        $query = $this->getWithinCategoryPublishedFilteredQuery($category, $filterData);
+
+        return $this->getProductListStructure(
+            $query,
+            function ($q) use ($sorting) {
+                $this->scopeOrdered($q);
+                $this->sortingContainer->modifyQuery($q, $sorting);
+            },
+            $page,
+            $limit
+        );
+    }
+
+
+    private function getWithinCategoryPublishedFilteredQuery(Category $category, array $filterData = []): Builder
+    {
+        $query = $this->getWithinCategoryPublishedQuery($category->id);
+        $this->catalogFilterFactory->getFilterByCategory($category)->modifyQuery($query, $filterData);
+
+        return $query;
+    }
+
+
+    private function getProductListStructure($query, \Closure $sortingCallback, $page, $limit): array
+    {
+        $selectQuery = clone $query;
+        $countQuery = clone $query;
+
+        // sorting should be after modify query, because otherwise some filters could work incorrectly
+        $sortingCallback($selectQuery);
+        $this->scopeWithRelations($selectQuery);
+        $products = $this->selectLimitedProducts($selectQuery, $page, $limit);
+        $total = $this->selectProductCount($countQuery);
+
+        return [
+            'items' => $products,
+            'total' => $total,
+            'page' => $page,
+            'limit' => $limit,
+        ];
+    }
+
+
+    private function scopeOrdered($query): Builder
+    {
+        return $query->orderByRaw("(ISNULL(products.price) OR products.price=0) ASC");
+
+    }
+
+
+    private function selectLimitedProducts($query, $page, $limit): Collection
+    {
+        $query = $this->selectDistinctProductsQuery($query);
+
+        $products = $query->skip($limit * ($page - 1))
+            ->take($limit)
+            ->get();
+
+        return $products;
+    }
+
+
+    private function selectDistinctProductsQuery($query): Builder
+    {
+        $query->select('products.*');
+        if ($this->isJoined($query, 'product_type_page_associations')) {
+            $query->addSelect(
+                [
+                    'product_type_page_associations.position AS product_type_page_associations_position',
+                    'product_type_page_associations.name AS product_type_page_associations_name',
+                ]
+            );
+        }
+
+        return $query->distinct();
+    }
+
+
+    protected function isJoined($query, $tableName): bool
+    {
+        if ($query instanceof \Illuminate\Database\Eloquent\Builder) {
+            $joins = $query->getQuery()->joins;
+        } elseif ($query instanceof \Illuminate\Database\Eloquent\Relations\Relation) {
+            $joins = $query->getBaseQuery()->joins;
+        } else {
+            throw new \InvalidArgumentException('Query has incorrect type');
+        }
+
+        $joined = false;
+        if (is_array($joins)) {
+            foreach ($joins as $join) {
+                if (is_string($join->table) && $join->table == $tableName) {
+                    $joined = true;
+                    break;
+                }
+            }
+        }
+
+        return $joined;
     }
 }

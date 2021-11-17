@@ -190,4 +190,15 @@ class EloquentCategoryRepository
     {
         return Category::where('publish', true)->where('menu_bottom', true)->orderBy('position')->get();
     }
+
+
+    public function getPublishedWithAliases(array $aliases): Collection
+    {
+        if (count($aliases) === 0) {
+            return Collection::make([]);
+        }
+
+        $query = Category::query()->treePublished();
+        return $query->whereIn('alias', $aliases)->get();
+    }
 }

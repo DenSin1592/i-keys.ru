@@ -22,17 +22,17 @@ Route::prefix('cc')->name('cc.')->namespace('Admin')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
-        require 'web/admin/access_control.php';
-        require 'web/admin/structure.php';
-        require 'web/admin/settings.php';
-        require 'web/admin/catalog.php';
-        require 'web/admin/attributes.php';
-        require 'web/admin/types.php';
-        require 'web/admin/product.php';
-        require 'web/admin/reviews.php';
-        require 'web/admin/orders.php';
-        require 'web/admin/exchange.php';
-        require 'web/admin/subdomains.php';
+        require_once 'web/admin/access_control.php';
+        require_once 'web/admin/structure.php';
+        require_once 'web/admin/settings.php';
+        require_once 'web/admin/catalog.php';
+        require_once 'web/admin/attributes.php';
+        require_once 'web/admin/types.php';
+        require_once 'web/admin/product.php';
+        require_once 'web/admin/reviews.php';
+        require_once 'web/admin/orders.php';
+        require_once 'web/admin/exchange.php';
+        require_once 'web/admin/subdomains.php';
 
         // all others should show 404 page for admin
         Route::any('/{url}', 'NotFoundController')->where('url', '.*');
@@ -43,7 +43,8 @@ Route::prefix('cc')->name('cc.')->namespace('Admin')->group(function () {
 // Client routes
 Route::namespace('Client')->group(function () {
     Route::get('/', 'HomeController')->name('home');
-    Route::get('catalog/{url}', 'HomeController')->name('catalog')->where('url', '.*');
+
+    require_once 'web/client/catalog.php';
 
 
     Route::get('/{url}', 'HomeController')->name('dynamic_page')->where('url', '.*');

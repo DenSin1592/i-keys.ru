@@ -249,6 +249,8 @@ return [
         'CatalogUrlBuilder' => App\Facades\CatalogUrlBuilder::class,
         'Helper' => App\Facades\Helper::class,
         'StringHelper' => App\Facades\StringHelper::class,
+        'PrettyPaginator' => App\Facades\PrettyPaginatorFacade::class,
+        'UrlBuilder' => App\Facades\UrlBuilder::class,
     ],
 
 ];
