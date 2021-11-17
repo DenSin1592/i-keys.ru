@@ -438,6 +438,7 @@ class EloquentProductRepository
         $query = $this->selectDistinctProductsQuery($query);
 
         $products = $query->skip($limit * ($page - 1))
+            ->with(['images'])
             ->take($limit)
             ->get();
 

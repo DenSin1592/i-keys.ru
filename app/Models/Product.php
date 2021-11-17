@@ -87,7 +87,7 @@ class Product extends \Eloquent
 
     public function getFirstImagePath(string $field, ?string $version, string $noImageVersion): string
     {
-        $image = $this->images()->first();
+        $image = $this->images->first();
         if($image instanceof ProductImage){
             return $image->getImgPath($field, $version, $noImageVersion);
         }
