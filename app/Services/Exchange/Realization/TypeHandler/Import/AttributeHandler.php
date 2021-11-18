@@ -71,6 +71,7 @@ class AttributeHandler implements ITypeHandler
         $wasImported = false;
         while (true) {
             $currentLine += 1;
+            echo ('Обработана строка attribute:' . $currentLine . PHP_EOL);
             $row = $csvReader->getRow();
             if ($row === false) {
                 break;

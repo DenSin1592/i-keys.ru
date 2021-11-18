@@ -5,7 +5,7 @@
                 @include('admin.shared.resource_list.sorting._list_controls', ['model' => $category])
                 <div class="name">
                     <a href="{{ route('cc.products.index', $category->id) }}"
-                       style="margin-left: {{ $lvl * 0.5 }}em;">{{ $category->name }}</a>
+                       style="margin-left: {{ $lvl * 0.5 }}em;">{{ $category->name }} (Кол-во товаров: {{$category->products->count()}})</a>
                 </div>
                 @include('admin.shared._list_flag', ['element' => $category, 'action' => route('cc.categories.toggle-attribute', [$category->id, 'publish']), 'attribute' => 'publish'])
                 @include('admin.shared._list_flag', ['element' => $category, 'action' => route('cc.categories.toggle-attribute', [$category->id, 'menu_top']), 'attribute' => 'menu_top'])

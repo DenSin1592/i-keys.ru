@@ -55,7 +55,10 @@ class ProductImageHandler implements ITypeHandler
     {
         $productsByCodes = [];
         $files = $this->directoryHandler->getFilesForImport();
+        $currentLine =0;
         foreach ($files as $file) {
+            $currentLine += 1;
+            echo ('Обработана картинка:' . $currentLine . PHP_EOL);
             $fileName = $file->getFilename();
             if (!preg_match("/^product_(?P<code_1c>[^_]+)_(?P<number>\d+)\./", $fileName, $matches)) {
                 continue;

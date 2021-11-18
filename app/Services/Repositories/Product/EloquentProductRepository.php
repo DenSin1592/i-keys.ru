@@ -484,4 +484,14 @@ class EloquentProductRepository
 
         return $joined;
     }
+
+
+    public function markUpdateSearchForProduct(Product $product): void
+    {
+        if ($product->update_search) {
+            return;
+        }
+        //TODO: сделать
+        //\DB::table('products')->where('id', $product->id)->update(['update_search' => true]);
+    }
 }

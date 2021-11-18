@@ -122,7 +122,21 @@ class EloquentCategoryRepository
 
     public function getTree(Category $category = null)
     {
-        return $this->treeBuilder->getTree(new Category(), \Arr::get($category, 'id'));
+        $collection = $this->treeBuilder->getTree(new Category(), \Arr::get($category, 'id'));
+
+        $this->lazyLoadForTree($collection, 'products');
+        return $collection;
+    }
+
+    private function lazyLoadForTree(&$collection, $relation)
+    {
+        if(is_null($collection)){
+            return;
+        }
+        $collection->load($relation);
+        foreach ($collection as $model){
+            $this->lazyLoadForTree($model->children, $relation);
+        }
     }
 
     public function getCollapsedTree(Category $category = null)
@@ -188,7 +202,7 @@ class EloquentCategoryRepository
 
     public function getElementsForFooterMenu(): Collection
     {
-        return Category::where('publish', true)->where('menu_bottom', true)->orderBy('position')->get();
+        return Category::where('publish', true)->orderBy('position')->get();
     }
 
 

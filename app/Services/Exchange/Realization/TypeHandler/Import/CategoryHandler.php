@@ -69,6 +69,7 @@ class CategoryHandler implements ITypeHandler
         $currentLine = 0;
         while (true) {
             $currentLine += 1;
+            echo ('Обработана строка категории:' . $currentLine . PHP_EOL);
             $row = $csvReader->getRow();
             if ($row === false) {
                 break;

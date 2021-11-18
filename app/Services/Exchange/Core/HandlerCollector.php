@@ -43,33 +43,37 @@ class HandlerCollector
             foreach ($handleFactory->getTypeHandlerList() as $handlerContainer) {
                 $handlerContainerHeap[] = array(
                     'handler' => $handlerContainer,
-                    'type_priority' => intval($handleFactory->getTypePriority()),
-                    'priority' => intval($handlerContainer->getPriority()),
+                    'type_priority' => (int)$handleFactory->getTypePriority(),
+                    'priority' => (int)$handlerContainer->getPriority(),
                 );
             }
         }
 
         usort(
             $handlerContainerHeap,
-            function ($_1, $_2) {
-                if ($_1['type_priority'] > $_2['type_priority']) {
-                    return 1;
-                } elseif ($_1['type_priority'] < $_2['type_priority']) {
-                    return -1;
-                } else {
-                    if ($_1['priority'] > $_2['priority']) {
-                        return 1;
-                    } elseif ($_1['priority'] < $_2['priority']) {
-                        return -1;
-                    } else {
-                        return 0;
-                    }
-                }
-            }
+           static  function ($_1, $_2) {
+               if ($_1['type_priority'] > $_2['type_priority']) {
+                   return 1;
+               }
+
+               if ($_1['type_priority'] < $_2['type_priority']) {
+                   return -1;
+               }
+
+               if ($_1['priority'] > $_2['priority']) {
+                   return 1;
+               }
+
+               if ($_1['priority'] < $_2['priority']) {
+                   return -1;
+               }
+
+               return 0;
+           }
         );
 
         $typeHandlerList = array_map(
-            function ($e) {
+            static function ($e) {
                 return $e['handler'];
             },
             $handlerContainerHeap
@@ -86,7 +90,7 @@ class HandlerCollector
     {
         array_walk(
             $typeHandlerList,
-            function (ITypeHandler $typeHandler) {
+            static function (ITypeHandler $typeHandler) {
                 $typeHandler->handle();
             }
         );
