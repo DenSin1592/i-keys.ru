@@ -52,6 +52,7 @@ class CreateProductTypePageAssociations extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('product_type_page_manual');
         Schema::dropIfExists('product_type_page_associations');
     }
 }
