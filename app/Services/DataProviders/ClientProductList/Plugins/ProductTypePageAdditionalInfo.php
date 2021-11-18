@@ -1,4 +1,6 @@
-<?php namespace App\Services\DataProviders\ClientProductList\Plugins;
+<?php
+
+namespace App\Services\DataProviders\ClientProductList\Plugins;
 
 use App\Models\ProductTypePage;
 use App\Services\DataProviders\ClientProductList\ClientProductListPlugin;
