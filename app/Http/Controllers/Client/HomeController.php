@@ -9,19 +9,18 @@ class HomeController extends Controller
 {
     public function __construct(
         private EloquentNodeRepository $nodeRepository,
-        private MetaHelper $metaHelper)
-    {}
+        private MetaHelper $metaHelper,
+    ){}
 
     public function __invoke()
     {
         $node = $this->nodeRepository->findByType(Node::TYPE_HOME_PAGE);
         $page = \TypeContainer::getContentModelFor($node);
-        $metaData = $this->metaHelper->getRule()->metaForObject($page, $node->name);
 
         return \View::make('client.home_page.show')
             ->with('homePage', $page)
-            ->with(['authEditLink' => route('cc.home-pages.edit', $page->node_id)])
-            ->with($metaData);
+            ->with('authEditLink', route('cc.home-pages.edit', $page->node_id))
+            ->with('metaData', $this->metaHelper->getRule()->metaForObject($page, $node->name));
 
     }
 }

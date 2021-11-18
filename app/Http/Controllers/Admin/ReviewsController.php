@@ -184,7 +184,7 @@ class ReviewsController extends Controller
                 'id' => $product->id,
                 'text' => "$product->name [id = $product->id]",
                 'edit_link' => route('cc.products.edit', [$product->category->id, $product->id]),
-//                'site_link' => ($product->publish && $product->category->in_tree_publish) ? \CatalogUrlBuilder::buildProductUrl($product) : '#',
+//                'site_link' => ($product->publish && $product->category->in_tree_publish) ? \UrlBuilder::buildProductUrl($product) : '#',
                 'site_link' =>'/'
             ];
         }

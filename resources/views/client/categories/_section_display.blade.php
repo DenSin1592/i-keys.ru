@@ -19,6 +19,6 @@
             </ol>
         </nav>
 
-        <h1 class="display-title title-h1 text-uppercase">{{ $h1 }}</h1>
+        <h1 class="display-title title-h1 text-uppercase">{{ $metaData['h1'] }}</h1>
     </div>
 </section>

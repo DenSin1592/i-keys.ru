@@ -1,11 +1,13 @@
 <?php namespace App\Services\Repositories\ProductTypePage;
 
 use App\Models\ProductTypePage;
+use App\Models\Type;
 use App\Services\RepositoryFeatures\Attribute\EloquentAttributeToggler;
 use App\Services\RepositoryFeatures\Attribute\PositionUpdater;
 use App\Services\RepositoryFeatures\Order\OrderScopesInterface;
 use App\Services\RepositoryFeatures\Tree\TreeBuilderInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class EloquentProductTypePageRepository
 {
@@ -238,5 +240,15 @@ class EloquentProductTypePageRepository
                 return $query->treePublished();
             }
         );
+    }
+
+
+    public function getModelsByCategoryId(int $id): Collection
+    {
+        return ProductTypePage::query()
+            ->where('publish', true)
+            ->where('category_id', $id)
+            ->orderBy('id')
+            ->get();
     }
 }

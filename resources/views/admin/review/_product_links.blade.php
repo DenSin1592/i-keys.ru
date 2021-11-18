@@ -8,7 +8,7 @@
     </a>
 
     <a data-site-link
-{{--       href="{!! (isset($product) && $product->publish && $product->category->in_tree_publish) ? \CatalogUrlBuilder::buildProductUrl($product) : '#' !!}"--}}
+{{--       href="{!! (isset($product) && $product->publish && $product->category->in_tree_publish) ? \UrlBuilder::buildProductUrl($product) : '#' !!}"--}}
        href="{!! (isset($product) && $product->publish && $product->category->in_tree_publish) ? '/' : '#' !!}"
        @if (!(isset($product) && $product->publish && $product->category->in_tree_publish))
        style="display: none"

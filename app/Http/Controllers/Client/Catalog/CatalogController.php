@@ -11,6 +11,7 @@ use App\Services\DataProviders\ProductListPage\Catalog\FilteredProductList;
 use App\Services\DataProviders\ProductListPage\FilterVariantsProvider;
 use App\Services\Repositories\Category\EloquentCategoryRepository;
 use App\Services\Repositories\Product\EloquentProductRepository;
+use App\Services\Repositories\ProductTypePage\EloquentProductTypePageRepository;
 use App\Services\Seo\MetaHelper;
 use \Illuminate\Contracts\View\View;
 
@@ -26,7 +27,8 @@ class CatalogController extends Controller
         private FilterVariantsProvider $filterVariantsProvider,
         private ClientProductList $productListProvider,
         private MetaHelper $metaHelper,
-        private Breadcrumbs $breadcrumbs
+        private Breadcrumbs $breadcrumbs,
+        private EloquentProductTypePageRepository $typeProductRepository,
     ){}
 
 
@@ -51,14 +53,13 @@ class CatalogController extends Controller
             $productsView
         );
         $productListData = $productListPageProvider->getProductListData($page);
-        $breadcrumbs = $this->getBreadcrumbs($this->breadcrumbs, $category->extractPath());
-        $metaData = $this->metaHelper->getRule('category')->metaForObject($category, null, ['paginator' => \Arr::get($productListData, 'paginator')]);
 
         return \View::make('client.categories.show')
             ->with($productListData)
-            ->with('breadcrumbs', $breadcrumbs)
+            ->with('breadcrumbs', $this->getBreadcrumbs($this->breadcrumbs, $category->extractPath()))
             ->with('authEditLink', route('cc.categories.edit', $category->id))
-            ->with($metaData);
+            ->with('listTypeProducts', $this->getListTypePageUrl($category->id))
+            ->with('metaData', $this->metaHelper->getRule()->metaForObject($category));
     }
 
 
@@ -102,5 +103,18 @@ class CatalogController extends Controller
             'filterData' => $filterData,
             'sort' => $sort,
         ];
+    }
+
+
+    private function getListTypePageUrl($categoryId): array
+    {
+        $listTypeProducts = $this->typeProductRepository->getModelsByCategoryId($categoryId);
+        $list = [];
+
+        foreach ($listTypeProducts as $type) {
+            $list[$type->name] = \UrlBuilder::buildTypeUrl($type);
+        }
+
+        return $list;
     }
 }

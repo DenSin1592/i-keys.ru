@@ -10,7 +10,7 @@ trait CategoryMenuBuilder
     {
         $menu = [];
         foreach ($elemList as $elem) {
-            $url = \CatalogUrlBuilder::buildCategoryUrl($elem);
+            $url = \UrlBuilder::buildCategoryUrl($elem);
             $menu[] = [
                 'name' => $elem->name,
                 'url' => $url,
