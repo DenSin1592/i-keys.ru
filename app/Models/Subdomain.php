@@ -6,6 +6,8 @@ namespace App\Models;
 class Subdomain extends \Eloquent
 {
     public const DEFAULT_SUBDOMAIN_ID = 1;
+    public const DEFAULT_SUBDOMAIN_NAME = 'moscow';
+    public const DEFAULT_SUBDOMAIN_CITY_NAME = 'Москва';
 
     protected $fillable = [
         'name',

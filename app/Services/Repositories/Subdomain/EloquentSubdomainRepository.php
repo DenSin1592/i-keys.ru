@@ -35,7 +35,7 @@ class EloquentSubdomainRepository
 
     public function getDefault()
     {
-        return Subdomain::find(Subdomain::DEFAULT_SUBDOMAIN_ID);
+        return Subdomain::find(Subdomain::DEFAULT_SUBDOMAIN_ID) ?? new Subdomain(['name' => Subdomain::DEFAULT_SUBDOMAIN_NAME, 'city_name' => Subdomain::DEFAULT_SUBDOMAIN_CITY_NAME]);
     }
 
 
