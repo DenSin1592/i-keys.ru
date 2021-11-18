@@ -17,6 +17,7 @@
 @import 'components/breadcrumb';
 @import 'components/pagination';
 @import 'components/forms';
+@import 'components/buttons';
 @import 'components/filter';
 @import 'components/tooltip';
 @import 'components/select2';
@@ -31,6 +32,8 @@
 @import 'components/cards/card-partner';
 @import 'components/cards/card-price';
 @import 'components/cards/card-faq';
+@import 'components/cards/card-post';
+@import 'components/cards/card-banner';
 
 // header
 @import 'layout/header/header';
@@ -49,6 +52,7 @@
 @import 'sections/section-faq';
 @import 'sections/section-cases';
 @import 'sections/section-content';
+@import 'sections/section-posts';
 
 
 // pages
