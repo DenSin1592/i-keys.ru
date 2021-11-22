@@ -12,6 +12,35 @@ class EloquentAttributeRepository
 
     private $positionUpdater;
 
+    private const LIST_TYPE_CODES_1C = [
+        '000000001',
+        '000000002',
+        '000000003',
+        '000000004',
+        '000000005',
+        '000000009',
+        '000000010',
+        '000000011',
+        '000000012',
+        '000000013',
+        '000000014',
+        '000000015',
+        '000000016',
+        '000000017',
+        '000000018',
+        '000000019',
+        '000000020',
+        '000000022',
+        '000000025',
+        '000000026',
+        '000000028',
+        '000000029',
+        '000000030',
+        '000000031',
+        '000000037',
+    ];
+
+
     public function __construct(PositionUpdater $positionUpdater)
     {
         $this->positionUpdater = $positionUpdater;
@@ -91,8 +120,13 @@ class EloquentAttributeRepository
      */
     public function getDefaultAttributeTypeForCode1c($code1C): string
     {
-        // пока возвращаю тип "string", после появления файла надо подправить
-        return Attribute::TYPE_STRING;
+        if (isset($code1C) && in_array($code1C, self::LIST_TYPE_CODES_1C)) {
+            $type = Attribute::TYPE_SINGLE;
+        } else {
+            $type = Attribute::TYPE_STRING;
+        }
+
+        return $type;
     }
 
     /**
@@ -456,5 +490,21 @@ class EloquentAttributeRepository
             $multipleValue->save();
             $product->touch();
         }
+    }
+
+
+    public function findCachedByCode1c($code1c)
+    {
+        static $attributesByCode1c;
+
+        if (!isset($attributesByCode1c)) {
+            $attributesByCode1c = Attribute::query()
+                ->whereNotNull('code_1c')
+                ->where('code_1c', '<>', '')
+                ->get()
+                ->keyBy('code_1c');
+        }
+
+        return $attributesByCode1c->get($code1c);
     }
 }
