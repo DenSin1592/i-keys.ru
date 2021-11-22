@@ -193,6 +193,7 @@ return [
         App\Providers\ReviewRenewalServiceProvider::class,
         App\Providers\ExchangeServiceProvider::class,
         App\Providers\SubdomainsServiceProvider::class,
+        App\Providers\CatalogServiceProvider::class,
     ],
 
     /*
@@ -250,6 +251,7 @@ return [
         'StringHelper' => App\Facades\StringHelper::class,
         'PrettyPaginator' => App\Facades\PrettyPaginatorFacade::class,
         'UrlBuilder' => App\Facades\UrlBuilder::class,
+        'CatalogHelper' => App\Facades\CatalogHelper::class,
     ],
 
 ];

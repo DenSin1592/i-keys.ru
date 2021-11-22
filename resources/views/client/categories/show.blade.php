@@ -12,7 +12,11 @@
             <div class="container">
                 <div class="row">
 
-                    @include('client.categories._left_block')
+                    @if(!empty($filter['filterVariants']))
+
+                        @include('client.categories._filter_block')
+
+                    @endif
 
                     <div class="catalog-content-container col-xl-9">
 

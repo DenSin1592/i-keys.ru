@@ -2,6 +2,7 @@
 
 use App\Models\Attribute;
 use App\Models\Attribute\AllowedValue;
+use Illuminate\Database\Eloquent\Collection;
 
 class EloquentAllowedValueRepository
 {
@@ -70,5 +71,51 @@ class EloquentAllowedValueRepository
     public function delete(AllowedValue $allowedValue)
     {
         return $allowedValue->delete();
+    }
+
+
+    public function forAttributeByIds(Attribute $attribute, array $ids)
+    {
+        if (count($ids) === 0) {
+            return Collection::make([]);
+        }
+
+        $query = $attribute->allowedValues()->whereIn('id', $ids);
+        $this->scopeOrdered($query, $this->getOrderCastTypeForAttribute($attribute));
+
+        return $query->get();
+    }
+
+
+    private function scopeOrdered($query, string $castAsType = null)
+    {
+        if (!is_null($castAsType)) {
+            $query->orderByRaw("CAST(attribute_allowed_values.value AS {$castAsType}) ASC");
+        }
+
+        return $query->orderBy('attribute_allowed_values.value', 'ASC');
+    }
+
+
+    private function getOrderCastTypeForAttribute(Attribute $attribute)
+    {
+        if (isset($attribute->code_1c)) {
+            $attributeCodes1GroupByCastTypeForOrdered = $this->getAttributeCodes1CGroupByCastTypeForOrdered();
+            foreach ($attributeCodes1GroupByCastTypeForOrdered as $castAsType => $attributeCodes) {
+                if (in_array($attribute->code_1c, $attributeCodes)) {
+                    return $castAsType;
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+    private function getAttributeCodes1CGroupByCastTypeForOrdered()
+    {
+        return [
+            'UNSIGNED' => ['000000013']
+        ];
     }
 }

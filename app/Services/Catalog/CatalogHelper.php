@@ -20,7 +20,7 @@ class CatalogHelper
         $data = $currentFilterQuery;
         $data['sort'] = $sorting;
 
-        return \Helper::urlWithHttpQuery(route('filter_proxy'), $data);
+        return \Helper::urlWithHttpQuery(route('filter-proxy'), $data);
     }
 
     /**
@@ -35,7 +35,7 @@ class CatalogHelper
         \Arr::forget($data, 'filter');
         \Arr::forget($data, 'additional');
 
-        return \Helper::urlWithHttpQuery(route('filter_proxy'), $data);
+        return \Helper::urlWithHttpQuery(route('filter-proxy'), $data);
     }
 
     public function getDropSelectedVariantUrl(array $currentFilterQuery, array $variantData): string
@@ -56,6 +56,6 @@ class CatalogHelper
             }
         }
 
-        return \Helper::urlWithHttpQuery(route('filter_proxy'), $data);
+        return \Helper::urlWithHttpQuery(route('filter-proxy'), $data);
     }
 }

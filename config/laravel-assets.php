@@ -35,9 +35,18 @@ return [
 
         'client_js' => [
             'assets' => [
-                'vendor/jquery/jquery-3.6.0.min.js',
-                'vendor/bootstrap-4.6.0/js/dist/util.js',
-                'vendor/bootstrap-4.6.0/js/dist/collapse.js',
+                'html/vendor/jquery/jquery-3.6.0.min.js',
+                'html/vendor/popper/popper.min.js',
+                'html/vendor/bootstrap-4.6.0/js/dist/util.js',
+                'html/vendor/bootstrap-4.6.0/js/dist/collapse.js',
+                'html/vendor/bootstrap-4.6.0/js/dist/tooltip.js',
+                'html/vendor/select2/select2.min.js',
+                'html/vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js',
+                'html/vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js',
+
+                'html/js/forms.js',
+                'html/js/tooltip.js',
+                'html/js/filter.js',
 
                 'js/client/auth_menu.js',
             ],

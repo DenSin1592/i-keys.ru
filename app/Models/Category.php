@@ -15,6 +15,8 @@ class Category extends \Eloquent
     public const CATALOG_TYPE_IMAGE_ARE_IMPORTANT = 'image_are_important';
     public const CATALOG_TYPE_CHARACTERISTICS_ARE_IMPORTANT = 'characteristics_are_important';
 
+    public const CILINDR_MEHANIZMY_1C_CODE = 21741;
+
     use Glue;
     use InTreePublish;
     use TreeParentPath;

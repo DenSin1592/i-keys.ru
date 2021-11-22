@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'Glyphicons Halflings';
-    src: url(../../vendor/bootstrap/v3/fonts/glyphicons-halflings-regular.ttf);
+    src: url(/vendor/twitter-bootstrap/fonts/glyphicons-halflings-regular.ttf);
+    font-display: swap;
 }
 
 #auth-menu {
