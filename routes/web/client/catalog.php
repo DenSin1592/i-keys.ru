@@ -6,8 +6,8 @@ Route::namespace('Catalog')
             Route::get('catalog/{categoryQuery}', 'CatalogController@showCategory')
                 ->where('categoryQuery', '.+')
                 ->name('category');
-//            Route::get('product/{id}', 'ProductsController@show')->name('product')->where('id', '[1-9]\d*');
-            Route::get('product/{id}', 'HomeController');
+            Route::get('product/{id}', 'ProductsController@show')->name('product')->where('id', '[1-9]\d*');
+//            Route::get('product/{id}', 'HomeController');
         }
     );
 
