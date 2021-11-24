@@ -15,22 +15,13 @@ class EloquentCategoryRepository
 {
     const POSITION_STEP = 10;
 
-    private $orderScope;
-    private $treeBuilder;
-    private $positionUpdater;
-    private $attributeToggler;
 
     public function __construct(
-        OrderScopesInterface $orderScope,
-        TreeBuilderInterface $treeBuilder,
-        PositionUpdater $positionUpdater,
-        EloquentAttributeToggler $attributeToggler
-    ) {
-        $this->orderScope = $orderScope;
-        $this->treeBuilder = $treeBuilder;
-        $this->positionUpdater = $positionUpdater;
-        $this->attributeToggler = $attributeToggler;
-    }
+        private OrderScopesInterface $orderScope,
+        private TreeBuilderInterface $treeBuilder,
+        private PositionUpdater $positionUpdater,
+        private EloquentAttributeToggler $attributeToggler
+    ) {}
 
     public function newInstance(array $data = [])
     {
@@ -60,9 +51,9 @@ class EloquentCategoryRepository
     /**
      * @inheritDoc
      */
-    public function findPublishedById($id)
+    public function findPublishedById($id): Category
     {
-        return Category::where('id', $id)->treePublished()->first();
+        return Category::where('id', $id)->treePublished()->first() ?? \App::abort(404, 'Category is not found');
     }
 
     /**
@@ -214,5 +205,19 @@ class EloquentCategoryRepository
 
         $query = Category::query()->treePublished();
         return $query->whereIn('alias', $aliases)->get();
+    }
+
+
+    public function findCachedByAlias($alias)
+    {
+        static $categoriesKeyByAlias;
+
+        if (!isset($categoriesKeyByAlias)) {
+            $categoriesKeyByAlias = Category::query()
+                ->whereNotNull('alias')
+                ->get()->keyBy('alias');
+        }
+
+        return $categoriesKeyByAlias->get($alias);
     }
 }

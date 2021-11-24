@@ -2,15 +2,34 @@
 // Catalog, category page and product page
 Route::namespace('Catalog')
     ->group(
-        function () {
+       static function () {
+
+
             Route::get('catalog/{categoryQuery}', 'CatalogController@showCategory')
                 ->where('categoryQuery', '.+')
                 ->name('category');
-            Route::get('product/{id}', 'ProductsController@show')->name('product')->where('id', '[1-9]\d*');
-//            Route::get('product/{id}', 'HomeController');
+
+
+           Route::get('types/{url}', 'ProductTypePagesController@showPage')
+               ->where('url', '.+')
+               ->name('product_types_page');
+
+
+           Route::get('filter-proxy', 'FilterProxyController@redirectToFilterUrl')
+               ->name('filter-proxy');
+
+
+            Route::get('product/{id}', 'ProductsController@show')
+                ->where('id', '[1-9]\d*')
+                ->name('product');
+
+
+
+
+
+
+
+
         }
     );
 
-// Filter proxy
-//Route::get('filter-proxy', 'FilterProxyController@redirectToFilterUrl')->name('filter-proxy');
-Route::get('filter-proxy', 'HomeController')->name('filter-proxy');

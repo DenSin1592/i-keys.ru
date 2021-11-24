@@ -4,6 +4,7 @@ namespace App\Services\Repositories\Product;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductTypePage;
 use App\Services\Catalog\Filter\Filter\CatalogFilterFactory;
 use App\Services\Catalog\ListSorting\SortingContainer;
 use App\Services\Repositories\Category\EloquentCategoryRepository;
@@ -24,9 +25,7 @@ class EloquentProductRepository
         private EloquentCategoryRepository $categoryRepository,
         private CatalogFilterFactory $catalogFilterFactory,
         private SortingContainer $sortingContainer,
-    )
-    {
-    }
+    ){}
 
 
     public function allForCategory(Category $category)
@@ -426,10 +425,9 @@ class EloquentProductRepository
     }
 
 
-    private function scopeOrdered($query): Builder
+    private function scopeOrdered($query)
     {
         return $query->orderByRaw("(ISNULL(products.price) OR products.price=0) ASC");
-
     }
 
 
@@ -446,7 +444,7 @@ class EloquentProductRepository
     }
 
 
-    private function selectDistinctProductsQuery($query): Builder
+    private function selectDistinctProductsQuery($query)
     {
         $query->select('products.*');
         if ($this->isJoined($query, 'product_type_page_associations')) {
@@ -494,4 +492,120 @@ class EloquentProductRepository
         //TODO: сделать
         //\DB::table('products')->where('id', $product->id)->update(['update_search' => true]);
     }
+
+
+    public function clearFilterVariants(Category $category, $filterData = [])
+    {
+        if (!is_array($filterData) || count($filterData) === 0) {
+            return [];
+        }
+        $query = $this->getWithinCategoryPublishedQuery($category->id);
+
+        return $this->catalogFilterFactory->getFilterByCategory($category)->clearFilterData($query, $filterData);
+    }
+
+
+    public function getDefaultSortingVariant()
+    {
+        return $this->sortingContainer->getDefaultSortingVariant();
+    }
+
+
+    public function allFilteredForProductType(
+        Category $category,
+        ProductTypePage $productTypePage,
+        array $filterData = [],
+        $sorting = null
+    ) {
+        $query = $this->getWithinCategoryQuery($category->id);
+        $this->catalogFilterFactory->getFilterByCategory($category)->modifyQuery($query, $filterData);
+
+        $this->scopeOrdered($query);
+        // sorting should be after modify query, because otherwise some filters could work not correctly
+        $this->sortingContainer->modifyQuery(
+            $query,
+            $sorting,
+            ['productTypePage' => $productTypePage]
+        );
+
+        $query = $this->selectDistinctProductsQuery($query);
+
+        return $query->get();
+    }
+
+
+    public function publishedFilteredForProductTypePageByPage(
+        Category $category,
+        ProductTypePage $productTypePage,
+        $page = 1,
+        $limit = 12,
+        array $filterData = [],
+        $sorting = null
+    ) {
+        $query = $this->getWithinCategoryPublishedFilteredQuery($category, $filterData);
+
+        return $this->getProductListStructure(
+            $query,
+            function ($q) use ($sorting, $productTypePage) {
+                $this->scopeOrdered($q);
+                $this->sortingContainer->modifyQuery($q, $sorting, ['productTypePage' => $productTypePage]);
+            },
+            $page,
+            $limit
+        );
+    }
+
+
+    public function publishedManualForProductTypePageByPage(
+        ProductTypePage $productTypePage,
+        $page = 1,
+        $limit = 12,
+        $sorting = null
+    ) {
+        $query = $productTypePage->manualProducts();
+        $query->join(
+            'categories',
+            'categories.id',
+            '=',
+            'products.category_id'
+        )
+            ->where('categories.in_tree_publish', true)
+            ->where('products.publish', true);
+
+        return $this->getProductListStructure(
+            $query,
+            function ($q) use ($sorting, $productTypePage) {
+                $this->scopeOrdered($q);
+                $this->sortingContainer->modifyQuery($q, $sorting, ['productTypePage' => $productTypePage]);
+            },
+            $page,
+            $limit
+        );
+    }
+
+
+    public function compareFilterData(Category $category, $baseFilterData, $filterData)
+    {
+        if (!is_array($filterData)) {
+            $filterData = [];
+        }
+
+        if (!is_array($baseFilterData)) {
+            $baseFilterData = [];
+        }
+
+        if (count($filterData) === 0 && count($baseFilterData) === 0) {
+            return true;
+        }
+
+        $query = $this->getWithinCategoryPublishedQuery($category->id);
+
+        return $this->catalogFilterFactory->getFilterByCategory($category)
+            ->compareFilterData(
+                $query,
+                $baseFilterData,
+                $filterData
+            );
+    }
+
 }

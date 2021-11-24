@@ -82,6 +82,15 @@
                     @endif
                 </div>
             </div>
+
+            <div class="col-auto">
+                <a href="{{ CatalogHelper::getFilterResetUrl($filter['currentFilterQuery']) }}" class="btn btn-light" >Сброс</a>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn" >Фильтровать</button>
+            </div>
+
+
         </form>
     </div>
 </div>

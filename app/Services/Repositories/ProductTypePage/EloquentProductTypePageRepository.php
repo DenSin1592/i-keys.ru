@@ -1,52 +1,26 @@
-<?php namespace App\Services\Repositories\ProductTypePage;
+<?php
+
+namespace App\Services\Repositories\ProductTypePage;
 
 use App\Models\ProductTypePage;
-use App\Models\Type;
 use App\Services\RepositoryFeatures\Attribute\EloquentAttributeToggler;
 use App\Services\RepositoryFeatures\Attribute\PositionUpdater;
 use App\Services\RepositoryFeatures\Order\OrderScopesInterface;
 use App\Services\RepositoryFeatures\Tree\TreeBuilderInterface;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+
 
 class EloquentProductTypePageRepository
 {
     const POSITION_STEP = 10;
 
-    /**
-     * @var EloquentAttributeToggler
-     */
-    private $attributeToggler;
-    /**
-     * @var OrderScopesInterface
-     */
-    private $orderScope;
-    /**
-     * @var TreeBuilderInterface
-     */
-    private $treeBuilder;
-    /**
-     * @var PositionUpdater
-     */
-    private $positionUpdater;
 
-    /**
-     * @param OrderScopesInterface $orderScope
-     * @param TreeBuilderInterface $treeBuilder
-     * @param EloquentAttributeToggler $attributeToggler
-     * @param PositionUpdater $positionUpdater
-     */
     public function __construct(
-        OrderScopesInterface $orderScope,
-        TreeBuilderInterface $treeBuilder,
-        EloquentAttributeToggler $attributeToggler,
-        PositionUpdater $positionUpdater
-    ) {
-        $this->orderScope = $orderScope;
-        $this->treeBuilder = $treeBuilder;
-        $this->attributeToggler = $attributeToggler;
-        $this->positionUpdater = $positionUpdater;
-    }
+        private OrderScopesInterface $orderScope,
+        private TreeBuilderInterface $treeBuilder,
+        private EloquentAttributeToggler $attributeToggler,
+        private PositionUpdater $positionUpdater
+    ) {}
 
     public function newInstance(array $data = [])
     {

@@ -59,19 +59,12 @@ class UrlBuilder
         }
         $typePath[] = $type;
 
-        $category = $typePath[count($typePath) - 1]->category;
-        $categoryPath = [];
-        foreach ($category->extractParentPath() as $parentCategory) {
-            $categoryPath[] = $parentCategory;
-        }
-        $categoryPath[] = $category;
-
         $aliasPath = [];
-        foreach (array_merge($categoryPath, $typePath) as $model) {
+        foreach ($typePath as $model) {
             $aliasPath[] = $model->alias;
         }
 
-//        return $this->buildCategoryUrlFromAliasPath($aliasPath);
-        return '#';
+        $aliasPathStr = implode('/', $aliasPath);
+        return route('product_types_page', $aliasPathStr);
     }
 }

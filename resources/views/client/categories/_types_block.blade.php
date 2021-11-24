@@ -1,4 +1,4 @@
-@if(count($listTypeProducts))
+@if(count($listTypeProducts ?? []))
 <div class="catalog-tags-block">
     <ul class="catalog-tags-list list-unstyled d-flex flex-wrap">
 
