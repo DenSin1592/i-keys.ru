@@ -1,7 +1,4 @@
-{{-- Product type pages list for menu --}}
-
 <ul class="@if($lvl == 0) scrollable-container @endif">
-    {{{ $productTypePage['element']}}}
     @foreach ($productTypePageTree as $productTypePage)
         <li>
             <div class="menu-element {{ ($currentPage->id == $productTypePage['element']->id) ? 'active' : ''}}">

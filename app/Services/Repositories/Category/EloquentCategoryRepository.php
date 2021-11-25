@@ -199,12 +199,11 @@ class EloquentCategoryRepository
 
     public function getPublishedWithAliases(array $aliases): Collection
     {
-        if (count($aliases) === 0) {
-            return Collection::make([]);
-        }
+        return Category::query()
+            ->treePublished()
+            ->whereIn('alias', $aliases)
+            ->get() ?? Collection::make();
 
-        $query = Category::query()->treePublished();
-        return $query->whereIn('alias', $aliases)->get();
     }
 
 

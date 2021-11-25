@@ -29,7 +29,7 @@ trait UrlQueryParser
             \App::abort(404, 'Incorrect path to category');
         }
 
-        return $parsedQuery;
+        return [$parsedQuery['page'], $parsedQuery['aliasPath']];
     }
 
 

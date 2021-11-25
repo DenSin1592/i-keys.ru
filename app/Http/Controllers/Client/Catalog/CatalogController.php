@@ -15,6 +15,7 @@ use App\Services\Repositories\ProductTypePage\EloquentProductTypePageRepository;
 use App\Services\Seo\MetaHelper;
 use \Illuminate\Contracts\View\View;
 
+
 class CatalogController extends Controller
 {
     use CatalogBreadcrumbs;
@@ -34,14 +35,11 @@ class CatalogController extends Controller
 
     public function showCategory(string $categoryQuery) : View
     {
-        $parsedQuery = $this->parseUrlQuery($categoryQuery);
-        $page = $parsedQuery['page'];
-        $aliasPath = $parsedQuery['aliasPath'];
+        [$page, $aliasPath] = $this->parseUrlQuery($categoryQuery);
+        $productsView = \Helper::prepareProductsView(\Request::get('view'));
 
         $category = $this->checkPathAndReturnCurrentCategory($aliasPath);
-
         $inputData = $this->prepareInputData();
-        $productsView = \Helper::prepareProductsView(\Request::get('view'));
 
         $productListPageProvider = new FilteredProductList(
             $this->productRepository,
@@ -72,7 +70,7 @@ class CatalogController extends Controller
             $matchedCategory = null;
 
             foreach ($categories as $category) {
-                if ($category->parent_id === $parentCategoryId && ($category->alias) === $alias) {
+                if ($category->parent_id === $parentCategoryId && $category->alias === $alias) {
                     $matchedCategory = $category;
                     break;
                 }

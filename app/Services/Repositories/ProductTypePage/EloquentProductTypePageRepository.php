@@ -193,13 +193,11 @@ class EloquentProductTypePageRepository
 
     public function getPublishedWithAliases(array $aliases): Collection
     {
-        if (count($aliases) === 0) {
-            return Collection::make([]);
-        } else {
-            $query = ProductTypePage::query()->treePublished();
+        return ProductTypePage::query()
+            ->treePublished()
+            ->whereIn('alias', $aliases)
+            ->get() ?? Collection::make();
 
-            return $query->whereIn('alias', $aliases)->get();
-        }
     }
 
     /**
@@ -222,7 +220,7 @@ class EloquentProductTypePageRepository
         return ProductTypePage::query()
             ->where('publish', true)
             ->where('category_id', $id)
-            ->orderBy('id')
+            ->orderBy('position')
             ->get();
     }
 }
