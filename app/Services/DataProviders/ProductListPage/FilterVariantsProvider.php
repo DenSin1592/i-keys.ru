@@ -70,7 +70,7 @@ class FilterVariantsProvider
                     continue;
                 }
 
-                if (in_array($lensData['view'], ['multiple_checkboxes'])) {
+                if (in_array($lensData['view'], ['multiple_checkboxes', 'color'])) {
                     $selectedVariants = $this->getMultipleCheckboxesSelectedVariants(
                         $filterData,
                         $lensData,
@@ -123,8 +123,14 @@ class FilterVariantsProvider
         $lensData,
         array $selectedVariants,
         array $currentFilterQuery
-    ) {
-        if (is_array($filterData[$lensData['key']])) {
+    ): array
+    {
+        if( !is_array($filterData[$lensData['key']])
+            || !$lensData['optional']['checked']){
+            return $selectedVariants;
+        }
+
+
             $name = $lensData['name'] . ':';
             $valueData = [];
             foreach ($filterData[$lensData['key']] as $rangeKey => $variant) {
@@ -144,7 +150,7 @@ class FilterVariantsProvider
                     'link' => \CatalogHelper::getDropSelectedVariantUrl($currentFilterQuery, $valueData),
                 ];
             }
-        }
+
 
         return $selectedVariants;
     }

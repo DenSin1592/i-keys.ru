@@ -13,17 +13,16 @@
                 <div class="row">
 
                     @if(!empty($filter['filterVariants']))
-
                         @include('client.categories._filter_block')
-
                     @endif
 
                     <div class="catalog-content-container col-xl-9">
 
                         @include('client.categories._types_block')
 
-
-                        @include('client.categories._selected_variants')
+                        @if(!empty($filter['filterVariants']))
+                            @include('client.categories._selected_variants')
+                        @endif
 
                         @include('client.categories._catalog_controls')
 
