@@ -13,7 +13,6 @@ use App\Services\Catalog\FilterUrlParser\Exception\UnpublishedCategory;
 use App\Services\Catalog\FilterUrlParser\FilterUrlParser;
 use App\Services\DataProviders\ClientProductList\ClientProductList;
 use App\Services\DataProviders\ProductListPage\FilterVariantsProvider;
-use App\Services\DataProviders\ProductListPage\ProductTypePage\DefaultProductTypePageProductList;
 use App\Services\DataProviders\ProductListPage\ProductTypePage\FilteredProductTypePageProductList;
 use App\Services\DataProviders\ProductListPage\ProductTypePage\ManualProductTypePageProductList;
 use App\Services\Repositories\Product\EloquentProductRepository;
