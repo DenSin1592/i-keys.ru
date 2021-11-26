@@ -1,0 +1,6 @@
+.cart-control {
+    margin-bottom: 15px;
+    @include media-breakpoint-up(md) {
+        margin-bottom: 0;
+    }
+}

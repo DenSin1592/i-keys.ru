@@ -34,6 +34,7 @@
 @import 'components/cards/card-faq';
 @import 'components/cards/card-post';
 @import 'components/cards/card-banner';
+@import 'components/cards/card-order';
 
 // header
 @import 'layout/header/header';
@@ -55,8 +56,12 @@
 @import 'sections/section-posts';
 
 
-// pages
+// catalog
 @import 'layout/catalog/catalog';
+
+// cart
+@import 'layout/cart/cart';
 
 // footer
 @import 'layout/footer/footer';
+

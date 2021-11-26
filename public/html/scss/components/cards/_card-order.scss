@@ -1,0 +1,310 @@
+.card-order {
+    position: relative;
+    background-color: $c-white;
+    @include media-breakpoint-up(xl) {
+        font-size: 15px;
+    }
+
+    &-inner {
+        padding: 15px;
+        @include media-breakpoint-up(xl) {
+            padding: 20px;
+        }
+    }
+
+    &-thumbnail {
+        width: 54px;
+        height: 54px;
+        border: none;
+        @include media-breakpoint-up(lg) {
+            width: 68px;
+            height: 68px;
+        }
+        @include media-breakpoint-up(xl) {
+            width: 110px;
+            height: 110px;
+        }
+    }
+
+    &-title {
+        display: block;
+        margin: 0 20px 5px 0;
+        border: none;
+        font-weight: 700;
+        @include media-breakpoint-up(xl) {
+            margin: 0 0 15px;
+            font-size: 18px;
+        }
+        @include media-breakpoint-up(xxl) {
+            font-size: 20px;
+        }
+
+        &:hover {
+            color: $c-secondary;
+        }
+    }
+
+    &-subtitle {
+        margin: 0;
+        color: #7c7c7c;
+        font-size: 14px;
+        @include media-breakpoint-up(sm) {
+            margin-bottom: 5px;
+        }
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &-remove-container {
+        position: absolute;
+        z-index: 9;
+        top: 10px;
+        right: 0;
+        @include media-breakpoint-up(lg) {
+            position: static;
+        }
+    }
+
+    &-control-remove {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        background: none;
+        color: #b9b9b9;
+        @include media-breakpoint-up(xl) {
+            width: 32px;
+            height: 32px;
+        }
+
+        &:hover {
+            color: $c-secondary;
+        }
+    }
+}
+
+.card-order-badges-block {
+    position: absolute;
+    top: -6px;
+    left: 8px;
+    margin-left: -4px;
+    margin-right: -4px;
+    pointer-events: none;
+
+    .card-order-badge {
+        height: 30px;
+        padding-left: 4px;
+        padding-right: 4px;
+
+        &-media {
+            width: auto;
+            height: auto;
+            max-height: 100%;
+        }
+    }
+}
+
+.card-order-info-list {
+    margin-top: 0;
+    margin-bottom: 15px;
+    @include media-breakpoint-up(md) {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .card-order-info-item {
+        margin-bottom: 5px;
+        @include media-breakpoint-up(md) {
+            margin-bottom: 15px;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+
+    .card-order-info-title {
+        margin: 0 5px 0 0;
+        @include media-breakpoint-up(xl) {
+            margin-right: 10px;
+        }
+    }
+}
+
+
+.card-order-product-code {
+    padding: 3px 5px;
+    background-color: $c-default;
+    color: $c-white;
+    @include media-breakpoint-up(xl) {
+        padding: 5px 8px;
+    }
+}
+
+
+.card-order-price-block,
+.card-order-total-block,
+.card-order-quantity-block {
+    @include media-breakpoint-up(lg) {
+        min-height: 40px;
+    }
+    @include media-breakpoint-up(xxl) {
+        min-height: 50px;
+    }
+}
+
+
+.card-order-price-block {
+    @include media-breakpoint-up(lg) {
+        width: 100px;
+    }
+    @include media-breakpoint-up(xxl) {
+        width: 195px;
+    }
+
+    .card-product-price {
+        @extend .title-h3;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .card-product-old-price {
+        color: #707070;
+        text-decoration: line-through;
+    }
+
+    .card-product-sale-price {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+}
+
+
+.card-order-total-block {
+    @include media-breakpoint-up(lg) {
+        width: 75px;
+    }
+    @include media-breakpoint-up(xxl) {
+        width: 160px;
+    }
+
+    .card-product-total-price {
+        @extend .title-h3;
+        font-weight: 700;
+        line-height: 1;
+    }
+}
+
+.card-order-quantity-block {
+    @include media-breakpoint-up(xxl) {
+        width: 195px;
+    }
+}
+
+
+.card-order-services-block {
+    overflow: hidden;
+    padding: 0 15px 10px;
+    background-color: $c-black;
+    color: $c-white;
+    @include media-breakpoint-up(lg) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    > .row {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        @include media-breakpoint-up(sm) {
+            padding-left: 16.6666666667%;
+        }
+        @include media-breakpoint-up(lg) {
+            padding-left: 85px;
+        }
+        @include media-breakpoint-up(xl) {
+            padding-left: 130px;
+        }
+
+        + .row {
+            border-top: 1px solid $c-white;
+        }
+    }
+
+    .card-order-services-title {
+        margin: 0 0 10px;
+        font-weight: 700;
+        @include media-breakpoint-up(xl) {
+            font-size: 16px;
+        }
+        @include media-breakpoint-up(xxl) {
+            font-size: 17px;
+        }
+    }
+}
+
+.card-order-services-list {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    .card-order-service-item {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+            @include media-breakpoint-up(xl) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+.card-order-service-checkbox {
+    .custom-control-label {
+        margin-right: 20px;
+    }
+
+    .text-muted {
+        margin-left: 10px;
+    }
+}
+
+.card-order-included-block {
+    .card-order-include-thumbnail {
+        margin-right: 10px;
+        @include media-breakpoint-up(xl) {
+            margin-right: 15px;
+        }
+
+        .card-order-include-media {
+            width: 20px;
+            height: 20px;
+            @include media-breakpoint-up(xl) {
+                width: 24px;
+                height: 24px;
+            }
+            @include media-breakpoint-up(xxl) {
+                width: 29px;
+                height: 29px;
+            }
+        }
+    }
+
+    .card-order-include-title {
+        margin: 0 10px 0 0;
+        @include media-breakpoint-up(xl) {
+            margin-right: 15px;
+        }
+    }
+
+    .card-order-include-number {
+        .custom-number-input {
+            width: 20px;
+        }
+    }
+}

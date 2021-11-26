@@ -1,0 +1,12 @@
+.cart-fast-order-block {
+    @include media-breakpoint-up(xl) {
+        font-size: 15px;
+    }
+
+    .cart-fast-order-link {
+        display: inline-block;
+        @include media-breakpoint-up(xxl) {
+            font-size: 20px;
+        }
+    }
+}
