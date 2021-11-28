@@ -1,5 +1,5 @@
 @if (count($filter['selectedFilterVariants']))
-    <div class="catalog-selected-options-block">
+    <div class="catalog-selected-options-block" id="filter-reset">
         <div class="form-row">
             <div class="col-auto">
                 <div class="catalog-selected-options-title">
@@ -18,25 +18,17 @@
                         @if ($variant['view'] == 'range')
                             @if ($variant['optional']['checked'])
 
-                                {{--<div class="catalog-selection-button"
-                                     data-type="range"
-                                     data-id-from="filter_{{ $variant['key'] }}_from"
-                                     data-id-to="filter_{{ $variant['key'] }}_to">
-                                    {{ $variant['variants']['from'] }} — {{ $variant['variants']['to'] }}
-                                    @if ($variant['variants']['units'] != '')
-                                        {{ $variant['variants']['units'] }}
-                                    @endif
-
-                                    <button type="button" class="close catalog-selection-remove"></button>
-                                </div>--}}
-
                                 <li class="catalog-selected-option-item">
-                                    <div class="catalog-selected-option">
+                                    <div class="catalog-selected-option"
+                                         data-type="range"
+                                         data-id-from="filter_{{ $variant['key'] }}_from"
+                                         data-id-to="filter_{{ $variant['key'] }}_to"
+                                    >
                                         {{ $variant['variants']['from'] }} — {{ $variant['variants']['to'] }}
                                         @if ($variant['variants']['units'] != '')
                                             {{ $variant['variants']['units'] }}
                                         @endif
-                                        <button type="button" class="catalog-selected-option-remove">
+                                        <button type="button" class="catalog-selected-option-remove catalog-selection-remove">
                                             <svg class="catalog-selected-option-media" width="8" height="8">
                                                 <use
                                                     xlink:href="{{asset('/images/client/sprite.svg#icon-close')}}"></use>
@@ -51,17 +43,14 @@
                         @if (in_array($variant['view'], ['multiple_checkboxes', 'color']))
                             @foreach($variant['variants'] as $value)
                                 @if ($value['checked'])
-                                    {{--<div class="catalog-selection-button"
-                                         data-type="choice"
-                                         data-id="filter_{{ $variant['key'] }}_{{ $value['value'] }}">
-                                        {{ $value['name'] }}
-                                        <button type="button" class="close catalog-selection-remove"
-                                                data-attribute-id="filter_{{ $variant['key'] }}_{{$value['value']}}"></button>
-                                    </div>--}}
                                     <li class="catalog-selected-option-item">
-                                        <div class="catalog-selected-option">
+                                        <div class="catalog-selected-option"
+                                             data-type="choice"
+                                             data-id="filter_{{ $variant['key'] }}_{{ $value['value'] }}"
+                                        >
                                             {{ $value['name'] }}
-                                            <button type="button" class="catalog-selected-option-remove">
+                                            <button type="button" class="catalog-selected-option-remove catalog-selection-remove"
+                                                    data-attribute-id="filter_{{ $variant['key'] }}_{{$value['value']}}">
                                                 <svg class="catalog-selected-option-media" width="8" height="8">
                                                     <use
                                                         xlink:href="{{asset('/images/client/sprite.svg#icon-close')}}"></use>
@@ -75,19 +64,11 @@
                         @endif
                     @endforeach
 
-
-
-
                     @foreach($filter['filterVariants'] as $variant)
                         @if ($variant['optional']['checked'])
-                            {{-- <div class="catalog-selection-button reset"
-                                  data-reset-filter="1"
-                                  data-url="{{ UrlBuilder::getUrl($category) }}">
-                                 Очистить все
-                                 <button type="button" class="close catalog-selection-remove"
-                                         data-url="{{ UrlBuilder::getUrl($category) }}"></button>
-                             </div>--}}
-                            <li class="catalog-selected-option-item">
+                            <li class="catalog-selected-option-item"
+                                data-reset-filter="1"
+                                data-url="{{ UrlBuilder::getUrl($category) }}">
                                 <button type="button" class="catalog-selected-option-reset">
                                     Сбросить все
                                     <svg class="catalog-selected-option-media" width="8" height="8">
@@ -98,7 +79,6 @@
                             @break
                         @endif
                     @endforeach
-
 
                 </ul>
             </div>

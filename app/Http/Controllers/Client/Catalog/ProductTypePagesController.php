@@ -18,6 +18,8 @@ use App\Services\DataProviders\ProductListPage\ProductTypePage\ManualProductType
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Repositories\ProductTypePage\EloquentProductTypePageRepository;
 use App\Services\Seo\MetaHelper;
+use \Illuminate\Contracts\View\View;
+use \Illuminate\Http\JsonResponse;
 
 
 class ProductTypePagesController extends Controller
@@ -37,7 +39,7 @@ class ProductTypePagesController extends Controller
     ){}
 
 
-    public function showPage(string $pageQuery)
+    public function showPage(string $pageQuery): View|JsonResponse
     {
         [$page, $aliasPath] = $this->parseUrlQuery($pageQuery);
         $productsView = \Helper::prepareProductsView(\Request::get('view'));
@@ -62,57 +64,46 @@ class ProductTypePagesController extends Controller
             ),
         };
 
-
         $productListData = $productListPageProvider->getProductListData($page);
-        $metaData = $this->metaHelper->getRule('product_type_page')
-            ->metaForObject($productTypePage, null, ['paginator' => \Arr::get($productListData, 'paginator')]);
+        $metaData = $this->metaHelper->getRule('product_type_page')->metaForObject($productTypePage, null, ['paginator' => \Arr::get($productListData, 'paginator')]);
+        $breadcrumbs = $this->getBreadcrumbs($this->breadcrumbs, $productTypePage->extractPath());
 
-//        if (\Request::ajax()) {
-//            $contentData = [
-//                'category' => $productListData['category'],
-//                'filter' => $productListData['filter'],
-//                'filterVariants' => $productListData['filter']['filterVariants'],
-//                'sortingVariants' => $productListData['filter']['sortingVariants'],
-//                'productsData' => $productListData['productsData'],
-//                'authEditLink' => route('cc.product-type-pages.edit', [$productTypePage->id]),
-//                'paginator' => $productListData['paginator'],
-//                'breadcrumbs' => $breadcrumbs,
-//            ];
-//
-//            $filterExpanded = \Request::get('filterExpanded') === true ||
-//                \Request::get('filterExpanded') === 'true';
-//            $filterExpandedParams = \Request::get('filterExpandedParams');
-//            if (!is_array($filterExpandedParams)) {
-//                $filterExpandedParams = [];
-//            }
-//            $categoryContent = view('client.categories._category_content')
-//                ->with($contentData)->render();
-//            $filterContent = view('client.categories._filter_block')->with([
-//                'category' => $contentData['category'],
-//                'filter' => $contentData['filter'],
-//                'filterExpanded' => $filterExpanded,
-//                'filterExpandedParams' => $filterExpandedParams,
-//            ])->render();
-//            $breadcrumbsContent = view('client.layouts._breadcrumbs_part')
-//                ->with('breadcrumbs', $contentData['breadcrumbs'])->render();
-//            return response()->json([
-//                'category' => $contentData['category'],
-//                'categoryContent' => $categoryContent,
-//                'filterContent' => $filterContent,
-//                'authEditLink' => $contentData['authEditLink'],
-//                'breadcrumbsContent' => $breadcrumbsContent,
-//            ]);
-//        }
+        if (!\Request::ajax()) {
+            return \View::make('client.categories.show')
+                ->with($productListData)
+                ->with('breadcrumbs', $breadcrumbs)
+                ->with('authEditLink', route('cc.categories.edit', $productTypePage->category_id))
+                ->with('listTypeProducts', $this->getListTypePageUrl($productTypePage->category_id))
+                ->with('metaData', $metaData);
+        }
 
-        return \View::make('client.categories.show')
-            ->with($productListData)
-            ->with([
-                    'listTypeProducts' => $this->getListTypePageUrl($productTypePage->category_id),
-                    'authEditLink' => route('cc.product-type-pages.edit', [$productTypePage->id]),
-                    'breadcrumbs' => $this->getBreadcrumbs($this->breadcrumbs, $productTypePage->extractPath()),
-                    'metaData' => $metaData,
-                ]);
+        $contentData  = [
+            'category' => $productListData['category'],
+            'filter' => $productListData['filter'],
+            'sorting' => $sortInput,
+            'productsData' => $productListData['productsData'],
+            'bottomContent' => $productListData['category']->bottom_content,
+            'paginator' => $productListData['paginator'],
+            'breadcrumbs' => $breadcrumbs,
+        ];
 
+        $categoryContent = \View::make('client.categories._category_content')
+            ->with($contentData)->render();
+        $filterContent = \View::make('client.categories._filter_block')->with([
+            'category' => $contentData['category'],
+            'filter' => $contentData['filter'],
+            'sorting' => $contentData['sorting'],
+        ])->render();
+
+        $breadcrumbsContent = \View::make('client.shared.breadcrumbs._breadcrumbs_part')
+            ->with('breadcrumbs', $contentData['breadcrumbs'])->render();
+
+        return \Response::json([
+            'categoryContent' => $categoryContent,
+            'sorting' => $contentData['sorting'],
+            'filterContent' => $filterContent,
+            'breadcrumbsContent' => $breadcrumbsContent,
+        ]);
     }
 
 
@@ -140,7 +131,7 @@ class ProductTypePagesController extends Controller
     }
 
 
-    private function getFilteredProductDataProvider(ProductTypePage $productTypePage, $inputSort, $productsView)
+    private function getFilteredProductDataProvider(ProductTypePage $productTypePage, $inputSort, $productsView): FilteredProductTypePageProductList
     {
         try {
             $parsedFilterString = $this->filterUrlParser->parseFilterUrl($productTypePage->filter_query ?? '');

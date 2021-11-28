@@ -10,6 +10,8 @@ use App\Services\Catalog\FilterUrlParser\FilterUrlParser;
 use App\Services\Repositories\Category\EloquentCategoryRepository;
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Repositories\ProductTypePage\EloquentProductTypePageRepository;
+use \Illuminate\Http\JsonResponse;
+use \Illuminate\Http\RedirectResponse;
 
 
 class FilterProxyController extends Controller
@@ -29,14 +31,13 @@ class FilterProxyController extends Controller
     ){}
 
 
-    public function redirectToFilterUrl()
+    public function redirectToFilterUrl(): JsonResponse|RedirectResponse
     {
-
         $categoryId = (int)(\Request::get('category') ?? \App::abort(404, 'Category is not found'));
         $this->category = ($this->categoryRepository->findPublishedById($categoryId));
         $this->filterInput = is_array(\Request::get('filter')) ? \Request::get('filter') : [];
         $this->filterInput = $this->productRepository->clearFilterVariants($this->category, $this->filterInput);
-        $this->sortInput = !is_string(\Request::get('sort')) ? \Request::get('sort') : null;
+        $this->sortInput = is_string(\Request::get('sort')) ? \Request::get('sort') : null;
         $this->productsView = \Helper::prepareProductsView(\Request::get('view'));
         $this->productTypePageId = \Request::get('product_type_page');
 
@@ -51,13 +52,8 @@ class FilterProxyController extends Controller
         }
 
         $url = \Helper::urlWithProductsView($targetUrl, $this->productsView);
-        /*if (\Request::ajax()) {
-            return ['url' => $url];
-        } */
-        return \Redirect::to($url, 301);
 
-
-//        return \Redirect::to(\Helper::urlWithProductsView($targetUrl, $productsView), 301);
+        return (\Request::ajax()) ? \Response::json(['url' => $url]) :\Redirect::to($url, 301);
     }
 
 

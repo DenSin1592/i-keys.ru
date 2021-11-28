@@ -1,13 +1,7 @@
-$(function () {
-    $('.filter-toggle').on('click', function(e) {
-        let target = $(e.currentTarget);
-        let filterContainer = $(target).next();
-
-        filterContainer.slideToggle();
-    });
+let initFilterRangeSlider = function () {
 
     $('.filter-range-slider').each(function () {
-        var slider, fromInput, toInput, min, max, fromValue, toValue, changeInput, decimals, sliderStep, i;
+        let slider, fromInput, toInput, min, max, fromValue, toValue, changeInput, decimals, sliderStep, i;
 
         slider = $(this);
         fromInput = $(slider.data('from'));
@@ -39,7 +33,7 @@ $(function () {
         });
 
         changeInput = function () {
-            var fromVal, toVal, fromValSlider, toValSlider;
+            let fromVal, toVal, fromValSlider, toValSlider;
             fromVal = parseFloat(fromInput.val());
             toVal = parseFloat(toInput.val());
             fromValSlider = parseFloat(slider.slider('values', 0));
@@ -76,7 +70,7 @@ $(function () {
 
         fromInput.change(changeInput);
         fromInput.focusin(function () {
-            if (SizeHelper.isMobile()) {
+            if (windowSizeHelper.isMobile()) {
                 fromInput.val('');
             }
         });
@@ -98,4 +92,19 @@ $(function () {
             }
         });
     });
+}
+
+let initFilterToggle = function (){
+    $('.filter-toggle').on('click', function(e) {
+        let target = $(e.currentTarget);
+        let filterContainer = $(target).next();
+        filterContainer.slideToggle();
+        ($('body').hasClass('filter-open') ? $('body').removeClass('filter-open') : $('body').addClass('filter-open'))
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function (){
+    initFilterToggle();
 })
+
+

@@ -1,7 +1,8 @@
 "use strict";
 
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
+    try {
         let authMenuContainer = document.querySelector('#auth-menu');
 
         authMenuContainer.addEventListener('mouseenter', (e) => {
@@ -13,6 +14,9 @@
             e.currentTarget.classList.remove('opened')
             e.currentTarget.classList.add('closed')
         });
+    } catch (ex) {
 
-    });
+    }
+
+});
 

@@ -1,35 +1,18 @@
-<?php namespace App\Services\Catalog\FilterUrlParser;
+<?php
+
+namespace App\Services\Catalog\FilterUrlParser;
 
 use App\Services\Catalog\FilterUrlParser\Exception\IncorrectCategory;
 use App\Services\Repositories\Category\EloquentCategoryRepository;
 
 
-/**
- * Class FilterUrlParser
- * Parser for filter url.
- *
- * @package App\Services\Catalog\FilterUrlParser
- */
 class FilterUrlParser
 {
-    private $categoryRepository;
 
-    /**
-     * FilterUrlParser constructor.
-     * @param EloquentCategoryRepository $categoryRepository
-     */
-    public function __construct(EloquentCategoryRepository $categoryRepository)
-    {
-        $this->categoryRepository = $categoryRepository;
-    }
+    public function __construct(private EloquentCategoryRepository $categoryRepository)
+    {}
 
-    /**
-     * Parse filter url.
-     *
-     * @param string $filterUrl
-     * @return array ['category' => Category $category, 'filterData' => array, 'sort' => string|null] - contains category and filter data.
-     * @throws IncorrectCategory
-     */
+
     public function parseFilterUrl(string $filterUrl): array
     {
         $filterUrl = trim(trim($filterUrl), '/');

@@ -44,11 +44,15 @@ return [
                 'html/vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js',
                 'html/vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js',
 
+                '/js/common/window_size_helper.js',
+                '/js/common/promise_queue.js',
+
                 'html/js/forms.js',
                 'html/js/tooltip.js',
                 'html/js/filter.js',
 
                 'js/client/auth_menu.js',
+                'js/client/filter.js',
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
             'output' => 'js/compiled/client.js'

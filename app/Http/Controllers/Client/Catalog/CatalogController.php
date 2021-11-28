@@ -14,6 +14,7 @@ use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Repositories\ProductTypePage\EloquentProductTypePageRepository;
 use App\Services\Seo\MetaHelper;
 use \Illuminate\Contracts\View\View;
+use \Illuminate\Http\JsonResponse;
 
 
 class CatalogController extends Controller
@@ -33,7 +34,7 @@ class CatalogController extends Controller
     ){}
 
 
-    public function showCategory(string $categoryQuery) : View
+    public function showCategory(string $categoryQuery): View|JsonResponse
     {
         [$page, $aliasPath] = $this->parseUrlQuery($categoryQuery);
         $productsView = \Helper::prepareProductsView(\Request::get('view'));
@@ -50,15 +51,50 @@ class CatalogController extends Controller
             $inputData['sort'],
             $productsView
         );
-        $productListData = $productListPageProvider->getProductListData($page);
 
-        return \View::make('client.categories.show')
-            ->with($productListData)
-            ->with('breadcrumbs', $this->getBreadcrumbs($this->breadcrumbs, $category->extractPath()))
-            ->with('authEditLink', route('cc.categories.edit', $category->id))
-            ->with('listTypeProducts', $this->getListTypePageUrl($category->id))
-            ->with('metaData', $this->metaHelper->getRule()->metaForObject($category));
+        $productListData = $productListPageProvider->getProductListData($page);
+        $breadcrumbs = $this->getBreadcrumbs($this->breadcrumbs, $category->extractPath());
+
+        if (!\Request::ajax()) {
+            return \View::make('client.categories.show')
+                ->with($productListData)
+                ->with('breadcrumbs', $breadcrumbs)
+                ->with('authEditLink', route('cc.categories.edit', $category->id))
+                ->with('listTypeProducts', $this->getListTypePageUrl($category->id))
+                ->with('metaData', $this->metaHelper->getRule()->metaForObject($category));
+        }
+
+        $contentData  = [
+            'category' => $category,
+            'filter' => $productListData['filter'],
+            'sorting' => $inputData['sort'],
+            'productsData' => $productListData['productsData'],
+            'bottomContent' => $category->bottom_content,
+            'paginator' => $productListData['paginator'],
+            'breadcrumbs' => $breadcrumbs,
+        ];
+
+        $categoryContent = \View::make('client.categories._category_content')
+            ->with($contentData)->render();
+        $filterContent = \View::make('client.categories._filter_block')->with([
+            'category' => $contentData['category'],
+            'filter' => $contentData['filter'],
+            'sorting' => $contentData['sorting'],
+        ])->render();
+
+        $breadcrumbsContent = \View::make('client.shared.breadcrumbs._breadcrumbs_part')
+            ->with('breadcrumbs', $contentData['breadcrumbs'])->render();
+
+        return \Response::json([
+            'categoryContent' => $categoryContent,
+            'sorting' => $contentData['sorting'],
+            'filterContent' => $filterContent,
+            'breadcrumbsContent' => $breadcrumbsContent,
+        ]);
     }
+
+
+
 
 
     private function checkPathAndReturnCurrentCategory(array $aliasPath): Category

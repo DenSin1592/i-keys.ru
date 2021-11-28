@@ -12,42 +12,25 @@
             <div class="container">
                 <div class="row">
 
-                    @if(!empty($filter['filterVariants']))
-                        @include('client.categories._filter_block')
-                    @endif
-
-                    <div class="catalog-content-container col-xl-9">
-
-                        @include('client.categories._types_block')
-
+                    <div class="catalog-aside-container col-xl-3" >
                         @if(!empty($filter['filterVariants']))
-                            @include('client.categories._selected_variants')
-                        @endif
+                            <button type="button" class="filter-toggle d-block d-xl-none text-center" >
+                                <svg class="filter-toggle-media" width="24" height="24">
+                                    <use xlink:href="{{asset('/images/client/sprite.svg#icon-filter')}}"></use>
+                                </svg>
+                                Фильтр
+                            </button>
 
-                        @include('client.categories._catalog_controls')
-
-
-                        @if(\Arr::get($filter, 'currentFilterQuery.view') === \App\Models\Product::VIEW_LIST)
-                            {{--  @include('client.categories._products_list')--}}Товары списком
-                        @else
-                            @include('client.categories._products_grid._block')
-                        @endif
-
-                        {{--@if (count($productsData) === 0 && !empty($filter['filterVariants']))
-                            <div class="font-weight-bold">
-                                К сожалению, по выбранным Вами параметрам не найдено ни одного товара. <br>
-                                Попробуйте расширить критерии поиска или посмотреть весь <a href="{{ UrlBuilder::getUrl($category) }}">каталог</a>.
+                            <div class="filter-block" id="filter">
+                                @include('client.categories._filter_block')
                             </div>
-                        @endif--}}
-
-
-
-                        {!! $paginator->onEachSide(1)->links('client.shared.pagination.client') !!}
-
-
-                        @include('client.categories._content._bottom', ['model' => $category])
-
+                        @endif
                     </div>
+
+                    <div class="catalog-content-container col-xl-9" id="category-content">
+                        @include('client.categories._category_content')
+                    </div>
+
                 </div>
             </div>
         </section>
