@@ -44,7 +44,7 @@
         </div>
 
         <div class="card-product-thumbnail">
-            <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
+            <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$productData['product']->name}}" class="card-product-media">
         </div>
 
         <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">{{$productData['product']->name}}</a>

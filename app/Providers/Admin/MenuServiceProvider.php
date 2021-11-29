@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductTypePagesController;
 use App\Http\Controllers\Admin\ReviewsController;
 use App\Services\Admin\Menu\MenuGroup;
-use Arr;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\AttributesController;
 use App\Http\Controllers\Admin\CategoriesController;

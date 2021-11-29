@@ -193,7 +193,7 @@ class EloquentCategoryRepository
 
     public function getElementsForFooterMenu(): Collection
     {
-        return Category::where('publish', true)->orderBy('position')->get();
+        return Category::where('publish', true)->where('menu_bottom', true)->orderBy('position')->get();
     }
 
 

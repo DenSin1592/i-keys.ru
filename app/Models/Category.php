@@ -15,7 +15,8 @@ class Category extends \Eloquent
     public const CATALOG_TYPE_IMAGE_ARE_IMPORTANT = 'image_are_important';
     public const CATALOG_TYPE_CHARACTERISTICS_ARE_IMPORTANT = 'characteristics_are_important';
 
-    public const CILINDR_MEHANIZMY_1C_CODE = 21741;
+    public const CILINDRY_1C_CODE = '000001';
+    public const CILINDR_MEHANIZMY_CISA_1C_CODE = '21741';
 
     use Glue;
     use InTreePublish;
@@ -37,9 +38,9 @@ class Category extends \Eloquent
         'meta_title',
         'meta_keywords',
         'meta_description',
-        'catalog_type',
         'code_1c',
-        'path_to_icon'
+        'path_to_icon',
+        'menu_top',
     ];
 
     public static function getCatalogTypes()

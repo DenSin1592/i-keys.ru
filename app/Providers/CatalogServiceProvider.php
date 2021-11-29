@@ -357,8 +357,15 @@ class CatalogServiceProvider extends ServiceProvider
                     $this->app->make('catalog.filter.default')
                 );
 
-                //Цилиндровые механизмы
-                $filterFactory->addFilter(Category::CILINDR_MEHANIZMY_1C_CODE, $this->app->make('catalog.filter.cylinder_mechanisms'));
+                foreach (
+                    [
+                        Category::CILINDRY_1C_CODE,
+                        Category::CILINDR_MEHANIZMY_CISA_1C_CODE,
+                    ] as $catCode1c) {
+                    $filterFactory->addFilter($catCode1c, $this->app->make('catalog.filter.cylinder_mechanisms'));
+                }
+//                $filterFactory->addFilter(000001, $this->app->make('catalog.filter.cylinder_mechanisms'));
+//                $filterFactory->addFilter(Category::CILINDR_MEHANIZMY_CISA_1C_CODE, $this->app->make('catalog.filter.cylinder_mechanisms'));
 
                 //Цилиндровые механизмы других производителей
 //                $filterFactory->addFilter('25115', $this->app->make('catalog.filter.cylinder_mechanisms_for_other_manufactures'));
