@@ -1,0 +1,73 @@
+.modal-dialog {
+    @include media-breakpoint-up(sm) {
+        max-width: 430px;
+    }
+    @include media-breakpoint-up(md) {
+        max-width: 500px;
+    }
+}
+
+.modal-content {
+    padding: 20px 20px 30px;
+    border: none;
+    border-radius: 0;
+    @include media-breakpoint-up(md) {
+        padding: 30px 30px 40px;
+    }
+    @include media-breakpoint-up(xl) {
+        padding: 40px 40px 50px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding: 45px 50px 55px;
+    }
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    padding: 0;
+}
+
+.modal-header {
+    margin-bottom: 10px;
+    border: none;
+
+    .close {
+        opacity: 1;
+        color: currentColor;
+
+        &:hover {
+            color: $c-secondary;
+        }
+    }
+}
+
+.form-modal {
+    .form-group {
+        + .form-group {
+            @include media-breakpoint-up(xl) {
+                margin-top: 20px;
+            }
+        }
+    }
+
+    button[type="submit"] {
+        margin-top: 10px;
+        @include media-breakpoint-up(xl) {
+            margin-top: 20px;
+        }
+    }
+}
+
+
+// modal quick order
+#modalQuickOrder {
+    .modal-dialog {
+        @include media-breakpoint-up(xl) {
+            max-width: 585px;
+        }
+        @include media-breakpoint-up(xxl) {
+            max-width: 685px;
+        }
+    }
+}

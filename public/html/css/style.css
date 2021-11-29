@@ -11117,6 +11117,10 @@ img {
   }
 }
 
+.font-family-secondary {
+  font-family: "Conthrax", sans-serif !important;
+}
+
 .text-secondary {
   color: #c55100 !important;
 }
@@ -11802,9 +11806,13 @@ img {
     padding: 20px 25px;
   }
 }
+@media (min-width: 1200px) {
+  .btn-lg, .btn-group-lg > .btn, .card-product .btn-group-lg > .card-product-cart {
+    font-size: 17px;
+  }
+}
 @media (min-width: 1680px) {
   .btn-lg, .btn-group-lg > .btn, .card-product .btn-group-lg > .card-product-cart {
-    min-width: 240px;
     padding: 25px 35px;
     font-size: 20px;
   }
@@ -11812,6 +11820,37 @@ img {
 
 .btn-secondary {
   background-color: #3f3f3f;
+}
+
+.btn-link {
+  margin: 0;
+  padding: 0;
+  border-bottom: 3px solid #c55100;
+  background: none;
+  color: currentColor;
+  text-decoration: none;
+}
+.btn-link::before, .btn-link::after {
+  display: none;
+}
+.btn-link:hover {
+  border-bottom-color: transparent;
+  color: currentColor;
+  text-decoration: none;
+}
+.btn-link:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.badge {
+  min-width: 32px;
+  height: 32px;
+  padding: 5px 5px;
+  border-radius: 0;
+  background-color: #000;
+  color: #fff;
+  font-weight: 700;
 }
 
 .filter-toggle {
@@ -12082,6 +12121,81 @@ img {
 }
 .select2-container .select2-dropdown .select2-results__option.select2-results__option--highlighted {
   background-color: #c55100;
+}
+
+@media (min-width: 480px) {
+  .modal-dialog {
+    max-width: 430px;
+  }
+}
+@media (min-width: 750px) {
+  .modal-dialog {
+    max-width: 500px;
+  }
+}
+
+.modal-content {
+  padding: 20px 20px 30px;
+  border: none;
+  border-radius: 0;
+}
+@media (min-width: 750px) {
+  .modal-content {
+    padding: 30px 30px 40px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-content {
+    padding: 40px 40px 50px;
+  }
+}
+@media (min-width: 1680px) {
+  .modal-content {
+    padding: 45px 50px 55px;
+  }
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  padding: 0;
+}
+
+.modal-header {
+  margin-bottom: 10px;
+  border: none;
+}
+.modal-header .close {
+  opacity: 1;
+  color: currentColor;
+}
+.modal-header .close:hover {
+  color: #c55100;
+}
+
+@media (min-width: 1200px) {
+  .form-modal .form-group + .form-group {
+    margin-top: 20px;
+  }
+}
+.form-modal button[type="submit"] {
+  margin-top: 10px;
+}
+@media (min-width: 1200px) {
+  .form-modal button[type="submit"] {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #modalQuickOrder .modal-dialog {
+    max-width: 585px;
+  }
+}
+@media (min-width: 1680px) {
+  #modalQuickOrder .modal-dialog {
+    max-width: 685px;
+  }
 }
 
 .card {
