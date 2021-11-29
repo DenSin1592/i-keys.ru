@@ -145,8 +145,13 @@ trait TreeAncestors
             $element->descendants()->detach();
         });
 
+
         self::saved(function (self $element) {
             self::rebuildElementAncestors($element);
+        });
+
+        self::updated(function (self $model) {
+            self::rebuildElementAncestors($model);
         });
     }
 }

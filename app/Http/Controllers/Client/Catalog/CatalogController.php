@@ -114,6 +114,10 @@ class CatalogController extends Controller
             if ($matchedCategory === null) {
                 \App::abort(404, "Wrong category path");
             }
+            if ($parentCategory !== null) {
+               /* $matchedCategory->parent()->associate($parentCategory);
+                $matchedCategory->save();*/
+            }
             $parentCategory = $matchedCategory;
         }
 

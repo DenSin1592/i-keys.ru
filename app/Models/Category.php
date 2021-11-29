@@ -67,23 +67,22 @@ class Category extends \Eloquent
         return $this->hasMany(Product::class);
     }
 
-
     public function attributes()
     {
-        return $this->hasMany(Attribute::class);
+        return $this->belongsToMany(Attribute::class);
     }
-
 
     protected static function boot()
     {
         parent::boot();
 
+        self::bootTreeAncestors();
+
         self::deleting(function (self $category) {
             DeleteHelpers::deleteRelatedAll($category->products());
             DeleteHelpers::deleteRelatedAll($category->children());
-            DeleteHelpers::deleteRelatedAll($category->attributes());
-
-            ProductTypePage::where('category_id', $category->id)->update(['category_id' => null]);
+            $category->attributes()->detach();
+            ProductTypePage::where('category_id', $category->id)->update(['category_id' => null, 'publish' => 0]);
         });
     }
 }

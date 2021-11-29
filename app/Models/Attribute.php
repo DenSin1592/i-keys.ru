@@ -46,11 +46,6 @@ class Attribute extends \Eloquent
     }
 
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
 
     public function allowedValues()
     {
@@ -145,6 +140,7 @@ class Attribute extends \Eloquent
             DeleteHelpers::deleteRelatedAll($attribute->decimalValues());
             DeleteHelpers::deleteRelatedAll($attribute->singleValues());
             DeleteHelpers::deleteRelatedAll($attribute->multipleValues());
+            $attribute->categories()->detach();
         });
         self::saving(function (self $attribute) {
             AliasHelpers::setAlias($attribute);
