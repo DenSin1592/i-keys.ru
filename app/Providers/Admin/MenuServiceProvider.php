@@ -118,14 +118,14 @@ class MenuServiceProvider extends ServiceProvider
                 );
 
 
-                $groupLists = new MenuGroup('Справочники', 'glyphicon-list-alt');
-                $menu->addMenuGroup($groupLists);
+//                $groupLists = new MenuGroup('Справочники', 'glyphicon-list-alt');
+               /* $menu->addMenuGroup($groupLists);
                 $groupLists->addMenuElement(new MenuElement(
                     'Поддомены',
                     'glyphicon-file',
                     route('cc.subdomains.index'),
                     ['App\Controller\Admin\SubdomainsController']
-                ));
+                ));*/
 
 
 

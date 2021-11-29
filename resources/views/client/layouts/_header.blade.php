@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row flex-nowrap flex-md-wrap align-items-center">
             <div class="header-location-container col-auto d-none d-lg-block">
-                <button type="button" class="header-location-toggle d-flex align-items-center">
+                {{--<button type="button" class="header-location-toggle d-flex align-items-center">
                     <div class="header-location-thumbnail d-none d-xl-block">
                         <img loading="lazy" src="{{asset('/images/client/icons/icon-location.svg')}}" width="27"
                              height="16" alt="" class="header-location-medua">
@@ -11,7 +11,7 @@
                     <div class="header-location-text text-truncate">
                         <div class="header-location-region">{{$currentCity}}</div>
                     </div>
-                </button>
+                </button>--}}
             </div>
 
             <div class="header-burger-container col-auto d-xxl-none">

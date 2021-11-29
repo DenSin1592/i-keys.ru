@@ -14,11 +14,22 @@
                     <ul class="filter-options-list list-unstyled">
                         <li class="filter-option-item">
                             <div class="filter-option">
+                                <input type="radio" id="filter-option-category-3" class="filter-option-input"
+                                       name="test">
+                                <label for="filter-option-category-3" class="filter-option-label">
+                                    Показать все
+                                    {{--                                    <span class="filter-option-badge">123</span>--}}
+                                </label>
+                            </div>
+                        </li>
+
+                        <li class="filter-option-item">
+                            <div class="filter-option">
                                 <input type="radio" id="filter-option-category-1" class="filter-option-input"
                                        name="test">
                                 <label for="filter-option-category-1" class="filter-option-label">
                                     Показать лучшие товары
-                                    <span class="filter-option-badge">13</span>
+{{--                                    <span class="filter-option-badge">13</span>--}}
                                 </label>
                             </div>
                         </li>
@@ -29,18 +40,7 @@
                                        name="test">
                                 <label for="filter-option-category-2" class="filter-option-label">
                                     Показать товары со скидками
-                                    <span class="filter-option-badge">25</span>
-                                </label>
-                            </div>
-                        </li>
-
-                        <li class="filter-option-item">
-                            <div class="filter-option">
-                                <input type="radio" id="filter-option-category-3" class="filter-option-input"
-                                       name="test">
-                                <label for="filter-option-category-3" class="filter-option-label">
-                                    Показать все
-                                    <span class="filter-option-badge">123</span>
+{{--                                    <span class="filter-option-badge">25</span>--}}
                                 </label>
                             </div>
                         </li>
