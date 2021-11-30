@@ -1,0 +1,18 @@
+.checkout-control {
+    width: 100%;
+    margin-bottom: 15px;
+    @include media-breakpoint-up(md) {
+        width: auto;
+        margin-bottom: 0;
+    }
+}
+
+.checkout-control-next {
+    @include media-breakpoint-up(xxl) {
+        min-width: 345px;
+    }
+}
+
+.checkout-control-back {
+    min-width: 125px;
+}

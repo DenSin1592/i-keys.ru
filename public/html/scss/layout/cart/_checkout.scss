@@ -1,0 +1,41 @@
+.section-checkout {
+    margin-top: 25px;
+    margin-bottom: 35px;
+    @include media-breakpoint-up(md) {
+        margin-top: 35px;
+        margin-bottom: 45px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-top: 45px;
+        margin-bottom: 60px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-top: 60px;
+        margin-bottom: 100px;
+    }
+}
+
+.checkout-header {
+    margin-bottom: 20px;
+
+    .checkout-title {
+        margin: 0;
+        font-family: $f-secondary;
+    }
+
+    .checkout-subtitle {
+        margin: 10px 0 0;
+        @include media-breakpoint-up(xxl) {
+            margin-top: 20px;
+        }
+    }
+}
+
+.checkout-alert {
+    margin-bottom: 25px;
+}
+
+
+@import 'checkout-nav';
+@import 'checkout-accordion';
+@import 'checkout-controls';

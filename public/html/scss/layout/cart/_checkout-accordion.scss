@@ -1,0 +1,8 @@
+.checkout-delivery-price {
+    margin: 0;
+    
+    @include media-breakpoint-up(xxl) {
+        margin: 5px 0 0;
+        font-size: 17px;
+    }
+}

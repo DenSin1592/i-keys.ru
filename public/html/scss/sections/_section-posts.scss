@@ -1,0 +1,46 @@
+.section-posts {
+    padding-top: 0;
+    padding-bottom: 40px;
+    @include media-breakpoint-up(lg) {
+        padding-bottom: 60px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding-bottom: 120px;
+    }
+
+    .section-posts-column {
+        + .section-posts-column {
+            margin-top: 30px;
+            @include media-breakpoint-up(lg) {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .card-banner {
+        margin-top: 35px;
+        margin-bottom: 35px;
+        @include media-breakpoint-up(xl) {
+            margin-top: 45px;
+            margin-bottom: 45px;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+    }
+}
+
+.posts-grid {
+    margin-bottom: -30px;
+    @include media-breakpoint-up(xxl) {
+        margin-bottom: -45px;
+    }
+
+    .post-item {
+        margin-bottom: 30px;
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: 45px;
+        }
+    }
+}

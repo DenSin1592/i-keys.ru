@@ -1,0 +1,10 @@
+.section-cart {
+    padding-top: 30px;
+    padding-bottom: 55px;
+}
+
+@import 'cart-order';
+@import 'cart-fast-order';
+@import 'cart-controls';
+
+@import 'checkout';

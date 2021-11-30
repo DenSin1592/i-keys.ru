@@ -67,12 +67,12 @@ img {
 
 .title-h2 {
     font-size: 20px;
+    line-height: 1.33;
     @include media-breakpoint-up(xl) {
         font-size: 26px;
     }
     @include media-breakpoint-up(xxl) {
         font-size: 30px;
-        line-height: 35px;
     }
 }
 
@@ -95,6 +95,10 @@ img {
         font-size: 20px;
         line-height: 30px;
     }
+}
+
+.font-family-secondary {
+    font-family: $f-secondary !important;
 }
 
 .text-secondary {
