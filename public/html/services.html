@@ -13,9 +13,11 @@
         <div class="container">
             <div class="row flex-nowrap flex-md-wrap align-items-center">
                 <div class="header-location-container col-auto d-none d-lg-block">
-                    <button type="button" class="header-location-toggle d-flex align-items-center">
+                    <button type="button" class="header-location-toggle d-flex align-items-center" data-toggle="modal" data-target="#modalLocation" >
                         <div class="header-location-thumbnail d-none d-xl-block">
-                            <img loading="lazy" src="images/icons/icon-location.png" width="27" height="16" alt="" class="header-location-medua">
+                            <svg class="header-location-media" width="27" height="16">
+                                <use xlink:href="/images/sprite.svg#icon-location"></use>
+                            </svg>
                         </div>
 
                         <div class="header-location-text text-truncate">
@@ -538,6 +540,36 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalLocation" tabindex="-1" aria-labelledby="modalLocationLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title title-h3 font-family-secondary" id="modalLocationLabel">Ваш город</h3>
+                    
+                    <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                        <svg class="close-media" width="24" height="24">
+                            <use xlink:href="/images/sprite.svg#icon-close"></use>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="form-modal form" >
+                        <div class="form-group">
+                            <select name="" id="modalLocationSelect" class="custom-control custom-select custom-select-lg" style="width: 100%;" >
+                                <option value="Москва">Москва</option>
+                                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-lg" >Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>

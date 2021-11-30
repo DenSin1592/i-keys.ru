@@ -5,6 +5,12 @@
     @include media-breakpoint-up(md) {
         max-width: 500px;
     }
+    @include media-breakpoint-up(xl) {
+        max-width: 585px;
+    }
+    @include media-breakpoint-up(xxl) {
+        max-width: 685px;
+    }
 }
 
 .modal-content {
@@ -26,11 +32,11 @@
 .modal-body,
 .modal-footer {
     padding: 0;
+    border: none;
 }
 
 .modal-header {
     margin-bottom: 10px;
-    border: none;
 
     .close {
         opacity: 1;
@@ -39,6 +45,18 @@
         &:hover {
             color: $c-secondary;
         }
+    }
+}
+
+.modal-footer {
+    display: block;
+
+    > .row {
+        @extend .row;
+    }
+
+    > .form-row {
+        @extend .form-row;
     }
 }
 
@@ -51,6 +69,12 @@
         }
     }
 
+    .form-label {
+        @include media-breakpoint-up(xl) {
+            font-size: 15px;
+        }
+    }
+
     button[type="submit"] {
         margin-top: 10px;
         @include media-breakpoint-up(xl) {
@@ -60,14 +84,42 @@
 }
 
 
-// modal quick order
-#modalQuickOrder {
+.modal-controls-group {
+    margin-bottom: -15px;
+    @include media-breakpoint-up(md) {
+        margin-bottom: 0;
+    }
+
+    .modal-control {
+        width: 100%;
+        margin-bottom: 15px;
+
+        @include media-breakpoint-up(md) {
+            width: auto;
+            margin-bottom: 0;
+        }
+    }
+}
+
+// modal location
+#modalLocation {
     .modal-dialog {
-        @include media-breakpoint-up(xl) {
-            max-width: 585px;
+        @include media-breakpoint-up(md) {
+            max-width: 400px;
         }
+    }
+
+    .modal-header {
         @include media-breakpoint-up(xxl) {
-            max-width: 685px;
+            margin-bottom: 20px;
         }
+    }
+}
+
+// modal add to cart
+#modalAddToCardProductName {
+    @include media-breakpoint-up(xxl) {
+        margin: 5px 0;
+        font-size: 22px;
     }
 }
