@@ -12,6 +12,12 @@
     }
 }
 
+.form-label {
+    &.form-label-column {
+        margin: 0 5px 0 0;
+    }
+}
+
 .form-control {
     height: 40px;
     margin: 0;
@@ -217,6 +223,32 @@
 
             .custom-control-label {
                 border-width: 2px;
+            }
+        }
+    }
+}
+
+// custom select
+.custom-select {
+    &.custom-select-lg {
+        + .select2-container {
+            .select2-selection--single {
+                @include media-breakpoint-up(xxl) {
+                    height: 40px;
+                }
+
+                .select2-selection__rendered {
+                    @include media-breakpoint-up(xxl) {
+                        font-size: 17px;
+                        line-height: 38px;
+                    }
+                }
+
+                .select2-selection__arrow {
+                    @include media-breakpoint-up(xxl) {
+                        height: 38px;
+                    }
+                }
             }
         }
     }

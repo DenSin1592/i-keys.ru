@@ -13,9 +13,11 @@
         <div class="container">
             <div class="row flex-nowrap flex-md-wrap align-items-center">
                 <div class="header-location-container col-auto d-none d-lg-block">
-                    <button type="button" class="header-location-toggle d-flex align-items-center">
+                    <button type="button" class="header-location-toggle d-flex align-items-center" data-toggle="modal" data-target="#modalLocation" >
                         <div class="header-location-thumbnail d-none d-xl-block">
-                            <img loading="lazy" src="images/icons/icon-location.png" width="27" height="16" alt="" class="header-location-medua">
+                            <svg class="header-location-media" width="27" height="16">
+                                <use xlink:href="/images/sprite.svg#icon-location"></use>
+                            </svg>
                         </div>
 
                         <div class="header-location-text text-truncate">
@@ -1050,12 +1052,135 @@
         </div>
     </footer>
 
+
+    <div id="offcanvas" class="offcanvas d-none" >
+        <div class="offcanvas-header">
+            <div class="form-row">
+                <div class="offcanvas-toggle-container">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="offcanvas-body">
+            <ul class="offcanvas-catalog-list list-unstyled">
+                <li class="offcanvas-catalog-item">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="/images/sprite.svg#icon-catalog-lock"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Замки</span>
+                    </a>
+                </li>
+
+                <li class="offcanvas-catalog-item">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="/images/sprite.svg#icon-catalog-handle"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Ручки</span>
+                    </a>
+                </li>
+
+                <li class="offcanvas-catalog-item">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="/images/sprite.svg#icon-catalog-furniture"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Фурнитура</span>
+                    </a>
+                </li>
+
+                <li class="offcanvas-catalog-item">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="/images/sprite.svg#icon-catalog-keys"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Копии ключей</span>
+                    </a>
+                </li>
+
+                <li class="offcanvas-catalog-item">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="/images/sprite.svg#icon-catalog-master"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Мастер-системы</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="offcanvas-nav-list list-unstyled">
+                <li class="offcanvas-nav-item">
+                    <a href="#link" class="offcanvas-nav-link">Услуги</a>
+                </li>
+                <li class="offcanvas-nav-item">
+                    <a href="#link" class="offcanvas-nav-link">Доставка и оплата</a>
+                </li>
+                <li class="offcanvas-nav-item">
+                    <a href="#link" class="offcanvas-nav-link">Гарантии</a>
+                </li>
+                <li class="offcanvas-nav-item">
+                    <a href="#link" class="offcanvas-nav-link">О компании</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalLocation" tabindex="-1" aria-labelledby="modalLocationLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title title-h3 font-family-secondary" id="modalLocationLabel">Ваш город</h3>
+                    
+                    <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                        <svg class="close-media" width="24" height="24">
+                            <use xlink:href="/images/sprite.svg#icon-close"></use>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="form-modal form" >
+                        <div class="form-group">
+                            <select name="" id="modalLocationSelect" class="custom-control custom-select custom-select-lg" style="width: 100%;" >
+                                <option value="Москва">Москва</option>
+                                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-lg" >Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap-4.6.0/js/dist/util.js"></script>
     <script src="vendor/bootstrap-4.6.0/js/dist/collapse.js"></script>
+    <script src="vendor/bootstrap-4.6.0/js/dist/modal.js"></script>
     <script src="vendor/bootstrap-4.6.0/js/dist/tooltip.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js"></script>
 
     <script src="js/forms.js"></script>
     <script src="js/tooltip.js"></script>

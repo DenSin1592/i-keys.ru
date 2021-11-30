@@ -13,9 +13,11 @@
         <div class="container">
             <div class="row flex-nowrap flex-md-wrap align-items-center">
                 <div class="header-location-container col-auto d-none d-lg-block">
-                    <button type="button" class="header-location-toggle d-flex align-items-center">
+                    <button type="button" class="header-location-toggle d-flex align-items-center" data-toggle="modal" data-target="#modalLocation" >
                         <div class="header-location-thumbnail d-none d-xl-block">
-                            <img loading="lazy" src="images/icons/icon-location.png" width="27" height="16" alt="" class="header-location-medua">
+                            <svg class="header-location-media" width="27" height="16">
+                                <use xlink:href="/images/sprite.svg#icon-location"></use>
+                            </svg>
                         </div>
 
                         <div class="header-location-text text-truncate">
@@ -833,7 +835,7 @@
                                             </div>
 
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
-                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
                                                         <use xlink:href="/images/sprite.svg#icon-cart"></use>
                                                     </svg>
@@ -919,7 +921,7 @@
                                             </div>
 
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
-                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
                                                         <use xlink:href="/images/sprite.svg#icon-cart"></use>
                                                     </svg>
@@ -1005,7 +1007,7 @@
                                             </div>
 
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
-                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
                                                         <use xlink:href="/images/sprite.svg#icon-cart"></use>
                                                     </svg>
@@ -1091,7 +1093,7 @@
                                             </div>
 
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
-                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
                                                         <use xlink:href="/images/sprite.svg#icon-cart"></use>
                                                     </svg>
@@ -1195,7 +1197,7 @@
                                             </div>
 
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
-                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
                                                         <use xlink:href="/images/sprite.svg#icon-cart"></use>
                                                     </svg>
@@ -1281,7 +1283,7 @@
                                             </div>
 
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
-                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
                                                         <use xlink:href="/images/sprite.svg#icon-cart"></use>
                                                     </svg>
@@ -1367,7 +1369,7 @@
                                             </div>
 
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
-                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
                                                         <use xlink:href="/images/sprite.svg#icon-cart"></use>
                                                     </svg>
@@ -1453,7 +1455,7 @@
                                             </div>
 
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
-                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
                                                         <use xlink:href="/images/sprite.svg#icon-cart"></use>
                                                     </svg>
@@ -1539,7 +1541,7 @@
                                             </div>
 
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
-                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
+                                                <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
                                                         <use xlink:href="/images/sprite.svg#icon-cart"></use>
                                                     </svg>
@@ -1825,6 +1827,90 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalLocation" tabindex="-1" aria-labelledby="modalLocationLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title title-h3 font-family-secondary" id="modalLocationLabel">Ваш город</h3>
+                    
+                    <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                        <svg class="close-media" width="24" height="24">
+                            <use xlink:href="/images/sprite.svg#icon-close"></use>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="form-modal form" >
+                        <div class="form-group">
+                            <select name="" id="modalLocationSelect" class="custom-control custom-select custom-select-lg" style="width: 100%;" >
+                                <option value="Москва">Москва</option>
+                                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-lg" >Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalAddToCart" tabindex="-1" aria-labelledby="modalAddToCartLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title title-h3 font-family-secondary" id="modalAddToCartLabel">Товар добавлен в корзину</h3>
+                    
+                    <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                        <svg class="close-media" width="24" height="24">
+                            <use xlink:href="/images/sprite.svg#icon-close"></use>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" class="form-modal form" >
+                        <div id="modalAddToCardProductName" class="title-h4 text-secondary" >Замок Avers PD-01-63 добавлен в корзину</div>
+
+                        <div class="form-group d-flex align-items-center">
+                            <label for="modalAddToCartQuantity" class="form-label form-label-column" >Кол-во</label>
+
+                            <div class="custom-number custom-control d-flex align-items-center">
+                                <button type="button" class="custom-number-button custom-number-decrease d-flex align-items-center justify-content-center">
+                                    <svg class="custom-number-button-media" width="12" height="12">
+                                        <use xlink:href="/images/sprite.svg#icon-minus"></use>
+                                    </svg>
+                                </button>
+
+                                <input type="number" id="modalAddToCartQuantity" class="custom-number-input" value="1">
+
+                                <button type="button" class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">
+                                    <svg class="custom-number-button-media" width="12" height="12">
+                                        <use xlink:href="/images/sprite.svg#icon-plus"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="modal-controls-group form-row flex-column flex-md-row">
+                        <div class="col-md-auto">
+                            <a href="cart.html" class="modal-control btn btn-lg" >Перейти в корзину</a>
+                        </div>
+
+                        <div class="col-md-auto">
+                            <button type="button" class="modal-control btn btn-lg btn-secondary" data-dismiss="modal" aria-label="Close" >Продолжить покупки</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
