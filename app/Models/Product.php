@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Helpers\AliasHelpers;
 use App\Models\Product\HasAttributeValues;
 use App\Models\Features\AutoPublish;
 use App\Models\Helpers\DeleteHelpers;
@@ -134,6 +135,11 @@ class Product extends \Eloquent
             $product->relatedProducts()->detach();
             $product->relatedProductsReverse()->detach();
             $product->typePages()->detach();
+        });
+
+
+        self::saving(function (self $product) {
+            AliasHelpers::setAlias($product);
         });
     }
 }

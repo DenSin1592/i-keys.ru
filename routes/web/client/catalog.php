@@ -5,9 +5,7 @@ Route::namespace('Catalog')
        static function () {
 
 
-            Route::get('catalog/{categoryQuery}', 'CatalogController@showCategory')
-                ->where('categoryQuery', '.+')
-                ->name('category');
+           Route::get('catalog/{url}', 'CatalogProxyController')->name('catalog')->where('url', '.*');
 
 
            Route::get('types/{url}', 'ProductTypePagesController@showPage')
@@ -17,19 +15,6 @@ Route::namespace('Catalog')
 
            Route::get('filter-proxy', 'FilterProxyController@redirectToFilterUrl')
                ->name('filter-proxy');
-
-
-            Route::get('product/{id}', 'ProductsController@show')
-                ->where('id', '[1-9]\d*')
-                ->name('product');
-
-
-
-
-
-
-
-
         }
     );
 

@@ -26,7 +26,7 @@
                 <a href="{{ route('cc.categories.index') }}" class="btn btn-default">{{ trans('interactions.back_to_list') }}</a>
             @endif
             @if ($formData['category']->in_tree_publish)
-                @include('admin.shared._show_on_site_button', ['url' => \UrlBuilder::buildCategoryUrl($formData['category'])])
+                @include('admin.shared._show_on_site_button', ['url' => \UrlBuilder::getUrl($formData['category'])])
             @endif
         </div>
 

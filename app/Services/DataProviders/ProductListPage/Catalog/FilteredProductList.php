@@ -28,7 +28,6 @@ class FilteredProductList extends ProductListPageProvider
         FilterVariantsProvider $filterVariantsProvider,
         ClientProductList $productListProvider,
         Category $category,
-
         array $filterData,
         $sort,
         $productsView

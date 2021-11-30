@@ -219,4 +219,14 @@ class EloquentCategoryRepository
 
         return $categoriesKeyByAlias->get($alias);
     }
+
+
+    public function treePublishedWithAliases(array $aliases): Collection
+    {
+        if (count($aliases) === 0) {
+            return Collection::make([]);
+        }
+        return Category::query()->treePublished()->whereIn('alias', $aliases)->get();
+
+    }
 }

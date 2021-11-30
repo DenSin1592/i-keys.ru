@@ -3,7 +3,6 @@
 namespace App\Services\UrlBuilder;
 
 use App\Models\Category;
-use App\Models\Node;
 use App\Models\Product;
 use App\Models\ProductTypePage;
 
@@ -12,16 +11,16 @@ class UrlBuilder
 {
     public function getUrl(\Eloquent $model): string
     {
-        if ($model instanceof Node) {
-            return \TypeContainer::getClientUrl($model);
-        }
+//        if ($model instanceof Node) {
+//            return \TypeContainer::getClientUrl($model);
+//        }
 
         if ($model instanceof Category) {
-            return route('category', implode('/', $model->getAliasPath()));
+            return $this->buildUrlFromAliasPath($model->getAliasPath());
         }
 
         if ($model instanceof Product) {
-            return route('product', [$model->id]);
+            return $this->buildProductUrl($model);
         }
 
         if ($model instanceof ProductTypePage) {
@@ -32,39 +31,22 @@ class UrlBuilder
     }
 
 
-    public function buildCategoryUrl(Category $category): string
+    public function buildProductUrl(Product $product): string
     {
         $aliasPath = [];
-        foreach ($category->extractParentPath() as $parentCategory) {
-            $aliasPath[] = $parentCategory->alias;
+        foreach ($product->category->extractParentPath() as $category) {
+            $aliasPath[] = $category->alias;
         }
-        $aliasPath[] = $category->alias;
+        $aliasPath[] = $product->category->alias;
+        $aliasPath[] = $product->alias;
 
-        return $this->buildCategoryUrlFromAliasPath($aliasPath);
+        return $this->buildUrlFromAliasPath($aliasPath);
     }
 
 
-    private function buildCategoryUrlFromAliasPath(array $aliasPath): string
+    private function buildUrlFromAliasPath(array $aliasPath): string
     {
         $aliasPathStr = implode('/', $aliasPath);
-        return route('category', $aliasPathStr);
-    }
-
-
-    public function buildTypeUrl(ProductTypePage $type): string
-    {
-        $typePath = [];
-        foreach ($type->extractParentPath() as $parentType) {
-            $typePath[] = $parentType;
-        }
-        $typePath[] = $type;
-
-        $aliasPath = [];
-        foreach ($typePath as $model) {
-            $aliasPath[] = $model->alias;
-        }
-
-        $aliasPathStr = implode('/', $aliasPath);
-        return route('product_types_page', $aliasPathStr);
+        return route('catalog', $aliasPathStr);
     }
 }

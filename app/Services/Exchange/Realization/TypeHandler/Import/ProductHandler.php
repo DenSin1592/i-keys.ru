@@ -106,6 +106,18 @@ class ProductHandler implements ITypeHandler
                 continue;
             }
 
+
+            $productName =  $row[1];
+            if ($productName === '') {
+                $this->logger->addLog(
+                    $fileName,
+                    $currentLine,
+                    "Товар с кодом 1C {$productCode1c} не был импортирован, т.к. поле Название категории пустое.",
+                );
+                continue;
+            }
+
+
             $categoryCode1c = $row[3];
             if ($categoryCode1c === '') {
                 $this->logger->addLog(

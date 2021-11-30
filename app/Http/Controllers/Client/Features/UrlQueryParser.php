@@ -6,9 +6,6 @@ namespace App\Http\Controllers\Client\Features;
 trait UrlQueryParser
 {
 
-    /**
-     * Get alias path and page.
-     */
     private function parseUrlQuery(string $query): array
     {
         $query = trim($query, '/');
@@ -29,7 +26,7 @@ trait UrlQueryParser
             \App::abort(404, 'Incorrect path to category');
         }
 
-        return [$parsedQuery['page'], $parsedQuery['aliasPath']];
+        return [$parsedQuery['aliasPath'], $parsedQuery['page']];
     }
 
 
@@ -41,7 +38,7 @@ trait UrlQueryParser
         }
 
         $page = $matches[1];
-        if ($page === 1) {
+        if ($page <= 1) {
             \App::abort(404, 'Page 1 is not allowed in url');
         }
 

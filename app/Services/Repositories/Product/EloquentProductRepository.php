@@ -340,6 +340,12 @@ class EloquentProductRepository
     }
 
 
+    public function findByAlias(string $alias): ?Product
+    {
+        return Product::query()->where('alias', $alias)->first();
+    }
+
+
     public function filterVariants(Category $category, $filterData = []): array
     {
         if (!is_array($filterData)) {
