@@ -45,9 +45,9 @@
                 @endif
 
 
-            <li class="page-item">
+           {{-- <li class="page-item">
                 <a class="page-link page-view-all" href="catalog.html">Смотреть все  <span class="page-badge" >{{ $paginator->total() }}</span></a>
-            </li>
+            </li>--}}
         </ul>
     </div>
 @endif
