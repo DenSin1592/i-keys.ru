@@ -10999,6 +10999,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 html,
 body {
+  min-width: 320px;
   height: 100%;
   font-family: "Proxima Nova";
   font-size: 14px;
@@ -11215,6 +11216,7 @@ img {
   position: relative;
 }
 .search-input {
+  width: 100%;
   height: 40px;
   padding: 0 15px 0 50px;
   border: none;
@@ -12146,30 +12148,132 @@ img {
 }
 
 .offcanvas {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-100%);
+  overflow-y: auto;
   position: fixed;
   z-index: 99;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 0 15px;
+  padding: 0 15px 60px;
   background-color: #000;
   color: #fff;
   font-size: 14px;
 }
+.offcanvas.transition {
+  transition: opacity 300ms ease, visibility 300ms ease, transform 300ms ease;
+}
+.offcanvas.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0);
+}
+
+.offcanvas-header {
+  padding: 18px 0;
+}
+
+/* offcanvas close */
+.offcanvas-close {
+  opacity: 1;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: currentColor;
+}
+.offcanvas-close:hover {
+  color: #c55100;
+}
+
+/* offcanvas location */
+.offcanvas-location-toggle {
+  max-width: 150px;
+  color: currentColor !important;
+  font-size: 15px;
+  font-weight: 600;
+}
+.offcanvas-location-toggle .offcanvas-location-thumbnail {
+  flex: 0 0 27px;
+  width: 27px;
+  margin-right: 15px;
+}
+
+/* offcanvas account */
+.offcanvas-account-list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.offcanvas-account-link {
+  width: 40px;
+  border: none;
+}
+.offcanvas-account-link .offcanvas-account-thumbnail {
+  flex: 0 0 28px;
+  width: 28px;
+  color: #c55100;
+}
+
+/* offcanvas search */
+.offcanvas-search-block {
+  margin: 0 -15px 20px;
+  padding: 10px 15px;
+  background-color: #dcdcdc;
+  color: #3f3f3f;
+}
+
+/* offcanvas contact */
+.offcanvas-contact-block {
+  margin-bottom: 10px;
+}
+
+.offcanvas-contact-list {
+  margin: 0;
+}
+.offcanvas-contact-list a {
+  display: block;
+  padding: 2px 0;
+  border: none;
+  text-decoration: underline;
+}
+.offcanvas-contact-list a[href^="tel:"] {
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.offcanvas-contact-list a:hover {
+  color: #c55100;
+  text-decoration: none;
+}
+
+/* offcanvas social */
+.offcanvas-social-link {
+  border: none;
+}
 
 /* offcanvas catalog */
 .offcanvas-catalog-list {
-  margin: 0;
+  margin: 0 0 20px;
+  padding-top: 30px;
   padding-bottom: 30px;
+  border-top: 3px solid currentColor;
   border-bottom: 3px solid currentColor;
 }
 
 .offcanvas-catalog-link {
   border: none;
-  padding: 5px 0;
+  padding: 12px 0;
   font-family: "Conthrax", sans-serif;
   font-weight: 600;
+}
+.offcanvas-catalog-link:hover {
+  color: #c55100;
 }
 .offcanvas-catalog-link .offcanvas-catalog-thumbnail {
   flex: 0 0 25px;
@@ -12186,6 +12290,9 @@ img {
   display: block;
   border: none;
   padding: 5px 0;
+}
+.offcanvas-nav-link:hover {
+  color: #c55100;
 }
 
 @media (min-width: 480px) {
@@ -13600,7 +13707,7 @@ img {
   }
 }
 
-.header-location-toggle {
+.header-location-toggle, .offcanvas-location-toggle {
   cursor: pointer;
   margin: 0;
   padding: 0;
@@ -13612,7 +13719,7 @@ img {
   font-weight: 600;
   line-height: 1;
 }
-.header-location-toggle .header-location-thumbnail {
+.header-location-toggle .header-location-thumbnail, .offcanvas-location-toggle .header-location-thumbnail {
   width: 27px;
   height: 16px;
   margin-right: 15px;
@@ -13699,16 +13806,16 @@ img {
   }
 }
 
-.header-social {
+.header-social, .offcanvas-social-link {
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
 }
-.header-social-thumbnail {
+.header-social-thumbnail, .offcanvas-social-link .offcanvas-social-thumbnail {
   width: 25px;
   height: 25px;
 }
-.header-social-text {
+.header-social-text, .offcanvas-social-link .offcanvas-social-text {
   margin-left: 15px;
 }
 .header-social-whatsapp {
@@ -13739,16 +13846,14 @@ img {
   flex: 0 0 28px;
   width: 28px;
   margin-right: 10px;
+  color: #c55100;
 }
 @media (min-width: 1200px) {
   .header-account-thumbnail {
     margin-right: 20px;
   }
 }
-.header-account-media {
-  fill: #c55100;
-}
-.header-account-badge {
+.header-account-badge, .offcanvas-account-link .offcanvas-account-badge {
   position: absolute;
   top: -8px;
   left: 20px;

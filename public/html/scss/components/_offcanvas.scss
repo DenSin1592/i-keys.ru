@@ -1,37 +1,161 @@
 .offcanvas {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-100%);
+    overflow-y: auto;
     position: fixed;
     z-index: 99;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 0 15px;
+    padding: 0 15px 60px;
     background-color: $c-black;
     color: $c-white;
     font-size: 14px;
+
+    &.transition {
+        transition: opacity 300ms ease, visibility 300ms ease, transform 300ms ease;
+    }
+
+    &.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(0);
+    }
 }
 
-// .offcanvas-inner {
-//     overflow-y: auto;
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     -webkit-overflow-scrolling: touch;
-// }
+
+.offcanvas-header {
+    padding: 18px 0;
+}
+
+
+/* offcanvas close */
+.offcanvas-close {
+    opacity: 1;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    color: currentColor;
+
+    &:hover {
+        color: $c-secondary;
+    }
+}
+
+
+/* offcanvas location */
+.offcanvas-location-toggle {
+    @extend .header-location-toggle;
+    max-width: 150px;
+    color: currentColor !important;
+    font-size: 15px;
+    font-weight: 600;
+
+    .offcanvas-location-thumbnail {
+        flex: 0 0 27px;
+        width: 27px;
+        margin-right: 15px;
+    }
+}
+
+
+/* offcanvas account */
+.offcanvas-account-list {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.offcanvas-account-link {
+    width: 40px;
+    border: none;
+
+    .offcanvas-account-thumbnail {
+        flex: 0 0 28px;
+        width: 28px;
+        color: $c-secondary;
+    }
+
+    .offcanvas-account-badge {
+        @extend .header-account-badge;
+    }
+}
+
+
+/* offcanvas search */
+.offcanvas-search-block {
+    margin: 0 -15px 20px;
+    padding: 10px 15px;
+    background-color: #dcdcdc;
+    color: $c-default;
+}
+
+
+/* offcanvas contact */
+.offcanvas-contact-block {
+    margin-bottom: 10px;
+}
+
+.offcanvas-contact-list {
+    margin: 0;
+
+    a {
+        display: block;
+        padding: 2px 0;
+        border: none;
+        text-decoration: underline;
+
+        &[href^="tel:"] {
+            font-size: 17px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: $c-secondary;
+            text-decoration: none;
+        }
+    }
+}
+
+
+/* offcanvas social */
+.offcanvas-social-link {
+    @extend .header-social;
+    border: none;
+
+    .offcanvas-social-thumbnail {
+        @extend .header-social-thumbnail;
+    }
+
+    .offcanvas-social-text {
+        @extend .header-social-text;
+    }
+}
 
 
 /* offcanvas catalog */
 .offcanvas-catalog-list {
-    margin: 0;
+    margin: 0 0 20px;
+    padding-top: 30px;
     padding-bottom: 30px;
+    border-top: 3px solid currentColor;
     border-bottom: 3px solid currentColor;
 }
 
 .offcanvas-catalog-link {
     border: none;
-    padding: 5px 0;
+    padding: 12px 0;
     font-family: $f-secondary;
     font-weight: 600;
+
+    &:hover {
+        color: $c-secondary;
+    }
 
     .offcanvas-catalog-thumbnail {
         flex: 0 0 25px;
@@ -50,4 +174,8 @@
     display: block;
     border: none;
     padding: 5px 0;
+
+    &:hover {
+        color: $c-secondary;
+    }
 }
