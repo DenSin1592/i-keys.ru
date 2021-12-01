@@ -155,7 +155,6 @@ class ProductTypePagesController extends Controller
                 $productsView
             );
         } catch (IncorrectFilterUrl $ex) {
-            \App::make(Handler::class)->report($ex);
             \App::abort(404, 'Incorrect path to category');
         }
 
