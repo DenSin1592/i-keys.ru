@@ -30,7 +30,7 @@
                         @foreach($topMenu as $menuElement)
                             <li class="header-nav-item {{ $menuElement['active']  ? 'active' : '' }}">
                                 <a href="{{ $menuElement['url'] }}"
-                                   class="header-nav-link">{!! $menuElement['name'] !!}</a>
+                                   class="header-nav-link">{{ $menuElement['name'] }}</a>
                             </li>
                         @endforeach
 
@@ -145,7 +145,7 @@
                 <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between">
 
                     @foreach($categoriesHeaderMenu as $element)
-                    <li class="header-catalog-item col-auto col-xxl">
+                    <li class="header-catalog-item col-auto col-xxl {{ $element['active']  ? 'active' : '' }}">
                         <a href="{{$element['url']}}" class="header-catalog-link d-flex align-items-center justify-content-center">
                             <div class="header-catalog-thumbnail">
                                 <svg class="header-catalog-media" width="26" height="25">

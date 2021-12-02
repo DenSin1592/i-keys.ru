@@ -15,6 +15,8 @@
 
         @include('client.layouts._footer')
 
+        @include('client.layouts._offcanvas')
+
         {!! Asset::includeJS('client_js') !!}
 
         @yield('modals')

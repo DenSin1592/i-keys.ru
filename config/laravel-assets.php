@@ -54,6 +54,7 @@ return [
                 'html/js/forms.js',
                 'html/js/tooltip.js',
                 'html/js/filter.js',
+                'html/js/offcanvas.js',
 
                 'js/client/auth_menu.js',
                 'js/client/modal_message.js',
