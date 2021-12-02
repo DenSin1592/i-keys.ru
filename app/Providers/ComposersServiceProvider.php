@@ -1,24 +1,22 @@
-<?php namespace App\Providers;
+<?php
+
+namespace App\Providers;
 
 use App\Services\Composers\AdminAlertComposer;
 use App\Services\Composers\AdminMainMenuComposer;
 use App\Services\Composers\ClientBottomMenuComposer;
 use App\Services\Composers\ClientCityHeaderComposer;
-use App\Services\Composers\ClientCityModalComposer;
 use App\Services\Composers\ClientFooterCategoryComposer;
-use App\Services\Composers\ClientHeaderCategoryComposer;
+use App\Services\Composers\ClientHeaderCartComposer;
 use App\Services\Composers\ClientHeaderCategoryMenuComposer;
 use App\Services\Composers\ClientTopMenuComposer;
 use App\Services\Composers\CurrentAdminUserComposer;
 use Illuminate\Support\ServiceProvider;
 
+
 class ComposersServiceProvider extends ServiceProvider
 {
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
+
     public function register()
     {
         \View::composers([
@@ -33,6 +31,7 @@ class ComposersServiceProvider extends ServiceProvider
             ClientCityHeaderComposer::class => 'client.layouts._header',
             ClientHeaderCategoryMenuComposer::class => 'client.layouts._header',
             ClientFooterCategoryComposer::class => 'client.layouts._footer',
+            ClientHeaderCartComposer::class => 'client.layouts._header',
         ]);
     }
 }

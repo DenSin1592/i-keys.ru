@@ -1,11 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+
     let modalMessage = $('#modalMessage');
+
+
+    let updateCartIcon = (count) => {
+        $('.cart-item-count').text(count);
+    };
+
 
     $(document).on('click', 'button.event-add-to-cart', (e) => {
         let button = $(e.currentTarget);
         button.prop('disabled', true);
         button.addClass('loader');
-        // button.html('');
 
         let productId = button.data('product-id');
         let url = modalMessage.data('url-cart-add');
@@ -25,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 modalMessage.find('h3').text(response['modal_title']);
                 modalMessage.find('.modal-body').replaceWith(response['modal_body']);
                 customNumberButtonInit();
+                updateCartIcon(response['cartItemCount']);
                 }
             ).fail(() => {
                 button.replaceWith('');

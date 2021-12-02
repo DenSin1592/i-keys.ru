@@ -35,6 +35,7 @@ class CartController extends Controller
                 'button_in_cart' => \View::make('client.shared.product.button._in_cart')->render(),
                 'modal_title' => 'Товар добавлен в корзину!',
                 'modal_body' => \View::make('client.shared.modal._success_in_cart', ['product' => $item->getProduct(), 'count' => $item->getCount(),])->render(),
+                'cartItemCount' => $this->cart->totalCount()
             ]);
 
         }catch (\Throwable $e){
@@ -221,41 +222,4 @@ class CartController extends Controller
 //            ->with($metaData);
 
     }
-
-//    public function check(int $productId): bool
-//    {
-//        return $this->cart->checkItem($productId);
-//    }
-
-
-//    public function getCountItem(int $productId)
-//    {
-//        return $this->cart->getCountItem($productId);
-//    }
-
-
-//    public function getCountChildItem(int $productId, int $childProductId)
-//    {
-//        return $this->cart->getCountItemChild( $productId, $childProductId);
-//    }
-
-
-
-//    private function getButtonAddToCartOnOrderSuccess($typePage)
-//    {
-//        switch ($typePage) {
-//            case self::PRODUCT_PAGE_BUTTON:
-//                $htmlNewButton = view('client.products.show._buttons._add_to_cart_disable')->render();
-//                break;
-//
-//            case self::PRODUCT_LIST_BUTTON:
-//                $htmlNewButton = view('client.shared.products._button._add_to_cart_disable')->render();
-//                break;
-//
-//            default:
-//                $htmlNewButton = null;
-//        }
-//
-//        return $htmlNewButton;
-//    }
 }

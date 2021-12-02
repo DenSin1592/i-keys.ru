@@ -258,6 +258,7 @@ return [
         'PrettyPaginator' => App\Facades\PrettyPaginatorFacade::class,
         'UrlBuilder' => App\Facades\UrlBuilder::class,
         'CatalogHelper' => App\Facades\CatalogHelper::class,
+        'Cart' => App\Facades\Cart::class,
     ],
 
 ];

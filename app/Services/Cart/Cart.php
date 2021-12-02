@@ -4,7 +4,6 @@ namespace App\Services\Cart;
 
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Storage\ICardStorage;
-use http\Exception\RuntimeException;
 
 
 class Cart
@@ -40,10 +39,10 @@ class Cart
     }*/
 
 
-    /*public function totalCount(): int
+    public function totalCount(): int
     {
         return count($this->items());
-    }*/
+    }
 
 
     /*public function summaryCount()
@@ -196,5 +195,14 @@ class Cart
         }
 
         return null;
+    }
+
+
+    public function checkItem(int $productId): bool
+    {
+        if(is_null($this->findItem($productId))){
+            return false;
+        }
+       return true;
     }
 }

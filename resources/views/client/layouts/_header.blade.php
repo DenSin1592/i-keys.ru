@@ -126,14 +126,14 @@
                     </li>
 
                     <li class="header-account-item col-auto">
-                        <a href="#link" class="header-account d-flex align-items-center">
+                        <a href="{{route('cart.show')}}" class="header-account d-flex align-items-center">
                             <div class="header-account-thumbnail">
                                 <svg class="header-account-media" width="28" height="25">
                                     <use xlink:href="{{asset('/images/client/sprite.svg#icon-cart')}}"></use>
                                 </svg>
                             </div>
 
-                            <div class="header-account-badge d-flex align-items-center justify-content-center">0</div>
+                            <div class="header-account-badge d-flex align-items-center justify-content-center cart-item-count">{{$cartItemCount}}</div>
                         </a>
                     </li>
                 </ul>

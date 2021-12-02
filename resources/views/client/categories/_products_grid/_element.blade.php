@@ -58,7 +58,13 @@
 
                 <div class="card-product-cart-container col-auto">
 
-                    @include('client.shared.product.button._add_to_card', ['product' => $productData['product']])
+                    @if ($productData['product']->price > 0.0)
+                        @if(\App\Facades\Cart::checkItem($productData['product']->id))
+                            @include('client.shared.product.button._in_cart')
+                        @else
+                            @include('client.shared.product.button._add_to_card', ['product' => $productData['product']])
+                        @endif
+                    @endif
 
                 </div>
             </div>
