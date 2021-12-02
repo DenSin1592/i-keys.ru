@@ -27,7 +27,9 @@ return [
         'client_css' => [
             'assets' => [
                 'html/css/style.css',
+
                 'css/client/auth_menu.css',
+                'css/client/cart.css',
             ],
             'filters' => ['css_min', 'embed_css', 'strip_bom', 'css_url_rebase'],
             'output' => 'css/compiled/client.css'
@@ -40,19 +42,24 @@ return [
                 'html/vendor/bootstrap-4.6.0/js/dist/util.js',
                 'html/vendor/bootstrap-4.6.0/js/dist/collapse.js',
                 'html/vendor/bootstrap-4.6.0/js/dist/tooltip.js',
+                'html/vendor/bootstrap-4.6.0/js/dist/modal.js',
                 'html/vendor/select2/select2.min.js',
                 'html/vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js',
                 'html/vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js',
 
                 '/js/common/window_size_helper.js',
                 '/js/common/promise_queue.js',
+                '/js/common/csrf.js',
 
                 'html/js/forms.js',
                 'html/js/tooltip.js',
                 'html/js/filter.js',
 
                 'js/client/auth_menu.js',
+                'js/client/modal_message.js',
                 'js/client/filter.js',
+                'js/client/cart/cart.js',
+
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
             'output' => 'js/compiled/client.js'

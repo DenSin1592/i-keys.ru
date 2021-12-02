@@ -1,32 +1,3 @@
-{{--<div class="item col-6 col-md-4 col-lg-3 {{ !empty($fullWidth) ? 'col-xl-3' : 'col-xl-4' }} {{ $gridElementClass ?? '' }}">
-    <div class="product-card vertical">
-        <div class="product-media">
-            <a href="{{ UrlBuilder::getUrl($productData['product']) }}" class="product-thumbnail">
-               --}}{{-- @if(isset($productData['image']))
-                    <img src="{{ $productData['image']->getAttachment('image')->getUrl('middle') }}" alt="{{ $productData['product']->name }}" class="product-img">
-                @else
-                    @include('client.shared._no_image', ['image_class' => 'product-img'])
-                @endif--}}{{--
-            </a>
-        </div>
-        <div class="product-body">
-            <a href="{{ UrlBuilder::getUrl($productData['product']) }}" class="product-title">
-                {!! \Arr::get($productData, 'productTypePageAdditionalInfo.name', $productData['product']->highlighted_name) !!}
-            </a>
-            @include('client.categories._product._compare_btn', ['product' => $productData['product'], 'hasShortText' => true])
-        </div>
-
-        @if($productData['product']->available)
-            <div class="product-footer">
-                <div class="product-price">
-                    {!! Helper::priceFormat($productData['product']->price) !!}
-                </div>
-                @include('client.categories._product._add_to_cart', ['product' => $productData['product']])
-            </div>
-        @endif
-    </div>
-</div>--}}
-
 <div class="product-item col-sm-6 col-md-4 col-lg-3 col-xl-4 d-flex">
     <div class="card-product card-product-portrait">
         <div class="card-product-badges d-flex">
@@ -86,12 +57,9 @@
                 </div>
 
                 <div class="card-product-cart-container col-auto">
-                    <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" >
-                        <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-cart')}}"></use>
-                        </svg>
-                        Купить
-                    </button>
+
+                    @include('client.shared.product.button._add_to_card', ['product' => $productData['product']])
+
                 </div>
             </div>
         </div>

@@ -1,13 +1,12 @@
-<?php namespace App\Models;
+<?php
 
+namespace App\Models;
 
 use App\Models\OrderItem\OrderExchangeStatus;
 
 class OrderItem extends \Eloquent
 {
     use OrderExchangeStatus;
-
-    const MAX_ITEM_COUNT = 4000000000;
 
     protected $fillable = [
         'product_id',

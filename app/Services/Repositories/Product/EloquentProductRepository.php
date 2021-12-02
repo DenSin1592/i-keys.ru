@@ -614,4 +614,45 @@ class EloquentProductRepository
             );
     }
 
+    public function findPublishedById($id)
+    {
+        return Product::query()
+            ->join(
+                'categories',
+                'categories.id',
+                '=',
+                'products.category_id'
+            )
+            ->where('categories.in_tree_publish', true)
+            ->where('products.publish', true)
+            ->where('products.id', $id)
+            ->select('products.*')
+            ->distinct()
+            ->with('category')
+            ->first();
+    }
+
+
+    public function getPublishedByIds(array $ids): Collection
+    {
+        if (count($ids) === 0) {
+            return Collection::make([]);
+        }
+
+        return Product::query()
+            ->join(
+                'categories',
+                'categories.id',
+                '=',
+                'products.category_id'
+            )
+            ->where('categories.in_tree_publish', true)
+            ->where('products.publish', true)
+            ->whereIn('products.id', $ids)
+            ->select('products.*')
+            ->distinct()
+            ->with('category')
+            ->get();
+    }
+
 }

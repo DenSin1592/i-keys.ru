@@ -1,0 +1,11 @@
+button.loader {
+    color: transparent !important;
+    background-image: url('../../../images/common/loaders/loading-white.svg') !important;
+    background-repeat: no-repeat !important;
+    background-size: auto 60% !important;
+    background-position: center center !important;
+}
+
+button.loader * {
+    opacity: 0 !important;
+}

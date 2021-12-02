@@ -17,6 +17,9 @@
 
         {!! Asset::includeJS('client_js') !!}
 
+        @yield('modals')
+        @include('client.shared.modal._message')
+
     </body>
 
 

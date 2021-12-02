@@ -45,6 +45,7 @@ Route::namespace('Client')->group(function () {
     Route::get('/', 'HomeController')->name('home');
 
     require_once 'web/client/catalog.php';
+    require_once 'web/client/cart.php';
 
 
 //    Route::get('/{url}', 'HomeController')->name('dynamic_page')->where('url', '.*');

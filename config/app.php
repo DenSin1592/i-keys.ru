@@ -199,6 +199,7 @@ return [
         App\Providers\ExchangeServiceProvider::class,
         App\Providers\SubdomainsServiceProvider::class,
         App\Providers\CatalogServiceProvider::class,
+        App\Providers\CartServiceProvider::class,
     ],
 
     /*

@@ -4,17 +4,11 @@ let initSelect2 = function (){
     });
 }
 
-
-document.addEventListener('DomContentLoaded', function (){
-
-    initSelect2();
-
-    // custom number
+let customNumberButtonInit = function (){
     $(".custom-number .custom-number-button").on("click", function(e) {
         let target = $(e.currentTarget),
             container = target.closest('.custom-number'),
             input = container.find("input"),
-            inputData = input.data('type'),
             oldValue = parseFloat(input.val()),
             newValue = undefined;
 
@@ -27,9 +21,17 @@ document.addEventListener('DomContentLoaded', function (){
                 newValue = 0;
             }
         }
+        newValue = newValue <= 0 ? 1 : newValue;
 
         input.val(newValue);
     });
+}
+
+document.addEventListener('DomContentLoaded', function (){
+
+    initSelect2();
+    customNumberButtonInit();
+
 
     // custom options
     $('.form-option').on('click', function(e) {
