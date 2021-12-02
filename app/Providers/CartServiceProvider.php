@@ -24,7 +24,7 @@ class CartServiceProvider extends ServiceProvider
             }
         );
 
-        $this->app->bind(ICardStorage::class,
+        $this->app->singleton(ICardStorage::class,
         function() {
             return new CookieCartStorage();
         });

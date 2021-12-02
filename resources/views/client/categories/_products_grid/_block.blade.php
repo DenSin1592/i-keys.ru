@@ -7,7 +7,7 @@
 
             @include('client.categories._products_grid._element')
 
-            @if($loop->iteration === 4 || trim(Setting::get("site_content.wa_phone")) !== '')
+            @if($loop->iteration === 4 && trim(Setting::get("site_content.wa_phone")) !== '')
                 <div class="product-item col-sm-6 col-md-4 col-lg-3 col-xl-4 d-flex">
                     <a href="{{Setting::get("site_content.wa_phone")}}" class="card-banner card-banner-portrait card-banner-whatsapp d-flex flex-column align-items-center justify-content-center">
                         <div class="card-banner-thumbnail">
