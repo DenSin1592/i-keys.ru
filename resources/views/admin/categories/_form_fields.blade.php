@@ -17,6 +17,8 @@
 
 @include('admin.shared._header_meta_field')
 
+{!! Form::tbTinymceTextareaBlock('content_for_submenu') !!}
+
 {!! Form::tbTinymceTextareaBlock('top_content') !!}
 
 {!! Form::tbTinymceTextareaBlock('bottom_content') !!}
