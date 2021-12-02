@@ -29,6 +29,7 @@ class Product extends \Eloquent
         'extra_description',
         'code_1c',
         'old_price',
+        'best_prod'
     ];
 
     public function getNameWithCode1cAttribute()
