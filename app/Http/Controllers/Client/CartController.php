@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Client;
 
 use App\Exceptions\Handler;
 use App\Http\Controllers\Controller;
+use App\Services\Breadcrumbs\Factory as Breadcrumbs;
 use App\Services\Cart\Cart;
+use App\Services\Seo\MetaHelper;
 use \Illuminate\Http\JsonResponse;
 
 
@@ -14,10 +16,52 @@ class CartController extends Controller
         private Cart $cart,
 //        ItemListBuilder $itemListBuilder,
 //        ClientOrderForm $clientOrderForm,
-//        Breadcrumbs $breadcrumbs,
-//        MetaHelper $metaHelper,
+        private Breadcrumbs $breadcrumbs,
+        private MetaHelper $metaHelper,
 //        ProductBuilder $productBuilder
     ){}
+
+
+    public function show()
+    {
+
+        return \View::make('client.cart.show')
+            ->with('breadcrumbs', $this->getBreadcrumbs())
+            ->with('metaData', $this->metaHelper->getRule()->metaForName('Корзина'));
+
+
+
+//        $itemListData = $this->itemListBuilder->buildDataFor($this->cart->items());
+//
+//        if (\Request::ajax()) {
+//            $summary = view('client.cart.show._summary', [
+//                'itemListData' => $itemListData,
+//            ])->render();
+//            return Response::json(['summary' => $summary]);
+//        }
+//
+//        $breadcrumbs = $this->breadcrumbs->init();
+//        $breadcrumbs->add('Корзина', route('cart.show'));
+//        $metaData = $this->metaHelper->getRule()->metaForName('Корзина');
+//
+//        $formData = $this->clientOrderForm->provideData(Request::old());
+//
+//        return view('client.cart.show')
+//            ->with('breadcrumbs', $breadcrumbs)
+//            ->with('itemListData', $itemListData)
+//            ->with('formData', $formData)
+//            ->with($metaData);
+
+    }
+
+    private function getBreadcrumbs()
+    {
+        $breadcrumbs = $this->breadcrumbs->init();
+        $breadcrumbs->add('Главная', route('home'));
+        $breadcrumbs->add('Корзина');
+
+        return $breadcrumbs;
+    }
 
 
     public function add(): JsonResponse
@@ -112,7 +156,6 @@ class CartController extends Controller
 
 //    public function removeChild()
 //    {
-//        //todo:возможно настроить, (может обернуть в Exception)
 //        if (!\Request::ajax())
 //            \App::abort(404, 'Page not found');
 //
@@ -196,30 +239,5 @@ class CartController extends Controller
 //    }
 
 
-    public function show()
-    {
 
-        dd(__METHOD__, $this->cart->items());
-//        $itemListData = $this->itemListBuilder->buildDataFor($this->cart->items());
-//
-//        if (\Request::ajax()) {
-//            $summary = view('client.cart.show._summary', [
-//                'itemListData' => $itemListData,
-//            ])->render();
-//            return Response::json(['summary' => $summary]);
-//        }
-//
-//        $breadcrumbs = $this->breadcrumbs->init();
-//        $breadcrumbs->add('Корзина', route('cart.show'));
-//        $metaData = $this->metaHelper->getRule()->metaForName('Корзина');
-//
-//        $formData = $this->clientOrderForm->provideData(Request::old());
-//
-//        return view('client.cart.show')
-//            ->with('breadcrumbs', $breadcrumbs)
-//            ->with('itemListData', $itemListData)
-//            ->with('formData', $formData)
-//            ->with($metaData);
-
-    }
 }
