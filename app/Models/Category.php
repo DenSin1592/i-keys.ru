@@ -41,6 +41,7 @@ class Category extends \Eloquent
         'code_1c',
         'path_to_icon',
         'menu_top',
+        'content_for_submenu'
     ];
 
     public static function getCatalogTypes()

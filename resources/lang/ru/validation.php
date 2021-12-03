@@ -188,6 +188,7 @@ return [
         'parent_id' => 'Родитель',
         'type' => 'Тип',
         'top_content' => 'Содержимое вверху',
+        'content_for_submenu' => 'Содержимое всплывающего меню',
         'content' => 'Содержимое',
         'bottom_content' => 'Содержимое внизу',
         'extra_description' => 'Дополнительное описание',
