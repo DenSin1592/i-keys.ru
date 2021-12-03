@@ -9,12 +9,9 @@
 <form action="{{route('filter-proxy')}}" class="form-filter" data-category-url="{{{ UrlBuilder::getUrl($category)}}}">
     <div class="row">
 
-        <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
-
-            @foreach ($filter['filterVariants'] as $lensData)
-                    @include("client.categories._filter._{$lensData['view']}")
-            @endforeach
-        </div>
+        @foreach ($filter['filterVariants'] as $lensData)
+            @include("client.categories._filter._{$lensData['view']}")
+        @endforeach
 
     </div>
     <div class="filter-footer">
