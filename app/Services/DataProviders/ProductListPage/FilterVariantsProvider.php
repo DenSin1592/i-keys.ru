@@ -1,12 +1,12 @@
-<?php namespace App\Services\DataProviders\ProductListPage;
+<?php
+
+namespace App\Services\DataProviders\ProductListPage;
 
 use App\Models\Category;
+use App\Providers\CatalogServiceProvider;
 use App\Services\Repositories\Product\EloquentProductRepository;
 
-/**
- * Class FilterVariantsProvider
- * @package App\Services\DataProviders\ProductListPage
- */
+
 class FilterVariantsProvider
 {
     protected $productRepository;
@@ -43,7 +43,7 @@ class FilterVariantsProvider
     private function prepareFilterVariants(array $filterVariants)
     {
         foreach ($filterVariants as &$filterVariant) {
-            if ($filterVariant['view'] === 'multiple_checkboxes') {
+            if (in_array($filterVariant['view'], CatalogServiceProvider::MULTIPLE_VIEWS_FOR_SELECTED_BLOCK)) {
                 $firstChecked = \Arr::first($filterVariant['variants'], function($value, $key) {
                     return $value['checked'];
                 });
@@ -70,7 +70,7 @@ class FilterVariantsProvider
                     continue;
                 }
 
-                if (in_array($lensData['view'], ['multiple_checkboxes', 'color'])) {
+                if (in_array($lensData['view'],CatalogServiceProvider::MULTIPLE_VIEWS_FOR_SELECTED_BLOCK)) {
                     $selectedVariants = $this->getMultipleCheckboxesSelectedVariants(
                         $filterData,
                         $lensData,

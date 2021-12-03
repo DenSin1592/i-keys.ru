@@ -1,3 +1,8 @@
+<div class="filter-group">
+<div class="filter-group-header">
+    <div class="filter-group-title title-h4">{!! $lensData['name']  !!}</div>
+</div>
+
 <div class="filter-group-content">
     <ul class="filter-checkbox-list list-unstyled">
         @foreach ($lensData['variants'] as $number => $variant)
@@ -18,5 +23,6 @@
             </li>
         @endforeach
     </ul>
+</div>
 </div>
 

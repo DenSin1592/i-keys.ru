@@ -7,6 +7,7 @@ use App\Services\Catalog\Filter\Filter\CatalogFilterFactory;
 use App\Services\Catalog\Filter\Filter\FilterLensAggregator;
 use App\Services\Catalog\Filter\Filter\FilterLensWrapper;
 use App\Services\Catalog\Filter\Lens\ClassicListLens;
+use App\Services\Catalog\Filter\Lens\OptionLens;
 use App\Services\Catalog\Filter\Lens\PriceLens;
 use App\Services\Catalog\ListSorting\Sorting;
 use App\Services\Catalog\ListSorting\Sorting\AlphabetSorting;
@@ -20,6 +21,8 @@ use Illuminate\Support\ServiceProvider;
 
 class CatalogServiceProvider extends ServiceProvider
 {
+
+    public const MULTIPLE_VIEWS_FOR_SELECTED_BLOCK = ['multiple_checkboxes', 'color'];
 
     public function register(): void
     {
@@ -68,6 +71,18 @@ class CatalogServiceProvider extends ServiceProvider
     {
         $attributeRepository = $this->app->make(EloquentAttributeRepository::class);
         $allowedValueRepository = $this->app->make(EloquentAllowedValueRepository::class);
+
+        $this->app->singleton(
+            'catalog.filter_lens.options',
+            function () {
+                return new FilterLensWrapper(
+                   new OptionLens(),
+                    'options',
+                    'Опции',
+                    'options'
+                );
+            }
+        );
 
         $this->app->singleton(
             'catalog.filter_lens.price',
@@ -241,6 +256,7 @@ class CatalogServiceProvider extends ServiceProvider
             'catalog.filter.default',
             function () {
                 $filter = new FilterLensAggregator();
+                $filter->addLens($this->app->make('catalog.filter_lens.options'));
                 $filter->addLens($this->app->make('catalog.filter_lens.price'));
 
                 return $filter;
@@ -252,14 +268,13 @@ class CatalogServiceProvider extends ServiceProvider
             'catalog.filter.cylinder_mechanisms',
             function () {
                 $filter = new FilterLensAggregator();
+                $filter->addLens($this->app->make('catalog.filter_lens.options'));
                 $filter->addLens($this->app->make('catalog.filter_lens.security_level'));
                 $filter->addLens($this->app->make('catalog.filter_lens.color'));
                 $filter->addLens($this->app->make('catalog.filter_lens.cylinder_size'));
                 $filter->addLens($this->app->make('catalog.filter_lens.cylinder_mechanism'));
                 $filter->addLens($this->app->make('catalog.filter_lens.price'));
                 $filter->addLens($this->app->make('catalog.filter_lens.brands'));
-
-
 
                 return $filter;
             }

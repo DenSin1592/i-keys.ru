@@ -1,11 +1,8 @@
-<?php namespace App\Services\Catalog\Filter\Lens;
+<?php
 
-/**
- * Class PriceLens
- * Lens to filter by price (range).
- *
- * @package App\Services\Catalog\Filter\Lens
- */
+namespace App\Services\Catalog\Filter\Lens;
+
+
 class PriceLens extends RangeLens
 {
     protected function getMin($query)
@@ -55,5 +52,18 @@ class PriceLens extends RangeLens
         }
 
         return false;
+    }
+
+    public function modifyQuery($query, $lensData)
+    {
+        [$from, $to] = $this->extractRange($lensData);
+        if (!is_null($from)) {
+            $query->where('products.price', '>=', $from);
+        }
+        if (!is_null($to)) {
+            $query->where('products.price', '<=', $to);
+        }
+
+        return $query;
     }
 }

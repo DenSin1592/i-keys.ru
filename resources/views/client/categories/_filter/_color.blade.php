@@ -1,3 +1,8 @@
+<div class="filter-group">
+<div class="filter-group-header">
+    <div class="filter-group-title title-h4">{!! $lensData['name']  !!}</div>
+</div>
+
 <div class="filter-group-content">
     <div class="filter-color-list d-flex flex-wrap">
 
@@ -17,5 +22,5 @@
         @endforeach
     </div>
 </div>
-
+</div>
 

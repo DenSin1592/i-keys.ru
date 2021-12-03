@@ -1,6 +1,8 @@
-<?php namespace App\Services\Catalog\Filter\Lens;
+<?php
 
-use App\Services\Catalog\Filter\LensFeatures\RangeLens as RangeLensFeature;
+namespace App\Services\Catalog\Filter\Lens;
+
+
 /**
  * Class RangeLens
  * Abstract filter to filter by range of integer values.
@@ -9,20 +11,6 @@ use App\Services\Catalog\Filter\LensFeatures\RangeLens as RangeLensFeature;
  */
 abstract class RangeLens implements LensInterface
 {
-    //use RangeLensFeature;
-
-    public function modifyQuery($query, $lensData)
-    {
-        list($from, $to) = $this->extractRange($lensData);
-        if (!is_null($from)) {
-            $query->where('products.price', '>=', $from);
-        }
-        if (!is_null($to)) {
-            $query->where('products.price', '<=', $to);
-        }
-
-        return $query;
-    }
 
     protected function extractRange($lensData)
     {

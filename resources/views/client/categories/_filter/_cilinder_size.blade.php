@@ -1,3 +1,8 @@
+<div class="filter-group">
+<div class="filter-group-header">
+    <div class="filter-group-title title-h4">{!! $lensData['name']  !!}</div>
+</div>
+
 <div class="filter-group-content">
     <div class="filter-sheme-options-block">
         <div class="row flex-nowrap no-gutters">
@@ -29,4 +34,5 @@
             <img loading="lazy" src="{{asset('/images/client/filter/filter-sheme-1.png')}}" width="323" height="130" alt="" class="filter-sheme-media">
         </div>
     </div>
+</div>
 </div>
