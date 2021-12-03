@@ -25,7 +25,7 @@ class OptionLens implements LensInterface
         }
 
         if(in_array(self::DISCOUNT_PRODUCTS, $lensData)){
-            $query->where('products.price', '<', 'products.old_price');
+            $query->whereColumn('products.price', '<', 'products.old_price');
         }
 
         return $query;
@@ -36,9 +36,9 @@ class OptionLens implements LensInterface
     {
 
         $variants = [
-            $this->getAllProductsVariant($restrictedQuery, $lensData),
-            $this->getBestProductsVariant($restrictedQuery, $lensData),
-            $this->getDiscountProductsVariant($restrictedQuery, $lensData),
+            $this->getAllProductsVariant(clone $restrictedQuery, $lensData),
+            $this->getBestProductsVariant(clone $restrictedQuery, $lensData),
+            $this->getDiscountProductsVariant(clone $restrictedQuery, $lensData),
         ];
 
         return $variants;
@@ -51,8 +51,8 @@ class OptionLens implements LensInterface
             $lensData = [];
         }
 
-        $cheked = empty(array_intersect([self::BEST_PRODUCT, self::DISCOUNT_PRODUCTS], $lensData));;
-        $count =  $restrictedQuery->select('products.*')->count();
+        $cheked = empty(array_intersect([self::BEST_PRODUCT, self::DISCOUNT_PRODUCTS], $lensData));
+        $count =  $restrictedQuery->select('products.*')->distinct()->get()->count();
 
         $variant = [
             'name' => 'Показать все',
@@ -73,7 +73,7 @@ class OptionLens implements LensInterface
         }
 
         $cheked = in_array(self::BEST_PRODUCT, $lensData);
-        $count =  $restrictedQuery->where('products.best_prod', true)->select('products.*')->count();
+        $count =  $restrictedQuery->where('products.best_prod', true)->select('products.*')->distinct()->get()->count();
 
         $variant = [
             'name' => 'Показать лучшие товары',
@@ -94,7 +94,10 @@ class OptionLens implements LensInterface
         }
 
         $cheked = in_array(self::DISCOUNT_PRODUCTS, $lensData);
-        $count =  $restrictedQuery->where('products.price', '<', 'products.old_price')->select('products.*')->count();
+
+        $count =  $restrictedQuery->whereColumn('products.price', '<', 'products.old_price')->select('products.*')->distinct()->get()->count();
+
+//        dd($count);
 
         $variant = [
             'name' => 'Показать товары со скидками',
