@@ -25,13 +25,13 @@ class ComposersServiceProvider extends ServiceProvider
             CurrentAdminUserComposer::class => ['admin.layouts._top_nav', 'client.layouts._auth_menu',],
 
 
-            ClientTopMenuComposer::class => 'client.layouts._header',
+            ClientTopMenuComposer::class => ['client.layouts._header', 'client.layouts._offcanvas'],
             ClientBottomMenuComposer::class => 'client.layouts._footer',
 //            ClientCityModalComposer::class => 'client.layouts._popups._location',
-            ClientCityHeaderComposer::class => 'client.layouts._header',
-            ClientHeaderCategoryMenuComposer::class => 'client.layouts._header',
+            ClientCityHeaderComposer::class => ['client.layouts._header', 'client.layouts._offcanvas'],
+            ClientHeaderCategoryMenuComposer::class => ['client.layouts._header', 'client.layouts._offcanvas'],
             ClientFooterCategoryComposer::class => 'client.layouts._footer',
-            ClientHeaderCartComposer::class => 'client.layouts._header',
+            ClientHeaderCartComposer::class => ['client.layouts._header', 'client.layouts._offcanvas'],
         ]);
     }
 }

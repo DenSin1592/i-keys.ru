@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Client\Catalog;
 
-
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Services\Breadcrumbs\Factory as Breadcrumbs;
