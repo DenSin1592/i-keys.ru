@@ -21,6 +21,7 @@
 {!! Form::tbFormGroupClose() !!}
 
 {!! Form::tbCheckboxBlock('publish') !!}
+{!! Form::tbCheckboxBlock('best_prod') !!}
 
 {!! Form::tbFormGroupOpen('price') !!}
     {!! Form::tbLabel('price', trans('validation.attributes.price')) !!}

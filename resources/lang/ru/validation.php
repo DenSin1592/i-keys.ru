@@ -182,6 +182,7 @@ return [
 
         'position' => 'Позиция',
         'publish' => 'Публикация',
+        'best_prod' => 'Лучший товар',
         'menu_top' => 'В верхнем меню',
         'menu_bottom' => 'В нижнем меню',
         'alias' => 'Псевдоним URL',
