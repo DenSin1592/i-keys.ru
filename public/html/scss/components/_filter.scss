@@ -147,8 +147,11 @@
         opacity: 0;
 
         &:checked {
-            + .filter-security-label ~ .filter-security-label {
-                color: rgba($c-white, .25);
+            + .filter-security-label {
+                color: $c-white;
+                ~ .filter-security-label {
+                    color: $c-white;
+                }
             }
         }
     }
@@ -156,10 +159,7 @@
     .filter-security-label {
         cursor: pointer;
         margin: 0 3px;
-    }
-
-    .filter-security-media {
-        color: currentColor;
+        color: rgba($c-white, .25);
     }
 }
 
