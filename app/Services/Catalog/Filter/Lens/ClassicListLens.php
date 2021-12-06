@@ -21,22 +21,22 @@ class ClassicListLens implements LensInterface
     /**
      * @var EloquentAttributeRepository
      */
-    private $attrRepo;
+    protected $attrRepo;
 
     /**
      * @var EloquentAllowedValueRepository
      */
-    private $allowedValueRepo;
+    protected $allowedValueRepo;
 
     /**
      * @var string
      */
-    private $attrCode1c;
+    protected $attrCode1c;
 
     /**
      * @var \App\Models\Attribute|null
      */
-    private $attribute;
+    protected $attribute;
 
     /**
      * ClassicListLens constructor.
@@ -59,7 +59,7 @@ class ClassicListLens implements LensInterface
      *
      * @return \App\Models\Attribute|null
      */
-    private function getAttribute()
+    protected function getAttribute()
     {
         if (is_null($this->attribute)) {
             $attribute = $this->attrRepo->findCachedByCode1c($this->attrCode1c);
@@ -148,7 +148,7 @@ class ClassicListLens implements LensInterface
         return $variants;
     }
 
-    private function getValueIds(Builder $query): array
+    protected function getValueIds(Builder $query): array
     {
         $table = $this->getValuesTable();
 

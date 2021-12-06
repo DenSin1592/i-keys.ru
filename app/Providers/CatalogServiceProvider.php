@@ -9,6 +9,7 @@ use App\Services\Catalog\Filter\Filter\FilterLensWrapper;
 use App\Services\Catalog\Filter\Lens\ClassicListLens;
 use App\Services\Catalog\Filter\Lens\OptionLens;
 use App\Services\Catalog\Filter\Lens\PriceLens;
+use App\Services\Catalog\Filter\Lens\SecurityClassLens;
 use App\Services\Catalog\ListSorting\Sorting;
 use App\Services\Catalog\ListSorting\Sorting\AlphabetSorting;
 use App\Services\Catalog\ListSorting\Sorting\PositionSorting;
@@ -22,7 +23,7 @@ use Illuminate\Support\ServiceProvider;
 class CatalogServiceProvider extends ServiceProvider
 {
 
-    public const MULTIPLE_VIEWS_FOR_SELECTED_BLOCK = ['multiple_checkboxes', 'color'];
+    public const MULTIPLE_VIEWS_FOR_SELECTED_BLOCK = ['multiple_checkboxes', 'color', 'security_class'];
 
     public function register(): void
     {
@@ -99,14 +100,14 @@ class CatalogServiceProvider extends ServiceProvider
             'catalog.filter_lens.security_level',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
-                    new ClassicListLens(
+                    new SecurityClassLens(
                         $attributeRepository,
                         $allowedValueRepository,
                         '000000029'
                     ),
                     'security_level',
                     'Уровень безопасности',
-                    'multiple_checkboxes'
+                    'security_class'
                 );
             }
         );

@@ -1,4 +1,6 @@
 @if (count($filter['selectedFilterVariants']))
+
+
     <div class="catalog-selected-options-block" id="filter-reset">
         <div class="form-row">
             <div class="col-auto">
@@ -40,7 +42,7 @@
                             @continue
                         @endif
 
-                        @if (in_array($variant['view'], ['multiple_checkboxes', 'color']))
+                        @if (in_array($variant['view'], \App\Providers\CatalogServiceProvider::MULTIPLE_VIEWS_FOR_SELECTED_BLOCK))
                             @foreach($variant['variants'] as $value)
                                 @if ($value['checked'])
                                     <li class="catalog-selected-option-item">
