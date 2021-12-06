@@ -5,6 +5,7 @@
     @include('client.layouts._head')
 
 
+
     <body @yield('body_class')>
 
         @include('client.layouts._auth_menu')
