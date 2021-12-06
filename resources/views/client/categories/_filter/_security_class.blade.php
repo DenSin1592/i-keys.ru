@@ -2,8 +2,9 @@
     <div class="filter-group">
         <div class="filter-group-header">
             <div class="filter-group-title title-h4">
-                <div class="filter-group-title title-h4">{!! $lensData['name']  !!}</div>
-                <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button>
+                <div class="filter-group-title title-h4">{!! $lensData['name']  !!}
+                    <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button>
+                </div>
             </div>
         </div>
 
