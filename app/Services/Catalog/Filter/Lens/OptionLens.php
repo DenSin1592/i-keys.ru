@@ -51,13 +51,13 @@ class OptionLens implements LensInterface
             $lensData = [];
         }
 
-        $cheked = empty(array_intersect([self::BEST_PRODUCT, self::DISCOUNT_PRODUCTS], $lensData));
+        $checked = empty(array_intersect([self::BEST_PRODUCT, self::DISCOUNT_PRODUCTS], $lensData));
         $count =  $restrictedQuery->select('products.*')->distinct()->get()->count();
 
         $variant = [
             'name' => 'Показать все',
             'value' => self::ALL_PRODUCT,
-            'checked' => $cheked,
+            'checked' => $checked,
             'available' => true,
             'count' => $count,
         ];
@@ -72,14 +72,14 @@ class OptionLens implements LensInterface
             $lensData = [];
         }
 
-        $cheked = in_array(self::BEST_PRODUCT, $lensData);
+        $checked = in_array(self::BEST_PRODUCT, $lensData);
         $count =  $restrictedQuery->where('products.best_prod', true)->select('products.*')->distinct()->get()->count();
 
         $variant = [
             'name' => 'Показать лучшие товары',
             'value' => self::BEST_PRODUCT,
-            'checked' => $cheked,
-            'available' => $count > 0 || $cheked,
+            'checked' => $checked,
+            'available' => $count > 0 || $checked,
             'count' => $count,
         ];
 
@@ -93,17 +93,15 @@ class OptionLens implements LensInterface
             $lensData = [];
         }
 
-        $cheked = in_array(self::DISCOUNT_PRODUCTS, $lensData);
+        $checked = in_array(self::DISCOUNT_PRODUCTS, $lensData);
 
         $count =  $restrictedQuery->whereColumn('products.price', '<', 'products.old_price')->select('products.*')->distinct()->get()->count();
-
-//        dd($count);
 
         $variant = [
             'name' => 'Показать товары со скидками',
             'value' => self::DISCOUNT_PRODUCTS,
-            'checked' => $cheked,
-            'available' => $count > 0 || $cheked,
+            'checked' => $checked,
+            'available' => $count > 0 || $checked,
             'count' => $count,
         ];
 
