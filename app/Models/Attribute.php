@@ -24,6 +24,8 @@ class Attribute extends \Eloquent
     const TYPE_INTEGER = 'integer';
     const TYPE_DECIMAL = 'decimal';
 
+    public const SIZE_CYLINDER_1C_CODE = '000000013';
+
     protected static $attributeNames = [
         self::TYPE_STRING => 'строка',
         self::TYPE_SINGLE => 'выбор из списка',

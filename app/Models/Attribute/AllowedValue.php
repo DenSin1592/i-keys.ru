@@ -5,7 +5,13 @@ use App\Models\Helpers\DeleteHelpers;
 class AllowedValue extends \Eloquent
 {
     protected $table = 'attribute_allowed_values';
-    protected $fillable = ['value', 'position'];
+
+    protected $fillable = [
+        'value',
+        'position',
+        'value_first_size_cylinder',
+        'value_second_size_cylinder',
+    ];
 
     public function attribute()
     {

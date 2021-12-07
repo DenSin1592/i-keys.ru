@@ -260,6 +260,10 @@ return [
         'google_analytics' => 'Счетчик Google Analytics',
         'yandex_metrika' => 'Счетчик Yandex Metrika',
         'live_internet' => 'Счетчик LiveInternet',
+
+
+        'value_first_size_cylinder' => 'Первый типоразмер, мм',
+        'value_second_size_cylinder' => 'Второй типоразмер, мм',
     ],
 
     'model_attributes' => [
