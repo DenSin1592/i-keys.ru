@@ -18,47 +18,15 @@ class ClassicListLens implements LensInterface
     use ArrayLens;
     use QueryHelpers;
 
-    /**
-     * @var EloquentAttributeRepository
-     */
-    protected $attrRepo;
-
-    /**
-     * @var EloquentAllowedValueRepository
-     */
-    protected $allowedValueRepo;
-
-    /**
-     * @var string
-     */
-    protected $attrCode1c;
-
-    /**
-     * @var \App\Models\Attribute|null
-     */
     protected $attribute;
 
-    /**
-     * ClassicListLens constructor.
-     * @param EloquentAttributeRepository $attrRepo
-     * @param EloquentAllowedValueRepository $allowedValueRepo
-     * @param string $attrCode1c
-     */
     public function __construct(
-        EloquentAttributeRepository $attrRepo,
-        EloquentAllowedValueRepository $allowedValueRepo,
-        string $attrCode1c
-    ) {
-        $this->attrRepo = $attrRepo;
-        $this->attrCode1c = $attrCode1c;
-        $this->allowedValueRepo = $allowedValueRepo;
-    }
+        protected EloquentAttributeRepository $attrRepo,
+        protected EloquentAllowedValueRepository $allowedValueRepo,
+        protected string $attrCode1c
+    ) {}
 
-    /**
-     * Get attribute.
-     *
-     * @return \App\Models\Attribute|null
-     */
+
     protected function getAttribute()
     {
         if (is_null($this->attribute)) {
@@ -71,6 +39,7 @@ class ClassicListLens implements LensInterface
 
         return $this->attribute;
     }
+
 
     public function modifyQuery($query, $lensData)
     {
@@ -110,7 +79,8 @@ class ClassicListLens implements LensInterface
             return null;
         }
 
-        $allowedIds = $query->join(
+        $allowedIds = clone $query;
+        $allowedIds = $allowedIds->join(
             'attribute_single_values',
             'attribute_single_values.product_id',
             '=',
@@ -121,14 +91,10 @@ class ClassicListLens implements LensInterface
             ->distinct()
             ->pluck('value_id')
             ->toArray();
-        $allowedValues = $this->allowedValueRepo->forAttributeByIds($attribute, $allowedIds);
 
-        $idList = $this->getValueIds($query);
-        if ($this->queriesAreEqual($query, $restrictedQuery)) {
-            $availableIdList = $idList;
-        } else {
-            $availableIdList = $this->getValueIds($restrictedQuery);
-        }
+        $allowedValues = $this->allowedValueRepo->forAttributeByIds($attribute, $allowedIds);
+        $availableIdList = $this->getValueIds($restrictedQuery);
+
         $variants = [];
         foreach ($allowedValues as $value) {
             $checked = in_array($value->id, $lensData);
@@ -147,6 +113,7 @@ class ClassicListLens implements LensInterface
 
         return $variants;
     }
+
 
     protected function getValueIds(Builder $query): array
     {

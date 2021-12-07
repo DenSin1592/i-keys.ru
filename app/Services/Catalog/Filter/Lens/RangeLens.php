@@ -29,9 +29,9 @@ abstract class RangeLens implements LensInterface
 
     public function getVariants($query, $restrictedQuery, $lensData)
     {
-        $this->commonQueryCond($query);
-        $min = $this->getMin(clone $query);
-        $max = $this->getMax(clone $query);
+        $this->commonQueryCond($restrictedQuery);
+        $min = $this->getMin(clone $restrictedQuery);
+        $max = $this->getMax(clone $restrictedQuery);
 
         $min = !is_null($min) ? floor($min) : 0;
         $max = !is_null($max) ? ceil($max) : 0;

@@ -45,7 +45,8 @@ final class SecurityClassLens extends ClassicListLens
             return null;
         }
 
-        $allowedIds = $query->join(
+        $allowedIds = clone $query;
+        $allowedIds = $allowedIds->join(
             'attribute_single_values',
             'attribute_single_values.product_id',
             '=',
@@ -58,31 +59,31 @@ final class SecurityClassLens extends ClassicListLens
             ->toArray();
         $allowedValues = $this->allowedValueRepo->forAttributeByIds($attribute, $allowedIds);
 
-        $idList = $this->getValueIds($query);
-        if ($this->queriesAreEqual($query, $restrictedQuery)) {
-            $availableIdList = $idList;
-        } else {
-            $availableIdList = $this->getValueIds($restrictedQuery);
-        }
+        $availableIdList = $this->getValueIds($restrictedQuery);
 
         $variants = [];
-        $beforeFirstAvailable = true;
-        foreach ($allowedValues as $value) {
+        $indexLastAviableVariant = -1;
+        foreach ($allowedValues as $key => $value) {
             $checked = in_array($value->id, $lensData);
             $available = in_array($value->id, $availableIdList);
-            if($available){
-                $beforeFirstAvailable = false;
-            }
             $variants[] = [
                 'name' => $value->value . ' и выше',
                 'value' => $value->id,
                 'checked' => $checked,
-                'available' => $available || $checked || $beforeFirstAvailable,
+                'available' => $available || $checked /*|| $beforeFirstAvailable*/,
             ];
+
+            if($variants[$key]['available']){
+                $indexLastAviableVariant = $key;
+            }
         }
 
         if (count($variants) === 0) {
             $variants = null;
+        }
+
+        for($i = 0; $i <= $indexLastAviableVariant; $i++){
+            $variants[$i]['available'] = true;
         }
 
         return $variants;
