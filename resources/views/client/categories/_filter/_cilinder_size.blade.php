@@ -11,11 +11,19 @@
                         <div class="filter-sheme-option-group">
                             <label for="filter-sheme-option-1" class="filter-sheme-option-title">Внеш.</label>
 
-                            <select name="" id="filter-sheme-option-1"
+                            <select name="filter[{{ $lensData['key'] }}][]"
+                                    id="filter-sheme-option-1"
                                     class="filter-sheme-option-select custom-control custom-select"
                                     style="width: 100%;">
-                                <option value="30мм">30мм</option>
-                                <option value="40мм">40мм</option>
+                                <option value="">-----</option>
+                                @foreach ($lensData['variants'] as $number => $variant)
+                                <option value="{{ $variant['value'] }}"
+                                        @if (!$variant['available']) disabled @endif
+                                    {{ $variant['checked'] ? 'selected' : '' }}
+                                >
+                                    {{ $variant['value'] . 'мм'}}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -24,11 +32,11 @@
                         <div class="filter-sheme-option-group">
                             <label for="filter-sheme-option-2" class="filter-sheme-option-title">Внутр.</label>
 
-                            <select name="" id="filter-sheme-option-2"
+                            <select name="filter[{{ $lensData['key'] }}][]"
+                                    id="filter-sheme-option-2"
                                     class="filter-sheme-option-select custom-control custom-select"
                                     style="width: 100%;">
-                                <option value="75мм">75мм</option>
-                                <option value="85мм">85мм</option>
+                                <option value="">-----</option>
                             </select>
                         </div>
                     </div>

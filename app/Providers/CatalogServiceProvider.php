@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Attribute;
 use App\Models\Category;
 use App\Services\Catalog\Filter\Filter\CatalogFilterFactory;
 use App\Services\Catalog\Filter\Filter\FilterLensAggregator;
 use App\Services\Catalog\Filter\Filter\FilterLensWrapper;
 use App\Services\Catalog\Filter\Lens\ClassicListLens;
+use App\Services\Catalog\Filter\Lens\CylinderSizeLens;
 use App\Services\Catalog\Filter\Lens\OptionLens;
 use App\Services\Catalog\Filter\Lens\PriceLens;
 use App\Services\Catalog\Filter\Lens\SecurityClassLens;
@@ -84,7 +86,6 @@ class CatalogServiceProvider extends ServiceProvider
                 );
             }
         );
-
         $this->app->singleton(
             'catalog.filter_lens.price',
             function () {
@@ -130,10 +131,10 @@ class CatalogServiceProvider extends ServiceProvider
             'catalog.filter_lens.cylinder_size',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
-                    new ClassicListLens(
+                    new CylinderSizeLens(
                         $attributeRepository,
                         $allowedValueRepository,
-                        '000000013'
+                        Attribute::SIZE_CYLINDER_1C_CODE
                     ),
                     'cylinder_size',
                     'Типоразмер',
