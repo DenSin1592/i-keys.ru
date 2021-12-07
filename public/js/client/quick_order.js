@@ -1,27 +1,15 @@
 (function ($, document) {
     $(function () {
+        let modalMessage = $('#modalMessage');
+        let updateCartIcon = (count) => {
+            $('.cart-item-count').text(count);
+        };
+
         var modalQuickOrderContainer = $('#modalQuickOrder', document);
-        var modalQuickOrderSentContainer = $('#modalQuickOrderSuccess', document);
         var quickOrderForm = modalQuickOrderContainer.find('form#quick-order');
 
         // Quick order form handling
         if (quickOrderForm.length === 1) {
-            // var quickOrderValidator = quickOrderForm.validate({
-            //     ignore: '',
-            //     rules: {
-            //         name: {
-            //             required: true
-            //         },
-            //         phone: {
-            //             required: true,
-            //             phoneNumber: true
-            //         },
-            //         email: {
-            //             email: true
-            //         },
-            //         privacy: 'required'
-            //     }
-            // });
 
             modalQuickOrderContainer.on('click', '[data-type-submit]', function (e) {
                 e.preventDefault();
@@ -32,54 +20,42 @@
                 e.preventDefault();
                 console.log('1111')
                 var self = $(this);
-                // if (quickOrderForm.valid()) {
-                    var submitBtn = modalQuickOrderContainer.find('[data-type-submit]');
-                    if (!$(quickOrderForm).data('process')) {
-                        $(quickOrderForm).data('process', true);
-                        submitBtn.addClass('btn-loading');
-                        console.log(self)
-                        console.log(self.data)
-                        console.log(self.data('action'))
-                        console.log(self.data('method'))
-                        console.log(quickOrderForm.serialize())
+                var submitBtn = modalQuickOrderContainer.find('[data-type-submit]');
+                if (!$(quickOrderForm).data('process')) {
+                    $(quickOrderForm).data('process', true);
+                    submitBtn.addClass('btn-loading');
+                    console.log('222')
 
-
-                        $.ajax({
-                            url: self.data('action'),
-                            type: self.data('method'),
-                            data: quickOrderForm.serialize(),
-                            success: function (response) {
-                                if (response['status'] === 'success') {
-                                    quickOrderForm.trigger('reset');
-                                    cart.updateCartData(response);
-                                    cart.cartChangeHandler.remove();
-                                    modalQuickOrderSentContainer.find('.modal-body').html(response['order_complete_content']);
-                                    modalQuickOrderSentContainer.modal('show');
-
-                                } else if (response['status'] === 'error') {
-
-                                    var errors = response['errors'];
-                                    var errorsObj = {};
-                                    for (var field in errors) {
-                                        errorsObj[field] = errors[field].join('<br>');
-                                    }
-                                    // try {
-                                    //     quickOrderValidator.showErrors(errorsObj);
-                                    // } catch (e) {
-                                    //     // ignore errors
-                                    // }
+                    $.ajax({
+                        url: self.data('action'),
+                        type: self.data('method'),
+                        data: quickOrderForm.serialize(),
+                        success: function (response) {
+                            console.log(response)
+                            if (response['status'] === 'success') {
+                                console.log(response['status'])
+                                modalQuickOrderContainer.modal('hide')
+                                modalMessage.find('h3').text(response['modal_title']);
+                                modalMessage.find('.modal-body').replaceWith(response['modal_body']);
+                                customNumberButtonInit();
+                                updateCartIcon(0);
+                                modalMessage.modal('show');
+                            } else if (response['status'] === 'error') {
+                                var errors = response['errors'];
+                                var errorsObj = {};
+                                for (var field in errors) {
+                                    errorsObj[field] = errors[field].join('<br>');
                                 }
-
-                                $(quickOrderForm).data('process', false);
-                                submitBtn.removeClass('btn-loading');
-                            },
-                            error: function () {
-                                $(quickOrderForm).data('process', false);
-                                submitBtn.removeClass('btn-loading');
                             }
-                        });
-                    }
-                // }
+                            $(quickOrderForm).data('process', false);
+                            submitBtn.removeClass('btn-loading');
+                        },
+                        error: function () {
+                            $(quickOrderForm).data('process', false);
+                            submitBtn.removeClass('btn-loading');
+                        }
+                    });
+                }
 
                 return false;
             });

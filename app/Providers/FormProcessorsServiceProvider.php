@@ -3,6 +3,7 @@
 use App\Services\FormProcessors\AdminUser\AdminUserFormProcessor;
 use App\Services\FormProcessors\Attribute\AttributeFormProcessor;
 use App\Services\FormProcessors\Category\CategoryFormProcessor;
+use App\Services\FormProcessors\Order\ClientOrderFormProcessor;
 use App\Services\FormProcessors\Order\OrderFormProcessor;
 use App\Services\FormProcessors\ProductTypePage\ProductTypePageFormProcessor;
 use App\Services\FormProcessors\Node\NodeFormProcessor;
@@ -156,6 +157,17 @@ class FormProcessorsServiceProvider extends ServiceProvider
                 $app->make(SubdomainValidator::class),
                 $app->make(CreateUpdateWrapper::class)
             );
+
+            return $formProcessor;
+        });
+
+        $this->app->bind(ClientOrderFormProcessor::class, function (Application $app) {
+            $formProcessor = new ClientOrderFormProcessor(
+                $app->make(OrderLaravelValidator::class),
+                $app->make(OrderCreateUpdateWrapper::class)
+            );
+
+            $formProcessor->addSubProcessor($app->make(SubProcessor\ClientOrderItems::class));
 
             return $formProcessor;
         });

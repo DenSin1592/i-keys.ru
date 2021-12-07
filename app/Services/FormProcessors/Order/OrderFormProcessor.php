@@ -1,4 +1,6 @@
-<?php namespace App\Services\FormProcessors\Order;
+<?php
+
+namespace App\Services\FormProcessors\Order;
 
 use App\Models\Order;
 use App\Models\Order\PaymentStatusConstants;

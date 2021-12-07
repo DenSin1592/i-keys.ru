@@ -259,6 +259,7 @@ return [
         'UrlBuilder' => App\Facades\UrlBuilder::class,
         'CatalogHelper' => App\Facades\CatalogHelper::class,
         'Cart' => App\Facades\Cart::class,
+        'DeviceHelper' => App\Facades\DeviceHelper::class,
     ],
 
 ];
