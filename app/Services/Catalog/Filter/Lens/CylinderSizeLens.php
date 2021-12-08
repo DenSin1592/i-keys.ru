@@ -84,18 +84,8 @@ final class CylinderSizeLens extends ClassicListLens
             return null;
         }
 
-        $allowedIds = $query;
-        $allowedIds = $allowedIds->join(
-            'attribute_single_values',
-            'attribute_single_values.product_id',
-            '=',
-            'products.id'
-        )
-            ->where('attribute_single_values.attribute_id', $attribute->id)
-            ->select('attribute_single_values.value_id')
-            ->distinct()
-            ->pluck('value_id')
-            ->toArray();
+        $allowedIds = $this->getAllowedIdsAttributeValue($query, $attribute->id);
+
         $allowedValues = $this->allowedValueRepo->getAttributeValuesCylinderFirstSizeByIds($attribute, $allowedIds);
         $availableIdList = $this->getFirstOrSecondSizeValueIds($restrictedQuery, 'value_first_size_cylinder');
 
@@ -123,18 +113,12 @@ final class CylinderSizeLens extends ClassicListLens
             return null;
         }
 
-        $allowedIds = $query;
-        $allowedIds = $allowedIds->join(
-            'attribute_single_values',
-            'attribute_single_values.product_id',
-            '=',
-            'products.id'
-        )
-            ->where('attribute_single_values.attribute_id', $attribute->id)
-            ->select('attribute_single_values.value_id')
-            ->distinct()
-            ->pluck('value_id')
-            ->toArray();
+        $attribute = $this->getAttribute();
+        if (is_null($attribute)) {
+            return null;
+        }
+
+        $allowedIds = $this->getAllowedIdsAttributeValue($query, $attribute->id);
         $allowedValues = $this->allowedValueRepo->getAttributeValuesCylinderSecondSizeByIds($attribute, $allowedIds);
         $availableIdList = $this->getFirstOrSecondSizeValueIds($restrictedQuery, 'value_second_size_cylinder');
 
@@ -165,5 +149,30 @@ final class CylinderSizeLens extends ClassicListLens
             ->orderBy("attribute_allowed_values.{$column}")
             ->select("attribute_allowed_values.{$column}")
             ->distinct()->pluck($column)->all();
+    }
+
+
+    private function getAllowedIdsAttributeValue(Builder $query, int $attributeId): array
+    {
+        static $allowedIdsCache;
+
+        if (isset($allowedIdsCache)) {
+            return $allowedIdsCache;
+        }
+
+        $allowedIdsCache = $query
+            ->join(
+                'attribute_single_values',
+                'attribute_single_values.product_id',
+                '=',
+                'products.id'
+            )
+            ->where('attribute_single_values.attribute_id', $attributeId)
+            ->select('attribute_single_values.value_id')
+            ->distinct()
+            ->pluck('value_id')
+            ->toArray();
+
+        return $allowedIdsCache;
     }
 }
