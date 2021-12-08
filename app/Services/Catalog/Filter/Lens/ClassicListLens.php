@@ -97,13 +97,13 @@ class ClassicListLens implements LensInterface
 
         $variants = [];
         foreach ($allowedValues as $value) {
-            $checked = in_array($value->id, $lensData);
             $available = in_array($value->id, $availableIdList);
+            $checked = in_array($value->id, $lensData) && $available;
             $variants[] = [
                 'name' => $value->value,
                 'value' => $value->id,
                 'checked' => $checked,
-                'available' => $available || $checked,
+                'available' => $available,
             ];
         }
 
