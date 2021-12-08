@@ -9,13 +9,14 @@
                 <div class="row flex-nowrap no-gutters">
                     <div class="filter-sheme-option-column col-5">
                         <div class="filter-sheme-option-group">
-                            <label for="filter-sheme-option-1" class="filter-sheme-option-title">Внеш.</label>
+                            <label for="filter_{{ $lensData['key']  }}_first" class="filter-sheme-option-title">Внеш.</label>
 
                             <select name="filter[{{ $lensData['key'] }}][]"
-                                    id="filter-sheme-option-1"
+                                    id="filter_{{ $lensData['key']  }}_first"
                                     class="filter-sheme-option-select custom-control custom-select"
                                     style="width: 100%;">
-                                <option value="">-----</option>
+
+                                <option value="" data-default="1">-----</option>
 
                                 @foreach ($lensData['variants']['first_size'] as $number => $variant)
                                 <option value="{{ $variant['value'] }}"
@@ -25,19 +26,22 @@
                                     {{ $variant['value'] . 'мм'}}
                                 </option>
                                 @endforeach
+
                             </select>
                         </div>
                     </div>
 
                     <div class="filter-sheme-option-column col-7">
                         <div class="filter-sheme-option-group">
-                            <label for="filter-sheme-option-2" class="filter-sheme-option-title">Внутр.</label>
+                            <label for="filter_{{ $lensData['key']  }}_second" class="filter-sheme-option-title">Внутр.</label>
 
                             <select name="filter[{{ $lensData['key'] }}][]"
-                                    id="filter-sheme-option-2"
+                                    id="filter_{{ $lensData['key']  }}_second"
                                     class="filter-sheme-option-select custom-control custom-select"
                                     style="width: 100%;">
-                                <option value="">-----</option>
+
+                                <option value="" data-default="1">-----</option>
+
                                 @foreach ($lensData['variants']['second_size'] as $number => $variant)
                                     <option value="{{ $variant['value'] }}"
                                             @if (!$variant['available']) disabled @endif

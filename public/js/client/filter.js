@@ -308,53 +308,6 @@ $(document).ready(function () {
     // Call initializers on page load
     categoryPage.initializers.init();
 
-    /*// Direct links to change filter
-    categoryContent.on('click', '[data-filter-link]', function (e) {
-        e.preventDefault();
-        openPage(e.currentTarget.href, false, true);
-    });*/
-
-
-    /*// Filter show/hide all parameters
-    (function () {
-        filterContainer.on('click', '.more-filter', function (e) {
-            e.preventDefault();
-            let self = $(e.currentTarget);
-            let selfText = self.find('span');
-            self.toggleClass('active');
-            if (self.hasClass('active')) {
-                selfText.text(selfText.data('textActive'));
-            } else {
-                selfText.text(selfText.data('textDefault'));
-            }
-        });
-    })();*/
-
-
-    /*// Filter show/hide all variants
-    (function () {
-        filterContainer.on('click', '.filter-more', function (e) {
-            e.preventDefault();
-
-            let self = $(e.currentTarget);
-            let selfText = self.find('span');
-            let formGroup = self.closest('.form-group');
-            let collapsibleVariants = formGroup.find('.filter-variant.collapsible');
-
-            self.toggleClass('active');
-            $.when(collapsibleVariants.slideToggle(300)).done(function () {
-                if (self.hasClass('active')) {
-                    selfText.text(selfText.data('textActive'));
-                    collapsibleVariants.addClass('visible');
-                } else {
-                    selfText.text(selfText.data('textDefault'));
-                    collapsibleVariants.removeClass('visible');
-                }
-            });
-        });
-    })();*/
-
-
     // Filter reset
     (function () {
         categoryContent.on('click', '#filter-reset .catalog-selection-remove', function (e) {
@@ -376,6 +329,14 @@ $(document).ready(function () {
                     controlTo.val(controlTo.data('border'));
                     controlFrom.trigger('change');
                     controlTo.trigger('change');
+                    break;
+                case 'cylinder_size':
+                    let controlFirst = document.querySelector('#' + currentVariant.data('idFirst'));
+                    let controlSecond = document.querySelector('#' + currentVariant.data('idSecond'));
+                    controlFirst.selectedIndex = 0
+                    controlSecond.selectedIndex = 0
+                    controlFirst.dispatchEvent(new MouseEvent('change'));
+                    controlSecond.dispatchEvent(new MouseEvent('change'));
                     break;
             }
             currentVariant.remove();

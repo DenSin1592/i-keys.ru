@@ -5,18 +5,17 @@ namespace App\Services\DataProviders\ProductListPage;
 use App\Models\Category;
 use App\Providers\CatalogServiceProvider;
 use App\Services\Repositories\Product\EloquentProductRepository;
+use JetBrains\PhpStorm\ArrayShape;
 
 
 class FilterVariantsProvider
 {
-    protected $productRepository;
+    public function __construct(
+        protected EloquentProductRepository $productRepository
+    ){}
 
-    public function __construct(EloquentProductRepository $productRepository)
-    {
-        $this->productRepository = $productRepository;
-    }
-
-    public function getFilterVariants(Category $category, array $filterData, $sortInput, $productsView)
+    #[ArrayShape(['filterVariants' => "array", 'sortingVariants' => "array", 'isSelectedFilterVariants' => "bool", 'currentFilterQuery' => "array", 'filterOpen' => "bool"])]
+    public function getFilterVariants(Category $category, array $filterData, string $sortInput, string $productsView): array
     {
         $filterVariants = $this->productRepository->filterVariants($category, $filterData);
         $filterVariants = $this->prepareFilterVariants($filterVariants);
@@ -29,12 +28,12 @@ class FilterVariantsProvider
             'view' => $productsView,
         ];
 
-        $selectedFilterVariants = $this->getSelectedFilterVariants($filterData, $filterVariants, $currentFilterQuery);
+        $isSelectedFilterVariants = $this->isSelectedFilterVariants($filterData, $filterVariants);
 
         return [
             'filterVariants' => $filterVariants,
             'sortingVariants' => $sortingVariants,
-            'selectedFilterVariants' => $selectedFilterVariants,
+            'isSelectedFilterVariants' => $isSelectedFilterVariants,
             'currentFilterQuery' => $currentFilterQuery,
             'filterOpen' => count($filterData) > 0,
         ];
@@ -43,115 +42,135 @@ class FilterVariantsProvider
     private function prepareFilterVariants(array $filterVariants)
     {
         foreach ($filterVariants as &$filterVariant) {
+
             if (in_array($filterVariant['view'], CatalogServiceProvider::MULTIPLE_VIEWS_FOR_SELECTED_BLOCK)) {
-                $firstChecked = \Arr::first($filterVariant['variants'], function($value, $key) {
-                    return $value['checked'];
-                });
-                $checked = !is_null($firstChecked) ? true: false;
-            } elseif($filterVariant['view'] === 'range') {
-                $checked = $filterVariant['variants']['min'] < $filterVariant['variants']['from'] ||
-                    $filterVariant['variants']['max'] > $filterVariant['variants']['to'];
-            } else {
-                $checked = false;
+                $firstChecked = \Arr::first($filterVariant['variants'], static fn($value) => $value['checked']);
+                $filterVariant['optional']['checked'] = !is_null($firstChecked);
+                continue;
             }
 
-            $filterVariant['optional']['checked'] = $checked;
+            if ($filterVariant['view'] === 'range') {
+                $filterVariant['optional']['checked'] =
+                    $filterVariant['variants']['min'] < $filterVariant['variants']['from']
+                    || $filterVariant['variants']['max'] > $filterVariant['variants']['to'];
+                continue;
+            }
+
+            if ($filterVariant['view'] === 'cylinder_size') {
+                $firstChecked = \Arr::first($filterVariant['variants']['first_size'], static fn($value) => $value['checked']);
+                if ($firstChecked) {
+                    $filterVariant['optional']['checked'] = true;
+                    continue;
+                }
+                $secondChecked = \Arr::first($filterVariant['variants']['second_size'], static fn($value) => $value['checked']);
+                if ($secondChecked) {
+                    $filterVariant['optional']['checked'] = true;
+                    continue;
+                }
+            }
+
+            $filterVariant['optional']['checked'] = false;
         }
 
         return $filterVariants;
     }
 
-    private function getSelectedFilterVariants(array $filterData, array $filterVariants, array $currentFilterQuery)
+    private function isSelectedFilterVariants(array $filterData, array $filterVariants): bool
     {
-        $selectedVariants = [];
-        if (count($filterVariants) > 0 && count($filterData) > 0) {
-            foreach ($filterVariants as $lensData) {
-                if (!isset($filterData[$lensData['key']])) {
-                    continue;
-                }
+        unset($filterData['options']);
 
-                if (in_array($lensData['view'],CatalogServiceProvider::MULTIPLE_VIEWS_FOR_SELECTED_BLOCK)) {
-                    $selectedVariants = $this->getMultipleCheckboxesSelectedVariants(
-                        $filterData,
-                        $lensData,
-                        $selectedVariants,
-                        $currentFilterQuery
-                    );
-                } elseif ($lensData['view'] == 'range') {
-                    $selectedVariants = $this->getRangeSelectedVariants(
-                        $filterData,
-                        $lensData,
-                        $selectedVariants,
-                        $currentFilterQuery
-                    );
+        if (count($filterVariants) === 0 || count($filterData) === 0) {
+            return false;
+        }
+
+        foreach ($filterVariants as $lensData) {
+            if (!isset($filterData[$lensData['key']])) {
+                continue;
+            }
+
+            if (in_array($lensData['view'], CatalogServiceProvider::MULTIPLE_VIEWS_FOR_SELECTED_BLOCK)) {
+                $selectedVariants = $this->getMultipleCheckboxesSelectedVariants(
+                    $filterData,
+                    $lensData,
+                );
+                if ($selectedVariants) {
+                    return true;
+                }
+            }
+
+            if ($lensData['view'] === 'range') {
+                $selectedVariants = $this->getRangeSelectedVariants(
+                    $filterData,
+                    $lensData,
+                );
+
+                if ($selectedVariants) {
+                    return true;
+                }
+            }
+
+            if ($lensData['view'] === 'cylinder_size') {
+                $selectedVariants = $this->getCylinderSizeSelectedVariants(
+                    $filterData,
+                    $lensData,
+                );
+                if ($selectedVariants) {
+                    return true;
                 }
             }
         }
 
-        foreach ($selectedVariants as &$variant) {
-            $variant['name'] = \Str::ucfirst($variant['name']);
-        }
-
-        return $selectedVariants;
+        return false;
     }
 
     private function getMultipleCheckboxesSelectedVariants(
         array $filterData,
         $lensData,
-        array $selectedVariants,
-        array $currentFilterQuery
-    ) {
+    ): bool
+    {
         if (is_array($filterData[$lensData['key']])) {
             foreach ($lensData['variants'] as $variant) {
                 if (in_array($variant['value'], $filterData[$lensData['key']])) {
-                    $selectedVariants[] = [
-                        'name' => $lensData['name'] . ": " . $variant['name'],
-                        'link' => \CatalogHelper::getDropSelectedVariantUrl(
-                            $currentFilterQuery,
-                            ["filter.{$lensData['key']}" => $variant['value']]
-                        ),
-                    ];
+                    return true;
                 }
             }
         }
 
-        return $selectedVariants;
+        return false;
     }
 
     private function getRangeSelectedVariants(
         array $filterData,
         $lensData,
-        array $selectedVariants,
-        array $currentFilterQuery
-    ): array
+    ): bool
     {
-        if( !is_array($filterData[$lensData['key']])
-            || !$lensData['optional']['checked']){
-            return $selectedVariants;
+        return !(!is_array($filterData[$lensData['key']])
+            || !$lensData['optional']['checked']);
+    }
+
+
+    private function getCylinderSizeSelectedVariants(
+        array $filterData,
+        $lensData,
+
+    ): bool
+    {
+        if (is_array($filterData[$lensData['key']])) {
+            foreach ($lensData['variants']['first_size'] as $variant) {
+
+                if (isset($filterData[$lensData['key']][0]) && in_array($variant['value'], [$filterData[$lensData['key']][0]])) {
+                    return true;
+                }
+            }
+
+            foreach ($lensData['variants']['second_size'] as $variant) {
+                if (isset($filterData[$lensData['key']][1]) && in_array($variant['value'], [$filterData[$lensData['key']][1]])) {
+                    return true;
+                }
+            }
         }
 
-
-            $name = $lensData['name'] . ':';
-            $valueData = [];
-            foreach ($filterData[$lensData['key']] as $rangeKey => $variant) {
-                if (in_array($rangeKey, ['from', 'to'])) {
-                    if ($rangeKey == 'from') {
-                        $name .= ' от ' . \Str::formatDecimal($variant, '.', '', false);
-                    } elseif ($rangeKey == 'to') {
-                        $name .= ' до ' . \Str::formatDecimal($variant, '.', '', false);
-                    }
-                    $valueData["filter.{$lensData['key']}.{$rangeKey}"] = $variant;
-                }
-
-            }
-            if (count($valueData) > 0) {
-                $selectedVariants[] = [
-                    'name' => $name,
-                    'link' => \CatalogHelper::getDropSelectedVariantUrl($currentFilterQuery, $valueData),
-                ];
-            }
-
-
-        return $selectedVariants;
+        return false;
     }
 }
+
