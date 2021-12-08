@@ -36,47 +36,28 @@ class OrdersController extends Controller
 //    private $step1Validator;
 //    private $step2Validator;
 //    private $orderCheckout;
-    public $orderFormProcessor;
+//    public $orderFormProcessor;
 //    private $metaHelper;
 //    private $breadcrumbs;
-    private $orderMailer;
+//    private $orderMailer;
 
     /**
      * OrdersController constructor.
-//     * @param EloquentNodeRepository $nodeRepository
-//     * @param EloquentOrderRepository $orderRepository
-//     * @param OrderCheckoutProvider $orderCheckoutProvider
-//     * @param OrderCheckoutStep1LaravelValidator $step1Validator
-//     * @param OrderCheckoutStep2LaravelValidator $step2Validator
-//     * @param OrderCheckout $orderCheckout
      * @param ClientOrderFormProcessor $orderFormProcessor
-//     * @param MetaHelper $metaHelper
-//     * @param Breadcrumbs $breadcrumbs
      * @param OrderMailer $orderMailer
      */
     public function __construct(
-//        EloquentNodeRepository $nodeRepository,
-//        EloquentOrderRepository $orderRepository,
-//        OrderCheckoutProvider $orderCheckoutProvider,
-//        OrderCheckoutStep1LaravelValidator $step1Validator,
-//        OrderCheckoutStep2LaravelValidator $step2Validator,
-//        OrderCheckout $orderCheckout,
-        ClientOrderFormProcessor $orderFormProcessor,
+//        private EloquentNodeRepository $nodeRepository,
+//        private EloquentOrderRepository $orderRepository,
+//        private OrderCheckoutProvider $orderCheckoutProvider,
+//        private OrderCheckoutStep1LaravelValidator $step1Validator,
+//        private OrderCheckoutStep2LaravelValidator $step2Validator,
+//        private OrderCheckout $orderCheckout,
 //        MetaHelper $metaHelper,
 //        Breadcrumbs $breadcrumbs,
-        OrderMailer $orderMailer
-    ) {
-//        $this->nodeRepository = $nodeRepository;
-//        $this->orderRepository = $orderRepository;
-//        $this->orderCheckoutProvider = $orderCheckoutProvider;
-//        $this->step1Validator = $step1Validator;
-//        $this->step2Validator = $step2Validator;
-//        $this->orderCheckout = $orderCheckout;
-        $this->orderFormProcessor = $orderFormProcessor;
-//        $this->metaHelper = $metaHelper;
-//        $this->breadcrumbs = $breadcrumbs;
-        $this->orderMailer = $orderMailer;
-    }
+        public ClientOrderFormProcessor $orderFormProcessor,
+        private OrderMailer $orderMailer
+    ) {}
 
     public function storeFast(Request $request)
     {
@@ -100,8 +81,12 @@ class OrdersController extends Controller
         $orderCompleteContent = '<p>Вашему заказу присвоен номер ' . $order->id .
             '. Наш менеджер свяжется с Вами в ближайшее время.</p>';
 
-//        $this->orderMailer->sendAdminCompleteEmail($order);
-//        $this->orderMailer->sendClientCompleteEmail($order);
+        try {
+            $this->orderMailer->sendAdminCompleteEmail($order);
+            $this->orderMailer->sendClientCompleteEmail($order);
+        } catch (\Throwable $e){
+            //неплохо бы логировать
+        }
 
         return \Response::json(
             [

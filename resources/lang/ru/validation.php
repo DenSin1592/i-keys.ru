@@ -289,6 +289,11 @@ return [
                 \App\Models\ExchangeLog::TYPE_ORDER => 'заказы',
             ],
         ],
+        'device_type' => [
+            \App\Services\Device\DeviceHelper::DEVICE_TYPE_DESKTOP => 'компьютер',
+            \App\Services\Device\DeviceHelper::DEVICE_TYPE_TABLET => 'планшет',
+            \App\Services\Device\DeviceHelper::DEVICE_TYPE_PHONE => 'телефон',
+        ],
         'order' =>
             [
                 'status' => [
