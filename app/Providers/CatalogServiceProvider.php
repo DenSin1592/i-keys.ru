@@ -8,8 +8,7 @@ use App\Services\Catalog\Filter\Filter\CatalogFilterFactory;
 use App\Services\Catalog\Filter\Filter\FilterLensAggregator;
 use App\Services\Catalog\Filter\Filter\FilterLensWrapper;
 use App\Services\Catalog\Filter\Lens\ClassicListLens;
-use App\Services\Catalog\Filter\Lens\CylinderFirstSizeLens;
-use App\Services\Catalog\Filter\Lens\CylinderSecondSizeLens;
+use App\Services\Catalog\Filter\Lens\CylinderSizeLens;
 use App\Services\Catalog\Filter\Lens\OptionLens;
 use App\Services\Catalog\Filter\Lens\PriceLens;
 use App\Services\Catalog\Filter\Lens\SecurityClassLens;
@@ -129,35 +128,21 @@ class CatalogServiceProvider extends ServiceProvider
             }
         );
         $this->app->singleton(
-            'catalog.filter_lens.cylinder_first_size',
+            'catalog.filter_lens.cylinder_size',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
-                    new CylinderFirstSizeLens(
+                    new CylinderSizeLens(
                         $attributeRepository,
                         $allowedValueRepository,
                         Attribute::SIZE_CYLINDER_1C_CODE
                     ),
-                    'cylinder_first_size',
+                    'cylinder_size',
                     'Типоразмер',
                     'cylinder_size'
                 );
             }
         );
-        $this->app->singleton(
-            'catalog.filter_lens.cylinder_second_size',
-            function () use ($attributeRepository, $allowedValueRepository) {
-                return new FilterLensWrapper(
-                    new CylinderSecondSizeLens(
-                        $attributeRepository,
-                        $allowedValueRepository,
-                        Attribute::SIZE_CYLINDER_1C_CODE
-                    ),
-                    'cylinder_second_size',
-                    'Типоразмер',
-                    'cylinder_size'
-                );
-            }
-        );
+
         $this->app->singleton(
             'catalog.filter_lens.cylinder_mechanism',
             function () use ($attributeRepository, $allowedValueRepository) {
@@ -289,8 +274,7 @@ class CatalogServiceProvider extends ServiceProvider
                 $filter->addLens($this->app->make('catalog.filter_lens.options'));
                 $filter->addLens($this->app->make('catalog.filter_lens.security_level'));
                 $filter->addLens($this->app->make('catalog.filter_lens.color'));
-                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_first_size'));
-                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_second_size'));
+                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_size'));
                 $filter->addLens($this->app->make('catalog.filter_lens.cylinder_mechanism'));
                 $filter->addLens($this->app->make('catalog.filter_lens.price'));
                 $filter->addLens($this->app->make('catalog.filter_lens.brands'));

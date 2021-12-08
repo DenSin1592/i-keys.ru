@@ -33,7 +33,7 @@
                         <div class="filter-sheme-option-group">
                             <label for="filter-sheme-option-2" class="filter-sheme-option-title">Внутр.</label>
 
-                            <select name="filter[cylinder_second_size][]"
+                            <select name="filter[{{ $lensData['key'] }}][]"
                                     id="filter-sheme-option-2"
                                     class="filter-sheme-option-select custom-control custom-select"
                                     style="width: 100%;">
