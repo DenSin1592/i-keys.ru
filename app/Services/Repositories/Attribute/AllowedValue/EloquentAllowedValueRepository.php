@@ -101,6 +101,20 @@ class EloquentAllowedValueRepository
     }
 
 
+    public function getAttributeValuesCylinderSecondSizeByIds(Attribute $attribute, array $ids)
+    {
+        if (count($ids) === 0) {
+            return Collection::make([]);
+        }
+
+        $query = $attribute->allowedValues()->whereIn('id', $ids);
+        $query->select('attribute_allowed_values.value_second_size_cylinder')->distinct();
+        $query->orderBy('attribute_allowed_values.value_second_size_cylinder');
+
+        return $query->get();
+    }
+
+
     private function scopeOrdered($query, string $castAsType = null)
     {
         if (!is_null($castAsType)) {

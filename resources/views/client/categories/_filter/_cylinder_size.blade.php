@@ -16,7 +16,8 @@
                                     class="filter-sheme-option-select custom-control custom-select"
                                     style="width: 100%;">
                                 <option value="">-----</option>
-                                @foreach ($lensData['variants'] as $number => $variant)
+
+                                @foreach ($lensData['variants']['first_size'] as $number => $variant)
                                 <option value="{{ $variant['value'] }}"
                                         @if (!$variant['available']) disabled @endif
                                     {{ $variant['checked'] ? 'selected' : '' }}
@@ -32,11 +33,19 @@
                         <div class="filter-sheme-option-group">
                             <label for="filter-sheme-option-2" class="filter-sheme-option-title">Внутр.</label>
 
-                            <select name="filter[{{ $lensData['key'] }}][]"
+                            <select name="filter[cylinder_second_size][]"
                                     id="filter-sheme-option-2"
                                     class="filter-sheme-option-select custom-control custom-select"
                                     style="width: 100%;">
                                 <option value="">-----</option>
+                                @foreach ($lensData['variants']['second_size'] as $number => $variant)
+                                    <option value="{{ $variant['value'] }}"
+                                            @if (!$variant['available']) disabled @endif
+                                        {{ $variant['checked'] ? 'selected' : '' }}
+                                    >
+                                        {{ $variant['value'] . 'мм'}}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

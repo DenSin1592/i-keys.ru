@@ -2,14 +2,19 @@
 
 namespace App\Services\Catalog\Filter\Lens;
 
-
 use Illuminate\Database\Eloquent\Builder;
 
-final class CylinderSizeLens extends ClassicListLens
+
+final class CylinderFirstSizeLens extends ClassicListLens
 {
 
     public function modifyQuery($query, $lensData)
     {
+
+       if(empty($lensData[0])){
+           return;
+       }
+
         if (!is_array($lensData) || count($lensData) === 0) {
             return;
         }
@@ -32,8 +37,8 @@ final class CylinderSizeLens extends ClassicListLens
                     "{$attrValuesAlias}.product_id"
                 )->where("{$attrValuesAlias}.attribute_id", '=', $attrId);
             })
-            ->join("attribute_allowed_values", "attribute_allowed_values.id", '=', "$attrValuesAlias.value_id")
-            ->where('attribute_allowed_values.value_first_size_cylinder', $lensData[0]);
+            ->join("attribute_allowed_values AS {$attrValuesAlias}_attr_all_val", "{$attrValuesAlias}_attr_all_val.id", '=', "$attrValuesAlias.value_id")
+            ->where("{$attrValuesAlias}_attr_all_val.value_first_size_cylinder", $lensData[0]);
 
     }
 
@@ -62,7 +67,7 @@ final class CylinderSizeLens extends ClassicListLens
             ->pluck('value_id')
             ->toArray();
         $allowedValues = $this->allowedValueRepo->getAttributeValuesCylinderFirstSizeByIds($attribute, $allowedIds);
-        $availableIdList = $this->getValueIds($restrictedQuery);
+        $availableIdList = $this->getValueIds(clone $restrictedQuery);
 
 
         $variants = [];
@@ -77,26 +82,13 @@ final class CylinderSizeLens extends ClassicListLens
         }
 
         if (count($variants) === 0) {
-            $variants = null;
+            return null;
         }
-
-        return $variants;
+        return ['first_size' => $variants];
     }
 
     protected function getValueIds(Builder $query): array
     {
-
-//        dd(
-//
-//            $query
-//                ->join("attribute_single_values AS attribute_values", "attribute_values.product_id", '=', "products.id")
-//            ->join("attribute_allowed_values", "attribute_allowed_values.attribute_id", '=', "attribute_values.attribute_id")
-//            ->where("attribute_values.attribute_id", $this->attribute->id)
-//            ->whereRaw("attribute_values.value_id = attribute_allowed_values.id")
-//            ->orderBy('attribute_allowed_values.value_first_size_cylinder')
-//                ->select('attribute_allowed_values.value_first_size_cylinder')
-//                ->distinct()->pluck('value_first_size_cylinder')->all()
-//    );
         return $query
             ->join("attribute_single_values AS attribute_values", "attribute_values.product_id", '=', "products.id")
             ->join("attribute_allowed_values", "attribute_allowed_values.attribute_id", '=', "attribute_values.attribute_id")
@@ -106,8 +98,5 @@ final class CylinderSizeLens extends ClassicListLens
             ->select('attribute_allowed_values.value_first_size_cylinder')
             ->distinct()->pluck('value_first_size_cylinder')->all();
 
-//            ->where("attribute_values.attribute_id", $this->attribute->id)
-//            ->select('attribute_values.value_id')
-//            ->distinct()->pluck('value_id')->all();
     }
 }

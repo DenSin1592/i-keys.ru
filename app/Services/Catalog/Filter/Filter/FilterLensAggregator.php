@@ -29,7 +29,7 @@ class FilterLensAggregator implements FilterInterface
     public function getVariants($query, array $filterData)
     {
         $variants = [];
-        foreach ($this->lensWrapperList as $lensWrapper) {
+        foreach ($this->lensWrapperList as $key => $lensWrapper) {
             $lensKey = $lensWrapper->getKey();
             $lensData = $this->getLensData($filterData, $lensWrapper);
             $restrictedFilterData = $filterData;
@@ -39,6 +39,14 @@ class FilterLensAggregator implements FilterInterface
             $restrictedQuery = $this->modifyQuery(clone $query, $restrictedFilterData);
             $lensVariants = $lensWrapper->getLens()->getVariants(clone $query, $restrictedQuery, $lensData);
 
+            if($lensWrapper->getKey() === 'cylinder_second_size'){
+                if (is_null($lensVariants)) {
+                    unset( $variants[$key -1]);
+                    continue;
+                }
+                $variants[$key -1]['variants']['second_size'] = $lensVariants['second_size'];
+                continue;
+            }
             if (!is_null($lensVariants)) {
                 $variants[] = [
                     'name' => $lensWrapper->getName(),
