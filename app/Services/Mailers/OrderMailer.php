@@ -2,6 +2,7 @@
 
 use App\Models\Order;
 use App\Services\Repositories\Order\EloquentOrderRepository;
+use App\Services\Subdomains\Config;
 use Illuminate\Mail\Message;
 
 class OrderMailer
@@ -21,20 +22,20 @@ class OrderMailer
         if (\Validator::make(compact('to'), $emailRules)->passes()) {
             $orderData = $this->orderRepository->getPrintData($order);
 
-//            \Mail::send(
-//                'emails.order.client.complete',
-//                compact('order', 'orderData'),
-//                function (Message $message) use ($order, $to) {
-//                    $message->to($to);
-//                    $message->subject(
-//                        str_replace(
-//                            ['{root_url}'],
-//                            [\Request::server('HTTP_HOST')],
-//                            "Вы сделали заказ на сайте {root_url}"
-//                        )
-//                    );
-//                }
-//            );
+            \Mail::send(
+                'emails.order.client.complete',
+                compact('order', 'orderData'),
+                function (Message $message) use ($order, $to) {
+                    $message->to($to);
+                    $message->subject(
+                        str_replace(
+                            ['{root_url}'],
+                            [\Request::server('HTTP_HOST')],
+                            "Вы сделали заказ на сайте {root_url}"
+                        )
+                    );
+                }
+            );
 
             return true;
         }
@@ -44,7 +45,7 @@ class OrderMailer
 
     public function sendAdminCompleteEmail(Order $order)
     {
-        $emails = \Helper::getValidEmails(\Setting::get('mail.feedback.address'));
+        $emails = \Helper::getValidEmails(config('mail.from.address'));
         if (count($emails) > 0) {
             $orderData = $this->orderRepository->getPrintData($order, true);
 

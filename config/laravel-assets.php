@@ -57,6 +57,7 @@ return [
                 'html/js/offcanvas.js',
 
                 'js/client/auth_menu.js',
+                'js/client/quick_order.js',
                 'js/client/modal_message.js',
                 'js/client/filter.js',
                 'js/client/cart/cart.js',

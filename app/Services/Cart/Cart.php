@@ -28,7 +28,7 @@ class Cart
     }
 
 
-    /*public function itemCount($productId): int
+    public function itemCount($productId): int
     {
         $item = $this->findItem($productId);
         if (!is_null($item)) {
@@ -36,7 +36,7 @@ class Cart
         }
 
         return 0;
-    }*/
+    }
 
 
     public function totalCount(): int
@@ -45,7 +45,7 @@ class Cart
     }
 
 
-    /*public function summaryCount()
+    public function summaryCount()
     {
         return array_reduce(
             $this->items(),
@@ -55,10 +55,10 @@ class Cart
             },
             0
         );
-    }*/
+    }
 
 
-    /*public function totalPrice()
+    public function totalPrice()
     {
         return array_reduce(
             $this->items(),
@@ -69,7 +69,7 @@ class Cart
             },
             0
         );
-    }*/
+    }
 
 
     public function add(int $productId, int $count): CartItem
@@ -99,7 +99,7 @@ class Cart
 
 
 
-    /*public function update(int $productId, int $count): void
+    public function update(int $productId, int $count): void
     {
         $resultItem = null;
         foreach ($this->items() as $item) {
@@ -113,10 +113,10 @@ class Cart
             $resultItem->setCount($count);
             $this->save();
         }
-    }*/
+    }
 
 
-    /*public function remove($productId)
+    public function remove($productId)
     {
         $itemList = $this->items();
         $newItemList = array_filter(
@@ -127,14 +127,14 @@ class Cart
         );
         $this->setItems($newItemList);
         $this->save();
-    }*/
+    }
 
 
-    /*public function clear()
+    public function clear()
     {
         $this->setItems([]);
         $this->save();
-    }*/
+    }
 
 
     private function save()
