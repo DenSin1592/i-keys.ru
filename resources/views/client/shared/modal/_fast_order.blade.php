@@ -1,4 +1,5 @@
-<div class="modal fade" id="modalQuickOrder" tabindex="-1" aria-labelledby="modalQuickOrderLabel" aria-hidden="true">
+<div class="modal fade" id="modalQuickOrder" tabindex="-1" aria-labelledby="modalQuickOrderLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,20 +13,25 @@
             </div>
 
             <div class="modal-body">
-                <form action="" class="form-modal form" >
+                <form action="POST" data-method="POST" data-action="{{route('order.fast.store')}}"
+                      class="form-modal form" id="quick-order">
+
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Имя" >
+                        <input type="text" class="form-control" name="name" id="form-quick-order-name"
+                               placeholder="Имя">
                     </div>
 
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Почта *" required >
+                        <input type="email" class="form-control" name="email" id="form-quick-order-email"
+                               placeholder="Почта *" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="tel" class="form-control" placeholder="Телефон *" required >
+                        <input type="tel" class="form-control" name="phone" id="form-quick-order-phone"
+                               placeholder="Телефон *" required>
                     </div>
 
-                    <button type="submit" class="btn btn-lg" >Отправить</button>
+                    <button type="submit" class="btn btn-lg">Отправить</button>
                 </form>
             </div>
         </div>

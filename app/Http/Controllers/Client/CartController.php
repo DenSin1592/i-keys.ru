@@ -6,6 +6,7 @@ use App\Exceptions\Handler;
 use App\Http\Controllers\Controller;
 use App\Services\Breadcrumbs\Factory as Breadcrumbs;
 use App\Services\Cart\Cart;
+use App\Services\Cart\ItemListBuilder;
 use App\Services\Seo\MetaHelper;
 use \Illuminate\Http\JsonResponse;
 
@@ -14,35 +15,40 @@ class CartController extends Controller
 {
     public function __construct(
         private Cart $cart,
-//        ItemListBuilder $itemListBuilder,
+        private ItemListBuilder $itemListBuilder,
 //        ClientOrderForm $clientOrderForm,
         private Breadcrumbs $breadcrumbs,
         private MetaHelper $metaHelper,
-//        ProductBuilder $productBuilder
     ){}
 
 
     public function show()
     {
+        $breadcrumbs = $this->getBreadcrumbs();
+        $metaData = $this->metaHelper->getRule()->metaForName('Корзина');
+
+        $itemListData = $this->itemListBuilder->buildDataFor();
+
+        if($this->cart->totalCount() === 0){
+            return \View::make('client.cart.empty')
+                ->with('breadcrumbs', $breadcrumbs)
+                ->with('metaData', $metaData);
+
+        }
+
+
+
 
         return \View::make('client.cart.show')
-            ->with('breadcrumbs', $this->getBreadcrumbs())
-            ->with('metaData', $this->metaHelper->getRule()->metaForName('Корзина'));
+            ->with('breadcrumbs', $breadcrumbs)
+            ->with('metaData', $metaData)
+            ->with('itemListData', $itemListData);
 
 
 
-//        $itemListData = $this->itemListBuilder->buildDataFor($this->cart->items());
+
 //
-//        if (\Request::ajax()) {
-//            $summary = view('client.cart.show._summary', [
-//                'itemListData' => $itemListData,
-//            ])->render();
-//            return Response::json(['summary' => $summary]);
-//        }
 //
-//        $breadcrumbs = $this->breadcrumbs->init();
-//        $breadcrumbs->add('Корзина', route('cart.show'));
-//        $metaData = $this->metaHelper->getRule()->metaForName('Корзина');
 //
 //        $formData = $this->clientOrderForm->provideData(Request::old());
 //
@@ -52,15 +58,6 @@ class CartController extends Controller
 //            ->with('formData', $formData)
 //            ->with($metaData);
 
-    }
-
-    private function getBreadcrumbs()
-    {
-        $breadcrumbs = $this->breadcrumbs->init();
-        $breadcrumbs->add('Главная', route('home'));
-        $breadcrumbs->add('Корзина');
-
-        return $breadcrumbs;
     }
 
 
@@ -94,6 +91,15 @@ class CartController extends Controller
 
     }
 
+
+    private function getBreadcrumbs()
+    {
+        $breadcrumbs = $this->breadcrumbs->init();
+        $breadcrumbs->add('Главная', route('home'));
+        $breadcrumbs->add('Корзина');
+
+        return $breadcrumbs;
+    }
 
 //    public function addChild()
 //    {
