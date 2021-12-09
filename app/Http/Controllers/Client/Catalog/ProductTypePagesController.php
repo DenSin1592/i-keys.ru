@@ -67,7 +67,7 @@ class ProductTypePagesController extends Controller
         };
 
         $productListData = $productListPageProvider->getProductListData($inputData['page']);
-        $metaData = $this->metaHelper->getRule('product_type_page')->metaForObject($productTypePage, null, ['paginator' => \Arr::get($productListData, 'paginator')]);
+        $metaData = $this->metaHelper->getRule()->metaForObject($productTypePage);
         $breadcrumbs = $this->getBreadcrumbs($this->breadcrumbs, $productTypePage->extractPath());
         $linksTypesContent = $productTypePage->content_for_links_type;
 

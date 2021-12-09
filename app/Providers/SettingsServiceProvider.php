@@ -34,7 +34,7 @@ class SettingsServiceProvider extends ServiceProvider
                     new SettingValue(
                         'general.site_name',
                         'Название сайта',
-                        'l-keys.ru',
+                        'i-keys.ru',
                         'Используется в политике конфиденциальности, окне авторизации системы администрирования и т.д.',
                         SettingValue::TYPE_TEXT
                     )

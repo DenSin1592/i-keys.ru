@@ -13,7 +13,7 @@
        href="{{ route('cc.product-type-pages.destroy', $productTypePage->id) }}">{{ trans('interactions.delete') }}</a>
     <a href="{{ route('cc.product-type-pages.index') }}"
        class="btn btn-default">{{ trans('interactions.back_to_list') }}</a>
-{{--    @if ($productTypePage->in_tree_publish)--}}
-{{--        @include('admin.shared._show_on_site_button', ['url' => '')])--}}
-{{--    @endif--}}
+    @if ($productTypePage->publish)
+        @include('admin.shared._show_on_site_button', ['url' => UrlBuilder::getUrl($productTypePage)])
+    @endif
 @stop
