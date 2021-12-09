@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function (){
                     type: self.data('method'),
                     data: quickOrderForm.serialize(),
                     success: function (response) {
-                        console.log(response)
                         if (response['status'] === 'success') {
                             modalQuickOrderContainer.modal('hide')
                             modalMessage.find('h3').text(response['modal_title']);
