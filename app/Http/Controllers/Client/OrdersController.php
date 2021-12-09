@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Exceptions\Handler;
 use App\Http\Controllers\Client\Features\CartDataHelper;
 use App\Http\Controllers\Client\Features\DeviceDetection;
 use App\Http\Controllers\Controller;
@@ -43,8 +44,15 @@ class OrdersController extends Controller
 
         $orderCompleteContent = '<p>Вашему заказу присвоен номер ' . $order->id . '. Наш менеджер свяжется с Вами в ближайшее время.</p>';
 
-        $this->orderMailer->sendAdminCompleteEmail($order);
-        $this->orderMailer->sendClientCompleteEmail($order);
+        try{
+            $this->orderMailer->sendAdminCompleteEmail($order);
+            $this->orderMailer->sendClientCompleteEmail($order);
+        } catch (\Swift_SwiftException $ex){
+            \Log::error($ex->getMessage());
+        } catch (\Throwable $ex){
+            \Log::error($ex->getMessage());
+            resolve(Handler::class)->report($ex);
+        }
 
         return \Response::json(
             [
