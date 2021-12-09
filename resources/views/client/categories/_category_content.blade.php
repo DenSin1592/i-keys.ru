@@ -1,8 +1,8 @@
+{!! $linksTypesContent ?? '' !!}
+
 @if(!empty($filter['filterVariants']))
     @include('client.categories._selected_variants')
 @endif
-
-{!! $linksTypesContent ?? '' !!}
 
 @include('client.categories._catalog_controls')
 
