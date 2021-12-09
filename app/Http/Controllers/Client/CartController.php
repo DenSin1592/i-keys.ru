@@ -27,8 +27,6 @@ class CartController extends Controller
         $breadcrumbs = $this->getBreadcrumbs();
         $metaData = $this->metaHelper->getRule()->metaForName('Корзина');
 
-        $itemListData = $this->itemListBuilder->buildDataFor();
-
         if($this->cart->totalCount() === 0){
             return \View::make('client.cart.empty')
                 ->with('breadcrumbs', $breadcrumbs)
@@ -36,9 +34,7 @@ class CartController extends Controller
 
         }
 
-
-
-
+        $itemListData = $this->itemListBuilder->buildDataFor();
         return \View::make('client.cart.show')
             ->with('breadcrumbs', $breadcrumbs)
             ->with('metaData', $metaData)
