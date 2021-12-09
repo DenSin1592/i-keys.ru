@@ -1,23 +1,17 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
-const del = require('del');
+const cleanCSS = require('gulp-clean-css');
+const watch = require('gulp-watch');
 
-gulp.task('styles', () => {
+gulp.task('sass', function() {
     return gulp.src('html/scss/style.scss')
         .pipe(sass().on('error', sass.logError))
+        .pipe(cleanCSS())
         .pipe(gulp.dest('html/css/'));
 });
 
-gulp.task('clean', () => {
-    return del([
-        'html/css/style.css',
-    ]);
-});
-
 gulp.task('watch', () => {
-    gulp.watch('html/scss/style.scss', (done) => {
-        gulp.series(['clean', 'styles'])(done);
-    });
+    gulp.watch('html/scss/**/*.scss', gulp.parallel('sass'));
 });
 
-gulp.task('default', gulp.series(['clean', 'styles']));
+gulp.task('default', gulp.series(['sass']));
