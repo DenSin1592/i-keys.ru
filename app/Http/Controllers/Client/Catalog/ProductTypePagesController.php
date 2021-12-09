@@ -69,13 +69,15 @@ class ProductTypePagesController extends Controller
         $productListData = $productListPageProvider->getProductListData($inputData['page']);
         $metaData = $this->metaHelper->getRule('product_type_page')->metaForObject($productTypePage, null, ['paginator' => \Arr::get($productListData, 'paginator')]);
         $breadcrumbs = $this->getBreadcrumbs($this->breadcrumbs, $productTypePage->extractPath());
+        $linksTypesContent = $productTypePage->content_for_links_type;
 
         if (!\Request::ajax()) {
             return \View::make('client.categories.show')
                 ->with($productListData)
                 ->with('breadcrumbs', $breadcrumbs)
-                ->with('authEditLink', route('cc.categories.edit', $productTypePage->category_id))
-                ->with('metaData', $metaData);
+                ->with('authEditLink', route('cc.product-type-pages.edit', $productTypePage->id))
+                ->with('metaData', $metaData)
+                ->with('linksTypesContent', $linksTypesContent);
         }
 
         $contentData  = [
@@ -85,6 +87,7 @@ class ProductTypePagesController extends Controller
             'productsData' => $productListData['productsData'],
             'paginator' => $productListData['paginator'],
             'breadcrumbs' => $breadcrumbs,
+            'linksTypesContent' => $linksTypesContent,
         ];
 
         $categoryContent = \View::make('client.categories._category_content')

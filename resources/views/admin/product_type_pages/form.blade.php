@@ -30,6 +30,8 @@
     {!! Form::hidden('position') !!}
 
     @include('admin.shared._header_meta_field')
+
+    {!! Form::tbTinymceTextareaBlock('content_for_links_type') !!}
     {!! Form::tbTinymceTextareaBlock('content') !!}
     {!! Form::tbTinymceTextareaBlock('bottom_content') !!}
 

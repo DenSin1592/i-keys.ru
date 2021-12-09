@@ -46,13 +46,16 @@ class CatalogController extends Controller
 
         $productListData = $productListPageProvider->getProductListData($inputData['page']);
         $breadcrumbs = $this->getBreadcrumbs($this->breadcrumbs, $category->extractPath());
+        $metaData = $this->metaHelper->getRule()->metaForObject($category);
+        $linksTypesContent = $category->content_for_links_type;
 
         if (!\Request::ajax()) {
             return \View::make('client.categories.show')
                 ->with($productListData)
                 ->with('breadcrumbs', $breadcrumbs)
                 ->with('authEditLink', route('cc.categories.edit', $category->id))
-                ->with('metaData', $this->metaHelper->getRule()->metaForObject($category));
+                ->with('metaData', $metaData)
+                ->with('linksTypesContent', $linksTypesContent);
         }
 
         $contentData  = [
@@ -62,6 +65,7 @@ class CatalogController extends Controller
             'productsData' => $productListData['productsData'],
             'paginator' => $productListData['paginator'],
             'breadcrumbs' => $breadcrumbs,
+            'linksTypesContent' => $linksTypesContent,
         ];
 
         $categoryContent = \View::make('client.categories._category_content')

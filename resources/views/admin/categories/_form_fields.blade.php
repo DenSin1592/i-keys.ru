@@ -19,6 +19,8 @@
 
 {!! Form::tbTinymceTextareaBlock('content_for_submenu') !!}
 
+{!! Form::tbTinymceTextareaBlock('content_for_links_type') !!}
+
 {!! Form::tbTinymceTextareaBlock('top_content') !!}
 
 {!! Form::tbTinymceTextareaBlock('bottom_content') !!}

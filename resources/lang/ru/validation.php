@@ -190,6 +190,7 @@ return [
         'type' => 'Тип',
         'top_content' => 'Содержимое вверху',
         'content_for_submenu' => 'Содержимое всплывающего меню',
+        'content_for_links_type' => 'Ссылки типов над фильтром',
         'content' => 'Содержимое',
         'bottom_content' => 'Содержимое внизу',
         'extra_description' => 'Дополнительное описание',

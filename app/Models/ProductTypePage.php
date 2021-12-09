@@ -31,6 +31,7 @@ class ProductTypePage extends \Eloquent
         'category_id',
         'product_list_way',
         'filter_query',
+        'content_for_links_type',
     ];
 
     public function parent()
