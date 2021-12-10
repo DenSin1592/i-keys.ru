@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $(document).on('click', 'button[data-cart-action="remove"]', function (e) {
         modalCartRemove.modal('show');
-        modalCartRemove.data('productId', $(e.currentTarget).closest('[data-cart-item-id]').data('cartItemId'));
+        modalCartRemove.data('productId', $(e.currentTarget).closest('[data-cart-product-id]').data('cartProductId'));
     });
 
 
     modalCartRemove.on('click', '[data-card-remove]', () => {
         const url = modalCartRemove.data('url');
         const productId = modalCartRemove.data('productId');
-        let cartItem = $('[data-cart-item-id=' + productId + ']');
+        let cartItem = $('[data-cart-product-id=' + productId + ']');
 
         let data = {
             productId: productId,

@@ -1,4 +1,4 @@
-<div class="order-item" data-cart-item-id="{{$item['product']->id}}">
+<div class="order-item" data-cart-product-id="{{$item['product']->id}}">
     <div class="card-order">
         <div class="card-order-inner">
             <div class="row align-items-lg-center">

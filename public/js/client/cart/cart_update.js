@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     $(document).on('change', ".custom-number .custom-number-input", (e) => {
 
         let input = $(e.currentTarget);
-        let itemCard = input.closest('[data-cart-item-id]');
-        let productId = itemCard.data('cartItemId')
+        let itemCard = input.closest('[data-cart-product-id]');
+        let productId = itemCard.data('cartProductId')
         let count = parseFloat(input.val())
 
         let data = {
