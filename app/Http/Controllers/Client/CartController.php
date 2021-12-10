@@ -57,7 +57,7 @@ class CartController extends Controller
         return \Response::json([
             'button_in_cart' => \View::make('client.shared.product.button._in_cart')->render(),
             'modal_title' => 'Товар добавлен в корзину!',
-            'modal_body' => \View::make('client.shared.modal._success_in_cart', ['product' => $item->getProduct(), 'count' => $item->getCount(),]),
+            'modal_body' => \View::make('client.shared.modal._success_in_cart', ['product' => $item->getProduct(), 'count' => $item->getCount(),])->render(),
             'cartItemCount' => $this->cart->totalCount()
         ]);
     }
