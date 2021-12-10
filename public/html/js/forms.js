@@ -16,13 +16,12 @@ let customNumberButtonInit = function () {
         if (target.hasClass('custom-number-increase')) {
             newValue = oldValue + 1;
         } else {
-            if (oldValue > 0) {
+            if (oldValue > 1) {
                 newValue = oldValue - 1;
             } else {
-                newValue = 0;
+                newValue = 1;
             }
         }
-        newValue = newValue <= 0 ? 1 : newValue;
         input.val(newValue);
     });
 
