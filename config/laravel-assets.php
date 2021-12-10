@@ -60,7 +60,9 @@ return [
                 'js/client/quick_order.js',
                 'js/client/modal_message.js',
                 'js/client/filter.js',
-                'js/client/cart/cart.js',
+                'js/client/cart/cart_init.js',
+                'js/client/cart/cart_add.js',
+                'js/client/cart/cart_remove.js',
 
             ],
             'filters' => ['js_min', 'end_with_semicolon'],

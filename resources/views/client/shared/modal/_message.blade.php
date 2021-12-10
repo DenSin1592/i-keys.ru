@@ -4,12 +4,11 @@
      role="dialog"
      aria-labelledby="modalMessageLabel"
      aria-hidden="true"
-     data-url-cart-add="{{{ route('cart.add') }}}"
 >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title title-h3 font-family-secondary" id="modalAddToCartLabel">Пожалуйста, ожидайте...</h3>
+                <h3 class="modal-title title-h3 font-family-secondary" id="modalMessageLabel">Пожалуйста, ожидайте...</h3>
 
                 <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
                     <svg class="close-media" width="24" height="24">

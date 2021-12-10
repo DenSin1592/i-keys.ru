@@ -1,13 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-
-    let modalMessage = $('#modalMessage');
-
-
-    let updateCartIcon = (count) => {
-        $('.cart-item-count').text(count);
-    };
-
+    const CART_ADD_URI = '/cart/add';
 
     $(document).on('click', 'button.event-add-to-cart', (e) => {
         let button = $(e.currentTarget);
@@ -15,28 +8,26 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addClass('loader');
 
         let productId = button.data('product-id');
-        let url = modalMessage.data('url-cart-add');
         let data = {
             productId: productId,
         };
-        modalMessage.modal('show');
+        document.modalMessage.modal('show');
 
         promiseQueue.add('change-cart', () => {
             $.ajax({
                 method: 'POST',
-                url: url,
+                url: CART_ADD_URI,
                 data: data,
                 cache: false,
             }).done((response) => {
                 button.replaceWith(response['button_in_cart']);
-                modalMessage.find('h3').text(response['modal_title']);
-                modalMessage.find('.modal-body').replaceWith(response['modal_body']);
+                document.modalMessageShow(response['modal_title'], response['modal_body']);
                 customNumberButtonInit();
-                updateCartIcon(response['cartItemCount']);
+                document.updateCartIcon(response['cartItemCount']);
                 }
             ).fail(() => {
                 button.replaceWith('');
-                modalMessageErrorShow();
+                document.modalMessageErrorShow();
                 }
             )
 

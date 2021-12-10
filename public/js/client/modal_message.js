@@ -1,31 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    let modalMessage = $('#modalMessage');
-    let modalMessageStartHeader = modalMessage.find('h3').text();
-    let modalMessageStartBody = modalMessage.find('.modal-body');
-    let modalMessageStartFooter = modalMessage.find('.modal-footer');
+    document.modalMessage = $('#modalMessage');
+    const modalMessageStartHeader = document.modalMessage.find('h3').text();
+    const modalMessageStartBody = document.modalMessage.find('.modal-body');
+    const modalMessageStartFooter = document.modalMessage.find('.modal-footer');
 
 
-    modalMessage.on('show.bs.modal', () => {
-        modalMessage.find('.modal-body').replaceWith('<div class="modal-body"></div>');
-        modalMessage.find('.modal-footer').replaceWith('<div class="modal-footer"></div>');
-    });
-
-    modalMessage.on('hidden.bs.modal', () => {
+    document.modalMessage.on('hidden.bs.modal', () => {
         setTimeout(() => {
-                modalMessage.find('h3').text(modalMessageStartHeader);
-                modalMessage.find('.modal-body').replaceWith(modalMessageStartBody);
-                modalMessage.find('.modal-footer').replaceWith(modalMessageStartFooter);
+            document.modalMessage.find('h3').text(modalMessageStartHeader);
+            document.modalMessage.find('.modal-body').replaceWith(modalMessageStartBody);
+            document.modalMessage.find('.modal-footer').replaceWith(modalMessageStartFooter);
             }, 500,
         )
     });
 
+    document.modalMessageShow = (header, body) => {
+        document.modalMessage.find('h3').text(header);
+        document.modalMessage.find('.modal-body').replaceWith(body);
+        document.modalMessage.modal('show');
+    }
+
+    document.modalMessageErrorShow = () => {
+        document.modalMessage.find('h3').text('Что то пошло не так...');
+        document.modalMessage.find('.modal-body').replaceWith('<div class="modal-body"><div class="form-modal form"><div  class="title-h4 text-secondary">Наши специалисты уже работают над устранение проблемы.</div></div>');
+        document.modalMessage.find('.modal-footer').replaceWith('<div class="modal-footer"> Пожалуйста, попробуйте позже.</div>');
+
+    }
+
 });
-
-
-let modalMessageErrorShow = () => {
-    let modalMessage = $('#modalMessage');
-    modalMessage.find('h3').text('Что то пошло не так...');
-    modalMessage.find('.modal-body').replaceWith('<div class="modal-body"><div class="form-modal form"><div  class="title-h4 text-secondary">Наши специалисты уже работают над устранение проблемы.</div></div>');
-    modalMessage.find('.modal-footer').replaceWith('<div class="modal-footer"> Пожалуйста, попробуйте позже.</div>');
-}

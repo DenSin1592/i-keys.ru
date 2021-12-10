@@ -1,67 +1,47 @@
-document.addEventListener('DOMContentLoaded', function (){
+document.addEventListener('DOMContentLoaded', function () {
 
-    let modalMessage = $('#modalMessage');
-    let updateCartIcon = (count) => {
-        $('.cart-item-count').text(count);
-    };
-
-    let modalQuickOrderContainer = $('#modalQuickOrder', document);
+    let modalQuickOrderContainer = $('#modalQuickOrder');
     let quickOrderForm = modalQuickOrderContainer.find('form#quick-order');
+    let submitBtn = modalQuickOrderContainer.find('[type=submit]');
+    let errorBlock = modalQuickOrderContainer.find('.error')
 
+    submitBtn.on('click', function (e) {
+        e.preventDefault();
+        errorBlock.html('');
 
-    if (quickOrderForm.length === 1) {
+        submitBtn.prop('disabled', true);
+        submitBtn.addClass('loader');
 
-        modalQuickOrderContainer.on('click', '[data-type-submit]', function (e) {
-            e.preventDefault();
-            quickOrderForm.trigger('submit');
-        });
-
-        quickOrderForm.submit(function (e) {
-            e.preventDefault();
-            let self = $(this);
-            let submitBtn = modalQuickOrderContainer.find('[data-type-submit]');
-            if (!$(quickOrderForm).data('process')) {
-                $(quickOrderForm).data('process', true);
-                submitBtn.addClass('btn-loading');
-
-                $.ajax({
-                    url: self.data('action'),
-                    type: self.data('method'),
-                    data: quickOrderForm.serialize(),
-                    success: function (response) {
-                        if (response['status'] === 'success') {
-                            modalQuickOrderContainer.modal('hide')
-                            modalMessage.find('h3').text(response['modal_title']);
-                            modalMessage.find('.modal-body').replaceWith(response['modal_body']);
-                            customNumberButtonInit();
-                            updateCartIcon(0);
-                            modalMessage.modal('show');
-                        } else if (response['status'] === 'error') {
-                            let errors = response['errors'];
-                            let errorsObj = {};
-                            for (let field in errors) {
-                                errorsObj[field] = errors[field].join('<br>');
-                            }
+        $.ajax({
+            url: quickOrderForm.data('action'),
+            type: quickOrderForm.data('method'),
+            data: quickOrderForm.serialize(),
+            success: function (response) {
+                if (response['status'] === 'success') {
+                    modalQuickOrderContainer.modal('hide')
+                    document.modalMessageShow(response['modal_title'], response['modal_body']);
+                    document.updateCartIcon(0);
+                    return
+                }
+                if (response['status'] === 'error') {
+                    let errors = response['errors'];
+                    for (let field in errors) {
+                        for (let key in errors[field]) {
+                            errorBlock.append(errors[field][key] + '<br>');
                         }
-                        $(quickOrderForm).data('process', false);
-                        submitBtn.removeClass('btn-loading');
-                    },
-                    error: function () {
-                        $(quickOrderForm).data('process', false);
-                        submitBtn.removeClass('btn-loading');
                     }
-                });
-            }
-
-            return false;
-        });
-
-        $(document).on('cart:removed', function (event, data) {
-            if (data['summary_count'] === 0) {
-                modalQuickOrderContainer.modal('hide');
+                }
+                submitBtn.prop('disabled', false);
+                submitBtn.removeClass('loader');
+            },
+            error: function () {
+                submitBtn.prop('disabled', false);
+                submitBtn.removeClass('loader');
             }
         });
-    }
+
+        return false;
+    });
 
 })
 

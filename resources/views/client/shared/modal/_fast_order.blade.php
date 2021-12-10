@@ -13,8 +13,10 @@
             </div>
 
             <div class="modal-body">
-                <form action="POST" data-method="POST" data-action="{{route('order.fast.store')}}"
+                <form action="#" data-method="POST" data-action="{{route('order.fast.store')}}"
                       class="form-modal form" id="quick-order">
+
+                    <div class="form-group error"></div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" name="name" id="form-quick-order-name"
