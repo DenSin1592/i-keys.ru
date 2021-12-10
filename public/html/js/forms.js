@@ -1,16 +1,17 @@
-let initSelect2 = function (){
+let initSelect2 = function () {
     $('.custom-select').select2({
         minimumResultsForSearch: Infinity
     });
 }
 
-let customNumberButtonInit = function (){
-    $(".custom-number .custom-number-button").on("click", function(e) {
-        let target = $(e.currentTarget),
-            container = target.closest('.custom-number'),
-            input = container.find("input"),
-            oldValue = parseFloat(input.val()),
-            newValue = undefined;
+let customNumberButtonInit = function () {
+
+    $(".custom-number .custom-number-button").on("click", function (e) {
+        let target = $(e.currentTarget);
+        let container = target.closest('.custom-number');
+        let input = container.find("input");
+        let oldValue = parseFloat(input.val());
+        let newValue;
 
         if (target.hasClass('custom-number-increase')) {
             newValue = oldValue + 1;
@@ -22,19 +23,26 @@ let customNumberButtonInit = function (){
             }
         }
         newValue = newValue <= 0 ? 1 : newValue;
+        input.val(newValue);
+    });
 
+
+    $(".custom-number .custom-number-input").on("change", function (e) {
+        let input = $(e.currentTarget);
+        let newValue = parseFloat(input.val());
+        newValue = newValue <= 0 ? 1 : newValue;
         input.val(newValue);
     });
 }
 
-document.addEventListener('DOMContentLoaded', function (){
+
+document.addEventListener('DOMContentLoaded', function () {
 
     initSelect2();
     customNumberButtonInit();
 
 
-    // custom options
-    $('.form-option').on('click', function(e) {
+    $('.form-option').on('click', function (e) {
         let target = $(e.currentTarget);
         let container = target.closest('.form-options-group');
         let children = container.find('.form-option');
@@ -42,5 +50,8 @@ document.addEventListener('DOMContentLoaded', function (){
         children.removeClass('active');
         target.addClass('active');
     });
+
+
+
 
 });
