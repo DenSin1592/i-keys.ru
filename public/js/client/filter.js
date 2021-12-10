@@ -1,4 +1,4 @@
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', () => {
 
 
     let categoryContent = $('#category-content');
@@ -246,41 +246,6 @@ $(document).ready(function () {
         };
     })());
 
-    // Init additional filter
-    // categoryPage.initializers.push((function () {
-    //     let applySorting = function (url, direct) {
-    //         direct = parseInt(direct, 10);
-    //         if (direct === 1) {
-    //             openPage(url);
-    //         } else {
-    //             applyFilter(url);
-    //         }
-    //     };
-    //
-    //     let additionalHandler = function (e) {
-    //         let button = $(e.currentTarget);
-    //         let url = button.data('url');
-    //         let direct = button.data('direct');
-    //         applySorting(url, direct);
-    //     };
-    //
-    //     let additionalOptionHandler = function (e) {
-    //         let option = e.currentTarget.options[e.currentTarget.selectedIndex];
-    //         let url = option.value;
-    //         let direct = $(option).data('direct');
-    //         applySorting(url, direct);
-    //     };
-    //
-    //     return {
-    //         init: function () {
-    //             $('#catalog-sort').on('change', additionalOptionHandler);
-    //             $('#resort-filter-catalog-buttons').on('click', 'button', additionalHandler);
-    //         },
-    //         cleanUp: function () {
-    //         },
-    //     };
-    // })());
-
 
     // Init pagination
     categoryPage.initializers.push((function () {
@@ -352,58 +317,6 @@ $(document).ready(function () {
     // Filter submit
     (function () {
         let formProcessing = false;
-
-        // Mobile filter
-        // (function () {
-        //     let filterBox = $('.filter-box'),
-        //         filterToggle = $('.filter-toggle');
-        //
-        //     function openFilter() {
-        //         filterToggle.addClass('active');
-        //         $('body').addClass('filter-open');
-        //     }
-        //
-        //     function closeFilter() {
-        //         filterToggle.removeClass('active');
-        //         $('body').removeClass('filter-open');
-        //     }
-        //
-        //     if (filterBox.length !== 1) {
-        //         return;
-        //     }
-        //
-        //     filterToggle.on('click', function (e) {
-        //         let target = $(e.currentTarget);
-        //
-        //         target.toggleClass('active');
-        //         if (target.hasClass('active')) {
-        //             openFilter();
-        //         } else {
-        //             closeFilter();
-        //         }
-        //     })
-        //
-        //     // // Close mobile filter on bgs overlay click
-        //     $('.bgs-overlay').on('click', function () {
-        //         closeFilter();
-        //     });
-        //
-        //     // Mobile filter swipe
-        //     filterContainer.swipe({
-        //         swipeLeft: function () {
-        //             closeFilter();
-        //         },
-        //         // Range inputs do not work with active swipe on parent
-        //         excludedElements: '.filter-range-block, .filter-range-block'
-        //     });
-        //
-        //     beforeWindowWidthResizeFunctions.push(function () {
-        //         if (windowSizeHelper.isMobileToDesktopResize()) {
-        //             closeFilter();
-        //         }
-        //     });
-        // })();
-
 
         let submitForm = function (container) {
             if (!formProcessing) {

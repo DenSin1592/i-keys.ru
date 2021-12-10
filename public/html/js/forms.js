@@ -27,7 +27,7 @@ let customNumberButtonInit = function (){
     });
 }
 
-document.addEventListener('DomContentLoaded', function (){
+document.addEventListener('DOMContentLoaded', function (){
 
     initSelect2();
     customNumberButtonInit();
