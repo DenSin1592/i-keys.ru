@@ -1,5 +1,7 @@
 "use strict";
 
+const SCRIPT_NAME ='auth_menu.js';
+
 document.addEventListener('DOMContentLoaded', () => {
 
     try {
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.currentTarget.classList.add('closed')
         });
     } catch (ex) {
-
+        console.error(SCRIPT_NAME + ': ' +ex)
     }
 
 });
