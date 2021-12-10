@@ -21,28 +21,28 @@
         <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">{{$productData['product']->name}}</a>
 
         <div class="card-product-info-list">
-            <div class="card-product-size-block card-product-info-block d-flex">
-                <label for="card-product-size-{{$loop->iteration}}" class="card-product-info-title card-product-size-title">Типоразмер</label>
+{{--            <div class="card-product-size-block card-product-info-block d-flex">--}}
+{{--                <label for="card-product-size-{{$loop->iteration}}" class="card-product-info-title card-product-size-title">Типоразмер</label>--}}
 
-                <select name="" id="card-product-size-{{$loop->iteration}}" class="card-product-size custom-control custom-select" style="width: auto;" >
-                    <option value="50*60мм">50*60мм</option>
-                    <option value="60*70мм">60*70мм</option>
-                </select>
-            </div>
+{{--                <select name="" id="card-product-size-{{$loop->iteration}}" class="card-product-size custom-control custom-select" style="width: auto;" >--}}
+{{--                    <option value="50*60мм">50*60мм</option>--}}
+{{--                    <option value="60*70мм">60*70мм</option>--}}
+{{--                </select>--}}
+{{--            </div>--}}
 
             <div class="card-product-color-block card-product-info-block d-flex">
-                <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
+{{--                <label for="" class="card-product-info-title card-product-color-title">Цвет</label>--}}
 
-                <div class="card-product-color-list d-flex flex-wrap">
+{{--                <div class="card-product-color-list d-flex flex-wrap">--}}
 
-                    <div class="card-product-color custom-control custom-color custom-color-sm">
-                        <input type="radio" class="custom-control-input" id="card-product-color-{{$loop->iteration}}-1" name="card-product-color-1" checked >
-                        <label for="card-product-color-1-1" class="custom-control-label">
-                            <img loading="lazy" src="/uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">
-                        </label>
-                    </div>
+{{--                    <div class="card-product-color custom-control custom-color custom-color-sm">--}}
+{{--                        <input type="radio" class="custom-control-input" id="card-product-color-{{$loop->iteration}}-1" name="card-product-color-1" checked >--}}
+{{--                        <label for="card-product-color-1-1" class="custom-control-label">--}}
+{{--                            <img loading="lazy" src="/uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">--}}
+{{--                        </label>--}}
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
             </div>
         </div>
 
