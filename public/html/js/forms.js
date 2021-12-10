@@ -1,8 +1,10 @@
+
 let initSelect2 = function () {
     $('.custom-select').select2({
         minimumResultsForSearch: Infinity
     });
 }
+
 
 let customNumberButtonInit = function () {
 
@@ -23,6 +25,7 @@ let customNumberButtonInit = function () {
             }
         }
         input.val(newValue);
+        input.trigger('change');
     });
 
 
@@ -49,8 +52,4 @@ document.addEventListener('DOMContentLoaded', function () {
         children.removeClass('active');
         target.addClass('active');
     });
-
-
-
-
 });

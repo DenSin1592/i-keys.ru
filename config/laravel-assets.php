@@ -63,6 +63,7 @@ return [
                 'js/client/cart/cart_init.js',
                 'js/client/cart/cart_add.js',
                 'js/client/cart/cart_remove.js',
+                'js/client/cart/cart_update.js',
 
             ],
             'filters' => ['js_min', 'end_with_semicolon'],

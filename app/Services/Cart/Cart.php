@@ -14,8 +14,7 @@ class Cart
     public function __construct(
         private EloquentProductRepository $productRepository,
         private ICardStorage $storage,
-    )
-    {}
+    ){}
 
 
     public function items(): array
@@ -39,9 +38,9 @@ class Cart
     }
 
 
-    public function totalCount(): int
+    public function isEmpty(): int
     {
-        return count($this->items());
+        return count($this->items()) === 0;
     }
 
 
@@ -99,20 +98,17 @@ class Cart
 
 
 
-    public function update(int $productId, int $count): void
+    public function update(int $productId, int $count): ?CartItem
     {
-        $resultItem = null;
-        foreach ($this->items() as $item) {
-            if ($item->getProduct()->id === $productId) {
-                $resultItem = $item;
-                break;
-            }
-        }
+        $item = $this->findItem($productId);
 
-        if (!is_null($resultItem) && $count > 0) {
-            $resultItem->setCount($count);
-            $this->save();
+        if (is_null($item) && $count > 0) {
+            return null;
         }
+        $item->setCount($count);
+        $this->save();
+
+        return $item;
     }
 
 
@@ -137,6 +133,27 @@ class Cart
     }
 
 
+    public function findItem(int $productId): ?CartItem
+    {
+        foreach ($this->items() as $item) {
+            if ($item->getProduct()->id === $productId) {
+                return $item;
+            }
+        }
+
+        return null;
+    }
+
+
+    public function checkItem(int $productId): bool
+    {
+        if(is_null($this->findItem($productId))){
+            return false;
+        }
+        return true;
+    }
+
+
     private function save()
     {
         $itemListData = [];
@@ -146,7 +163,6 @@ class Cart
 
         $this->storage->save($itemListData);
     }
-
 
     private function setItems(array $items)
     {
@@ -183,26 +199,5 @@ class Cart
         }
 
         return $items;
-    }
-
-
-    private function findItem(int $productId): ?CartItem
-    {
-        foreach ($this->items() as $item) {
-            if ($item->getProduct()->id === $productId) {
-                return $item;
-            }
-        }
-
-        return null;
-    }
-
-
-    public function checkItem(int $productId): bool
-    {
-        if(is_null($this->findItem($productId))){
-            return false;
-        }
-       return true;
     }
 }

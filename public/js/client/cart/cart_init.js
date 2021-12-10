@@ -10,17 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     document.updateCartSummary = () => {
-
-        let summaryContainer = $('#summary-container');
-
-
         promiseQueue.add('cart-summary', () => {
             $.ajax({
                 method: 'GET',
                 url: CART_UPDATE_SUMMARY_URI,
                 cache: false
             }).done((response) => {
-                summaryContainer.replaceWith(response);
+                $('#summary-container').replaceWith(response);
             }).fail(() => {
                 document.modalMessageErrorShow();
             });

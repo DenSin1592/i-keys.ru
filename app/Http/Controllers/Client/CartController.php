@@ -28,7 +28,7 @@ class CartController extends Controller
         $breadcrumbs = $this->getBreadcrumbs();
         $metaData = $this->metaHelper->getRule()->metaForName('Корзина');
 
-        if($this->cart->totalCount() === 0){
+        if($this->cart->isEmpty()){
             return \View::make('client.cart.empty')
                 ->with('breadcrumbs', $breadcrumbs)
                 ->with('metaData', $metaData);
@@ -58,7 +58,32 @@ class CartController extends Controller
             'button_in_cart' => \View::make('client.shared.product.button._in_cart')->render(),
             'modal_title' => 'Товар добавлен в корзину!',
             'modal_body' => \View::make('client.shared.modal._success_in_cart', ['product' => $item->getProduct(), 'count' => $item->getCount(),])->render(),
-            'cartItemCount' => $this->cart->totalCount()
+            'cartItemCount' => $this->cart->summaryCount()
+        ]);
+    }
+
+
+    public function update(): JsonResponse
+    {
+        if (!\Request::ajax()){
+            \App::abort(404, 'Page not found');
+        }
+
+        $id = \Request::get('productId');
+        $count =  \Request::get('count');
+
+        $item = $this->cart->update($id, $count);
+
+        if(is_null($item)){
+            throw new \Exception('Didn\'t find the item');
+        }
+
+        $summaryItem = $item->getPrice() * $item->getCount();
+        $itemSummaryContent = \View('client.cart._order_item_summary')->with('summaryItem', $summaryItem)->render();
+
+        return \Response::json([
+            'itemSummaryContent' => $itemSummaryContent,
+            'cartItemCount' => $this->cart->summaryCount(),
         ]);
     }
 
@@ -72,7 +97,7 @@ class CartController extends Controller
         $this->cart->remove(\Request::get('productId'));
 
         return \Response::json([
-            'countItemsInCart' => $this->cart->totalCount()
+            'countItemsInCart' => $this->cart->summaryCount()
         ]);
     }
 
@@ -97,32 +122,5 @@ class CartController extends Controller
 
 
 
-//    public function update()
-//    {
-//        if (!\Request::ajax())
-//            \App::abort(404, 'Page not found');
-//
-//        if(!$this->check(Request::get('productId')))
-//            return Response::json([
-//                'success' => false
-//            ]);
-//
-//        $this->cart->update(Request::get('productId'), Request::get('count'));
-//        $this->cart->save();
-//
-//        $item = $this->cart->getItem(Request::get('productId'));
-//        $product = $item->getProduct();
-//        $itemData = [
-//            'product' => $product,
-//            'price' => $product->price,
-//            'old_price' => $product->old_price,
-//            'count' => $item->getCount(),
-//        ];
-//        $content = \View('client.cart.show._summary_price')->with('itemData', $itemData)->render();
-//
-//        return Response::json([
-//            'success' => true,
-//            'content' => $content
-//        ]);
-//    }
+
 }

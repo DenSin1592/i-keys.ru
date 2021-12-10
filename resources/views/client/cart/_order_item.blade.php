@@ -107,13 +107,7 @@
                     </div>
                 </div>
 
-                <div class="card-order-total-container col-4 col-sm-3 col-lg-auto">
-                    <div class="card-order-subtitle">Итого</div>
-
-                    <div class="card-order-total-block">
-                        <span class="card-product-total-price">{{$item['final_price']}}<span class="rouble"></span></span>
-                    </div>
-                </div>
+                @include('client.cart._order_item_summary', ['summaryItem' => $item['final_price']])
 
                 <div class="card-order-remove-container col-auto">
                     <button type="button"
