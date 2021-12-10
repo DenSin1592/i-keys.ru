@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Client;
 use App\Exceptions\Handler;
 use App\Http\Controllers\Controller;
 use App\Services\Breadcrumbs\Factory as Breadcrumbs;
+use \App\Services\Breadcrumbs\Container as BreadcrumbsContainer;
 use App\Services\Cart\Cart;
 use App\Services\Cart\ItemListBuilder;
 use App\Services\Seo\MetaHelper;
-use \Illuminate\Http\JsonResponse;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 
 
 class CartController extends Controller
@@ -22,7 +24,7 @@ class CartController extends Controller
     ){}
 
 
-    public function show()
+    public function show(): View
     {
         $breadcrumbs = $this->getBreadcrumbs();
         $metaData = $this->metaHelper->getRule()->metaForName('Корзина');
@@ -39,21 +41,6 @@ class CartController extends Controller
             ->with('breadcrumbs', $breadcrumbs)
             ->with('metaData', $metaData)
             ->with('itemListData', $itemListData);
-
-
-
-
-//
-//
-//
-//        $formData = $this->clientOrderForm->provideData(Request::old());
-//
-//        return view('client.cart.show')
-//            ->with('breadcrumbs', $breadcrumbs)
-//            ->with('itemListData', $itemListData)
-//            ->with('formData', $formData)
-//            ->with($metaData);
-
     }
 
 
@@ -88,12 +75,11 @@ class CartController extends Controller
     }
 
 
-    private function getBreadcrumbs()
+    private function getBreadcrumbs(): BreadcrumbsContainer
     {
         $breadcrumbs = $this->breadcrumbs->init();
         $breadcrumbs->add('Главная', route('home'));
         $breadcrumbs->add('Корзина');
-
         return $breadcrumbs;
     }
 
