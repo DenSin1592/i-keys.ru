@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         submitBtn.prop('disabled', true);
         submitBtn.addClass('loader');
 
-        $.ajax({
+        let promise = $.ajax({
             url: quickOrderForm.data('action'),
             type: quickOrderForm.data('method'),
             data: quickOrderForm.serialize(),
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     modalQuickOrderContainer.modal('hide')
                     document.modalMessageShow(response['modal_title'], response['modal_body']);
                     document.updateCartIcon(0);
-                    return
+                    window.location.reload();
                 }
                 if (response['status'] === 'error') {
                     let errors = response['errors'];
@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 submitBtn.removeClass('loader');
             }
         });
-
-        return false;
     });
 
 })
