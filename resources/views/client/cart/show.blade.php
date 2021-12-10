@@ -13,11 +13,9 @@
             <div class="container">
                 @include('client.shared.breadcrumbs._breadcrumbs')
                 <h1 class="display-title title-h1 text-uppercase">{{ $metaData['h1'] }}</h1>
-                <div class="display-subtitle title-h4">
-                    В корзине {{\Cart::totalCount() . ' ' . \Lang::choice('товар|товара|товаров', \Cart::totalCount())}}
-                    ,{{-- 2 услуги--}}
-                    на сумму {{\Cart::totalPrice()}} р.
-                </div>
+
+                @include('client.cart._summary_block')
+
             </div>
         </section>
 
@@ -31,6 +29,7 @@
 @section('modals')
 
     @include('client.shared.modal._fast_order')
+    @include('client.shared.modal._remove_in_cart')
 
 @endsection
 

@@ -121,7 +121,7 @@ class Cart
         $itemList = $this->items();
         $newItemList = array_filter(
             $itemList,
-            function (CartItem $item) use ($productId) {
+            static function (CartItem $item) use ($productId) {
                 return $item->getProduct()->id != $productId;
             }
         );

@@ -1,4 +1,4 @@
-<div class="order-item">
+<div class="order-item" data-cart-item-id="{{$item['product']->id}}">
     <div class="card-order">
         <div class="card-order-inner">
             <div class="row align-items-lg-center">
@@ -116,7 +116,10 @@
                 </div>
 
                 <div class="card-order-remove-container col-auto">
-                    <button type="button" class="card-order-control card-order-control-remove d-flex align-items-center justify-content-center" >
+                    <button type="button"
+                            class="card-order-control card-order-control-remove d-flex align-items-center justify-content-center"
+                            data-cart-action="remove"
+                    >
                         <svg class="card-order-control-media" width="25" height="28">
                             <use xlink:href="{{asset('/images/client/sprite.svg#icon-trash')}}"></use>
                         </svg>
