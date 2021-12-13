@@ -4,8 +4,7 @@
     width: 100%;
     padding: 15px;
     font-size: 13px;
-    // background-color: $c-white;
-    background-color: red;
+    background-color: $c-white;
     @include media-breakpoint-up(xxl) {
         padding: 20px;
         font-size: 15px;
