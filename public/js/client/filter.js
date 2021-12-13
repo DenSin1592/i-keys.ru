@@ -179,7 +179,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return filterPromise;
     };
 
-    let scrollToProducts = () => { $(document).scrollTop(categoryContent.offset().top - headerFix.outerHeight()) };
+    let scrollToProducts = () => {
+        $('html').animate({
+            scrollTop: (categoryContent.offset().top - headerFix.outerHeight())
+        }, 1000)
+    };
 
 
     /**
@@ -251,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     categoryPage.initializers.push((function () {
         let paginationHandler = function (e) {
             e.preventDefault();
-            openPage(e.currentTarget.href);
+            openPage(e.currentTarget.href, true, true);
         };
 
         return {
