@@ -68,7 +68,7 @@ class ProductTypePagesController extends Controller
 
         $productListData = $productListPageProvider->getProductListData($inputData['page']);
         $metaData = $this->metaHelper->getRule()->metaForObject($productTypePage);
-        $breadcrumbs = $this->getBreadcrumbs($this->breadcrumbs, $productTypePage->extractPath());
+        $breadcrumbs = $this->getBreadcrumbsForCategories($this->breadcrumbs, $productTypePage->extractPath());
         $linksTypesContent = $productTypePage->content_for_links_type;
 
         if (!\Request::ajax()) {

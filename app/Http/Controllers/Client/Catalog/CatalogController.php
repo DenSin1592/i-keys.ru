@@ -45,7 +45,7 @@ class CatalogController extends Controller
         );
 
         $productListData = $productListPageProvider->getProductListData($inputData['page']);
-        $breadcrumbs = $this->getBreadcrumbs($this->breadcrumbs, $category->extractPath());
+        $breadcrumbs = $this->getBreadcrumbsForCategories($this->breadcrumbs, $category->extractPath());
         $metaData = $this->metaHelper->getRule()->metaForObject($category);
         $linksTypesContent = $category->content_for_links_type;
 

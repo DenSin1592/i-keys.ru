@@ -8,7 +8,7 @@ use App\Services\Breadcrumbs\Factory as Breadcrumbs;
 trait CatalogBreadcrumbs
 {
 
-    protected function getBreadcrumbs(Breadcrumbs $breadcrumbs, array $categoryPath): \App\Services\Breadcrumbs\Container
+    protected function getBreadcrumbsForCategories(Breadcrumbs $breadcrumbs, array $categoryPath): \App\Services\Breadcrumbs\Container
     {
         $breadcrumbs = $breadcrumbs->init();
         $breadcrumbs->add('Главная', route('home'));
