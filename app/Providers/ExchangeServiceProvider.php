@@ -66,14 +66,14 @@ class ExchangeServiceProvider extends ServiceProvider
         $this->app->singleton(
             'exchange.import_lock',
             function () {
-                return new LockHandler(storage_path('exchange/status/import.lock'));
+                return new LockHandler(storage_path('exchange/status'), 'import.lock');
             }
         );
 
         $this->app->singleton(
             'exchange.export_lock',
             function () {
-                return new LockHandler(storage_path('exchange/status/export.lock'));
+                return new LockHandler(storage_path('exchange/status'), 'export.lock');
             }
         );
     }

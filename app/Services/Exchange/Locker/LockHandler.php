@@ -3,37 +3,26 @@
 namespace App\Services\Exchange\Locker;
 
 
-/**
- * Class LockHandler
- * @package App\Services\Exchange\Locker
- */
 class LockHandler
 {
     /**
-     * @var string
-     */
-    private string $statusFilePath;
-
-    /**
      * @var resource
      */
-    private $lockFileHandler;
+    private  $lockFileHandler;
+    private string $statusFilePath;
 
-    /**
-     * @param string $statusFilePath
-     */
-    public function __construct(string $statusFilePath)
-    {
-        $this->statusFilePath = $statusFilePath;
+
+    public function __construct(
+        private string $statusPath,
+        private string $statusFileName
+    ){
+        $this->statusFilePath = $statusPath .'/' . $statusFileName;
     }
 
-    /**
-     * Lock status file.
-     * @return bool
-     * @throws LockerException
-     */
-    public function lock()
+
+    public function lock(): bool
     {
+        $this->checkDirectory();
         $this->lockFileHandler = fopen($this->statusFilePath, 'w');
         if (!$this->lockFileHandler) {
             throw new LockerException("Can't create lock file");
@@ -42,12 +31,23 @@ class LockHandler
         return flock($this->lockFileHandler, LOCK_EX | LOCK_NB);
     }
 
-    /**
-     * Unlock status file.
-     */
-    public function unlock()
+
+    public function unlock(): void
     {
         flock($this->lockFileHandler, LOCK_UN);
         fclose($this->lockFileHandler);
     }
+
+
+    private function checkDirectory(): void
+    {
+        if(is_dir($this->statusPath)){
+           return;
+        }
+
+        if (!mkdir($concurrentDirectory = $this->statusPath, 0777, true) && !is_dir($concurrentDirectory)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+        }
+    }
 }
+
