@@ -8,10 +8,6 @@
                 </div>
                 <div class="attribute_type">{{ $attribute->type_name }}</div>
 
-                @include('admin.shared._list_flag', ['element' => $attribute, 'action' => route('cc.attributes.toggle-attribute', [$attribute->id, 'use_in_filter']), 'attribute' => 'use_in_filter'])
-                @include('admin.shared._list_flag', ['element' => $attribute, 'action' => route('cc.attributes.toggle-attribute', [$attribute->id, 'for_admin_filter']), 'attribute' => 'for_admin_filter'])
-                @include('admin.shared._list_flag', ['element' => $attribute, 'action' => route('cc.attributes.toggle-attribute', [$attribute->id, 'hidden']), 'attribute' => 'hidden'])
-
                 <div class="control">
                     <a class="glyphicon glyphicon-pencil"
                        title="{{ trans('interactions.edit') }}"

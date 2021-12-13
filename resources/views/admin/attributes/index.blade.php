@@ -12,9 +12,6 @@
             @include('admin.shared.resource_list.sorting._list_header')
             <div class="name">{{ trans('validation.attributes.name') }}</div>
             <div class="attribute_type">{{ trans('validation.attributes.attribute_type') }}</div>
-            <div class="use_in_filter-status">{{ trans('validation.attributes.use_in_filter') }}</div>
-            <div class="for_admin_filter-status">{{ trans('validation.attributes.for_admin_filter') }}</div>
-            <div class="hidden-status">{{ trans('validation.model_attributes.attribute.hidden') }}</div>
             <div class="control">{{ trans('interactions.controls') }}</div>
         </div>
 
