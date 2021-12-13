@@ -96,7 +96,7 @@
                             </div>
 
                             <div id="checkout-delivery-collapse" class="collapse" data-parent="#checkout-accordion">
-                                <div class="checkout-content">
+                                <div class="checkout-content" name="delivery_method">
                                     <div class="form-options-group">
 {{--                                            <div class="form-option">--}}
 {{--                                                <div class="form-option-header">--}}
@@ -151,19 +151,19 @@
 
                                                     <div class="col-sm-5 col-md-3 col-xxl-4">
                                                         <div class="form-group">
-                                                            <input name="address-street" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" required >
+                                                            <input name="street" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" required >
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-2 col-md-2">
                                                         <div class="form-group">
-                                                            <input name="address-house" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" required >
+                                                            <input name="building" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" required >
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-5 col-md-3 col-xxl-2">
                                                         <div class="form-group">
-                                                            <input name="address-apartment" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис)" >
+                                                            <input name="flat" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис)" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -239,7 +239,7 @@
                                         по телефону. Поэтому мы предлагаем вам оплатить свой заказ на сайте, а за услуги рассчитаться по факту
                                     </div>
 
-                                    <div class="checkout-content">
+                                    <div class="checkout-content" name="payment_method">
                                         <div class="form-options-group">
                                             <div class="form-option">
                                                 <div class="form-option-header" id="checkout-payment-online" name="{{ \App\Models\Order::PAYMENT_ONLINE }}">
