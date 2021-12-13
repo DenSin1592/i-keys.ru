@@ -28,7 +28,7 @@ class ComposersServiceProvider extends ServiceProvider
             ClientTopMenuComposer::class => ['client.layouts._header', 'client.layouts._offcanvas'],
             ClientBottomMenuComposer::class => 'client.layouts._footer',
 //            ClientCityModalComposer::class => 'client.layouts._popups._location',
-            ClientCityHeaderComposer::class => ['client.layouts._header', 'client.layouts._offcanvas'],
+//            ClientCityHeaderComposer::class => ['client.layouts._header', 'client.layouts._offcanvas'],
             ClientHeaderCategoryMenuComposer::class => ['client.layouts._header', 'client.layouts._offcanvas'],
             ClientFooterCategoryComposer::class => 'client.layouts._footer',
             ClientHeaderCartComposer::class => ['client.layouts._header', 'client.layouts._offcanvas'],
