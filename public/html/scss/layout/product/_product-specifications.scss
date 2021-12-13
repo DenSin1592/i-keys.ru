@@ -1,0 +1,92 @@
+.section-product-specifications {
+    margin: 40px 0;
+    @include media-breakpoint-up(sm) {
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    @include media-breakpoint-up(lg) {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+
+    .section-header {
+        margin-bottom: 20px;
+        @include media-breakpoint-up(sm) {
+            margin-bottom: 30px;
+        }
+        @include media-breakpoint-up(md) {
+            margin-bottom: 25px;
+        }
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 45px;
+        }
+    }
+}
+
+.product-specifications-block {
+    margin-bottom: 40px;
+    @include media-breakpoint-up(md) {
+        margin-bottom: 25px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-bottom: 20px;
+    }
+}
+
+.product-specifications-headline {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 700;
+    @include media-breakpoint-up(sm) {
+        margin-bottom: 8px;
+        font-size: 20px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
+    @include media-breakpoint-up(xxl) {
+        font-size: 24px;
+    }
+}
+
+.product-specifications-list {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    @include media-breakpoint-up(xxl) {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .product-specifications-item {
+        min-height: 60px;
+        margin-left: 0;
+        margin-right: 0;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        border-bottom: 1px solid #a8a8a8;
+        @include media-breakpoint-up(sm) {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    }
+}
+
+.product-specifications-title {
+    padding-left: 0;
+    font-weight: 700;
+}
+
+.product-specifications-text {
+    padding-right: 0;
+}

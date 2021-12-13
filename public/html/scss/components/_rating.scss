@@ -1,0 +1,9 @@
+.rating-value {
+    @extend .h3;
+    margin: 0;
+    font-weight: 700;
+}
+
+.rating-list {
+    color: $c-secondary;
+}

@@ -1,0 +1,114 @@
+.product-intro-grid {
+    margin-left: -15px;
+    margin-right: -15px;
+    @include media-breakpoint-up(md) {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .product-thumbnail-container,
+    .product-display-container,
+    .product-typography-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .product-thumbnail-container {
+        position: relative;
+        height: 385px;
+        background-color: $c-white;
+        @include media-breakpoint-up(sm) {
+            height: 315px;
+        }
+        @include media-breakpoint-up(md) {
+            height: auto;
+            grid-column-start: 1;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+
+        &::before {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 50vw;
+            background-color: inherit;
+            content: '';
+        }
+    }
+
+    .product-display-container,
+    .product-typography-container {
+        position: relative;
+        z-index: 1;
+
+        @include media-breakpoint-up(md) {
+            grid-column-start: 2;
+        }
+
+        // &::before {
+        //     position: absolute;
+        //     z-index: -2;
+        //     top: 0;
+        //     left: 0;
+        //     width: 100vw;
+        //     height: 100%;
+        //     background: rgba($c-black, .8);
+        //     content: '';
+        // }
+    }
+
+    .product-display-container {
+        background-position: center;
+        background-size: cover;
+        padding-top: 10px;
+        padding-bottom: 25px;
+        @include media-breakpoint-up(sm) {
+            padding-top: 10px;
+            padding-bottom: 15px;
+        }
+        @include media-breakpoint-up(md) {
+            padding-top: 20px;
+            padding-bottom: 15px;
+        }
+        @include media-breakpoint-up(lg) {
+            padding: 20px 25px 30px;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-left: 70px;
+            padding-right: 70px;
+        }
+
+        &::before {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba($c-black, .8);
+            content: '';
+        }
+    }
+
+    .product-typography-container {
+        @include media-breakpoint-up(sm) {
+            padding-top: 25px;
+            padding-bottom: 20px;
+        }
+        @include media-breakpoint-up(md) {
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
+        @include media-breakpoint-up(xl) {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    }
+}

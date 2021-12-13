@@ -1,0 +1,104 @@
+.card-expert {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 50px;
+    width: 100%;
+    border: 2px solid $c-white;
+    padding: 10px;
+    color: $c-white;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+    @include media-breakpoint-up(sm) {
+        min-height: 80px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+    @include media-breakpoint-up(md) {
+        min-height: 130px;
+        font-size: 24px;
+        line-height: 30px;
+    }
+    @include media-breakpoint-up(lg) {
+        min-height: 65px;
+        border-width: 1px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+    @include media-breakpoint-up(xl) {
+        min-height: 80px;
+        font-size: 17px;
+        line-height: 25px;
+    }
+    @include media-breakpoint-up(xxl) {
+        min-height: 130px;
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($c-black, .7);
+        content: '';
+    }
+
+    &-thumbnail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &-media {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &-typography {
+        max-width: 160px;
+        margin: auto;
+        @include media-breakpoint-up(sm) {
+            max-width: 200px;
+        }
+        @include media-breakpoint-up(md) {
+            max-width: 320px;
+        }
+        @include media-breakpoint-up(lg) {
+            max-width: 190px;
+        }
+        @include media-breakpoint-up(xl) {
+            max-width: 230px;
+        }
+        @include media-breakpoint-up(xxl) {
+            max-width: 320px;
+        }
+    }
+
+    &-title {
+        position: relative;
+        z-index: 9;
+        @include media-breakpoint-up(sm) {
+            border-bottom: 2px solid $c-secondary;
+            transition: border-color 300ms ease;
+        }
+    }
+
+    &:hover {
+        color: $c-white;
+        
+        .card-expert-title {
+            @include media-breakpoint-up(sm) {
+                border-bottom-color: transparent;
+            }
+        }
+    }
+}

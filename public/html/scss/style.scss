@@ -5,6 +5,8 @@
 @import '../vendor/select2/select2.min.css';
 @import '../vendor/jquery-ui-1.12.1.custom/jquery-ui.min.css';
 @import '../vendor/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css';
+@import '../vendor/swiper/swiper.css';
+@import '../vendor/fancybox/fancybox.jquery.min.css';
 
 // general
 @import 'fonts';
@@ -16,10 +18,12 @@
 @import 'components/contact';
 @import 'components/breadcrumb';
 @import 'components/pagination';
+@import 'components/nav';
 @import 'components/forms';
 @import 'components/buttons';
-@import 'components/badge';
 @import 'components/filter';
+@import 'components/badge';
+@import 'components/rating';
 @import 'components/tooltip';
 @import 'components/select2';
 @import 'components/offcanvas';
@@ -37,6 +41,9 @@
 @import 'components/cards/card-faq';
 @import 'components/cards/card-post';
 @import 'components/cards/card-banner';
+@import 'components/cards/card-review';
+@import 'components/cards/card-expert';
+@import 'components/cards/card-document';
 @import 'components/cards/card-order';
 
 // header
@@ -55,8 +62,10 @@
 @import 'sections/section-prices';
 @import 'sections/section-faq';
 @import 'sections/section-cases';
-@import 'sections/section-content';
+@import 'sections/section-products';
+@import 'sections/section-reviews';
 @import 'sections/section-posts';
+@import 'sections/section-content';
 
 
 // catalog

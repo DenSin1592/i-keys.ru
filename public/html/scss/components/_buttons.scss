@@ -34,18 +34,21 @@
 }
 
 .btn-lg {
+    @include media-breakpoint-up(sm) {
+        padding: 12px 15px;
+    }
     @include media-breakpoint-up(md) {
-        padding: 18px 20px;
+        padding: 14px 20px;
     }
     @include media-breakpoint-up(lg) {
-        padding: 20px 25px;
+        padding: 17px 25px;
     }
     @include media-breakpoint-up(xl) {
-        font-size: 17px;
+        padding: 22px 25px;
+        font-size: 20px;
     }
     @include media-breakpoint-up(xxl) {
-        // min-width: 240px;
-        padding: 25px 35px;
+        padding: 22px 35px;
         font-size: 20px;
     }
 }

@@ -1,0 +1,96 @@
+.product-display {
+    margin: -5px 0 15px;
+    @include media-breakpoint-up(sm) {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    @include media-breakpoint-up(lg) {
+        margin-top: -5px;
+        margin-bottom: 10px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-bottom: 0;
+    }
+
+    h1 {
+        margin: 0;
+        color: #a96d44;
+        font-family: $f-secondary;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 25px;
+        text-transform: uppercase;
+        @include media-breakpoint-up(sm) {
+            font-size: 20px;
+            line-height: 30px;
+        }
+        @include media-breakpoint-up(md) {
+            font-size: 22px;
+            line-height: 30px;
+        }
+        @include media-breakpoint-up(lg) {
+            font-size: 25px;
+            line-height: 35px;
+        }
+        @include media-breakpoint-up(xl) {
+            font-size: 30px;
+            line-height: 40px;
+        }
+        @include media-breakpoint-up(xxl) {
+            font-size: 35px;
+            line-height: 45px;
+        }
+    }
+
+    .product-display-category {
+        margin: 0;
+        @include media-breakpoint-up(sm) {
+            margin-bottom: 5px;
+        }
+        @include media-breakpoint-up(md) {
+            margin-bottom: 0;
+        }
+        @include media-breakpoint-up(lg) {
+            text-transform: uppercase;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.product-info-list {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include media-breakpoint-up(xl) {
+        font-size: 17px;
+    }
+
+    .product-info-item {
+        margin-bottom: 5px;
+        @include media-breakpoint-up(sm) {
+            margin-bottom: 0;
+        }
+
+        &:first-child {
+            border-right: 1px solid currentColor;
+        }
+    }
+}
+
+.product-info-value {
+    @include media-breakpoint-up(sm) {
+        margin-left: 8px;
+    }
+}
+
+.product-code {
+    padding: 5px;
+    background-color: $c-white;
+    color: $c-black;
+    font-weight: 700;
+}

@@ -1,0 +1,27 @@
+.section-reviews {
+    margin: 50px 0;
+    padding: 30px 0;
+    border-top: 1px solid $c-black;
+    border-bottom: 1px solid $c-black;
+    @include media-breakpoint-up(lg) {
+        padding: 50px 0;
+    }
+    @include media-breakpoint-up(xl) {
+        padding: 70px 0;
+    }
+
+    .reviews-aside-container {
+        margin-bottom: 30px;
+    }
+}
+
+.reviews-list {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    .review-item {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+}
