@@ -2,6 +2,6 @@
     <div class="card-order-subtitle">Итого</div>
 
     <div class="card-order-total-block">
-        <span class="card-product-total-price">{{$summaryItem}}<span class="rouble"></span></span>
+        <span class="card-product-total-price">{!!   Helper::priceFormat($summaryItem) !!}<span class="rouble"></span></span>
     </div>
 </div>
