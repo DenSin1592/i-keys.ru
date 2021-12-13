@@ -117,7 +117,7 @@
             @foreach($categoriesHeaderMenu as $element)
 
                 <li class="offcanvas-catalog-item {{ $element['active']  ? 'active' : '' }}">
-                    <a {{$element['url']}} class="offcanvas-catalog-link d-flex align-items-center">
+                    <a href="{{$element['url']}}" class="offcanvas-catalog-link d-flex align-items-center">
                         <span class="offcanvas-catalog-thumbnail">
                             <svg class="header-catalog-media" width="26" height="26">
                                 <use xlink:href="{{asset($element['image_path'])}}"></use>
