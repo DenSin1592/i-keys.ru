@@ -22,7 +22,6 @@
 
 form.scrollable-container {
     padding-right: 20px;
-    max-height: calc(100vh - 200px);
 }
 
 .main-menu .scrollable-container {
