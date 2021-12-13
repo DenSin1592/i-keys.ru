@@ -83,10 +83,21 @@ use Diol\FileclipExif\Glue;
  */
 class Order extends \Eloquent
 {
-    private const CODE_1C_PREFIX = 'CSO';
-
     use ExchangeStatus;
     use Glue;
+
+    private const CODE_1C_PREFIX = 'CSO';
+
+    const STATUS_NEW = 'new';
+    const STATUS_IN_PROGRESS = 'in_progress';
+    const STATUS_CLOSED = 'closed';
+
+    const DELIVERY_COURIER = 'courier';
+    const DELIVERY_SELF = 'self';
+
+    const PAYMENT_CASH = 'cash';
+    const PAYMENT_ONLINE = 'online';
+    const PAYMENT_INVOICE = 'invoice';
 
     protected $fillable = [
         'client_id',
