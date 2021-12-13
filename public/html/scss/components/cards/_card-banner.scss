@@ -67,12 +67,44 @@
         }
 
         .card-banner-title {
-            margin: 0 0 5px;
+            display: block;
+            margin: 0;
+        }
+
+        .card-banner-description {
+            margin: 5px 0 0;
         }
     }
 
     &.card-banner-whatsapp {
         background-color: $c-success;
         color: $c-white;
+    }
+
+    &.card-banner-catalog {
+        background-color: $c-black;
+        color: $c-white;
+        text-align: left;
+        @include media-breakpoint-up(lg) {
+            text-align: center;
+        }
+
+        .card-banner-thumbnail {
+            height: 40px;
+            @include media-breakpoint-up(lg) {
+                height: 75px;
+            }
+            @include media-breakpoint-up(xl) {
+                height: 100px;
+            }
+            @include media-breakpoint-up(xxl) {
+                height: 130px;
+            }
+
+            .card-banner-media {
+                width: auto;
+                height: inherit;
+            }
+        }
     }
 }

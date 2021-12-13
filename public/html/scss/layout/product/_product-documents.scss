@@ -1,0 +1,44 @@
+.product-documents-headline {
+    @extend .product-specifications-headline;
+    margin-bottom: 20px;
+    @include media-breakpoint-up(sm) {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    @include media-breakpoint-up(md) {
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+    @include media-breakpoint-up(lg) {
+        margin-top: 35px;
+        margin-bottom: 20px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-top: 25px;
+        margin-bottom: 30px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+}
+
+.product-documents-list {
+    margin-bottom: -18px;
+    @include media-breakpoint-up(sm) {
+        margin-bottom: -15px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-bottom: -20px;
+    }
+
+    .product-documents-item {
+        margin-bottom: 18px;
+        @include media-breakpoint-up(sm) {
+            margin-bottom: 15px;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: 20px;
+        }
+    }
+}

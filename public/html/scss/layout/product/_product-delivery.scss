@@ -1,0 +1,31 @@
+.product-delivery-block {
+    font-size: 14px;
+    line-height: 20px;
+    @include media-breakpoint-up(xl) {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .product-delivery-media {
+        flex: 0 0 40px;
+        width: 40px;
+        height: 20px;
+        margin-right: 15px;
+        @include media-breakpoint-up(xl) {
+            flex: 0 0 60px;
+            width: 60px;
+            height: 30px;
+        }
+    }
+
+    .product-delivery-toggle {
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        background: none;
+        color: currentColor;
+        text-decoration: underline;
+    }
+}

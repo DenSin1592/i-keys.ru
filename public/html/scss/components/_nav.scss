@@ -1,0 +1,46 @@
+.nav-tabs {
+    margin-left: -15px;
+    margin-right: -15px;
+    border: none;
+    font-size: 17px;
+    font-weight: 700;
+    @include media-breakpoint-up(sm) {
+        font-size: 20px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-left: -18px;
+        margin-right: -18px;
+        font-size: 22px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-left: -25px;
+        margin-right: -25px;
+        font-size: 24px;
+    }
+
+    .nav-item {
+        margin-left: 15px;
+        margin-right: 15px;
+        @include media-breakpoint-up(xl) {
+            margin-left: 18px;
+            margin-right: 18px;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-left: 25px;
+            margin-right: 25px;
+        }
+    }
+
+    .nav-link {
+        padding: 0;
+        border: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 0;
+        color: $c-secondary;
+
+        &.active {
+            border-color: currentColor;
+            color: $c-black;
+        }
+    }
+}

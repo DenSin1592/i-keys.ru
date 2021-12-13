@@ -1,0 +1,34 @@
+.section-product-expert {
+    @include media-breakpoint-up(md) {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+    @include media-breakpoint-up(lg) {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-top: 65px;
+        margin-bottom: 65px;
+    }
+
+    > .container-fluid {
+        @extend .container;
+        @include media-breakpoint-up(xxl) {
+            max-width: none;
+        }
+    }
+}
+
+.product-expert-grid {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+    @include media-breakpoint-up(xxl) {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
