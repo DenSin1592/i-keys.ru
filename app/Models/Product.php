@@ -29,8 +29,10 @@ class Product extends \Eloquent
         'extra_description',
         'code_1c',
         'old_price',
-        'best_prod'
+        'best_prod',
+        'existence',
     ];
+
 
     public function getNameWithCode1cAttribute()
     {
@@ -132,6 +134,12 @@ class Product extends \Eloquent
             return true;
         }
         return false;
+    }
+
+
+    public function getExistenceString(): string
+    {
+        return trans("validation.model_attributes.product.existence.{$this->existence}");
     }
 
 

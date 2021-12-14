@@ -14,6 +14,10 @@ use Illuminate\View\View;
 
 class CartController extends Controller
 {
+    public const PAGE_INFO_CATALOG_PAGE = 'catalog';
+    public const PAGE_INFO_PRODUCT_PAGE = 'product';
+
+
     public function __construct(
         private Cart $cart,
         private ItemListBuilder $itemListBuilder,
@@ -51,11 +55,12 @@ class CartController extends Controller
         }
 
         $id = (int)\Request::get('productId');
+        $pageInfo = (string)\Request::get('pageInfo');
         $count = (int)\Request::get('count', 1);
         $item = $this->cart->add($id, $count);
 
         return \Response::json([
-            'button_in_cart' => \View::make('client.shared.product.button._in_cart')->render(),
+            'button_in_cart' => $this->getButtonForResponseToAddInCart($pageInfo),
             'modal_title' => 'Товар добавлен в корзину!',
             'modal_body' => \View::make('client.shared.modal._success_in_cart', ['product' => $item->getProduct(), 'count' => $item->getCount(),])->render(),
             'cartItemCount' => $this->cart->summaryCount()
@@ -121,6 +126,11 @@ class CartController extends Controller
     }
 
 
-
-
+    private function getButtonForResponseToAddInCart(string $pageInfo): string
+    {
+        return match ($pageInfo){
+            self::PAGE_INFO_CATALOG_PAGE => \View::make('client.shared.catalog.product.button._in_cart')->render(),
+            self::PAGE_INFO_PRODUCT_PAGE => \View::make('client.shared.product.button._in_cart')->render(),
+        };
+    }
 }

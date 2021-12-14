@@ -203,7 +203,7 @@
                                                     <svg class="product-status-media" width="14" height="10">
                                                         <use xlink:href="/images/client/sprite.svg#icon-check"></use>
                                                     </svg>
-                                                    В наличии
+                                                    {{$product->getExistenceString()}}
                                                 </span>
                                 </div>
 
@@ -223,15 +223,18 @@
                             <div class="product-controls-block">
                                 <div class="form-row">
                                     <div class="col">
-                                        <button type="button" class="product-control product-control-cart btn btn-lg"
-                                                data-toggle="modal" data-target="#modalAddToCart">
-                                            <svg class="product-control-media" width="28" height="25">
-                                                <use xlink:href="/images/client/sprite.svg#icon-cart"></use>
-                                            </svg>
+                                        @if ($product->price > 0.0)
+                                            @if(\App\Facades\Cart::checkItem($product->id))
+                                                @include('client.shared.product.button._in_cart')
+                                            @else
+                                                @include('client.shared.product.button._add_to_card')
+                                            @endif
+                                        @endif
 
-                                            <span class="product-control-text">Купить</span>
-                                        </button>
                                     </div>
+
+
+
 
                                     <div class="col-auto">
                                         <button type="button"

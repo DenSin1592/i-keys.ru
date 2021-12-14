@@ -1,9 +1,11 @@
 <button type="button"
-        class="card-product-cart d-flex align-items-center justify-content-center event-add-to-cart"
+        class="product-control product-control-cart btn btn-lg event-add-to-cart"
         data-product-id = "{{$product->id}}"
->
-    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+        data-page-info = "{{\App\Http\Controllers\Client\CartController::PAGE_INFO_PRODUCT_PAGE}}"
+       >
+    <svg class="product-control-media" width="28" height="25">
         <use xlink:href="{{asset('/images/client/sprite.svg#icon-cart')}}"></use>
     </svg>
-    Купить
+
+    <span class="product-control-text">Купить</span>
 </button>

@@ -1,10 +1,10 @@
 <button type="button"
-        class="card-product-cart d-flex align-items-center justify-content-center event-add-to-cart"
+        class="product-control product-control-cart btn btn-lg"
         disabled
 >
-
-    <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
+    <svg class="product-control-media" width="28" height="25">
         <use xlink:href="{{asset('/images/client/sprite.svg#icon-cart')}}"></use>
     </svg>
-    В корзине
+
+    <span class="product-control-text">В корзине</span>
 </button>

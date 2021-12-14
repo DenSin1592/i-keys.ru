@@ -23,6 +23,8 @@
 {!! Form::tbCheckboxBlock('publish') !!}
 {!! Form::tbCheckboxBlock('best_prod') !!}
 
+{!! Form::tbSelectBlock('existence', \App\Models\Product\ExistenceConstants::getExistenceVariants()) !!}
+
 {!! Form::tbFormGroupOpen('price') !!}
     {!! Form::tbLabel('price', trans('validation.attributes.price')) !!}
     {!! Form::tbText('price') !!}

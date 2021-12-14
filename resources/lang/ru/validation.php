@@ -299,6 +299,14 @@ return [
             \App\Services\Device\DeviceHelper::DEVICE_TYPE_TABLET => 'планшет',
             \App\Services\Device\DeviceHelper::DEVICE_TYPE_PHONE => 'телефон',
         ],
+        'product' =>
+            [
+                'existence' => [
+                    \App\Models\Product\ExistenceConstants::AVAILABLE => 'В наличии',
+                    \App\Models\Product\ExistenceConstants::FOR_ORDER => 'Под заказ',
+                    \App\Models\Product\ExistenceConstants::STOP_PRODUCTION => 'Снят с производства',
+                ],
+            ],
         'order' =>
             [
                 'status' => [

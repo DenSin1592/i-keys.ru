@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
         button.prop('disabled', true);
         button.addClass('loader');
 
-        let productId = button.data('product-id');
         let data = {
-            productId: productId,
+            productId: button.data('product-id'),
+            pageInfo:  button.data('page-info')
+            ,
         };
         document.modalMessage.modal('show');
 
