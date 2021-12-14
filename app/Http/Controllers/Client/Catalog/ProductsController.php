@@ -21,12 +21,14 @@ class ProductsController extends Controller
 
     public function getResponse(Product $product)
     {
-        $metaData = $this->metaHelper->getRule('default')->metaForObject($product);
+        $metaData = $this->metaHelper->getRule()->metaForObject($product);
         $breadcrumbs = $this->getBreadcrumbs($product);
 
         return \View::make('client.product.show',[
                 'breadcrumbs' => $breadcrumbs,
-                'metaData' => $metaData
+                'authEditLink' =>  route('cc.products.edit', [$product->category->id, $product->id]),
+                'metaData' => $metaData,
+                'product' => $product,
             ]
         );
 //            ->with('breadcrumbs', $breadcrumbs)
