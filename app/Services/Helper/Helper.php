@@ -197,7 +197,7 @@ class Helper
      * @param $withMeasure
      * @return string
      */
-    function priceFormat($price, $allowEmpty = false, $withMeasure = true)
+    function priceFormat($price, $allowEmpty = false, $withMeasure = false)
     {
         $formatPrice = '';
 
