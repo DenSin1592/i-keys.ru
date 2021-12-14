@@ -7,7 +7,7 @@
 
                 <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
                     <svg class="close-media" width="24" height="24">
-                        <use xlink:href="/images/sprite.svg#icon-close"></use>
+                        <use xlink:href="{{asset('/images/client/sprite.svg#icon-close')}}"></use>
                     </svg>
                 </button>
             </div>

@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     modalQuickOrderContainer.modal('hide')
                     document.modalMessageShow(response['modal_title'], response['modal_body']);
                     document.updateCartIcon(0);
-                    window.location.reload();
+                    document.modalMessage.on('hidden.bs.modal', () => {
+                        window.location.reload();
+                    });
                 }
                 if (response['status'] === 'error') {
                     let errors = response['errors'];
