@@ -9,7 +9,7 @@
             <a href="{{ route('cc.categories.index') }}">Категории</a>
         </div>
 
-        @include('admin.categories._category_list_menu', ['categoryTree' => $categoryTree, 'lvl' => 0, 'currentCategory' => isset($formData['category']) ? $formData['category'] : null])
+        @include('admin.categories._category_list_menu', ['categoryTree' => $categoryTree, 'lvl' => 0, 'currentCategory' =>  $category ?? null])
 
         <div class="menu-footer">
             <a href="{{ route('cc.categories.create') }}" class="btn btn-success btn-xs">Добавить категорию</a>
