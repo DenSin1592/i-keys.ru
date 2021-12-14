@@ -125,6 +125,16 @@ class Product extends \Eloquent
     }
 
 
+    public function isCylinder(): bool
+    {
+        $categoryPath = $this->category->extractPath();
+        if($categoryPath[1]->code_1c === Category::CILINDRY_1C_CODE){
+            return true;
+        }
+        return false;
+    }
+
+
     protected static function boot()
     {
         parent::boot();

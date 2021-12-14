@@ -29,12 +29,12 @@
                         <div class="col-auto">
                             <div class="product-rating-block rating-block d-flex align-items-center">
                                 <div class="rating-list d-flex align-items-center">
-                                    @for($i = 1; $i <= 5; $i++)
-                                        {{$i}}
-                                        <svg class="rating-star-media" width="22" height="22">
-                                            <use xlink:href="#"></use>
-                                        </svg>
-                                    @endfor
+{{--                                    @for($i = 1; $i <= 5; $i++)--}}
+{{--                                        {{$i}}--}}
+{{--                                        <svg class="rating-star-media" width="22" height="22">--}}
+{{--                                            <use xlink:href="#"></use>--}}
+{{--                                        </svg>--}}
+{{--                                    @endfor--}}
                                 </div>
                             </div>
                         </div>
@@ -130,7 +130,8 @@
                                 </div>
                             </div>
 
-                            <div class="product-detail-block d-flex flex-wrap">
+                            @if($product->isCylinder())
+                                <div class="product-detail-block d-flex flex-wrap">
                                             <span class="product-detail-title">Типоразмер
                                                 <span class="d-none d-xxl-inline text-muted">(Выберите нужный)</span>
                                                 <button type="button"
@@ -179,7 +180,7 @@
                                 </div>
                             </div>
 
-                            <a href="https://wa.me/{{Setting::get("site_content.wa_phone")}}"
+                                <a href="https://wa.me/{{Setting::get("site_content.wa_phone")}}"
                                class="product-whatsapp-block d-flex">
                                             <span class="product-whatsapp-thumbnail">
                                                 <img loading="lazy"
@@ -192,6 +193,7 @@
                                                 <span class="product-whatsapp-description">Здесь важно не ошибиться, напишите нам в whatsapp, мы поможем</span>
                                             </span>
                             </a>
+                            @endif
                         </div>
 
                         <div class="product-order-container col-sm-6 col-lg-7">
