@@ -320,6 +320,7 @@ return [
                 'payment_method' => [
                     \App\Models\Order\PaymentMethodConstants::CASH => 'Наличный расчет',
                     \App\Models\Order\PaymentMethodConstants::CASHLESS => 'Безналичный платеж',
+                    \App\Models\Order\PaymentMethodConstants::INVOICE => 'Счет на юр.лицо',
                 ],
                 'delivery_method' => [
                     \App\Models\Order\DeliveryMethodConstants::SELF_DELIVERY => 'Самовывоз',

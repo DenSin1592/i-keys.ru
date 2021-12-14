@@ -40,35 +40,46 @@ class OrdersController extends Controller
             return \Redirect::route('cart.show');
         }
         $inputData = $request->all();
-        $inputData['payment_method'] = Order::PAYMENT_ONLINE;
+        $inputData['name'] = 'Nik';
+        $inputData['phone'] = '+79787844720';
+        $inputData['email'] = 'evloshevsky@gmail.com';
+        $inputData['city'] = 'Тула';
+        $inputData['street'] = 'Пушкина';
+        $inputData['building'] = '6';
+        $inputData['flat'] = '1';
+        $inputData['payment_method'] = Order\PaymentMethodConstants::CASHLESS;
         $inputData['delivery_method'] = Order::DELIVERY_COURIER;
         $inputData = $this->addDeviceInfo($inputData);
 
         // Create order
         $order = $this->orderFormProcessor->create($inputData);
         if (!is_null($order)) {
-            $this->cart->clear();
-            $this->cart->save();
-
-            if ($order->email) {
-                Mail::to($order->email)->queue(new ClientOrderCreated($order));
+            $orderCompleteContent = '<p>Вашему заказу присвоен номер ' . $order->id . '. Наш менеджер свяжется с Вами в ближайшее время.</p>';
+            try{
+                $this->orderMailer->sendAdminCompleteEmail($order);
+                $this->orderMailer->sendClientCompleteEmail($order);
+            } catch (\Swift_SwiftException $ex){
+                \Log::error($ex->getMessage());
+            } catch (\Throwable $ex){
+                \Log::error($ex->getMessage());
+                resolve(Handler::class)->report($ex);
             }
 
-            Mail::queue(new AdminOrderCreated($order));
-
-            $breadcrumbs = $this->breadcrumbs->init();
-            $breadcrumbs->add("Заказ №{$order->id}");
-            $date = $order->created_at->format('d.m.Y H:i');
-            $metaData = $this->metaHelper->getRule()->metaForName("Заказ №{$order->id} от {$date} успешно оформлен");
-            $orderData = $this->clientOrder->getDataFor($order);
-
-            return view('client.orders.complete', [
-                'orderData' => $orderData,
-                'breadcrumbs' => $breadcrumbs,
-            ])->with($metaData);
+            return \Response::json(
+                [
+                    'status' => 'success',
+                    'modal_title' => 'Спасибо за Ваш заказ!',
+                    'modal_body' => $orderCompleteContent,
+                ]
+            );
 
         } else {
-            return \Redirect::route('cart.show')->withInput()->withErrors($this->formProcessor->errors());
+            return \Response::json(
+                [
+                    'status' => 'error',
+                    'errors' => $this->orderFormProcessor->errors(),
+                ]
+            );
         }
     }
 

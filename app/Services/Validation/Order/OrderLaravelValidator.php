@@ -55,7 +55,7 @@ class OrderLaravelValidator extends AbstractLaravelValidator
                 )
             ],
             'order_items' => ['required'],
-            'icon_file' => 'mimes:jpg,pdf,doc,xls',
+//            'icon_file' => 'mimes:jpg,pdf,doc,xls',
             'order_items.*.name' => ['required_without:order_items.*.code_1c'],
             'order_items.*.product_id' => ['exists:products,id'],
             'order_items.*.count' => ['required', 'integer', 'more_than:0'],
@@ -81,7 +81,7 @@ class OrderLaravelValidator extends AbstractLaravelValidator
                 $input->delivery_method != DeliveryMethodConstants::SELF_DELIVERY;
         };
 
-        $validator->sometimes('region_id', 'required', $addressRequired);
+//        $validator->sometimes('region_id', 'required', $addressRequired);
         $validator->sometimes('city', 'required', $addressRequired);
         $validator->sometimes('street', 'required', $addressRequired);
         $validator->sometimes('building', 'required', $addressRequired);
