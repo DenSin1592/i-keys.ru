@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.currentTarget.classList.add('closed')
         });
     } catch (ex) {
-        console.error(SCRIPT_NAME + ': ' +ex)
+        console.warning(SCRIPT_NAME + ': ' +ex)
     }
 
 });

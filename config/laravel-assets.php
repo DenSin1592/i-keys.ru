@@ -46,6 +46,7 @@ return [
                 'html/vendor/select2/select2.min.js',
                 'html/vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js',
                 'html/vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js',
+                'html/vendor/swiper/swiper.min.js',
 
                 '/js/common/window_size_helper.js',
                 '/js/common/promise_queue.js',
@@ -55,6 +56,8 @@ return [
                 'html/js/tooltip.js',
                 'html/js/filter.js',
                 'html/js/offcanvas.js',
+                'html/js/product.js',
+                'html/js/sliders.js',
 
                 'js/client/auth_menu.js',
                 'js/client/quick_order.js',
