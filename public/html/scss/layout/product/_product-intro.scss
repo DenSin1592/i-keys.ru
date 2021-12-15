@@ -3,7 +3,7 @@
     margin-right: -15px;
     @include media-breakpoint-up(md) {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 33.3333% 66.6666%;
         grid-template-rows: auto 1fr;
     }
 
@@ -17,15 +17,27 @@
     .product-thumbnail-container {
         position: relative;
         height: 385px;
+        padding-top: 15px;
+        padding-bottom: 15px;
         background-color: $c-white;
         @include media-breakpoint-up(sm) {
             height: 315px;
         }
         @include media-breakpoint-up(md) {
-            height: auto;
             grid-column-start: 1;
             grid-row-start: 1;
             grid-row-end: 3;
+            height: auto;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+        @include media-breakpoint-up(xl) {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        @include media-breakpoint-up(xxl) {
+            padding-top: 45px;
+            padding-bottom: 45px;
         }
 
         &::before {
@@ -43,21 +55,9 @@
     .product-typography-container {
         position: relative;
         z-index: 1;
-
         @include media-breakpoint-up(md) {
             grid-column-start: 2;
         }
-
-        // &::before {
-        //     position: absolute;
-        //     z-index: -2;
-        //     top: 0;
-        //     left: 0;
-        //     width: 100vw;
-        //     height: 100%;
-        //     background: rgba($c-black, .8);
-        //     content: '';
-        // }
     }
 
     .product-display-container {
@@ -81,15 +81,31 @@
             padding-right: 70px;
         }
 
-        &::before {
+        &::before,
+        &::after {
             position: absolute;
-            z-index: -1;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba($c-black, .8);
             content: '';
+            @include media-breakpoint-up(lg) {
+                width: 75vw;
+            }
+        }
+
+        &::before {
+            display: none;
+            z-index: -2;
+            background: inherit;
+            @include media-breakpoint-up(lg) {
+                display: block;
+            }
+        }
+
+        &::after {
+            z-index: -1;
+            background: rgba($c-black, .8);
         }
     }
 
@@ -109,6 +125,18 @@
         @include media-breakpoint-up(xxl) {
             padding-top: 40px;
             padding-bottom: 40px;
+        }
+
+        &::before {
+            @include media-breakpoint-up(lg) {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 75vw;
+                height: 100%;
+                background: inherit;
+                content: '';
+            }
         }
     }
 }

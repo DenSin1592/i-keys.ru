@@ -24,6 +24,7 @@
 @import 'components/filter';
 @import 'components/badge';
 @import 'components/rating';
+@import 'components/swiper';
 @import 'components/tooltip';
 @import 'components/select2';
 @import 'components/offcanvas';
@@ -70,6 +71,9 @@
 
 // catalog
 @import 'layout/catalog/catalog';
+
+// product
+@import 'layout/product/product';
 
 // cart
 @import 'layout/cart/cart';

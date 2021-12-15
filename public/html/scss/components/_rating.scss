@@ -2,6 +2,10 @@
     @extend .h3;
     margin: 0;
     font-weight: 700;
+    @include media-breakpoint-up(xl) {
+        margin-right: 15px;
+        font-size: 25px;
+    }
 }
 
 .rating-list {

@@ -78,8 +78,21 @@ img {
 }
 
 .title-h3 {
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 25px;
+    @include media-breakpoint-up(sm) {
+        font-size: 20px;
+        line-height: 25px;
+    }
+    @include media-breakpoint-up(md) {
+        font-size: 20px;
+        line-height: 30px;
+    }
     @include media-breakpoint-up(xl) {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    @include media-breakpoint-up(xxl) {
         font-size: 25px;
         line-height: 30px;
     }
@@ -144,11 +157,36 @@ img {
 }
 
 .section-title {
-    text-transform: uppercase;
+    @include media-breakpoint-up(lg) {
+        text-transform: uppercase;
+    }
 }
 
 .section-subtitle {
     margin-top: 0.6rem;
+}
+
+.section-alert {
+    margin: 8px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    @include media-breakpoint-up(sm) {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    @include media-breakpoint-up(lg) {
+        margin-top: 5px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-top: 10px;
+        font-size: 22px;
+        line-height: 30px;
+    }
+    @include media-breakpoint-up(xxl) {
+        font-size: 24px;
+        line-height: 30px;
+    }
 }
 
 .section-cta {
@@ -170,6 +208,11 @@ img {
         content: '';
     }
 }
+
+.section-badge {
+    margin-left: 15px;
+}
+
 
 .section-gray {
     background-color: $c-gray;

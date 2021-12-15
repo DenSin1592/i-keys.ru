@@ -82,23 +82,49 @@
     }
 
     &.card-banner-catalog {
+        padding: 15px 25px;
         background-color: $c-black;
         color: $c-white;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 20px;
         text-align: left;
+        @include media-breakpoint-up(sm) {
+            font-size: 17px;
+            line-height: 25px;
+        }
+        @include media-breakpoint-up(md) {
+            padding-top: 17px;
+            padding-bottom: 17px;
+            font-size: 20px;
+            line-height: 30px;
+        }
         @include media-breakpoint-up(lg) {
             text-align: center;
         }
+        @include media-breakpoint-up(xl) {
+            font-size: 22px;
+        }
+        @include media-breakpoint-up(xxl) {
+            font-size: 24px;
+            padding: 40px 115px;
+        } 
 
         .card-banner-thumbnail {
+            display: block;
             height: 40px;
+            margin: 0;
             @include media-breakpoint-up(lg) {
                 height: 75px;
+                margin-bottom: 10px;
             }
             @include media-breakpoint-up(xl) {
                 height: 100px;
+                margin-bottom: 20px;
             }
             @include media-breakpoint-up(xxl) {
                 height: 130px;
+                margin-bottom: 45px;
             }
 
             .card-banner-media {
