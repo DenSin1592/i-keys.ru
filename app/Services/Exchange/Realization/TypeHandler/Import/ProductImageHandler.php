@@ -53,23 +53,44 @@ class ProductImageHandler implements ITypeHandler
      */
     public function handle()
     {
+        $mem_limit = ini_get ('memory_limit');
+        ini_set ('memory_limit', '1024M');
+
         $productsByCodes = [];
         $files = $this->directoryHandler->getFilesForImport();
-        $currentLine =0;
+        $currentLine = 0;
         foreach ($files as $file) {
+
             $currentLine += 1;
             echo ('Обработана картинка:' . $currentLine . PHP_EOL);
+
             $fileName = $file->getFilename();
-            if (!preg_match("/^product_(?P<code_1c>[^_]+)_(?P<number>\d+)\./", $fileName, $matches)) {
+            if (!preg_match("/product_(?P<code_1c>[^_]+)_(?P<number>\d+)\./", $fileName, $matches)) {
+                $this->logger->addLog(
+                    $fileName,
+                    'Не удалось распарсить название изображения' ,
+                    '-----'
+                );
                 continue;
             }
+
             $code1c = trim($matches['code_1c']);
             if (empty($code1c)) {
+                $this->logger->addLog(
+                    $fileName,
+                    'Не удалось вытащить 1с код из названия изображения' ,
+                    '-----'
+                );
                 continue;
             }
 
             $filePath = $file->getRealPath();
             if (!$this->imageValidator($file)->passes()) {
+                $this->logger->addLog(
+                    $fileName,
+                    'Изображение не прошло валидацию' ,
+                    '-----'
+                );
                 continue;
             }
 
@@ -78,6 +99,11 @@ class ProductImageHandler implements ITypeHandler
             } else {
                 $product = $this->productRepository->findByCode1c($code1c);
                 if (is_null($product)) {
+                    $this->logger->addLog(
+                        $fileName,
+                        'Не найден товар для изображения. Код 1С: ' .  $code1c,
+                        '-----'
+                    );
                     continue;
                 }
                 $productsByCodes[$product->code_1c] = $product;
@@ -106,6 +132,8 @@ class ProductImageHandler implements ITypeHandler
                 );
             }
         }
+
+        ini_set ('memory_limit', $mem_limit);
     }
 
     /**
