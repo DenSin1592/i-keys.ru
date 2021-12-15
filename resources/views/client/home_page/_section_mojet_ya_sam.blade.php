@@ -18,7 +18,7 @@
 
                 <div class="section-contact-block contact-block">
                     <div class="contact-title title-h2">Поэтому предлагаем вам потратить время на что-то более интересное и ценное, а вскрытие, ремонт и замену замка оставить нам.</div>
-                    <div class="contact-text">Позвоните напрямую нашему мастеру <a href="tel:84950957797">8-495-095-77-97</a></div>
+                    <div class="contact-text">Позвоните напрямую нашему мастеру <a href="tel:{{Setting::get("site_content.phone"}}">{{Setting::get("site_content.phone"}}</a></div>
 
                     <a href="https://wa.me/{{Setting::get("site_content.wa_phone")}}" class="contact-social-button contact-social-whatsapp-button d-flex align-items-center">
                         <div class="contact-social-thumbnail">
