@@ -38,6 +38,7 @@ $(function () {
                 // when window width is >= 750px
                 750: {
                   slidesPerView: 3,
+                  touchRatio: 0,
                 },
             }
         });

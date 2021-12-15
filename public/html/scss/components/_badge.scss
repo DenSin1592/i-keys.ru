@@ -5,5 +5,11 @@
     border-radius: 0;
     background-color: $c-black;
     color: $c-white;
+    font-family: $f-default !important;
     font-weight: 700;
+    @include media-breakpoint-up(xxl) {
+        min-width: 42px;
+        height: 40px;
+        padding: 5px 5px;
+    }
 }

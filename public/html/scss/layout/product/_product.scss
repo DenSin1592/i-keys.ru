@@ -1,6 +1,33 @@
+.product-page {
+    .main-box > section:last-child {
+        @include media-breakpoint-up(xl) {
+            margin-bottom: 85px;
+        }
+        @include media-breakpoint-up(xxl) {
+            margin-bottom: 135px;
+        }
+    }
+}
+
 .section-product {
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
+    margin-bottom: 80px;
+    @include media-breakpoint-up(sm) {
+        margin-bottom: 70px;
+    }
+    @include media-breakpoint-up(md) {
+        margin-bottom: 75px;
+    }
+    @include media-breakpoint-up(lg) {
+        margin-bottom: 60px;
+    }
+    @include media-breakpoint-up(xl) {
+        margin-bottom: 95px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding-bottom: 25px;
+    }
 }
 
 @import 'product-intro';
@@ -16,3 +43,4 @@
 @import 'product-expert';
 @import 'product-specifications';
 @import 'product-documents';
+@import 'product-services';

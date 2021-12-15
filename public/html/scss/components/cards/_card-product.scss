@@ -1,6 +1,7 @@
 .card-product {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     padding: 15px;
     font-size: 13px;
@@ -47,6 +48,7 @@
 
     /* product badges */
     .card-product-badges {
+        pointer-events: none;
         position: absolute;
         z-index: 1;
         top: 10px;
