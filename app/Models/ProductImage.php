@@ -32,6 +32,7 @@ class ProductImage extends \Eloquent
                 [
                     'thumb' => new OutBoundVersion(100, 100),
                     'catalog' => new BoxVersion(339, 302),
+                    'main' => new BoxVersion(401, 404),
                 ]
             )
         );
