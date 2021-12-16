@@ -13,6 +13,19 @@ body {
     }
 }
 
+body {
+    padding-top: 60px;
+    @include media-breakpoint-up(md) {
+        padding-top: 125px;
+    }
+    @include media-breakpoint-up(lg) {
+        padding-top: 140px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding-top: 160px;
+    }
+}
+
 p {
     margin: 0;
 
