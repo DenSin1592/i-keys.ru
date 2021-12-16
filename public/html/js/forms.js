@@ -35,4 +35,7 @@ $(function () {
         children.removeClass('active');
         target.addClass('active');
     });
+
+    // custom file
+    bsCustomFileInput.init();
 })

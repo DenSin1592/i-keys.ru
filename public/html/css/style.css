@@ -11614,6 +11614,13 @@ img {
   color: currentColor;
 }
 
+textarea.form-control {
+  resize: none;
+  height: 148px;
+  background: repeating-linear-gradient(0, transparent, transparent 35px, #000 35px, #000 38px) !important;
+  line-height: 2.185;
+}
+
 .form-option {
   cursor: pointer;
   position: relative;
@@ -11841,6 +11848,23 @@ img {
   color: #3e7a4e;
 }
 
+.custom-rating {
+  position: relative;
+}
+.custom-rating .custom-rating-input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.custom-rating .custom-rating-input:checked + .custom-rating-label ~ .custom-rating-label {
+  color: #a1abab;
+}
+.custom-rating .custom-rating-label {
+  cursor: pointer;
+  margin: 0;
+  color: #c55100;
+}
+
 .custom-file {
   height: 95px;
 }
@@ -11855,7 +11879,7 @@ img {
   }
 }
 .custom-file-input {
-  height: inherit;
+  height: 100%;
 }
 .custom-file-input:focus {
   outline: none;
@@ -11905,6 +11929,26 @@ img {
 .custom-file-input:focus ~ .custom-file-label {
   border-color: #c55100;
   box-shadow: none;
+}
+.custom-file.custom-photo-file {
+  height: auto;
+}
+.custom-file.custom-photo-file .custom-file-label {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 17px;
+  font-weight: 400;
+}
+.custom-file.custom-photo-file .custom-file-media {
+  margin-right: 10px;
+  color: #c55100;
+}
+.custom-file.custom-photo-file .custom-file-text {
+  border-bottom: 2px solid #c55100;
+}
+.custom-file.custom-photo-file:hover .custom-file-text {
+  border-bottom-color: transparent;
 }
 
 /* custom file end */
@@ -12465,6 +12509,23 @@ img {
   color: #c55100;
 }
 
+.modal {
+  font-size: 14px;
+  line-height: 20px;
+}
+@media (min-width: 1200px) {
+  .modal {
+    font-size: 17px;
+    line-height: 25px;
+  }
+}
+@media (min-width: 1680px) {
+  .modal {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+
 @media (min-width: 480px) {
   .modal-dialog {
     max-width: 430px;
@@ -12515,10 +12576,19 @@ img {
 }
 
 .modal-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 10px;
 }
 .modal-header .close {
+  position: absolute;
+  top: 0;
+  right: 0;
   opacity: 1;
+  margin: 0;
+  padding: 0;
+  transform: translateY(-50%);
   color: currentColor;
 }
 .modal-header .close:hover {
@@ -12529,10 +12599,21 @@ img {
   display: block;
 }
 
+.modal-title {
+  margin-right: 35px;
+}
+
+.modal-subtitle {
+  margin: 10px 0 0;
+}
+
 @media (min-width: 1200px) {
   .form-modal .form-group + .form-group {
     margin-top: 20px;
   }
+}
+.form-modal .form-label {
+  margin: 0;
 }
 @media (min-width: 1200px) {
   .form-modal .form-label {

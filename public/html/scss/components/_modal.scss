@@ -1,3 +1,16 @@
+.modal {
+    font-size: 14px;
+    line-height: 20px;
+    @include media-breakpoint-up(xl) {
+        font-size: 17px;
+        line-height: 25px;
+    }
+    @include media-breakpoint-up(xxl) {
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
 .modal-dialog {
     @include media-breakpoint-up(sm) {
         max-width: 430px;
@@ -36,10 +49,19 @@
 }
 
 .modal-header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 10px;
 
     .close {
+        position: absolute;
+        top: 0;
+        right: 0;
         opacity: 1;
+        margin: 0;
+        padding: 0;
+        transform: translateY(-50%);
         color: currentColor;
 
         &:hover {
@@ -60,6 +82,14 @@
     }
 }
 
+.modal-title {
+    margin-right: 35px;
+}
+
+.modal-subtitle {
+    margin: 10px 0 0;
+}
+
 .form-modal {
     .form-group {
         + .form-group {
@@ -70,6 +100,7 @@
     }
 
     .form-label {
+        margin: 0;
         @include media-breakpoint-up(xl) {
             font-size: 15px;
         }
