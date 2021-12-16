@@ -37,5 +37,5 @@ $(function () {
     });
 
     // custom file
-    bsCustomFileInput.init();
+    // bsCustomFileInput.init();
 })
