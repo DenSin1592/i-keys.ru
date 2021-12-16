@@ -9,6 +9,24 @@ class EloquentProductImageRepository
     const POSITION_STEP = 10;
 
 
+    private function scopePublished($query)
+    {
+        return $query->where('publish', true);
+    }
+
+
+    private function scopeOrdered($query)
+    {
+        return $query->orderBy('position');
+    }
+
+
+    private function scopeWithImage($query)
+    {
+        return $query->whereNotNull('image')
+            ->where('image', '<>', '');
+    }
+
     public function newInstance(array $data = [])
     {
         return new ProductImage($data);
@@ -97,5 +115,15 @@ class EloquentProductImageRepository
         }
 
         return $images;
+    }
+
+    public function publishedForProduct(Product $product)
+    {
+        $query = $product->images();
+        $this->scopePublished($query);
+        $this->scopeWithImage($query);
+        $this->scopeOrdered($query);
+
+        return $query->get();
     }
 }

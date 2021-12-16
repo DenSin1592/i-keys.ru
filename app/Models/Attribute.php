@@ -1,4 +1,6 @@
-<?php namespace App\Models;
+<?php
+
+namespace App\Models;
 
 use App\Models\Attribute\AllowedValue;
 use App\Models\Attribute\StringValue;
@@ -13,6 +15,7 @@ use Diol\Fileclip\Eloquent\Glue;
 use Diol\Fileclip\Version\OutBoundVersion;
 use Diol\FileclipExif\FileclipExif;
 
+
 class Attribute extends \Eloquent
 {
     use Glue;
@@ -24,7 +27,6 @@ class Attribute extends \Eloquent
     const TYPE_INTEGER = 'integer';
     const TYPE_DECIMAL = 'decimal';
 
-    public const SIZE_CYLINDER_1C_CODE = '000000013';
 
     protected static $attributeNames = [
         self::TYPE_STRING => 'строка',
@@ -45,6 +47,16 @@ class Attribute extends \Eloquent
     public function getDecimalScaleAttribute()
     {
         return \Arr::get($this->attributes, 'decimal_scale', 2);
+    }
+
+
+    public static function getHasUnitsTypes(): array
+    {
+        return [
+            self::TYPE_STRING,
+            self::TYPE_DECIMAL,
+            self::TYPE_INTEGER,
+        ];
     }
 
 

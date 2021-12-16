@@ -9,7 +9,7 @@
         {!! Form::tbText("allowed_values[{$allowedValueKey}][value]", $allowedValue->value) !!}
     {!! Form::tbFormGroupClose() !!}
 
-    @if($formData['attribute']->code_1c === \App\Models\Attribute::SIZE_CYLINDER_1C_CODE)
+    @if($formData['attribute']->code_1c === \App\Models\Attribute\AttributeConstants::SIZE_CYLINDER_1C_CODE)
 
         {!! Form::tbFormGroupOpen("allowed_values.{$allowedValueKey}.value_first_size_cylinder") !!}
         {!! Form::tbLabel("allowed_values[{$allowedValueKey}][value_first_size_cylinder]", trans('validation.attributes.value_first_size_cylinder')) !!}

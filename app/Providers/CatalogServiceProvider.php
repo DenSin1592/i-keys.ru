@@ -134,7 +134,7 @@ class CatalogServiceProvider extends ServiceProvider
                     new CylinderSizeLens(
                         $attributeRepository,
                         $allowedValueRepository,
-                        Attribute::SIZE_CYLINDER_1C_CODE
+                        Attribute\AttributeConstants::SIZE_CYLINDER_1C_CODE
                     ),
                     'cylinder_size',
                     'Типоразмер',

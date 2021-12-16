@@ -11,6 +11,10 @@
 
             @include('client.product._product_info')
 
+            @include('client.product._main_characteristics')
+
+            @include('client.product._expert')
+
         </section>
     </main>
 @stop

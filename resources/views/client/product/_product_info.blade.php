@@ -7,7 +7,7 @@
                 @include('client.shared.breadcrumbs._breadcrumbs')
 
                 <div class="product-display">
-                    <div class="product-display-category title-h1">{{$product->category->name}}</div>
+                    <div class="product-display-category title-h1">{{$productData['product']->category->name}}</div>
                     <h1>{{ $metaData['h1'] }}</h1>
                 </div>
 
@@ -22,7 +22,7 @@
 
                                 <li class="product-info-item col-auto">
                                     <span class="product-info-title">Код товара</span>
-                                    <span class="product-info-value product-code">{{$product->code_1c}}</span>
+                                    <span class="product-info-value product-code">{{$productData['product']->code_1c}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -50,13 +50,13 @@
                     <div class="product-gallery-slider-container col-12 col-sm-8 col-md-12 order-sm-1 order-md-0">
                         <div class="swiper-product-gallery swiper-container">
                             <div class="swiper-wrapper">
-                                @forelse($product->images as $element)
+                                @forelse($productData['images'] as $element)
                                     <div class="swiper-slide">
                                         <a href="{{$element->getImgPath('image', 'catalog', 'no-image-800x800.png')}}"
                                            class="product-media-link" data-fancybox="product-media">
                                             <img loading="lazy"
                                                  src="{{$element->getImgPath('image', 'catalog', 'no-image-800x800.png')}}"
-                                                 width="275" height="278" alt="{{$product->name}}"
+                                                 width="275" height="278" alt="{{$productData['product']->name}}"
                                                  class="product-media">
                                         </a>
                                     </div>
@@ -65,7 +65,7 @@
                                         <a href="#" class="product-media-link">
                                             <img loading="lazy"
                                                  src="{{asset('/images/common/no-image/no-image-200x200.png')}}"
-                                                 width="275" height="278" alt="{{$product->name}}"
+                                                 width="275" height="278" alt="{{$productData['product']->name}}"
                                                  class="product-media">
                                         </a>
                                     </div>
@@ -80,14 +80,14 @@
                                 <div class="swiper-product-thumbnails-cover d-inline-block">
                                     <div class="swiper-product-thumbnails swiper-container">
 
-                                        @if($product->images->count() > 1)
+                                        @if($productData['images']->count() > 1)
                                             <div class="swiper-wrapper">
-                                                @foreach($product->images as $element)
+                                                @foreach($productData['images'] as $element)
                                                     <div class="swiper-slide">
                                                         <div class="product-thumbnail">
                                                             <img loading="lazy"
                                                                  src="{{$element->getImgPath('image', 'catalog', 'no-image-200x200.png')}}"
-                                                                 width="47" height="47" alt="{{$product->name}}"
+                                                                 width="47" height="47" alt="{{$productData['product']->name}}"
                                                                  class="product-thumbnail-media">
                                                         </div>
                                                     </div>
@@ -197,7 +197,7 @@
                                 </div>
                             </div>
 
-                            @if($product->isCylinder())
+                            @if($productData['product']->isCylinder())
                                 <div class="product-detail-block d-flex flex-wrap">
                                             <span class="product-detail-title">Типоразмер
                                                 <span class="d-none d-xxl-inline text-muted">(Выберите нужный)</span>
@@ -272,19 +272,19 @@
                                                     <svg class="product-status-media" width="14" height="10">
                                                         <use xlink:href="{{asset('/images/client/sprite.svg#icon-check')}}"></use>
                                                     </svg>
-                                                   {{$product->getExistenceString()}}
+                                                   {{$productData['product']->getExistenceString()}}
                                                 </span>
                                 </div>
 
-                                <span class="product-price">{!! Helper::priceFormat($product->price) !!}<span
+                                <span class="product-price">{!! Helper::priceFormat($productData['product']->price) !!}<span
                                         class="rouble"></span></span>
 
-                                @if(!is_null($oldPrice = $product->getOldPrice()))
+                                @if(!is_null($oldPrice = $productData['product']->getOldPrice()))
                                     <span
                                         class="product-old-price text-muted">{!! Helper::priceFormat($oldPrice) !!}<span
                                             class="rouble"></span></span>
                                     <span
-                                        class="product-sale-price font-weight-bold text-danger">{{$product->sale_string}}</span>
+                                        class="product-sale-price font-weight-bold text-danger">{{$productData['product']->sale_string}}</span>
                                     <span class="product-sale-hint d-block">Распродажа в связи с обновлением ассортимента</span>
                                 @endif
                             </div>
@@ -292,11 +292,11 @@
                             <div class="product-controls-block">
                                 <div class="form-row">
                                     <div class="col">
-                                        @if ($product->price > 0.0)
-                                            @if(\App\Facades\Cart::checkItem($product->id))
+                                        @if ($productData['product']->price > 0.0)
+                                            @if(\App\Facades\Cart::checkItem($productData['product']->id))
                                                 @include('client.shared.product.button._in_cart')
                                             @else
-                                                @include('client.shared.product.button._add_to_card')
+                                                @include('client.shared.product.button._add_to_card', ['product' => $productData['product']])
                                             @endif
                                         @endif
                                     </div>
@@ -324,15 +324,17 @@
                             </div>
 
                             <div class="product-included-block">
+                                @if($productData['count_keys_in_set'])
                                 <svg class="product-included-media" width="20" height="20">
                                     <use xlink:href="{{asset('/images/client/sprite.svg#icon-key')}}"></use>
                                 </svg>
 
-                                <span class="product-included-title">В комплекте <b>3</b> ключа</span>
+                                <span class="product-included-title">В комплекте <b>{{$productData['count_keys_in_set']}}</b> {{\Lang::choice('ключ|ключа|ключей', $productData['count_keys_in_set'])}}</span>
 
                                 <button type="button" class="product-included-toggle" data-toggle="modal"
                                         data-target="#modalKeysQuantity">Добавить еще ключи на всю семью
                                 </button>
+                                @endif
                             </div>
 
                             <div class="product-delivery-block d-flex align-items-center">
