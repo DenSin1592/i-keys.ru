@@ -84,18 +84,18 @@
     }
 
     .smartphone-media {
-        width: 290px;
-        height: 345px;
+        width: 234px;
+        height: 346px;
         @include media-breakpoint-up(lg) {
-            width: 380px;
-            height: 451px;
+            width: 336px;
+            height: 496px;
         }
         @include media-breakpoint-up(xl) {
-            width: 460px;
-            height: 546px;
+            width: 385px;
+            height: 569px;
         }
         @include media-breakpoint-up(xxl) {
-            width: 556px;
+            width: 447px;
             height: 661px;
         }
     }
