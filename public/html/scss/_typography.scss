@@ -28,6 +28,7 @@ a {
     border-bottom: 3px solid $c-secondary;
     color: currentColor;
     text-decoration: none;
+    transition: color 300ms ease;
 
     &:hover {
         border-bottom-color: transparent;
@@ -206,6 +207,10 @@ img {
         background: currentColor;
         vertical-align: middle;
         content: '';
+    }
+
+    &:hover {
+        color: $c-secondary;
     }
 }
 

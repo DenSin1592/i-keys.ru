@@ -12,6 +12,11 @@
 
     a {
         border: none;
+        text-decoration: none;
+        &:hover {
+            color: $c-secondary;
+            text-decoration: none;
+        }
     }
 
     .row {
