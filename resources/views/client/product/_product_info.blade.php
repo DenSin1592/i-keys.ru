@@ -270,9 +270,9 @@
                                 <div class="product-status-block">
                                                 <span class="product-status product-available d-inline-block">
                                                     <svg class="product-status-media" width="14" height="10">
-                                                        <use xlink:href="/images/sprite.svg#icon-check"></use>
+                                                        <use xlink:href="{{asset('/images/client/sprite.svg#icon-check')}}"></use>
                                                     </svg>
-                                                    {{$product->getExistenceString()}}
+                                                   {{$product->getExistenceString()}}
                                                 </span>
                                 </div>
 
