@@ -45,7 +45,11 @@
     width: 76px;
     height: 76px;
     border: 2px solid $c-black;
+    transition: border-color 300ms ease;
     background-color: #fff;
+    &:hover {
+        border-color: lighten($c-black, 10%);
+    }
 
     .card-review-gallery-media {
         max-width: 100%;
