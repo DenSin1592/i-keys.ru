@@ -10,18 +10,17 @@
         margin-bottom: 90px;
     }
 
+    .about-media-container {
+        margin-top: 30px;
+        @include media-breakpoint-up(xl) {
+            margin-top: 0;
+        }
+    }
+
     .section-header {
         margin-bottom: 20px;
         @include media-breakpoint-up(xl) {
             margin-bottom: 20px;
-        }
-    }
-
-    .about-description {
-        margin-bottom: 15px;
-        line-height: 1.5;
-        @include media-breakpoint-up(xl) {
-            margin-top: 25px;
         }
     }
 }
@@ -51,6 +50,14 @@
             width: 748px;
             height: 529px;
         }
+    }
+}
+
+.about-description {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    @include media-breakpoint-up(xl) {
+        margin-top: 25px;
     }
 }
 
