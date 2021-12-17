@@ -54,6 +54,9 @@
         @include media-breakpoint-up(xl) {
             margin-bottom: 20px;
         }
+        @include media-breakpoint-only(xl) {
+            font-size: 24px;
+        }
     }
 
     &-text {
