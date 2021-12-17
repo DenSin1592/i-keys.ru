@@ -18,6 +18,7 @@
 @import 'components/contact';
 @import 'components/breadcrumb';
 @import 'components/pagination';
+@import 'components/nav';
 @import 'components/forms';
 @import 'components/buttons';
 @import 'components/filter';
@@ -29,6 +30,9 @@
 @import 'components/offcanvas';
 @import 'components/modal';
 @import 'components/table';
+
+// header
+@import 'layout/header/header';
 
 // cards
 @import 'components/cards/card';
@@ -42,10 +46,10 @@
 @import 'components/cards/card-faq';
 @import 'components/cards/card-post';
 @import 'components/cards/card-banner';
+@import 'components/cards/card-review';
+@import 'components/cards/card-expert';
+@import 'components/cards/card-document';
 @import 'components/cards/card-order';
-
-// header
-@import 'layout/header/header';
 
 // sections
 @import 'sections/section-intro';
@@ -60,10 +64,11 @@
 @import 'sections/section-prices';
 @import 'sections/section-faq';
 @import 'sections/section-cases';
+@import 'sections/section-products';
+@import 'sections/section-reviews';
 @import 'sections/section-posts';
 @import 'sections/section-content';
 @import 'sections/section-article';
-@import 'sections/section-posts';
 
 
 // catalog
