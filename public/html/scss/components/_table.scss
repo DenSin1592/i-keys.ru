@@ -1,0 +1,40 @@
+.table {
+    border-collapse:separate;
+    border-spacing: 0 10px;
+
+    thead {
+        color: #fff;
+        line-height: 35px;
+        background: #191919;
+        font-weight: normal;
+        font-size: 17px;
+
+        th {
+            padding: 11px 15px;
+            border-bottom: 5px solid #c55100;
+
+            @include media-breakpoint-up(lg) {
+                padding: 21px 35px;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            margin: 10px 0;
+            padding: 28px 40px;
+            background: #fff;
+            color: #000;
+            font-size: 17px;
+            line-height: 25px;
+
+            td {
+                padding: 15px;
+
+                @include media-breakpoint-up(lg) {
+                    padding: 35px;
+                }
+            }
+        }
+    }
+}

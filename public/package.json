@@ -1,0 +1,19 @@
+{
+  "name": "i-key",
+  "version": "1.0.0",
+  "description": "web",
+  "main": "index.js",
+  "repository": "https://gitlab.com/DIOL/l-keys.ru_2021",
+  "author": "francyfox",
+  "license": "no",
+  "dependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-watch": "^5.0.1",
+    "node-sass": "^7.0.0",
+    "sass": "1.23"
+  }
+}
