@@ -18,22 +18,28 @@
     display: none;
     position: absolute;
     z-index: 9;
+    overflow-y: auto;
     top: 100%;
     left: -15px;
     right: -15px;
+    max-height: calc(100vh - 180px);
     padding: 15px 30px;
     background-color: $c-black;
     color: $c-white;
+    @include media-breakpoint-up(md) {
+        max-height: calc(100vh - 215px);
+    }
+    @include media-breakpoint-up(lg) {
+        max-height: calc(100vh - 240px);
+    }
     @include media-breakpoint-up(xl) {
         position: static;
+        overflow: visible;
         display: block !important;
         max-width: 320px;
+        max-height: none;
         padding: 0;
     }
-
-    // &.active {
-    //     opacity: 1;
-    // }
 }
 
 .filter-header {

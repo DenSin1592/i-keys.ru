@@ -1,9 +1,49 @@
 $(function () {
+    let filterToggle = $('.filter-toggle'),
+        filterContainer = $('#filter');
+
+    function setFilterPosition() {
+        let yOffset = $('.header-box').outerHeight() * 1.25;
+        let y = filterToggle[0].getBoundingClientRect().top + window.pageYOffset - yOffset;
+
+        $('html, body').animate({
+            scrollTop: y,
+        }, 300)
+    }
+
+    function openFilter() {
+        $('body').addClass('filter-open');
+        filterContainer.slideDown();
+        setFilterPosition();
+        appendBackdrop();
+    }
+
+    function closeFilter() {
+        $('body').removeClass('filter-open');
+        filterToggle.removeClass('active');
+        filterContainer.slideUp();
+        removeBackdrop();
+    }
+
     $('.filter-toggle').on('click', function(e) {
         let target = $(e.currentTarget);
-        let filterContainer = $(target).next();
+        $(target).toggleClass('active');
 
-        filterContainer.slideToggle();
+        if(target.hasClass('active')) {
+            openFilter();
+        }
+
+        if(!target.hasClass('active')) {
+            closeFilter();
+        }
+    });
+
+    $(document).on('click', '.backdrop', closeFilter);
+
+    beforeWindowWidthResizeFunctions.push(function () {
+        if (windowSizeHelper.isMobileToDesktopResize()) {
+            closeFilter();
+        }
     });
 
     $('.filter-range-slider').each(function () {

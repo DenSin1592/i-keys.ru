@@ -1,5 +1,5 @@
 (function ($, window) {
-    var mobileWidth = 1679,
+    var mobileWidth = 1200,
         phoneWidth = 749;
 
     var windowWidth = window.innerWidth;

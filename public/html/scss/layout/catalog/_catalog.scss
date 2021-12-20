@@ -56,6 +56,12 @@
     }
 }
 
+body.filter-open {
+    .catalog-aside-container {
+        z-index: 101;
+    }
+}
+
 @import 'catalog-tags';
 @import 'catalog-sort';
 @import 'catalog-view';

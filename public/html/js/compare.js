@@ -55,7 +55,7 @@ $(function () {
 
 
             // Set section background
-            $(compareContainerBG).css('top', compareContainer.find('.compare-content')[1].offsetTop + 'px');
+            $(compareContainerBG).css('top', compareContainer.find('.swiper-compare')[0].offsetTop + maxHeaderHeight + 'px');
 
 
             // Match parameters
