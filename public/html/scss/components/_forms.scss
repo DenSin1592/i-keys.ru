@@ -244,6 +244,47 @@ textarea.form-control {
             }
         }
     }
+
+    // custom switch
+    &.custom-switch {
+        font-size: 16px;
+        // min-height: 20px;
+        // padding-left: 45px;
+        // padding-left: 40px;
+
+        .custom-control-label {
+            background: $c-secondary;
+
+            &::before {
+                // left: -45px;
+                // width: 40px;
+                // height: 20px;
+                background: #dcdcdc;
+            }
+
+            &::after {
+                // top: 7px;
+                // left: -43px;
+                // width: 16px;
+                // height: 16px;
+                background-color: $c-secondary;
+            }
+        }
+
+        .custom-control-input {
+            height: 20px;
+            &:checked ~ .custom-control-label {
+                &::before {
+                    border-color: $c-secondary;
+                    background: $c-secondary;
+                }
+
+                &::after {
+                    transform: translateX(20px);
+                }
+            }
+        }
+    }
 }
 
 // custom select

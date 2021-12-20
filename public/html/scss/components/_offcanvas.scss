@@ -4,16 +4,20 @@
     transform: translate(-100%);
     overflow-y: auto;
     position: fixed;
-    z-index: 99;
+    z-index: 101;
     top: 0;
     left: 0;
     width: 100%;
+    max-width: 320px;
     height: 100%;
     padding: 0 15px 60px;
     background-color: $c-black;
     color: $c-white;
     font-size: 14px;
-
+    @include media-breakpoint-up(xl) {
+        padding: 15px 20px 60px;
+    }
+    
     &.transition {
         transition: opacity 300ms ease, visibility 300ms ease, transform 300ms ease;
     }
@@ -24,7 +28,6 @@
         transform: translate(0);
     }
 }
-
 
 .offcanvas-header {
     padding: 18px 0;
@@ -148,6 +151,11 @@
 }
 
 .offcanvas-catalog-link {
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
     border: none;
     padding: 12px 0;
     font-family: $f-secondary;
@@ -164,16 +172,63 @@
     }
 }
 
+.offcanvas-catalog-megamenu-toggle {
+    cursor: pointer;
+    position: relative;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    transition: border-color 300ms ease;
+    color: currentColor;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 15px;
+        border-left: 1px solid currentColor;
+        margin: auto;
+        content: '';
+    }
+
+    &:hover {
+        color: $c-secondary;
+    }
+
+    &.active {
+        .offcanvas-catalog-megamenu-toggle-media {
+            transform: rotate(90deg);
+        }
+    }
+}
+
 
 /* offcanvas nav */
 .offcanvas-nav-list {
     margin: 0;
+    @include media-breakpoint-up(md) {
+        font-size: 15px;
+        font-weight: 700;
+    }
+    @include media-breakpoint-up(lg) {
+        font-size: 17px;
+    }
 }
 
 .offcanvas-nav-link {
     display: block;
     border: none;
     padding: 5px 0;
+    @include media-breakpoint-up(lg) {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
 
     &:hover {
         color: $c-secondary;

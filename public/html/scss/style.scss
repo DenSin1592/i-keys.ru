@@ -28,6 +28,7 @@
 @import 'components/tooltip';
 @import 'components/select2';
 @import 'components/offcanvas';
+@import 'components/megamenu';
 @import 'components/modal';
 @import 'components/table';
 
@@ -37,6 +38,7 @@
 // cards
 @import 'components/cards/card';
 @import 'components/cards/card-product';
+@import 'components/cards/card-compare';
 @import 'components/cards/card-intro';
 @import 'components/cards/card-video';
 @import 'components/cards/card-service';
@@ -50,6 +52,7 @@
 @import 'components/cards/card-expert';
 @import 'components/cards/card-document';
 @import 'components/cards/card-order';
+
 
 // sections
 @import 'sections/section-intro';
@@ -79,6 +82,9 @@
 
 // cart
 @import 'layout/cart/cart';
+
+// compare
+@import 'layout/compare/compare';
 
 // footer
 @import 'layout/footer/footer';

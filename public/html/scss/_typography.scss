@@ -240,3 +240,14 @@ img {
     background-color: $c-dark;
     color: $c-white;
 }
+
+.backdrop {
+    cursor: pointer;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($c-dark, .8);
+}
