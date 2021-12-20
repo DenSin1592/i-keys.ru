@@ -1,6 +1,13 @@
 .checkout-nav-list {
     margin-top: -15px;
     margin-bottom: -15px;
+    @include media-breakpoint-up(lg) {
+        position: sticky;
+        top: 150px;
+    }
+    @include media-breakpoint-up(xxl) {
+        top: 180px;
+    }
 }
 
 .checkout-nav-link {
