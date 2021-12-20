@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>L-keys</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="article-page d-flex flex-column" >
+<header class="header-box flex-shrink-0 flex-grow-1 is-fixed compensate-for-scrollbar">
+    <div class="container">
+        <div class="row flex-nowrap flex-md-wrap align-items-center">
+            <div class="header-location-container col-auto d-none d-lg-block">
+                <button type="button" class="header-location-toggle d-flex align-items-center" data-toggle="modal" data-target="#modalLocation" >
+                    <div class="header-location-thumbnail d-none d-xl-block">
+                        <svg class="header-location-media" width="27" height="16">
+                            <use xlink:href="images/sprite.svg#icon-location"></use>
+                        </svg>
+                    </div>
+
+                    <div class="header-location-text text-truncate">
+                        <div class="header-location-region">Москва</div>
+                    </div>
+                </button>
+            </div>
+
+            <div class="header-burger-container col-auto d-xxl-none">
+                <button type="button" class="header-burger-toggle" >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <div class="header-nav-container col-auto d-none d-xxl-block">
+                <ul class="header-nav-list list-unstyled d-flex flex-wrap">
+                    <li class="header-nav-item">
+                        <a href="#link" class="header-nav-link">Услуги</a>
+                    </li>
+
+                    <li class="header-nav-item">
+                        <a href="#link" class="header-nav-link">Доставка и оплата</a>
+                    </li>
+
+                    <li class="header-nav-item">
+                        <a href="#link" class="header-nav-link">Гарантии</a>
+                    </li>
+
+                    <li class="header-nav-item">
+                        <a href="#link" class="header-nav-link">О компании</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="header-logo-container col col-md-auto order-lg-1">
+                <a href="index.html" class="header-logo d-flex align-items-center">
+                    <div class="header-logo-thumbnail">
+                        <img src="images/logo/logo-dark.svg" width="52" height="44" alt="" class="header-logo-media">
+                    </div>
+
+                    <div class="header-logo-text">
+                        <div class="header-logo-title">Замки <br class="d-xl-none" > и Ключи</div>
+                        <div class="header-logo-subtitle d-none d-xl-block">Магазин дверных замков и фурнитуры</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="header-contact-container col-auto d-none d-md-block mx-md-auto">
+                <ul class="header-contact-list list-unstyled align-items-center row">
+                    <li class="header-contact-item col-auto">
+                        <a href="tel:+74950957797" class="header-contact">+7 (495) 095-77-97</a>
+                    </li>
+
+                    <li class="header-contact-item col-auto d-none d-lg-block">
+                        <a href="mailto:info@l-keys.ru" class="header-contact">info@l-keys.ru</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="header-social-container col-auto mx-md-auto">
+                <a href="#link" class="header-social header-social-whatsapp d-flex align-items-center">
+                    <div class="header-social-thumbnail">
+                        <img loading="lazy" src="images/icons/icon-whatsapp.svg" width="25" height="25" alt="WhatsApp" class="header-social-media">
+                    </div>
+
+                    <div class="header-social-text d-none d-md-block"><span class="d-none d-xxl-inline" >Связаться по</span> WhatsApp</div>
+                </a>
+            </div>
+
+            <div class="header-search-container col-auto d-none d-sm-block mx-md-auto">
+                <button type="button" class="header-search-toggle d-flex d-lg-none align-items-center" >
+                        <span class="header-search-thumbnail">
+                            <svg class="header-search-media" width="24" height="25">
+                                <use xlink:href="images/sprite.svg#icon-search"></use>
+                            </svg>
+                        </span>
+
+                    <span class="header-search-text">Поиск</span>
+                </button>
+
+                <form class="header-search search d-none d-lg-block">
+                    <input type="search" class="header-search-input search-input" placeholder="Поиск товаров" required >
+
+                    <button type="button" class="header-search-button search-button" >
+                        <svg class="search-button-media" width="24" height="25">
+                            <use xlink:href="images/sprite.svg#icon-search"></use>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <div class="header-account-container col-auto">
+                <ul class="header-account-list list-unstyled row">
+                    <li class="header-account-item col-auto d-none d-sm-block">
+                        <a href="#link" class="header-account d-flex align-items-center">
+                            <div class="header-account-thumbnail">
+                                <svg class="header-account-media" width="28" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-compare"></use>
+                                </svg>
+                            </div>
+
+
+                            <div class="header-account-badge d-flex align-items-center justify-content-center">0</div>
+                        </a>
+                    </li>
+
+                    <li class="header-account-item col-auto">
+                        <a href="#link" class="header-account d-flex align-items-center">
+                            <div class="header-account-thumbnail">
+                                <svg class="header-account-media" width="28" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-cart"></use>
+                                </svg>
+                            </div>
+
+                            <div class="header-account-badge d-flex align-items-center justify-content-center">6</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="header-devider w-100 d-none d-md-block"></div>
+
+            <div class="header-catalog-container col d-none d-md-block order-lg-2">
+                <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between justify-content-xl-end">
+                    <li class="header-catalog-item col-auto col-xxl d-flex has-children">
+                        <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="header-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="26" height="26">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-lock"></use>
+                                </svg>
+                            </div>
+
+                            <div class="header-catalog-text">Замки</div>
+                        </a>
+
+                        <div class="megamenu-wrapper">
+                            <div class="megamenu-inner">
+                                <div class="row">
+                                    <div class="megamenu-column col-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Тип замка</div>
+
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Цилиндры</a></li>
+                                                <li><a href="catalog.html">Врезные</a></li>
+                                                <li><a href="catalog.html">Навесные</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="megamenu-column col-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Конфигурация</div>
+
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Ключ-ключ</a></li>
+                                                <li><a href="catalog.html">Ключ/вертушка</a></li>
+                                                <li><a href="catalog.html">Ключ/шток</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="megamenu-column col-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Производитель</div>
+
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Киса</a></li>
+                                                <li><a href="catalog.html">Замочкин двор</a></li>
+                                                <li><a href="catalog.html">Еще произвродитель</a></li>
+                                                <li><a href="catalog.html">Ключково</a></li>
+                                                <li><a href="catalog.html">Замочкин</a></li>
+                                                <li><a href="catalog.html">И тд и тп</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="megamenu-column col-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">По цвету</div>
+
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Белый</a></li>
+                                                <li><a href="catalog.html">Золотой</a></li>
+                                                <li><a href="catalog.html">Серый</a></li>
+                                                <li><a href="catalog.html">Алюминиевый</a></li>
+                                                <li><a href="catalog.html">Металлический</a></li>
+                                                <li><a href="catalog.html">Титановый</a></li>
+                                                <li><a href="catalog.html">Матовый</a></li>
+                                                <li><a href="catalog.html">Серобуромалиновый</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="megamenu-column col-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Безопасность</div>
+
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Низкая</a></li>
+                                                <li><a href="catalog.html">Средняя</a></li>
+                                                <li><a href="catalog.html">Нормальная</a></li>
+                                                <li><a href="catalog.html">Высокая</a></li>
+                                                <li><a href="catalog.html">Ультра</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="megamenu-column col-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Конфигурация</div>
+
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Ключ-ключ</a></li>
+                                                <li><a href="catalog.html">Ключ/вертушка</a></li>
+                                                <li><a href="catalog.html">Ключ/шток</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="megamenu-column col-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Производитель</div>
+
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Киса</a></li>
+                                                <li><a href="catalog.html">Замочкин двор</a></li>
+                                                <li><a href="catalog.html">Еще произвродитель</a></li>
+                                                <li><a href="catalog.html">Ключково</a></li>
+                                                <li><a href="catalog.html">Замочкин</a></li>
+                                                <li><a href="catalog.html">И тд и тп</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="megamenu-column col-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Безопасность</div>
+
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Низкая</a></li>
+                                                <li><a href="catalog.html">Средняя</a></li>
+                                                <li><a href="catalog.html">Нормальная</a></li>
+                                                <li><a href="catalog.html">Высокая</a></li>
+                                                <li><a href="catalog.html">Ультра</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="header-catalog-item col-auto col-xxl d-flex">
+                        <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="header-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="18" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-handle"></use>
+                                </svg>
+                            </div>
+
+                            <div class="header-catalog-text">Ручки</div>
+                        </a>
+                    </li>
+
+                    <li class="header-catalog-item col-auto col-xxl d-flex">
+                        <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="header-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="22" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-furniture"></use>
+                                </svg>
+                            </div>
+
+                            <div class="header-catalog-text">Фурнитура</div>
+                        </a>
+                    </li>
+
+                    <li class="header-catalog-item col-auto col-xxl d-flex">
+                        <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="header-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="19" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-keys"></use>
+                                </svg>
+                            </div>
+
+                            <div class="header-catalog-text">Копии ключей</div>
+                        </a>
+                    </li>
+
+                    <li class="header-catalog-item col-auto col-xxl d-flex">
+                        <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="header-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="26" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-master"></use>
+                                </svg>
+                            </div>
+
+                            <div class="header-catalog-text">Мастер-системы</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="main-box flex-shrink-0 flex-grow-1 section-gray">
+    <section class="section-display section-dark" >
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Главная</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Каталог</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="index.html">Замки</a>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <a href="index.html">Навесные</a>
+                    </li>
+                </ol>
+            </nav>
+            <h1 class="display-title title-h1 text-uppercase">Заголовок 1го уровня</h1>
+        </div>
+    </section>
+
+    <section class="section-article">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-10 offset-xxl-1">
+                    <article class="article-post">
+                        <img align="right" loading="lazy" src="images/sections/section-about/about-image.jpg" width="645" height="456" alt="Alt Text!">
+                        <p>
+                            <strong>
+                                Солидная часть нашего ассортимента – это продукция Apecs («Апекс»). Это один из крупнейших российских брендов по производству замков,
+                            </strong>
+                        </p>
+                        <p>
+                            дверной и оконной фурнитуры (доводчики, глазки, петли, ручки) работающий на рынке с 1992 года. Мы также являемся официальным дилером компаний: Гарантийные обязательства действуют на все виды доставки и способы оплаты. Полный пакет необходимых документов для товара идёт к каждой покупке.
+                        </p>
+                        <p>
+                            Гарантия на все товары, купленные в компании «Замки-Ключи», составляет 2 года, в течение которых может быть произведён ремонт или замена товара. При этом для некоторых товаров может быть указан и другой срок.
+                        </p>
+            
+                        <h2>Заголовок 2го уровня</h2>
+                        <p>
+                            Солидная часть нашего ассортимента – это продукция Apecs («Апекс»). Это один из крупнейших российских брендов по производству замков,
+                            дверной и оконной фурнитуры (доводчики, глазки, петли, ручки) работающий на рынке с 1992 года. Мы также являемся официальным дилером компаний:
+                            Гарантийные обязательства действуют на все виды
+                        </p>
+                        <img align="left" loading="lazy" src="images/sections/section-about/about-image.jpg" width="572" height="572" alt="Alt Text!">
+                        <p>
+                            Мастер-Система – комплексная система, которая объединяет все установленные дверные замки в общую группу, функционирующую по определенным правилам управления доступом. Смысл создания подобной системы заключается в том, что один человек, обладающий нужным ключом, может открыть только определенные двери в соответствии с установленными правилами. Другими словами, установленные правила определяют, кто и какие двери может открыть, имея ключ.
+                        </p>
+                        <p>
+                            Мастер-системы могут быть установлены для использования юридическими и частными лицами.
+                        </p>
+                        <p>
+                            Мастер-системы эффективно используются не только при необходимости создания многоуровневого доступа на крупных промышленных комплексах, но и в сооружениях бытового типа.
+                        </p>
+                        <p>
+                            считать ее применение в офисе, когда каждый сотрудник компании из отдела продаж, рекламы и снабжения имеют собственные кабинеты. Организация мастер системы будет выглядеть следующим образом:
+                        </p>
+            
+                        <h3>Заголовок 3го уровня</h3>
+                        <p>
+                            Солидная часть нашего ассортимента – это <a href="#">продукция Apecs («Апекс»)</a>. Это один из крупнейших российских брендов по производству замков, дверной и оконной фурнитуры (доводчики, глазки, петли, ручки) работающий на рынке с 1992 года. Мы также являемся официальным дилером компаний: Гарантийные обязательства действуют на все виды
+                        </p>
+                        <ul>
+                            <li>увидите десятки одинаковых объявлений диспетчеров, а не специалистов</li>
+                            <li>фото в объявлении может не соответствовать приехавшему мастеру</li>
+                            <li>объявление может разместить мошенник</li>
+                            <li>показанная цена ниже реальной в 2-3 и более раз</li>
+                            <li>по факту приезда цена вообще может оказаться в 5-6 раз выше, но отказываться будет уже поздно</li>
+                        </ul>
+                        <p>
+                            Солидная часть нашего ассортимента – это продукция Apecs («Апекс»). Это один из крупнейших российских брендов по производству замков, дверной и оконной фурнитуры (доводчики, глазки, петли, ручки) работающий на рынке с 1992 года. Мы также являемся официальным дилером компаний: Гарантийные обязательства действуют на все виды
+                        </p>
+                        <ol>
+                            <li>увидите десятки одинаковых объявлений диспетчеров, а не специалистов</li>
+                            <li>фото в объявлении может не соответствовать приехавшему мастеру</li>
+                            <li>объявление может разместить мошенник</li>
+                            <li>показанная цена ниже реальной в 2-3 и более раз</li>
+                            <li>по факту приезда цена вообще может оказаться в 5-6 раз выше, но отказываться будет уже поздно</li>
+                        </ol>
+                        <h4>Заголовок 4го уровня</h4>
+                        <p>
+                            Солидная часть нашего ассортимента – это продукция Apecs («Апекс»). Это один из крупнейших российских брендов по производству замков, дверной и оконной фурнитуры (доводчики, глазки, петли, ручки) работающий на рынке с 1992 года. Мы также являемся официальным дилером компаний: Гарантийные обязательства действуют на все виды
+                        </p>
+                        <p>
+                            <q>
+                                Солидная часть нашего ассортимента – это продукция Apecs («Апекс»). Это один из крупнейших российских брендов
+                            </q>
+                        </p>
+                        <blockquote>
+                            Стоимость вскрытия зависит от сложности самого замка и особенностей проведенной начальной установки замка в дверь. В целом, чем выше секретность (то есть чем дороже сам замок), тем сложнее и дороже его вскрыть.
+                        </blockquote>
+                        <p>
+                            Солидная часть нашего ассортимента – это продукция Apecs («Апекс»). Это один из крупнейших российских брендов по производству замков, дверной и оконной фурнитуры (доводчики, глазки, петли, ручки) работающий на рынке с 1992 года. Мы также являемся официальным дилером компаний: Гарантийные обязательства действуют на все виды
+                        </p>
+                        <h5>Заголовок 5го уровня</h5>
+                        <p>
+                            Солидная часть нашего ассортимента – это продукция Apecs («Апекс»). Это один из крупнейших российских брендов по производству замков, дверной и оконной фурнитуры (доводчики, глазки, петли, ручки) работающий на рынке с 1992 года. Мы также являемся официальным дилером компаний: Гарантийные обязательства действуют на все виды
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-hover" border="0" cellspacing="0"><colgroup width="85"></colgroup> <colgroup width="485"></colgroup> <colgroup width="85"></colgroup>
+                                <thead>
+                                    <th align="left" height="17">Наименование</th>
+                                    <th align="left">Описание</th>
+                                    <th align="left">Цена</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td align="left" height="77">Наличные</td>
+                                        <td align="left">Оплата при получении товара непосредственно курьеру или же при самовывозе,<br />в пункте выдачи компании. Перед оплатой обязательно нужно убедиться, что<br />товар не имеет брака.<br /><br /></td>
+                                        <td align="left">2 570 рублей</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" height="32">Оплата по выставленному счету</td>
+                                        <td align="left">На указанный адрес высылается счёт от компании. Как только деньги<br />переведены на указанный р/с и перевод подтверждён, то товар отправляется</td>
+                                        <td align="left">2 570 рублей</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" height="77">Наличные</td>
+                                        <td align="left">Оплата при получении товара непосредственно курьеру или же при самовывозе,<br />в пункте выдачи компании. Перед оплатой обязательно нужно убедиться, что<br />товар не имеет брака.<br /><br /></td>
+                                        <td align="left">2 570 рублей</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" height="32">Оплата по выставленному счету</td>
+                                        <td align="left">На указанный адрес высылается счёт от компании. Как только деньги<br />переведены на указанный р/с и перевод подтверждён, то товар отправляется</td>
+                                        <td align="left">2 570 рублей</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer-box section-dark flex-shrink-0 flex-grow-0">
+    <div class="container">
+        <div class="row d-lg-block d-xxl-flex">
+            <div class="footer-logo-container col-sm-6 col-md-4 col-lg-2 col-xl-auto col-xxl-3 order-md-1 float-lg-left">
+                <a href="index.html" class="footer-logo d-flex align-items-center">
+                    <div class="footer-logo-thumbnail">
+                        <img src="images/logo/logo-light.svg" width="52" height="44" alt="Замки и Ключи" class="footer-logo-media">
+                    </div>
+
+                    <div class="footer-logo-text">
+                        <div class="footer-logo-title">Замки <br class="d-xl-none" > и Ключи</div>
+                        <div class="footer-logo-subtitle d-none d-xl-block">Магазин дверных замков и фурнитуры</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="footer-catalog-container col-lg-10 col-xl-auto col-xxl d-none d-lg-block order-md-2 float-lg-right">
+                <ul class="footer-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between">
+                    <li class="footer-catalog-item col-auto col-xxl">
+                        <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="footer-catalog-thumbnail">
+                                <svg class="footer-catalog-media" width="26" height="26">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-lock"></use>
+                                </svg>
+                            </div>
+
+                            <div class="footer-catalog-text">Замки</div>
+                        </a>
+                    </li>
+
+                    <li class="footer-catalog-item col-auto col-xxl">
+                        <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="footer-catalog-thumbnail">
+                                <svg class="footer-catalog-media" width="18" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-handle"></use>
+                                </svg>
+                            </div>
+
+                            <div class="footer-catalog-text">Ручки</div>
+                        </a>
+                    </li>
+
+                    <li class="footer-catalog-item col-auto col-xxl">
+                        <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="footer-catalog-thumbnail">
+                                <svg class="footer-catalog-media" width="22" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-furniture"></use>
+                                </svg>
+                            </div>
+
+                            <div class="footer-catalog-text">Фурнитура</div>
+                        </a>
+                    </li>
+
+                    <li class="footer-catalog-item col-auto col-xxl">
+                        <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="footer-catalog-thumbnail">
+                                <svg class="footer-catalog-media" width="19" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-keys"></use>
+                                </svg>
+                            </div>
+
+                            <div class="footer-catalog-text">Копии ключей</div>
+                        </a>
+                    </li>
+
+                    <li class="footer-catalog-item col-auto col-xxl">
+                        <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
+                            <div class="footer-catalog-thumbnail">
+                                <svg class="footer-catalog-media" width="26" height="25">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-master"></use>
+                                </svg>
+                            </div>
+
+                            <div class="footer-catalog-text">Мастер-системы</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-devider w-100 clearfix d-none d-lg-block order-md-3"></div>
+
+            <div class="footer-copyright-container col-sm-6 col-md-4 col-lg-3 col-xl-2 order-md-6 order-lg-4 float-lg-left">
+                <div class="footer-copyright-block">
+                    <div class="footer-copyright-text">
+                        <p>&copy;&nbsp;2021</p>
+                        <p>Все права защищены, при любом копировани материалов ссылка на сайт источник обязательна</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-nav-container col-lg-2 col-xl-3 col-xxl-2 offset-xxl-1 d-none d-lg-block order-md-5 float-lg-left">
+                <ul class="footer-nav-list list-unstyled d-flex flex-column flex-wrap">
+                    <li class="footer-nav-item">
+                        <a href="services.html" class="footer-nav-link">Услуги</a
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#link" class="footer-nav-link">Доставка и оплата</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#link" class="footer-nav-link">Гарантии</a>
+                    </li>
+
+                    <li class="footer-nav-item">
+                        <a href="#link" class="footer-nav-link">О компании</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-contact-container col-md-8 col-lg-3 order-md-4 order-lg-6 float-lg-left">
+                <div class="row">
+                    <div class="footer-phone-container col-sm-6 col-lg-12">
+                        <ul class="footer-contact-list d-flex flex-column list-unstyled">
+                            <li class="footer-contact-item">
+                                <a href="tel:+74950957797" class="footer-contact">+7 (495) 095-77-97</a>
+                            </li>
+
+                            <li class="footer-contact-item">
+                                <a href="mailto:info@l-keys.ru" class="footer-contact">info@l-keys.ru</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-social-container col-sm-6 col-lg-12">
+                        <div class="footer-social-block">
+                            <a href="#link" class="footer-social footer-social-whatsapp d-flex align-items-center">
+                                <div class="footer-social-thumbnail">
+                                    <img src="images/icons/icon-whatsapp.svg" width="25" height="25" alt="WhatsApp" class="footer-social-media">
+                                </div>
+
+                                <div class="footer-social-text">Связаться по WhatsApp</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-search-container col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 offset-xl-1 offset-xxl-0 col order-md-7 float-lg-left">
+                <form class="footer-search search">
+                    <input type="search" class="footer-search-input search-input" placeholder="Поиск товаров" required="">
+                    <button type="button" class="footer-search-button search-button">
+                        <svg class="search-button-media" width="24" height="25">
+                            <use xlink:href="images/sprite.svg#icon-search"></use>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <div class="footer-develop-container col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-1 offset-xl-1 order-md-8 float-lg-right">
+                <a href="https://www.diol-it.ru/" class="footer-develop-link d-flex align-items-center align-items-xxl-end flex-xxl-column" target="_blank" >
+                    <div class="footer-develop-text text-nowrap">Разаработка сайта</div>
+
+                    <div class="footer-develop-thumbnail">
+                        <img loading="lazy" src="images/develop/logo-diol.svg" width="66" height="39" alt="Diol-it" class="footer-develop-image">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Offcanvas -->
+<div id="offcanvas" class="offcanvas d-xxl-none" >
+    <div class="offcanvas-dialog">
+        <div class="offcanvas-header">
+            <div class="form-row flex-nowrap align-items-center">
+                <div class="offcanvas-toggle-container col-auto">
+                    <button type="button" class="offcanvas-close close" >
+                        <svg class="close-media" width="24" height="24">
+                            <use xlink:href="images/sprite.svg#icon-close"></use>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="offcanvas-location-container col d-md-none">
+                    <div class="offcanvas-location-block">
+                        <button type="button" class="offcanvas-location-toggle d-flex align-items-center" data-toggle="modal" data-target="#modalLocation">
+                            <span class="offcanvas-location-thumbnail">
+                                <svg class="offcanvas-location-media" width="27" height="16">
+                                    <use xlink:href="images/sprite.svg#icon-location"></use>
+                                </svg>
+                            </span>
+
+                            <span class="offcanvas-location-text text-truncate">
+                                <span class="offcanvas-location-region">Москва</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="offcanvas-account-container col-auto d-md-none">
+                    <ul class="offcanvas-account-list list-unstyled row">
+                        <li class="offcanvas-account-item col-auto">
+                            <a href="compare.html" class="offcanvas-account-link d-flex align-items-center">
+                                <span class="offcanvas-account-thumbnail">
+                                    <svg class="offcanvas-account-media" width="28" height="25">
+                                        <use xlink:href="images/sprite.svg#icon-compare"></use>
+                                    </svg>
+                                </span>
+
+                                <span class="offcanvas-account-badge d-flex align-items-center justify-content-center">0</span>
+                            </a>
+                        </li>
+
+                        <li class="offcanvas-account-item col-auto">
+                            <a href="cart.html" class="offcanvas-account-link d-flex align-items-center">
+                                <span class="offcanvas-account-thumbnail">
+                                    <svg class="offcanvas-account-media" width="28" height="25">
+                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
+                                    </svg>
+                                </span>
+
+                                <span class="offcanvas-account-badge d-flex align-items-center justify-content-center">6</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="offcanvas-body">
+            <div class="offcanvas-search-block d-md-none">
+                <form class="offcanvas-search search">
+                    <input type="search" class="offcanvas-search-input search-input" placeholder="Поиск товаров" required="">
+
+                    <button type="button" class="offcanvas-search-button search-button">
+                        <svg class="search-button-media" width="24" height="25">
+                            <use xlink:href="images/sprite.svg#icon-search"></use>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <div class="offcanvas-contact-block d-md-none">
+                <div class="form-row">
+                    <div class="col">
+                        <ul class="offcanvas-contact-list list-unstyled">
+                            <li class="offcanvas-contact-item">
+                                <a href="tel:+74950957797" class="offcanvas-contact-link">+7 (495) 095-77-97</a>
+                            </li>
+
+                            <li class="offcanvas-contact-item">
+                                <a href="mailto:info@l-keys.ru" class="offcanvas-contact-link">info@l-keys.ru</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-auto">
+                        <a href="#link" class="offcanvas-social-link d-flex align-items-center">
+                            <span class="offcanvas-social-thumbnail">
+                                <img loading="lazy" src="images/icons/icon-whatsapp.svg" width="25" height="25" alt="WhatsApp" class="offcanvas-social-media">
+                            </span>
+
+                            <span class="offcanvas-social-text">WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="offcanvas-catalog-list list-unstyled d-md-none">
+                <li class="offcanvas-catalog-item has-children d-flex flex-wrap align-items-center">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="images/sprite.svg#icon-catalog-lock"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Замки</span>
+                    </a>
+
+                    <button type="button" class="offcanvas-catalog-megamenu-toggle d-flex align-items-center justify-content-center" >
+                        <svg class="offcanvas-catalog-megamenu-toggle-media" width="22" height="22">
+                            <use xlink:href="images/sprite.svg#icon-angle-right"></use>
+                        </svg>
+                    </button>
+
+                    <div class="megamenu-wrapper">
+                        <div class="megamenu-inner">
+                            <div class="row">
+                                <div class="megamenu-column col-6 col-md-3 col-xl">
+                                    <div class="megamenu-block">
+                                        <div class="megamenu-title title-h4 font-family-secondary">Тип замка</div>
+
+                                        <ul class="megamenu-list list-unstyled">
+                                            <li><a href="catalog.html">Цилиндры</a></li>
+                                            <li><a href="catalog.html">Врезные</a></li>
+                                            <li><a href="catalog.html">Навесные</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="megamenu-column col-6 col-md-3 col-xl">
+                                    <div class="megamenu-block">
+                                        <div class="megamenu-title title-h4 font-family-secondary">Конфигурация</div>
+
+                                        <ul class="megamenu-list list-unstyled">
+                                            <li><a href="catalog.html">Ключ-ключ</a></li>
+                                            <li><a href="catalog.html">Ключ/вертушка</a></li>
+                                            <li><a href="catalog.html">Ключ/шток</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="megamenu-column col-6 col-md-3 col-xl">
+                                    <div class="megamenu-block">
+                                        <div class="megamenu-title title-h4 font-family-secondary">Производитель</div>
+
+                                        <ul class="megamenu-list list-unstyled">
+                                            <li><a href="catalog.html">Киса</a></li>
+                                            <li><a href="catalog.html">Замочкин двор</a></li>
+                                            <li><a href="catalog.html">Еще произвродитель</a></li>
+                                            <li><a href="catalog.html">Ключково</a></li>
+                                            <li><a href="catalog.html">Замочкин</a></li>
+                                            <li><a href="catalog.html">И тд и тп</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="megamenu-column col-6 col-md-3 col-xl">
+                                    <div class="megamenu-block">
+                                        <div class="megamenu-title title-h4 font-family-secondary">По цвету</div>
+
+                                        <ul class="megamenu-list list-unstyled">
+                                            <li><a href="catalog.html">Белый</a></li>
+                                            <li><a href="catalog.html">Золотой</a></li>
+                                            <li><a href="catalog.html">Серый</a></li>
+                                            <li><a href="catalog.html">Алюминиевый</a></li>
+                                            <li><a href="catalog.html">Металлический</a></li>
+                                            <li><a href="catalog.html">Титановый</a></li>
+                                            <li><a href="catalog.html">Матовый</a></li>
+                                            <li><a href="catalog.html">Серобуромалиновый</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="megamenu-column col-6 col-md-3 col-xl">
+                                    <div class="megamenu-block">
+                                        <div class="megamenu-title title-h4 font-family-secondary">Безопасность</div>
+
+                                        <ul class="megamenu-list list-unstyled">
+                                            <li><a href="catalog.html">Низкая</a></li>
+                                            <li><a href="catalog.html">Средняя</a></li>
+                                            <li><a href="catalog.html">Нормальная</a></li>
+                                            <li><a href="catalog.html">Высокая</a></li>
+                                            <li><a href="catalog.html">Ультра</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="megamenu-column col-6 col-md-3 col-xl">
+                                    <div class="megamenu-block">
+                                        <div class="megamenu-title title-h4 font-family-secondary">Конфигурация</div>
+
+                                        <ul class="megamenu-list list-unstyled">
+                                            <li><a href="catalog.html">Ключ-ключ</a></li>
+                                            <li><a href="catalog.html">Ключ/вертушка</a></li>
+                                            <li><a href="catalog.html">Ключ/шток</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="megamenu-column col-6 col-md-3 col-xl">
+                                    <div class="megamenu-block">
+                                        <div class="megamenu-title title-h4 font-family-secondary">Производитель</div>
+
+                                        <ul class="megamenu-list list-unstyled">
+                                            <li><a href="catalog.html">Киса</a></li>
+                                            <li><a href="catalog.html">Замочкин двор</a></li>
+                                            <li><a href="catalog.html">Еще произвродитель</a></li>
+                                            <li><a href="catalog.html">Ключково</a></li>
+                                            <li><a href="catalog.html">Замочкин</a></li>
+                                            <li><a href="catalog.html">И тд и тп</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="megamenu-column col-6 col-md-3 col-xl">
+                                    <div class="megamenu-block">
+                                        <div class="megamenu-title title-h4 font-family-secondary">Безопасность</div>
+
+                                        <ul class="megamenu-list list-unstyled">
+                                            <li><a href="catalog.html">Низкая</a></li>
+                                            <li><a href="catalog.html">Средняя</a></li>
+                                            <li><a href="catalog.html">Нормальная</a></li>
+                                            <li><a href="catalog.html">Высокая</a></li>
+                                            <li><a href="catalog.html">Ультра</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="offcanvas-catalog-item">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="images/sprite.svg#icon-catalog-handle"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Ручки</span>
+                    </a>
+                </li>
+
+                <li class="offcanvas-catalog-item">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="images/sprite.svg#icon-catalog-furniture"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Фурнитура</span>
+                    </a>
+                </li>
+
+                <li class="offcanvas-catalog-item">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="images/sprite.svg#icon-catalog-keys"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Копии ключей</span>
+                    </a>
+                </li>
+
+                <li class="offcanvas-catalog-item">
+                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                        <span class="offcanvas-catalog-thumbnail">
+                            <svg class="header-catalog-media" width="26" height="26">
+                                <use xlink:href="images/sprite.svg#icon-catalog-master"></use>
+                            </svg>
+                        </span>
+
+                        <span class="offcanvas-catalog-text">Мастер-системы</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="offcanvas-nav-list list-unstyled">
+                <li class="offcanvas-nav-item">
+                    <a href="#link" class="offcanvas-nav-link">Услуги</a>
+                </li>
+                <li class="offcanvas-nav-item">
+                    <a href="#link" class="offcanvas-nav-link">Доставка и оплата</a>
+                </li>
+                <li class="offcanvas-nav-item">
+                    <a href="#link" class="offcanvas-nav-link">Гарантии</a>
+                </li>
+                <li class="offcanvas-nav-item">
+                    <a href="#link" class="offcanvas-nav-link">О компании</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalLocation" tabindex="-1" aria-labelledby="modalLocationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title title-h3 font-family-secondary" id="modalLocationLabel">Ваш город</h3>
+
+                <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                    <svg class="close-media" width="24" height="24">
+                        <use xlink:href="images/sprite.svg#icon-close"></use>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="" class="form-modal form" >
+                    <div class="form-group">
+                        <select name="" id="modalLocationSelect" class="custom-control custom-select custom-select-lg" style="width: 100%;" >
+                            <option value="Москва">Москва</option>
+                            <option value="Санкт-Петербург">Санкт-Петербург</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg" >Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalQuickOrder" tabindex="-1" aria-labelledby="modalQuickOrderLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title title-h3 font-family-secondary" id="modalQuickOrderLabel">Быстрый заказ</h3>
+
+                <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
+                    <svg class="close-media" width="24" height="24">
+                        <use xlink:href="images/sprite.svg#icon-close"></use>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="" class="form-modal form" >
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Имя" >
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Почта *" required >
+                    </div>
+
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Телефон *" required >
+                    </div>
+
+                    <button type="submit" class="btn btn-lg" >Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.6.0/js/dist/util.js"></script>
+    <script src="vendor/bootstrap-4.6.0/js/dist/collapse.js"></script>
+    <script src="vendor/bootstrap-4.6.0/js/dist/modal.js"></script>
+    <script src="vendor/bootstrap-4.6.0/js/dist/tooltip.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js"></script>
+    <script src="vendor/swiper/swiper.min.js"></script>
+    <script src="vendor/fancybox/fancybox.jquery.min.js"></script>
+
+    <script src="js/initial.js"></script>
+    <script src="js/window_size_helper.js"></script>
+    <script src="js/backdrop.js"></script>
+    <script src="js/offcanvas.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/sliders.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/fancybox.js"></script>
+    <script src="js/tooltip.js"></script>
+</body>
+</html>

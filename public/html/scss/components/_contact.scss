@@ -5,6 +5,7 @@
     a[href^="tel:"] {
         border: none;
         font-family: $f-secondary;
+        white-space: nowrap;
     }
 
     .contact-title {

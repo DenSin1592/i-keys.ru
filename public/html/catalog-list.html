@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="catalog-page d-flex flex-column" >
-    <header class="header-box flex-shrink-0 flex-grow-1 compensate-for-scrollbar">
+    <header class="header-box flex-shrink-0 flex-grow-1 is-fixed compensate-for-scrollbar">
         <div class="container">
             <div class="row flex-nowrap flex-md-wrap align-items-center">
                 <div class="header-location-container col-auto d-none d-lg-block">
                     <button type="button" class="header-location-toggle d-flex align-items-center" data-toggle="modal" data-target="#modalLocation" >
                         <div class="header-location-thumbnail d-none d-xl-block">
                             <svg class="header-location-media" width="27" height="16">
-                                <use xlink:href="/images/sprite.svg#icon-location"></use>
+                                <use xlink:href="images/sprite.svg#icon-location"></use>
                             </svg>
                         </div>
 
@@ -37,19 +37,19 @@
                 <div class="header-nav-container col-auto d-none d-xxl-block">
                     <ul class="header-nav-list list-unstyled d-flex flex-wrap">
                         <li class="header-nav-item">
-                            <a href="#link" class="header-nav-link">Услуги</a>
+                            <a href="services.html" class="header-nav-link">Услуги</a>
                         </li>
 
                         <li class="header-nav-item">
-                            <a href="#link" class="header-nav-link">Доставка и оплата</a>
+                            <a href="text-page.html" class="header-nav-link">Доставка и оплата</a>
                         </li>
 
                         <li class="header-nav-item">
-                            <a href="#link" class="header-nav-link">Гарантии</a>
+                            <a href="text-page.html" class="header-nav-link">Гарантии</a>
                         </li>
 
                         <li class="header-nav-item">
-                            <a href="#link" class="header-nav-link">О компании</a>
+                            <a href="text-page.html" class="header-nav-link">О компании</a>
                         </li>
                     </ul>
                 </div>
@@ -93,7 +93,7 @@
                     <button type="button" class="header-search-toggle d-flex d-lg-none align-items-center" >
                         <span class="header-search-thumbnail">
                             <svg class="header-search-media" width="24" height="25">
-                                <use xlink:href="/images/sprite.svg#icon-search"></use>
+                                <use xlink:href="images/sprite.svg#icon-search"></use>
                             </svg>
                         </span>
 
@@ -105,7 +105,7 @@
                         
                         <button type="button" class="header-search-button search-button" >
                             <svg class="search-button-media" width="24" height="25">
-                                <use xlink:href="/images/sprite.svg#icon-search"></use>
+                                <use xlink:href="images/sprite.svg#icon-search"></use>
                             </svg>
                         </button>
                     </form>
@@ -117,7 +117,7 @@
                             <a href="#link" class="header-account d-flex align-items-center">
                                 <div class="header-account-thumbnail">
                                     <svg class="header-account-media" width="28" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-compare"></use>
+                                        <use xlink:href="images/sprite.svg#icon-compare"></use>
                                     </svg>
                                 </div>
 
@@ -130,7 +130,7 @@
                             <a href="#link" class="header-account d-flex align-items-center">
                                 <div class="header-account-thumbnail">
                                     <svg class="header-account-media" width="28" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                     </svg>
                                 </div>
 
@@ -143,24 +143,141 @@
                 <div class="header-devider w-100 d-none d-md-block"></div>
 
                 <div class="header-catalog-container col d-none d-md-block order-lg-2">
-                    <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between">
-                        <li class="header-catalog-item col-auto col-xxl">
+                    <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between justify-content-xl-end">
+                        <li class="header-catalog-item col-auto col-xxl d-flex has-children">
                             <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="header-catalog-thumbnail">
                                     <svg class="header-catalog-media" width="26" height="26">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-lock"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-lock"></use>
                                     </svg>
                                 </div>
 
                                 <div class="header-catalog-text">Замки</div>
                             </a>
+
+                            <div class="megamenu-wrapper">
+                                <div class="megamenu-inner">
+                                    <div class="row">
+                                        <div class="megamenu-column col-3 col-xl">
+                                            <div class="megamenu-block">
+                                                <div class="megamenu-title title-h4 font-family-secondary">Тип замка</div>
+    
+                                                <ul class="megamenu-list list-unstyled">
+                                                    <li><a href="catalog.html">Цилиндры</a></li>
+                                                    <li><a href="catalog.html">Врезные</a></li>
+                                                    <li><a href="catalog.html">Навесные</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="megamenu-column col-3 col-xl">
+                                            <div class="megamenu-block">
+                                                <div class="megamenu-title title-h4 font-family-secondary">Конфигурация</div>
+    
+                                                <ul class="megamenu-list list-unstyled">
+                                                    <li><a href="catalog.html">Ключ-ключ</a></li>
+                                                    <li><a href="catalog.html">Ключ/вертушка</a></li>
+                                                    <li><a href="catalog.html">Ключ/шток</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="megamenu-column col-3 col-xl">
+                                            <div class="megamenu-block">
+                                                <div class="megamenu-title title-h4 font-family-secondary">Производитель</div>
+    
+                                                <ul class="megamenu-list list-unstyled">
+                                                    <li><a href="catalog.html">Киса</a></li>
+                                                    <li><a href="catalog.html">Замочкин двор</a></li>
+                                                    <li><a href="catalog.html">Еще произвродитель</a></li>
+                                                    <li><a href="catalog.html">Ключково</a></li>
+                                                    <li><a href="catalog.html">Замочкин</a></li>
+                                                    <li><a href="catalog.html">И тд и тп</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="megamenu-column col-3 col-xl">
+                                            <div class="megamenu-block">
+                                                <div class="megamenu-title title-h4 font-family-secondary">По цвету</div>
+    
+                                                <ul class="megamenu-list list-unstyled">
+                                                    <li><a href="catalog.html">Белый</a></li>
+                                                    <li><a href="catalog.html">Золотой</a></li>
+                                                    <li><a href="catalog.html">Серый</a></li>
+                                                    <li><a href="catalog.html">Алюминиевый</a></li>
+                                                    <li><a href="catalog.html">Металлический</a></li>
+                                                    <li><a href="catalog.html">Титановый</a></li>
+                                                    <li><a href="catalog.html">Матовый</a></li>
+                                                    <li><a href="catalog.html">Серобуромалиновый</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="megamenu-column col-3 col-xl">
+                                            <div class="megamenu-block">
+                                                <div class="megamenu-title title-h4 font-family-secondary">Безопасность</div>
+    
+                                                <ul class="megamenu-list list-unstyled">
+                                                    <li><a href="catalog.html">Низкая</a></li>
+                                                    <li><a href="catalog.html">Средняя</a></li>
+                                                    <li><a href="catalog.html">Нормальная</a></li>
+                                                    <li><a href="catalog.html">Высокая</a></li>
+                                                    <li><a href="catalog.html">Ультра</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="megamenu-column col-3 col-xl">
+                                            <div class="megamenu-block">
+                                                <div class="megamenu-title title-h4 font-family-secondary">Конфигурация</div>
+    
+                                                <ul class="megamenu-list list-unstyled">
+                                                    <li><a href="catalog.html">Ключ-ключ</a></li>
+                                                    <li><a href="catalog.html">Ключ/вертушка</a></li>
+                                                    <li><a href="catalog.html">Ключ/шток</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="megamenu-column col-3 col-xl">
+                                            <div class="megamenu-block">
+                                                <div class="megamenu-title title-h4 font-family-secondary">Производитель</div>
+    
+                                                <ul class="megamenu-list list-unstyled">
+                                                    <li><a href="catalog.html">Киса</a></li>
+                                                    <li><a href="catalog.html">Замочкин двор</a></li>
+                                                    <li><a href="catalog.html">Еще произвродитель</a></li>
+                                                    <li><a href="catalog.html">Ключково</a></li>
+                                                    <li><a href="catalog.html">Замочкин</a></li>
+                                                    <li><a href="catalog.html">И тд и тп</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="megamenu-column col-3 col-xl">
+                                            <div class="megamenu-block">
+                                                <div class="megamenu-title title-h4 font-family-secondary">Безопасность</div>
+    
+                                                <ul class="megamenu-list list-unstyled">
+                                                    <li><a href="catalog.html">Низкая</a></li>
+                                                    <li><a href="catalog.html">Средняя</a></li>
+                                                    <li><a href="catalog.html">Нормальная</a></li>
+                                                    <li><a href="catalog.html">Высокая</a></li>
+                                                    <li><a href="catalog.html">Ультра</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
 
-                        <li class="header-catalog-item col-auto col-xxl">
+                        <li class="header-catalog-item col-auto col-xxl d-flex">
                             <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="header-catalog-thumbnail">
                                     <svg class="header-catalog-media" width="18" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-handle"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-handle"></use>
                                     </svg>
                                 </div>
 
@@ -168,11 +285,11 @@
                             </a>
                         </li>
 
-                        <li class="header-catalog-item col-auto col-xxl">
+                        <li class="header-catalog-item col-auto col-xxl d-flex">
                             <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="header-catalog-thumbnail">
                                     <svg class="header-catalog-media" width="22" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-furniture"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-furniture"></use>
                                     </svg>
                                 </div>
 
@@ -180,11 +297,11 @@
                             </a>
                         </li>
 
-                        <li class="header-catalog-item col-auto col-xxl">
+                        <li class="header-catalog-item col-auto col-xxl d-flex">
                             <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="header-catalog-thumbnail">
                                     <svg class="header-catalog-media" width="19" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-keys"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-keys"></use>
                                     </svg>
                                 </div>
 
@@ -192,11 +309,11 @@
                             </a>
                         </li>
 
-                        <li class="header-catalog-item col-auto col-xxl">
+                        <li class="header-catalog-item col-auto col-xxl d-flex">
                             <a href="catalog.html" class="header-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="header-catalog-thumbnail">
                                     <svg class="header-catalog-media" width="26" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-master"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-master"></use>
                                     </svg>
                                 </div>
 
@@ -237,7 +354,7 @@
                     <div class="catalog-aside-container col-xl-3">
                         <button type="button" class="filter-toggle d-block d-xl-none text-center" >
                             <svg class="filter-toggle-media" width="24" height="24">
-                                <use xlink:href="/images/sprite.svg#icon-filter"></use>
+                                <use xlink:href="images/sprite.svg#icon-filter"></use>
                             </svg>
                             Фильтр
                         </button>
@@ -246,7 +363,7 @@
                             <div class="filter-header d-none d-xl-block">
                                 <div class="filter-title title-h3 text-uppercase">
                                     <svg class="filter-title-media" width="33" height="30">
-                                        <use xlink:href="/images/sprite.svg#icon-filter"></use>
+                                        <use xlink:href="images/sprite.svg#icon-filter"></use>
                                     </svg>
                                     Фильтр
                                 </div>
@@ -306,35 +423,35 @@
                                                     <input type="radio" value="1" id="filter-security-1" class="filter-security-input" name="filter-security">
                                                     <label for="filter-security-1" class="filter-security-label">
                                                         <svg class="filter-security-media" width="22" height="30">
-                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-security"></use>
                                                         </svg>
                                                     </label>
     
                                                     <input type="radio" value="2" id="filter-security-2" class="filter-security-input" name="filter-security">
                                                     <label for="filter-security-2" class="filter-security-label">
                                                         <svg class="filter-security-media" width="22" height="30">
-                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-security"></use>
                                                         </svg>
                                                     </label>
     
                                                     <input type="radio" value="3" id="filter-security-3" class="filter-security-input" name="filter-security">
                                                     <label for="filter-security-3" class="filter-security-label">
                                                         <svg class="filter-security-media" width="22" height="30">
-                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-security"></use>
                                                         </svg>
                                                     </label>
     
                                                     <input type="radio" value="4" id="filter-security-4" class="filter-security-input" name="filter-security">
                                                     <label for="filter-security-4" class="filter-security-label">
                                                         <svg class="filter-security-media" width="22" height="30">
-                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-security"></use>
                                                         </svg>
                                                     </label>
     
                                                     <input type="radio" value="5" id="filter-security-5" class="filter-security-input" name="filter-security">
                                                     <label for="filter-security-5" class="filter-security-label">
                                                         <svg class="filter-security-media" width="22" height="30">
-                                                            <use xlink:href="/images/sprite.svg#icon-security"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-security"></use>
                                                         </svg>
                                                     </label>
                                                 </div>
@@ -456,7 +573,9 @@
                                                             <input type="checkbox" id="filter-option-configuration-1" class="filter-option-input">
                                                             <label for="filter-option-configuration-1" class="filter-option-label">
                                                                 Ключ-ключ
-                                                                <img loading="lazy" src="images/filter/filter-configuration-icon-1.png" width="66" height="16" alt="Ключ-ключ" class="filter-option-media" >
+                                                                <svg class="filter-option-media" width="66" height="16">
+                                                                    <use xlink:href="images/sprite.svg#icon-type-1"></use>
+                                                                </svg>
                                                             </label>
                                                         </div>
                                                     </li>
@@ -466,7 +585,9 @@
                                                             <input type="checkbox" id="filter-option-configuration-2" class="filter-option-input">
                                                             <label for="filter-option-configuration-2" class="filter-option-label">
                                                                 Ключ/вертушка
-                                                                <img loading="lazy" src="images/filter/filter-configuration-icon-2.png" width="47" height="16" alt="Ключ/вертушка" class="filter-option-media" >
+                                                                <svg class="filter-option-media" width="47" height="16">
+                                                                    <use xlink:href="images/sprite.svg#icon-type-2"></use>
+                                                                </svg>
                                                             </label>
                                                         </div>
                                                     </li>
@@ -476,7 +597,9 @@
                                                             <input type="checkbox" id="filter-option-configuration-3" class="filter-option-input">
                                                             <label for="filter-option-configuration-3" class="filter-option-label">
                                                                 Ключ/шток
-                                                                <img loading="lazy" src="images/filter/filter-configuration-icon-3.png" width="60" height="16" alt="Ключ/шток" class="filter-option-media" >
+                                                                <svg class="filter-option-media" width="60" height="16">
+                                                                    <use xlink:href="images/sprite.svg#icon-type-3"></use>
+                                                                </svg>
                                                             </label>
                                                         </div>
                                                     </li>
@@ -657,7 +780,7 @@
                                 <div class="col-auto">
                                     <div class="catalog-selected-options-title">
                                         <svg class="catalog-selected-options-media" width="15" height="15">
-                                            <use xlink:href="/images/sprite.svg#icon-filter"></use>
+                                            <use xlink:href="images/sprite.svg#icon-filter"></use>
                                         </svg>
                                         Выбранные фильтры
                                     </div>
@@ -670,7 +793,7 @@
                                                 Лучшие товары
                                                 <button type="button" class="catalog-selected-option-remove">
                                                     <svg class="catalog-selected-option-media" width="8" height="8">
-                                                        <use xlink:href="/images/sprite.svg#icon-close"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-close"></use>
                                                     </svg>
                                                 </button>
                                             </div>
@@ -681,7 +804,7 @@
                                                 Средняя безопасность
                                                 <button type="button" class="catalog-selected-option-remove">
                                                     <svg class="catalog-selected-option-media" width="8" height="8">
-                                                        <use xlink:href="/images/sprite.svg#icon-close"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-close"></use>
                                                     </svg>
                                                 </button>
                                             </div>
@@ -692,7 +815,7 @@
                                                 Медный цвет
                                                 <button type="button" class="catalog-selected-option-remove">
                                                     <svg class="catalog-selected-option-media" width="8" height="8">
-                                                        <use xlink:href="/images/sprite.svg#icon-close"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-close"></use>
                                                     </svg>
                                                 </button>
                                             </div>
@@ -702,7 +825,7 @@
                                             <button type="button" class="catalog-selected-option-reset">
                                                 Сбросить все
                                                 <svg class="catalog-selected-option-media" width="8" height="8">
-                                                    <use xlink:href="/images/sprite.svg#icon-close"></use>
+                                                    <use xlink:href="images/sprite.svg#icon-close"></use>
                                                 </svg>
                                             </button>
                                         </li>
@@ -740,7 +863,7 @@
                                             <li class="catalog-view-item active">
                                                 <button type="button" class="catalog-view-button" >
                                                     <svg class="catalog-view-media" width="32" height="32">
-                                                        <use xlink:href="/images/sprite.svg#icon-grid"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-grid"></use>
                                                     </svg>
                                                 </button>
                                             </li>
@@ -748,7 +871,7 @@
                                             <li class="catalog-view-item">
                                                 <button type="button" class="catalog-view-button" >
                                                     <svg class="catalog-view-media" width="32" height="32">
-                                                        <use xlink:href="/images/sprite.svg#icon-list"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-list"></use>
                                                     </svg>
                                                 </button>
                                             </li>
@@ -767,24 +890,24 @@
                                                 <div class="card-product-badges d-flex">
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="39" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-coding"></use>
                                                         </svg>
                                                     </div>
         
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="45" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-no-keys"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="card-product-thumbnail">
+                                                <a href="product.html" class="card-product-thumbnail">
                                                     <img loading="lazy" src="uploads/catalog/product-image-1.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
-                                                </div>
+                                                </a>
                                             </div>
 
                                             <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
-                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+                                                <a href="product.html" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
         
                                                 <div class="card-product-info-list d-sm-flex">
                                                     <div class="card-product-size-block card-product-info-block d-flex">
@@ -827,8 +950,8 @@
 
                                             <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <div class="card-product-price-block d-flex flex-wrap">
-                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
-                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                    <div class="card-product-price">187<span class="rouble">руб.</span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble">руб.</span></div>
                                                 </div>
 
                                                 <div class="card-product-sale-price text-danger">Экономия 13%</div>
@@ -837,7 +960,7 @@
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                                     </svg>
                                                     Купить
                                                 </button>
@@ -853,24 +976,24 @@
                                                 <div class="card-product-badges d-flex">
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="39" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-coding"></use>
                                                         </svg>
                                                     </div>
         
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="45" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-no-keys"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
 
-                                                <div class="card-product-thumbnail">
+                                                <a href="product.html" class="card-product-thumbnail">
                                                     <img loading="lazy" src="uploads/catalog/product-image-2.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
-                                                </div>
+                                                </a>
                                             </div>
 
                                             <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
-                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+                                                <a href="product.html" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
 
                                                 <div class="card-product-info-list d-sm-flex">
                                                     <div class="card-product-size-block card-product-info-block d-flex">
@@ -913,8 +1036,8 @@
 
                                             <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <div class="card-product-price-block d-flex flex-wrap">
-                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
-                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                    <div class="card-product-price">187<span class="rouble">руб.</span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble">руб.</span></div>
                                                 </div>
 
                                                 <div class="card-product-sale-price text-danger">Экономия 13%</div>
@@ -923,7 +1046,7 @@
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                                     </svg>
                                                     Купить
                                                 </button>
@@ -939,24 +1062,24 @@
                                                 <div class="card-product-badges d-flex">
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="39" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-coding"></use>
                                                         </svg>
                                                     </div>
         
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="45" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-no-keys"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
 
-                                                <div class="card-product-thumbnail">
+                                                <a href="product.html" class="card-product-thumbnail">
                                                     <img loading="lazy" src="uploads/catalog/product-image-3.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
-                                                </div>
+                                                </a>
                                             </div>
 
                                             <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
-                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+                                                <a href="product.html" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
 
                                                 <div class="card-product-info-list d-sm-flex">
                                                     <div class="card-product-size-block card-product-info-block d-flex">
@@ -999,8 +1122,8 @@
 
                                             <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <div class="card-product-price-block d-flex flex-wrap">
-                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
-                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                    <div class="card-product-price">187<span class="rouble">руб.</span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble">руб.</span></div>
                                                 </div>
 
                                                 <div class="card-product-sale-price text-danger">Экономия 13%</div>
@@ -1009,7 +1132,7 @@
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                                     </svg>
                                                     Купить
                                                 </button>
@@ -1025,24 +1148,24 @@
                                                 <div class="card-product-badges d-flex">
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="39" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-coding"></use>
                                                         </svg>
                                                     </div>
         
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="45" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-no-keys"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
 
-                                                <div class="card-product-thumbnail">
+                                                <a href="product.html" class="card-product-thumbnail">
                                                     <img loading="lazy" src="uploads/catalog/product-image-2.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
-                                                </div>
+                                                </a>
                                             </div>
 
                                             <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
-                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+                                                <a href="product.html" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
 
                                                 <div class="card-product-info-list d-sm-flex">
                                                     <div class="card-product-size-block card-product-info-block d-flex">
@@ -1085,8 +1208,8 @@
 
                                             <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <div class="card-product-price-block d-flex flex-wrap">
-                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
-                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                    <div class="card-product-price">187<span class="rouble">руб.</span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble">руб.</span></div>
                                                 </div>
 
                                                 <div class="card-product-sale-price text-danger">Экономия 13%</div>
@@ -1095,7 +1218,7 @@
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                                     </svg>
                                                     Купить
                                                 </button>
@@ -1129,24 +1252,24 @@
                                                 <div class="card-product-badges d-flex">
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="39" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-coding"></use>
                                                         </svg>
                                                     </div>
         
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="45" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-no-keys"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
 
-                                                <div class="card-product-thumbnail">
+                                                <a href="product.html" class="card-product-thumbnail">
                                                     <img loading="lazy" src="uploads/catalog/product-image-1.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
-                                                </div>
+                                                </a>
                                             </div>
 
                                             <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
-                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+                                                <a href="product.html" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
 
                                                 <div class="card-product-info-list d-sm-flex">
                                                     <div class="card-product-size-block card-product-info-block d-flex">
@@ -1189,8 +1312,8 @@
 
                                             <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <div class="card-product-price-block d-flex flex-wrap">
-                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
-                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                    <div class="card-product-price">187<span class="rouble">руб.</span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble">руб.</span></div>
                                                 </div>
 
                                                 <div class="card-product-sale-price text-danger">Экономия 13%</div>
@@ -1199,7 +1322,7 @@
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                                     </svg>
                                                     Купить
                                                 </button>
@@ -1215,24 +1338,24 @@
                                                 <div class="card-product-badges d-flex">
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="39" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-coding"></use>
                                                         </svg>
                                                     </div>
         
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="45" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-no-keys"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
 
-                                                <div class="card-product-thumbnail">
+                                                <a href="product.html" class="card-product-thumbnail">
                                                     <img loading="lazy" src="uploads/catalog/product-image-2.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
-                                                </div>
+                                                </a>
                                             </div>
 
                                             <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
-                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+                                                <a href="product.html" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
 
                                                 <div class="card-product-info-list d-sm-flex">
                                                     <div class="card-product-size-block card-product-info-block d-flex">
@@ -1275,8 +1398,8 @@
 
                                             <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <div class="card-product-price-block d-flex flex-wrap">
-                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
-                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                    <div class="card-product-price">187<span class="rouble">руб.</span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble">руб.</span></div>
                                                 </div>
 
                                                 <div class="card-product-sale-price text-danger">Экономия 13%</div>
@@ -1285,7 +1408,7 @@
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                                     </svg>
                                                     Купить
                                                 </button>
@@ -1301,24 +1424,24 @@
                                                 <div class="card-product-badges d-flex">
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="39" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-coding"></use>
                                                         </svg>
                                                     </div>
         
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="45" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-no-keys"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
 
-                                                <div class="card-product-thumbnail">
+                                                <a href="product.html" class="card-product-thumbnail">
                                                     <img loading="lazy" src="uploads/catalog/product-image-3.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
-                                                </div>
+                                                </a>
                                             </div>
 
                                             <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
-                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+                                                <a href="product.html" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
 
                                                 <div class="card-product-info-list d-sm-flex">
                                                     <div class="card-product-size-block card-product-info-block d-flex">
@@ -1361,8 +1484,8 @@
 
                                             <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <div class="card-product-price-block d-flex flex-wrap">
-                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
-                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                    <div class="card-product-price">187<span class="rouble">руб.</span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble">руб.</span></div>
                                                 </div>
 
                                                 <div class="card-product-sale-price text-danger">Экономия 13%</div>
@@ -1371,7 +1494,7 @@
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                                     </svg>
                                                     Купить
                                                 </button>
@@ -1387,24 +1510,24 @@
                                                 <div class="card-product-badges d-flex">
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="39" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-coding"></use>
                                                         </svg>
                                                     </div>
         
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="45" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-no-keys"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
 
-                                                <div class="card-product-thumbnail">
+                                                <a href="product.html" class="card-product-thumbnail">
                                                     <img loading="lazy" src="uploads/catalog/product-image-2.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
-                                                </div>
+                                                </a>
                                             </div>
 
                                             <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
-                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+                                                <a href="product.html" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
 
                                                 <div class="card-product-info-list d-sm-flex">
                                                     <div class="card-product-size-block card-product-info-block d-flex">
@@ -1447,8 +1570,8 @@
 
                                             <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <div class="card-product-price-block d-flex flex-wrap">
-                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
-                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                    <div class="card-product-price">187<span class="rouble">руб.</span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble">руб.</span></div>
                                                 </div>
 
                                                 <div class="card-product-sale-price text-danger">Экономия 13%</div>
@@ -1457,7 +1580,7 @@
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                                     </svg>
                                                     Купить
                                                 </button>
@@ -1473,24 +1596,24 @@
                                                 <div class="card-product-badges d-flex">
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="39" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-coding"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-coding"></use>
                                                         </svg>
                                                     </div>
         
                                                     <div class="card-product-badge">
                                                         <svg class="card-product-badge-media" width="45" height="45">
-                                                            <use xlink:href="/images/sprite.svg#icon-no-keys"></use>
+                                                            <use xlink:href="images/sprite.svg#icon-no-keys"></use>
                                                         </svg>
                                                     </div>
                                                 </div>
 
-                                                <div class="card-product-thumbnail">
+                                                <a href="product.html" class="card-product-thumbnail">
                                                     <img loading="lazy" src="uploads/catalog/product-image-1.jpg" alt="Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01" class="card-product-media">
-                                                </div>
+                                                </a>
                                             </div>
 
                                             <div class="card-product-summary-container col-9 col-sm-10 col-md d-md-flex flex-md-column justify-content-md-center">
-                                                <a href="#link" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
+                                                <a href="product.html" class="card-product-title">Цилиндр с вертушкой Фабрика замков E AL 60 CP Т01</a>
 
                                                 <div class="card-product-info-list d-sm-flex">
                                                     <div class="card-product-size-block card-product-info-block d-flex">
@@ -1533,8 +1656,8 @@
 
                                             <div class="card-product-price-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <div class="card-product-price-block d-flex flex-wrap">
-                                                    <div class="card-product-price">187<span class="rouble" ></span></div>
-                                                    <div class="card-product-old-price">499<span class="rouble" ></span></div>
+                                                    <div class="card-product-price">187<span class="rouble">руб.</span></div>
+                                                    <div class="card-product-old-price">499<span class="rouble">руб.</span></div>
                                                 </div>
 
                                                 <div class="card-product-sale-price text-danger">Экономия 13%</div>
@@ -1543,7 +1666,7 @@
                                             <div class="card-product-cart-container col-9 col-sm-10 col-md-auto offset-3 offset-sm-2 offset-md-0 d-md-flex flex-md-column justify-content-md-center">
                                                 <button type="button" class="card-product-cart d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#modalAddToCart" >
                                                     <svg class="card-product-cart-media d-none d-lg-inline" width="16" height="14">
-                                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
+                                                        <use xlink:href="images/sprite.svg#icon-cart"></use>
                                                     </svg>
                                                     Купить
                                                 </button>
@@ -1581,7 +1704,7 @@
                                 <li class="page-item next" aria-label="Next" >
                                     <a class="page-link" href="catalog.html">
                                         <svg class="page-media" width="18" height="18">
-                                            <use xlink:href="/images/sprite.svg#icon-chevron-right-solid"></use>
+                                            <use xlink:href="images/sprite.svg#icon-chevron-right-solid"></use>
                                         </svg>
                                     </a>
                                 </li>
@@ -1627,7 +1750,7 @@
                                 </div>
 
                                 <div class="card-content col align-self-center">
-                                    <a href="#link" class="card-title title-h4" >Заедает замок? <br> Отремонтируем!</a>
+                                    <a href="text-page.html" class="card-title title-h4" >Заедает замок? <br> Отремонтируем!</a>
                                 </div>
                             </div>
                         </div>
@@ -1641,7 +1764,7 @@
                                 </div>
 
                                 <div class="card-content col align-self-center">
-                                    <a href="#link" class="card-title title-h4" >Сломался замок? <br> Вскроем дверь и заменим замок!</a>
+                                    <a href="text-page.html" class="card-title title-h4" >Сломался замок? <br> Вскроем дверь и заменим замок!</a>
                                 </div>
                             </div>
                         </div>
@@ -1655,7 +1778,7 @@
                                 </div>
 
                                 <div class="card-content col align-self-center">
-                                    <a href="#link" class="card-title title-h4" >Потеряли ключ? <br> Перекодируем замок!</a>
+                                    <a href="text-page.html" class="card-title title-h4" >Потеряли ключ? <br> Перекодируем замок!</a>
                                 </div>
                             </div>
                         </div>
@@ -1687,7 +1810,7 @@
                             <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="footer-catalog-thumbnail">
                                     <svg class="footer-catalog-media" width="26" height="26">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-lock"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-lock"></use>
                                     </svg>
                                 </div>
 
@@ -1699,7 +1822,7 @@
                             <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="footer-catalog-thumbnail">
                                     <svg class="footer-catalog-media" width="18" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-handle"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-handle"></use>
                                     </svg>
                                 </div>
 
@@ -1711,7 +1834,7 @@
                             <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="footer-catalog-thumbnail">
                                     <svg class="footer-catalog-media" width="22" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-furniture"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-furniture"></use>
                                     </svg>
                                 </div>
 
@@ -1723,7 +1846,7 @@
                             <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="footer-catalog-thumbnail">
                                     <svg class="footer-catalog-media" width="19" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-keys"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-keys"></use>
                                     </svg>
                                 </div>
 
@@ -1735,7 +1858,7 @@
                             <a href="catalog.html" class="footer-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="footer-catalog-thumbnail">
                                     <svg class="footer-catalog-media" width="26" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-catalog-master"></use>
+                                        <use xlink:href="images/sprite.svg#icon-catalog-master"></use>
                                     </svg>
                                 </div>
 
@@ -1759,19 +1882,19 @@
                 <div class="footer-nav-container col-lg-2 col-xl-3 col-xxl-2 offset-xxl-1 d-none d-lg-block order-md-5 float-lg-left">
                     <ul class="footer-nav-list list-unstyled d-flex flex-column flex-wrap">
                         <li class="footer-nav-item">
-                            <a href="#link" class="footer-nav-link">Услуги</a>
+                            <a href="services.html" class="footer-nav-link">Услуги</a
                         </li>
 
                         <li class="footer-nav-item">
-                            <a href="#link" class="footer-nav-link">Доставка и оплата</a>
+                            <a href="text-page.html" class="footer-nav-link">Доставка и оплата</a>
                         </li>
 
                         <li class="footer-nav-item">
-                            <a href="#link" class="footer-nav-link">Гарантии</a>
+                            <a href="text-page.html" class="footer-nav-link">Гарантии</a>
                         </li>
 
                         <li class="footer-nav-item">
-                            <a href="#link" class="footer-nav-link">О компании</a>
+                            <a href="text-page.html" class="footer-nav-link">О компании</a>
                         </li>
                     </ul>
                 </div>
@@ -1809,7 +1932,7 @@
                         <input type="search" class="footer-search-input search-input" placeholder="Поиск товаров" required="">
                         <button type="button" class="footer-search-button search-button">
                             <svg class="search-button-media" width="24" height="25">
-                                <use xlink:href="/images/sprite.svg#icon-search"></use>
+                                <use xlink:href="images/sprite.svg#icon-search"></use>
                             </svg>
                         </button>
                     </form>
@@ -1817,7 +1940,7 @@
 
                 <div class="footer-develop-container col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-1 offset-xl-1 order-md-8 float-lg-right">
                     <a href="https://www.diol-it.ru/" class="footer-develop-link d-flex align-items-center align-items-xxl-end flex-xxl-column" target="_blank" >
-                        <div class="footer-develop-text text-nowrap">Разаработка сайта</div>
+                        <div class="footer-develop-text text-nowrap">Разработка сайта</div>
 
                         <div class="footer-develop-thumbnail">
                             <img loading="lazy" src="images/develop/logo-diol.svg" width="66" height="39" alt="Diol-it" class="footer-develop-image">
@@ -1829,178 +1952,303 @@
     </footer>
 
     <!-- Offcanvas -->
-    <div id="offcanvas" class="offcanvas d-lg-none" >
-        <div class="offcanvas-header">
-            <div class="form-row flex-nowrap align-items-center">
-                <div class="offcanvas-toggle-container col-auto">
-                    <button type="button" class="offcanvas-close close" >
-                        <svg class="close-media" width="24" height="24">
-                            <use xlink:href="/images/sprite.svg#icon-close"></use>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="offcanvas-location-container col">
-                    <div class="offcanvas-location-block">
-                        <button type="button" class="offcanvas-location-toggle d-flex align-items-center" data-toggle="modal" data-target="#modalLocation">
-                            <span class="offcanvas-location-thumbnail">
-                                <svg class="offcanvas-location-media" width="27" height="16">
-                                    <use xlink:href="/images/sprite.svg#icon-location"></use>
-                                </svg>
-                            </span>
-    
-                            <span class="offcanvas-location-text text-truncate">
-                                <span class="offcanvas-location-region">Москва</span>
-                            </span>
+    <div id="offcanvas" class="offcanvas d-xxl-none" >
+        <div class="offcanvas-dialog">
+            <div class="offcanvas-header">
+                <div class="form-row flex-nowrap align-items-center">
+                    <div class="offcanvas-toggle-container col-auto">
+                        <button type="button" class="offcanvas-close close" >
+                            <svg class="close-media" width="24" height="24">
+                                <use xlink:href="images/sprite.svg#icon-close"></use>
+                            </svg>
                         </button>
                     </div>
-                </div>
-
-                <div class="offcanvas-account-container col-auto">
-                    <ul class="offcanvas-account-list list-unstyled row">
-                        <li class="offcanvas-account-item col-auto">
-                            <a href="compare.html" class="offcanvas-account-link d-flex align-items-center">
-                                <span class="offcanvas-account-thumbnail">
-                                    <svg class="offcanvas-account-media" width="28" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-compare"></use>
+    
+                    <div class="offcanvas-location-container col d-md-none">
+                        <div class="offcanvas-location-block">
+                            <button type="button" class="offcanvas-location-toggle d-flex align-items-center" data-toggle="modal" data-target="#modalLocation">
+                                <span class="offcanvas-location-thumbnail">
+                                    <svg class="offcanvas-location-media" width="27" height="16">
+                                        <use xlink:href="images/sprite.svg#icon-location"></use>
                                     </svg>
                                 </span>
-
-                                <span class="offcanvas-account-badge d-flex align-items-center justify-content-center">0</span>
-                            </a>
-                        </li>
-
-                        <li class="offcanvas-account-item col-auto">
-                            <a href="cart.html" class="offcanvas-account-link d-flex align-items-center">
-                                <span class="offcanvas-account-thumbnail">
-                                    <svg class="offcanvas-account-media" width="28" height="25">
-                                        <use xlink:href="/images/sprite.svg#icon-cart"></use>
-                                    </svg>
+    
+                                <span class="offcanvas-location-text text-truncate">
+                                    <span class="offcanvas-location-region">Москва</span>
                                 </span>
-
-                                <span class="offcanvas-account-badge d-flex align-items-center justify-content-center">6</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="offcanvas-body">
-            <div class="offcanvas-search-block">
-                <form class="offcanvas-search search">
-                    <input type="search" class="offcanvas-search-input search-input" placeholder="Поиск товаров" required="">
-                    
-                    <button type="button" class="offcanvas-search-button search-button">
-                        <svg class="search-button-media" width="24" height="25">
-                            <use xlink:href="/images/sprite.svg#icon-search"></use>
-                        </svg>
-                    </button>
-                </form>
-            </div>
-
-            <div class="offcanvas-contact-block">
-                <div class="form-row">
-                    <div class="col">
-                        <ul class="offcanvas-contact-list list-unstyled">
-                            <li class="offcanvas-contact-item">
-                                <a href="tel:+74950957797" class="offcanvas-contact-link">+7 (495) 095-77-97</a>
+                            </button>
+                        </div>
+                    </div>
+    
+                    <div class="offcanvas-account-container col-auto d-md-none">
+                        <ul class="offcanvas-account-list list-unstyled row">
+                            <li class="offcanvas-account-item col-auto">
+                                <a href="compare.html" class="offcanvas-account-link d-flex align-items-center">
+                                    <span class="offcanvas-account-thumbnail">
+                                        <svg class="offcanvas-account-media" width="28" height="25">
+                                            <use xlink:href="images/sprite.svg#icon-compare"></use>
+                                        </svg>
+                                    </span>
+    
+                                    <span class="offcanvas-account-badge d-flex align-items-center justify-content-center">0</span>
+                                </a>
                             </li>
-
-                            <li class="offcanvas-contact-item">
-                                <a href="mailto:info@l-keys.ru" class="offcanvas-contact-link">info@l-keys.ru</a>
+    
+                            <li class="offcanvas-account-item col-auto">
+                                <a href="cart.html" class="offcanvas-account-link d-flex align-items-center">
+                                    <span class="offcanvas-account-thumbnail">
+                                        <svg class="offcanvas-account-media" width="28" height="25">
+                                            <use xlink:href="images/sprite.svg#icon-cart"></use>
+                                        </svg>
+                                    </span>
+    
+                                    <span class="offcanvas-account-badge d-flex align-items-center justify-content-center">6</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
-
-                    <div class="col-auto">
-                        <a href="#link" class="offcanvas-social-link d-flex align-items-center">
-                            <span class="offcanvas-social-thumbnail">
-                                <img loading="lazy" src="images/icons/icon-whatsapp.svg" width="25" height="25" alt="WhatsApp" class="offcanvas-social-media">
-                            </span>
-    
-                            <span class="offcanvas-social-text">WhatsApp</span>
-                        </a>
-                    </div>
                 </div>
             </div>
-
-            <ul class="offcanvas-catalog-list list-unstyled">
-                <li class="offcanvas-catalog-item">
-                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
-                        <span class="offcanvas-catalog-thumbnail">
-                            <svg class="header-catalog-media" width="26" height="26">
-                                <use xlink:href="/images/sprite.svg#icon-catalog-lock"></use>
+    
+            <div class="offcanvas-body">
+                <div class="offcanvas-search-block d-md-none">
+                    <form class="offcanvas-search search">
+                        <input type="search" class="offcanvas-search-input search-input" placeholder="Поиск товаров" required="">
+    
+                        <button type="button" class="offcanvas-search-button search-button">
+                            <svg class="search-button-media" width="24" height="25">
+                                <use xlink:href="images/sprite.svg#icon-search"></use>
                             </svg>
-                        </span>
-
-                        <span class="offcanvas-catalog-text">Замки</span>
-                    </a>
-                </li>
-
-                <li class="offcanvas-catalog-item">
-                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
-                        <span class="offcanvas-catalog-thumbnail">
-                            <svg class="header-catalog-media" width="26" height="26">
-                                <use xlink:href="/images/sprite.svg#icon-catalog-handle"></use>
+                        </button>
+                    </form>
+                </div>
+    
+                <div class="offcanvas-contact-block d-md-none">
+                    <div class="form-row">
+                        <div class="col">
+                            <ul class="offcanvas-contact-list list-unstyled">
+                                <li class="offcanvas-contact-item">
+                                    <a href="tel:+74950957797" class="offcanvas-contact-link">+7 (495) 095-77-97</a>
+                                </li>
+    
+                                <li class="offcanvas-contact-item">
+                                    <a href="mailto:info@l-keys.ru" class="offcanvas-contact-link">info@l-keys.ru</a>
+                                </li>
+                            </ul>
+                        </div>
+    
+                        <div class="col-auto">
+                            <a href="#link" class="offcanvas-social-link d-flex align-items-center">
+                                <span class="offcanvas-social-thumbnail">
+                                    <img loading="lazy" src="images/icons/icon-whatsapp.svg" width="25" height="25" alt="WhatsApp" class="offcanvas-social-media">
+                                </span>
+    
+                                <span class="offcanvas-social-text">WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+                <ul class="offcanvas-catalog-list list-unstyled d-md-none">
+                    <li class="offcanvas-catalog-item has-children d-flex flex-wrap align-items-center">
+                        <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                            <span class="offcanvas-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="26" height="26">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-lock"></use>
+                                </svg>
+                            </span>
+    
+                            <span class="offcanvas-catalog-text">Замки</span>
+                        </a>
+    
+                        <button type="button" class="offcanvas-catalog-megamenu-toggle d-flex align-items-center justify-content-center" >
+                            <svg class="offcanvas-catalog-megamenu-toggle-media" width="22" height="22">
+                                <use xlink:href="images/sprite.svg#icon-angle-right"></use>
                             </svg>
-                        </span>
-
-                        <span class="offcanvas-catalog-text">Ручки</span>
-                    </a>
-                </li>
-
-                <li class="offcanvas-catalog-item">
-                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
-                        <span class="offcanvas-catalog-thumbnail">
-                            <svg class="header-catalog-media" width="26" height="26">
-                                <use xlink:href="/images/sprite.svg#icon-catalog-furniture"></use>
-                            </svg>
-                        </span>
-
-                        <span class="offcanvas-catalog-text">Фурнитура</span>
-                    </a>
-                </li>
-
-                <li class="offcanvas-catalog-item">
-                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
-                        <span class="offcanvas-catalog-thumbnail">
-                            <svg class="header-catalog-media" width="26" height="26">
-                                <use xlink:href="/images/sprite.svg#icon-catalog-keys"></use>
-                            </svg>
-                        </span>
-
-                        <span class="offcanvas-catalog-text">Копии ключей</span>
-                    </a>
-                </li>
-
-                <li class="offcanvas-catalog-item">
-                    <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
-                        <span class="offcanvas-catalog-thumbnail">
-                            <svg class="header-catalog-media" width="26" height="26">
-                                <use xlink:href="/images/sprite.svg#icon-catalog-master"></use>
-                            </svg>
-                        </span>
-
-                        <span class="offcanvas-catalog-text">Мастер-системы</span>
-                    </a>
-                </li>
-            </ul>
-
-            <ul class="offcanvas-nav-list list-unstyled">
-                <li class="offcanvas-nav-item">
-                    <a href="#link" class="offcanvas-nav-link">Услуги</a>
-                </li>
-                <li class="offcanvas-nav-item">
-                    <a href="#link" class="offcanvas-nav-link">Доставка и оплата</a>
-                </li>
-                <li class="offcanvas-nav-item">
-                    <a href="#link" class="offcanvas-nav-link">Гарантии</a>
-                </li>
-                <li class="offcanvas-nav-item">
-                    <a href="#link" class="offcanvas-nav-link">О компании</a>
-                </li>
-            </ul>
+                        </button>
+    
+                        <div class="megamenu-wrapper">
+                            <div class="megamenu-inner">
+                                <div class="row">
+                                    <div class="megamenu-column col-6 col-md-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Тип замка</div>
+    
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Цилиндры</a></li>
+                                                <li><a href="catalog.html">Врезные</a></li>
+                                                <li><a href="catalog.html">Навесные</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+    
+                                    <div class="megamenu-column col-6 col-md-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Конфигурация</div>
+    
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Ключ-ключ</a></li>
+                                                <li><a href="catalog.html">Ключ/вертушка</a></li>
+                                                <li><a href="catalog.html">Ключ/шток</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+    
+                                    <div class="megamenu-column col-6 col-md-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Производитель</div>
+    
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Киса</a></li>
+                                                <li><a href="catalog.html">Замочкин двор</a></li>
+                                                <li><a href="catalog.html">Еще произвродитель</a></li>
+                                                <li><a href="catalog.html">Ключково</a></li>
+                                                <li><a href="catalog.html">Замочкин</a></li>
+                                                <li><a href="catalog.html">И тд и тп</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+    
+                                    <div class="megamenu-column col-6 col-md-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">По цвету</div>
+    
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Белый</a></li>
+                                                <li><a href="catalog.html">Золотой</a></li>
+                                                <li><a href="catalog.html">Серый</a></li>
+                                                <li><a href="catalog.html">Алюминиевый</a></li>
+                                                <li><a href="catalog.html">Металлический</a></li>
+                                                <li><a href="catalog.html">Титановый</a></li>
+                                                <li><a href="catalog.html">Матовый</a></li>
+                                                <li><a href="catalog.html">Серобуромалиновый</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+    
+                                    <div class="megamenu-column col-6 col-md-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Безопасность</div>
+    
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Низкая</a></li>
+                                                <li><a href="catalog.html">Средняя</a></li>
+                                                <li><a href="catalog.html">Нормальная</a></li>
+                                                <li><a href="catalog.html">Высокая</a></li>
+                                                <li><a href="catalog.html">Ультра</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+    
+                                    <div class="megamenu-column col-6 col-md-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Конфигурация</div>
+    
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Ключ-ключ</a></li>
+                                                <li><a href="catalog.html">Ключ/вертушка</a></li>
+                                                <li><a href="catalog.html">Ключ/шток</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+    
+                                    <div class="megamenu-column col-6 col-md-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Производитель</div>
+    
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Киса</a></li>
+                                                <li><a href="catalog.html">Замочкин двор</a></li>
+                                                <li><a href="catalog.html">Еще произвродитель</a></li>
+                                                <li><a href="catalog.html">Ключково</a></li>
+                                                <li><a href="catalog.html">Замочкин</a></li>
+                                                <li><a href="catalog.html">И тд и тп</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+    
+                                    <div class="megamenu-column col-6 col-md-3 col-xl">
+                                        <div class="megamenu-block">
+                                            <div class="megamenu-title title-h4 font-family-secondary">Безопасность</div>
+    
+                                            <ul class="megamenu-list list-unstyled">
+                                                <li><a href="catalog.html">Низкая</a></li>
+                                                <li><a href="catalog.html">Средняя</a></li>
+                                                <li><a href="catalog.html">Нормальная</a></li>
+                                                <li><a href="catalog.html">Высокая</a></li>
+                                                <li><a href="catalog.html">Ультра</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li class="offcanvas-catalog-item">
+                        <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                            <span class="offcanvas-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="26" height="26">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-handle"></use>
+                                </svg>
+                            </span>
+    
+                            <span class="offcanvas-catalog-text">Ручки</span>
+                        </a>
+                    </li>
+    
+                    <li class="offcanvas-catalog-item">
+                        <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                            <span class="offcanvas-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="26" height="26">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-furniture"></use>
+                                </svg>
+                            </span>
+    
+                            <span class="offcanvas-catalog-text">Фурнитура</span>
+                        </a>
+                    </li>
+    
+                    <li class="offcanvas-catalog-item">
+                        <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                            <span class="offcanvas-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="26" height="26">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-keys"></use>
+                                </svg>
+                            </span>
+    
+                            <span class="offcanvas-catalog-text">Копии ключей</span>
+                        </a>
+                    </li>
+    
+                    <li class="offcanvas-catalog-item">
+                        <a href="catalog.html" class="offcanvas-catalog-link d-flex align-items-center">
+                            <span class="offcanvas-catalog-thumbnail">
+                                <svg class="header-catalog-media" width="26" height="26">
+                                    <use xlink:href="images/sprite.svg#icon-catalog-master"></use>
+                                </svg>
+                            </span>
+    
+                            <span class="offcanvas-catalog-text">Мастер-системы</span>
+                        </a>
+                    </li>
+                </ul>
+    
+                <ul class="offcanvas-nav-list list-unstyled">
+                    <li class="offcanvas-nav-item">
+                        <a href="services.html" class="offcanvas-nav-link">Услуги</a>
+                    </li>
+                    <li class="offcanvas-nav-item">
+                        <a href="text-page.html" class="offcanvas-nav-link">Доставка и оплата</a>
+                    </li>
+                    <li class="offcanvas-nav-item">
+                        <a href="text-page.html" class="offcanvas-nav-link">Гарантии</a>
+                    </li>
+                    <li class="offcanvas-nav-item">
+                        <a href="text-page.html" class="offcanvas-nav-link">О компании</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -2013,7 +2261,7 @@
                     
                     <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
                         <svg class="close-media" width="24" height="24">
-                            <use xlink:href="/images/sprite.svg#icon-close"></use>
+                            <use xlink:href="images/sprite.svg#icon-close"></use>
                         </svg>
                     </button>
                 </div>
@@ -2042,7 +2290,7 @@
                     
                     <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
                         <svg class="close-media" width="24" height="24">
-                            <use xlink:href="/images/sprite.svg#icon-close"></use>
+                            <use xlink:href="images/sprite.svg#icon-close"></use>
                         </svg>
                     </button>
                 </div>
@@ -2057,7 +2305,7 @@
                             <div class="custom-number custom-control d-flex align-items-center">
                                 <button type="button" class="custom-number-button custom-number-decrease d-flex align-items-center justify-content-center">
                                     <svg class="custom-number-button-media" width="12" height="12">
-                                        <use xlink:href="/images/sprite.svg#icon-minus"></use>
+                                        <use xlink:href="images/sprite.svg#icon-minus"></use>
                                     </svg>
                                 </button>
 
@@ -2065,7 +2313,7 @@
 
                                 <button type="button" class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">
                                     <svg class="custom-number-button-media" width="12" height="12">
-                                        <use xlink:href="/images/sprite.svg#icon-plus"></use>
+                                        <use xlink:href="images/sprite.svg#icon-plus"></use>
                                     </svg>
                                 </button>
                             </div>
@@ -2091,16 +2339,26 @@
     <script src="vendor/jquery/jquery-3.6.0.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap-4.6.0/js/dist/util.js"></script>
+    <script src="vendor/bootstrap-4.6.0/js/dist/tab.js"></script>
     <script src="vendor/bootstrap-4.6.0/js/dist/collapse.js"></script>
     <script src="vendor/bootstrap-4.6.0/js/dist/modal.js"></script>
     <script src="vendor/bootstrap-4.6.0/js/dist/tooltip.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
     <script src="vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
     <script src="vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js"></script>
+    <script src="vendor/swiper/swiper.min.js"></script>
+    <script src="vendor/fancybox/fancybox.jquery.min.js"></script>
 
+    <script src="js/initial.js"></script>
+    <script src="js/window_size_helper.js"></script>
+    <script src="js/backdrop.js"></script>
     <script src="js/offcanvas.js"></script>
     <script src="js/forms.js"></script>
     <script src="js/filter.js"></script>
+    <script src="js/sliders.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/fancybox.js"></script>
     <script src="js/tooltip.js"></script>
 </body>
 </html>

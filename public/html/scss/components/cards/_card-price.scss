@@ -6,7 +6,7 @@
     font-size: 17px;
     line-height: 25px;
     @include media-breakpoint-up(xl) {
-        padding: 20px 20px 30px;
+        padding: 25px 30px 30px;
     }
     @include media-breakpoint-up(xxl) {
         padding: 45px 40px 35px;
@@ -15,6 +15,23 @@
     &-title {
         margin: 0 0 10px;
         font-family: $f-secondary;
+        @include media-breakpoint-up(sm) {
+            font-size: 20px;
+            line-height: 25px;
+        }
+        @include media-breakpoint-up(md) {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        @include media-breakpoint-up(lg) {
+            margin-bottom: 10px;
+            font-size: 24px;
+            line-height: 30px;
+        }
+        @include media-breakpoint-up(xl) {
+            font-size: 28px;
+            line-height: 35px;
+        }
         @include media-breakpoint-up(xxl) {
             font-size: 35px;
             line-height: 50px;

@@ -13,6 +13,10 @@
     }
 
     &-whatsapp {
-        color: #3e7a4e;
+        color: $c-whatsapp;
+
+        &:hover {
+            color: lighten($c-whatsapp, 5%) !important;
+        }
     }
 }

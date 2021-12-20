@@ -4,16 +4,19 @@
 }
 
 .header-contact {
-    color: $c-black;
     font-size: 14px;
     font-weight: 600;
-
+    
     &[href^="tel:"]  {
         color: $c-primary;
         font-size: 15px;
         font-weight: 700;
         @include media-breakpoint-up(xxl) {
             font-size: 17px;
+        }
+
+        &:hover {
+            color: $c-secondary;
         }
     }
 }

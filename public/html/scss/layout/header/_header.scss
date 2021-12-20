@@ -1,7 +1,13 @@
 .header-box {
-    overflow-x: hidden;
+    // overflow-x: hidden;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
     padding-top: 14px;
     padding-bottom: 14px;
+    border-bottom: 1px solid $c-black;
     background-color: $c-white;
     color: $c-black;
     line-height: 1.25;
@@ -12,6 +18,11 @@
 
     a {
         border: none;
+        text-decoration: none;
+        &:hover {
+            color: $c-secondary;
+            text-decoration: none;
+        }
     }
 
     .row {

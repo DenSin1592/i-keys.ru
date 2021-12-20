@@ -1,0 +1,111 @@
+.card-compare {
+    position: relative;
+    width: 100%;
+    line-height: 15px;
+}
+
+.card-compare-badges {
+    pointer-events: none;
+    position: absolute;
+    z-index: 9;
+    top: 10px;
+    left: 5px;
+
+    .card-compare-badge {
+        height: 35px;
+        padding-left: 5px;
+        padding-right: 5px;
+
+        @include media-breakpoint-up(xl) {
+            height: 45px;
+        }
+
+        .card-product-badge-media {
+            width: auto;
+            height: auto;
+            max-height: 100%;
+        }
+    }
+}
+
+.card-compare-thumbnail {
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+    padding: 0 0 80%;
+    border: none;
+    text-decoration: none;
+
+    .card-compare-media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+    }
+}
+
+.card-compare-title {
+    border: none;
+    font-weight: 700;
+    @include media-breakpoint-up(xl) {
+        font-size: 17px;
+        line-height: 20px;
+    }
+
+    &:hover {
+        color: $c-secondary;
+    }
+}
+
+.card-compare-remove {
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+
+    &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 32px;
+        height: 32px;
+        transform: translate(-50%, -50%);
+        content: '';
+    }
+}
+
+.card-compare-price-block {
+    @include media-breakpoint-up(xl) {
+        font-size: 17px;
+    }
+
+    .card-compare-price {
+        font-weight: 700;
+        @include media-breakpoint-up(xl) {
+            font-size: 25px;
+        }
+    }
+
+    .card-compare-old-price {
+        color: #707070;
+        text-decoration: line-through;
+    }
+}
+
+.card-compare-cart {
+    @extend .btn;
+    margin-top: 15px;
+    @include media-breakpoint-up(md) {
+        margin-top: 25px;
+    }
+
+    .card-compare-cart-media {
+        margin-right: 10px;
+    }
+}

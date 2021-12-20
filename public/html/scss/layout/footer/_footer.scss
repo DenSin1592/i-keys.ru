@@ -10,6 +10,9 @@
 
     a {
         border: none;
+        &:hover {
+            color: $c-secondary;
+        }
     }
 }
 

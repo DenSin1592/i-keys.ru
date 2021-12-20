@@ -1,0 +1,79 @@
+.section-compare {
+    position: relative;
+    z-index: 1;
+    background-color: $c-white;
+
+    .section-compare-backdrop {
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $c-gray;
+    }
+}
+
+
+.compare-aside-container {
+    position: relative;
+
+    .compare-header {
+        @include media-breakpoint-down(sm) {
+            min-height: auto !important;
+        }
+    }
+}
+
+.compare-header {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    @include media-breakpoint-up(md) {
+        padding-top: 35px;
+        padding-bottom: 15px;
+    }
+}
+
+.compare-content {
+    padding-top: 15px;
+    padding-bottom: 40px;
+    @include media-breakpoint-up(md) {
+        padding-bottom: 50px;
+    }
+    @include media-breakpoint-up(xl) {
+        padding-bottom: 80px;
+    }
+}
+
+.compare-title {
+    margin: 0 0 10px;
+    @include media-breakpoint-up(md) {
+        margin: 10px 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .compare-title-media {
+        margin-right: 8px;
+        vertical-align: baseline;
+    }
+}
+
+.compare-counter-block {
+    .compare-counter {
+        @include media-breakpoint-up(xl) {
+            font-size: 17px;
+        }
+    }
+}
+
+.compare-controls-block {
+    .compare-controls-title {
+        @include media-breakpoint-up(xl) {
+            font-size: 17px;
+        }
+    }
+}
+
+@import 'compare-swiper';
+@import 'compare-specifications';

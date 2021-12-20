@@ -1,6 +1,7 @@
 .section-about {
     margin-top: 30px;
     margin-bottom: 40px;
+
     @include media-breakpoint-up(lg) {
         margin-top: 50px;
         margin-bottom: 60px;
@@ -10,18 +11,17 @@
         margin-bottom: 90px;
     }
 
+    .about-media-container {
+        margin-top: 30px;
+        @include media-breakpoint-up(xl) {
+            margin-top: 0;
+        }
+    }
+
     .section-header {
         margin-bottom: 20px;
         @include media-breakpoint-up(xl) {
             margin-bottom: 20px;
-        }
-    }
-
-    .about-description {
-        margin-bottom: 15px;
-        line-height: 1.5;
-        @include media-breakpoint-up(xl) {
-            margin-top: 25px;
         }
     }
 }
@@ -46,11 +46,19 @@
         @include media-breakpoint-up(lg) {
             width: 420px;
             height: 298px;
-        } 
+        }
         @include media-breakpoint-up(xxl) {
             width: 748px;
             height: 529px;
         }
+    }
+}
+
+.about-description {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    @include media-breakpoint-up(xl) {
+        margin-top: 25px;
     }
 }
 

@@ -76,8 +76,10 @@
         text-decoration: none;
     }
 
+    &:active,
     &:focus {
         outline: none;
         box-shadow: none;
+        text-decoration: none;
     }
 }

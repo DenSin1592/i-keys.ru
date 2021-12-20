@@ -1,0 +1,17 @@
+.compare-specifications-list {
+    margin-top: 0;
+    margin-bottom: 0;
+    @include media-breakpoint-up(xl) {
+        font-size: 17px;
+        line-height: 20px;
+    }
+
+    .compare-specification-item {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        @include media-breakpoint-up(md) {
+            margin-top: 13px;
+            margin-bottom: 13px;
+        }
+    }
+}

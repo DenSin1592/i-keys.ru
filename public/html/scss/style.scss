@@ -28,11 +28,17 @@
 @import 'components/tooltip';
 @import 'components/select2';
 @import 'components/offcanvas';
+@import 'components/megamenu';
 @import 'components/modal';
+@import 'components/table';
+
+// header
+@import 'layout/header/header';
 
 // cards
 @import 'components/cards/card';
 @import 'components/cards/card-product';
+@import 'components/cards/card-compare';
 @import 'components/cards/card-intro';
 @import 'components/cards/card-video';
 @import 'components/cards/card-service';
@@ -47,8 +53,6 @@
 @import 'components/cards/card-document';
 @import 'components/cards/card-order';
 
-// header
-@import 'layout/header/header';
 
 // sections
 @import 'sections/section-intro';
@@ -67,6 +71,7 @@
 @import 'sections/section-reviews';
 @import 'sections/section-posts';
 @import 'sections/section-content';
+@import 'sections/section-article';
 
 
 // catalog
@@ -78,5 +83,9 @@
 // cart
 @import 'layout/cart/cart';
 
+// compare
+@import 'layout/compare/compare';
+
 // footer
 @import 'layout/footer/footer';
+
