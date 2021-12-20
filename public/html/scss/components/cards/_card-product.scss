@@ -18,7 +18,9 @@
     /* product media */
     .card-product-thumbnail {
         position: relative;
+        width: 100%;
         padding-bottom: 68.5%;
+        border: none;
         @include media-breakpoint-up(sm) {
             padding-bottom: 95.5%;
         }
