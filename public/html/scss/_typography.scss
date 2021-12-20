@@ -6,7 +6,14 @@ body {
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
-
+    @include media-breakpoint-up(md) {
+        font-size: 15px;
+        line-height: 20px;
+    }
+    @include media-breakpoint-up(xl) {
+        font-size: 17px;
+        line-height: 25px;
+    }
     @include media-breakpoint-up(xxl) {
         font-size: 20px;
         line-height: 25px;
