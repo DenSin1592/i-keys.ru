@@ -28,6 +28,7 @@
     @include media-breakpoint-up(lg) {
         grid-template-rows: auto auto auto;
         grid-template-columns: auto auto 1fr;
+        column-gap: 10px;
     }
     @include media-breakpoint-up(xl) {
         margin-bottom: 15px;
@@ -44,12 +45,14 @@
     grid-column-start: 1;
     grid-column-end: 3;
     margin: 0 0 15px;
+    font-size: 13px;
     @include media-breakpoint-up(lg) {
         grid-row-start: 1;
         grid-row-end: 3;
         grid-column-start: 1;
         grid-column-end: 2;
         margin: 0;
+        font-size: 14px;
     }
     @include media-breakpoint-up(xl) {
         font-size: 15px;
@@ -57,10 +60,11 @@
 
     .product-status {
         min-width: 100px;
-        padding: 7px 5px;
+        padding: 7px 10px;
         @include media-breakpoint-up(lg) {
             min-width: 110px;
-            padding: 10px 5px;
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
         @include media-breakpoint-up(xxl) {
             min-width: 125px;
@@ -154,6 +158,33 @@
 }
 
 .product-control {
+    padding: 5px 15px;
+    font-size: 17px;
+    height: 50px;
+    @include media-breakpoint-up(lg) {
+        height: 60px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    @include media-breakpoint-up(xl) {
+        height: 70px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    @include media-breakpoint-up(xxl) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .product-control-media {
+        width: 25px;
+        height: 25px;
+        @include media-breakpoint-up(lg) {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
     .product-control-text {
         margin-left: 15px;
     }
