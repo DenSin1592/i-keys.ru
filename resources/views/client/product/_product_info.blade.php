@@ -22,7 +22,8 @@
 
                                 <li class="product-info-item col-auto">
                                     <span class="product-info-title">Код товара</span>
-                                    <span class="product-info-value product-code">{{$productData['product']->code_1c}}</span>
+                                    <span
+                                        class="product-info-value product-code">{{$productData['product']->code_1c}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -87,7 +88,8 @@
                                                         <div class="product-thumbnail">
                                                             <img loading="lazy"
                                                                  src="{{$element->getImgPath('image', 'catalog', 'no-image-200x200.png')}}"
-                                                                 width="47" height="47" alt="{{$productData['product']->name}}"
+                                                                 width="47" height="47"
+                                                                 alt="{{$productData['product']->name}}"
                                                                  class="product-thumbnail-media">
                                                         </div>
                                                     </div>
@@ -270,13 +272,15 @@
                                 <div class="product-status-block">
                                                 <span class="product-status product-available d-inline-block">
                                                     <svg class="product-status-media" width="14" height="10">
-                                                        <use xlink:href="{{asset('/images/client/sprite.svg#icon-check')}}"></use>
+                                                        <use
+                                                            xlink:href="{{asset('/images/client/sprite.svg#icon-check')}}"></use>
                                                     </svg>
                                                    {{$productData['product']->getExistenceString()}}
                                                 </span>
                                 </div>
 
-                                <span class="product-price">{!! Helper::priceFormat($productData['product']->price) !!}<span
+                                <span
+                                    class="product-price">{!! Helper::priceFormat($productData['product']->price) !!}<span
                                         class="rouble"></span></span>
 
                                 @if(!is_null($oldPrice = $productData['product']->getOldPrice()))
@@ -322,21 +326,22 @@
                                     </div>
                                 </div>
                             </div>
+                            @if($productData['count_keys_in_set'])
+                                <div class="product-included-block">
 
-                            <div class="product-included-block">
-                                @if($productData['count_keys_in_set'])
-                                <svg class="product-included-media" width="20" height="20">
-                                    <use xlink:href="{{asset('/images/client/sprite.svg#icon-key')}}"></use>
-                                </svg>
+                                    <svg class="product-included-media" width="20" height="20">
+                                        <use xlink:href="{{asset('/images/client/sprite.svg#icon-key')}}"></use>
+                                    </svg>
 
-                                <span class="product-included-title">В комплекте <b>{{$productData['count_keys_in_set']}}</b> {{\Lang::choice('ключ|ключа|ключей', $productData['count_keys_in_set'])}}</span>
+                                    <span
+                                        class="product-included-title">В комплекте <b>{{$productData['count_keys_in_set']}}</b> {{\Lang::choice('ключ|ключа|ключей', $productData['count_keys_in_set'])}}</span>
 
-                                <button type="button" class="product-included-toggle" data-toggle="modal"
-                                        data-target="#modalKeysQuantity">Добавить еще ключи на всю семью
-                                </button>
-                                @endif
-                            </div>
+                                    <button type="button" class="product-included-toggle" data-toggle="modal"
+                                            data-target="#modalKeysQuantity">Добавить еще ключи на всю семью
+                                    </button>
 
+                                </div>
+                            @endif
                             <div class="product-delivery-block d-flex align-items-center">
                                 <img src="{{asset('/images/client/icons/icon-delivery-light.png')}}"
                                      class="product-delivery-media"

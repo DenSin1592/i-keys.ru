@@ -24,8 +24,8 @@ class ClientProduct
             $productData = array_merge($productData, $plugin->getForProduct($product));
         }
 
-        $productData['count_keys_in_set'] = isset($productData['attributesData']['main'][AttributeConstants::COUNT_KEYS_IN_SET]['values'][0])
-            ? (int) $productData['attributesData']['main'][AttributeConstants::COUNT_KEYS_IN_SET]['values'][0]
+        $productData['count_keys_in_set'] = isset($productData['attributesData']['main'][AttributeConstants::COUNT_KEYS_IN_SET_ID]['values'][0])
+            ? (int) $productData['attributesData']['main'][AttributeConstants::COUNT_KEYS_IN_SET_ID]['values'][0]
             : null;
 
         return $productData;

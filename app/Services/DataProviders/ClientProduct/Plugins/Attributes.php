@@ -88,12 +88,7 @@ class Attributes implements ClientProductPlugin
             ];
 
             if (count($productAttributeNote['values']) > 0) {
-                if(in_array($attributeId, Attribute\AttributeConstants::MAIN_ATTRIBUTES, false)){
-                    $productAttributes['main'][$attributeId] = $productAttributeNote;
-                }else{
-                    $productAttributes['other'][$attributeId] = $productAttributeNote;
-                }
-
+                $this->setTypeAttributes($productAttributes, $productAttributeNote);
             }
         }
         return $productAttributes;
@@ -166,14 +161,8 @@ class Attributes implements ClientProductPlugin
         return $productAttributes;
     }
 
-    /**
-     * Add units to attribute value.
-     *
-     * @param Attribute $attribute
-     * @param $resultValue
-     * @return string
-     */
-    private function addUnits(Attribute $attribute, $resultValue)
+
+    private function addUnits(Attribute $attribute, $resultValue): string
     {
         $resultValue = $resultValue ?? '';
         if ($attribute->units !== '' && in_array($attribute->attribute_type, Attribute::getHasUnitsTypes())) {
@@ -181,5 +170,28 @@ class Attributes implements ClientProductPlugin
         }
 
         return $resultValue;
+    }
+
+
+    private function setTypeAttributes(array &$productAttributes, array $productAttributeNote): void
+    {
+        if($productAttributeNote['id'] === Attribute\AttributeConstants::COLOR_ID
+            || $productAttributeNote['id'] === Attribute\AttributeConstants::SIZE_CYLINDER_ID
+        ){
+            return;
+        }
+
+        if(in_array($productAttributeNote['id'], Attribute\AttributeConstants::MAIN_ATTRIBUTES, false)){
+            $productAttributes[Attribute\AttributeConstants::MAIN][$productAttributeNote['id']] = $productAttributeNote;
+        }
+        elseif(in_array($productAttributeNote['id'], Attribute\AttributeConstants::TECHNICAL_ATTRIBUTES, false)){
+            $productAttributes[Attribute\AttributeConstants::OTHER][Attribute\AttributeConstants::TECHNICAL][$productAttributeNote['id']] = $productAttributeNote;
+        }
+        elseif(in_array($productAttributeNote['id'], Attribute\AttributeConstants::KEY_ATTRIBUTES, false)){
+            $productAttributes[Attribute\AttributeConstants::OTHER][Attribute\AttributeConstants::KEY][$productAttributeNote['id']] = $productAttributeNote;
+        }
+        else{
+            $productAttributes[Attribute\AttributeConstants::OTHER][Attribute\AttributeConstants::GENERAL][$productAttributeNote['id']] = $productAttributeNote;
+        }
     }
 }

@@ -15,6 +15,8 @@
 
             @include('client.product._expert')
 
+            @include('client.product._other_characteristics')
+
         </section>
     </main>
 @stop
