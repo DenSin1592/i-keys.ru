@@ -58,6 +58,7 @@ return [
                 'html/js/offcanvas.js',
                 'html/js/product.js',
                 'html/js/sliders.js',
+                'html/js/initial.js',
 
                 'js/client/auth_menu.js',
                 'js/client/quick_order.js',
