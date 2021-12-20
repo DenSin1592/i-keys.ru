@@ -16,13 +16,9 @@
 
     .product-thumbnail-container {
         position: relative;
-        height: 385px;
         padding-top: 15px;
         padding-bottom: 15px;
         background-color: $c-white;
-        @include media-breakpoint-up(sm) {
-            height: 315px;
-        }
         @include media-breakpoint-up(md) {
             grid-column-start: 1;
             grid-row-start: 1;
@@ -32,12 +28,12 @@
             padding-bottom: 25px;
         }
         @include media-breakpoint-up(xl) {
-            padding-top: 40px;
-            padding-bottom: 40px;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            padding-right: 35px;
         }
         @include media-breakpoint-up(xxl) {
-            padding-top: 45px;
-            padding-bottom: 45px;
+            padding-right: 120px;
         }
 
         &::before {

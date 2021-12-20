@@ -13,6 +13,7 @@
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 80px;
+    line-height: 20px;
     @include media-breakpoint-up(sm) {
         margin-bottom: 70px;
     }
@@ -27,6 +28,7 @@
     }
     @include media-breakpoint-up(xxl) {
         padding-bottom: 25px;
+        line-height: 25px;
     }
 }
 
