@@ -11,7 +11,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         form.validate({
             rules: {
                 name: {
-                    min: 2
+                    required: true,
+                    isText: true
+                },
+                email: {
+                    email: true
                 },
                 phone: {
                     requiredPhone: true,
@@ -21,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
 
         if (form.valid()) {
+            console.log(form.serializeArray());
             nextStep.collapse('toggle');
         }
 

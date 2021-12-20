@@ -97,7 +97,8 @@
                                 <form action="#step-2" method="post" enctype="multipart/form-data" >
                                     <div class="checkout-content" name="delivery_method">
                                         <div class="form-options-group">
-                                            <div class="form-option">
+                                            <div class="form-option input-group">
+                                                <input type="radio" class="form-option-radio" name="delivery" value="СДЭК" autocomplete="off" hidden>
                                                 <div class="form-option-header">
                                                     <div class="form-option-title title-h4 font-weight-bold">Доставка СДЭКом <img loading="lazy" src="images/logo/logo-cdek.png" width="96" height="25" alt="СДЭК"></div>
                                                     <div class="form-option-subtitle">Укажите адрес доставки. Если не хотите заполнять, менеджер позвонит вам и заполнит вместе с вами</div>
@@ -135,6 +136,7 @@
                                             </div>
 
                                             <div class="form-option">
+                                                <input type="radio" class="form-option-radio" name="delivery" value="{{ \App\Models\Order::DELIVERY_COURIER }}" autocomplete="off" hidden>
                                                 <div class="form-option-header" id="checkout-delivery-courier" name="{{ \App\Models\Order::DELIVERY_COURIER }}" >
                                                     <div class="form-option-title title-h4 font-weight-bold">Доставка курьером по Москве и области</div>
                                                     <div class="form-option-subtitle">Укажите адрес доставки. Если не хотите заполнять, менеджер позвонит вам и заполнит вместе с вами</div>
@@ -172,6 +174,7 @@
                                             </div>
 
                                             <div class="form-option">
+                                                <input type="radio" class="form-option-radio" name="delivery" value="{{ \App\Models\Order::DELIVERY_SELF }}" autocomplete="off" hidden>
                                                 <div class="form-option-header" id="checkout-delivery-self" name="{{ \App\Models\Order::DELIVERY_SELF }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">Самовывоз из магазина в Москве</div>
                                                     <div class="form-option-subtitle">Мы находимся в г. Москва, Каширское шоссе, 61/3А, ТЦ СтройМолл <br> <b class="text-lead" >Заказ можно забрать 17 июля 2021 с 10:00 до 21:00</b></div>
@@ -184,17 +187,18 @@
                                                 </div>
                                             </div>
 
-                                            {{--                                            <div class="form-option">--}}
-                                            {{--                                                <div class="form-option-header">--}}
-                                            {{--                                                    <div class="form-option-title title-h4 font-weight-bold">Самовывоз СДЭК <img loading="lazy" src="images/logo/logo-cdek.png" width="96" height="25" alt="СДЭК"></div>--}}
-                                            {{--                                                </div>--}}
+                                            <div class="form-option">
+                                                <input type="radio" class="form-option-radio" name="delivery" value="Самовывоз СДЭК" autocomplete="off" hidden>
+                                                <div class="form-option-header">
+                                                    <div class="form-option-title title-h4 font-weight-bold">Самовывоз СДЭК <img loading="lazy" src="images/logo/logo-cdek.png" width="96" height="25" alt="СДЭК"></div>
+                                                </div>
 
-                                            {{--                                                <div class="form-option-content">--}}
-                                            {{--                                                    <div class="ckeckout-map-block">--}}
-                                            {{--                                                        <img src="uploads/maps/map-cdek-image.png" alt="Карта СДЭК">--}}
-                                            {{--                                                    </div>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
+                                                <div class="form-option-content">
+                                                    <div class="ckeckout-map-block">
+                                                        <img src="uploads/maps/map-cdek-image.png" alt="Карта СДЭК">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="checkout-controls">
