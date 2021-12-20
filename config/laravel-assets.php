@@ -47,6 +47,10 @@ return [
                 'html/vendor/jquery-ui-1.12.1.custom/jquery-ui.min.js',
                 'html/vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js',
 
+                '/js/common/jquery.inputmask.bundle.min.js',
+                '/js/common/jquery.validate/jquery.validate.min.js',
+                '/js/common/jquery.validate/additional-methods.min.js',
+                '/js/common/jquery.validate/localization/messages_ru.min.js',
                 '/js/common/window_size_helper.js',
                 '/js/common/promise_queue.js',
                 '/js/common/csrf.js',
@@ -64,6 +68,9 @@ return [
                 'js/client/cart/cart_add.js',
                 'js/client/cart/cart_remove.js',
                 'js/client/cart/cart_update.js',
+                'js/client/validation/phone-mask.js',
+                'js/client/validation/validMethods.js',
+                'js/client/order/orderSteps.js',
 
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
