@@ -43,6 +43,7 @@
 
 .smartphone-steps-grid {
     margin-bottom: -15px;
+    counter-reset: step-counter;
     @include media-breakpoint-up(xl) {
         margin-bottom: -20px;
     }
@@ -51,6 +52,39 @@
         margin-bottom: 15px;
         @include media-breakpoint-up(xl) {
             margin-bottom: 20px;
+        }
+    }
+
+    .card {
+        .card-thumbnail {
+            &::after {
+                position: absolute;
+                right: 10px;
+                bottom: 0;
+                font-size: 40px;
+                font-weight: 700;
+                line-height: 30px;
+                counter-increment: step-counter;
+                content: counter(step-counter);
+                @include media-breakpoint-up(sm) {
+                    font-size: 50px;
+                    line-height: 30px;
+                }
+                @include media-breakpoint-up(md) {
+                    font-size: 55px;
+                    line-height: 35px;
+                }
+                @include media-breakpoint-up(xl) {
+                    font-size: 60px;
+                    line-height: 40px;
+                }
+                @include media-breakpoint-up(xxl) {
+                    right: 10px;
+                    bottom: 0;
+                    font-size: 80px;
+                    line-height: 50px;
+                }
+            }
         }
     }
 }

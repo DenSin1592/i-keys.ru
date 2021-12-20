@@ -82,12 +82,19 @@
     }
 
     .service-article-item {
+        position: relative;
         padding-left: 15px;
         padding-right: 15px;
         margin-bottom: 15px;
         @include media-breakpoint-up(xxl) {
-            margin-top: 45px;
-            margin-bottom: 45px;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        &:first-child {
+            @include media-breakpoint-up(lg) {
+                border-right: 1px solid #dcdcdc;
+            }
         }
     }
 }
