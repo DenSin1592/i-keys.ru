@@ -104,29 +104,29 @@
                                                     <div class="form-option-subtitle">Укажите адрес доставки. Если не хотите заполнять, менеджер позвонит вам и заполнит вместе с вами</div>
                                                 </div>
 
-                                                <div class="form-option-content">
+                                                <div class="form-option-content w-100">
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" placeholder="Город *" required >
+                                                                <input name="city" type="text" class="form-control" placeholder="Город *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-4">
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" placeholder="Улица *" required >
+                                                                <input name="street" type="text" class="form-control" placeholder="Улица *"  data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-2 col-md-2">
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" placeholder="Дом *" required >
+                                                                <input name="building" type="text" class="form-control" placeholder="Дом *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-2">
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control" placeholder="Квартира (офис) *" required >
+                                                                <input name="flat" type="text" class="form-control" placeholder="Квартира (офис) *" data-option-required >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -146,25 +146,25 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <input name="city" type="text" id="checkout-addres-city" class="form-control" placeholder="Город *" required >
+                                                                <input name="city" type="text" id="checkout-addres-city" class="form-control" placeholder="Город *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-4">
                                                             <div class="form-group">
-                                                                <input name="street" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" required >
+                                                                <input name="street" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-2 col-md-2">
                                                             <div class="form-group">
-                                                                <input name="building" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" required >
+                                                                <input name="building" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" data-option-required>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-2">
                                                             <div class="form-group">
-                                                                <input name="flat" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис)" >
+                                                                <input name="flat" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис) *"  data-option-required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -174,7 +174,7 @@
                                             </div>
 
                                             <div class="form-option">
-                                                <input type="radio" class="form-option-radio" name="delivery" value="{{ \App\Models\Order::DELIVERY_SELF }}" autocomplete="off" hidden>
+                                                <input type="radio" class="form-option-radio" name="delivery" value="{{ \App\Models\Order::DELIVERY_SELF }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header" id="checkout-delivery-self" name="{{ \App\Models\Order::DELIVERY_SELF }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">Самовывоз из магазина в Москве</div>
                                                     <div class="form-option-subtitle">Мы находимся в г. Москва, Каширское шоссе, 61/3А, ТЦ СтройМолл <br> <b class="text-lead" >Заказ можно забрать 17 июля 2021 с 10:00 до 21:00</b></div>
@@ -247,6 +247,7 @@
                                     <div class="checkout-content" name="payment_method">
                                         <div class="form-options-group">
                                             <div class="form-option">
+                                                <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_ONLINE }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header" id="checkout-payment-online" name="{{ \App\Models\Order::PAYMENT_ONLINE }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">Картой онлайн</div>
                                                 </div>
@@ -261,6 +262,7 @@
                                             </div>
 
                                             <div class="form-option">
+                                                <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_CASH }}" autocomplete="off" hidden>
                                                 <div class="form-option-header" id="checkout-payment-cash" name="{{ \App\Models\Order::PAYMENT_CASH }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">
                                                         Наличными или картой при получении (только при самовывозе из магазина)
@@ -269,6 +271,7 @@
                                             </div>
 
                                             <div class="form-option">
+                                                <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_INVOICE }}" autocomplete="off" hidden>
                                                 <div class="form-option-header" id="checkout-payment-invoice" name="{{ \App\Models\Order::PAYMENT_INVOICE }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">По счету от юридического лица</div>
                                                 </div>

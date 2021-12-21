@@ -51,5 +51,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         children.removeClass('active');
         target.addClass('active');
+
+        // use required into selection group
+        children
+            .find('[required]')
+            .removeAttr('required')
+            .attr('data-option-required', true);
+        target
+            .find('[data-option-required]')
+            .removeAttr('data-option-required')
+            .attr('required', true)
+        ;
     });
 });
