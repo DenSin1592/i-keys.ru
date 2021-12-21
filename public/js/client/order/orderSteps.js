@@ -1,22 +1,42 @@
+
 class OrderForm {
-    constructor(data = []) {
+    /**
+     * Используйте debug чтобы разблокировать кнопки
+     * @param debug
+     * @param data
+     */
+    constructor(debug = false, data = []) {
         this.data = data;
+        this.debug = debug;
     }
 
     init () {
+        if (this.debug) {
+            const buttons = $('#order-form button[data-order-step]');
+            buttons.prop('disabled', false);
+        }
         this.prevStep();
         this.nextStep();
     }
 
     disableButtons () {
+        const prev = $('#order-form .checkout-control-back');
         const buttons = $('#order-form button[data-order-step].valid');
-        buttons.prop('disabled', true);
+        if (!this.debug) {
+            buttons.prop('disabled', true);
+            prev.prop('disabled', true);
+        }
+
     }
 
     enableButtons () {
+        const prev = $('#order-form .checkout-control-back');
         const buttons = $('#order-form button[data-order-step].valid');
         buttons.prop('disabled', false);
+        prev.prop('disabled', false);
     }
+
+
 
     prevStep () {
         $( ".checkout-control-back" ).click(function(event) {
@@ -32,7 +52,6 @@ class OrderForm {
     }
 
     nextStep () {
-        const order = this;
         $( ".checkout-control-next" ).click(function(event) {
             event.preventDefault();
             const accordion = $(this).parents('.checkout-accordion');
@@ -50,9 +69,7 @@ class OrderForm {
             const isLastStep = parseInt(accordionItemIndex) === (accordionSize - 1)
 
             if (form.valid() && !isLastStep) {
-                // changeState(form.valid(), accordionItemIndex)
                 nextStep.collapse('toggle');
-                order.data.push(form.serializeArray());
                 $(accordionButtonClass).addClass('valid');
                 $(accordionNextButtonClass).removeAttr('disabled');
             } else if (form.valid() && isLastStep) {
@@ -78,53 +95,53 @@ class OrderForm {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    const forms = $('#order-form form');
-    const order = new OrderForm();
-    order.init();
+const forms = $('#order-form form');
+forms.validate( {
+    highlight: function(element) {
+        $(element).parent().addClass("field-error");
+        // order.disableButtons();
+    },
+    unhighlight: function(element) {
+        $(element).parent().removeClass("field-error");
+        // order.enableButtons();
+    },
 
-    forms.validate( {
-        highlight: function(element) {
-            $(element).parent().addClass("field-error");
-            order.disableButtons();
+    rules: {
+        name: {
+            required: true,
+            isText: true
         },
-        unhighlight: function(element) {
-            $(element).parent().removeClass("field-error");
-            order.enableButtons();
+        email: {
+            email: true
         },
-
-        rules: {
-            name: {
-                required: true,
-                isText: true
-            },
-            email: {
-                email: true
-            },
-            phone: {
-                requiredPhone: true,
-                minLenghtPhone: 10
-            },
-            delivery: {
-                required: true
-            },
-            city: {
-                isText: true
-            },
-            street: {
-                isText: true
-            }
+        phone: {
+            requiredPhone: true,
+            minLenghtPhone: 10
         },
-        messages: {
-            delivery: {
-                required: 'Выберите один из способов доставки'
-            },
-            payment_method: {
-                required: 'Выберите один из методов оплаты'
-            },
-            file_upload: {
-                accept: 'Неверный формат файла'
-            }
+        delivery: {
+            required: true
+        },
+        city: {
+            isText: true
+        },
+        street: {
+            isText: true
         }
-    });
+    },
+    messages: {
+        delivery: {
+            required: 'Выберите один из способов доставки'
+        },
+        payment_method: {
+            required: 'Выберите один из методов оплаты'
+        },
+        file_upload: {
+            accept: 'Неверный формат файла'
+        }
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    const order = new OrderForm(true);
+    order.init();
 });

@@ -98,7 +98,7 @@
                                     <div class="checkout-content" name="delivery_method">
                                         <div class="form-options-group">
                                             <div class="form-option input-group">
-                                                <input type="radio" class="form-option-radio" name="delivery" value="СДЭК" autocomplete="off" hidden>
+                                                <input type="radio" class="form-option-radio" name="delivery" value="СДЭК" autocomplete="off" hidden required>
                                                 <div class="form-option-header">
                                                     <div class="form-option-title title-h4 font-weight-bold">Доставка СДЭКом <img loading="lazy" src="images/logo/logo-cdek.png" width="96" height="25" alt="СДЭК"></div>
                                                     <div class="form-option-subtitle">Укажите адрес доставки. Если не хотите заполнять, менеджер позвонит вам и заполнит вместе с вами</div>
@@ -136,7 +136,7 @@
                                             </div>
 
                                             <div class="form-option">
-                                                <input type="radio" class="form-option-radio" name="delivery" value="{{ \App\Models\Order::DELIVERY_COURIER }}" autocomplete="off" hidden>
+                                                <input type="radio" class="form-option-radio" name="delivery" value="{{ \App\Models\Order::DELIVERY_COURIER }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header" id="checkout-delivery-courier" name="{{ \App\Models\Order::DELIVERY_COURIER }}" >
                                                     <div class="form-option-title title-h4 font-weight-bold">Доставка курьером по Москве и области</div>
                                                     <div class="form-option-subtitle">Укажите адрес доставки. Если не хотите заполнять, менеджер позвонит вам и заполнит вместе с вами</div>
@@ -188,7 +188,7 @@
                                             </div>
 
                                             <div class="form-option">
-                                                <input type="radio" class="form-option-radio" name="delivery" value="Самовывоз СДЭК" autocomplete="off" hidden>
+                                                <input type="radio" class="form-option-radio" name="delivery" value="Самовывоз СДЭК" autocomplete="off" hidden required>
                                                 <div class="form-option-header">
                                                     <div class="form-option-title title-h4 font-weight-bold">Самовывоз СДЭК <img loading="lazy" src="images/logo/logo-cdek.png" width="96" height="25" alt="СДЭК"></div>
                                                 </div>
@@ -303,7 +303,7 @@
                                             <div class="col-md-auto">
                                                 <div class="form-row flex-column flex-md-row">
                                                     <div class="col-md-auto">
-                                                        <input type="submit" class="checkout-control checkout-control-next btn btn-lg" >Подтвердить и оплатить</input>
+                                                        <button type="submit" class="checkout-control checkout-control-next btn btn-lg" >Подтвердить и оплатить</button>
                                                     </div>
 
                                                     <div class="col-md-auto">
