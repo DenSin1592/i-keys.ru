@@ -1,4 +1,4 @@
-<div class="product-item col-sm-6 col-md-4 col-lg-3 col-xl-4 d-flex">
+<div class=" {{ $cardClass ?? 'product-item col-sm-6 col-md-4 col-lg-3 col-xl-4 d-flex' }} ">
     <div class="card-product card-product-portrait">
         <div class="card-product-badges d-flex">
 {{--            <div class="card-product-badge">--}}

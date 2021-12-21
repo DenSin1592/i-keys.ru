@@ -2,7 +2,7 @@
     <section class="section-product-specifications">
         <div class="container">
             <div class="section-header">
-                <div class="section-title title-h3 font-family-secondary">Параметры замка</div>
+                <div class="section-title title-h3 font-family-secondary">Параметры</div>
             </div>
 
             <div class="row">

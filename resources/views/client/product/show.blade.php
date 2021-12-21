@@ -42,5 +42,12 @@
             @endif
 
         </section>
+
+        @if(isset($productData['relatedProductsData']['default']))
+            @include('client.product._default_related', [
+                'relatedProducts' => $productData['relatedProductsData']['default'],
+            ])
+        @endif
+
     </main>
 @stop

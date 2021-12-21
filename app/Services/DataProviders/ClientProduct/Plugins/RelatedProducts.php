@@ -81,7 +81,7 @@ class RelatedProducts implements ClientProductPlugin
             continue;
         }
 
-        return ['default' => $array];
+        return !empty($array) ? ['default' => $array] : [];
     }
 
 }
