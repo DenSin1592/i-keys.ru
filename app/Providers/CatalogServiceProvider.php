@@ -173,8 +173,7 @@ class CatalogServiceProvider extends ServiceProvider
                 );
             }
         );
-
-        /*$this->app->singleton(
+        $this->app->singleton(
             'catalog.filter_lens.lock_type',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
@@ -188,7 +187,22 @@ class CatalogServiceProvider extends ServiceProvider
                     'multiple_checkboxes'
                 );
             }
-        );*/
+        );
+        $this->app->singleton(
+            'catalog.filter_lens.type_of_privacy_mechanism',
+            function () use ($attributeRepository, $allowedValueRepository) {
+                return new FilterLensWrapper(
+                    new ClassicListLens(
+                        $attributeRepository,
+                        $allowedValueRepository,
+                        '000000011'
+                    ),
+                    'type_of_privacy_mechanism',
+                    'Тип механизма секретности',
+                    'multiple_checkboxes'
+                );
+            }
+        );
 
         /*$this->app->singleton(
             'catalog.filter_lens.cylinder_series',
@@ -206,21 +220,6 @@ class CatalogServiceProvider extends ServiceProvider
             }
         );*/
 
-        /*$this->app->singleton(
-            'catalog.filter_lens.type_of_privacy_mechanism',
-            function () use ($attributeRepository, $allowedValueRepository) {
-                return new FilterLensWrapper(
-                    new ClassicListLens(
-                        $attributeRepository,
-                        $allowedValueRepository,
-                        '000000011'
-                    ),
-                    'type_of_privacy_mechanism',
-                    'Тип механизма секретности',
-                    'multiple_checkboxes'
-                );
-            }
-        );*/
 
         /*$this->app->singleton(
             'catalog.filter_lens.series',
@@ -262,12 +261,29 @@ class CatalogServiceProvider extends ServiceProvider
                 $filter->addLens($this->app->make('catalog.filter_lens.options'));
                 $filter->addLens($this->app->make('catalog.filter_lens.color'));
                 $filter->addLens($this->app->make('catalog.filter_lens.price'));
+                $filter->addLens($this->app->make('catalog.filter_lens.brands'));
 
                 return $filter;
             }
         );
 
-        //Цилиндровые механизмы
+
+        $this->app->singleton(
+            'catalog.filter.locks',
+            function () {
+                $filter = new FilterLensAggregator();
+                $filter->addLens($this->app->make('catalog.filter_lens.options'));
+                $filter->addLens($this->app->make('catalog.filter_lens.color'));
+                $filter->addLens($this->app->make('catalog.filter_lens.price'));
+                $filter->addLens($this->app->make('catalog.filter_lens.lock_type'));
+                $filter->addLens($this->app->make('catalog.filter_lens.type_of_privacy_mechanism'));
+                $filter->addLens($this->app->make('catalog.filter_lens.brands'));
+
+                return $filter;
+            }
+        );
+
+
         $this->app->singleton(
             'catalog.filter.cylinder_mechanisms',
             function () {
@@ -284,90 +300,6 @@ class CatalogServiceProvider extends ServiceProvider
             }
         );
 
-        //Цилиндровые механизмы других производителей
-        /*$this->app->singleton(
-            'catalog.filter.cylinder_mechanisms_for_other_manufactures',
-            function () {
-                $filter = new FilterLensAggregator();
-                $filter->addLens($this->app->make('catalog.filter_lens.price'));
-                $filter->addLens($this->app->make('catalog.filter_lens.lock_type'));
-                $filter->addLens($this->app->make('catalog.filter_lens.brands'));
-                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_size'));
-                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_mechanism'));
-                $filter->addLens($this->app->make('catalog.filter_lens.color'));
-
-                return $filter;
-            }
-        );*/
-
-        //Замки
-        /*$this->app->singleton(
-            'catalog.filter.lock',
-            function () {
-                $filter = new FilterLensAggregator();
-                $filter->addLens($this->app->make('catalog.filter_lens.price'));
-                $filter->addLens($this->app->make('catalog.filter_lens.lock_type'));
-                $filter->addLens($this->app->make('catalog.filter_lens.type_of_privacy_mechanism'));
-                $filter->addLens($this->app->make('catalog.filter_lens.series'));
-                $filter->addLens($this->app->make('catalog.filter_lens.latch'));
-
-                return $filter;
-            }
-        );*/
-
-        //Навесные замки
-        /*$this->app->singleton(
-            'catalog.filter.padlock',
-            function () {
-                $filter = new FilterLensAggregator();
-                $filter->addLens($this->app->make('catalog.filter_lens.price'));
-                $filter->addLens($this->app->make('catalog.filter_lens.lock_type'));
-                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_series'));
-                $filter->addLens($this->app->make('catalog.filter_lens.type_of_privacy_mechanism'));
-                $filter->addLens($this->app->make('catalog.filter_lens.series'));
-                $filter->addLens($this->app->make('catalog.filter_lens.latch'));
-
-                return $filter;
-            }
-        );*/
-
-        //Декоративные накладки и поворотные ручки
-        /*$this->app->singleton(
-            'catalog.filter.decorative_onlay',
-            function () {
-                $filter = new FilterLensAggregator();
-                $filter->addLens($this->app->make('catalog.filter_lens.price'));
-                $filter->addLens($this->app->make('catalog.filter_lens.color'));
-
-                return $filter;
-            }
-        );*/
-
-        //Дверные ручки
-       /* $this->app->singleton(
-            'catalog.filter.door_handles',
-            function () {
-                $filter = new FilterLensAggregator();
-                $filter->addLens($this->app->make('catalog.filter_lens.price'));
-                $filter->addLens($this->app->make('catalog.filter_lens.brands'));
-                $filter->addLens($this->app->make('catalog.filter_lens.color'));
-
-                return $filter;
-            }
-        );*/
-
-        //Броненакладки Cisa
-        /*$this->app->singleton(
-            'catalog.filter.armor_plates',
-            function () {
-                $filter = new FilterLensAggregator();
-                $filter->addLens($this->app->make('catalog.filter_lens.price'));
-                $filter->addLens($this->app->make('catalog.filter_lens.brands'));
-
-                return $filter;
-            }
-        );*/
-
 
         $this->app->singleton(
             'catalog.filter_factory',
@@ -378,40 +310,18 @@ class CatalogServiceProvider extends ServiceProvider
 
                 foreach (
                     [
+                        Category::LOCKS_1C_CODE,
+                    ]as $catCode1c) {
+                    $filterFactory->addFilter($catCode1c, $this->app->make('catalog.filter.locks'));
+                }
+
+                foreach (
+                    [
                         Category::CILINDRY_1C_CODE,
                         Category::CILINDR_MEHANIZMY_CISA_1C_CODE,
                     ] as $catCode1c) {
                     $filterFactory->addFilter($catCode1c, $this->app->make('catalog.filter.cylinder_mechanisms'));
                 }
-//                $filterFactory->addFilter(000001, $this->app->make('catalog.filter.cylinder_mechanisms'));
-//                $filterFactory->addFilter(Category::CILINDR_MEHANIZMY_CISA_1C_CODE, $this->app->make('catalog.filter.cylinder_mechanisms'));
-
-                //Цилиндровые механизмы других производителей
-//                $filterFactory->addFilter('25115', $this->app->make('catalog.filter.cylinder_mechanisms_for_other_manufactures'));
-
-
-//                foreach (['25106', '25129', '25130', '25131', '25132', '25133'] as $catCode1c) {
-//                    //Цилиндровые механизмы других производителей
-//                    $filterFactory->addFilter($catCode1c, $this->app->make('catalog.filter.cylinder_mechanisms'));
-//                }
-
-                //Замки и ее подкатерории: Замки для алюминиевых дверей, Замки для деревянных дверей,
-                // Замки для взломостойких дверей, Замки для металлических дверей
-//                foreach (['21738', '21747', '21748', '21749', '21750'] as $categoryCode1c) {
-//                    $filterFactory->addFilter($categoryCode1c, $this->app->make('catalog.filter.lock'));
-//                }
-
-                //Навесные замки
-//                $filterFactory->addFilter('21740', $this->app->make('catalog.filter.padlock'));
-
-                //Дверные ручки
-//                $filterFactory->addFilter('24980', $this->app->make('catalog.filter.door_handles'));
-
-                //Броненакладки Cisa
-//                $filterFactory->addFilter('21739', $this->app->make('catalog.filter.armor_plates'));
-
-                //Декоративные накладки и поворотные ручки
-//                $filterFactory->addFilter('22374', $this->app->make('catalog.filter.decorative_onlay'));
 
                 return $filterFactory;
             }
