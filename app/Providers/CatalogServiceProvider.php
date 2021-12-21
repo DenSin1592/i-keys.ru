@@ -260,6 +260,7 @@ class CatalogServiceProvider extends ServiceProvider
             function () {
                 $filter = new FilterLensAggregator();
                 $filter->addLens($this->app->make('catalog.filter_lens.options'));
+                $filter->addLens($this->app->make('catalog.filter_lens.color'));
                 $filter->addLens($this->app->make('catalog.filter_lens.price'));
 
                 return $filter;
