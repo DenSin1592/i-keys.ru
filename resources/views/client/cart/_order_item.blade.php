@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="card-order-summary-container col-9 col-sm-10 col-lg">
-                    <a href="{{UrlBuilder::getUrl($item['product'])}}" class="card-order-title">{{$item['product']->name}}</a>
+                    <a href="{{UrlBuilder::getUrl($item['product'])}}" class="card-order-title">{!! $item['product']->name !!}</a>
 
                     <div class="card-order-info-list row align-items-center">
                         <div class="card-order-info-item col-md-auto">

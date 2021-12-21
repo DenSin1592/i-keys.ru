@@ -1,6 +1,6 @@
 <div class="modal-body" data-cart-product-id="{{$product->id}}">
     <form action="#" class="form-modal form">
-        <div id="modalAddToCardProductName" class="title-h4 text-secondary">{{$product->name}}</div>
+        <div id="modalAddToCardProductName" class="title-h4 text-secondary">{!! $product->name !!}</div>
 
         <div class="form-group d-flex align-items-center">
             <label for="modalAddToCartQuantity" class="form-label form-label-column">Кол-во:</label>

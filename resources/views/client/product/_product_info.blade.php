@@ -8,7 +8,7 @@
 
                 <div class="product-display">
                     <div class="product-display-category title-h1">{{$productData['product']->category->name}}</div>
-                    <h1>{{ $metaData['h1'] }}</h1>
+                    <h1>{!! $metaData['h1'] !!}</h1>
                 </div>
 
                 <div class="product-info-block">
