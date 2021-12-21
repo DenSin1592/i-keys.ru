@@ -17,7 +17,7 @@
                 <div class="card card-service-related">
                     <div class="row flex-nowrap">
                         <div class="card-thumbnail col-auto">
-                            <img loading="lazy" src="uploads/services/service-related-thumbnail-item-1.jpg" width="100" height="100" alt="Заедает замок? Отремонтируем!" class="card-media">
+                            <img loading="lazy" src="/html/uploads/services/service-related-thumbnail-item-1.jpg" width="100" height="100" alt="Заедает замок? Отремонтируем!" class="card-media">
                         </div>
 
                         <div class="card-content col align-self-center">
@@ -31,7 +31,7 @@
                 <div class="card card-service-related">
                     <div class="row flex-nowrap">
                         <div class="card-thumbnail col-auto">
-                            <img loading="lazy" src="uploads/services/service-related-thumbnail-item-2.jpg" width="100" height="100" alt="Сломался замок? Вскроем дверь и заменим замок!" class="card-media">
+                            <img loading="lazy" src="/html/uploads/services/service-related-thumbnail-item-2.jpg" width="100" height="100" alt="Сломался замок? Вскроем дверь и заменим замок!" class="card-media">
                         </div>
 
                         <div class="card-content col align-self-center">
@@ -45,7 +45,7 @@
                 <div class="card card-service-related">
                     <div class="row flex-nowrap">
                         <div class="card-thumbnail col-auto">
-                            <img loading="lazy" src="uploads/services/service-related-thumbnail-item-3.jpg" width="100" height="100" alt="Потеряли ключ? Перекодируем замок!" class="card-media">
+                            <img loading="lazy" src="/html/uploads/services/service-related-thumbnail-item-3.jpg" width="100" height="100" alt="Потеряли ключ? Перекодируем замок!" class="card-media">
                         </div>
 
                         <div class="card-content col align-self-center">
