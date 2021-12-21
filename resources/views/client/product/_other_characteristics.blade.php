@@ -74,7 +74,7 @@
 
                         <ul class="product-documents-list list-unstyled row">
                             <li class="product-documents-item col-md-4 col-xxl-12">
-                                <a href="#link" class="card-document d-inline-flex align-items-center">
+                                <a href="javascript:void(0);" class="card-document d-inline-flex align-items-center">
                                             <span class="card-document-thumbnail">
                                                 <svg class="card-document-media" width="44" height="44">
                                                     <use
@@ -90,7 +90,7 @@
                             </li>
 
                             <li class="product-documents-item col-md-4 col-xxl-12">
-                                <a href="#link" class="card-document d-inline-flex align-items-center">
+                                <a href="javascript:void(0);" class="card-document d-inline-flex align-items-center">
                                             <span class="card-document-thumbnail">
                                                 <svg class="card-document-media" width="44" height="44">
                                                     <use
@@ -106,7 +106,7 @@
                             </li>
 
                             <li class="product-documents-item col-md-4 col-xxl-12">
-                                <a href="#link" class="card-document d-inline-flex align-items-center">
+                                <a href="javascript:void(0);" class="card-document d-inline-flex align-items-center">
                                             <span class="card-document-thumbnail">
                                                 <svg class="card-document-media" width="44" height="44">
                                                     <use

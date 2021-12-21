@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="card-content col align-self-center">
-                            <a href="#link" class="card-title title-h4" >Заедает замок? <br> Отремонтируем!</a>
+                            <a href="javascript:void(0);" class="card-title title-h4" >Заедает замок? <br> Отремонтируем!</a>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="card-content col align-self-center">
-                            <a href="#link" class="card-title title-h4" >Сломался замок? <br> Вскроем дверь и заменим замок!</a>
+                            <a href="javascript:void(0);" class="card-title title-h4" >Сломался замок? <br> Вскроем дверь и заменим замок!</a>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="card-content col align-self-center">
-                            <a href="#link" class="card-title title-h4" >Потеряли ключ? <br> Перекодируем замок!</a>
+                            <a href="javascript:void(0);" class="card-title title-h4" >Потеряли ключ? <br> Перекодируем замок!</a>
                         </div>
                     </div>
                 </div>

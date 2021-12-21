@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <div class="smartphone-instruction-hint">Если у вас нет возможности сделать фото, попробуйте определить свой замок по этой <a href="#link">инструкции</a> и позвоните нам.</div>
+                    <div class="smartphone-instruction-hint">Если у вас нет возможности сделать фото, попробуйте определить свой замок по этой <a href="javascript:void(0);">инструкции</a> и позвоните нам.</div>
                 </div>
             </div>
 

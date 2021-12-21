@@ -13,7 +13,7 @@
                         </div>
                         <div class="product-attribute-title">{{$elem['name']}}</div>
                         <div class="product-attribute-description">{{$elem['values'][0]}}</div>
-{{--                        <a href="#link" class="product-attribute-link text-muted">Посмотреть аналогичные серии других--}}
+{{--                        <a href="javascript:void(0);" class="product-attribute-link text-muted">Посмотреть аналогичные серии других--}}
 {{--                            производителей от … руб</a>--}}
                     </div>
                 @endforeach
@@ -27,7 +27,7 @@
 
                         <div class="product-attribute-title product-attribute-lead-title text-success">Хотите открывать все двери одним ключом?</div>
 
-                        <a href="#link" class="product-attribute-link product-attribute-lead-link">Расскажем как!</a>
+                        <a href="javascript:void(0);" class="product-attribute-link product-attribute-lead-link">Расскажем как!</a>
                     </div>
             </div>
         </div>

@@ -54,7 +54,7 @@
                     <div class="card card-intro">
                         <div class="row flex-nowrap">
                             <div class="card-content col align-self-center">
-                                <div class="card-text">Если вы потеряли ключ, но дверь открыта, посмотрите - может вам достаточно <a href="#link">перекодировать замок</a>, <a href="#link">заменить замок или сделать копию ключа</a>?</div>
+                                <div class="card-text">Если вы потеряли ключ, но дверь открыта, посмотрите - может вам достаточно <a href="javascript:void(0);">перекодировать замок</a>, <a href="javascript:void(0);">заменить замок или сделать копию ключа</a>?</div>
                             </div>
                         </div>
                     </div>

@@ -113,7 +113,7 @@
             <div class="header-account-container col-auto">
                 <ul class="header-account-list list-unstyled row">
                     <li class="header-account-item col-auto d-none d-sm-block">
-                        <a href="#link" class="header-account d-flex align-items-center">
+                        <a href="javascript:void(0);" class="header-account d-flex align-items-center">
                             <div class="header-account-thumbnail">
                                 <svg class="header-account-media" width="28" height="25">
                                     <use xlink:href="{{asset('/images/client/sprite.svg#icon-compare')}}"></use>

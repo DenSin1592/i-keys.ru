@@ -14,7 +14,7 @@
                                     </div>
 
                                     <div class="service-article-content col">
-                                        <div class="service-article-text">Поверьте, частник по объявлению возьмет столько же, а может даже больше. <br> <a href="#link"><b>Не верите?</b></a></div>
+                                        <div class="service-article-text">Поверьте, частник по объявлению возьмет столько же, а может даже больше. <br> <a href="javascript:void(0);"><b>Не верите?</b></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -24,7 +24,7 @@
                             <div class="service-article">
                                 <div class="row">
                                     <div class="service-article-content col">
-                                        <div class="service-article-text">Также не рекомендуем самостоятельно вскрывать дверь. <br> <a href="#link"><b>Посмотрите почему</b></a></div>
+                                        <div class="service-article-text">Также не рекомендуем самостоятельно вскрывать дверь. <br> <a href="javascript:void(0);"><b>Посмотрите почему</b></a></div>
                                     </div>
                                 </div>
                             </div>

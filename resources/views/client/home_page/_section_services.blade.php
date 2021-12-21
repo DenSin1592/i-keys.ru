@@ -7,7 +7,7 @@
 
         <div class="services-grid row">
             <div class="service-item col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
-                <a href="#link" class="card-service flex-grow-1">
+                <a href="javascript:void(0);" class="card-service flex-grow-1">
                     <div class="card-service-thumbnail">
                         <img loading="lazy" src="{{asset('/uploads/services/service-item-1.jpg')}}" width="330" height="184" alt="Отремонтировать замок" class="card-service-media">
                     </div>
@@ -23,7 +23,7 @@
             </div>
 
             <div class="service-item col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
-                <a href="#link" class="card-service flex-grow-1">
+                <a href="javascript:void(0);" class="card-service flex-grow-1">
                     <div class="card-service-thumbnail">
                         <img loading="lazy" src="{{asset('/uploads/services/service-item-2.jpg')}}" width="330" height="184" alt="Заменить замок на новый" class="card-service-media">
                     </div>
@@ -39,7 +39,7 @@
             </div>
 
             <div class="service-item col-sm-6 col-md-4 col-lg-3 d-flex flex-column">
-                <a href="#link" class="card-service flex-grow-1">
+                <a href="javascript:void(0);" class="card-service flex-grow-1">
                     <div class="card-service-thumbnail">
                         <img loading="lazy" src="{{asset('uploads/services/service-item-3.jpg')}}" width="330" height="184" alt="Перекодировать замок под новый ключ" class="card-service-media">
                     </div>

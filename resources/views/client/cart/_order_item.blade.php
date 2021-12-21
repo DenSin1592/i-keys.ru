@@ -164,7 +164,7 @@
 {{--                            <div class="card-order-service-checkbox custom-control custom-checkbox">--}}
 {{--                                <input type="checkbox" class="custom-control-input" id="card-order-service-1-1">--}}
 {{--                                <label class="custom-control-label" for="card-order-service-1-1">Установка замка <span class="text-muted" >(Цена договорная)</span></label>--}}
-{{--                                <a href="#link" class="card-order-service-link text-nowrap" >Подробнее об услуге</a>--}}
+{{--                                <a href="javascript:void(0);" class="card-order-service-link text-nowrap" >Подробнее об услуге</a>--}}
 {{--                            </div>--}}
 {{--                        </li>--}}
 
@@ -172,7 +172,7 @@
 {{--                            <div class="card-order-service-checkbox custom-control custom-checkbox">--}}
 {{--                                <input type="checkbox" class="custom-control-input" id="card-order-service-1-2">--}}
 {{--                                <label class="custom-control-label" for="card-order-service-1-2">Взлом старого замка <span class="text-muted" >(Цена договорная)</span></label>--}}
-{{--                                <a href="#link" class="card-order-service-link text-nowrap" >Подробнее об услуге</a>--}}
+{{--                                <a href="javascript:void(0);" class="card-order-service-link text-nowrap" >Подробнее об услуге</a>--}}
 {{--                            </div>--}}
 {{--                        </li>--}}
 {{--                    </ul>--}}
