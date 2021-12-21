@@ -6,22 +6,17 @@ class OrderForm {
     init () {
         this.prevStep();
         this.nextStep();
-        this.buttonsCheckValid();
     }
 
-    buttonsCheckValid () {
-        $( "#order-form button[data-order-step]" ).click(function(event) {
-            const buttonsValid = $(this).parent('.checkout-nav-list').find('.valid');
-            buttonsValid.each(function (index, item) {
-                console.log(item);
-                const step = $(item).attr('data-order-step');
-                const formClass = '#order-form div[data-step="'+step+'"] form';
-                console.log($(formClass).valid());
-            })
-
-        });
+    disableButtons () {
+        const buttons = $('#order-form button[data-order-step].valid');
+        buttons.prop('disabled', true);
     }
 
+    enableButtons () {
+        const buttons = $('#order-form button[data-order-step].valid');
+        buttons.prop('disabled', false);
+    }
 
     prevStep () {
         $( ".checkout-control-back" ).click(function(event) {
@@ -32,7 +27,6 @@ class OrderForm {
             const prevStepClass = 'div[data-step='+ (parseInt(accordionItemIndex)-1).toString()  +']';
             const prevStep = accordion.find(prevStepClass).find('.collapse');
 
-            // changeState()
             prevStep.collapse('toggle');
         });
     }
@@ -86,12 +80,17 @@ class OrderForm {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     const forms = $('#order-form form');
+    const order = new OrderForm();
+    order.init();
+
     forms.validate( {
         highlight: function(element) {
             $(element).parent().addClass("field-error");
+            order.disableButtons();
         },
         unhighlight: function(element) {
             $(element).parent().removeClass("field-error");
+            order.enableButtons();
         },
 
         rules: {
@@ -128,7 +127,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         }
     });
-
-    const order = new OrderForm();
-    order.init();
 });

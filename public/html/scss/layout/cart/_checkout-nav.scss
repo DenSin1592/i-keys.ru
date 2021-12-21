@@ -52,11 +52,24 @@
         text-decoration: line-through;
     }
 
+    &.invalid {
+        color: #dc3545 !important;
+
+        .checkout-nav-count {
+            background: #dc3545 !important;
+        }
+    }
+
     &.collapsed {
         color: #c5c5c5;
 
         .checkout-nav-count {
             background-color: #c5c5c5;
+        }
+
+
+        &.invalid {
+            opacity: 0.6;
         }
     }
 }
