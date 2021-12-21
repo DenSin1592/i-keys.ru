@@ -10,7 +10,7 @@
 @if(\Arr::get($filter, 'currentFilterQuery.view') === \App\Models\Product::VIEW_LIST)
     {{--  @include('client.categories._products_list')--}}Товары списком
 @else
-    @include('client.categories._products_grid._block')
+    @include('client.categories._products_grid._catalog_list')
 @endif
 
 @if (count($productsData) === 0 && !empty($filter['filterVariants']))

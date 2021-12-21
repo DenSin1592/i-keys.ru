@@ -17,6 +17,18 @@
 
             @include('client.product._other_characteristics')
 
+
+            @if(isset($productData['relatedProductsData']['locks']))
+                @include('client.product._special_related', [
+                    'header' => 'Замки для этого товара',
+                    'subheader' => 'Мы рекомендуем покупать замок и комплектующие одного производителя',
+                    'relatedProducts' => $productData['relatedProductsData']['locks'],
+                    'catalogLink' => route('catalog', \App\Models\Category::LOCKS_ALIAS),
+                    'catalogImgPath' => asset('/images/client/sprite.svg#icon-catalog-lock'),
+                    'catalogText' => 'Посмотреть все замки',
+                ])
+            @endif
+
         </section>
     </main>
 @stop

@@ -5,7 +5,7 @@
 
         @foreach($productsData as $productData)
 
-            @include('client.categories._products_grid._element')
+            @include('client.categories._products_grid._product_card')
 
             @if($loop->iteration === 4 && trim(Setting::get("site_content.wa_phone")) !== '')
                 <div class="product-item col-sm-6 col-md-4 col-lg-3 col-xl-4 d-flex">
