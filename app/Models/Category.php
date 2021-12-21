@@ -18,6 +18,8 @@ class Category extends \Eloquent
     public const LOCKS_ID = 1;
     public const DOOR_HANDLES_ID = 2;
     public const FINDINGS_ID = 3;
+    public const COPIES_KEYS_ID = 4;
+    public const IMPORT_ID = 7;
 
     public const CILINDRY_1C_CODE = '000001';
     public const CILINDR_MEHANIZMY_CISA_1C_CODE = '21741';

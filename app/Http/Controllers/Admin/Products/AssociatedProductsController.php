@@ -40,7 +40,7 @@ class AssociatedProductsController extends Controller
             $selectedProductIds = [];
         }
 
-        $groupedProducts = $this->productRepository->groupedForRootCategories($productId);
+        $groupedProducts = $this->productRepository->groupedOnRootCategoriesFromAvailableList($productId);
         $selectedProducts = $this->productRepository->sortedByIds($selectedProductIds);
 
         $availableContent = \View::make(

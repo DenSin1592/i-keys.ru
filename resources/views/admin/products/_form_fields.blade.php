@@ -56,7 +56,7 @@
             перейдя по <a href="{{ route('cc.attributes.index') }}" target="_blank">ссылке</a>
         </i>
     </p>
-    <div id="product-attributes" data-url="{{ route('cc.products.attributes.show', [$product->category->id, $product->id]) }}">
+    <div id="product-attributes" data-url="{{ route('cc.products.attributes.show', [$product->category_id, $product->id]) }}">
         @include('admin.products.form.attributes._attributes')
     </div>
 </fieldset>

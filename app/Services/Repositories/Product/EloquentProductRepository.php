@@ -100,6 +100,27 @@ class EloquentProductRepository
         return $groupedProducts;
     }
 
+    public function groupedOnRootCategoriesFromAvailableList($excludeProductId = null): Collection
+    {
+        $groupedProducts = Collection::make([]);
+
+        $rootCategories = $this->categoryRepository->rooted();
+        foreach ($rootCategories as $rootCategory) {
+            if($rootCategory->id === Category::COPIES_KEYS_ID
+                || $rootCategory->id === Category::IMPORT_ID ){
+                continue;
+            }
+            $groupedProducts->push(
+                [
+                    'category' => $rootCategory,
+                    'products' => $this->allWithinCategory($rootCategory->id, $excludeProductId),
+                ]
+            );
+        }
+
+        return $groupedProducts;
+    }
+
     /**
      * @param array $productIds
      * @return Collection
