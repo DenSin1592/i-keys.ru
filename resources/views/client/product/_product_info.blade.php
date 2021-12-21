@@ -53,17 +53,17 @@
                             <div class="swiper-wrapper">
                                 @forelse($productData['images'] as $element)
                                     <div class="swiper-slide">
-                                        <a href="{{$element->getImgPath('image', 'catalog', 'no-image-800x800.png')}}"
+                                        <a href="{{$element->getImgPath('image', 'catalog', 'no-image-200x200.png')}}"
                                            class="product-media-link" data-fancybox="product-media">
                                             <img loading="lazy"
-                                                 src="{{$element->getImgPath('image', 'catalog', 'no-image-800x800.png')}}"
+                                                 src="{{$element->getImgPath('image', 'catalog', 'no-image-200x200.png')}}"
                                                  width="275" height="278" alt="{{$productData['product']->name}}"
                                                  class="product-media">
                                         </a>
                                     </div>
                                 @empty
                                     <div class="swiper-slide">
-                                        <a href="#" class="product-media-link">
+                                        <a href="javascript:void(0);" class="product-media-link">
                                             <img loading="lazy"
                                                  src="{{asset('/images/common/no-image/no-image-200x200.png')}}"
                                                  width="275" height="278" alt="{{$productData['product']->name}}"

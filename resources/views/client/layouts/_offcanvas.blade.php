@@ -29,7 +29,7 @@
             <div class="offcanvas-account-container col-auto">
                 <ul class="offcanvas-account-list list-unstyled row">
                     <li class="offcanvas-account-item col-auto">
-                        <a href="#" class="offcanvas-account-link d-flex align-items-center">
+                        <a href="javascript:void(0);" class="offcanvas-account-link d-flex align-items-center">
                                 <span class="offcanvas-account-thumbnail">
                                     <svg class="offcanvas-account-media" width="28" height="25">
                                         <use xlink:href="{{asset('/images/client/sprite.svg#icon-compare')}}"></use>

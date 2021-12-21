@@ -29,6 +29,8 @@
                 ])
             @endif
 
+            @include('client.product._services')
+
         </section>
     </main>
 @stop
