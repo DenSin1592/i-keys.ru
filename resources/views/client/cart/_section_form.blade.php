@@ -11,25 +11,25 @@
                 <div class="row">
                     <div class="col-lg-3 d-none d-lg-block">
                         <div class="checkout-nav-list d-flex flex-column">
-                            <button class="checkout-nav-link d-flex align-items-center" type="button" data-toggle="collapse"
+                            <button class="checkout-nav-link d-flex align-items-center" data-order-step="1" type="button" data-toggle="collapse"
                                     data-target="#checkout-information-collapse" aria-expanded="true" aria-controls="checkout-information-collapse">
                                 <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">1</span>
                                 Личная информация
                             </button>
 
-                            <button class="checkout-nav-link d-flex align-items-center collapsed" type="button" data-toggle="collapse"
+                            <button class="checkout-nav-link d-flex align-items-center collapsed" data-order-step="2" type="button" disabled data-toggle="collapse"
                                     data-target="#checkout-delivery-collapse" aria-expanded="false" aria-controls="checkout-delivery-collapse">
                                 <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">2</span>
                                 Доставка
-                            </button>
+                            </button >
 
-                            <button class="checkout-nav-link d-flex align-items-center collapsed" type="button" data-toggle="collapse"
+                            <button class="checkout-nav-link d-flex align-items-center collapsed" data-order-step="3" type="button" disabled data-toggle="collapse"
                                     data-target="#checkout-payment-collapse" aria-expanded="false" aria-controls="checkout-payment-collapse">
                                 <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">3</span>
                                 Оплата
                             </button>
 
-                            <button class="checkout-nav-link d-flex align-items-center collapsed" type="button" data-toggle="collapse"
+                            <button class="checkout-nav-link d-flex align-items-center collapsed" data-order-step="4" type="button" disabled data-toggle="collapse"
                                     data-target="#checkout-confirm-collapse" aria-expanded="false" aria-controls="checkout-confirm-collapse">
                                 <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">4</span>
                                 Подтверждение заказа
@@ -244,7 +244,7 @@
 
                                 <form action="{{route('order.store')}}" method="post" enctype="multipart/form-data" >
                                     @csrf
-                                    <div class="checkout-content" name="payment_method">
+                                    <div class="checkout-content">
                                         <div class="form-options-group">
                                             <div class="form-option">
                                                 <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_ONLINE }}" autocomplete="off" hidden required>
@@ -262,7 +262,7 @@
                                             </div>
 
                                             <div class="form-option">
-                                                <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_CASH }}" autocomplete="off" hidden>
+                                                <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_CASH }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header" id="checkout-payment-cash" name="{{ \App\Models\Order::PAYMENT_CASH }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">
                                                         Наличными или картой при получении (только при самовывозе из магазина)
@@ -271,7 +271,7 @@
                                             </div>
 
                                             <div class="form-option">
-                                                <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_INVOICE }}" autocomplete="off" hidden>
+                                                <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_INVOICE }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header" id="checkout-payment-invoice" name="{{ \App\Models\Order::PAYMENT_INVOICE }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">По счету от юридического лица</div>
                                                 </div>
@@ -283,13 +283,16 @@
                                                     </p>
 
                                                     <div class="custom-file">
-                                                        <input type="text" name="legal-entity-document" id="checkout-attached-files" class="custom-file-input">
+                                                        <input type="file" size="20971520" name="file_upload" id="checkout-attached-files" class="custom-file-input">
+
                                                         <label for="checkout-attached-files" class="custom-file-label">
                                                             <svg class="custom-file-media" width="24" height="26">
                                                                 <use xlink:href="/images/sprite.svg#icon-attach"></use>
                                                             </svg>
                                                             Прикрепить файл <span class="text-muted" >(принимаются файлы в формате jpg, pdf, doc и xls)</span>
                                                         </label>
+                                                        <div class="invalid-feedback type">Неверное расширение файла</div>
+                                                        <div class="invalid-feedback size"></div>
                                                     </div>
                                                 </div>
                                             </div>

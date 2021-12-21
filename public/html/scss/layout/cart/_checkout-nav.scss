@@ -48,6 +48,9 @@
         }
     }
 
+    &.valid {
+        text-decoration: line-through;
+    }
 
     &.collapsed {
         color: #c5c5c5;

@@ -48,6 +48,7 @@ return [
                 'html/vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js',
 
                 '/js/common/jquery.inputmask.bundle.min.js',
+                '/js/common/jquery.uploadfile.min.js',
                 '/js/common/jquery.validate/jquery.validate.min.js',
                 '/js/common/jquery.validate/additional-methods.min.js',
                 '/js/common/jquery.validate/localization/messages_ru.min.js',
