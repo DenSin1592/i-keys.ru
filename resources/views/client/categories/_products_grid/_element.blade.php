@@ -18,7 +18,7 @@
             <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$productData['product']->name}}" class="card-product-media">
         </div>
 
-        <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">{{$productData['product']->name}}</a>
+        <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">{{$productData['productTypePageAdditionalInfo']['name'] ?? $productData['product']->name}}</a>
 
         <div class="card-product-info-list">
 {{--            <div class="card-product-size-block card-product-info-block d-flex">--}}

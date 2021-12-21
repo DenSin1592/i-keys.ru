@@ -8,12 +8,10 @@ use App\Services\Repositories\ProductTypePageAssociation\EloquentProductTypePage
 
 class ProductTypePageAdditionalInfo implements ClientProductListPlugin
 {
-    private $productTypePageAssociationRepo;
+    public function __construct(
+        private EloquentProductTypePageAssociationRepository $productTypePageAssociationRepo
+    ){}
 
-    public function __construct(EloquentProductTypePageAssociationRepository $productTypePageAssociationRepo)
-    {
-        $this->productTypePageAssociationRepo = $productTypePageAssociationRepo;
-    }
 
     public function getForProductsList($products, array $additionalData = []): array
     {

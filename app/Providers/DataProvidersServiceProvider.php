@@ -52,13 +52,9 @@ class DataProvidersServiceProvider extends ServiceProvider
 
 
         //Client
-        $this->app->bind(ClientProductList::class);
-        $this->app->extend(
-            ClientProductList::class,
-            function (ClientProductList $productListProvider) {
-                $productListProvider->addPlugin(
-                    $this->app->make(ClientProductListPlugins\ProductTypePageAdditionalInfo::class)
-                );
+        $this->app->bind(ClientProductList::class, static function () {
+                $productListProvider = new ClientProductList();
+                $productListProvider->addPlugin(\App::make(ClientProductListPlugins\ProductTypePageAdditionalInfo::class));
 
                 return $productListProvider;
             }

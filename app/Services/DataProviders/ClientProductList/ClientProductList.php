@@ -4,21 +4,14 @@ namespace App\Services\DataProviders\ClientProductList;
 
 class ClientProductList
 {
-    /** @var ClientProductListPlugin[] */
-    private $plugins = [];
+    private array $plugins = [];
 
     public function addPlugin(ClientProductListPlugin $plugin): void
     {
         $this->plugins[] = $plugin;
     }
 
-    /**
-     * Get product list data for products.
-     *
-     * @param $products
-     * @param array $additionalData
-     * @return array
-     */
+
     public function getProductListData($products, array $additionalData = []): array
     {
         $additionalListData = [];
@@ -29,23 +22,20 @@ class ClientProductList
             );
         }
 
-        return $this->buildProductListData($products, $additionalListData);
+        $productListData = $this->buildProductListData($products, $additionalListData);
+
+        return $productListData;
     }
 
-    /**
-     * Build product list data for products.
-     *
-     * @param $products
-     * @param array $additionalListData
-     * @return array
-     */
+
     private function buildProductListData($products, array $additionalListData = []): array
     {
         $productListData = [];
+
         foreach ($products as $product) {
             $productData = ['product' => $product];
             foreach ($additionalListData as $dataKey => $listData) {
-                $productData[$dataKey] = \Arr::get($listData, $product->id);
+                $productData[$dataKey] = $listData[$product->id] ?? null;
             }
 
             $productListData[] = $productData;
