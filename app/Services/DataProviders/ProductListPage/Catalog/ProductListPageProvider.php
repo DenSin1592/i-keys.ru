@@ -29,6 +29,7 @@ abstract class ProductListPageProvider
         $products = $paginator->items();
         $productsData = $this->getProductsData($products);
 
+
         $data = [
             'paginator' => $paginator,
             'productsData' => $productsData,
