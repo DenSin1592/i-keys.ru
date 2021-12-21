@@ -130,11 +130,38 @@ class Product extends \Eloquent
     public function isCylinder(): bool
     {
         $categoryPath = $this->category->extractPath();
-        if($categoryPath[1]->code_1c === Category::CILINDRY_1C_CODE){
-            return true;
-        }
-        return false;
+        return $categoryPath[1]->code_1c === Category::CILINDRY_1C_CODE;
     }
+
+
+    public function isLock(): bool
+    {
+        $categoryPath = $this->category->extractPath();
+        return $categoryPath[0]->id === Category::LOCKS_ID && $categoryPath[1]->code_1c !== Category::CILINDRY_1C_CODE;
+    }
+
+
+    public function isArmorplate(): bool
+    {
+        $categoryPath = $this->category->extractPath();
+        return $categoryPath[0]->id === Category::FINDINGS_ID && $categoryPath[1]->code_1c === Category::ARMORPLATE_CISA_1C_CODE;
+    }
+
+
+    public function isDoorHandle(): bool
+    {
+        $categoryPath = $this->category->extractPath();
+        return $categoryPath[0]->id === Category::DOOR_HANDLES_ID;
+    }
+
+
+    public function isFindings(): bool
+    {
+        $categoryPath = $this->category->extractPath();
+        return $categoryPath[0]->id === Category::FINDINGS_ID;
+    }
+
+
 
 
     public function getExistenceString(): string

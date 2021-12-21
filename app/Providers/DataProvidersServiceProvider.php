@@ -5,6 +5,7 @@ use App\Services\DataProviders\AttributeForm\AttributeSubForm;
 use App\Services\DataProviders\ClientProduct\ClientProduct;
 use App\Services\DataProviders\ClientProduct\Plugins\Attributes;
 use App\Services\DataProviders\ClientProduct\Plugins\ProductImages;
+use App\Services\DataProviders\ClientProduct\Plugins\RelatedProducts;
 use App\Services\DataProviders\ClientProductList\ClientProductList;
 use App\Services\DataProviders\ClientProductList\Plugins as ClientProductListPlugins;
 use App\Services\DataProviders\OrderForm\OrderForm;
@@ -68,7 +69,7 @@ class DataProvidersServiceProvider extends ServiceProvider
             $productProvider = new ClientProduct();
                 $productProvider->addPlugin(\App::make(ProductImages::class));
                 $productProvider->addPlugin(\App::make(Attributes::class));
-//                $productProvider->addPlugin($this->app->make(ClientProductPlugins\RelatedProducts::class));
+                $productProvider->addPlugin(\App::make(RelatedProducts::class));
 
                 return $productProvider;
             }

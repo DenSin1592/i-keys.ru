@@ -4,31 +4,81 @@ namespace App\Services\DataProviders\ClientProduct\Plugins;
 
 use App\Models\Product;
 use App\Services\DataProviders\ClientProduct\ClientProductPlugin;
-use App\Services\DataProviders\ClientProductList\ClientProductList;
 use App\Services\Repositories\Product\EloquentProductRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class RelatedProducts implements ClientProductPlugin
 {
-    private $productRepository;
-    private $productListProvider;
 
-    /**
-     * RelatedProducts constructor.
-     * @param EloquentProductRepository $productRepository
-     * @param ClientProductList $productListProvider
-     */
-    public function __construct(EloquentProductRepository $productRepository, ClientProductList $productListProvider)
-    {
-        $this->productRepository = $productRepository;
-        $this->productListProvider = $productListProvider;
-    }
+    public function __construct(
+        private EloquentProductRepository $productRepository
+    ){}
+
 
     public function getForProduct(Product $product): array
     {
         $relatedProducts = $this->productRepository->relatedProductsForProduct($product, true);
-        $relatedProductsData = $this->productListProvider->getProductListData($relatedProducts);
 
-        return ['relatedProductsData' => $relatedProductsData];
+        if($product->isCylinder()){
+            $relatedProductsFinal = $this->getForCylinder($relatedProducts);
+        }else{
+            $relatedProductsFinal['default'] = $this->getDefaultRelatedProduct($relatedProducts);
+        }
+
+        return ['relatedProductsData' => $relatedProductsFinal];
+    }
+
+
+    private function getForCylinder(Collection $relatedProducts): array
+    {
+        $array = [];
+
+        foreach ($relatedProducts as $key => $element){
+            if($element->isLock()){
+                $array['locks'][] = $element;
+                unset($relatedProducts[$key]);
+                continue;
+            }
+            if($element->isArmorplate()){
+                $array['armorplate'][] = $element;
+                unset($relatedProducts[$key]);
+                continue;
+            }
+
+        }
+
+        $array['default'] = $this->getDefaultRelatedProduct($relatedProducts);
+        return $array;
+    }
+
+
+    private function getDefaultRelatedProduct(Collection $relatedProducts): array
+    {
+        $array = [];
+
+        foreach ($relatedProducts as $element){
+            if($element->isLock()){
+                $array['Замки'][] = $element;
+                continue;
+            }
+            if($element->isCylinder()){
+                $array['Цилиндры'][] = $element;
+                continue;
+            }
+            if($element->isDoorHandle()){
+                $array['Ручки'][] = $element;
+                continue;
+            }
+            if($element->isFindings()){
+                $array['Фурнитура'][] = $element;
+                continue;
+            }
+
+            $array['Другое'][] = $element;
+            continue;
+        }
+
+        return $array;
     }
 
 }

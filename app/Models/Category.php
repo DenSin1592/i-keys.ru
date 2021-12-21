@@ -15,8 +15,13 @@ class Category extends \Eloquent
     public const CATALOG_TYPE_IMAGE_ARE_IMPORTANT = 'image_are_important';
     public const CATALOG_TYPE_CHARACTERISTICS_ARE_IMPORTANT = 'characteristics_are_important';
 
+    public const LOCKS_ID = 1;
+    public const DOOR_HANDLES_ID = 2;
+    public const FINDINGS_ID = 3;
+
     public const CILINDRY_1C_CODE = '000001';
     public const CILINDR_MEHANIZMY_CISA_1C_CODE = '21741';
+    public const ARMORPLATE_CISA_1C_CODE = '21739';
 
     use Glue;
     use InTreePublish;
