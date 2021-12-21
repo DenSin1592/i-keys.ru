@@ -31,6 +31,16 @@
 
             @include('client.product._services')
 
+            @if(isset($productData['relatedProductsData']['armorplate']))
+                @include('client.product._special_related', [
+                    'header' => 'Хотите повысить взломостойкость, купите броненакладку',
+                    'relatedProducts' => $productData['relatedProductsData']['armorplate'],
+                    'catalogLink' => route('catalog', '/furnitura/bronenakladki-cisa'),
+                    'catalogImgPath' => asset('/images/client/sprite.svg#icon-catalog'),
+                    'catalogText' => 'Посмотреть все броненакладки',
+                ])
+            @endif
+
         </section>
     </main>
 @stop

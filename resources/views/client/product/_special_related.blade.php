@@ -14,11 +14,7 @@
                 <div class="swiper-products swiper-related-products swiper-container">
                     <div class="swiper-wrapper">
 
-                        @foreach($relatedProducts as $relatedProductData)
-
-                            @include('client.categories._products_grid._product_card', ['productData' => $relatedProductData])
-
-                        @endforeach
+                        @each('client.categories._products_grid._product_card', $relatedProducts, 'productData')
 
                     </div>
                 </div>
