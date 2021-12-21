@@ -130,14 +130,14 @@ class Product extends \Eloquent
     public function isCylinder(): bool
     {
         $categoryPath = $this->category->extractPath();
-        return $categoryPath[1]->code_1c === Category::CILINDRY_1C_CODE;
+        return $categoryPath[0]->code_1c === Category::CILINDRY_1C_CODE;
     }
 
 
     public function isLock(): bool
     {
         $categoryPath = $this->category->extractPath();
-        return $categoryPath[0]->id === Category::LOCKS_ID && $categoryPath[1]->code_1c !== Category::CILINDRY_1C_CODE;
+        return $categoryPath[0]->id === Category::LOCKS_ID;
     }
 
 
