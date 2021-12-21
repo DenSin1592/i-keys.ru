@@ -9,9 +9,7 @@ use App\Services\Catalog\ListSorting\SortingContainer;
 use App\Services\DataProviders\ClientProductList\ClientProductList;
 use App\Services\DataProviders\ProductListPage\Catalog\FilteredProductList;
 use App\Services\DataProviders\ProductListPage\FilterVariantsProvider;
-use App\Services\Repositories\Category\EloquentCategoryRepository;
 use App\Services\Repositories\Product\EloquentProductRepository;
-use App\Services\Repositories\ProductTypePage\EloquentProductTypePageRepository;
 use App\Services\Seo\MetaHelper;
 use \Illuminate\Contracts\View\View;
 use \Illuminate\Http\JsonResponse;
@@ -22,13 +20,11 @@ class CatalogController extends Controller
     use CatalogBreadcrumbs;
 
     public function __construct(
-        private EloquentCategoryRepository $categoryRepository,
         private EloquentProductRepository $productRepository,
         private FilterVariantsProvider $filterVariantsProvider,
         private ClientProductList $productListProvider,
         private MetaHelper $metaHelper,
         private Breadcrumbs $breadcrumbs,
-        private EloquentProductTypePageRepository $typeProductRepository,
     ){}
 
 
