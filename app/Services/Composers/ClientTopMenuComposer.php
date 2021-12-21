@@ -11,6 +11,7 @@ class ClientTopMenuComposer
 {
     use NodeMenuBuilder;
 
+    private ?array $cache = null;
 
     public function __construct(
         private EloquentNodeRepository $nodeRepository
@@ -19,8 +20,11 @@ class ClientTopMenuComposer
 
     public function compose(View $view)
     {
-        $nodeList = $this->nodeRepository->treePublishedTopMenu();
-        $topMenu = $this->buildMenu($nodeList);
-        $view->with('topMenu', $topMenu);
+        if(is_null($this->cache)){
+            $nodeList = $this->nodeRepository->treePublishedTopMenu();
+            $this->cache = $this->buildMenu($nodeList);
+        }
+
+        $view->with('topMenu', $this->cache);
     }
 }

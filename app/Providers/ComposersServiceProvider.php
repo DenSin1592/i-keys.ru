@@ -19,6 +19,9 @@ class ComposersServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->app->singleton(ClientTopMenuComposer::class, ClientTopMenuComposer::class);
+        $this->app->singleton(ClientHeaderCategoryMenuComposer::class, ClientHeaderCategoryMenuComposer::class);
+
         \View::composers([
             AdminMainMenuComposer::class => 'admin.layouts._main_menu',
             AdminAlertComposer::class => 'admin.layouts._alerts',
