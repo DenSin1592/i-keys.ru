@@ -32,7 +32,7 @@ class OrderForm {
                         const filtred = currentObject[key].filter(function (el) {
                             return el != '';
                         });
-                        if (NoneEmpty(filtred)) {
+                        if (NoneEmpty(filtred) && filtred.length !== 0) {
                             result[key] = filtred;
                         }
                     } else {
@@ -42,7 +42,7 @@ class OrderForm {
             }
             return result;
         }, {});
-
+        console.log(resultObject);
         return JSON.stringify(resultObject);
     }
 
