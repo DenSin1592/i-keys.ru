@@ -52,6 +52,15 @@
         text-decoration: line-through;
     }
 
+    &.complete {
+        color: #c55100 !important;
+        text-decoration: none !important;
+
+        .checkout-nav-count {
+            background: #c55100 !important;
+        }
+    }
+
     &.invalid {
         color: #dc3545 !important;
 

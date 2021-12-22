@@ -48,7 +48,6 @@ return [
                 'html/vendor/jquery-ui-touch-punch-master/jquery.ui.touch-punch.min.js',
 
                 '/js/common/jquery.inputmask.bundle.min.js',
-                '/js/common/jquery.uploadfile.min.js',
                 '/js/common/jquery.validate/jquery.validate.min.js',
                 '/js/common/jquery.validate/additional-methods.min.js',
                 '/js/common/jquery.validate/localization/messages_ru.min.js',
@@ -61,6 +60,7 @@ return [
                 'html/js/filter.js',
                 'html/js/offcanvas.js',
 
+                'js/client/helpers/Arrays.js',
                 'js/client/auth_menu.js',
                 'js/client/quick_order.js',
                 'js/client/modal_message.js',
@@ -71,8 +71,8 @@ return [
                 'js/client/cart/cart_update.js',
                 'js/client/validation/phone-mask.js',
                 'js/client/validation/validMethods.js',
+                'js/client/assets/uploadFile.js',
                 'js/client/order/orderSteps.js',
-
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
             'output' => 'js/compiled/client.js'
