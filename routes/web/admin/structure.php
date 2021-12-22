@@ -9,4 +9,5 @@ Route::get('/', 'StructureController@index')->name('home');
 Route::resource('structure', 'StructureController')->except(['show']);
 Route::resource('home-pages', 'HomePagesController')->only(['edit', 'update']);
 Route::resource('text-pages', 'TextPagesController')->only(['edit', 'update']);
+Route::resource('service-pages', 'ServicePagesController')->only(['edit', 'update']);
 Route::resource('meta-pages', 'MetaPagesController')->only(['edit', 'update']);

@@ -47,6 +47,7 @@ class Node extends \Eloquent
     const TYPE_HOME_PAGE = 'home_page';
     const TYPE_TEXT_PAGE = 'text_page';
     const TYPE_ERROR_PAGE = 'error_page';
+    const TYPE_SERVICES_PAGE = 'services_page';
 
     protected $fillable = [
         'parent_id',
@@ -71,6 +72,11 @@ class Node extends \Eloquent
     public function textPage()
     {
         return $this->hasOne(TextPage::class);
+    }
+
+    public function servicePage()
+    {
+        return $this->hasOne(ServicePage::class);
     }
 
     public function homePage()
