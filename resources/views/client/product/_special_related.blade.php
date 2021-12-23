@@ -4,7 +4,7 @@
             <div class="section-title title-h3 font-family-secondary">{{$header}}</div>
 
             @if(isset($subheader))
-                <div class="section-alert text-danger"><span class="section-alert-media">!</span>{{$subheader}}</div>
+                <div class="section-alert text-danger"><span class="section-alert-media">!</span> {{$subheader}}</div>
             @endif
 
         </div>
@@ -14,7 +14,14 @@
                 <div class="swiper-products swiper-related-products swiper-container">
                     <div class="swiper-wrapper">
 
-                        @each('client.categories._products_grid._product_card', $relatedProducts, 'productData')
+                        @foreach($relatedProducts as $key => $productData)
+                            <div class="swiper-slide col-auto col-sm-6 col-md-4 col-lg-4 d-flex">
+                                @include('client.categories._products_grid._product_card', [
+                                    'productData' => $productData,
+                                    'cardNumber' => $key,
+                                ])
+                            </div>
+                        @endforeach
 
                     </div>
                 </div>
