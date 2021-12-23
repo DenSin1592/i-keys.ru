@@ -13,6 +13,7 @@ class OrderForm {
         if (this.debug) {
             const buttons = $('#order-form button[data-order-step]');
             buttons.prop('disabled', false);
+            this.testData();
         }
         this.prevStep();
         this.nextStep();
@@ -32,8 +33,10 @@ class OrderForm {
                         const filtred = currentObject[key].filter(function (el) {
                             return el != '';
                         });
-                        if (NoneEmpty(filtred) && filtred.length !== 0) {
+                        if (filtred.length > 1) {
                             result[key] = filtred;
+                        } else {
+                            result[key] = filtred[0];
                         }
                     } else {
                         result[key] = currentObject[key];
@@ -42,8 +45,7 @@ class OrderForm {
             }
             return result;
         }, {});
-        console.log(resultObject);
-        return JSON.stringify(resultObject);
+        return JSON.stringify(new Array(resultObject));
     }
 
     disableButtons () {
@@ -110,18 +112,19 @@ class OrderForm {
                 nextStep.collapse('toggle');
             } else if (form.valid() && isLastStep) {
                 const url = form.attr('action');
-                console.log(order.getFormsData());
+                console.log((order.getFormsData()));
+                console.log(JSON.parse(order.getFormsData()));
                 $.ajax({
                     type: "POST",
                     url: url,
                     data: order.getFormsData(),
                     success: function(response) {
                         console.log(response);
-                        nextStep.find('.checkout-content').html("<h3>"+response.data+"</h3>");
+                        nextStep.find('.checkout-content').html("<h3>"+response+"</h3>");
                     },
                     error:  function(xhr, str){
                         console.log(xhr, str);
-                        nextStep.find('.checkout-content').html("<h3>Произошла ошибка</h3>");
+                        nextStep.find('.checkout-content').html("<h3>Произошла ошибка</h3><p>"+xhr.responseText+"</p>");
                     },
                     complete: function () {
                         nextStep.collapse('toggle');
@@ -130,6 +133,24 @@ class OrderForm {
                             .addClass('complete');
                     }
                 });
+            }
+        });
+    }
+    testData () {
+        const msg = document.createElement('div');
+        $.ajax({
+            type: "POST",
+            url: '/order/store',
+            data: '[{"name":"fef","phone":"+7 (434) 344-34-33","email":"7info7web@gmail.com","city":"rrrr","street":"rrr","building":"rr","flat":"rr","delivery":"courier","_token":"Y3T7s1e8ugBJUbhRVi6jE323ncZKXRGXb6ur6dSL","payment_method":"cash"}]',
+            success: function(response) {
+                console.log(response);
+                msg.innerHTML = response;
+                document.querySelector('#checkout-accordion').prepend(msg);
+            },
+            error:  function(xhr, str){
+                console.log(xhr, str);
+                msg.innerHTML = xhr + '<br>' + str;
+                document.querySelector('#checkout-accordion').prepend(msg);
             }
         });
     }
@@ -142,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     } catch (e) {
         console.warn('orderSteps.js not working', e);
     }
-    const order = new OrderForm(false);
+    const order = new OrderForm(true);
     order.init();
 
     const forms = $('#order-form form');
