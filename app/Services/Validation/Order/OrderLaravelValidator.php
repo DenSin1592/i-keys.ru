@@ -41,7 +41,8 @@ class OrderLaravelValidator extends AbstractLaravelValidator
             'type' => ['in:' . implode(',', array_keys($this->orderRepository->getTypeVariants()))],
             'payment_method' => [
                 'nullable',
-                'in:' . implode(',', array_keys($this->orderRepository->getPaymentMethodVariants()))
+                // TODO не забыть в итоге отрегулирвать валидацию после правок на фронте
+//                'in:' . implode(',', array_keys($this->orderRepository->getPaymentMethodVariants()))
             ],
             'payment_status' => [
                 'nullable',
@@ -49,10 +50,10 @@ class OrderLaravelValidator extends AbstractLaravelValidator
             ],
             'delivery_method' => [
                 'nullable',
-                'in:' . implode(
-                    ',',
-                    DeliveryMethodConstants::getMethodsForPayment(\Arr::get($this->data, 'payment_method'))
-                )
+//                'in:' . implode(
+//                    ',',
+//                    DeliveryMethodConstants::getMethodsForPayment(\Arr::get($this->data, 'payment_method'))
+//                )
             ],
             'order_items' => ['required'],
 //            'icon_file' => 'mimes:jpg,pdf,doc,xls',
