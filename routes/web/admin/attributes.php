@@ -4,7 +4,7 @@
 
 Route::prefix('attributes')->name('attributes.')->group(function () {
     Route::put('update-positions', 'AttributesController@updatePositions')->name('update-positions');
-    Route::get('type-data/show/{id?}', 'Attributes\TypesController@show')->name('type-data.show');
+//    Route::get('type-data/show/{id?}', 'Attributes\TypesController@show')->name('type-data.show');
     Route::get('allowed-values/create/{id?}', 'Attributes\AllowedValuesController@create')
         ->name('allowed-values.create');
     Route::put('toggle/{id}/{attribute}', 'AttributesController@toggleAttribute')->name('toggle-attribute');
