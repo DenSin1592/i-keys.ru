@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                         requiredPhone: true,
                         minLenghtPhone: 10
                     },
-                    delivery: {
+                    delivery_method: {
                         required: true
                     },
                     city: {
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     }
                 },
                 messages: {
-                    delivery: {
+                    delivery_method: {
                         required: 'Выберите один из способов доставки'
                     },
                     payment_method: {
