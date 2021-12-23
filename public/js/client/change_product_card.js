@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const TIME_OPACITY_TIMEOUT = TIME_OPACITY - 300;
     const URL_CHANGE_CARD = '/change-product-card'
 
-    $(document).on('change', 'input.change-card', (e) => {
+    $(document).on('change', 'input.change-card, select.change-card', (e) => {
         e.preventDefault();
         let input = $(e.currentTarget);
         let productCard = input.closest('.product-item');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         productCard.stop().animate({opacity: 0}, TIME_OPACITY)
 
         let data = {
-            productId: input.data('productId'),
+            productId: input.val(),
             cardNumber: productCardContent.data('cardNumber'),
         }
 

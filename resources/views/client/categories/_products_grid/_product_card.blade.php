@@ -1,17 +1,4 @@
  <div class="card-product card-product-portrait" data-card-number="{{$cardNumber}}">
-        <div class="card-product-badges d-flex">
-{{--            <div class="card-product-badge">--}}
-{{--                <svg class="card-product-badge-media" width="39" height="45">--}}
-{{--                    <use xlink:href="/images/client/sprite.svg#icon-coding"></use>--}}
-{{--                </svg>--}}
-{{--            </div>--}}
-
-{{--            <div class="card-product-badge">--}}
-{{--                <svg class="card-product-badge-media" width="45" height="45">--}}
-{{--                    <use xlink:href="/images/client/sprite.svg#icon-no-keys"></use>--}}
-{{--                </svg>--}}
-{{--            </div>--}}
-        </div>
 
         <div class="card-product-thumbnail">
             <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$productData['product']->name}}" class="card-product-media">
@@ -20,14 +7,18 @@
         <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">{!! $productData['productTypePageAdditionalInfo']['name'] ?? $productData['product']->name !!}</a>
 
         <div class="card-product-info-list">
-{{--            <div class="card-product-size-block card-product-info-block d-flex">--}}
-{{--                <label for="card-product-size-{{$loop->iteration}}" class="card-product-info-title card-product-size-title">Типоразмер</label>--}}
 
-{{--                <select name="" id="card-product-size-{{$loop->iteration}}" class="card-product-size custom-control custom-select" style="width: auto;" >--}}
-{{--                    <option value="50*60мм">50*60мм</option>--}}
-{{--                    <option value="60*70мм">60*70мм</option>--}}
-{{--                </select>--}}
-{{--            </div>--}}
+            @if(isset($productData['sizes_cylinder']))
+                <div class="card-product-size-block card-product-info-block d-flex">
+                    <label for="card-product-size-{{$cardNumber}}" class="card-product-info-title card-product-size-title">Типоразмер</label>
+
+                    <select name="" id="card-product-size-{{$cardNumber}}" class="card-product-size custom-control custom-select change-card" style="width: auto;">
+                        @foreach($productData['sizes_cylinder'] as $element)
+                            <option value="{{$element['product_id']}}" @if($element['isActive']) selected @endif>{{$element['attr_value']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            @endif
 
             <div class="card-product-color-block card-product-info-block d-flex">
 
@@ -39,11 +30,12 @@
                         @foreach($productData['colors'] as $key => $element)
 
                             <div class="card-product-color custom-control custom-color custom-color-sm">
-                                <input type="radio" class="custom-control-input change-card" id="card-product-color-{{$cardNumber}}-{{$key}}" data-product-id="{{$element['product_id']}}" name="card-product-color-{{$cardNumber}}" @if($element['isActive'])checked @endif>
+                                <input type="radio" class="custom-control-input change-card" id="card-product-color-{{$cardNumber}}-{{$key}}" value="{{$element['product_id']}}" name="card-product-color-{{$cardNumber}}" @if($element['isActive'])checked @endif>
                                 <label for="card-product-color-{{$cardNumber}}-{{$key}}" class="custom-control-label">
-                                    <img loading="lazy" src="{{$element['imgPath']}}" alt="{{$element['attr_name']}}" class="custom-control-image">
+                                    <img loading="lazy" src="{{$element['imgPath']}}" alt="{{$element['attr_value']}}" class="custom-control-image">
                                 </label>
                             </div>
+
                         @endforeach
 
                     </div>

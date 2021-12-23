@@ -56,6 +56,7 @@ class DataProvidersServiceProvider extends ServiceProvider
                 $productListProvider = new ClientProductList();
                 $productListProvider->addPlugin(\App::make(ClientProductListPlugins\ProductTypePageAdditionalInfo::class));
                 $productListProvider->addPlugin(\App::make(ClientProductListPlugins\Colors::class));
+                $productListProvider->addPlugin(\App::make(ClientProductListPlugins\SizesCylinders::class));
 
                 return $productListProvider;
             }
