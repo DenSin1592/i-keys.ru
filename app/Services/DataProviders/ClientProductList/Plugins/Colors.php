@@ -85,7 +85,7 @@ class Colors implements ClientProductListPlugin
                 'imgPath' => match ($element->attr_id){
                     AttributeConstants::COLOR_LATUN_ID => asset('/uploads/colors/color-brown.png'),
                     AttributeConstants::COLOR_NICKEL_ID => asset('/uploads/colors/color-silver.png'),
-                    'default' => '',
+                    default => asset('/images/common/no-image/no-image-40x40.png'),
                 }
             ];
         }

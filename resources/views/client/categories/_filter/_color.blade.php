@@ -18,7 +18,22 @@
                         >
                         <label for="filter_{{ $lensData['key'] . '_' . $variant['value'] }}"
                                class="custom-control-label">
-                            <img loading="lazy" src="/uploads/colors/color-brown.png" alt="{{ $variant['name'] }}"
+
+                            <img loading="lazy"
+
+                                @switch($variant['value'])
+                                    @case(\App\Models\Attribute\AttributeConstants::COLOR_LATUN_ID)
+                                        src="{{asset('/uploads/colors/color-brown.png')}}"
+                                        @break
+                                    @case(\App\Models\Attribute\AttributeConstants::COLOR_NICKEL_ID)
+                                        src="{{asset('/uploads/colors/color-silver.png')}}"
+                                        @break
+                                    @default
+                                        src="{{asset('/images/common/no-image/no-image-40x40.png')}}"
+                                 @endswitch
+
+
+                                 alt="{{ $variant['name'] }}"
                                  class="custom-control-image">
                         </label>
                     </div>
