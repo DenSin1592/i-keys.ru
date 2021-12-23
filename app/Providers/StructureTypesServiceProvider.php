@@ -91,7 +91,7 @@ class StructureTypesServiceProvider extends ServiceProvider
                         true,
                         self::REPO_SERVICE_LIST_PAGE,
                         function () {
-                            return route('home');
+                            return route('services');
                         }
                     )
                 );
