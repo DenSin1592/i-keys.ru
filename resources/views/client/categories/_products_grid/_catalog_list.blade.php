@@ -3,9 +3,13 @@
 <div class="catalog-products-block">
     <div class="catalog-products-grid products-grid row">
 
-        @foreach($productsData as $productData)
+        @foreach($productsData as $key => $productData)
 
-            @include('client.categories._products_grid._product_card')
+                @include('client.categories._products_grid._product_card', [
+                    'productData' => $productData,
+                    'cardClass' => null,
+                    'cardNumber' => $key,
+                ])
 
             @if($loop->iteration === 4 && trim(Setting::get("site_content.wa_phone")) !== '')
                 <div class="product-item col-sm-6 col-md-4 col-lg-3 col-xl-4 d-flex">

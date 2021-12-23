@@ -31,18 +31,24 @@
 {{--            </div>--}}
 
             <div class="card-product-color-block card-product-info-block d-flex">
-{{--                <label for="" class="card-product-info-title card-product-color-title">Цвет</label>--}}
 
-{{--                <div class="card-product-color-list d-flex flex-wrap">--}}
+                @if(isset($productData['colors']))
+                    <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
 
-{{--                    <div class="card-product-color custom-control custom-color custom-color-sm">--}}
-{{--                        <input type="radio" class="custom-control-input" id="card-product-color-{{$loop->iteration}}-1" name="card-product-color-1" checked >--}}
-{{--                        <label for="card-product-color-1-1" class="custom-control-label">--}}
-{{--                            <img loading="lazy" src="/uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">--}}
-{{--                        </label>--}}
-{{--                    </div>--}}
+                    <div class="card-product-color-list d-flex flex-wrap">
 
-{{--                </div>--}}
+                        @foreach($productData['colors'] as $key => $element)
+
+                            <div class="card-product-color custom-control custom-color custom-color-sm">
+                                <input type="radio" class="custom-control-input" id="card-product-color-{{$cardNumber}}-{{$key}}" name="card-product-color-{{$cardNumber}}" @if($element['isActive'])checked @endif>
+                                <label for="card-product-color-{{$cardNumber}}-{{$key}}" class="custom-control-label">
+                                    <img loading="lazy" src="{{$element['imgPath']}}" alt="{{$element['attr_name']}}" class="custom-control-image">
+                                </label>
+                            </div>
+                        @endforeach
+
+                    </div>
+                @endif
             </div>
         </div>
 

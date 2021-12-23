@@ -55,6 +55,7 @@ class DataProvidersServiceProvider extends ServiceProvider
         $this->app->bind(ClientProductList::class, static function () {
                 $productListProvider = new ClientProductList();
                 $productListProvider->addPlugin(\App::make(ClientProductListPlugins\ProductTypePageAdditionalInfo::class));
+                $productListProvider->addPlugin(\App::make(ClientProductListPlugins\Colors::class));
 
                 return $productListProvider;
             }

@@ -119,7 +119,7 @@ class CatalogServiceProvider extends ServiceProvider
                     new ClassicListLens(
                         $attributeRepository,
                         $allowedValueRepository,
-                        '000000010'
+                        Attribute\AttributeConstants::COLOR_1C_CODE
                     ),
                     'color',
                     'Цвет',
@@ -204,21 +204,21 @@ class CatalogServiceProvider extends ServiceProvider
             }
         );
 
-        /*$this->app->singleton(
-            'catalog.filter_lens.cylinder_series',
-            function () use ($attributeRepository, $allowedValueRepository) {
-                return new FilterLensWrapper(
-                    new ClassicListLens(
-                        $attributeRepository,
-                        $allowedValueRepository,
-                        '000000004'
-                    ),
-                    'cylinder_series',
-                    'Серия цилиндра',
-                    'multiple_checkboxes'
-                );
-            }
-        );*/
+//        $this->app->singleton(
+//            'catalog.filter_lens.cylinder_series',
+//            function () use ($attributeRepository, $allowedValueRepository) {
+//                return new FilterLensWrapper(
+//                    new ClassicListLens(
+//                        $attributeRepository,
+//                        $allowedValueRepository,
+//                        Attribute\AttributeConstants::CYLINDER_SERIES_1C_CODE
+//                    ),
+//                    'cylinder_series',
+//                    'Серия цилиндра',
+//                    'multiple_checkboxes'
+//                );
+//            }
+//        );
 
 
         /*$this->app->singleton(

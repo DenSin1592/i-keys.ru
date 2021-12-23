@@ -88,6 +88,12 @@ class AttributeConstants
     ];
 
 
+    public const CYLINDER_SERIES_1C_CODE = '000000004';
+    public const COLOR_1C_CODE = '000000010';
     public const SIZE_CYLINDER_1C_CODE = '000000013';
+
+
+    public const COLOR_LATUN_ID = 8;
+    public const COLOR_NICKEL_ID = 18;
 
 }
