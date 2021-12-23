@@ -40,26 +40,23 @@ class Attributes implements ClientProductPlugin
             switch ($productValue['attribute']->attribute_type) {
                 case Attribute::TYPE_STRING:
                 case Attribute::TYPE_INTEGER:
-//                    if (!is_null($productValue['value'])) {
-//                        $values[] = [
-//                            'text' => $this->addUnits($productValue['attribute'], $productValue['value']->value),
-//                        ];
-//                    }
+                    if (!is_null($productValue['value'])) {
+                        $values[] = $this->addUnits($productValue['attribute'], $productValue['value']->value);
+                    }
                     break;
                 case Attribute::TYPE_DECIMAL:
-//                    if (!is_null($productValue['value'])) {
-//                        $values[] = [
-//                            'text' => $this->addUnits(
-//                                $productValue['attribute'],
-//                                number_format(
-//                                    $productValue['value']->value,
-//                                    $productValue['attribute']->decimal_scale,
-//                                    '.',
-//                                    ''
-//                                )
-//                            )
-//                        ];
-//                    }
+                    if (!is_null($productValue['value'])) {
+                        $values[] =  $this->addUnits(
+                                $productValue['attribute'],
+                                number_format(
+                                    $productValue['value']->value,
+                                    $productValue['attribute']->decimal_scale,
+                                    '.',
+                                    ''
+                                )
+                            )
+                        ;
+                    }
                     break;
                 case Attribute::TYPE_SINGLE:
                     if (!is_null($productValue['value'])) {
