@@ -27,7 +27,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }).done((response) => {
             setTimeout(() => {
                 productCardContent.replaceWith(response['content']);
-                productCard.animate({opacity: 1}, TIME_OPACITY)}, TIME_OPACITY_TIMEOUT)
+                productCard.animate({opacity: 1}, TIME_OPACITY)
+                initSelect2();
+            }, TIME_OPACITY_TIMEOUT)
+
         }).fail(() => {
             productCard.remove();
         });
