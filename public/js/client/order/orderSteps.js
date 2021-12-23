@@ -45,7 +45,7 @@ class OrderForm {
             }
             return result;
         }, {});
-        return JSON.stringify(new Array(resultObject));
+        return resultObject;
     }
 
     disableButtons () {
@@ -113,7 +113,6 @@ class OrderForm {
             } else if (form.valid() && isLastStep) {
                 const url = form.attr('action');
                 console.log((order.getFormsData()));
-                console.log(JSON.parse(order.getFormsData()));
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -163,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     } catch (e) {
         console.warn('orderSteps.js not working', e);
     }
-    const order = new OrderForm(true);
+    const order = new OrderForm(false);
     order.init();
 
     const forms = $('#order-form form');
