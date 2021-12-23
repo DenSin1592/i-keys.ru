@@ -120,7 +120,7 @@ class OrderForm {
                         if (response.status === 'success') {
                             nextStep.find('.checkout-content').html("<h3>"+response.modal_title+"</h3><p>"+response.modal_body+"</p>");
                         } else {
-                            nextStep.find('.checkout-content').html("<h3>"+response.errors+"</h3>");
+                            nextStep.find('.checkout-content').html("<pre>"+JSON.stringify(response.errors, null, 4)+"</pre>");
                         }
                     },
                     error:  function(xhr, str){
