@@ -74,6 +74,7 @@ return [
                 'js/client/cart/cart_add.js',
                 'js/client/cart/cart_remove.js',
                 'js/client/cart/cart_update.js',
+                'js/client/change_product_card.js',
 
             ],
             'filters' => ['js_min', 'end_with_semicolon'],

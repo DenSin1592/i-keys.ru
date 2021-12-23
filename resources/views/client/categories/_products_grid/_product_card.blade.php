@@ -1,5 +1,4 @@
-<div class=" {{ $cardClass ?? 'product-item col-sm-6 col-md-4 col-lg-3 col-xl-4 d-flex' }} ">
-    <div class="card-product card-product-portrait">
+ <div class="card-product card-product-portrait" data-card-number="{{$cardNumber}}">
         <div class="card-product-badges d-flex">
 {{--            <div class="card-product-badge">--}}
 {{--                <svg class="card-product-badge-media" width="39" height="45">--}}
@@ -40,7 +39,7 @@
                         @foreach($productData['colors'] as $key => $element)
 
                             <div class="card-product-color custom-control custom-color custom-color-sm">
-                                <input type="radio" class="custom-control-input" id="card-product-color-{{$cardNumber}}-{{$key}}" name="card-product-color-{{$cardNumber}}" @if($element['isActive'])checked @endif>
+                                <input type="radio" class="custom-control-input change-card" id="card-product-color-{{$cardNumber}}-{{$key}}" data-product-id="{{$element['product_id']}}" name="card-product-color-{{$cardNumber}}" @if($element['isActive'])checked @endif>
                                 <label for="card-product-color-{{$cardNumber}}-{{$key}}" class="custom-control-label">
                                     <img loading="lazy" src="{{$element['imgPath']}}" alt="{{$element['attr_name']}}" class="custom-control-image">
                                 </label>
@@ -76,4 +75,3 @@
             </div>
         </div>
     </div>
-</div>

@@ -83,4 +83,21 @@ class CatalogController extends Controller
             'breadcrumbsContent' => $breadcrumbsContent,
         ]);
     }
+
+
+    public function getNewProductCard(ClientProductList $productListProvider): JsonResponse
+    {
+        $data = \Request::all();
+        $product = $this->productRepository->findById($data['productId']);
+        $productData = $productListProvider->getProductListData([$product])[0];
+
+        $content = \View::make('client.categories._products_grid._product_card', [
+            'productData' => $productData,
+            'cardNumber' => $data['cardNumber'],
+        ])->render();
+
+        return \Response::json([
+            'content' => $content,
+        ]);
+    }
 }

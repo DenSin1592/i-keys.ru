@@ -25,11 +25,12 @@
                         <div class="swiper-wrapper">
 
                             @foreach($productsData as $key => $productData)
+                                <div class="swiper-slide col-auto col-sm-6 col-md-4 col-lg-3 d-flex">
                                 @include('client.categories._products_grid._product_card', [
                                     'productData' => $productData,
-                                    'cardClass' => 'swiper-slide col-auto col-sm-6 col-md-4 col-lg-3 d-flex',
                                     'cardNumber' => $key,
                                 ])
+                                </div>
                             @endforeach
 
                         </div>
