@@ -9,5 +9,5 @@ $.validator.addMethod("requiredPhone", function (value, element) {
 
 
 $.validator.addMethod("isText", function(value, element) {
-    return this.optional(element) || /^[а-яА-ЯеЁa-zA-Z ]+$/i.test(value);
+    return this.optional(element) || /^[а-яА-ЯеЁa-zA-Z\- ]+$/i.test(value);
 }, "Только буквы пожалуйста");

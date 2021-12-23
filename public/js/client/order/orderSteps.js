@@ -33,9 +33,9 @@ class OrderForm {
                         const filtred = currentObject[key].filter(function (el) {
                             return el != '';
                         });
-                        if (filtred.length > 1) {
+                        if (filtred.length > 1 && typeof filtred !== 'undefined') {
                             result[key] = filtred;
-                        } else {
+                        } else if (filtred.length === 1) {
                             result[key] = filtred[0];
                         }
                     } else {
@@ -112,17 +112,18 @@ class OrderForm {
                 nextStep.collapse('toggle');
             } else if (form.valid() && isLastStep) {
                 const url = form.attr('action');
-                console.log((order.getFormsData()));
                 $.ajax({
                     type: "POST",
                     url: url,
                     data: order.getFormsData(),
                     success: function(response) {
-                        console.log(response);
-                        nextStep.find('.checkout-content').html("<h3>"+response+"</h3>");
+                        if (response.status === 'success') {
+                            nextStep.find('.checkout-content').html("<h3>"+response.modal_title+"</h3><p>"+response.modal_body+"</p>");
+                        } else {
+                            nextStep.find('.checkout-content').html("<h3>"+response.errors+"</h3>");
+                        }
                     },
                     error:  function(xhr, str){
-                        console.log(xhr, str);
                         nextStep.find('.checkout-content').html("<h3>Произошла ошибка</h3><p>"+xhr.responseText+"</p>");
                     },
                     complete: function () {
@@ -136,80 +137,89 @@ class OrderForm {
         });
     }
     testData () {
+        const order = this;
         const msg = document.createElement('div');
-        $.ajax({
-            type: "POST",
-            url: '/order/store',
-            data: '[{"name":"fef","phone":"+7 (434) 344-34-33","email":"7info7web@gmail.com","city":"rrrr","street":"rrr","building":"rr","flat":"rr","delivery":"courier","_token":"Y3T7s1e8ugBJUbhRVi6jE323ncZKXRGXb6ur6dSL","payment_method":"cash"}]',
-            success: function(response) {
-                console.log(response);
-                msg.innerHTML = response;
-                document.querySelector('#checkout-accordion').prepend(msg);
-            },
-            error:  function(xhr, str){
-                console.log(xhr, str);
-                msg.innerHTML = xhr + '<br>' + str;
-                document.querySelector('#checkout-accordion').prepend(msg);
-            }
-        });
+        // $.ajax({
+        //     type: "POST",
+        //     url: '/order/store',
+        //     data: {
+        //         "name": "Danil Golota",
+        //         "phone": "+7 (444) 444-44-44",
+        //         "email": "test@example.com",
+        //         "city": "fggfgf",
+        //         "street": "gf",
+        //         "building": "gfg",
+        //         "flat": "g",
+        //         "delivery_method": "courier",
+        //         "_token": "Y3T7s1e8ugBJUbhRVi6jE323ncZKXRGXb6ur6dSL",
+        //         "payment_method": "cash"
+        //     },
+        //     success: function(response) {
+        //         msg.innerHTML = response;
+        //         document.querySelector('#checkout-accordion').prepend(msg);
+        //     },
+        //     error:  function(xhr, str){
+        //         msg.innerHTML = xhr + '<br>' + str;
+        //         document.querySelector('#checkout-accordion').prepend(msg);
+        //     }
+        // });
     }
 }
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
     try {
+        const order = new OrderForm(false);
+        order.init();
 
+        const forms = $('#order-form form');
+        forms.each(function (index, form) {
+            $(form).validate( {
+                highlight: function(element) {
+                    $(element).parent().addClass("field-error");
+                    order.disableButtons();
+                },
+                unhighlight: function(element) {
+                    $(element).parent().removeClass("field-error");
+                    order.enableButtons();
+                },
+
+                rules: {
+                    name: {
+                        required: true,
+                        isText: true
+                    },
+                    email: {
+                        email: true
+                    },
+                    phone: {
+                        requiredPhone: true,
+                        minLenghtPhone: 10
+                    },
+                    delivery: {
+                        required: true
+                    },
+                    city: {
+                        isText: true
+                    },
+                    street: {
+                        isText: true
+                    }
+                },
+                messages: {
+                    delivery: {
+                        required: 'Выберите один из способов доставки'
+                    },
+                    payment_method: {
+                        required: 'Выберите один из методов оплаты'
+                    },
+                    file_upload: {
+                        accept: 'Неверный формат файла'
+                    }
+                }
+            });
+        })
     } catch (e) {
         console.warn('orderSteps.js not working', e);
     }
-    const order = new OrderForm(false);
-    order.init();
-
-    const forms = $('#order-form form');
-    forms.each(function (index, form) {
-        $(form).validate( {
-            highlight: function(element) {
-                $(element).parent().addClass("field-error");
-                order.disableButtons();
-            },
-            unhighlight: function(element) {
-                $(element).parent().removeClass("field-error");
-                order.enableButtons();
-            },
-
-            rules: {
-                name: {
-                    required: true,
-                    isText: true
-                },
-                email: {
-                    email: true
-                },
-                phone: {
-                    requiredPhone: true,
-                    minLenghtPhone: 10
-                },
-                delivery: {
-                    required: true
-                },
-                city: {
-                    isText: true
-                },
-                street: {
-                    isText: true
-                }
-            },
-            messages: {
-                delivery: {
-                    required: 'Выберите один из способов доставки'
-                },
-                payment_method: {
-                    required: 'Выберите один из методов оплаты'
-                },
-                file_upload: {
-                    accept: 'Неверный формат файла'
-                }
-            }
-        });
-    })
 });

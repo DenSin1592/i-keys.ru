@@ -40,7 +40,6 @@ class OrdersController extends Controller
             return \Redirect::route('cart.show');
         }
         $inputData = $request->all();
-        echo '<pre>' . var_export($inputData, true) . '</pre>';
 //        $inputData['name'] = 'Nik';
 //        $inputData['phone'] = '+79787844720';
 //        $inputData['email'] = 'evloshevsky@gmail.com';
