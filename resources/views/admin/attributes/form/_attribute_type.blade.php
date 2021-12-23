@@ -3,6 +3,6 @@
     {!! Form::tbSelect('attribute_type', $formData['attribute_type']['variants']) !!}
 {!! Form::tbFormGroupClose() !!}
 
-<div id="attribute-type-data" data-url="{{ route('cc.attributes.type-data.show', [$formData['attribute']->id]) }}">
+<div id="attribute-type-data">
     @include('admin.attributes.form._type_data')
 </div>

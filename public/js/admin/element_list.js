@@ -30,12 +30,17 @@
         }
         newKey = (maxKey + 1);
 
+        let data = {
+            key: newKey,
+            attributeCode1с: toggle.data('attributeCode'),
+        };
+
         $.ajax({
             cache: false,
             type: 'GET',
             dataType: 'json',
             url: loadElementUrl,
-            data: { key: newKey }
+            data: data
         }).then(function (result) {
             var jResult = $(result['element']);
             jResult.appendTo(container);

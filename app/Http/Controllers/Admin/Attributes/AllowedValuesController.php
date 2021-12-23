@@ -15,6 +15,7 @@ class AllowedValuesController extends Controller
 
     public function create()
     {
+        $attributeCode1с = \Request::get('attributeCode1с');
         $allowedValueKey = \Request::get('key');
         $allowedValue = $this->allowedValueRepository->newInstance();
         $element = \View::make(
@@ -22,6 +23,7 @@ class AllowedValuesController extends Controller
             [
                 'allowedValueKey' => $allowedValueKey,
                 'allowedValue' => $allowedValue,
+                'code1c' => $attributeCode1с,
             ]
         )->render();
 
