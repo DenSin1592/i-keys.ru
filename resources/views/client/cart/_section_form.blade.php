@@ -108,25 +108,25 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <input name="city" type="text" class="form-control" placeholder="Город *" data-option-required >
+                                                                <input name="city1" type="text" class="form-control" placeholder="Город *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-4">
                                                             <div class="form-group">
-                                                                <input name="street" type="text" class="form-control" placeholder="Улица *"  data-option-required >
+                                                                <input name="street1" type="text" class="form-control" placeholder="Улица *"  data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-2 col-md-2">
                                                             <div class="form-group">
-                                                                <input name="building" type="text" class="form-control" placeholder="Дом *" data-option-required >
+                                                                <input name="building1" type="text" class="form-control" placeholder="Дом *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-2">
                                                             <div class="form-group">
-                                                                <input name="flat" type="text" class="form-control" placeholder="Квартира (офис) *" data-option-required >
+                                                                <input name="flat1" type="text" class="form-control" placeholder="Квартира (офис) *" data-option-required >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -146,25 +146,25 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <input name="city" type="text" id="checkout-addres-city" class="form-control" placeholder="Город *" data-option-required >
+                                                                <input name="city2" type="text" id="checkout-addres-city" class="form-control" placeholder="Город *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-4">
                                                             <div class="form-group">
-                                                                <input name="street" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" data-option-required >
+                                                                <input name="street2" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-2 col-md-2">
                                                             <div class="form-group">
-                                                                <input name="building" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" data-option-required>
+                                                                <input name="building2" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" data-option-required>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-2">
                                                             <div class="form-group">
-                                                                <input name="flat" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис) *"  data-option-required>
+                                                                <input name="flat2" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис) *"  data-option-required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -261,7 +261,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-option">
+                                            <div class="form-option" data-order-if-key="delivery_method" data-order-if-val="courier">
                                                 <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_CASH }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header" id="checkout-payment-cash" name="{{ \App\Models\Order::PAYMENT_CASH }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">

@@ -17,6 +17,18 @@ class OrderForm {
         }
         this.prevStep();
         this.nextStep();
+        this.checkFormElement();
+    }
+
+    checkFormElement () {
+        const data = this.getFormsData();
+        const attrKey = $('[data-order-if-key]').attr('data-order-if-key');
+        const attrVal = $('')
+
+        if (typeof attrKey !== 'undefined' && attr !== false) {
+
+        }
+        console.log(data['_token']);
     }
 
     getFormsData () {
@@ -28,10 +40,10 @@ class OrderForm {
 
         const resultObject = Object.assign(Object.assign(this.data)).reduce(function(result, currentObject) {
             for(let key in currentObject) {
-                if (currentObject.hasOwnProperty(key)) {
+                if (currentObject.hasOwnProperty(key) && currentObject[key] !== '') {
                     if (Array.isArray(currentObject[key])) {
                         const filtred = currentObject[key].filter(function (el) {
-                            return el != '';
+                            return el !== '' && el !== null;
                         });
                         if (filtred.length > 1 && typeof filtred !== 'undefined') {
                             result[key] = filtred;
@@ -169,7 +181,7 @@ class OrderForm {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     try {
-        const order = new OrderForm(false);
+        const order = new OrderForm(true);
         order.init();
 
         const forms = $('#order-form form');
