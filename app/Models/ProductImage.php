@@ -1,10 +1,10 @@
 <?php namespace App\Models;
 
 use App\Models\Features\AutoPublish;
+use App\Models\Features\Glue;
 use Diol\Fileclip\UploaderIntegrator;
 use Diol\Fileclip\Version\BoxVersion;
 use Diol\Fileclip\Version\OutBoundVersion;
-use Diol\FileclipExif\Glue;
 
 class ProductImage extends \Eloquent
 {
