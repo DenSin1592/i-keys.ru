@@ -118,43 +118,9 @@
                                 </div>
                             </div>
 
-                            {{--                            <div class="col-auto col-sm-12 col-lg-auto">--}}
-                            {{--                                <a href="https://www.youtube.com/watch?v=-_aWml_EokU&autoplay=1"--}}
-                            {{--                                   class="product-presentation-link d-flex flex-column flex-md-row flex-lg-column align-items-center justify-content-center"--}}
-                            {{--                                   data-fancybox="product-media">--}}
-                            {{--                                    <img loading="lazy" src="images/icons/icon-youtube.svg" width="42" height="30"--}}
-                            {{--                                         alt="" class="product-presentation-media">--}}
-                            {{--                                    Видео о замке--}}
-                            {{--                                </a>--}}
-                            {{--                            </div>--}}
                         </div>
                     </div>
 
-                    {{--                    <div class="product-badges-container col-auto order-2">--}}
-                    {{--                        <div class="product-badges d-flex flex-column align-items-center">--}}
-                    {{--                            <div class="product-badge">--}}
-                    {{--                                <svg class="product-badge-media" width="44" height="44">--}}
-                    {{--                                    <use xlink:href="{{asset('/images/client/sprite.svg#icon-sale')}}"></use>--}}
-                    {{--                                </svg>--}}
-                    {{--                            </div>--}}
-
-                    {{--                            <div class="product-badge">--}}
-                    {{--                                <svg class="product-badge-media" width="48" height="44">--}}
-                    {{--                                    <use xlink:href="{{asset('/images/client/sprite.svg#icon-anti-fake')}}"></use>--}}
-                    {{--                                </svg>--}}
-                    {{--                            </div>--}}
-
-                    {{--                            <div class="product-badge">--}}
-                    {{--                                <svg class="product-badge-media" width="39" height="44">--}}
-                    {{--                                    <use xlink:href="{{asset('/images/client/sprite.svg#icon-coding')}}"></use>                                </svg>--}}
-                    {{--                            </div>--}}
-
-                    {{--                            <div class="product-badge">--}}
-                    {{--                                <svg class="product-badge-media" width="44" height="44">--}}
-                    {{--                                    <use xlink:href="{{asset('/images/client/sprite.svg#icon-no-keys')}}"></use>                                </svg>--}}
-                    {{--                            </div>--}}
-                    {{--                        </div>--}}
-                    {{--                    </div>--}}
                 </div>
             </div>
 
@@ -162,42 +128,29 @@
                 <form action="" class="form-product-order">
                     <div class="row">
                         <div class="product-details-container col-sm-6 col-lg-5">
-                            <div class="product-detail-block d-flex flex-wrap">
+
+                            @if(isset($productData['colors']))
+                                <div class="product-detail-block d-flex flex-wrap">
                                 <span class="product-detail-title">Цвет</span>
 
                                 <div class="product-color-list d-flex flex-wrap">
-                                    <div class="product-color custom-control custom-color">
-                                        <input type="radio" class="custom-control-input" id="product-color-1"
-                                               name="product-color" checked="">
-                                        <label for="product-color-1" class="custom-control-label">
-                                            <img loading="lazy" src="{{asset('/uploads/colors/color-brown.png')}}"
-                                                 alt="Коричневый"
-                                                 class="custom-control-image">
-                                        </label>
-                                    </div>
 
+                                    @foreach($productData['colors'] as $key => $element)
                                     <div class="product-color custom-control custom-color">
-                                        <input type="radio" class="custom-control-input" id="product-color-2"
-                                               name="product-color">
-                                        <label for="product-color-2" class="custom-control-label">
-                                            <img loading="lazy"
-                                                 src="{{asset('/uploads/colors/color-silver.png')}}"
-                                                 alt="Серебряный"
-                                                 class="custom-control-image">
-                                        </label>
-                                    </div>
+                                        <input type="radio" class="custom-control-input reset-card" id="product-color-{{$key}}"
+                                               name="product-color" @if($element['isActive']) checked @endif data-url="{{$element['link']}}">
 
-                                    <div class="product-color custom-control custom-color">
-                                        <input type="radio" class="custom-control-input" id="product-color-3"
-                                               name="product-color">
-                                        <label for="product-color-3" class="custom-control-label">
-                                            <img loading="lazy" src="{{asset('/uploads/colors/color-black.png')}}"
-                                                 alt="Черный"
+                                        <label for="product-color-{{$key}}" class="custom-control-label">
+                                            <img loading="lazy" src="{{$element['imgPath']}}"
+                                                 alt="{{$element['attr_value']}}"
                                                  class="custom-control-image">
                                         </label>
                                     </div>
+                                    @endforeach
+
                                 </div>
                             </div>
+                            @endif
 
                             @if($productData['product']->isCylinder())
                                 <div class="product-detail-block d-flex flex-wrap">
