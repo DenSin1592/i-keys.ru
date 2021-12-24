@@ -37,30 +37,6 @@ let customNumberButtonInit = function () {
     });
 }
 
-// /**
-//  * Заменяет data-option-* на * при клике на радиогруппу (нужно для валидации заказа)
-//  * @param {Object} target
-//  * @param {Object} items
-//  * @param {Array} attrs
-//  */
-// function replaceOptionAttr(target, items, attrs) {
-//     console.log(typeof target, items, attrs);
-//     items.each(function (_, item) {
-//         $(attrs).each(function (_i, attr) {
-//             const attrVal = $(item).find("[data-option"+attr+"]").attr(attr) === 'required' ? true : $(item).find("["+attr+"]").attr(attr);
-//             console.log($(item).find("["+attr+"]").attr(attr));
-//             $(item)
-//                 .find("["+attr+"]")
-//                 .removeAttr(attr)
-//                 .attr("data-option-"+attr, attrVal);
-//             $(target)
-//                 .find("[data-option-"+attr+"]")
-//                 .removeAttr("[data-option-"+attr+"]")
-//                 .attr(attr, attrVal)
-//         })
-//     });
-// }
-
 document.addEventListener('DOMContentLoaded', function () {
 
     initSelect2();
@@ -74,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         children.removeClass('active');
         target.addClass('active');
+        target.find('input[type="radio"]').attr('checked', 'checked'); // фиксит выбор радио при клике на вложенный инпут
+
 
         // use required into selection group
 

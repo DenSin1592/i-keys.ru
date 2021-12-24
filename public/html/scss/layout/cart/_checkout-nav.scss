@@ -3,7 +3,21 @@
     margin-bottom: -15px;
 }
 
+.checkout-nav-delimiter {
+    margin: 35px 0;
+    width: 10px;
+    height: 1px;
+    background-color: #c5c5c5;
+    flex-shrink: 0;
+
+    @include media-breakpoint-up(sm) {
+        width: 17px;
+    }
+}
+
 .checkout-nav-link {
+    width: 100%;
+    max-width: 100px;
     cursor: pointer;
     margin: 15px 0;
     padding: 0;
@@ -14,6 +28,10 @@
     font-weight: 700;
     text-align: left;
     text-decoration: none;
+    @include media-breakpoint-up(lg) {
+        max-width: initial;
+    }
+
     @include media-breakpoint-up(xxl) {
         font-size: 24px;
     }
@@ -24,10 +42,16 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        margin-right: 10px;
+        margin-right: 0px;
+        margin-bottom: 5px;
         background-color: $c-default;
         color: $c-white;
         text-align: center;
+
+        @include media-breakpoint-up(lg) {
+            margin-right: 10px;
+        }
+
         @include media-breakpoint-up(xxl) {
             font-size: 20px;
         }
@@ -35,6 +59,7 @@
 
     &:not(:first-child) {
         .checkout-nav-count {
+
             &::before {
                 position: absolute;
                 top: 0;
@@ -44,28 +69,26 @@
                 transform: translate(-50%, -150%);
                 background-color: #c5c5c5;
                 content: '';
+
+                @include media-breakpoint-down(lg) {
+                    display: none;
+                }
             }
         }
     }
 
     &.valid {
-        text-decoration: line-through;
-    }
-
-    &.complete {
-        color: #c55100 !important;
-        text-decoration: none !important;
-
+        color: $c-default !important;
         .checkout-nav-count {
-            background: #c55100 !important;
+            background: $c-default !important;
         }
     }
 
     &.invalid {
-        color: #dc3545 !important;
+        color: $c-black !important;
 
         .checkout-nav-count {
-            background: #dc3545 !important;
+            background: $c-black !important;
         }
     }
 
@@ -76,9 +99,21 @@
             background-color: #c5c5c5;
         }
 
+        &.valid {
+            opacity: 0.9;
+        }
 
         &.invalid {
             opacity: 0.6;
+        }
+    }
+
+    &.complete {
+        color: #c55100 !important;
+        text-decoration: none !important;
+
+        .checkout-nav-count {
+            background: #c55100 !important;
         }
     }
 }

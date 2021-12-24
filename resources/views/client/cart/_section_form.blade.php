@@ -9,43 +9,42 @@
         <div class="checkout-accordion" id="checkout-accordion">
             <div class="form-checkout" id="order-form">
                 <div class="row">
-                    <div class="col-lg-3 d-none d-lg-block">
-                        <div class="checkout-nav-list d-flex flex-column">
-                            <button class="checkout-nav-link d-flex align-items-center" data-order-step="1" type="button" data-toggle="collapse"
+                    <div class="col-lg-3">
+                        <div class="checkout-nav-list d-flex flex-lg-column justify-content-center">
+                            <button class="checkout-nav-link d-flex align-items-center flex-column flex-lg-row" data-order-step="1" type="button" data-toggle="collapse"
                                     data-target="#checkout-information-collapse" aria-expanded="true" aria-controls="checkout-information-collapse">
                                 <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">1</span>
-                                Личная информация
+                                <span class="d-none d-sm-block text-center text-lg-left">Личная информация</span>
                             </button>
 
-                            <button class="checkout-nav-link d-flex align-items-center collapsed" data-order-step="2" type="button" disabled data-toggle="collapse"
+                            <div class="checkout-nav-delimiter d-flex d-lg-none"></div>
+
+                            <button class="checkout-nav-link d-flex align-items-center flex-column flex-lg-row collapsed" data-order-step="2" type="button" disabled data-toggle="collapse"
                                     data-target="#checkout-delivery-collapse" aria-expanded="false" aria-controls="checkout-delivery-collapse">
                                 <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">2</span>
-                                Доставка
+                                <span class="d-none d-sm-block text-center text-lg-left">Доставка</span>
                             </button >
 
-                            <button class="checkout-nav-link d-flex align-items-center collapsed" data-order-step="3" type="button" disabled data-toggle="collapse"
+                            <div class="checkout-nav-delimiter d-flex d-lg-none"></div>
+
+                            <button class="checkout-nav-link d-flex align-items-center flex-column flex-lg-row collapsed" data-order-step="3" type="button" disabled data-toggle="collapse"
                                     data-target="#checkout-payment-collapse" aria-expanded="false" aria-controls="checkout-payment-collapse">
                                 <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">3</span>
-                                Оплата
+                                <span class="d-none d-sm-block text-center text-lg-left">Оплата</span>
                             </button>
 
-                            <button class="checkout-nav-link d-flex align-items-center collapsed" data-order-step="4" type="button" disabled data-toggle="collapse"
+                            <div class="checkout-nav-delimiter d-flex d-lg-none"></div>
+
+                            <button class="checkout-nav-link d-flex align-items-center flex-column flex-lg-row collapsed" data-order-step="4" type="button" disabled data-toggle="collapse"
                                     data-target="#checkout-confirm-collapse" aria-expanded="false" aria-controls="checkout-confirm-collapse">
                                 <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">4</span>
-                                Подтверждение заказа
+                                <span class="d-none d-sm-block text-center text-lg-left">Подтверждение заказа</span>
                             </button>
                         </div>
                     </div>
 
-                    <div class="col-lg-9">
+                    <div class="col-lg-9 mt-4 mt-lg-0">
                         <div data-step="1" class="checkout-group">
-                            <div class="checkout-headline d-lg-none">
-                                <button class="checkout-nav-link d-flex align-items-center" type="button" data-toggle="collapse"
-                                        data-target="#checkout-information-collapse" aria-expanded="true" aria-controls="checkout-information-collapse">
-                                    <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">1</span>
-                                    Личная информация
-                                </button>
-                            </div>
                             <div id="checkout-information-collapse" class="checkout-collapse collapse show" data-parent="#checkout-accordion">
                                 <form action="#step-1" method="post" enctype="multipart/form-data" >
                                     <div class="checkout-content">
@@ -85,14 +84,6 @@
                             </div>
                         </div>
                         <div data-step="2" class="checkout-group">
-                            <div class="checkout-headline d-lg-none">
-                                <button class="checkout-nav-link d-flex align-items-center collapsed" type="button" data-toggle="collapse"
-                                        data-target="#checkout-delivery-collapse" aria-expanded="false" aria-controls="checkout-delivery-collapse">
-                                    <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">2</span>
-                                    Доставка
-                                </button>
-                            </div>
-
                             <div id="checkout-delivery-collapse" class="collapse" data-parent="#checkout-accordion">
                                 <form action="#step-2" method="post" enctype="multipart/form-data" >
                                     <div class="checkout-content">
@@ -227,14 +218,6 @@
                             </div>
                         </div>
                         <div data-step="3" class="checkout-group">
-                            <div class="checkout-headline d-lg-none">
-                                <button class="checkout-nav-link d-flex align-items-center collapsed" type="button" data-toggle="collapse"
-                                        data-target="#checkout-payment-collapse" aria-expanded="false" aria-controls="checkout-payment-collapse">
-                                    <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">3</span>
-                                    Оплата
-                                </button>
-                            </div>
-
                             <div id="checkout-payment-collapse" class="checkout-collapse collapse" data-parent="#checkout-accordion">
                                 <div class="checkout-alert title-h3 text-danger font-weight-bold">
                                     <span class="form-hint-media">!</span>
@@ -261,7 +244,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-option" data-order-if-key="delivery_method" data-order-if-val="courier">
+                                            <div class="form-option">
                                                 <input type="radio" class="form-option-radio" name="payment_method" value="{{ \App\Models\Order::PAYMENT_CASH }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header" id="checkout-payment-cash" name="{{ \App\Models\Order::PAYMENT_CASH }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">
@@ -324,14 +307,6 @@
                             </div>
                         </div>
                         <div data-step="4" class="checkout-group">
-                            <div class="checkout-headline d-lg-none">
-                                <button class="checkout-nav-link d-flex align-items-center collapsed" type="button" data-toggle="collapse"
-                                        data-target="#checkout-confirm-collapse" aria-expanded="false" aria-controls="checkout-confirm-collapse">
-                                    <span class="checkout-nav-count d-inline-flex align-items-center justify-content-center">4</span>
-                                    Подтверждение заказа
-                                </button>
-                            </div>
-
                             <div id="checkout-confirm-collapse" class="checkout-collapse collapse" data-parent="#checkout-accordion">
                                 <div class="checkout-content">
                                     Подтверждение заказа

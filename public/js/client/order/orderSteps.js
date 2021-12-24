@@ -17,18 +17,6 @@ class OrderForm {
         }
         this.prevStep();
         this.nextStep();
-        this.checkFormElement();
-    }
-
-    checkFormElement () {
-        const data = this.getFormsData();
-        const attrKey = $('[data-order-if-key]').attr('data-order-if-key');
-        const attrVal = $('')
-
-        if (typeof attrKey !== 'undefined' && attr !== false) {
-
-        }
-        console.log(data['_token']);
     }
 
     getFormsData () {
