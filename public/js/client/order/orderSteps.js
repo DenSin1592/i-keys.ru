@@ -169,7 +169,7 @@ class OrderForm {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     try {
-        const order = new OrderForm(true);
+        const order = new OrderForm(false);
         order.init();
 
         const forms = $('#order-form form');
