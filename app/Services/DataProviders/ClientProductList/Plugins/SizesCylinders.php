@@ -5,6 +5,7 @@ namespace App\Services\DataProviders\ClientProductList\Plugins;
 use App\Models\Attribute\AttributeConstants;
 use App\Models\Product;
 use App\Services\DataProviders\ClientProductList\ClientProductListPlugin;
+use Illuminate\Database\Eloquent\Collection;
 
 
 class SizesCylinders implements ClientProductListPlugin
@@ -72,6 +73,10 @@ class SizesCylinders implements ClientProductListPlugin
             ->get();
 
         if($products->count() === 0 ){
+            $products = $this->getProductWithAttrValue($product);
+        }
+
+        if($products->count() === 0 ){
             return [];
         }
 
@@ -85,5 +90,25 @@ class SizesCylinders implements ClientProductListPlugin
         }
 
       return $colors;
+    }
+
+
+    private function getProductWithAttrValue(Product $product): Collection
+    {
+
+        $productWithAttr = Product::query()->leftJoin("attribute_single_values", static function ($join){
+            $join->on(
+                'products.id',
+                '=',
+                "attribute_single_values.product_id")
+                ->where("attribute_single_values.attribute_id", '=', AttributeConstants::SIZE_CYLINDER_ID);
+        })->leftJoin('attribute_allowed_values', 'attribute_allowed_values.id', '=', 'attribute_single_values.value_id')
+            ->where('products.id','=', $product->id)
+            ->select(['products.*', 'attribute_allowed_values.id as attr_id', 'attribute_allowed_values.value_first_size_cylinder as attr_size1',  'attribute_allowed_values.value_second_size_cylinder as attr_size2'])
+            ->first();
+
+        return ( !empty($productWithAttr->attr_id))
+            ? Collection::make([$productWithAttr])
+            : Collection::make([]);
     }
 }
