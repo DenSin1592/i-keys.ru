@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let target = $(e.currentTarget);
         let container = target.closest('.form-options-group');
         let children = container.find('.form-option');
+        const notActiveInputs = children.parent().find('.form-option:not(.active) .form-control');
+        const activeInputs =  children.parent().find('.form-option.active .form-control');
 
         children.removeClass('active');
         target.addClass('active');
@@ -54,9 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // use required into selection group
-
         children
-            .find('[required]')
+            .find('[required]:not([type="radio"])')
             .removeAttr('required')
             .attr('data-option-required', true);
         target
@@ -64,5 +65,9 @@ document.addEventListener('DOMContentLoaded', function () {
             .removeAttr('data-option-required')
             .attr('required', true)
         ;
+
+        // disable another inputs
+        $(notActiveInputs).prop('disabled', true);
+        $(activeInputs).prop('disabled', false);
     });
 });
