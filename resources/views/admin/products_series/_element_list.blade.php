@@ -9,6 +9,8 @@
                 <div class="name">
                     <a href="{{ route('cc.products-series.edit', $model->id) }}">{{ $model->value }}</a>
                 </div>
+
+                <div class="type">Товаров: {{$model->productsForSingle->count()}}</div>
                 <div class="type">{{$model->getTypeSeries()}}</div>
 
                 <div class="control">

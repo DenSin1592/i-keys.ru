@@ -2,11 +2,19 @@
 
 use App\Models\Attribute;
 use App\Models\Attribute\AllowedValue;
+use App\Models\Review;
+use App\Services\Pagination\FlexPaginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class EloquentAllowedValueRepository
 {
     const POSITION_STEP = 10;
+
+
+    public function __construct(
+        private FlexPaginator $flexPaginator,
+    ){}
 
 
     public function newInstance(array $data = [])
@@ -127,6 +135,18 @@ class EloquentAllowedValueRepository
     }
 
 
+    public function paginateForAdminIndexPage(): LengthAwarePaginator
+    {
+        return $this->flexPaginator->make(
+            function ($page, $limit) {
+                return $this->allByPageForAdminIndexPage($page, $limit);
+            },
+            'review-pagination-page',
+            'review-pagination-limit'
+        );
+    }
+
+
     public function create(array $data)
     {
         return AllowedValue::create($data);
@@ -168,6 +188,26 @@ class EloquentAllowedValueRepository
     {
         return [
             'UNSIGNED' => ['000000013']
+        ];
+    }
+
+
+    private function allByPageForAdminIndexPage($page, $limit): array
+    {
+        $query = $this->newInstance()
+            ->whereIn('attribute_id', Attribute\AttributeConstants::SERIES_ATTRIBUTES)
+            ->with('productsForSingle');
+
+        $total = $query->count();
+        $items = $query->skip($limit * ($page - 1))
+            ->take($limit)
+            ->get();
+
+        return [
+            'page' => $page,
+            'limit' => $limit,
+            'items' => $items,
+            'total' => $total,
         ];
     }
 }

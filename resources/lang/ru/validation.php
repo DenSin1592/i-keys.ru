@@ -188,6 +188,7 @@ return [
         'alias' => 'Псевдоним URL',
         'parent_id' => 'Родитель',
         'type' => 'Тип',
+        'count_products' => 'Кол-во товаров',
         'top_content' => 'Содержимое вверху',
         'content_for_submenu' => 'Содержимое всплывающего меню',
         'content_for_links_type' => 'Ссылки типов над фильтром',

@@ -20,7 +20,7 @@ class ProductsSeriesController extends Controller
 
     public function index()
     {
-        $modelList = $this->allowedValueRepository->getAllSeries();
+        $modelList = $this->allowedValueRepository->paginateForAdminIndexPage();
         return view('admin.products_series.index', [
             'modelList' => $modelList
         ]);

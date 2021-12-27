@@ -10,6 +10,7 @@
         <div class="element-container header-container">
             <div class="id">{{ trans('validation.attributes.id') }}</div>
             <div class="name">{{ trans('validation.attributes.review_name') }}</div>
+            <div class="type">{{ trans('validation.attributes.count_products') }}</div>
             <div class="type">{{ trans('validation.attributes.type') }}</div>
             <div class="control">{{ trans('interactions.controls') }}</div>
         </div>
@@ -22,5 +23,6 @@
         <div>
             <a href="{{ route('cc.products-series.create') }}" class="btn btn-success btn-xs">Добавить серию</a>
         </div>
+
     </div>
 @stop
