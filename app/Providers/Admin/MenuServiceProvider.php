@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ExchangeController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\ProductsSeriesController;
 use App\Http\Controllers\Admin\ProductTypePagesController;
 use App\Http\Controllers\Admin\ReviewsController;
 use App\Services\Admin\Menu\MenuGroup;
@@ -61,6 +62,15 @@ class MenuServiceProvider extends ServiceProvider
                         [
                             ProductTypePagesController::class,
                         ]
+                    )
+                );
+
+                $menu->addMenuElement(
+                    new MenuElement(
+                        'Серии товаров',
+                        'glyphicon-align-left',
+                        route('cc.products-series.index'),
+                        [ProductsSeriesController::class]
                     )
                 );
 
