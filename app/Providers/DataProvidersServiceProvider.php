@@ -13,6 +13,8 @@ use App\Services\DataProviders\OrderForm\OrderForm;
 use App\Services\DataProviders\OrderForm\OrderSubForm;
 use App\Services\DataProviders\ProductForm\ProductForm;
 use App\Services\DataProviders\ProductForm\ProductSubForm;
+use App\Services\DataProviders\ProductsSeriesForm\Plugins\Products;
+use App\Services\DataProviders\ProductsSeriesForm\ProductsSeriesForm;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -50,6 +52,14 @@ class DataProvidersServiceProvider extends ServiceProvider
                 return $form;
             }
         );
+        $this->app->bind(ProductsSeriesForm::class, static function () {
+            $productListProvider = new ProductsSeriesForm();
+            $productListProvider->addPlugin(\App::make(Products::class));
+
+            return $productListProvider;
+        }
+        );
+
 
 
         //Client

@@ -7,11 +7,23 @@ use App\Models\Attribute\AllowedValue;
 
 class ProductsSeriesForm
 {
-    public function provideDataFor(AllowedValue $model)
+
+    private array $plugins = [];
+
+
+    public function addPlugin(ProductsSeriesFormPlugin $plugin): void
     {
-        return [
-            'model' => $model,
-        ];
+        $this->plugins[] = $plugin;
     }
 
+
+    public function provideDataFor(AllowedValue $model)
+    {
+        $data = ['model' => $model,];
+        foreach ($this->plugins as $plugin) {
+            $data = array_merge($data, $plugin->getSubData($model));
+        }
+
+        return $data;
+    }
 }

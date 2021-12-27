@@ -13,6 +13,14 @@
     {!! Form::tbSelect('attribute_id', \App\Models\Attribute\AttributeConstants::SERIES_ATTRIBUTES_VARIANTS,null, ['disabled' => !empty($typeSeriesDisabled)]) !!}
     {!! Form::tbFormGroupClose() !!}
 
+    @include('admin.shared._relations._many_to_many._block_without_terminal', [
+        'models' => $formData['products'],
+        'blockName' => 'Товары этой серии',
+        'relationsName' => 'products',
+        'routeEdit' => 'cc.products.edit',
+
+    ])
+
     <div class="action-bar">
         @yield('submit_block')
     </div>

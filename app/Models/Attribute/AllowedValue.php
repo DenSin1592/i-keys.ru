@@ -3,6 +3,7 @@
 namespace App\Models\Attribute;
 
 use App\Models\Helpers\DeleteHelpers;
+use App\Models\Product;
 
 
 class AllowedValue extends \Eloquent
@@ -40,6 +41,12 @@ class AllowedValue extends \Eloquent
     public function getTypeSeries(): string
     {
         return AttributeConstants::SERIES_ATTRIBUTES_VARIANTS[$this->attribute_id];
+    }
+
+
+    public function productsForSingle()
+    {
+        return $this->belongsToMany(Product::class, 'attribute_single_values', 'value_id', 'product_id');
     }
 
 
