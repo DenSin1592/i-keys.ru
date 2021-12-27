@@ -42,7 +42,7 @@ class OrderLaravelValidator extends AbstractLaravelValidator
             'payment_method' => [
                 'nullable',
                 // TODO не забыть в итоге отрегулирвать валидацию после правок на фронте
-//                'in:' . implode(',', array_keys($this->orderRepository->getPaymentMethodVariants()))
+                'in:' . implode(',', array_keys($this->orderRepository->getPaymentMethodVariants()))
             ],
             'payment_status' => [
                 'nullable',
@@ -50,10 +50,10 @@ class OrderLaravelValidator extends AbstractLaravelValidator
             ],
             'delivery_method' => [
                 'nullable',
-//                'in:' . implode(
-//                    ',',
-//                    DeliveryMethodConstants::getMethodsForPayment(\Arr::get($this->data, 'payment_method'))
-//                )
+                'in:' . implode(
+                    ',',
+                    DeliveryMethodConstants::getMethodsForPayment(\Arr::get($this->data, 'payment_method'))
+                )
             ],
             'order_items' => ['required'],
 //            'icon_file' => 'mimes:jpg,pdf,doc,xls',
@@ -79,7 +79,8 @@ class OrderLaravelValidator extends AbstractLaravelValidator
 
         $addressRequired = function ($input) {
             return isset($input->delivery_method) &&
-                $input->delivery_method != DeliveryMethodConstants::SELF_DELIVERY;
+                ($input->delivery_method != DeliveryMethodConstants::SELF_DELIVERY &&
+                    $input->delivery_method != DeliveryMethodConstants::SELF_TRANSPORT_COMPANY);
         };
 
 //        $validator->sometimes('region_id', 'required', $addressRequired);

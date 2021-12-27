@@ -323,9 +323,10 @@ return [
                     \App\Models\Order\PaymentMethodConstants::INVOICE => 'Счет на юр.лицо',
                 ],
                 'delivery_method' => [
-                    \App\Models\Order\DeliveryMethodConstants::SELF_DELIVERY => 'Самовывоз',
-                    \App\Models\Order\DeliveryMethodConstants::COURIER => 'Курьером/Служба доставки',
-                    \App\Models\Order\DeliveryMethodConstants::TRANSPORT_COMPANY => 'Транспортной компанией',
+                    \App\Models\Order\DeliveryMethodConstants::SELF_DELIVERY => 'Самовывоз из в магазина в Москве',
+                    \App\Models\Order\DeliveryMethodConstants::COURIER => 'Доставка курьером по Москве и обл.',
+                    \App\Models\Order\DeliveryMethodConstants::TRANSPORT_COMPANY => 'Доставка СДЭК',
+                    \App\Models\Order\DeliveryMethodConstants::SELF_TRANSPORT_COMPANY => 'Самовывоз СДЭК',
                 ],
                 'icon_file' => 'Реквизиты'
             ],

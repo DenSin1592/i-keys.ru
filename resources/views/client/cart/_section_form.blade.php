@@ -89,7 +89,7 @@
                                     <div class="checkout-content">
                                         <div class="form-options-group">
                                             <div class="form-option input-group">
-                                                <input type="radio" class="form-option-radio" name="delivery_method" value="СДЭК" autocomplete="off" hidden required>
+                                                <input type="radio" class="form-option-radio" name="delivery_method" value="{{ \App\Models\Order::DELIVERY_CDEK }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header">
                                                     <div class="form-option-title title-h4 font-weight-bold">Доставка СДЭКом <img loading="lazy" src="images/logo/logo-cdek.png" width="96" height="25" alt="СДЭК"></div>
                                                     <div class="form-option-subtitle">Укажите адрес доставки. Если не хотите заполнять, менеджер позвонит вам и заполнит вместе с вами</div>
@@ -99,25 +99,25 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <input name="city1" type="text" class="form-control" placeholder="Город *" data-option-required >
+                                                                <input name="city*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Город *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-4">
                                                             <div class="form-group">
-                                                                <input name="street1" type="text" class="form-control" placeholder="Улица *"  data-option-required >
+                                                                <input name="street*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Улица *"  data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-2 col-md-2">
                                                             <div class="form-group">
-                                                                <input name="building1" type="text" class="form-control" placeholder="Дом *" data-option-required >
+                                                                <input name="building*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Дом *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-2">
                                                             <div class="form-group">
-                                                                <input name="flat1" type="text" class="form-control" placeholder="Квартира (офис) *" data-option-required >
+                                                                <input name="flat*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Квартира (офис) *" data-option-required >
                                                             </div>
                                                         </div>
                                                     </div>
@@ -137,25 +137,25 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <input name="city2" type="text" id="checkout-addres-city" class="form-control" placeholder="Город *" data-option-required >
+                                                                <input name="city2*{{ \App\Models\Order::DELIVERY_COURIER }}" type="text" id="checkout-addres-city" class="form-control" placeholder="Город *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-4">
                                                             <div class="form-group">
-                                                                <input name="street2" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" data-option-required >
+                                                                <input name="street2*{{ \App\Models\Order::DELIVERY_COURIER }}" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" data-option-required >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-2 col-md-2">
                                                             <div class="form-group">
-                                                                <input name="building2" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" data-option-required>
+                                                                <input name="building2*{{ \App\Models\Order::DELIVERY_COURIER }}" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" data-option-required>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-2">
                                                             <div class="form-group">
-                                                                <input name="flat2" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис) *"  data-option-required>
+                                                                <input name="flat2*{{ \App\Models\Order::DELIVERY_COURIER }}" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис) *"  data-option-required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -179,7 +179,7 @@
                                             </div>
 
                                             <div class="form-option">
-                                                <input type="radio" class="form-option-radio" name="delivery_method" value="Самовывоз СДЭК" autocomplete="off" hidden required>
+                                                <input type="radio" class="form-option-radio" name="delivery_method" value="{{ \App\Models\Order::DELIVERY_SELF_CDEK }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header">
                                                     <div class="form-option-title title-h4 font-weight-bold">Самовывоз СДЭК <img loading="lazy" src="images/logo/logo-cdek.png" width="96" height="25" alt="СДЭК"></div>
                                                 </div>

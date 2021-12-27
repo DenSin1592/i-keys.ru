@@ -94,9 +94,11 @@ class Order extends \Eloquent
 
     const DELIVERY_COURIER = 'courier';
     const DELIVERY_SELF = 'self';
+    const DELIVERY_CDEK = 'cdek';
+    const DELIVERY_SELF_CDEK = 'self_cdek';
 
     const PAYMENT_CASH = 'cash';
-    const PAYMENT_ONLINE = 'online';
+    const PAYMENT_ONLINE = 'cashless';
     const PAYMENT_INVOICE = 'invoice';
 
     protected $fillable = [
