@@ -19,6 +19,18 @@ class OrderForm {
         this.nextStep();
     }
 
+    pasteUserInfoToFastOrder () {
+        for (const [key, value] of Object.entries(this.getFormsData())) {
+            if (key !== '_token') {
+                $('#quick-order').find('input[name="'+key+'"]').val(value);
+            }
+        }
+    }
+
+    /**
+     * Склеивает данные с форм и выплевывает JSON Object
+     * @returns {Object}
+     */
     getFormsData () {
         const forms = $('#order-form form');
         forms.each((index, item) => {
@@ -48,6 +60,9 @@ class OrderForm {
         return resultObject;
     }
 
+    /**
+     * Отключает пагинацию слева и кнопку назад
+     */
     disableButtons () {
         const prev = $('#order-form .checkout-control-back');
         const buttons = $('#order-form button[data-order-step]:not([disabled]),' +
@@ -59,6 +74,9 @@ class OrderForm {
         }
     }
 
+    /**
+     * Отменяет предыдущее
+     */
     enableButtons () {
         const prev = $('#order-form .checkout-control-back');
         const buttons = $('#order-form button[data-order-step]:not([disabled]),' +
@@ -67,7 +85,6 @@ class OrderForm {
         buttons.prop('disabled', false);
         prev.prop('disabled', false);
     }
-
 
 
     prevStep () {
@@ -103,6 +120,10 @@ class OrderForm {
             const isLastStep = parseInt(accordionItemIndex) === (accordionSize - 1)
 
             if (form.valid() && !isLastStep) {
+                if(accordionItemIndex === '1') {
+                    order.pasteUserInfoToFastOrder();
+                }
+
                 $(accordionButtonClass)
                     .removeClass('invalid')
                     .addClass('valid');
@@ -136,6 +157,11 @@ class OrderForm {
             }
         });
     }
+
+    /**
+     * Используется для быстрого теста (if debug true). Ajax отправляется сразу
+     */
+
     testData () {
         const order = this;
         const msg = document.createElement('div');
@@ -169,7 +195,7 @@ class OrderForm {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     try {
-        const order = new OrderForm(false);
+        const order = new OrderForm(true);
         order.init();
 
         const forms = $('#order-form form');
@@ -184,10 +210,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     order.enableButtons();
                 },
 
+                showErrors: function (errorMap, errorList) {
+                     if (typeof errorList[0] !== "undefined") {
+                        const position = $(errorList[0].element).offset().top;
+                        console.log(position, errorList[0]);
+                        $('html, body').animate({
+                            scrollTop: position - 100
+                        }, 800);
+                    }
+                    this.defaultShowErrors(); // keep error messages next to each input element
+                },
+
                 rules: {
                     name: {
                         required: true,
-                        isText: true
+                        isText: true // спец. методы проверки в validMethods.js
                     },
                     email: {
                         email: true
