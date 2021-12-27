@@ -1,9 +1,11 @@
-<?php namespace App\Providers\Admin;
+<?php
 
+namespace App\Providers\Admin;
+
+use App\Http\Controllers\Admin\Attributes\ProductsSeriesController;
 use App\Http\Controllers\Admin\ExchangeController;
 use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
-use App\Http\Controllers\Admin\ProductsSeriesController;
 use App\Http\Controllers\Admin\ProductTypePagesController;
 use App\Http\Controllers\Admin\ReviewsController;
 use App\Services\Admin\Menu\MenuGroup;

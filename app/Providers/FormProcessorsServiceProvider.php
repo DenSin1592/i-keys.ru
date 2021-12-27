@@ -2,6 +2,7 @@
 
 use App\Services\FormProcessors\AdminUser\AdminUserFormProcessor;
 use App\Services\FormProcessors\Attribute\AttributeFormProcessor;
+use App\Services\FormProcessors\Attribute\ProductsSeries\ProductsSeriesFormProcessor;
 use App\Services\FormProcessors\Category\CategoryFormProcessor;
 use App\Services\FormProcessors\Order\ClientOrderFormProcessor;
 use App\Services\FormProcessors\Order\OrderFormProcessor;
@@ -27,6 +28,7 @@ use App\Services\Repositories\Subdomain\CreateUpdateWrapper;
 use App\Services\Settings\SettingContainer;
 use App\Services\Validation\AdminUser\AdminUserLaravelValidator;
 use App\Services\Validation\Attribute\AttributeLaravelValidator;
+use App\Services\Validation\Attribute\ProductsSeriesLaravelValidator;
 use App\Services\Validation\Category\CategoryLaravelValidator;
 use App\Services\Validation\Order\OrderLaravelValidator;
 use App\Services\Validation\ProductTypePage\ProductTypePageLaravelValidator;
@@ -168,6 +170,15 @@ class FormProcessorsServiceProvider extends ServiceProvider
             );
 
             $formProcessor->addSubProcessor($app->make(SubProcessor\ClientOrderItems::class));
+
+            return $formProcessor;
+        });
+
+        $this->app->bind(ProductsSeriesFormProcessor::class, function (Application $app) {
+            $formProcessor = new ProductsSeriesFormProcessor(
+                $app->make(ProductsSeriesLaravelValidator::class),
+                $app->make(\App\Services\Repositories\Attribute\AllowedValue\CreateUpdateWrapper::class)
+            );
 
             return $formProcessor;
         });

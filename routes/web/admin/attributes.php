@@ -21,3 +21,4 @@ Route::resource('attributes', 'AttributesController')->except(['show'])->names([
     'update' => 'attributes.update',
     'destroy' => 'attributes.destroy',
 ]);
+Route::resource('products-series', 'Attributes\ProductsSeriesController');

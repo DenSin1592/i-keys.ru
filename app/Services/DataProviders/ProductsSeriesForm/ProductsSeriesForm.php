@@ -2,12 +2,12 @@
 
 namespace App\Services\DataProviders\ProductsSeriesForm;
 
-use App\Models\ProductsSeries;
+use App\Models\Attribute\AllowedValue;
 
 
 class ProductsSeriesForm
 {
-    public function provideDataFor(ProductsSeries $model)
+    public function provideDataFor(AllowedValue $model)
     {
         return [
             'model' => $model,

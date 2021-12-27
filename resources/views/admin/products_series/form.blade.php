@@ -4,35 +4,18 @@
 
 @section('content')
 
-    {!! Form::tbRestfulFormOpen($formData['model'], $errors, 'cc.products-series',) !!}
+    {!! Form::tbRestfulFormOpen($formData['model'], $errors, 'cc.products-series') !!}
 
-        {!! Form::tbTextBlock('name', trans('validation.attributes.review_name')) !!}
+    {!! Form::tbTextBlock('value', trans('validation.attributes.name')) !!}
 
-{{--        {!! Form::tbCheckboxBlock('publish') !!}--}}
+    {!! Form::tbFormGroupOpen('attribute_id') !!}
+    {!! Form::tbLabel('attribute_id', trans('validation.attributes.attribute_type')) !!}
+    {!! Form::tbSelect('attribute_id', \App\Models\Attribute\AttributeConstants::SERIES_ATTRIBUTES_VARIANTS,null, ['disabled' => !empty($typeSeriesDisabled)]) !!}
+    {!! Form::tbFormGroupClose() !!}
 
-{{--        {!! Form::tbCheckboxBlock('on_home_page') !!}--}}
-
-{{--        {!! Form::tbTextBlock('email') !!}--}}
-
-{{--        @include('admin.review._score')--}}
-
-{{--        {!! Form::tbTextareaBlock('content', trans('validation.attributes.review_content')) !!}--}}
-
-{{--        {!! Form::tbTextareaBlock('content_answer', trans('validation.attributes.review_content_answer')) !!}--}}
-
-{{--        @include('admin.review._product_field')--}}
-
-{{--        @include('admin.review._date_field', ['formData' => $formData])--}}
-
-{{--        {!! Form::tbCheckboxBlock('keep_review_date') !!}--}}
-
-{{--        {!! Form::hidden('ip') !!}--}}
-
-{{--        @include('admin.shared._model_timestamps', ['model' => $formData['review']])--}}
-
-        <div class="action-bar">
-            @yield('submit_block')
-        </div>
+    <div class="action-bar">
+        @yield('submit_block')
+    </div>
 
     {!! Form::close() !!}
 

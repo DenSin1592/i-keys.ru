@@ -29,7 +29,6 @@ Route::prefix('cc')->name('cc.')->namespace('Admin')->group(function () {
         require_once 'web/admin/attributes.php';
         require_once 'web/admin/types.php';
         require_once 'web/admin/product.php';
-        require_once 'web/admin/products_series.php';
         require_once 'web/admin/reviews.php';
         require_once 'web/admin/orders.php';
         require_once 'web/admin/exchange.php';

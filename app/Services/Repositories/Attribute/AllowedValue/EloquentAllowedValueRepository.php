@@ -15,6 +15,12 @@ class EloquentAllowedValueRepository
     }
 
 
+    public function findById($id): AllowedValue
+    {
+        return AllowedValue::find($id);
+    }
+
+
     public function allForAttribute(Attribute $attribute)
     {
         return $attribute->allowedValues()->orderBy('position')->get();
@@ -112,6 +118,24 @@ class EloquentAllowedValueRepository
         $query->orderBy('attribute_allowed_values.value_second_size_cylinder');
 
         return $query->get();
+    }
+
+
+    public function getAllSeries(): Collection
+    {
+        return $this->newInstance()->whereIn('attribute_id', Attribute\AttributeConstants::SERIES_ATTRIBUTES)->get();
+    }
+
+
+    public function create(array $data)
+    {
+        return AllowedValue::create($data);
+    }
+
+
+    public function update(AllowedValue $attribute, array $data)
+    {
+        return $attribute->update($data);
     }
 
 

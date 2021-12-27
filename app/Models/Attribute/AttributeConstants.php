@@ -88,6 +88,18 @@ class AttributeConstants
     ];
 
 
+    public const SERIES_ATTRIBUTES = [
+        self::LOCK_SERIES_ID,
+        self::CYLINDER_SERIES_ID,
+    ];
+
+
+    public const SERIES_ATTRIBUTES_VARIANTS = [
+        self::LOCK_SERIES_ID => 'Серия Замка',
+        self::CYLINDER_SERIES_ID => 'Серия Цилиндра',
+    ];
+
+
     public const CYLINDER_SERIES_1C_CODE = '000000004';
     public const COLOR_1C_CODE = '000000010';
     public const SIZE_CYLINDER_1C_CODE = '000000013';
