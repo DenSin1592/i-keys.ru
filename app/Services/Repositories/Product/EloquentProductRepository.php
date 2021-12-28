@@ -676,4 +676,60 @@ class EloquentProductRepository
             ->get();
     }
 
+    public function filterByNameAndCode1cInCategory(
+        string $filterValue,
+        $categoryId,
+        $excludeProductId = null
+    ): Collection {
+        $query = $this->getWithinCategoryQuery($categoryId, $excludeProductId);
+        $this->scopeFilterByNameAndCode1c($query, $filterValue);
+        $this->scopeNameOrdered($query);
+        $this->scopeWithRelations($query);
+
+        return $query->select('products.*')
+            ->distinct()
+            ->get();
+    }
+
+    private function scopeFilterByNameAndCode1c($query, string $filterValue)
+    {
+        $filterValue = trim($filterValue);
+        if ($filterValue !== '') {
+            $query->where(
+                function ($q) use ($filterValue) {
+                    $q->where('products.name', 'like', "%{$filterValue}%")
+                        ->orWhere('products.code_1c', 'like', "%{$filterValue}%");
+                }
+            );
+        }
+
+        return $query;
+    }
+
+
+    public function filterByNameAndCode1cAmongProducts(string $filterValue, array $productIds): Collection
+    {
+        if (count($productIds) === 0) {
+            return Collection::make([]);
+        }
+        $query = Product::query()->whereIn('products.id', $productIds);
+        $this->scopeFilterByNameAndCode1c($query, $filterValue);
+        $this->scopeWithRelations($query);
+
+        $productsDictionary = $query
+            ->select('products.*')
+            ->distinct()
+            ->get()
+            ->getDictionary();
+
+        $sortedProducts = Collection::make([]);
+        foreach ($productIds as $productId) {
+            if (isset($productsDictionary[$productId])) {
+                $sortedProducts->push($productsDictionary[$productId]);
+            }
+        }
+
+        return $sortedProducts;
+    }
+
 }
