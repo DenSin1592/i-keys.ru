@@ -63,3 +63,9 @@
         margin-bottom: 15px;
     }
 }
+
+.card-intro {
+    @include media-breakpoint-up(xxl) {
+        max-width: 360px;
+    }
+}
