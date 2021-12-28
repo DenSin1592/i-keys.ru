@@ -21,4 +21,14 @@ Route::resource('attributes', 'AttributesController')->except(['show'])->names([
     'update' => 'attributes.update',
     'destroy' => 'attributes.destroy',
 ]);
+
 Route::resource('products-series', 'Attributes\ProductsSeriesController');
+
+
+Route::prefix('products-series/services')->name('products-series.services.')->group(function () {
+    Route::get('available', 'Attributes\Series\ServicesController@available')
+        ->name('available');
+
+    Route::get('rebuild-current', 'Attributes\Series\ServicesController@rebuildCurrent')
+        ->name('rebuild-current');
+});

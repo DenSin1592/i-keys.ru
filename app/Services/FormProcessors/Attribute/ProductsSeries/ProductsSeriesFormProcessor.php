@@ -2,7 +2,7 @@
 
 namespace App\Services\FormProcessors\Attribute\ProductsSeries;
 
-use App\Services\FormProcessors\Attribute\SubProcessor;
+use App\Services\FormProcessors\SubProcessor;
 use App\Services\FormProcessors\CreateUpdateFormProcessor;
 
 

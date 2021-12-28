@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Attribute\AllowedValue;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Service extends Model
 {
@@ -23,8 +26,19 @@ class Service extends Model
         'meta_description',
     ];
 
-    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+
+    public function series(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(AllowedValue::class, 'series_service','service_id', 'series_id', );
+    }
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::deleting(static function (self $model) {
+            $model->series()->detach();
+        });
     }
 }

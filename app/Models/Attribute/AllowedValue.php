@@ -4,6 +4,8 @@ namespace App\Models\Attribute;
 
 use App\Models\Helpers\DeleteHelpers;
 use App\Models\Product;
+use App\Models\Service;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 class AllowedValue extends \Eloquent
@@ -50,6 +52,12 @@ class AllowedValue extends \Eloquent
     }
 
 
+    public function services(): BelongsToMany
+    {
+        return $this->belongsToMany(Service::class, 'series_service', 'series_id', 'service_id');
+    }
+
+
     protected static function boot()
     {
         parent::boot();
@@ -57,6 +65,7 @@ class AllowedValue extends \Eloquent
         self::deleting(static function (self $allowedValue) {
             DeleteHelpers::deleteRelatedAll($allowedValue->singleValues());
             DeleteHelpers::deleteRelatedAll($allowedValue->multipleValues());
+            $allowedValue->services()->detach();
         });
     }
 }

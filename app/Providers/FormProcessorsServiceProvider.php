@@ -3,6 +3,7 @@
 use App\Services\FormProcessors\AdminUser\AdminUserFormProcessor;
 use App\Services\FormProcessors\Attribute\AttributeFormProcessor;
 use App\Services\FormProcessors\Attribute\ProductsSeries\ProductsSeriesFormProcessor;
+use App\Services\FormProcessors\Attribute\ProductsSeries\SubProcessor\Services;
 use App\Services\FormProcessors\Category\CategoryFormProcessor;
 use App\Services\FormProcessors\Order\ClientOrderFormProcessor;
 use App\Services\FormProcessors\Order\OrderFormProcessor;
@@ -44,6 +45,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use App\Services\FormProcessors\ProductTypePage\SubProcessor as ProductTypePageSubProcessor;
 use App\Services\FormProcessors\Order\SubProcessor;
+
 
 class FormProcessorsServiceProvider extends ServiceProvider
 {
@@ -190,6 +192,7 @@ class FormProcessorsServiceProvider extends ServiceProvider
                 $app->make(ProductsSeriesLaravelValidator::class),
                 $app->make(\App\Services\Repositories\Attribute\AllowedValue\CreateUpdateWrapper::class)
             );
+            $formProcessor->addSubProcessor(\App::make(Services::class));
 
             return $formProcessor;
         });

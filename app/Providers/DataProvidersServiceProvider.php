@@ -1,4 +1,6 @@
-<?php namespace App\Providers;
+<?php
+
+namespace App\Providers;
 
 use App\Services\DataProviders\AttributeForm\AttributeForm;
 use App\Services\DataProviders\AttributeForm\AttributeSubForm;
@@ -14,9 +16,11 @@ use App\Services\DataProviders\OrderForm\OrderSubForm;
 use App\Services\DataProviders\ProductForm\ProductForm;
 use App\Services\DataProviders\ProductForm\ProductSubForm;
 use App\Services\DataProviders\ProductsSeriesForm\Plugins\Products;
+use App\Services\DataProviders\ProductsSeriesForm\Plugins\Services;
 use App\Services\DataProviders\ProductsSeriesForm\ProductsSeriesForm;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+
 
 class DataProvidersServiceProvider extends ServiceProvider
 {
@@ -55,6 +59,7 @@ class DataProvidersServiceProvider extends ServiceProvider
         $this->app->bind(ProductsSeriesForm::class, static function () {
             $productListProvider = new ProductsSeriesForm();
             $productListProvider->addPlugin(\App::make(Products::class));
+            $productListProvider->addPlugin(\App::make(Services::class));
 
             return $productListProvider;
         }

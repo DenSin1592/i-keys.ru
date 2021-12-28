@@ -507,4 +507,31 @@ class EloquentServiceRepository
 
         return $attributesByCode1c->get($code1c);
     }
+
+
+    public function allByIdsInSequence(array $ids): array
+    {
+        $models = [];
+        $modelDict = $this->allByIds($ids)->getDictionary();
+        foreach ($ids as $id) {
+            if (isset($modelDict[$id])) {
+                $models[] = $modelDict[$id];
+            }
+        }
+
+        return $models;
+    }
+
+
+    private function allByIds(array $ids): Collection
+    {
+        if (count($ids) === 0){
+            return Collection::make([]);
+        }
+        return $this->newInstance()
+            ->query()
+            ->whereIn('id', $ids)
+            ->orderBy('position')
+            ->get();
+    }
 }
