@@ -21,7 +21,7 @@ class AssociatedProductsForm
                 'position' => $product->pivot->position,
             ];
         }
-
+        $this->sortingProductsByCategories($associatedProducts);
         return $associatedProducts;
     }
 
@@ -46,6 +46,40 @@ class AssociatedProductsForm
             ];
         }
 
+        $this->sortingProductsByCategories($associatedProducts);
         return $associatedProducts;
+    }
+
+
+    private function sortingProductsByCategories(&$associatedRelatedProducts)
+    {
+        $sortedProducts = [];
+
+        foreach($associatedRelatedProducts as $element){
+            if($element['product']->isLock()){
+                $sortedProducts['locks'][] = $element;
+                continue;
+            }
+            if($element['product']->isCylinder()){
+                $sortedProducts['cylinders'][] = $element;
+                continue;
+            }
+            if($element['product']->isArmorplate()){
+                $sortedProducts['armorplate'][] = $element;
+                continue;
+            }
+            if($element['product']->isDoorHandle()){
+                $sortedProducts['door_handle'][] = $element;
+                continue;
+            }
+            if($element['product']->isFindings()){
+                $sortedProducts['findings'][] = $element;
+                continue;
+            }
+
+            $sortedProducts['other'][] = $element;
+        }
+
+        $associatedRelatedProducts = $sortedProducts;
     }
 }
