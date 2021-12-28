@@ -94,17 +94,57 @@ let initFilterRangeSlider = function () {
     });
 }
 
+
+let filterToggle = $('.filter-toggle'),
+    filterContainer = $('#filter');
+
+function setFilterPosition() {
+    let yOffset = $('.header-box').outerHeight() * 1.25;
+    let y = filterToggle[0].getBoundingClientRect().top + window.pageYOffset - yOffset;
+
+    $('html, body').animate({
+        scrollTop: y,
+    }, 300)
+}
+
+function openFilter() {
+    $('body').addClass('filter-open');
+    filterContainer.slideDown();
+    setFilterPosition();
+    appendBackdrop();
+}
+
+function closeFilter() {
+    $('body').removeClass('filter-open');
+    filterToggle.removeClass('active');
+    filterContainer.slideUp();
+    removeBackdrop();
+}
+
 let initFilterToggle = function (){
     $('.filter-toggle').on('click', function(e) {
         let target = $(e.currentTarget);
-        let filterContainer = $(target).next();
-        filterContainer.slideToggle();
-        ($('body').hasClass('filter-open') ? $('body').removeClass('filter-open') : $('body').addClass('filter-open'))
+        $(target).toggleClass('active');
+        if(target.hasClass('active')) {
+            openFilter();
+        }
+        if(!target.hasClass('active')) {
+            closeFilter();
+        }
     });
 }
+
 
 document.addEventListener('DOMContentLoaded', function (){
     initFilterToggle();
 })
 
 
+document.addEventListener('DOMContentLoaded', function (){
+    $(document).on('click', '.backdrop', closeFilter);
+    beforeWindowWidthResizeFunctions.push(function () {
+        if (windowSizeHelper.isMobileToDesktopResize()) {
+            closeFilter();
+        }
+    });
+})
