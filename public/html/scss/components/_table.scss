@@ -1,37 +1,35 @@
 .table {
-    border-collapse:separate;
+    border-collapse: separate;
     border-spacing: 0 10px;
+    @include media-breakpoint-up(xl) {
+        font-size: 17px;
+        line-height: 25px;
+    }
 
     thead {
-        color: #fff;
-        line-height: 35px;
-        background: #191919;
-        font-weight: normal;
-        font-size: 17px;
-
         th {
-            padding: 11px 15px;
-            border-bottom: 5px solid #c55100;
-
+            padding: 10px 15px;
+            border-bottom: 3px solid $c-secondary;
+            background: $c-dark;
+            color: $c-white;
             @include media-breakpoint-up(lg) {
-                padding: 21px 35px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+            @include media-breakpoint-up(xl) {
+                padding: 20px 35px;
+                border-width: 5px;
             }
         }
     }
 
     tbody {
         tr {
-            margin: 10px 0;
-            padding: 28px 40px;
-            background: #fff;
-            color: #000;
-            font-size: 17px;
-            line-height: 25px;
+            background: $c-white;
 
             td {
                 padding: 15px;
-
-                @include media-breakpoint-up(lg) {
+                @include media-breakpoint-up(xl) {
                     padding: 35px;
                 }
             }
