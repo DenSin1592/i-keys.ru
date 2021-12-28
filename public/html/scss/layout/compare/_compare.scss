@@ -71,6 +71,10 @@
 }
 
 .compare-counter-block {
+    @include media-breakpoint-up(md) {
+        margin-bottom: 15px;
+    }
+
     .compare-counter {
         @include media-breakpoint-up(xl) {
             font-size: 17px;

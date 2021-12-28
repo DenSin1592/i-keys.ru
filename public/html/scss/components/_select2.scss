@@ -13,6 +13,40 @@
             padding-right: 30px;
             color: inherit;
         }
+
+        .select2-selection__arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 14px;
+            height: 28px;
+            text-align: center;
+            &::before {
+                color: $c-secondary;
+                font-family: 'icomoon';
+                content: '\e904';
+            }
+
+            b {
+                display: none;
+            }
+        }
+
+        &.select2-selection-inline {
+            margin-right: 20px;
+            
+            .select2-selection__rendered {
+                padding-right: 0;
+            }
+        }
+    }
+
+    &.select2-container--open {
+        .select2-selection--single {
+            .select2-selection__arrow {
+                transform: rotate(180deg);
+            }
+        }
     }
 
     .select2-dropdown {

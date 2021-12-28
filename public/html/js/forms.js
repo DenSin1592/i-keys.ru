@@ -4,6 +4,14 @@ $(function () {
         minimumResultsForSearch: Infinity
     });
 
+    $('.custom-select-inline').select2({
+        width: 'auto',
+        selectionCssClass: 'select2-selection-inline',
+        dropdownAutoWidth: true,
+        minimumResultsForSearch: Infinity,
+        // dropdownCssClass: 'select2-dropdown-inline'
+    });
+
     // custom number
     $(".custom-number .custom-number-button").on("click", function(e) {
         let target = $(e.currentTarget),
