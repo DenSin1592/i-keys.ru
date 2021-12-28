@@ -200,6 +200,7 @@ textarea.form-control {
     &.custom-color {
         width: 28px;
         height: 28px;
+        min-height: auto;
         margin: 0;
         padding: 0;
         @include media-breakpoint-up(xl) {
@@ -208,6 +209,8 @@ textarea.form-control {
         }
 
         .custom-control-input {
+            width: 100%;
+            height: 100%;
             &:checked {
                 + .custom-control-label {
                     border-color: $c-white;
