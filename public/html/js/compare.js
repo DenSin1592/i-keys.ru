@@ -7,6 +7,9 @@ $(function () {
         mainSwiper = compareContainer.find('.swiper-compare');
         next = compareContainer.find('.swiper-compare-button-next');
         prev = compareContainer.find('.swiper-compare-button-prev');
+        compareToggle = compareContainer.find('#switchCompare'),
+        compareSpecificationsListAll = compareContainer.find('.compare-specifications-all'),
+        compareSpecificationsListDiff = compareContainer.find('.compare-specifications-diff'),
 
         new Swiper(mainSwiper, {
             observer: true,
@@ -38,7 +41,7 @@ $(function () {
         /**
          * Match height on compare page.
          */
-         let matchHeight = function () {
+        let matchHeight = function () {
             // Match headers
             let maxHeaderHeight = 0;
             compareContainer.find('.compare-header').each(function (_, header) {
@@ -55,7 +58,7 @@ $(function () {
 
 
             // Set section background
-            $(compareContainerBG).css('top', compareContainer.find('.compare-content')[1].offsetTop + 'px');
+            $(compareContainerBG).css('top', compareContainer.find('.swiper-compare')[0].offsetTop + maxHeaderHeight + 'px');
 
 
             // Match parameters
@@ -79,6 +82,24 @@ $(function () {
                 });
             });
         };
+
+        $(compareToggle).on('change', function(event) {
+            if(compareToggle[0].checked) {
+                console.log('checked');
+
+                compareSpecificationsListAll.addClass('d-none');
+                compareSpecificationsListDiff.removeClass('d-none');
+
+                matchHeight();
+            }
+
+            if(!compareToggle[0].checked) {
+                compareSpecificationsListDiff.addClass('d-none');
+                compareSpecificationsListAll.removeClass('d-none');
+
+                matchHeight();
+            }
+        })
 
         // Init match height on document ready and resize
         let matchHeightTimeout = null;

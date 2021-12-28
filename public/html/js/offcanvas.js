@@ -19,13 +19,6 @@ $(function () {
 
     $(document).on('click', '.backdrop', closeOffcanvas);
 
-    beforeWindowWidthResizeFunctions.push(function () {
-        if (windowSizeHelper.isMobileToDesktopResize()) {
-            closeOffcanvas();
-        }
-    });
-
-
     /* offcanvas dropdown catalog */
     $('.offcanvas-catalog-megamenu-toggle').on('click', function(e) {
         let target = $(e.currentTarget);

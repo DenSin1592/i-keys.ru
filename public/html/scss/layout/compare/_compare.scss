@@ -9,7 +9,11 @@
         left: 0;
         right: 0;
         bottom: 0;
+        margin-top: 130px;
         background-color: $c-gray;
+        @include media-breakpoint-up(md) {
+            margin-top: 0;
+        }
     }
 }
 
@@ -54,8 +58,15 @@
     }
 
     .compare-title-media {
-        margin-right: 8px;
+        width: 25px;
+        height: 22px;
+        margin-right: 5px;
         vertical-align: baseline;
+        @include media-breakpoint-up(lg) {
+            width: 28px;
+            height: 25px;
+            margin-right: 8px;
+        }
     }
 }
 

@@ -21,13 +21,18 @@
         background: rgba($c-black, .8);
         content: '';
     }
+}
 
+.display-title {
+    margin: 0;
+}
 
-    .display-title {
-        margin: 0;
-    }
+.display-subtitle {
+    margin-top: 10px;
 
-    .display-subtitle {
-        margin-top: 10px;
+    .display-subtitle-media {
+        flex: 0 0 auto;
+        width: auto;
+        margin-right: 15px;
     }
 }

@@ -3,6 +3,10 @@
     display: none;
     color: $c-white;
     @include media-breakpoint-down(sm) {
+        flex: 0 0 calc(100% + 30px);
+        max-width: calc(100% + 30px);
+        margin-left: -15px;
+        margin-right: -15px;
         padding: 0;
     }
     @include media-breakpoint-up(md) {
@@ -33,7 +37,7 @@
     }
 
     .megamenu-inner {
-        padding: 15px 25px 10px;
+        padding: 5px 15px 10px;
         background-color: $c-gray-900;
         @include media-breakpoint-up(md) {
             padding: 15px 25px 10px;
@@ -45,9 +49,24 @@
         @include media-breakpoint-up(xxl) {
             padding: 30px 70px 25px;
         }
+
+        > .row {
+            margin-left: -5px;
+            margin-right: -5px;
+            @include media-breakpoint-up(md) {
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+        }
     }
 
     .megamenu-column {
+        padding-left: 5px;
+        padding-right: 5px;
+        @include media-breakpoint-up(md) {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
         @include media-breakpoint-up(xl) {
             flex: 0 0 20%;
             width: 20%;
@@ -61,10 +80,21 @@
 }
 
 .megamenu-title {
-    margin: 0 0 10px;
+    margin: 0;
+    font-size: 13px;
     color: $c-dark;
     @include media-breakpoint-up(md) {
+        margin: 0 0 10px;
+        font-size: 15px;
         color: $c-white;
+    }
+    @include media-breakpoint-up(xl) {
+        font-size: 17px;
+        line-height: 25px;
+    }
+    @include media-breakpoint-up(xxl) {
+        font-size: 20px;
+        line-height: 30px;
     }
 }
 
