@@ -3,6 +3,7 @@
     width: 100%;
     padding: 35px 15px;
     border: none;
+    transition: background 300ms ease;
     text-align: center;
     text-decoration: none;
     @include media-breakpoint-up(xl) {
@@ -79,6 +80,10 @@
     &.card-banner-whatsapp {
         background-color: $c-success;
         color: $c-white;
+
+        &:hover {
+            background-color: darken($c-success, 5%);
+        }
     }
 
     &.card-banner-catalog {
