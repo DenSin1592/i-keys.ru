@@ -87,6 +87,15 @@ class MenuServiceProvider extends ServiceProvider
 
                 $menu->addMenuElement(
                     new MenuElement(
+                        'Услуги',
+                        'glyphicon-align-left',
+                        route('cc.services.index'),
+                        [ServicesController::class]
+                    )
+                );
+
+                $menu->addMenuElement(
+                    new MenuElement(
                         'Администраторы',
                         'glyphicon-user',
                         route('cc.admin-users.index'),

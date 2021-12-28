@@ -2,6 +2,7 @@
 
 use App\Models\Node;
 use App\Services\Repositories\Node\EloquentNodeRepository;
+use App\Services\Repositories\ServicePage\EloquentServicePageRepository;
 use App\Services\StructureTypes\RepositoryAssociation;
 use App\Services\StructureTypes\Type;
 use App\Services\StructureTypes\TypeContainer;
@@ -15,6 +16,7 @@ class StructureTypesServiceProvider extends ServiceProvider
     const REPO_HOME_PAGE = 'home_page_repo';
     const REPO_TEXT_PAGE = 'text_page_repo';
     const REPO_ERROR_PAGE = 'error_page_repo';
+    const REPO_SERVICE_LIST_PAGE = 'service_list_page_repo';
 
     /**
      * Register the service provider.
@@ -50,6 +52,16 @@ class StructureTypesServiceProvider extends ServiceProvider
                     )
                 );
 
+                $typeContainer->addRepositoryAssociation(
+                    self::REPO_SERVICE_LIST_PAGE,
+                    new RepositoryAssociation(
+                        $this->app->make(EloquentServicePageRepository::class),
+                        function (Node $node) {
+                            return route('cc.service-pages.edit', [$node->id]);
+                        }
+                    )
+                );
+
                 /*$typeContainer->addRepositoryAssociation(
                     self::REPO_ERROR_PAGE,
                     new RepositoryAssociation(
@@ -72,6 +84,17 @@ class StructureTypesServiceProvider extends ServiceProvider
                     )
                 );
 
+                $typeContainer->addType(
+                    Node::TYPE_SERVICES_PAGE,
+                    new Type(
+                        'Страница услуг',
+                        true,
+                        self::REPO_SERVICE_LIST_PAGE,
+                        function () {
+                            return route('services');
+                        }
+                    )
+                );
 
                 /*$typeContainer->addType(
                     Node::TYPE_TEXT_PAGE,
