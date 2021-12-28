@@ -8,6 +8,10 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
+    @include media-breakpoint-up(xxl) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 
     a {
         border: none;
@@ -26,6 +30,10 @@
         margin-top: 25px;
         margin-bottom: 25px;
     }
+    @include media-breakpoint-up(xxl) {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
 }
 
 .footer-nav-container {
@@ -42,6 +50,9 @@
     }
     @include media-breakpoint-up(lg) {
         margin-bottom: 20px;
+    }
+    @include media-breakpoint-up(xxl) {
+        margin-bottom: 15px;
     }
 }
 
@@ -69,6 +80,10 @@
     height: 2px;
     margin: 25px 0;
     background-color: currentColor;
+    @include media-breakpoint-up(xxl) {
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
 
     &::before {
         position: absolute;

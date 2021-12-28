@@ -2,32 +2,7 @@
     position: relative;
     margin-top: 0;
     margin-bottom: 0;
-    // &::before,
-    // &::after {
-    //     @include media-breakpoint-up(xl) {
-    //         position: absolute;
-    //         top: 50%;
-    //         height: 20px;
-    //         width: 1px;
-    //         background-color: currentColor;
-    //         transform: translateY(-50%);
-    //         content: '';
-    //     }
-    // }
-
-    // &::before {
-    //     @include media-breakpoint-up(xl) {
-    //         left: 0;
-    //     }
-    // }
-
-    // &::after {
-    //     @include media-breakpoint-up(xl) {
-    //         right: 0;
-    //     }
-    // }
     
-
     .header-catalog-item {
         position: relative;
         padding-left: 0;

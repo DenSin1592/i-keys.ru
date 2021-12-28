@@ -8,6 +8,9 @@
             @include media-breakpoint-up(lg) {
                 margin-bottom: 15px;
             }
+            @include media-breakpoint-up(xxl) {
+                margin-bottom: 10px;
+            }
         }
     }
 }
@@ -24,6 +27,13 @@
         }
         @include media-breakpoint-up(xxl) {
             font-size: 30px;
+        }
+    }
+
+    &[href^="mailto:"] {
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
         }
     }
 }
