@@ -16,15 +16,6 @@ use App\Models\Features\AttachedToNode;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\Node $node
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ServicePage whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ServicePage whereNodeId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ServicePage whereHeader($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ServicePage whereMetaTitle($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ServicePage whereMetaKeywords($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ServicePage whereMetaDescription($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ServicePage whereContent($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ServicePage whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\ServicePage whereUpdatedAt($value)
  */
 class ServicePage extends \Eloquent
 {

@@ -17,7 +17,7 @@ class ServicesController extends Controller
         private Breadcrumbs $breadcrumbs
     ){}
 
-    public function __invoke()
+    public function index(): \Illuminate\Contracts\View\View
     {
         $node = $this->nodeRepository->findByType(Node::TYPE_SERVICES_PAGE);
         $page = \TypeContainer::getContentModelFor($node);
@@ -36,11 +36,25 @@ class ServicesController extends Controller
 
     }
 
+    public function show($alias)
+    {
+        $service = Service::where('alias', $alias)->first();
+        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs->add($service->header, route('service.show', $service->alias));
+
+        return \View::make('client.service.show')
+            ->with('breadcrumbs', $breadcrumbs)
+            ->with('authEditLink', route('cc.services.edit', $service->id))
+            ->with('metaData', $this->metaHelper->getRule()->metaForObject($service))
+            ->with('service', $service);
+    }
+
+
     private function getBreadcrumbs(): BreadcrumbsContainer
     {
         $breadcrumbs = $this->breadcrumbs->init();
         $breadcrumbs->add('Главная', route('home'));
-        $breadcrumbs->add('Услуги');
+        $breadcrumbs->add('Услуги', route('services'));
         return $breadcrumbs;
     }
 }

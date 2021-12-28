@@ -45,7 +45,8 @@ Route::prefix('cc')->name('cc.')->namespace('Admin')->group(function () {
 Route::namespace('Client')->group(function () {
 
     Route::get('/', 'HomeController')->name('home');
-    Route::get('/services', 'ServicesController')->name('services');
+    Route::get('/services', 'ServicesController@index')->name('services');
+    Route::get('/services/{alias}', 'ServicesController@show')->name('service.show');
 
     require_once 'web/client/catalog.php';
     require_once 'web/client/cart.php';

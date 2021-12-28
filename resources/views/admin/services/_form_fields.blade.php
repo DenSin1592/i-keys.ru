@@ -18,12 +18,12 @@
 
 {!! Form::tbFormGroupOpen('description') !!}
 {!! Form::tbLabel('description', trans('validation.attributes.description')) !!}
-{!! Form::tbTinymceTextarea('description') !!}
+{!! Form::tbTextarea('description') !!}
 {!! Form::tbFormGroupClose() !!}
 
 {!! Form::tbFormGroupOpen('content') !!}
 {!! Form::tbLabel('content', trans('validation.attributes.content')) !!}
-{!! Form::tbTinymceTextarea('content') !!}
+{!! Form::tbTextarea('content') !!}
 {!! Form::tbFormGroupClose() !!}
 
 @include('admin.shared._header_meta_field')
