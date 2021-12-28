@@ -41,16 +41,4 @@ trait CategoryTools
         $categoryPath = $this->category->extractPath();
         return $categoryPath[0]->id === Category::FINDINGS_ID;
     }
-
-
-    public function getIdSingleValues(int $id): string
-    {
-        $data = $this->attributeSingleValues()
-            ->where('attribute_id', $id)
-            ->first()
-            ?->value_id;
-
-        return $data ?? '';
-    }
-
 }

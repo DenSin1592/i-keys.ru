@@ -49,6 +49,17 @@ trait HasAttributeValues
     }
 
 
+    public function getIdSingleValues(int $id): string
+    {
+        $data = $this->attributeSingleValues()
+            ->where('attribute_id', $id)
+            ->first()
+            ?->value_id;
+
+        return $data ?? '';
+    }
+
+
     protected static function bootHasAttributeValues()
     {
         self::deleting(function (self $instance) {
