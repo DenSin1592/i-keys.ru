@@ -146,12 +146,15 @@ class Product extends \Eloquent
         parent::boot();
 
         self::deleting(function (self $product) {
-            DeleteHelpers::deleteRelatedAll($product->images());
-            DeleteHelpers::deleteRelatedAll($product->orderItem());
-            DeleteHelpers::deleteRelatedAll($product->reviews());
-            $product->relatedProducts()->detach();
-            $product->relatedProductsReverse()->detach();
-            $product->typePages()->detach();
+            \DB::transaction(static function() use ($product) {
+                self::bootHasAttributeValues();
+                DeleteHelpers::deleteRelatedAll($product->images());
+                DeleteHelpers::deleteRelatedAll($product->orderItem());
+                DeleteHelpers::deleteRelatedAll($product->reviews());
+                $product->relatedProducts()->detach();
+                $product->relatedProductsReverse()->detach();
+                $product->typePages()->detach();
+            });
         });
 
 
