@@ -2,6 +2,7 @@
 
 namespace App\Services\Repositories\Product;
 
+use App\Models\Attribute\AttributeConstants;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductTypePage;
@@ -730,6 +731,18 @@ class EloquentProductRepository
         }
 
         return $sortedProducts;
+    }
+
+
+    public function getServicesForProduct(Product $model): Collection
+    {
+        $services = null;
+
+        if($model->isCylinder()){
+            $services = $model->attributeSingleValues()->where('attribute_id', AttributeConstants::CYLINDER_SERIES_ID)->first()?->allowedValue?->services;
+        }
+
+        return $services ?? Collection::make([]);
     }
 
 }

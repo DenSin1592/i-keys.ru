@@ -1,8 +1,9 @@
-<?php namespace App\Models\Product;
+<?php
 
-use App\Models\Attribute\AttributeConstants;
+namespace App\Models\Product;
+
 use App\Models\Helpers\DeleteHelpers;
-use Illuminate\Database\Eloquent\Collection;
+
 
 trait HasAttributeValues
 {
@@ -59,18 +60,6 @@ trait HasAttributeValues
             ?->value_id;
 
         return $data ?? '';
-    }
-
-
-    public function getServices()
-    {
-        $services = null;
-
-        if($this->isCylinder()){
-            $services = $this->attributeSingleValues()->where('attribute_id', AttributeConstants::CYLINDER_SERIES_ID)->first()?->allowedValue?->services;
-        }
-
-        return $services ?? Collection::make([]);
     }
 
 

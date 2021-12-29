@@ -29,7 +29,10 @@
                 ])
             @endif
 
-            @include('client.product._services')
+            @if(isset($productData['services']['general']))
+                @include('client.product._services', ['services' => $productData['services']['general']])
+            @endif
+
 
             @if(isset($productData['relatedProductsData']['armorplate']))
                 @include('client.product._special_related', [

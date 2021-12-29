@@ -12,6 +12,8 @@ class Service extends Model
 {
     use HasFactory;
 
+    public const ADD_KEYS_ID = 1;
+
     protected $fillable = [
         'name',
         'alias',

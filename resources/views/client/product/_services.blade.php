@@ -7,53 +7,28 @@
                 </div>
 
                 <div class="col-auto">
-                    <a href="javascript:void(0);" class="section-cta">Все услуги</a>
+                    <a href="{{route('services')}}" class="section-cta">Все услуги</a>
                 </div>
             </div>
         </div>
 
         <div class="services-related-grid row">
-            <div class="service-related-item col-lg-4">
-                <div class="card card-service-related">
-                    <div class="row flex-nowrap">
-                        <div class="card-thumbnail col-auto">
-                            <img loading="lazy" src="/html/uploads/services/service-related-thumbnail-item-1.jpg" width="100" height="100" alt="Заедает замок? Отремонтируем!" class="card-media">
-                        </div>
+            @foreach($services as $element)
+                <div class="service-related-item col-lg-4">
+                    <div class="card card-service-related">
+                        <div class="row flex-nowrap">
+                            <div class="card-thumbnail col-auto">
+                                <img loading="lazy" src="/images/common/no-image/no-image-100x100.png"
+                                     width="100" height="100" alt="{{$element->name}}" class="card-media">
+                            </div>
 
-                        <div class="card-content col align-self-center">
-                            <a href="javascript:void(0);" class="card-title title-h4" >Заедает замок? <br> Отремонтируем!</a>
+                            <div class="card-content col align-self-center">
+                                <a href="{{route('service.show', $element->alias)}}" class="card-title title-h4">{{$element->name}}</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="service-related-item col-lg-4">
-                <div class="card card-service-related">
-                    <div class="row flex-nowrap">
-                        <div class="card-thumbnail col-auto">
-                            <img loading="lazy" src="/html/uploads/services/service-related-thumbnail-item-2.jpg" width="100" height="100" alt="Сломался замок? Вскроем дверь и заменим замок!" class="card-media">
-                        </div>
-
-                        <div class="card-content col align-self-center">
-                            <a href="javascript:void(0);" class="card-title title-h4" >Сломался замок? <br> Вскроем дверь и заменим замок!</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-related-item col-lg-4">
-                <div class="card card-service-related">
-                    <div class="row flex-nowrap">
-                        <div class="card-thumbnail col-auto">
-                            <img loading="lazy" src="/html/uploads/services/service-related-thumbnail-item-3.jpg" width="100" height="100" alt="Потеряли ключ? Перекодируем замок!" class="card-media">
-                        </div>
-
-                        <div class="card-content col align-self-center">
-                            <a href="javascript:void(0);" class="card-title title-h4" >Потеряли ключ? <br> Перекодируем замок!</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
