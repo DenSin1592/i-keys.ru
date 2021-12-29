@@ -107,7 +107,7 @@
                     </div>
                 </div>
 
-                @include('client.cart._order_item_summary', ['summaryItem' => $item['final_price']])
+                @include('client.cart._order_item_summary', ['summaryItem' => $item['finalProductPrice']])
 
                 <div class="card-order-remove-container col-auto">
                     <button type="button"
@@ -122,62 +122,89 @@
             </div>
         </div>
 
-{{--        <div class="card-order-services-block">--}}
-{{--            <div class="row">--}}
-{{--                <div class="card-order-included-block col-12 d-flex flex-wrap align-items-center">--}}
-{{--                    <div class="card-order-include-thumbnail">--}}
-{{--                        <svg class="card-order-include-media" width="29" height="29">--}}
-{{--                            <use xlink:href="/images/sprite.svg#icon-key"></use>--}}
-{{--                        </svg>--}}
-{{--                    </div>--}}
+        @if(count($item['series']))
+            <div class="card-order-services-block">
+                @isset($item['series']['add_keys'])
+                    <div class="row">
+                        <div class="card-order-included-block col-12 d-flex flex-wrap align-items-center">
+                            <div class="card-order-include-thumbnail">
+                                <svg class="card-order-include-media" width="29" height="29">
+                                    <use xlink:href="/images/sprite.svg#icon-key"></use>
+                                </svg>
+                            </div>
 
-{{--                    <div class="card-order-include-title">В комплекте</div>--}}
+                            <div class="card-order-include-title">В комплекте</div>
 
-{{--                    <div class="card-order-include-quantity-block">--}}
-{{--                        <div class="card-order-include-number custom-number custom-control d-flex align-items-center">--}}
-{{--                            <button type="button" class="custom-number-button custom-number-decrease d-flex align-items-center justify-content-center">--}}
-{{--                                <svg class="custom-number-button-media" width="12" height="12">--}}
-{{--                                    <use xlink:href="/images/sprite.svg#icon-minus"></use>--}}
-{{--                                </svg>--}}
-{{--                            </button>--}}
+                            <div class="card-order-include-quantity-block">
+                                <div
+                                    class="card-order-include-number custom-number custom-control d-flex align-items-center">
+                                    <button type="button"
+                                            class="custom-number-button custom-number-decrease d-flex align-items-center justify-content-center">
+                                        <svg class="custom-number-button-media" width="12" height="12">
+                                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-minus')}}"></use>
+                                        </svg>
+                                    </button>
 
-{{--                            <input type="number" class="custom-number-input" value="1">--}}
+                                    <input type="number" class="custom-number-input" value="1">
 
-{{--                            <button type="button" class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">--}}
-{{--                                <svg class="custom-number-button-media" width="12" height="12">--}}
-{{--                                    <use xlink:href="/images/sprite.svg#icon-plus"></use>--}}
-{{--                                </svg>--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                                    <button type="button"
+                                            class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">
+                                        <svg class="custom-number-button-media" width="12" height="12">
+                                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-plus')}}"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
 
-{{--                    <div class="card-order-include-price text-muted">(+ 300р)</div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+                            @if(!is_null($item['series']['add_keys']->price))
+                                <div class="card-order-include-price text-muted">
+                                    (+ {{(int)$item['series']['add_keys']->price}}р)
+                                </div>
+                            @endif
 
-{{--            <div class="row">--}}
-{{--                <div class="card-order-service-block col-12">--}}
-{{--                    <div class="card-order-services-title">Добавить услуги <button type="button" class="card-order-services-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button></div>--}}
+                        </div>
+                    </div>
+                @endisset
 
-{{--                    <ul class="card-order-services-list list-unstyled">--}}
-{{--                        <li class="card-order-service-item d-flex flex-wrap">--}}
-{{--                            <div class="card-order-service-checkbox custom-control custom-checkbox">--}}
-{{--                                <input type="checkbox" class="custom-control-input" id="card-order-service-1-1">--}}
-{{--                                <label class="custom-control-label" for="card-order-service-1-1">Установка замка <span class="text-muted" >(Цена договорная)</span></label>--}}
-{{--                                <a href="javascript:void(0);" class="card-order-service-link text-nowrap" >Подробнее об услуге</a>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
+                @isset($item['series']['general'])
+                    <div class="row">
+                        <div class="card-order-service-block col-12">
+                            <div class="card-order-services-title">Добавить услуги
+                                <button type="button" class="card-order-services-tooltip-toggle tooltip-toggle"
+                                        data-toggle="tooltip" data-placement="right"
+                                        title="Далеко-далеко, за словесными.">?
+                                </button>
+                            </div>
 
-{{--                        <li class="card-order-service-item d-flex flex-wrap">--}}
-{{--                            <div class="card-order-service-checkbox custom-control custom-checkbox">--}}
-{{--                                <input type="checkbox" class="custom-control-input" id="card-order-service-1-2">--}}
-{{--                                <label class="custom-control-label" for="card-order-service-1-2">Взлом старого замка <span class="text-muted" >(Цена договорная)</span></label>--}}
-{{--                                <a href="javascript:void(0);" class="card-order-service-link text-nowrap" >Подробнее об услуге</a>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+                            <ul class="card-order-services-list list-unstyled">
+
+                                @foreach($item['series']['general'] as $element)
+                                <li class="card-order-service-item d-flex flex-wrap">
+                                    <div class="card-order-service-checkbox custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="card-order-service-1-1">
+                                        <label class="custom-control-label" for="card-order-service-1-1">{{$element->name}}
+
+                                            @if(is_null($element->price))
+                                                <span class="text-muted">(Цена договорная)</span>
+                                            @else
+                                                <span class="text-muted">(+ {{(int)$element->price}}р)</span>
+                                            @endif
+
+                                        </label>
+
+
+                                        <a href="{{route('service.show', [$element->alias])}}" class="card-order-service-link text-nowrap">Подробнее
+                                            об услуге</a>
+                                    </div>
+                                </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                    </div>
+                @endisset
+            </div>
+        @endif
+
     </div>
 </div>
