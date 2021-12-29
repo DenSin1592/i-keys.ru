@@ -109,6 +109,7 @@
     }
 
     &.complete {
+        opacity: 1 !important;
         color: #c55100 !important;
         text-decoration: none !important;
 

@@ -84,6 +84,12 @@ class cartStepsOrder {
             }
             return result;
         }, {});
+
+        const file = $("#checkout-attached-files").prop("files")[0]; // костыль, jquery не понимает file input
+        if ($("#checkout-attached-files").files.length !== 0) {
+            resultObject['file_upload'] = file;
+        }
+
         return resultObject;
     }
 
@@ -149,11 +155,14 @@ class cartStepsOrder {
                     .removeAttr('disabled');
                 nextStep.collapse('toggle');
             } else if ($(event.target.form).valid() && isLastStep) {
+                console.log(this.getFormsData(), $(event.target.form).serializeArray());
                 $(event.target).html('Идет отправка...');
                 const url = form.attr('action');
                 $.ajax({
                     type: "POST",
                     url: url,
+                    processData: false,
+                    contentType: false,
                     data: this.getFormsData(),
                     success: function(response) {
                         if (response.status === 'success') {
