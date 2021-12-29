@@ -85,7 +85,7 @@ class cartStepsOrder {
             return result;
         }, {});
 
-        const file = $("#checkout-attached-files").prop("files")[0]; // костыль, jquery не понимает file input
+        const file = $("#checkout-attached-files").prop("files")[0]; // костыль, jquery не понимает file input. Надо проводить через форму
         if (file) {
             resultObject['file_upload'] = file;
         }
@@ -161,8 +161,6 @@ class cartStepsOrder {
                 $.ajax({
                     type: "POST",
                     url: url,
-                    processData: false,
-                    contentType: false,
                     data: this.getFormsData(),
                     success: function(response) {
                         if (response.status === 'success') {
