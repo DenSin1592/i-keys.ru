@@ -96,7 +96,7 @@
                                 </svg>
                             </button>
 
-                            <input type="number" class="custom-number-input" value="{{$item['count']}}" >
+                            <input type="number" class="custom-number-input update-product-count-in-cart" value="{{$item['count']}}" >
 
                             <button type="button" class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center" >
                                 <svg class="custom-number-button-media" width="12" height="12">

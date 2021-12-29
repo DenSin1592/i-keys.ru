@@ -13,7 +13,7 @@
                     </svg>
                 </button>
 
-                <input type="number" id="modalAddToCartQuantity" class="custom-number-input" value="{{$count}}">
+                <input type="number" id="modalAddToCartQuantity" class="custom-number-input update-product-count-in-cart" value="{{$count}}">
 
                 <button type="button"
                         class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">

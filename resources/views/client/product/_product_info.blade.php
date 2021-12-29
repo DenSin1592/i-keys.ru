@@ -289,9 +289,11 @@
                                     <span
                                         class="product-included-title">В комплекте <b>{{$productData['count_keys_in_set']}}</b> {{\Lang::choice('ключ|ключа|ключей', $productData['count_keys_in_set'])}}</span>
 
+                                    @isset($productData['services']['add_keys'])
                                     <button type="button" class="product-included-toggle" data-toggle="modal"
-                                            data-target="#modalKeysQuantity">Добавить еще ключи на всю семью
+                                            data-target="#modalAddKeys">Добавить еще ключи на всю семью
                                     </button>
+                                    @endisset
 
                                 </div>
                             @endif

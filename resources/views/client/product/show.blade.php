@@ -54,3 +54,7 @@
 
     </main>
 @stop
+
+@section('modals')
+    @include('client.shared.modal._add_keys')
+@stop

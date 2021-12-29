@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const CART_UPDATE_URI = '/cart/update';
 
 
-    $(document).on('change', ".custom-number .custom-number-input", (e) => {
+    $(document).on('change', ".update-product-count-in-cart", (e) => {
 
         let input = $(e.currentTarget);
         let itemCard = input.closest('[data-cart-product-id]');
