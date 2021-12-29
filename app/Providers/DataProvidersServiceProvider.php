@@ -85,6 +85,7 @@ class DataProvidersServiceProvider extends ServiceProvider
                 $productProvider->addPlugin(\App::make(Attributes::class));
                 $productProvider->addPlugin(\App::make(RelatedProducts::class));
                 $productProvider->addPlugin(\App::make(Colors::class));
+                $productProvider->addPlugin(\App::make(\App\Services\DataProviders\ClientProduct\Plugins\Services::class));
 
                 return $productProvider;
             }
