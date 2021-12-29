@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         order.init();
 
         order.onCheckedHideOption($('.form-option-radio[name="delivery_method"]'),
-            ['cdek', 'courier'],
+            [ 'cdek', 'courier'],
             $('.form-option-radio[value="cash"]'));
 
         forms.each(function (index, form) {

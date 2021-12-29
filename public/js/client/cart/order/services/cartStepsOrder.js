@@ -12,9 +12,6 @@ class cartStepsOrder {
         this.stepButtons = $('#order-form button[data-order-step]');
         this.forms = $('#order-form form');
         this.prev = $('#order-form .checkout-control-back');
-        this.buttons = $('#order-form button[data-order-step]:not([disabled]),' +
-            ' #order-form button[data-order-step].valid,' +
-            ' #order-form button[data-order-step].invalid');
     }
 
     init () {
@@ -34,15 +31,17 @@ class cartStepsOrder {
      */
     onCheckedHideOption (elements, value, hideOptions) {
         elements.on('change', function () {
-            value.forEach(item => {
-                if ($(this).val() === item) {
-                    hideOptions.prop('disabled', true);
-                    hideOptions.parent().css('display', 'none');
-                } else {
-                    hideOptions.prop('disabled', false);
-                    hideOptions.parent().css('display', 'flex');
-                }
+            const check = value.some(item => {
+                return $(this).val() == item;
             });
+
+            if (check) {
+                hideOptions.prop('disabled', true);
+                hideOptions.parent().css('display', 'none');
+            } else {
+                hideOptions.prop('disabled', false);
+                hideOptions.parent().css('display', 'flex');
+            }
         });
     }
 
@@ -85,7 +84,7 @@ class cartStepsOrder {
             return result;
         }, {});
 
-        const file = $("#checkout-attached-files").prop("files")[0]; // костыль, jquery не понимает file input. Надо проводить через форму
+        const file = $("#checkout-attached-files").prop("files")[0];
         if (file) {
             resultObject['document'] = file;
         }
