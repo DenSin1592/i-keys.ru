@@ -86,7 +86,7 @@ class cartStepsOrder {
         }, {});
 
         const file = $("#checkout-attached-files").prop("files")[0]; // костыль, jquery не понимает file input
-        if ($("#checkout-attached-files").files.length !== 0) {
+        if (file) {
             resultObject['file_upload'] = file;
         }
 
