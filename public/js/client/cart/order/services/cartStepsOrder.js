@@ -35,9 +35,7 @@ class cartStepsOrder {
     onCheckedHideOption (elements, value, hideOptions) {
         elements.on('change', function () {
             value.forEach(item => {
-                console.log(value);
                 if ($(this).val() === item) {
-                    console.log(hideOptions.parent());
                     hideOptions.prop('disabled', true);
                     hideOptions.parent().css('display', 'none');
                 } else {
@@ -93,8 +91,11 @@ class cartStepsOrder {
      * Отключает пагинацию слева и кнопку назад
      */
     disableButtons () {
+        const buttons = $('#order-form button[data-order-step]:not([disabled]),' +
+            ' #order-form button[data-order-step].valid,' +
+            ' #order-form button[data-order-step].invalid');
         if (!this.debug) {
-            $(this.stepButtons).prop('disabled', true);
+            buttons.prop('disabled', true);
             $(this.prev).prop('disabled', true);
         }
     }
@@ -103,7 +104,10 @@ class cartStepsOrder {
      * Отменяет предыдущее
      */
     enableButtons () {
-        $(this.stepButtons).prop('disabled', false);
+        const buttons = $('#order-form button[data-order-step]:not([disabled]),' +
+            ' #order-form button[data-order-step].valid,' +
+            ' #order-form button[data-order-step].invalid');
+        buttons.prop('disabled', false);
         $(this.prev).prop('disabled', false);
     }
 
