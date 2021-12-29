@@ -72,7 +72,9 @@ return [
                 'js/client/validation/phone-mask.js',
                 'js/client/validation/validMethods.js',
                 'js/client/assets/uploadFile.js',
-                'js/client/order/orderSteps.js',
+                'js/client/cart/order/services/cartStepsOrder.js',
+                'js/client/cart/order/main.js',
+
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
             'output' => 'js/compiled/client.js'

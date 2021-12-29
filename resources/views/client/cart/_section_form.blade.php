@@ -99,25 +99,25 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <input name="city*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Город *" data-option-required >
+                                                                <input name="city*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Город *" data-option-required disabled>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-4">
                                                             <div class="form-group">
-                                                                <input name="street*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Улица *"  data-option-required >
+                                                                <input name="street*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Улица *"  data-option-required disabled>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-2 col-md-2">
                                                             <div class="form-group">
-                                                                <input name="building*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Дом *" data-option-required >
+                                                                <input name="building*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Дом *" data-option-required disabled>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-2">
                                                             <div class="form-group">
-                                                                <input name="flat*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Квартира (офис) *" data-option-required >
+                                                                <input name="flat*{{ \App\Models\Order::DELIVERY_CDEK }}" type="text" class="form-control" placeholder="Квартира (офис) *" data-option-required disabled>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -137,25 +137,25 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                             <div class="form-group">
-                                                                <input name="city2*{{ \App\Models\Order::DELIVERY_COURIER }}" type="text" id="checkout-addres-city" class="form-control" placeholder="Город *" data-option-required >
+                                                                <input name="city*{{ \App\Models\Order::DELIVERY_COURIER }}" type="text" id="checkout-addres-city" class="form-control" placeholder="Город *" data-option-required disabled >
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-4">
                                                             <div class="form-group">
-                                                                <input name="street2*{{ \App\Models\Order::DELIVERY_COURIER }}" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" data-option-required >
+                                                                <input name="street*{{ \App\Models\Order::DELIVERY_COURIER }}" id="checkout-address-street" type="text" class="form-control" placeholder="Улица *" data-option-required disabled>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-2 col-md-2">
                                                             <div class="form-group">
-                                                                <input name="building2*{{ \App\Models\Order::DELIVERY_COURIER }}" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" data-option-required>
+                                                                <input name="building*{{ \App\Models\Order::DELIVERY_COURIER }}" id="checkout-address-house" type="text" class="form-control" placeholder="Дом *" data-option-required disabled>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-5 col-md-3 col-xxl-2">
                                                             <div class="form-group">
-                                                                <input name="flat2*{{ \App\Models\Order::DELIVERY_COURIER }}" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис) *"  data-option-required>
+                                                                <input name="flat*{{ \App\Models\Order::DELIVERY_COURIER }}" id="checkout-address-apartment" type="text" class="form-control" placeholder="Квартира (офис) *"  data-option-required disabled>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -266,7 +266,7 @@
                                                     </p>
 
                                                     <div class="custom-file">
-                                                        <input type="file" size="20971520" name="file_upload" id="checkout-attached-files" class="custom-file-input">
+                                                        <input type="file" size="20971520" name="file_upload" id="checkout-attached-files" class="custom-file-input form-control" disabled>
 
                                                         <label for="checkout-attached-files" class="custom-file-label">
                                                             <svg class="custom-file-media" width="24" height="26">

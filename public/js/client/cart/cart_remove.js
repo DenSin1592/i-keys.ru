@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
-
     let modalCartRemove = $('#modalRemoveInCart')
     let countItemsInCart;
 
@@ -32,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.updateCartIcon(response['countItemsInCart']);
                 countItemsInCart = response['countItemsInCart'];
             }).fail(() => {
-                console.log('test')
                 document.modalMessageErrorShow();
             });
 

@@ -48,13 +48,15 @@ document.addEventListener('DOMContentLoaded', function () {
         let container = target.closest('.form-options-group');
         let children = container.find('.form-option');
         const notActiveInputs = children.parent().find('.form-option:not(.active) .form-control');
-        const activeInputs =  children.parent().find('.form-option.active .form-control');
 
         children.removeClass('active');
         target.addClass('active');
         target.find('input[type="radio"]').attr('checked', 'checked'); // фиксит выбор радио при клике на вложенный инпут
 
-
+        notActiveInputs.prop('disabled', true); // в шаблоне кнопки внутри радиогруппы отключены. Защита от ложных данных
+        if (target.hasClass('active')) {
+            target.find('.form-control').prop('disabled', false);
+        }
         // use required into selection group
         children
             .find('[required]:not([type="radio"])')
@@ -65,9 +67,5 @@ document.addEventListener('DOMContentLoaded', function () {
             .removeAttr('data-option-required')
             .attr('required', true)
         ;
-
-        // disable another inputs
-        $(notActiveInputs).prop('disabled', true);
-        $(activeInputs).prop('disabled', false);
     });
 });
