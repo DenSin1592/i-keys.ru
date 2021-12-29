@@ -37,11 +37,6 @@ class Product extends \Eloquent
     ];
 
 
-    public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    {
-        return $this->belongsToMany(Service::class);
-    }
-
     public function getNameWithCode1cAttribute()
     {
         $name = '';

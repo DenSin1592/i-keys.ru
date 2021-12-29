@@ -20,6 +20,7 @@ class ClientProduct
     public function getProductData(Product $product): array
     {
         $productData = ['product' => $product];
+
         foreach ($this->plugins as $plugin) {
             $productData = array_merge($productData, $plugin->getForProduct($product));
         }
