@@ -739,7 +739,7 @@ class EloquentProductRepository
         $services = null;
 
         if($model->isCylinder()){
-            $services = $model->attributeSingleValues()->where('attribute_id', AttributeConstants::CYLINDER_SERIES_ID)->first()?->allowedValue?->services;
+            $services = $model->attributeSingleValues()->where('attribute_id', AttributeConstants::CYLINDER_SERIES_ID)->first()?->allowedValue?->services()->where('publish', true)->get();
         }
 
         return $services ?? Collection::make([]);
