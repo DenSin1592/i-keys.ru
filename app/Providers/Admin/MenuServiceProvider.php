@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\ProductTypePagesController;
 use App\Http\Controllers\Admin\ReviewsController;
+use App\Http\Controllers\Admin\ServicePagesController;
+use App\Http\Controllers\Admin\ServicesController;
 use App\Services\Admin\Menu\MenuGroup;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\AttributesController;
@@ -41,6 +43,7 @@ class MenuServiceProvider extends ServiceProvider
                             StructureController::class,
                             HomePagesController::class,
                             TextPagesController::class,
+                            ServicePagesController::class,
                         ]
                     )
                 );

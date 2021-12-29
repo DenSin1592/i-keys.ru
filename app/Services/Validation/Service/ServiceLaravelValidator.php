@@ -9,18 +9,11 @@ class ServiceLaravelValidator extends AbstractLaravelValidator
     {
         $rules = [];
         $rules['name'] = ['required'];
+        $rules['alias'] = ['required', 'unique:services,alias'];
         $rules['publish'] = 'boolean';
         $rules['position'] = ['nullable', 'integer'];
         $rules['price'] = ['nullable', 'numeric'];
 
         return $rules;
-    }
-
-    public function getAttributeNames()
-    {
-        return [
-            'allowed_values.*.value' => trans('validation.attributes.value'),
-            'allowed_values.*.position' => trans('validation.attributes.position'),
-        ];
     }
 }

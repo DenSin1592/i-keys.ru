@@ -1,25 +1,28 @@
-<?php namespace App\Services\FormProcessors\Service;
+<?php
+
+namespace App\Services\FormProcessors\Service;
 
 use App\Services\FormProcessors\CreateUpdateFormProcessor;
+use App\Services\FormProcessors\Features\AutoAlias;
+
 
 class ServiceFormProcessor extends CreateUpdateFormProcessor
 {
-    /** @var SubProcessor[] */
+
+    use AutoAlias;
+
     private $subProcessorList = [];
 
-    /**
-     * Add sub processor.
-     *
-     * @param SubProcessor $subProcessor
-     */
-    public function addSubProcessor(SubProcessor $subProcessor)
+
+    public function addSubProcessor(SubProcessor $subProcessor): void
     {
         $this->subProcessorList[] = $subProcessor;
     }
 
 
-    protected function prepareInputData(array $data)
+    protected function prepareInputData(array $data): array
     {
+        $data = $this->setAutoAlias($data);
         $data = parent::prepareInputData($data);
         foreach ($this->subProcessorList as $subProcessor) {
             $data = $subProcessor->prepareInputData($data);
@@ -29,7 +32,7 @@ class ServiceFormProcessor extends CreateUpdateFormProcessor
     }
 
 
-    protected function afterSuccess($instance, array $data)
+    protected function afterSuccess($instance, array $data): void
     {
         parent::afterSuccess($instance, $data);
         foreach ($this->subProcessorList as $subProcessor) {

@@ -30,7 +30,7 @@ class NodeLaravelValidator extends AbstractLaravelValidator
 
         $rules = [];
         $rules['name'] = "required";
-        $rules['alias'] = "unique:nodes,alias,{$this->currentId},id,parent_id,{$parentId}";
+        $rules['alias'] = ['nullable', "unique:nodes,alias,{$this->currentId},id,parent_id,{$parentId}"];
         $rules['parent_id'] = ['nullable', "exists:nodes,id"];
 
         $typeList = $this->typeContainer->getEnabledTypeList($this->currentId);

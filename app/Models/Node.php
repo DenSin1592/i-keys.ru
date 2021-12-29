@@ -129,6 +129,7 @@ class Node extends \Eloquent
 
                 // delete attached meta pages
                 DeleteHelpers::deleteRelatedFirst($node->metaPage());
+                DeleteHelpers::deleteRelatedFirst($node->servicePage());
             }
         );
     }
