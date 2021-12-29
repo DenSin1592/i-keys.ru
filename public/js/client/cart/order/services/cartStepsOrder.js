@@ -89,7 +89,6 @@ class cartStepsOrder {
         if (file) {
             resultObject['file_upload'] = file;
         }
-
         return resultObject;
     }
 
@@ -158,10 +157,19 @@ class cartStepsOrder {
                 console.log(this.getFormsData(), $(event.target.form).serializeArray());
                 $(event.target).html('Идет отправка...');
                 const url = form.attr('action');
+
+                const fd = new FormData();
+                $.each(this.getFormsData(), function(key, value){
+                    fd.append(key, value);
+                })
+
                 $.ajax({
                     type: "POST",
                     url: url,
-                    data: this.getFormsData(),
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    data: fd,
                     success: function(response) {
                         if (response.status === 'success') {
                             document.updateCartIcon(0);
