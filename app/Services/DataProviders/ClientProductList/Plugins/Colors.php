@@ -83,10 +83,21 @@ class Colors implements ClientProductListPlugin
 
         $colors = [];
         foreach ($products as $element){
+            $isActive = $product->id === $element->id;
+
+            if($isActive && is_null($element->attr_id)){
+                $colors = [];
+                break;
+            }
+
+            if(is_null($element->attr_id)){
+                continue;
+            }
+
             $colors[] = [
                 'product_id' => $element->id,
                 'attr_value' => $element->attr_value,
-                'isActive' => $product->id === $element->id,
+                'isActive' => $isActive,
                 'imgPath' => match ($element->attr_id){
                     AttributeConstants::COLOR_LATUN_ID => asset('/uploads/colors/color-brown.png'),
                     AttributeConstants::COLOR_NICKEL_ID => asset('/uploads/colors/color-silver.png'),

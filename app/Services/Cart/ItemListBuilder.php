@@ -2,7 +2,8 @@
 
 namespace App\Services\Cart;
 
-use App\Services\Product\Series\SorterSeries;
+use App\Services\Product\Attribute\Color\ColorProvider;
+use App\Services\Product\Attribute\Series\SeriesSorter;
 use App\Services\Repositories\Product\EloquentProductRepository;
 
 
@@ -10,7 +11,8 @@ class ItemListBuilder
 {
     public function __construct(
         private EloquentProductRepository $productRepository,
-        private SorterSeries $sorterSeries
+        private SeriesSorter $seriesSorter,
+        private ColorProvider $colorProvider,
     ){}
 
 
@@ -33,15 +35,17 @@ class ItemListBuilder
     {
         $product = $item->getProduct();
         $count = $item->getCount();
+        $color = $this->colorProvider->getColorFromCartItem($product);
 
         $series = $this->productRepository->getServicesForProduct($product);
-        $series = $this->sorterSeries->sortForCartItem($series);
+        $series = $this->seriesSorter->sortForCartItem($series);
 
         $finalProductPrice = $product->price * $count;
 
         return [
             'product' => $product,
             'count' => $count,
+            'color' => $color,
             'series' => $series,
             'finalProductPrice' => $finalProductPrice,
         ];

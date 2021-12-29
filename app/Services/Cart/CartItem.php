@@ -31,7 +31,6 @@ class CartItem
 
     public function setCount($count)
     {
-
         $this->count = $count;
     }
 }

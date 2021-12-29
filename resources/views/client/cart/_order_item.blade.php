@@ -36,37 +36,25 @@
 {{--                            </select>--}}
                         </div>
 
+                        @if(count($item['color']))
                         <div class="card-order-info-item col-md-auto">
-{{--                            <span class="card-order-info-title d-inline-block font-weight-bold" >Цвет</span>--}}
+                            <span class="card-order-info-title d-inline-block font-weight-bold" >Цвет</span>
 
-{{--                            <div class="card-order-color-list d-inline-flex flex-wrap">--}}
-{{--                                <div class="card-order-color custom-control custom-color custom-color-sm">--}}
-{{--                                    <input type="radio" class="custom-control-input" id="card-order-color-1-1" name="card-order-color-1" checked >--}}
-{{--                                    <label for="card-order-color-1-1" class="custom-control-label">--}}
-{{--                                        <img loading="lazy" src="uploads/colors/color-brown.png" alt="Коричневый" class="custom-control-image">--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="card-order-color custom-control custom-color custom-color-sm">--}}
-{{--                                    <input type="radio" class="custom-control-input" id="card-order-color-1-2" name="card-order-color-1" >--}}
-{{--                                    <label for="card-order-color-1-2" class="custom-control-label">--}}
-{{--                                        <img loading="lazy" src="uploads/colors/color-silver.png" alt="Серебряный" class="custom-control-image">--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="card-order-color custom-control custom-color custom-color-sm">--}}
-{{--                                    <input type="radio" class="custom-control-input" id="card-order-color-1-3" name="card-order-color-1" >--}}
-{{--                                    <label for="card-order-color-1-3" class="custom-control-label">--}}
-{{--                                        <img loading="lazy" src="uploads/colors/color-black.png" alt="Черный" class="custom-control-image">--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                            <div class="card-order-color-list d-inline-flex flex-wrap">
+                                <div class="card-order-color custom-control custom-color custom-color-sm">
+                                    <input type="radio" class="custom-control-input" id="card-order-color-1-1" name="card-order-color-1" checked >
+                                    <label for="card-order-color-1-1" class="custom-control-label">
+                                        <img loading="lazy" src="{{$item['color']['imgPath']}}" alt="{{$item['color']['name']}}" class="custom-control-image">
+                                    </label>
+                                </div>
+                            </div>
                         </div>
+                        @endif
 
-                        {{--<div class="card-order-info-item col-md-auto">
+                        <div class="card-order-info-item col-md-auto">
                             <span class="card-order-info-title d-inline-block" >Артикул</span>
-                            <span class="card-order-vendor-code font-weight-bold" >PD-01-63</span>
-                        </div>--}}
+                            <span class="card-order-vendor-code font-weight-bold" >-----</span>
+                        </div>
 
                         <div class="card-order-info-item col-md-auto">
                             <span class="card-order-info-title d-inline-block" >Код товара</span>

@@ -80,16 +80,26 @@ class SizesCylinders implements ClientProductListPlugin
             return [];
         }
 
-        $colors = [];
+        $attrValues = [];
         foreach ($products as $element){
-            $colors[] = [
+            $isActive = $product->id === $element->id;
+
+            if($isActive && (is_null($element->attr_size1) || is_null($element->attr_size2))){
+                $attrValues = [];
+                break;
+            }
+
+            if(is_null($element->attr_id)){
+                continue;
+            }
+            $attrValues[] = [
                 'product_id' => $element->id,
                 'attr_value' => $element->attr_size1 . '*' . $element->attr_size2 . 'мм',
-                'isActive' => $product->id === $element->id,
+                'isActive' => $isActive,
             ];
         }
 
-      return $colors;
+      return $attrValues;
     }
 
 

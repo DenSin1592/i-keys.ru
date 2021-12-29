@@ -5,7 +5,7 @@ namespace App\Services\DataProviders\ClientProduct\Plugins;
 use App\Models\Attribute\AttributeConstants;
 use App\Models\Product;
 use App\Services\DataProviders\ClientProduct\ClientProductPlugin;
-use App\Services\UrlBuilder\UrlBuilder;
+use Illuminate\Database\Eloquent\Collection;
 
 
 class Colors implements ClientProductPlugin
@@ -69,6 +69,9 @@ class Colors implements ClientProductPlugin
             ->select('products.*', 'attribute_allowed_values.id as attr_id', 'attribute_allowed_values.value as attr_value' )
             ->get();
 
+        if($products->count() === 0 ){
+            $products = $this->getProductWithAttrValue($product);
+        }
 
         if($products->count() === 0 ){
             return [];
@@ -77,10 +80,21 @@ class Colors implements ClientProductPlugin
 
         $colors = [];
         foreach ($products as $element){
+            $isActive = $product->id === $element->id;
+
+            if($isActive && is_null($element->attr_id)){
+                $colors = [];
+                break;
+            }
+
+            if(is_null($element->attr_id)){
+                continue;
+            }
+
             $colors[] = [
                 'link' => \UrlBuilder::getUrl($element),
                 'attr_value' => $element->attr_value,
-                'isActive' => $product->id === $element->id,
+                'isActive' => $isActive,
                 'imgPath' => match ($element->attr_id){
                     AttributeConstants::COLOR_LATUN_ID => asset('/uploads/colors/color-brown.png'),
                     AttributeConstants::COLOR_NICKEL_ID => asset('/uploads/colors/color-silver.png'),
@@ -91,5 +105,26 @@ class Colors implements ClientProductPlugin
 
 
       return $colors;
+    }
+
+
+
+    private function getProductWithAttrValue(Product $product): Collection
+    {
+
+        $productWithAttr = Product::query()->leftJoin("attribute_single_values", static function ($join){
+            $join->on(
+                'products.id',
+                '=',
+                "attribute_single_values.product_id")
+                ->where("attribute_single_values.attribute_id", '=', AttributeConstants::COLOR_ID);
+        })->leftJoin('attribute_allowed_values', 'attribute_allowed_values.id', '=', 'attribute_single_values.value_id')
+            ->where('products.id','=', $product->id)
+            ->select('products.*', 'attribute_allowed_values.id as attr_id', 'attribute_allowed_values.value as attr_value' )
+            ->first();
+
+        return ( !empty($productWithAttr->attr_id))
+            ? Collection::make([$productWithAttr])
+            : Collection::make([]);
     }
 }
