@@ -124,6 +124,7 @@ class Order extends \Eloquent
         'exchange_status',
         'icon_file',
         'icon_remove',
+        'document'
     ];
 
     public function items()

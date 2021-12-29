@@ -39,16 +39,6 @@ class OrdersController extends Controller
             return \Redirect::route('cart.show');
         }
         $inputData = $request->all();
-//        $inputData['name'] = 'Nik';
-//        $inputData['phone'] = '+79787844720';
-//        $inputData['email'] = 'evloshevsky@gmail.com';
-//        $inputData['city'] = 'Тула';
-//        $inputData['street'] = 'Пушкина';
-//        $inputData['building'] = '6';
-//        $inputData['flat'] = '1';
-//        $inputData['payment_method'] = Order\PaymentMethodConstants::CASHLESS;
-//        $inputData['delivery_method'] = Order::DELIVERY_COURIER;
-//        $inputData = $this->addDeviceInfo($inputData);
 
         // Create order
         $order = $this->orderFormProcessor->create($inputData);

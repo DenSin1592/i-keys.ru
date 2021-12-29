@@ -68,8 +68,8 @@
 
         <fieldset id="delivery-address" class="bordered-group">
             <legend>Адрес доставки</legend>
-            {!! Form::tbTextBlock('postcode') !!}
-            {!! Form::tbSelect2Block('region_id', $formData['region_variants']) !!}
+{{--            {!! Form::tbTextBlock('postcode') !!}--}}
+{{--            {!! Form::tbSelect2Block('region_id', $formData['region_variants']) !!}--}}
             {!! Form::tbTextBlock('city') !!}
             {!! Form::tbTextBlock('street') !!}
             {!! Form::tbTextBlock('building') !!}
@@ -77,7 +77,7 @@
         </fieldset>
         {!! Form::tbTextareaBlock('comment') !!}
 
-       @include('admin.orders.form._model_image_field', ['model' =>  $formData['order'], 'field' => 'icon'])
+       @include('admin.orders.form._model_document_field', ['model' =>  $formData['order'], 'field' => 'document'])
        @include('admin.orders.form.order_items._field', [
            'order' => $formData['order'],
            'orderItems' => $formData['orderItems'],

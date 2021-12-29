@@ -318,8 +318,8 @@ return [
                     \App\Models\Order\PaymentStatusConstants::PARTLY_PAID => 'Частично оплачен',
                 ],
                 'payment_method' => [
-                    \App\Models\Order\PaymentMethodConstants::CASH => 'Наличный расчет',
-                    \App\Models\Order\PaymentMethodConstants::CASHLESS => 'Безналичный платеж',
+                    \App\Models\Order\PaymentMethodConstants::CASH => 'Оплата при получении',
+                    \App\Models\Order\PaymentMethodConstants::CASHLESS => 'Онлайн оплата',
                     \App\Models\Order\PaymentMethodConstants::INVOICE => 'Счет на юр.лицо',
                 ],
                 'delivery_method' => [
@@ -328,7 +328,8 @@ return [
                     \App\Models\Order\DeliveryMethodConstants::TRANSPORT_COMPANY => 'Доставка СДЭК',
                     \App\Models\Order\DeliveryMethodConstants::SELF_TRANSPORT_COMPANY => 'Самовывоз СДЭК',
                 ],
-                'icon_file' => 'Реквизиты'
+                'icon_file' => 'Реквизиты',
+                'document' => 'Карточка юр.лица',
             ],
     ]
 ];
