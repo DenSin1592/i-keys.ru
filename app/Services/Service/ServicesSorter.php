@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\Product\Attribute\Series;
+namespace App\Services\Service;
 
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Collection;
 
 
-class SeriesSorter
+class ServicesSorter
 {
     public function sortForProductPage(Collection $series): array
     {

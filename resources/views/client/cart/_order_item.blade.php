@@ -110,9 +110,9 @@
             </div>
         </div>
 
-        @if(count($item['series']))
+        @if(count($item['services']))
             <div class="card-order-services-block">
-                @isset($item['series']['add_keys'])
+                @isset($item['services']['add_keys'])
                     <div class="row">
                         <div class="card-order-included-block col-12 d-flex flex-wrap align-items-center">
                             <div class="card-order-include-thumbnail">
@@ -144,9 +144,9 @@
                                 </div>
                             </div>
 
-                            @if(!is_null($item['series']['add_keys']->price))
+                            @if(!is_null($item['services']['add_keys']->price))
                                 <div class="card-order-include-price text-muted">
-                                    (+ {{(int)$item['series']['add_keys']->price}}р)
+                                    (+ {{(int)$item['services']['add_keys']->price}}р)
                                 </div>
                             @endif
 
@@ -154,7 +154,7 @@
                     </div>
                 @endisset
 
-                @isset($item['series']['general'])
+                @isset($item['services']['general'])
                     <div class="row">
                         <div class="card-order-service-block col-12">
                             <div class="card-order-services-title">Добавить услуги
@@ -166,7 +166,7 @@
 
                             <ul class="card-order-services-list list-unstyled">
 
-                                @foreach($item['series']['general'] as $element)
+                                @foreach($item['services']['general'] as $element)
                                 <li class="card-order-service-item d-flex flex-wrap">
                                     <div class="card-order-service-checkbox custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="card-order-service-1-1">

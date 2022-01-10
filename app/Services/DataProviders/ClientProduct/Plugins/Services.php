@@ -4,7 +4,7 @@ namespace App\Services\DataProviders\ClientProduct\Plugins;
 
 use App\Models\Product;
 use App\Services\DataProviders\ClientProduct\ClientProductPlugin;
-use App\Services\Product\Attribute\Series\SeriesSorter;
+use App\Services\Service\ServicesSorter;
 use App\Services\Repositories\Product\EloquentProductRepository;
 
 
@@ -12,7 +12,7 @@ class Services implements ClientProductPlugin
 {
     public function __construct(
         private EloquentProductRepository $repository,
-        private SeriesSorter $seriesSorter
+        private ServicesSorter $servicesSorter
     ){}
 
 
@@ -20,7 +20,7 @@ class Services implements ClientProductPlugin
     {
         $services = $this->repository->getServicesForProduct($product);
 
-        $services = $this->seriesSorter->sortForProductPage($services);
+        $services = $this->servicesSorter->sortForProductPage($services);
 
         return ['services' => $services];
     }
