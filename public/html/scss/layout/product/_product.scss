@@ -1,10 +1,18 @@
 .product-page {
-    .main-box > section:last-child {
-        @include media-breakpoint-up(xl) {
-            margin-bottom: 85px;
-        }
-        @include media-breakpoint-up(xxl) {
-            margin-bottom: 135px;
+    .main-box {
+        > section {
+            &:last-child {
+                @include media-breakpoint-up(xl) {
+                    margin-bottom: 85px;
+                }
+                @include media-breakpoint-up(xxl) {
+                    margin-bottom: 135px;
+                }
+            }
+
+            &:only-child {
+                margin-bottom: 0 !important;
+            }
         }
     }
 }

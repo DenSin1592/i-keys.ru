@@ -13,12 +13,16 @@
                 @include('client.shared.breadcrumbs._breadcrumbs')
 
                 <h1 class="display-title title-h1 text-uppercase">{{ $metaData['h1'] }}</h1>
-                <div class="display-subtitle title-h4">
-                    <p class="title-h2 mb-2" >Ваша корзина пуста.</p>
-                    <p>Для оформления заказа добавьте в корзину как минимум один товар. Если хотите что-либо приобрести, {!! link_to(route('catalog', 'zamki'), 'перейдите в каталог') !!}. </p>
-                </div>
             </div>
         </section>
 
+        <section class="section-cart">
+            <div class="container">
+                <div class="article-post">
+                    <div class="display-title title-h1">Ваша корзина пуста</div>
+                    <p>Для оформления заказа добавьте в корзину как минимум один товар. <br> Если хотите что-либо приобрести, {!! link_to(route('catalog', 'zamki'), 'перейдите в каталог') !!}.</p>
+                </div>
+            </div>
+        </section>
     </main>
 @endsection
