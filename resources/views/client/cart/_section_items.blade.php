@@ -2,7 +2,9 @@
     <div class="container">
         <div class="order-list">
 
-            @each('client.cart._order_item', $itemListData['items'], 'item')
+            @foreach($itemListData['items'] as $itemKey => $item)
+                @include('client.cart._order_item')
+            @endforeach
 
             <div class="cart-controls">
                 <div class="row align-items-center">

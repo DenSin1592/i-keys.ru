@@ -166,11 +166,11 @@
 
                             <ul class="card-order-services-list list-unstyled">
 
-                                @foreach($item['services']['general'] as $element)
+                                @foreach($item['services']['general'] as $key => $element)
                                 <li class="card-order-service-item d-flex flex-wrap">
                                     <div class="card-order-service-checkbox custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="card-order-service-1-1">
-                                        <label class="custom-control-label" for="card-order-service-1-1">{{$element->name}}
+                                        <input type="checkbox" class="custom-control-input" id="card-order-service-{{$itemKey}}-{{$key}}">
+                                        <label class="custom-control-label" for="card-order-service-{{$itemKey}}-{{$key}}">{{$element->name}}
 
                                             @if(is_null($element->price))
                                                 <span class="text-muted">(Цена договорная)</span>
