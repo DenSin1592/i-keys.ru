@@ -3,6 +3,7 @@
 namespace App\Services\Cart;
 
 use App\Services\Product\Attribute\Color\ColorProvider;
+use App\Services\Product\Attribute\CountKeysInSet\CountKeysInSetProvider;
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Service\ServicesSorter;
 
@@ -13,6 +14,7 @@ class ItemListBuilder
         private EloquentProductRepository $productRepository,
         private ServicesSorter $servicesSorter,
         private ColorProvider $colorProvider,
+        private CountKeysInSetProvider $countKeysInSettProvider,
     ){}
 
 
@@ -40,6 +42,8 @@ class ItemListBuilder
         $services = $this->productRepository->getServicesForProduct($product);
         $services = $this->servicesSorter->sortForCartItem($services);
 
+        $countKeysInSet = $this->countKeysInSettProvider->getCountKeysFromCartItem($product);
+
         $finalProductPrice = $product->price * $count;
 
         return [
@@ -48,6 +52,7 @@ class ItemListBuilder
             'color' => $color,
             'services' => $services,
             'finalProductPrice' => $finalProductPrice,
+            'countKeysInSet' => $countKeysInSet,
         ];
     }
 }

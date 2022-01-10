@@ -133,7 +133,7 @@
                                         </svg>
                                     </button>
 
-                                    <input type="number" class="custom-number-input" value="1">
+                                    <input type="number" class="custom-number-input" value="{{$item['countKeysInSet']['value'] ?? '0'}}">
 
                                     <button type="button"
                                             class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">
@@ -144,7 +144,9 @@
                                 </div>
                             </div>
 
-                            @if(!is_null($item['services']['add_keys']->price))
+                            @if(is_null($item['services']['add_keys']->price))
+                                <span class="text-muted">(Цена договорная)</span>
+                                @else
                                 <div class="card-order-include-price text-muted">
                                     (+ {{(int)$item['services']['add_keys']->price}}р)
                                 </div>
