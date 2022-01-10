@@ -1,0 +1,12 @@
+.section-404 {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    @include media-breakpoint-up(md) {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+    @include media-breakpoint-up(xl) {
+        padding-top: 45px;
+        padding-bottom: 45px;
+    }
+}
