@@ -52,7 +52,7 @@
 
                         <div class="col-auto">
                             <div class="form-group m-0">
-                                <button type="button" class="modal-control btn btn-lg" data-dismiss="modal" aria-label="Close">Добавить</button>
+                                <button type="button" class="modal-control btn btn-lg change-count-additional-keys" data-dismiss="modal" aria-label="Close">Добавить</button>
                             </div>
                         </div>
                     </div>

@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', function () {
         let button = $(e.currentTarget);
         button.prop('disabled', true);
         button.addClass('loader');
+        document.modalMessage.modal('show');
 
         let data = {
             productId: button.data('product-id'),
-            pageInfo:  button.data('page-info')
-            ,
+            pageInfo:  button.data('page-info'),
+            countAdditionalKeys:  $('span.count-additional-keys').data('count') ?? 0,
         };
-        document.modalMessage.modal('show');
 
         promiseQueue.add('change-cart', () => {
             $.ajax({
@@ -38,3 +38,30 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    let modal = $('#modalAddKeys')
+    let labelAdditionalKeys = $('span.count-additional-keys');
+
+    modal.on('click', '.change-count-additional-keys', (e) => {
+        let count = modal.find('input#modalAddKeysQuantity').val()
+        labelAdditionalKeys.text(' + ' + count);
+        labelAdditionalKeys.data('count', count);
+        showOrHideLabelAdditionalKeys();
+    });
+
+});
+
+let showOrHideLabelAdditionalKeys = () => {
+    let labelAdditionalKeys = $('span.count-additional-keys');
+    if(!labelAdditionalKeys) return;
+    if(labelAdditionalKeys.data('count') > 0){
+        labelAdditionalKeys.show();
+    } else {
+        labelAdditionalKeys.hide();
+    }
+};
+
+showOrHideLabelAdditionalKeys();
