@@ -9,10 +9,10 @@
         <div class="card-product-info-list">
 
             @if(isset($productData['sizes_cylinder']))
-                <div class="card-product-size-block card-product-info-block d-flex">
+                <div class="card-product-size-block card-product-info-block d-flex align-items-center">
                     <label for="card-product-size-{{$cardNumber}}" class="card-product-info-title card-product-size-title">Типоразмер</label>
 
-                    <select name="" id="card-product-size-{{$cardNumber}}" class="card-product-size custom-control custom-select change-card" style="width: auto;">
+                    <select name="" id="card-product-size-{{$cardNumber}}" class="card-product-size custom-control custom-select change-card custom-select-inline" style="width: auto;">
                         @foreach($productData['sizes_cylinder'] as $element)
                             <option value="{{$element['product_id']}}" @if($element['isActive']) selected @endif>{{$element['attr_value']}}</option>
                         @endforeach
@@ -20,7 +20,7 @@
                 </div>
             @endif
 
-            <div class="card-product-color-block card-product-info-block d-flex">
+            <div class="card-product-color-block card-product-info-block d-flex align-items-center">
 
                 @if(isset($productData['colors']))
                     <label for="" class="card-product-info-title card-product-color-title">Цвет</label>

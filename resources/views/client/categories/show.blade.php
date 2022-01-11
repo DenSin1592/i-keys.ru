@@ -14,7 +14,7 @@
 
                     <div class="catalog-aside-container col-xl-3" >
                         @if(!empty($filter['filterVariants']))
-                            <button type="button" class="filter-toggle d-block d-xl-none text-center" >
+                            <button type="button" class="filter-toggle btn d-block d-xl-none text-center" >
                                 <svg class="filter-toggle-media" width="24" height="24">
                                     <use xlink:href="{{asset('/images/client/sprite.svg#icon-filter')}}"></use>
                                 </svg>

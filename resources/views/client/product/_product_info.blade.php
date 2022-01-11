@@ -130,7 +130,7 @@
                         <div class="product-details-container col-sm-6 col-lg-5">
 
                             @if(isset($productData['colors']))
-                                <div class="product-detail-block d-flex flex-wrap">
+                                <div class="product-detail-block d-flex flex-wrap align-items-center">
                                 <span class="product-detail-title">Цвет</span>
 
                                 <div class="product-color-list d-flex flex-wrap">

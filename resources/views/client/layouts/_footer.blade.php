@@ -1,7 +1,7 @@
 <footer class="footer-box section-dark flex-shrink-0 flex-grow-0">
     <div class="container">
         <div class="row d-lg-block d-xxl-flex">
-            <div class="footer-logo-container col-sm-6 col-md-4 col-lg-2 col-xl-auto col-xxl-3 order-md-1 float-lg-left">
+            <div class="footer-logo-container col-sm-6 col-md-4 col-lg-2 col-xl-auto col-xxl-3 align-self-center order-md-1 float-lg-left">
                 <a href="{{route('home')}}" class="footer-logo d-flex align-items-center">
                     <div class="footer-logo-thumbnail">
                         <img src="{{asset('/images/client/logo/logo-light.svg')}}" width="52" height="44" alt="Замки и Ключи" class="footer-logo-media">
