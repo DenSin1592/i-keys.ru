@@ -1,5 +1,9 @@
 .footer-search {
     .footer-search-input {
         width: 100%;
+
+        &::placeholder {
+            color: currentColor;
+        }
     }
 }

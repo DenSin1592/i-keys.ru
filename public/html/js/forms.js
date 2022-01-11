@@ -2,6 +2,14 @@ let initSelect2 = function () {
     $('.custom-select').select2({
         minimumResultsForSearch: Infinity
     });
+
+    $('.custom-select-inline').select2({
+        width: 'auto',
+        selectionCssClass: 'select2-selection-inline',
+        dropdownAutoWidth: true,
+        minimumResultsForSearch: Infinity,
+        // dropdownCssClass: 'select2-dropdown-inline'
+    });
 }
 
 let customNumberButtonInit = function () {

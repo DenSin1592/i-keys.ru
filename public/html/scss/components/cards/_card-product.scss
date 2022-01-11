@@ -96,10 +96,6 @@
 
 
     /* product info */
-    .card-product-info-block {
-        position: relative;
-    }
-
     .card-product-info-list {
         margin-bottom: 5px;
         @include media-breakpoint-up(xxl) {
@@ -107,10 +103,17 @@
         }
     }
 
+    .card-product-info-block {
+        position: relative;
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+
     .card-product-info-title {
         margin: 0 10px 0 0;
         font-weight: 700;
-        line-height: 35px;
+        line-height: normal;
     }
     /* product info end */
 
@@ -265,10 +268,6 @@
                     }
                 }
             }
-        }
-
-        .card-product-info-title {
-            line-height: 30px;
         }
         /* product info end */
 

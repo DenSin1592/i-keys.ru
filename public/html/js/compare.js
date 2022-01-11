@@ -103,13 +103,17 @@ $(function () {
 
         // Init match height on document ready and resize
         let matchHeightTimeout = null;
-        $(window).on('resize', function () {
-            if (matchHeightTimeout) {
-                clearTimeout(matchHeightTimeout);
+
+        beforeWindowWidthResizeFunctions.push(function () {
+            if (windowSizeHelper.isHorizontalResize()) {
+                if (matchHeightTimeout) {
+                    clearTimeout(matchHeightTimeout);
+                }
+
+                setTimeout(function () {
+                    matchHeight();
+                }, 50);
             }
-            setTimeout(function () {
-                matchHeight();
-            }, 50);
         });
 
         let initCompareBlock = function () {

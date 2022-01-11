@@ -19,4 +19,11 @@
             color: $c-secondary;
         }
     }
+
+    &[href^="mailto:"] {
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
