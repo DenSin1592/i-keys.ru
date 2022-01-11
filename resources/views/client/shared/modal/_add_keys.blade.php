@@ -7,7 +7,7 @@
 
                 <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
                     <svg class="close-media" width="24" height="24">
-                        <use xlink:href="images/sprite.svg#icon-close"></use>
+                        <use xlink:href="{{asset('/images/client/sprite.svg#icon-close')}}"></use>
                     </svg>
                 </button>
             </div>
@@ -18,7 +18,13 @@
                         <div class="col-auto">
                             <div class="form-group m-xxl-0">
                                 <span class="form-label" >Стоимость одно ключа</span>
-                                <div class="modal-price font-family-secondary">280 руб.</div>
+                                @isset($productData['services']['add_keys'])
+                                    @if($productData['services']['add_keys']->price > 0)
+                                        <div class="modal-price font-family-secondary">{!!  Helper::priceFormat($productData['services']['add_keys']->price) !!} руб.</div>
+                                    @else
+                                        <div class="modal-price font-family-secondary">Цена договорная</div>
+                                    @endif
+                                @endisset
                             </div>
                         </div>
 
@@ -29,15 +35,15 @@
                                 <div class="custom-number custom-control d-flex align-items-center">
                                     <button type="button" class="custom-number-button custom-number-decrease d-flex align-items-center justify-content-center">
                                         <svg class="custom-number-button-media" width="12" height="12">
-                                            <use xlink:href="images/sprite.svg#icon-minus"></use>
+                                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-minus')}}"></use>
                                         </svg>
                                     </button>
 
-                                    <input type="number" id="modalAddKeysQuantity" class="custom-number-input" value="1">
+                                    <input type="number" id="modalAddKeysQuantity" class="custom-number-input" value="0" data-min-value=0>
 
                                     <button type="button" class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">
                                         <svg class="custom-number-button-media" width="12" height="12">
-                                            <use xlink:href="images/sprite.svg#icon-plus"></use>
+                                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-plus')}}"></use>
                                         </svg>
                                     </button>
                                 </div>

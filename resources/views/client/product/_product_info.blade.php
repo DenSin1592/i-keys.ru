@@ -280,22 +280,7 @@
                                 </div>
                             </div>
                             @if($productData['count_keys_in_set'])
-                                <div class="product-included-block">
-
-                                    <svg class="product-included-media" width="20" height="20">
-                                        <use xlink:href="{{asset('/images/client/sprite.svg#icon-key')}}"></use>
-                                    </svg>
-
-                                    <span
-                                        class="product-included-title">В комплекте <b>{{$productData['count_keys_in_set']}}</b> {{\Lang::choice('ключ|ключа|ключей', $productData['count_keys_in_set'])}}</span>
-
-                                    @isset($productData['services']['add_keys'])
-                                    <button type="button" class="product-included-toggle" data-toggle="modal"
-                                            data-target="#modalAddKeys">Добавить еще ключи на всю семью
-                                    </button>
-                                    @endisset
-
-                                </div>
+                                @include('client.product._product_info._count_keys_in_set')
                             @endif
                             <div class="product-delivery-block d-flex align-items-center">
                                 <img src="{{asset('/images/client/icons/icon-delivery-light.png')}}"

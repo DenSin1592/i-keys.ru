@@ -16,11 +16,7 @@ let customNumberButtonInit = function () {
         if (target.hasClass('custom-number-increase')) {
             newValue = oldValue + 1;
         } else {
-            if (oldValue > 1) {
-                newValue = oldValue - 1;
-            } else {
-                newValue = 1;
-            }
+            newValue = oldValue - 1;
         }
         input.val(newValue);
         input.trigger('change');
@@ -29,8 +25,11 @@ let customNumberButtonInit = function () {
 
     $(".custom-number .custom-number-input").on("change", function (e) {
         let input = $(e.currentTarget);
-        let newValue = parseFloat(input.val());
-        newValue = newValue <= 0 ? 1 : newValue;
+        let inputMinValue = input.data('minValue') ?? 1;
+        let oldValue = parseFloat(input.val());
+        let newValue;
+
+        newValue = oldValue < inputMinValue ? inputMinValue : oldValue;
         input.val(newValue);
     });
 }
