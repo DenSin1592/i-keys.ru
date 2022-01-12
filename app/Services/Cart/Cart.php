@@ -189,6 +189,8 @@ class Cart
         foreach ($rawItemListData as $key => $itemData) {
             $productId = (int)data_get($itemData, 'product_id');
             $count = (int)data_get($itemData, 'count');
+            $itemData['services'] = data_get($itemData, 'services', []);
+
             if (empty($productId) || $count < 1) {
                 continue;
             }
