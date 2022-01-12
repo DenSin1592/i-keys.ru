@@ -79,10 +79,10 @@ class Cart
             throw new RuntimeException("Unable to add product to cart. ProductId = $productId. Count = $count.");
         }
 
-        $itemList = $this->items();
         $resultItem = $this->findItem($product->id);
 
         if (is_null($resultItem)) {
+            $itemList = $this->items();
             $resultItem = new CartItem($product, $count);
             $itemList[] = $resultItem;
             $this->setItems($itemList);
@@ -154,11 +154,22 @@ class Cart
     }
 
 
-    private function save()
+    public function getCountService(int $productId, int $serviceId): int
+    {
+        $item = $this->findItem($productId);
+
+        return $item?->getServices()[$serviceId] ?? 0;
+    }
+
+
+    public function save()
     {
         $itemListData = [];
-        foreach ($this->items() as $item) {
-            $itemListData[] = ['product_id' => $item->getProduct()->id, 'count' => $item->getCount()];
+        foreach ($this->items() as $key => $item) {
+            $itemListData[$key] = ['product_id' => $item->getProduct()->id, 'count' => $item->getCount(), 'service' => []];
+            foreach ($item->getServices() as $serviceId => $count){
+                $itemListData[$key]['services'][] = ['service_id' => $serviceId, 'count' => $count];
+            }
         }
 
         $this->storage->save($itemListData);
@@ -175,7 +186,7 @@ class Cart
         $rawItemListData = $this->storage->getItems();
         $itemListData = [];
         $productIds = [];
-        foreach ($rawItemListData as $itemData) {
+        foreach ($rawItemListData as $key => $itemData) {
             $productId = (int)data_get($itemData, 'product_id');
             $count = (int)data_get($itemData, 'count');
             if (empty($productId) || $count < 1) {
@@ -184,8 +195,13 @@ class Cart
             $itemListData[] = [
                 'product_id' => $productId,
                 'count' => $count,
+                'services' => [],
             ];
             $productIds[] = $productId;
+
+            foreach ($itemData['services'] as $service){
+                $itemListData[$key]['services'][$service['service_id']] = $service['count'];
+            }
         }
 
         $productsKeyById = $this->productRepository->getPublishedByIds($productIds)->keyBy('id');
@@ -195,7 +211,7 @@ class Cart
             if (is_null($product)) {
                 continue;
             }
-            $items[] = new CartItem($product, $itemData['count']);
+            $items[] = new CartItem($product, $itemData['count'], $itemData['services']);
         }
 
         return $items;

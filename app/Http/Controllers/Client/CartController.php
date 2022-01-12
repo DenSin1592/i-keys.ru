@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Services\Breadcrumbs\Factory as Breadcrumbs;
 use \App\Services\Breadcrumbs\Container as BreadcrumbsContainer;
 use App\Services\Cart\Cart;
+use App\Services\Cart\CartItem;
 use App\Services\Cart\ItemListBuilder;
 use App\Services\Seo\MetaHelper;
 use Illuminate\Http\JsonResponse;
@@ -56,8 +58,15 @@ class CartController extends Controller
 
         $id = (int)\Request::get('productId');
         $pageInfo = (string)\Request::get('pageInfo');
+        $countAdditionalKeys = (int) \Request::get('countAdditionalKeys');
+
         $count = (int)\Request::get('count', 1);
         $item = $this->cart->add($id, $count);
+
+        if($countAdditionalKeys > 0){
+            $item->addService(Service::ADD_KEYS_ID, $countAdditionalKeys);
+            $this->cart->save();
+        }
 
         return \Response::json([
             'button_in_cart' => $this->getButtonForResponseToAddInCart($pageInfo),

@@ -263,8 +263,7 @@
                                                 class="product-control product-control-compare btn btn-lg btn-secondary font-weight-normal"
                                                 data-toggle="modal" data-target="#modalAddToCompare">
                                             <svg class="product-control-media" width="24" height="25">
-                                                <use
-                                                    xlink:href="{{asset('/images/client/sprite.svg#icon-compare')}}"></use>
+                                                <use xlink:href="{{asset('/images/client/sprite.svg#icon-compare')}}"></use>
                                             </svg>
 
                                             <span class="product-control-text d-none d-lg-inline">Сравнить</span>
@@ -290,7 +289,9 @@
                                     <span class="product-included-title">
                                         В комплекте
                                         <b>{{$productData['count_keys_in_set']}}
-                                            <span class="text-danger count-additional-keys" data-count="0"> + 0</span>
+                                            <span class="text-danger count-additional-keys"
+                                                  data-count="{{\App\Facades\Cart::getCountService($productData['product']->id, \App\Models\Service::ADD_KEYS_ID)}}"> + {{\App\Facades\Cart::getCountService($productData['product']->id, \App\Models\Service::ADD_KEYS_ID)}}
+                                            </span>
                                         </b>
                                         {{\Lang::choice('ключ|ключа|ключей', $productData['count_keys_in_set'])}}
                                     </span>

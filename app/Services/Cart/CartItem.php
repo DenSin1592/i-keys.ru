@@ -7,11 +7,13 @@ class CartItem
 {
     private $product;
     private int $count;
+    private array $services;
 
-    public function __construct($product, $count)
+    public function __construct($product, $count, $services = [])
     {
         $this->product = $product;
         $this->setCount($count);
+        $this->services = $services;
     }
 
     public function getProduct()
@@ -32,5 +34,15 @@ class CartItem
     public function setCount($count)
     {
         $this->count = $count;
+    }
+
+    public function addService(int $serviceId, int $count)
+    {
+        $this->services[$serviceId] = $count;
+    }
+
+    public function getServices()
+    {
+        return $this->services;
     }
 }
