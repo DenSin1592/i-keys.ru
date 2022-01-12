@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function(event) {
     try {
-        const order = new cartStepsOrder(true),
+        const order = new cartStepsOrder(false),
               forms = $('#order-form form');
         order.init();
 
