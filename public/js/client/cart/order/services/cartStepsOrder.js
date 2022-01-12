@@ -171,7 +171,7 @@ class cartStepsOrder {
                     data: fd,
                     success: function(response) {
                         if (response.status === 'success') {
-                            document.updateCartIcon(0);
+                            document.clearCart();
                             nextStep.find('.checkout-content').html("<h3>"+response.modal_title+"</h3><p>"+response.modal_body+"</p>");
                         } else {
                             nextStep.find('.checkout-content').html("<h3>Произошла ошибка при создании заказа</h3><p>Приносим свои извинения. Обновите страницу и попробуйте снова</p>");

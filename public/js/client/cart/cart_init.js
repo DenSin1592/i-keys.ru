@@ -23,7 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
-
+    document.clearCart = () => {
+        document.updateCartIcon(0);
+        document.updateCartSummary();
+        document.querySelectorAll('.order-list .order-item')
+            .forEach(function (item) {
+            item.remove();
+        })
+    }
 });
 
 
