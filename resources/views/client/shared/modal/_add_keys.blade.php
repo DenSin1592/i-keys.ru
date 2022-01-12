@@ -1,4 +1,8 @@
-<div class="modal fade" id="modalAddKeys" tabindex="-1" aria-labelledby="modalAddKeysLabel" aria-hidden="true">
+<div class="modal fade" id="modalAddKeys" tabindex="-1"
+     aria-labelledby="modalAddKeysLabel"
+     aria-hidden="true"
+     data-service-id="{{\App\Models\Service::ADD_KEYS_ID}}"
+     data-product-id="{{$productData['product']->id}}">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -39,7 +43,7 @@
                                         </svg>
                                     </button>
 
-                                    <input type="number" id="modalAddKeysQuantity" class="custom-number-input" value="0" data-min-value=0>
+                                    <input type="number" id="modalAddKeysQuantity" class="custom-number-input" value="{{\App\Facades\Cart::getCountService($productData['product']->id, \App\Models\Service::ADD_KEYS_ID)}}" data-min-value="0">
 
                                     <button type="button" class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">
                                         <svg class="custom-number-button-media" width="12" height="12">

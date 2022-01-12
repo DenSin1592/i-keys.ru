@@ -7,7 +7,6 @@ use App\Models\Service;
 use App\Services\Breadcrumbs\Factory as Breadcrumbs;
 use \App\Services\Breadcrumbs\Container as BreadcrumbsContainer;
 use App\Services\Cart\Cart;
-use App\Services\Cart\CartItem;
 use App\Services\Cart\ItemListBuilder;
 use App\Services\Seo\MetaHelper;
 use Illuminate\Http\JsonResponse;
@@ -64,7 +63,7 @@ class CartController extends Controller
         $item = $this->cart->add($id, $count);
 
         if($countAdditionalKeys > 0){
-            $item->addService(Service::ADD_KEYS_ID, $countAdditionalKeys);
+            $item->setService(Service::ADD_KEYS_ID, $countAdditionalKeys);
             $this->cart->save();
         }
 
@@ -123,6 +122,30 @@ class CartController extends Controller
         }
 
         return \View::make('client.cart._summary_block');
+    }
+
+    public function addServiceForItem()
+    {
+        if (!\Request::ajax()){
+            \App::abort(404, 'Page not found');
+        }
+
+        $productId = (int)\Request::get('productId');
+        $serviceId = (int)\Request::get('serviceId');
+        $count = (int) \Request::get('count');
+
+        $item = $this->cart->findItem($productId);
+
+        if(is_null($item)){
+            throw new \Exception('Didn\'t find the item');
+        }
+
+        $item->setService($serviceId, $count);
+        $this->cart->save();
+
+        return \Response::json([
+            'count' => $count,
+        ]);
     }
 
 

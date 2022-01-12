@@ -36,9 +36,13 @@ class CartItem
         $this->count = $count;
     }
 
-    public function addService(int $serviceId, int $count)
+    public function setService(int $serviceId, int $count)
     {
-        $this->services[$serviceId] = $count;
+        if($count === 0 && isset($this->services[$serviceId])){
+            unset($this->services[$serviceId]);
+        } else {
+            $this->services[$serviceId] = $count;
+        }
     }
 
     public function getServices()

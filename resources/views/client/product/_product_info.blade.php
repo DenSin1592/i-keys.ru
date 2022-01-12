@@ -289,7 +289,7 @@
                                     <span class="product-included-title">
                                         В комплекте
                                         <b>{{$productData['count_keys_in_set']}}
-                                            <span class="text-danger count-additional-keys"
+                                            <span class="text-danger count-additional-keys" style="display:none;"
                                                   data-count="{{\App\Facades\Cart::getCountService($productData['product']->id, \App\Models\Service::ADD_KEYS_ID)}}"> + {{\App\Facades\Cart::getCountService($productData['product']->id, \App\Models\Service::ADD_KEYS_ID)}}
                                             </span>
                                         </b>

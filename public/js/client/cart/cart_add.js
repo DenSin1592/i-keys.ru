@@ -36,32 +36,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-
-    let modal = $('#modalAddKeys')
-    let labelAdditionalKeys = $('span.count-additional-keys');
-
-    modal.on('click', '.change-count-additional-keys', (e) => {
-        let count = modal.find('input#modalAddKeysQuantity').val()
-        labelAdditionalKeys.text(' + ' + count);
-        labelAdditionalKeys.data('count', count);
-        showOrHideLabelAdditionalKeys();
-    });
-
-});
-
-let showOrHideLabelAdditionalKeys = () => {
-    let labelAdditionalKeys = $('span.count-additional-keys');
-    if(!labelAdditionalKeys) return;
-    if(labelAdditionalKeys.data('count') > 0){
-        labelAdditionalKeys.show();
-    } else {
-        labelAdditionalKeys.hide();
-    }
-};
-
-showOrHideLabelAdditionalKeys();
