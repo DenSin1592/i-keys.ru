@@ -8,7 +8,6 @@ let initSelect2 = function () {
         selectionCssClass: 'select2-selection-inline',
         dropdownAutoWidth: true,
         minimumResultsForSearch: Infinity,
-        // dropdownCssClass: 'select2-dropdown-inline'
     });
 }
 

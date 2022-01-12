@@ -11,7 +11,7 @@
                             </div>
 
                             <div class="col-auto">
-                                <select id="products-sort" class="catalog-sort-select custom-control custom-select" >
+                                <select id="products-sort" class="catalog-sort-select custom-control custom-select custom-select-inline" >
                                     @foreach(\Arr::get($filter, 'sortingVariants', []) as $sortVariant)
                                         <option value="{{ CatalogHelper::getSortingUrl(\Arr::get($filter, 'currentFilterQuery', []), $sortVariant['key']) }}"
                                             {{ $sortVariant['active'] ? 'selected' : '' }}>{!! $sortVariant['name'] !!}</option>
