@@ -1,7 +1,4 @@
-
 document.addEventListener('DOMContentLoaded', function () {
-
-    const CART_ADD_SERVICE_URI = '/cart/add-service';
 
     let modal = $('#modalAddKeys')
 
@@ -31,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
             ).fail(() => {
                 document.modalMessageErrorShow();
             })
-
         });
 
     });

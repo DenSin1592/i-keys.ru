@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
-use App\Services\Breadcrumbs\Factory as Breadcrumbs;
 use \App\Services\Breadcrumbs\Container as BreadcrumbsContainer;
 use App\Services\Cart\Cart;
 use App\Services\Cart\ItemListBuilder;
@@ -22,16 +21,13 @@ class CartController extends Controller
     public function __construct(
         private Cart $cart,
         private ItemListBuilder $itemListBuilder,
-//        ClientOrderForm $clientOrderForm,
-        private Breadcrumbs $breadcrumbs,
-        private MetaHelper $metaHelper,
     ){}
 
 
-    public function show(): View
+    public function show(MetaHelper $metaHelper): View
     {
         $breadcrumbs = $this->getBreadcrumbs();
-        $metaData = $this->metaHelper->getRule()->metaForName('Корзина');
+        $metaData = $metaHelper->getRule()->metaForName('Корзина');
 
         if($this->cart->isEmpty()){
             return \View::make('client.cart.empty')
@@ -132,7 +128,7 @@ class CartController extends Controller
 
         $productId = (int)\Request::get('productId');
         $serviceId = (int)\Request::get('serviceId');
-        $count = (int) \Request::get('count');
+        $count = (int)\Request::get('count');
 
         $item = $this->cart->findItem($productId);
 
@@ -151,7 +147,7 @@ class CartController extends Controller
 
     private function getBreadcrumbs(): BreadcrumbsContainer
     {
-        $breadcrumbs = $this->breadcrumbs->init();
+        $breadcrumbs = resolve(\App\Services\Breadcrumbs\Factory::class)->init();
         $breadcrumbs->add('Главная', route('home'));
         $breadcrumbs->add('Корзина');
         return $breadcrumbs;

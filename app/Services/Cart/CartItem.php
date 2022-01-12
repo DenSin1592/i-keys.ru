@@ -49,4 +49,9 @@ class CartItem
     {
         return $this->services;
     }
+
+    public function getServiceCount($id): int
+    {
+        return $this->services[$id] ?? 0;
+    }
 }

@@ -133,7 +133,7 @@
                                         </svg>
                                     </button>
 
-                                    <input type="number" class="custom-number-input" value="{{$item['countKeysInSet']['value'] ?? '0'}}">
+                                    <input type="number" class="custom-number-input cart-add-keys-service-count" data-service-id="{{\App\Models\Service::ADD_KEYS_ID}}" value="{{$item['finalCountKeysInSet']}}" data-min-value="{{$item['defaultCountKeysInSet']}}">
 
                                     <button type="button"
                                             class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">
@@ -148,7 +148,7 @@
                                 <span class="text-muted">(Цена договорная)</span>
                                 @else
                                 <div class="card-order-include-price text-muted">
-                                    (+ {{(int)$item['services']['add_keys']->price}}р)
+                                    (+ <span class="cart-add-keys-service-price" data-price="{{$item['services']['add_keys']->price}}">0</span>р)
                                 </div>
                             @endif
 
@@ -171,7 +171,14 @@
                                 @foreach($item['services']['general'] as $key => $element)
                                 <li class="card-order-service-item d-flex flex-wrap">
                                     <div class="card-order-service-checkbox custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="card-order-service-{{$itemKey}}-{{$key}}">
+
+                                        <input type="checkbox"
+                                               class="custom-control-input"
+                                               id="card-order-service-{{$itemKey}}-{{$key}}"
+                                               data-service-id="{{$element->id}}"
+                                               @if(\Cart::checkService($item['product']->id,$element->id)) checked @endif
+                                        >
+
                                         <label class="custom-control-label" for="card-order-service-{{$itemKey}}-{{$key}}">{{$element->name}}
 
                                             @if(is_null($element->price))

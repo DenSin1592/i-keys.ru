@@ -162,6 +162,12 @@ class Cart
     }
 
 
+    public function checkService(int $productId, int $serviceId): bool
+    {
+        return ($this->getCountService($productId, $serviceId) > 0);
+    }
+
+
     public function save()
     {
         $itemListData = [];
