@@ -6,7 +6,7 @@
                 <li class="page-item prev" aria-label="Previous" >
                     <a class="page-link" href="{{ $paginator->previousPageUrl() }}">
                         <svg class="page-media" width="18" height="18">
-                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-chevron-right-solid')}}"></use>
+                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-chevron-left-solid')}}"></use>
                         </svg>
                     </a>
                 </li>
