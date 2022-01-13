@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use \App\Services\Breadcrumbs\Container as BreadcrumbsContainer;
 use App\Services\Cart\Cart;
 use App\Services\Cart\ItemListBuilder;
