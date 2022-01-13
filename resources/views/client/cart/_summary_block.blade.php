@@ -1,4 +1,4 @@
-<div class="display-subtitle title-h4" id="summary-container">
+<div class="display-subtitle title-h4 summary-container">
     В корзине {!! \Cart::summaryCount() . ' ' . \Lang::choice('товар|товара|товаров', \Cart::summaryCount()) . ','!!}
 
     @if($countServices = \Cart::getTotalServicesCount())

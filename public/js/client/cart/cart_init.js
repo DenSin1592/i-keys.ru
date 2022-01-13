@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 url: CART_UPDATE_SUMMARY_URI,
                 cache: false
             }).done((response) => {
-                $('#summary-container').replaceWith(response);
+                $('.summary-container').replaceWith(response);
             }).fail(() => {
                 document.modalMessageErrorShow();
             });
