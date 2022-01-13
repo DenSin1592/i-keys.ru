@@ -158,6 +158,13 @@ class Cart
         return true;
     }
 
+    public function getCountService(int $productId, int $serviceId): int
+    {
+        $item = $this->findItem($productId);
+
+        return $item?->getServices()[$serviceId] ?? 0;
+    }
+
 
     public function checkService(int $productId, int $serviceId): bool
     {
