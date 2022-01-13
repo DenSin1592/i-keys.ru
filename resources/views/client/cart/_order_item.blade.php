@@ -122,7 +122,7 @@
                         <div class="card-order-included-block col-12 d-flex flex-wrap align-items-center">
                             <div class="card-order-include-thumbnail">
                                 <svg class="card-order-include-media" width="29" height="29">
-                                    <use xlink:href="/images/sprite.svg#icon-key"></use>
+                                    <use xlink:href="{{asset('/images/client/sprite.svg#icon-key')}}"></use>
                                 </svg>
                             </div>
 
