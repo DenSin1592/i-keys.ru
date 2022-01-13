@@ -42,7 +42,6 @@ let customNumberButtonInit = function () {
     });
 }
 
-
 document.addEventListener('DOMContentLoaded', function () {
 
     initSelect2();
@@ -53,8 +52,25 @@ document.addEventListener('DOMContentLoaded', function () {
         let target = $(e.currentTarget);
         let container = target.closest('.form-options-group');
         let children = container.find('.form-option');
+        const notActiveInputs = children.parent().find('.form-option:not(.active) .form-control');
 
         children.removeClass('active');
         target.addClass('active');
+        target.find('input[type="radio"]').attr('checked', 'checked'); // фиксит выбор радио при клике на вложенный инпут
+
+        notActiveInputs.prop('disabled', true); // в шаблоне кнопки внутри радиогруппы отключены. Защита от ложных данных
+        if (target.hasClass('active')) {
+            target.find('.form-control').prop('disabled', false);
+        }
+        // use required into selection group
+        children
+            .find('[required]:not([type="radio"])')
+            .removeAttr('required')
+            .attr('data-option-required', true);
+        target
+            .find('[data-option-required]')
+            .removeAttr('data-option-required')
+            .attr('required', true)
+        ;
     });
 });

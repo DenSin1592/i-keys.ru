@@ -5,6 +5,7 @@ namespace App\Services\FormProcessors\Order;
 use App\Models\Order;
 use App\Models\Order\PaymentStatusConstants;
 use App\Models\Order\StatusConstants;
+use App\Models\OrderPaymentConstants;
 use App\Services\FormProcessors\Features\FormatPhone;
 use App\Services\Repositories\CreateUpdateRepositoryInterface;
 use App\Services\Validation\ValidableInterface;
@@ -100,6 +101,18 @@ class OrderFormProcessor
         $data = $this->preparePhone($data);
         if (!isset($data['type'])) {
             $data['type'] = Order\TypeConstants::FROM_SITE;
+            if (isset($data['delivery_method'])) {
+                $data = $this->prepareDeliveryData($data);
+            }
+        }
+
+        if (isset($data['document']) && !is_null($data['document'])) {
+            $file = $data['document'];
+            $name =  date("Y-m-d_H-i-s") .'_'. $file->getClientOriginalName();
+            $file = $file->move('uploads/document_legal_entity/', $name);
+            $data['document'] = $name;
+        } else {
+            $data['document'] = null;
         }
 
         if (!isset($data['status'])) {
@@ -152,5 +165,27 @@ class OrderFormProcessor
         foreach ($this->subProcessorList as $subProcessor) {
             $subProcessor->saveAfterUpdate($order, $data);
         }
+    }
+
+    protected function prepareDeliveryData(array $data): array
+    {
+        if ($data['delivery_method'] === Order::DELIVERY_COURIER) {
+            foreach ($data as $dataKey => $dataValue) {
+                if (strpos($dataKey, Order::DELIVERY_CDEK)) {
+                    unset($data[$dataKey]);
+                } elseif (strpos($dataKey, Order::DELIVERY_COURIER)) {
+                    $data[str_replace('*'.Order::DELIVERY_COURIER, '', $dataKey)] = $dataValue;
+                }
+            }
+        } elseif ($data['delivery_method'] === Order::DELIVERY_CDEK) {
+            foreach ($data as $dataKey => $dataValue) {
+                if (strpos($dataKey, Order::DELIVERY_COURIER)) {
+                    unset($data[$dataKey]);
+                } elseif (strpos($dataKey, Order::DELIVERY_CDEK)) {
+                    $data[str_replace('*'.Order::DELIVERY_CDEK, '', $dataKey)] = $dataValue;
+                }
+            }
+        }
+        return $data;
     }
 }

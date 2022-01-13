@@ -11,6 +11,16 @@ use App\Services\Mailers\OrderMailer;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
+//use App\Services\FormProcessors\ClientOrder\ClientOrderProcessor;
+//use App\Mail\AdminOrderCreated;
+//use App\Mail\ClientOrderCreated;
+//use App\Services\Breadcrumbs\Factory as Breadcrumbs;
+//use App\Services\Cart\Cart;
+//use App\Services\DataProviders\ClientOrder\ClientOrder;
+//use App\Services\Repositories\Order\EloquentOrderRepository;
+//use App\Services\Seo\MetaHelper;
+//use Mail;
+
 
 class OrdersController extends Controller
 {
@@ -19,9 +29,48 @@ class OrdersController extends Controller
 
     public function __construct(
         public ClientOrderFormProcessor $orderFormProcessor,
-        private OrderMailer $orderMailer
+        private OrderMailer $orderMailer,
     ) {}
 
+    public function store(Request $request)
+    {
+        // Redirect back to cart if there are no items
+        if (\Cart::isEmpty()) {
+            return \Redirect::route('cart.show');
+        }
+        $inputData = $request->all();
+
+        // Create order
+        $order = $this->orderFormProcessor->create($inputData);
+        if (!is_null($order)) {
+            $orderCompleteContent = '<p>Вашему заказу присвоен номер ' . $order->id . '. Наш менеджер свяжется с Вами в ближайшее время.</p>';
+            try{
+                $this->orderMailer->sendAdminCompleteEmail($order);
+                $this->orderMailer->sendClientCompleteEmail($order);
+            } catch (\Swift_SwiftException $ex){
+                \Log::error($ex->getMessage());
+            } catch (\Throwable $ex){
+                \Log::error($ex->getMessage());
+                resolve(Handler::class)->report($ex);
+            }
+
+            return \Response::json(
+                [
+                    'status' => 'success',
+                    'modal_title' => 'Спасибо за Ваш заказ!',
+                    'modal_body' => $orderCompleteContent,
+                ]
+            );
+
+        } else {
+            return \Response::json(
+                [
+                    'status' => 'error',
+                    'errors' => $this->orderFormProcessor->errors(),
+                ]
+            );
+        }
+    }
 
     public function storeFast(Request $request)
     {

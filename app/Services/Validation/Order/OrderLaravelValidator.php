@@ -41,6 +41,7 @@ class OrderLaravelValidator extends AbstractLaravelValidator
             'type' => ['in:' . implode(',', array_keys($this->orderRepository->getTypeVariants()))],
             'payment_method' => [
                 'nullable',
+                // TODO не забыть в итоге отрегулирвать валидацию после правок на фронте
                 'in:' . implode(',', array_keys($this->orderRepository->getPaymentMethodVariants()))
             ],
             'payment_status' => [
@@ -55,7 +56,7 @@ class OrderLaravelValidator extends AbstractLaravelValidator
                 )
             ],
             'order_items' => ['required'],
-            'icon_file' => 'mimes:jpg,pdf,doc,xls',
+//            'icon_file' => 'mimes:jpg,pdf,doc,xls',
             'order_items.*.name' => ['required_without:order_items.*.code_1c'],
             'order_items.*.product_id' => ['exists:products,id'],
             'order_items.*.count' => ['required', 'integer', 'more_than:0'],
@@ -78,10 +79,11 @@ class OrderLaravelValidator extends AbstractLaravelValidator
 
         $addressRequired = function ($input) {
             return isset($input->delivery_method) &&
-                $input->delivery_method != DeliveryMethodConstants::SELF_DELIVERY;
+                ($input->delivery_method != DeliveryMethodConstants::SELF_DELIVERY &&
+                    $input->delivery_method != DeliveryMethodConstants::SELF_TRANSPORT_COMPANY);
         };
 
-        $validator->sometimes('region_id', 'required', $addressRequired);
+//        $validator->sometimes('region_id', 'required', $addressRequired);
         $validator->sometimes('city', 'required', $addressRequired);
         $validator->sometimes('street', 'required', $addressRequired);
         $validator->sometimes('building', 'required', $addressRequired);

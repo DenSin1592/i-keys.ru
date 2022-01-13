@@ -1,4 +1,5 @@
 .form-group {
+    position: relative;
     margin-bottom: 15px;
     @include media-breakpoint-up(xl) {
         margin-bottom: 20px;
@@ -8,6 +9,18 @@
         margin-top: 15px;
         @include media-breakpoint-up(xl) {
             margin-top: 30px;
+        }
+    }
+
+    &.field-error {
+        .error {
+            position: initial;
+            color: #dc3545;
+            font-size: 13px;
+            line-height: 1.2;
+        }
+        input {
+            border-color: #dc3545;
         }
     }
 }
@@ -68,6 +81,16 @@ textarea.form-control {
         font-size: 15px;
     }
 
+    &.field-error {
+        border-color: #dc3545;
+    }
+
+    .error {
+        position: absolute;
+        color: #dc3545;
+        bottom: -10px;
+    }
+
     &::before {
         position: absolute;
         top: 14px;
@@ -84,6 +107,16 @@ textarea.form-control {
             width: 25px;
             height: 25px;
         }
+    }
+
+    &-radio {
+        display: flex !important;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        z-index: 0;
+        opacity: 0;
     }
 
     &-header {
@@ -150,7 +183,7 @@ textarea.form-control {
         .custom-control-input {
             width: 24px;
             height: 24px;
-            
+
             &:checked {
                 + .custom-control-label {
                     font-weight: 700;

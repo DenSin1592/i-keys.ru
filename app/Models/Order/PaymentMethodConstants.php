@@ -10,4 +10,7 @@ class PaymentMethodConstants
     const CASH = 'cash';
     const CASHLESS = 'cashless';
 
+//    const PAYMENT_CASH = 'cash';
+//    const PAYMENT_ONLINE = 'online';
+    const INVOICE = 'invoice';
 }

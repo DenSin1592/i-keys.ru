@@ -27,7 +27,6 @@
 @endsection
 
 @section('modals')
-
     @include('client.shared.modal._fast_order')
     @include('client.shared.modal._remove_in_cart')
 

@@ -10,14 +10,16 @@ class DeliveryMethodConstants
 
     const SELF_DELIVERY = 'self';
     const COURIER = 'courier';
-    const TRANSPORT_COMPANY = 'transport_company';
+    const TRANSPORT_COMPANY = 'cdek';
+    const SELF_TRANSPORT_COMPANY = 'self_cdek';
 
     public static function all(): array
     {
         return [
             self::SELF_DELIVERY,
             self::COURIER,
-            self::TRANSPORT_COMPANY
+            self::TRANSPORT_COMPANY,
+            self::SELF_TRANSPORT_COMPANY
         ];
     }
 
@@ -39,7 +41,7 @@ class DeliveryMethodConstants
             case PaymentMethodConstants::CASH:
                 return [
                     self::SELF_DELIVERY,
-                    self::COURIER
+//                    self::COURIER
                 ];
             default:
                 return self::all();

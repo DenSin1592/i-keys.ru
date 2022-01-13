@@ -50,9 +50,13 @@ return [
                 'html/vendor/swiper/swiper.min.js',
                 'html/vendor/fancybox/fancybox.jquery.min.js',
 
-                'js/common/window_size_helper.js',
-                'js/common/promise_queue.js',
-                'js/common/csrf.js',
+                '/js/common/jquery.inputmask.bundle.min.js',
+                '/js/common/jquery.validate/jquery.validate.min.js',
+                '/js/common/jquery.validate/additional-methods.min.js',
+                '/js/common/jquery.validate/localization/messages_ru.min.js',
+                '/js/common/window_size_helper.js',
+                '/js/common/promise_queue.js',
+                '/js/common/csrf.js',
 
                 'html/js/initial.js',
                 'html/js/window_size_helper.js',
@@ -66,6 +70,7 @@ return [
                 'html/js/fancybox.js',
                 'html/js/tooltip.js',
 
+                'js/client/helpers/Arrays.js',
                 'js/client/auth_menu.js',
                 'js/client/quick_order.js',
                 'js/client/modal_message.js',
@@ -78,6 +83,11 @@ return [
                 'js/client/cart/cart_add_or_delete_services.js',
                 'js/client/change_product_card.js',
                 'js/client/reset_product_card.js',
+                'js/client/validation/phone-mask.js',
+                'js/client/validation/validMethods.js',
+                'js/client/assets/uploadFile.js',
+                'js/client/cart/order/services/cartStepsOrder.js',
+                'js/client/cart/order/main.js',
 
             ],
             'filters' => ['js_min', 'end_with_semicolon'],
