@@ -34,6 +34,10 @@ class Service extends Model
         return $this->belongsToMany(AllowedValue::class, 'series_service','service_id', 'series_id', );
     }
 
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class,);
+    }
 
     protected static function boot()
     {
@@ -41,6 +45,11 @@ class Service extends Model
 
         self::deleting(static function (self $model) {
             $model->series()->detach();
+
+            foreach ($model->orderItems as $el){
+                $el->update(['service_id' => null]);
+            }
+
         });
     }
 }

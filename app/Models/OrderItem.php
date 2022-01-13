@@ -10,6 +10,7 @@ class OrderItem extends \Eloquent
 
     protected $fillable = [
         'product_id',
+        'service_id',
         'order_id',
         'name',
         'count',

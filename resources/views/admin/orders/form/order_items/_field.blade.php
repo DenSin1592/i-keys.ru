@@ -14,6 +14,7 @@
     <table class="table table-bordered order-items">
         <thead>
         <tr>
+            <th class="code-1c">{{ 'Тип' }}</th>
             <th>{{ trans('validation.attributes.name') }}</th>
             <th class="code-1c">{{ trans('validation.attributes.code_1c') }}</th>
             <th class="count">{{ trans('validation.attributes.count') }}, шт.</th>

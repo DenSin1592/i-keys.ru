@@ -1,8 +1,16 @@
 <tr class="order-item {{ isset($changedIds) && in_array($orderItem->id, $changedIds) ? 'highlighted' : '' }}"
     data-order-item-id="{{ $orderItem->id }}"
+    @if (!is_null($orderItem->product_id))
+        data-product-id="{{ $orderItem->product_id }}"
+    @else
+        data-name="{{ $orderItem->name }}"
+    @endif>
 
-    @if (!is_null($orderItem->product_id)) data-product-id="{{ $orderItem->product_id }}"
-    @else data-name="{{ $orderItem->name }}" @endif>
+    <td class="code-1c">
+        @if(!is_null($orderItem->service_id)){{'Услуга'}} @endif
+        @if(!is_null($orderItem->product_id)){{'Продукт'}} @endif
+    </td>
+
     <td class="name">
         {!! Form::hidden("order_items[{$orderItem->id}][id]", $orderItem->id) !!}
 
@@ -20,6 +28,14 @@
 
                 {!! Form::hidden("order_items[{$orderItem->id}][product_id]", $orderItem->product_id) !!}
             @endif
+
+        @if (!is_null($orderItem->service_id))
+            <a href="{{ route('cc.services.edit', [ $orderItem->service_id]) }}"
+               target="_blank"
+               class="glyphicon glyphicon-share" title="Редактировать"></a>
+
+            {!! Form::hidden("order_items[{$orderItem->id}][product_id]", $orderItem->product_id) !!}
+        @endif
         {!! Form::tbFormGroupClose() !!}
     </td>
 
