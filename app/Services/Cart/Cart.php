@@ -162,7 +162,7 @@ class Cart
     {
         $item = $this->findItem($productId);
 
-        return $item?->getServices()[$serviceId] ?? 0;
+        return $item?->getServiceCount()?? 0;
     }
 
 
