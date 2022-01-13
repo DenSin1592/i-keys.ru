@@ -67,9 +67,11 @@
                     <div class="card-order-subtitle">Стоимость</div>
 
                     <div class="card-order-price-block d-flex flex-wrap">
-                        <span class="card-product-price"> {!! Helper::priceFormat($item['product']->price) !!}<span class="rouble"></span></span>
-                        <span class="card-product-old-price">{!! Helper::priceFormat($item['product']->old_price) !!}<span class="rouble"></span></span>
+                        <span class="card-product-price"> {!! Helper::priceFormat($item['product']->price) !!}<span class="rouble">руб.</span></span>
+                        @if(!is_null($oldPrice = $item['product']->getOldPrice()))
+                        <span class="card-product-old-price">{!! Helper::priceFormat($oldPrice) !!}<span class="rouble">руб.</span></span>
                         <div class="card-product-sale-price text-danger font-weight-bold">{!! $item['product']->sale_string !!}</div>
+                        @endif
                     </div>
                 </div>
 
@@ -84,7 +86,10 @@
                                 </svg>
                             </button>
 
-                            <input type="number" class="custom-number-input update-product-count-in-cart" value="{{$item['count']}}" >
+                            <input type="number" class="custom-number-input update-product-count-in-cart"
+                                   value="{{$item['count']}}"
+                                   data-min-value="1"
+                            >
 
                             <button type="button" class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center" >
                                 <svg class="custom-number-button-media" width="12" height="12">
@@ -133,7 +138,10 @@
                                         </svg>
                                     </button>
 
-                                    <input type="number" class="custom-number-input cart-add-keys-service-count" data-service-id="{{\App\Models\Service::ADD_KEYS_ID}}" value="{{$item['finalCountKeysInSet']}}" data-min-value="{{$item['defaultCountKeysInSet']}}">
+                                    <input type="number" class="custom-number-input cart-add-keys-service-count"
+                                           data-service-id="{{\App\Models\Service::ADD_KEYS_ID}}"
+                                           value="{{$item['finalCountKeysInSet']}}"
+                                           data-min-value="{{$item['defaultCountKeysInSet']}}">
 
                                     <button type="button"
                                             class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">
