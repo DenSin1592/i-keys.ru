@@ -7,7 +7,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title title-h3 font-family-secondary" id="modalAddKeysLabel">Добавить ключи</h3>
-                <div class="modal-subtitle">В комплекте с замком идет 3 бесплатных ключа. Если Ваша семья больше, можете доукомплектовать замок дополнительными ключами.</div>
+                <div class="modal-subtitle">В комплекте с замком бесплатно идет {{$productData['count_keys_in_set'] }} {{\Lang::choice('ключ|ключа|ключей', $productData['count_keys_in_set'])}}. Если Ваша семья больше, можете доукомплектовать замок дополнительными ключами.</div>
 
                 <button type="button" class="modal-close close" data-dismiss="modal" aria-label="Close">
                     <svg class="close-media" width="24" height="24">
