@@ -2,6 +2,7 @@
 
 namespace App\Services\Cart;
 
+use App\Models\Service;
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Storage\ICardStorage;
 
@@ -63,10 +64,10 @@ class Cart
             $this->items(),
             static function ($summary, $item) {
                 $summary += ($item->getPrice() * $item->getCount());
-//                $sevices = $item->getServices();
-//                foreach ($sevices as $sevice){
-//                    $summary +=
-//                }
+                $services = $item->getServices();
+                foreach ($services as $service){
+                    $summary += $service->getPrice() * $service->getCount();
+                }
 
                 return $summary;
             },
@@ -158,17 +159,11 @@ class Cart
     }
 
 
-    public function getCountService(int $productId, int $serviceId): int
+    public function checkService(int $productId, int $serviceId): bool
     {
         $item = $this->findItem($productId);
 
-        return $item?->getServices()[$serviceId] ?? 0;
-    }
-
-
-    public function checkService(int $productId, int $serviceId): bool
-    {
-        return ($this->getCountService($productId, $serviceId) > 0);
+        return $item->checkService($serviceId);
     }
 
 
@@ -185,13 +180,30 @@ class Cart
     }
 
 
-    public function save()
+    public function setService(int $itemId, int $serviceId, int $count)
+    {
+        $item = $this->findItem($itemId);
+        if(is_null($item)){
+            throw new \Exception('CartItem not search');
+        }
+
+        $service = Service::find($serviceId);
+        if(is_null($service)){
+            throw new \Exception('Service in DB not search');
+        }
+
+        $item->setService($service, $count);
+        $this->save();
+    }
+
+
+    private function save()
     {
         $itemListData = [];
         foreach ($this->items() as $key => $item) {
-            $itemListData[$key] = ['product_id' => $item->getProduct()->id, 'count' => $item->getCount(), 'service' => []];
-            foreach ($item->getServices() as $serviceId => $serviceCount){
-                if($serviceCount > 0){
+            $itemListData[$key] = ['product_id' => $item->getProduct()->id, 'count' => $item->getCount(), 'services' => []];
+            foreach ($item->getServices() as $serviceId => $serviceItem){
+                if(($serviceCount = $serviceItem->getCount()) > 0){
                     $itemListData[$key]['services'][] = ['service_id' => $serviceId, 'count' => $serviceCount];
                 }
             }
@@ -219,16 +231,14 @@ class Cart
             if (empty($productId) || $count < 1) {
                 continue;
             }
-            $itemListData[] = [
+            $itemListData[$key] = [
                 'product_id' => $productId,
                 'count' => $count,
                 'services' => [],
             ];
             $productIds[] = $productId;
 
-            foreach ($itemData['services'] as $service){
-                $itemListData[$key]['services'][$service['service_id']] = $service['count'];
-            }
+            $itemListData[$key]['services'] = $this->loadServices($itemData['services']);
         }
 
         $productsKeyById = $this->productRepository->getPublishedByIds($productIds)->keyBy('id');
@@ -242,5 +252,42 @@ class Cart
         }
 
         return $items;
+    }
+
+
+    private function loadServices(array $services): array
+    {
+        $finalServices = [];
+
+        foreach ($services as $service){
+            $serviceId = (int)data_get($service, 'service_id');
+            $count = (int)data_get($service, 'count');
+
+            if (empty($serviceId) || $count < 1) {
+                continue;
+            }
+
+            $itemListData[] = [
+                'service_id' => $serviceId,
+                'count' => $count,
+            ];
+            $serviceIds[] = $serviceId;
+        }
+
+        if(!isset($serviceIds)){
+            return $finalServices;
+        }
+
+        $servicesKeyByid = Service::query()->where('publish', true)->whereIn('id', $serviceIds)->get()->keyBy('id');
+
+        foreach ($itemListData as $itemData) {
+            $service = $servicesKeyByid->get($itemData['service_id']);
+            if (is_null($service)) {
+                continue;
+            }
+            $finalServices[$itemData['service_id']] = new CartItemService($service, $itemData['count']);
+        }
+
+        return $finalServices;
     }
 }

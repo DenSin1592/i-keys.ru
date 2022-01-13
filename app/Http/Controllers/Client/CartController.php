@@ -59,8 +59,7 @@ class CartController extends Controller
         $item = $this->cart->add($id, $count);
 
         if($countAdditionalKeys > 0){
-            $item->setService(Service::ADD_KEYS_ID, $countAdditionalKeys);
-            $this->cart->save();
+            $this->cart->setService($id, Service::ADD_KEYS_ID, $countAdditionalKeys);
         }
 
         return \Response::json([
@@ -120,7 +119,8 @@ class CartController extends Controller
         return \View::make('client.cart._summary_block');
     }
 
-    public function addServiceForItem()
+
+    public function addServiceForItem(): JsonResponse
     {
         if (!\Request::ajax()){
             \App::abort(404, 'Page not found');
@@ -130,14 +130,7 @@ class CartController extends Controller
         $serviceId = (int)\Request::get('serviceId');
         $count = (int)\Request::get('count');
 
-        $item = $this->cart->findItem($productId);
-
-        if(is_null($item)){
-            throw new \Exception('Didn\'t find the item');
-        }
-
-        $item->setService($serviceId, $count);
-        $this->cart->save();
+        $this->cart->setService($productId, $serviceId, $count);
 
         return \Response::json([
             'count' => $count,

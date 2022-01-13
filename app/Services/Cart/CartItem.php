@@ -2,6 +2,8 @@
 
 namespace App\Services\Cart;
 
+use App\Models\Service;
+
 
 class CartItem
 {
@@ -36,13 +38,18 @@ class CartItem
         $this->count = $count;
     }
 
-    public function setService(int $serviceId, int $count)
+    public function setService(Service $service, int $count)
     {
-        if($count === 0 && isset($this->services[$serviceId])){
-            unset($this->services[$serviceId]);
-        } else {
-            $this->services[$serviceId] = $count;
+        if ($count === 0 && isset($this->services[$service->id])) {
+            unset($this->services[$service->id]);
+            return;
         }
+
+        if($count === 0){
+            return;
+        }
+
+        $this->services[$service->id] = new CartItemService($service, $count);
     }
 
     public function getServices()
@@ -52,6 +59,15 @@ class CartItem
 
     public function getServiceCount($id): int
     {
-        return $this->services[$id] ?? 0;
+        if (isset($this->services[$id])) {
+            return $this->services[$id]->getCount();
+        }
+        return 0;
+
+    }
+
+    public function checkService($serviceId)
+    {
+        return isset($this->services[$serviceId]);
     }
 }
