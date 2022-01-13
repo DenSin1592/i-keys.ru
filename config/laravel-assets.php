@@ -74,6 +74,8 @@ return [
                 'js/client/cart/cart_add.js',
                 'js/client/cart/cart_remove.js',
                 'js/client/cart/cart_update.js',
+                'js/client/cart/cart_add_service.js',
+                'js/client/cart/cart_add_or_delete_services.js',
                 'js/client/change_product_card.js',
                 'js/client/reset_product_card.js',
 

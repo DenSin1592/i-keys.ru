@@ -48,9 +48,13 @@
                 <div class="card-product-price-container col">
                     <div class="card-product-price-block d-flex flex-wrap">
                         <div class="card-product-price"> {!! Helper::priceFormat($productData['product']->price) !!}<span class="rouble" >руб.</span></div>
-                        <div class="card-product-old-price"> {!! Helper::priceFormat($productData['product']->getOldPrice()) !!}<span class="rouble">руб.</span></div>
+                        @if(!is_null($oldPrice = $productData['product']->getOldPrice()))
+                        <div class="card-product-old-price"> {!! Helper::priceFormat($oldPrice) !!}<span class="rouble">руб.</span></div>
+                        @endif
                     </div>
+                    @if(!is_null($oldPrice))
                     <div class="card-product-sale-price text-danger">{{$productData['product']->sale_string}}</div>
+                    @endif
                 </div>
 
                 <div class="card-product-cart-container col-auto">

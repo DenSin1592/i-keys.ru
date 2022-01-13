@@ -13,6 +13,7 @@ let initSelect2 = function () {
 
 let customNumberButtonInit = function () {
 
+    $(".custom-number .custom-number-button").off("click");
     $(".custom-number .custom-number-button").on("click", function (e) {
         let target = $(e.currentTarget);
         let container = target.closest('.custom-number');
@@ -29,8 +30,8 @@ let customNumberButtonInit = function () {
         input.trigger('change');
     });
 
-
-    $(".custom-number .custom-number-input").on("change", function (e) {
+    $(".custom-number .custom-number-input").off('change');
+    $(".custom-number .custom-number-input").on('change', function (e) {
         let input = $(e.currentTarget);
         let inputMinValue = input.data('minValue') ?? 1;
         let oldValue = parseFloat(input.val());

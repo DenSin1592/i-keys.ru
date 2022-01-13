@@ -6,4 +6,5 @@ Route::prefix('cart')->name('cart.')->group(function () {
     Route::put('/update', 'CartController@update')->name('update');
     Route::get('/update-summary', 'CartController@updateSummary')->name('update-summary');
     Route::get('/', 'CartController@show')->name('show');
+    Route::post('/add-service', 'CartController@addServiceForItem')->name('add.service');
 });

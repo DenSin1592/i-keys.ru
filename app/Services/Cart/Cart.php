@@ -2,6 +2,7 @@
 
 namespace App\Services\Cart;
 
+use App\Models\Service;
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Storage\ICardStorage;
 
@@ -63,6 +64,10 @@ class Cart
             $this->items(),
             static function ($summary, $item) {
                 $summary += ($item->getPrice() * $item->getCount());
+                $services = $item->getServices();
+                foreach ($services as $service){
+                    $summary += $service->getPrice() * $service->getCount();
+                }
 
                 return $summary;
             },
@@ -79,10 +84,10 @@ class Cart
             throw new RuntimeException("Unable to add product to cart. ProductId = $productId. Count = $count.");
         }
 
-        $itemList = $this->items();
         $resultItem = $this->findItem($product->id);
 
         if (is_null($resultItem)) {
+            $itemList = $this->items();
             $resultItem = new CartItem($product, $count);
             $itemList[] = $resultItem;
             $this->setItems($itemList);
@@ -153,12 +158,62 @@ class Cart
         return true;
     }
 
+    public function getCountService(int $productId, int $serviceId): int
+    {
+        $item = $this->findItem($productId);
+
+        return $item?->getServices()[$serviceId] ?? 0;
+    }
+
+
+    public function checkService(int $productId, int $serviceId): bool
+    {
+        $item = $this->findItem($productId);
+
+        return $item->checkService($serviceId);
+    }
+
+
+    public function getTotalServicesCount(): int
+    {
+        $count = 0;
+        $items = $this->items();
+
+        foreach ($items as $element){
+            $count += count($element->getServices());
+        }
+
+        return $count;
+    }
+
+
+    public function setService(int $itemId, int $serviceId, int $count)
+    {
+        $item = $this->findItem($itemId);
+        if(is_null($item)){
+            throw new \Exception('CartItem not search');
+        }
+
+        $service = Service::find($serviceId);
+        if(is_null($service)){
+            throw new \Exception('Service in DB not search');
+        }
+
+        $item->setService($service, $count);
+        $this->save();
+    }
+
 
     private function save()
     {
         $itemListData = [];
-        foreach ($this->items() as $item) {
-            $itemListData[] = ['product_id' => $item->getProduct()->id, 'count' => $item->getCount()];
+        foreach ($this->items() as $key => $item) {
+            $itemListData[$key] = ['product_id' => $item->getProduct()->id, 'count' => $item->getCount(), 'services' => []];
+            foreach ($item->getServices() as $serviceId => $serviceItem){
+                if(($serviceCount = $serviceItem->getCount()) > 0){
+                    $itemListData[$key]['services'][] = ['service_id' => $serviceId, 'count' => $serviceCount];
+                }
+            }
         }
 
         $this->storage->save($itemListData);
@@ -175,17 +230,22 @@ class Cart
         $rawItemListData = $this->storage->getItems();
         $itemListData = [];
         $productIds = [];
-        foreach ($rawItemListData as $itemData) {
+        foreach ($rawItemListData as $key => $itemData) {
             $productId = (int)data_get($itemData, 'product_id');
             $count = (int)data_get($itemData, 'count');
+            $itemData['services'] = data_get($itemData, 'services', []);
+
             if (empty($productId) || $count < 1) {
                 continue;
             }
-            $itemListData[] = [
+            $itemListData[$key] = [
                 'product_id' => $productId,
                 'count' => $count,
+                'services' => [],
             ];
             $productIds[] = $productId;
+
+            $itemListData[$key]['services'] = $this->loadServices($itemData['services']);
         }
 
         $productsKeyById = $this->productRepository->getPublishedByIds($productIds)->keyBy('id');
@@ -195,9 +255,46 @@ class Cart
             if (is_null($product)) {
                 continue;
             }
-            $items[] = new CartItem($product, $itemData['count']);
+            $items[] = new CartItem($product, $itemData['count'], $itemData['services']);
         }
 
         return $items;
+    }
+
+
+    private function loadServices(array $services): array
+    {
+        $finalServices = [];
+
+        foreach ($services as $service){
+            $serviceId = (int)data_get($service, 'service_id');
+            $count = (int)data_get($service, 'count');
+
+            if (empty($serviceId) || $count < 1) {
+                continue;
+            }
+
+            $itemListData[] = [
+                'service_id' => $serviceId,
+                'count' => $count,
+            ];
+            $serviceIds[] = $serviceId;
+        }
+
+        if(!isset($serviceIds)){
+            return $finalServices;
+        }
+
+        $servicesKeyByid = Service::query()->where('publish', true)->whereIn('id', $serviceIds)->get()->keyBy('id');
+
+        foreach ($itemListData as $itemData) {
+            $service = $servicesKeyByid->get($itemData['service_id']);
+            if (is_null($service)) {
+                continue;
+            }
+            $finalServices[$itemData['service_id']] = new CartItemService($service, $itemData['count']);
+        }
+
+        return $finalServices;
     }
 }

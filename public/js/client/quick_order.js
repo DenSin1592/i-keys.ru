@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
             error: function () {
                 submitBtn.prop('disabled', false);
                 submitBtn.removeClass('loader');
+                document.modalMessageErrorShow();
             }
         });
     });

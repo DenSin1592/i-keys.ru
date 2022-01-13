@@ -263,8 +263,7 @@
                                                 class="product-control product-control-compare btn btn-lg btn-secondary font-weight-normal"
                                                 data-toggle="modal" data-target="#modalAddToCompare">
                                             <svg class="product-control-media" width="24" height="25">
-                                                <use
-                                                    xlink:href="{{asset('/images/client/sprite.svg#icon-compare')}}"></use>
+                                                <use xlink:href="{{asset('/images/client/sprite.svg#icon-compare')}}"></use>
                                             </svg>
 
                                             <span class="product-control-text d-none d-lg-inline">Сравнить</span>
@@ -279,9 +278,34 @@
                                     </div>
                                 </div>
                             </div>
+
                             @if($productData['count_keys_in_set'])
-                                @include('client.product._product_info._count_keys_in_set')
+                                <div class="product-included-block">
+
+                                    <svg class="product-included-media" width="20" height="20">
+                                        <use xlink:href="{{asset('/images/client/sprite.svg#icon-key')}}"></use>
+                                    </svg>
+
+                                    <span class="product-included-title">
+                                        В комплекте
+                                        <b>{{$productData['count_keys_in_set']}}
+                                            <span class="text-danger count-additional-keys" style="display:none;"
+                                                  data-count="{{\App\Facades\Cart::getCountService($productData['product']->id, \App\Models\Service::ADD_KEYS_ID)}}"> + {{\App\Facades\Cart::getCountService($productData['product']->id, \App\Models\Service::ADD_KEYS_ID)}}
+                                            </span>
+                                        </b>
+                                        {{\Lang::choice('ключ|ключа|ключей', $productData['count_keys_in_set'])}}
+                                    </span>
+
+                                    @isset($productData['services']['add_keys'])
+                                        <button type="button" class="product-included-toggle"
+                                                data-toggle="modal"
+                                                data-target="#modalAddKeys">Добавить еще ключи на всю семью
+                                        </button>
+                                    @endisset
+
+                                </div>
                             @endif
+
                             <div class="product-delivery-block d-flex align-items-center">
                                 <img src="{{asset('/images/client/icons/icon-delivery-light.png')}}"
                                      class="product-delivery-media"
