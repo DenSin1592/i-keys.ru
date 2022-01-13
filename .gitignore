@@ -20,6 +20,7 @@ _ide_helper.php
 .env.testing
 public/(css|js)/compiled/
 .DS_Store
+.sass-cache
 
 .docker
 docker-compose.yaml
