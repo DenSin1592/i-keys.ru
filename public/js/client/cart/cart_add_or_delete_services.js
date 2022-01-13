@@ -33,7 +33,9 @@ if(document.location.pathname === '/cart'){
                 ).fail(() => {
                     document.modalMessageErrorShow();
                     setTimeout(() => {document.location.reload();}, 1000)
-                })
+                }).then(() => {
+                    document.updateCartSummary();
+                });
             });
         });
 

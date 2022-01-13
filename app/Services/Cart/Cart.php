@@ -63,6 +63,10 @@ class Cart
             $this->items(),
             static function ($summary, $item) {
                 $summary += ($item->getPrice() * $item->getCount());
+//                $sevices = $item->getServices();
+//                foreach ($sevices as $sevice){
+//                    $summary +=
+//                }
 
                 return $summary;
             },
@@ -168,13 +172,28 @@ class Cart
     }
 
 
+    public function getTotalServicesCount(): int
+    {
+        $count = 0;
+        $items = $this->items();
+
+        foreach ($items as $element){
+            $count += count($element->getServices());
+        }
+
+        return $count;
+    }
+
+
     public function save()
     {
         $itemListData = [];
         foreach ($this->items() as $key => $item) {
             $itemListData[$key] = ['product_id' => $item->getProduct()->id, 'count' => $item->getCount(), 'service' => []];
-            foreach ($item->getServices() as $serviceId => $count){
-                $itemListData[$key]['services'][] = ['service_id' => $serviceId, 'count' => $count];
+            foreach ($item->getServices() as $serviceId => $serviceCount){
+                if($serviceCount > 0){
+                    $itemListData[$key]['services'][] = ['service_id' => $serviceId, 'count' => $serviceCount];
+                }
             }
         }
 
