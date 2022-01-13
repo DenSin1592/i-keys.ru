@@ -742,6 +742,10 @@ class EloquentProductRepository
             $services = $model->attributeSingleValues()->where('attribute_id', AttributeConstants::CYLINDER_SERIES_ID)->first()?->allowedValue?->services()->where('publish', true)->get();
         }
 
+        if($model->isLock()){
+            $services = $model->attributeSingleValues()->where('attribute_id', AttributeConstants::LOCK_SERIES_ID)->first()?->allowedValue?->services()->where('publish', true)->get();
+        }
+
         return $services ?? Collection::make([]);
     }
 
