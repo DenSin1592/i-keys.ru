@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.modalMessage.find('h3').text(header);
             document.modalMessage.find('.modal-body').replaceWith(body);
             document.modalMessage.modal('show');
+        }).then(() => {
+            customNumberButtonInit();
         });
     };
 
