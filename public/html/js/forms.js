@@ -34,7 +34,8 @@ let customNumberButtonInit = function () {
     $(".custom-number .custom-number-input").on('change', function (e) {
         let input = $(e.currentTarget);
         let inputMinValue = input.data('minValue') ?? 1;
-        let oldValue = parseFloat(input.val());
+        let oldValue = (!isNaN(parseFloat(input.val())) && isFinite(input.val())) ? parseFloat(input.val()) : inputMinValue;
+
         let newValue;
 
         newValue = oldValue < inputMinValue ? inputMinValue : oldValue;
