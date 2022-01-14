@@ -34,7 +34,6 @@ class OrderLaravelValidator extends AbstractLaravelValidator
     {
         $rules = [
             'region_id' => ['nullable', 'exists:regions,id'],
-            'name' => ['required'],
             'phone' => ['nullable', 'phone'],
             'email' => ['nullable', 'email'],
             'status' => ['in:' . implode(',', array_keys($this->orderRepository->getStatusVariants()))],
