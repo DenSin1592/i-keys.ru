@@ -31,11 +31,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     this.defaultShowErrors(); // keep error messages next to each input element
                 },
 
+                // спец. методы проверки в validMethods.js
                 rules: {
-                    name: {
-                        required: true,
-                        isText: true // спец. методы проверки в validMethods.js
-                    },
                     email: {
                         email: true
                     },
@@ -45,12 +42,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     },
                     delivery_method: {
                         required: true
-                    },
-                    city: {
-                        isText: true
-                    },
-                    street: {
-                        isText: true
                     }
                 },
                 messages: {
