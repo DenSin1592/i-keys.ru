@@ -88,6 +88,7 @@ return [
                 'js/client/assets/uploadFile.js',
                 'js/client/cart/order/services/cartStepsOrder.js',
                 'js/client/cart/order/main.js',
+                'js/client/change_product_page_when_changing_size_cylinder.js',
 
             ],
             'filters' => ['js_min', 'end_with_semicolon'],

@@ -152,8 +152,8 @@
                             </div>
                             @endif
 
-                            @if($productData['sizesCylinder'])
-                                <div class="product-detail-block d-flex flex-wrap">
+                            @if(!empty($productData['sizesCylinder']))
+                                <div class="product-detail-block d-flex flex-wrap" data-product-id="{{$productData['product']->id}}">
                                             <span class="product-detail-title">Типоразмер
                                                 <span class="d-none d-xxl-inline text-muted">(Выберите нужный)</span>
                                                 <button type="button"
@@ -170,8 +170,8 @@
                                                         <label for="product-scheme-option-1"
                                                                class="product-scheme-option-title">Внеш.</label>
 
-                                                        <select name="" id="product-scheme-option-1"
-                                                                class="product-scheme-option-select custom-control custom-select"
+                                                        <select id="product-scheme-option-1"
+                                                                class="product-scheme-option-select custom-control custom-select change-product-page-size-cylinder-first"
                                                                 style="width: 100%;">
                                                             @foreach($productData['sizesCylinder']['first_sizes'] as $size)
                                                                 <option {{$size['isActive'] ? 'selected' : ''}}
@@ -186,8 +186,8 @@
                                                         <label for="product-scheme-option-2"
                                                                class="product-scheme-option-title">Внутр.</label>
 
-                                                        <select name="" id="product-scheme-option-2"
-                                                                class="product-scheme-option-select custom-control custom-select"
+                                                        <select id="product-scheme-option-2"
+                                                                class="product-scheme-option-select custom-control custom-select change-product-page-size-cylinder-second"
                                                                 style="width: 100%;">
                                                             @foreach($productData['sizesCylinder']['second_sizes'] as $size)
                                                                 <option {{$size['isActive'] ? 'selected' : ''}}
@@ -309,14 +309,11 @@
                             @endif
 
                             <div class="product-delivery-block d-flex align-items-center">
-                                <img src="{{asset('/images/client/icons/icon-delivery-light.png')}}"
-                                     class="product-delivery-media"
-                                     width="40" height="20" alt="">
-                                <!-- <span class="product-delivery-thumbnail">
+                                <span class="product-delivery-thumbnail">
                                     <svg class="product-delivery-media" width="40" height="20">
-                                        <use xlink:href="/images/sprite.svg#icon-delivery"></use>
+                                        <use xlink:href="/images/client/sprite.svg#icon-delivery"></use>
                                     </svg>
-                                </span> -->
+                                </span>
 
                                 <span class="product-delivery-content">
                                     Доставка по
