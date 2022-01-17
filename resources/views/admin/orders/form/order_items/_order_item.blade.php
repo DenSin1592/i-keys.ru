@@ -7,11 +7,10 @@
     @endif>
 
     <td class="code-1c">
-        @if(!is_null($orderItem->service_id)){{'Услуга'}} @endif
-        @if(!is_null($orderItem->product_id)){{'Продукт'}} @endif
+        {{!is_null($orderItem->product_id) ? 'Продукт' : 'Услуга'}}
     </td>
 
-    <td class="name">
+    <td class="name" style='text-align: left;'>
         {!! Form::hidden("order_items[{$orderItem->id}][id]", $orderItem->id) !!}
 
         {!! Form::tbFormGroupOpen("order_items.{$orderItem->id}.name") !!}
