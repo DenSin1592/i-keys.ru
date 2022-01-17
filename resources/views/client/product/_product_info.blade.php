@@ -152,7 +152,7 @@
                             </div>
                             @endif
 
-                            @if($productData['product']->isCylinder())
+                            @if($productData['sizesCylinder'])
                                 <div class="product-detail-block d-flex flex-wrap">
                                             <span class="product-detail-title">Типоразмер
                                                 <span class="d-none d-xxl-inline text-muted">(Выберите нужный)</span>
@@ -173,8 +173,10 @@
                                                         <select name="" id="product-scheme-option-1"
                                                                 class="product-scheme-option-select custom-control custom-select"
                                                                 style="width: 100%;">
-                                                            <option value="30мм">30мм</option>
-                                                            <option value="40мм">40мм</option>
+                                                            @foreach($productData['sizesCylinder']['first_sizes'] as $size)
+                                                                <option {{$size['isActive'] ? 'selected' : ''}}
+                                                                    value="{{$size['value']}}">{{$size['value']}}мм</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -187,8 +189,10 @@
                                                         <select name="" id="product-scheme-option-2"
                                                                 class="product-scheme-option-select custom-control custom-select"
                                                                 style="width: 100%;">
-                                                            <option value="75мм">75мм</option>
-                                                            <option value="85мм">85мм</option>
+                                                            @foreach($productData['sizesCylinder']['second_sizes'] as $size)
+                                                                <option {{$size['isActive'] ? 'selected' : ''}}
+                                                                        value="{{$size['value']}}">{{$size['value']}}мм</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

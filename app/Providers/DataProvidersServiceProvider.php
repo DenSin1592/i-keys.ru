@@ -9,6 +9,7 @@ use App\Services\DataProviders\ClientProduct\Plugins\Attributes;
 use App\Services\DataProviders\ClientProduct\Plugins\Colors;
 use App\Services\DataProviders\ClientProduct\Plugins\ProductImages;
 use App\Services\DataProviders\ClientProduct\Plugins\RelatedProducts;
+use App\Services\DataProviders\ClientProduct\Plugins\SizesCylinders;
 use App\Services\DataProviders\ClientProductList\ClientProductList;
 use App\Services\DataProviders\ClientProductList\Plugins as ClientProductListPlugins;
 use App\Services\DataProviders\OrderForm\OrderForm;
@@ -85,6 +86,7 @@ class DataProvidersServiceProvider extends ServiceProvider
                 $productProvider->addPlugin(\App::make(Attributes::class));
                 $productProvider->addPlugin(\App::make(RelatedProducts::class));
                 $productProvider->addPlugin(\App::make(Colors::class));
+                $productProvider->addPlugin(\App::make(SizesCylinders::class));
                 $productProvider->addPlugin(\App::make(\App\Services\DataProviders\ClientProduct\Plugins\Services::class));
 
                 return $productProvider;

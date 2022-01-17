@@ -63,6 +63,14 @@ trait HasAttributeValues
     }
 
 
+    public function getSingleAllowedValue(int $id)
+    {
+        return $this->attributeSingleValues()
+            ->where('attribute_id', $id)
+            ->first()->allowedValue;
+    }
+
+
     protected static function bootHasAttributeValues()
     {
         self::deleting(function (self $instance) {
