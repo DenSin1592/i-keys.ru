@@ -215,7 +215,7 @@ class Helper
 
     public function priceMeasure()
     {
-        return '<i class="icon-rouble" ></i>';
+        return '<span class="rouble" >руб.</span>';
     }
 
     public function prepareProductsView($productsView)

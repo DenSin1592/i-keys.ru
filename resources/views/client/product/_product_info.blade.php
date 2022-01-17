@@ -237,13 +237,11 @@
                                 </div>
 
                                 <span
-                                    class="product-price">{!! Helper::priceFormat($productData['product']->price) !!}<span
-                                        class="rouble">руб.</span></span>
+                                    class="product-price">{!! Helper::priceFormat(price: $productData['product']->price, withMeasure: true) !!}</span>
 
                                 @if(!is_null($oldPrice = $productData['product']->getOldPrice()))
                                     <span
-                                        class="product-old-price text-muted">{!! Helper::priceFormat($oldPrice) !!}<span
-                                            class="rouble">руб.</span></span>
+                                        class="product-old-price text-muted">{!! Helper::priceFormat(price: $oldPrice, withMeasure: true) !!}</span>
                                     <span
                                         class="product-sale-price font-weight-bold text-danger">{{$productData['product']->sale_string}}</span>
                                     <span class="product-sale-hint d-block">Распродажа в связи с обновлением ассортимента</span>

@@ -47,9 +47,9 @@
             <div class="form-row flex-nowrap">
                 <div class="card-product-price-container col">
                     <div class="card-product-price-block d-flex flex-wrap">
-                        <div class="card-product-price"> {!! Helper::priceFormat($productData['product']->price) !!}<span class="rouble" >руб.</span></div>
+                        <div class="card-product-price"> {!! Helper::priceFormat($productData['product']->price, false, true) !!}</div>
                         @if(!is_null($oldPrice = $productData['product']->getOldPrice()))
-                        <div class="card-product-old-price"> {!! Helper::priceFormat($oldPrice) !!}<span class="rouble">руб.</span></div>
+                        <div class="card-product-old-price"> {!! Helper::priceFormat($oldPrice, false, true) !!}</div>
                         @endif
                     </div>
                     @if(!is_null($oldPrice))
