@@ -11,10 +11,14 @@ use Illuminate\Database\Eloquent\Collection;
 class SizesCylinders implements ClientProductPlugin
 {
     private Product $product;
+    private string $value_first_size_cylinder;
+    private string $value_second_size_cylinder;
 
     public function getForProduct($product): array
     {
         $this->product = $product;
+        $this->initProperties();
+
         $array = [];
 
         if($product->isCylinder()){
@@ -22,6 +26,14 @@ class SizesCylinders implements ClientProductPlugin
         }
 
         return ['sizesCylinder' => $array];
+    }
+
+
+    private function initProperties(): void
+    {
+        $attrAllowedValue = $this->product->getSingleAllowedValue(AttributeConstants::SIZE_CYLINDER_ID);
+        $this->value_first_size_cylinder = $attrAllowedValue->value_first_size_cylinder;
+        $this->value_second_size_cylinder = $attrAllowedValue->value_second_size_cylinder;
     }
 
 
@@ -118,7 +130,7 @@ class SizesCylinders implements ClientProductPlugin
                 continue;
             }
 
-            $isActive = $this->product->getSingleAllowedValue(AttributeConstants::SIZE_CYLINDER_ID)->$fieldSize === $size;
+            $isActive = $this->$fieldSize === $size;
 
             if($isActive && (is_null($size))){
                 $attrValues = [];
