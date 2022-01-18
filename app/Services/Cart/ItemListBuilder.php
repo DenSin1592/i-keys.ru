@@ -3,7 +3,7 @@
 namespace App\Services\Cart;
 
 use App\Models\Service;
-use App\Services\Product\Attribute\Color\ColorProvider;
+use App\Services\Product\Attribute\Color\DataProvider;
 use App\Services\Product\Attribute\CountKeysInSet\CountKeysInSetProvider;
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Service\ServicesSorter;
@@ -14,7 +14,7 @@ class ItemListBuilder
     public function __construct(
         private EloquentProductRepository $productRepository,
         private ServicesSorter $servicesSorter,
-        private ColorProvider $colorProvider,
+        private DataProvider $colorProvider,
         private CountKeysInSetProvider $countKeysInSettProvider,
     ){}
 
