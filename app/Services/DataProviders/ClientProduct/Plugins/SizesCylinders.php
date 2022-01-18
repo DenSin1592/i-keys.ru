@@ -18,11 +18,12 @@ class SizesCylinders implements ClientProductPlugin
     public function getForProduct($product): array
     {
         $this->product = $product;
-        $this->initProperties();
+        
 
         $array = [];
 
         if($product->isCylinder()){
+            $this->initProperties();
             $array = $this->getDataForCylinder($product);
         }
 
