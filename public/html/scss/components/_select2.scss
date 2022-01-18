@@ -56,7 +56,15 @@
         font-size: 15px;
         line-height: 1.25;
 
+        .select2-results__options {
+            overflow-x: hidden !important;
+        }
+
         .select2-results__option {
+            min-width: 85px;
+            padding: 6px 18px 6px 6px;
+            white-space: nowrap;
+
             &.select2-results__option--highlighted {
                 background-color: $c-secondary;
             }
