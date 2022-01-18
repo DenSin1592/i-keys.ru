@@ -1,5 +1,5 @@
 <!-- Offcanvas -->
-<div id="offcanvas" class="offcanvas d-lg-none">
+<div id="offcanvas" class="offcanvas d-xxl-none">
     <div class="offcanvas-header">
         <div class="form-row flex-nowrap align-items-center">
             <div class="offcanvas-toggle-container col-auto">
