@@ -89,7 +89,7 @@ class ServicesController extends Controller
                 $redirect = \Redirect::route('cc.services.edit', [$service->id]);
             }
 
-            return $redirect->with('alert_success', 'Параметр обновлён');
+            return $redirect->with('alert_success', 'Услуга обновлена');
         }
     }
 
