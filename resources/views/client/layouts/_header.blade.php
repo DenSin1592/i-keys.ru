@@ -1,4 +1,4 @@
-<header class="header-box flex-shrink-0 flex-grow-1 compensate-for-scrollbar">
+<header class="header-box flex-shrink-0 flex-grow-1 is-fixed compensate-for-scrollbar">
     <div class="container">
         <div class="row flex-nowrap flex-md-wrap align-items-center">
             <div class="header-location-container col-auto d-none d-lg-block">
