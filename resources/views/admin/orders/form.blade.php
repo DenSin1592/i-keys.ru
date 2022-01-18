@@ -61,7 +61,7 @@
 
         <div class="form-group">
             <label for="phone" class="control-label">Телефон</label>
-            <input data-phone class="form-control" name="phone" type="text" id="phone" required>
+            <input data-phone class="form-control" name="phone" type="text" id="phone" required value="{{ $order->phone }}">
         </div>
         {!! Form::tbTextBlock('email') !!}
         {!! Form::tbSelectBlock('payment_status', $formData['payment_status_variants']) !!}
