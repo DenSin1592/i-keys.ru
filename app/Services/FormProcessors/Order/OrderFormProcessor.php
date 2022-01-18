@@ -111,8 +111,6 @@ class OrderFormProcessor
             $name =  date("Y-m-d_H-i-s") .'_'. $file->getClientOriginalName();
             $file = $file->move('uploads/document_legal_entity/', $name);
             $data['document'] = $name;
-        } else {
-            $data['document'] = null;
         }
 
         if (!isset($data['status'])) {

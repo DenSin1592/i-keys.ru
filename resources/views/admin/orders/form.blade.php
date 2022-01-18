@@ -16,7 +16,7 @@
                     <div class="menu-element {{ $formData['order']->id == $order->id ? 'active' : '' }}">
                         <div class="name">
                             <a href="{{ route('cc.orders.edit', [$order->id]) }}"
-                               title="{{ $order->name }}">{{ $order->name }}</a>
+                               title="{{ $order->name ?? '-' }}">{!! $order->name ?? '<i>не указано</i>' !!}</a>
                         </div>
                         <div class="control">
                             @include('admin.orders._list_controls', ['order' => $order])
@@ -59,7 +59,10 @@
         {!! Form::tbSelectBlock('status', $formData['status_variants']) !!}
         {!! Form::tbSelectBlock('type', $formData['type_variants']) !!}
 
-        {!! Form::tbTextBlock('phone', null, null, ['data-phone' => true]) !!}
+        <div class="form-group">
+            <label for="phone" class="control-label">Телефон</label>
+            <input data-phone class="form-control" name="phone" type="text" id="phone" required>
+        </div>
         {!! Form::tbTextBlock('email') !!}
         {!! Form::tbSelectBlock('payment_status', $formData['payment_status_variants']) !!}
         {!! Form::tbSelectBlock('payment_method', $formData['payment_method_variants']) !!}

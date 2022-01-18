@@ -1,7 +1,7 @@
 @extends('admin.orders.form', ['formData' => $formData, 'orderList' => $orderList])
 
 @section('title')
-    {{ $formData['order']->name }} - редактирование
+    {{ $formData['order']->name ?? $formData['order']->phone }} - редактирование
 @stop
 
 @section('submit_block')

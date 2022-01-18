@@ -18,7 +18,7 @@
                 </div>
                 @include('admin.shared.device_type._list_column', ['model' => $order])
                 <div class="name">
-                    <a href="{{ route('cc.orders.edit', $order->id) }}">{{ $order->name }}</a>
+                    <a href="{{ route('cc.orders.edit', $order->id) }}">{!! $order->name ?? '<i>не указано</i>' !!}</a>
                 </div>
                 <div class="phone">{{ $order->phone }}</div>
                 <div class="created_at">{{ $order->created_at->format('d.m.Y H:i') }}</div>
