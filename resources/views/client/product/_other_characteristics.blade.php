@@ -16,7 +16,7 @@
 
                                     <ul class="product-specifications-list list-unstyled">
                                         @foreach($productData['attributesData'][\App\Models\Attribute\AttributeConstants::OTHER][\App\Models\Attribute\AttributeConstants::GENERAL] as $elem)
-                                            <li class="product-specifications-item row">
+                                            <li class="product-specifications-item row align-items-center">
                                                 <span
                                                     class="product-specifications-title col-sm-6">{{$elem['name']}}</span>
                                                 <span
@@ -35,7 +35,7 @@
 
                                     <ul class="product-specifications-list list-unstyled">
                                         @foreach($productData['attributesData'][\App\Models\Attribute\AttributeConstants::OTHER][\App\Models\Attribute\AttributeConstants::TECHNICAL] as $elem)
-                                            <li class="product-specifications-item row">
+                                            <li class="product-specifications-item row align-items-center">
                                                 <span
                                                     class="product-specifications-title col-sm-6">{{$elem['name']}}</span>
                                                 <span
@@ -54,7 +54,7 @@
 
                                     <ul class="product-specifications-list list-unstyled">
                                         @foreach($productData['attributesData'][\App\Models\Attribute\AttributeConstants::OTHER][\App\Models\Attribute\AttributeConstants::KEY] as $elem)
-                                            <li class="product-specifications-item row">
+                                            <li class="product-specifications-item row align-items-center">
                                                 <span
                                                     class="product-specifications-title col-sm-6">{{$elem['name']}}</span>
                                                 <span
