@@ -9,6 +9,10 @@
     font-size: 14px;
     line-height: 20px;
 
+    &:hover {
+        color: $c-black;
+    }
+
     .header-search-thumbnail {
         flex: 0 0 24px;
         width: 24px;

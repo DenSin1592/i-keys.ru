@@ -62,6 +62,7 @@ return [
                 'html/js/window_size_helper.js',
                 'html/js/backdrop.js',
                 'html/js/offcanvas.js',
+                'html/js/search.js',
                 'html/js/forms.js',
                 'html/js/filter.js',
                 'html/js/sliders.js',
