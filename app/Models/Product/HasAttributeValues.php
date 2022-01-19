@@ -67,7 +67,7 @@ trait HasAttributeValues
     {
         return $this->attributeSingleValues()
             ->where('attribute_id', $id)
-            ->first()->allowedValue;
+            ->first()?->allowedValue;
     }
 
 

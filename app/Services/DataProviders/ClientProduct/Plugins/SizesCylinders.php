@@ -2,6 +2,7 @@
 
 namespace App\Services\DataProviders\ClientProduct\Plugins;
 
+use App\Models\Attribute\AllowedValue;
 use App\Models\Attribute\AttributeConstants;
 use App\Models\Product;
 use App\Services\DataProviders\ClientProduct\ClientProductPlugin;
@@ -18,25 +19,25 @@ class SizesCylinders implements ClientProductPlugin
     public function getForProduct($product): array
     {
         $this->product = $product;
-        
-
-        $array = [];
-
-        if($product->isCylinder()){
-            $this->initProperties();
-            $array = $this->getDataForCylinder($product);
+        if(!$product->isCylinder()){
+            return [];
         }
+
+        $attrAllowedValue = $this->product->getSingleAllowedValue(AttributeConstants::SIZE_CYLINDER_ID);
+        if(!$attrAllowedValue instanceof AllowedValue){
+            return [];
+        }
+        $this->value_first_size_cylinder = $attrAllowedValue->value_first_size_cylinder;
+        $this->value_second_size_cylinder = $attrAllowedValue->value_second_size_cylinder;
+
+
+        $array = $this->getDataForCylinder($product);
 
         return ['sizesCylinder' => $array];
     }
 
 
-    private function initProperties(): void
-    {
-        $attrAllowedValue = $this->product->getSingleAllowedValue(AttributeConstants::SIZE_CYLINDER_ID);
-        $this->value_first_size_cylinder = $attrAllowedValue->value_first_size_cylinder;
-        $this->value_second_size_cylinder = $attrAllowedValue->value_second_size_cylinder;
-    }
+
 
 
     private function getDataForCylinder($product)
