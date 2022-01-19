@@ -9,7 +9,7 @@
                 <div class="smartphone-steps-grid row">
                     <div class="smartphone-step-item col-md-10 col-lg-12">
                         <div class="card card-smartphone">
-                            <div class="row flex-nowrap">
+                            <div class="row flex-nowrap align-items-start">
                                 <div class="card-thumbnail col-auto">
                                     <img loading="lazy" src="{{asset('/images/client/sections/section-smartphone/smartphone-step-1.jpg')}}" width="114" height="114" alt="" class="card-media">
                                 </div>
@@ -23,7 +23,7 @@
 
                     <div class="smartphone-step-item col-md-10 col-lg-12">
                         <div class="card card-smartphone">
-                            <div class="row flex-nowrap">
+                            <div class="row flex-nowrap align-items-start">
                                 <div class="card-thumbnail col-auto">
                                     <img loading="lazy" src="{{asset('/images/client/sections/section-smartphone/smartphone-step-2.jpg')}}" width="114" height="114" alt="" class="card-media">
                                 </div>
@@ -40,7 +40,7 @@
 
                     <div class="smartphone-step-item col-md-10 col-lg-12">
                         <div class="card card-smartphone">
-                            <div class="row flex-nowrap">
+                            <div class="row flex-nowrap align-items-start">
                                 <div class="card-thumbnail col-auto">
                                     <img loading="lazy" src="{{asset('/images/client/sections/section-smartphone/smartphone-step-3.jpg')}}" width="114" height="114" alt="" class="card-media">
                                 </div>

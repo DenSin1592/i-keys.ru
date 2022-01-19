@@ -1,19 +1,19 @@
+let offcanvasContainer = $('#offcanvas');
+let offcanvasCloseButton = offcanvasContainer.find('.offcanvas-close');
+let offcanvasOpenButton = $('.header-burger-toggle');
+
+function openOffcanvas() {
+    offcanvasContainer.addClass('open');
+    offcanvasContainer.addClass('transition');
+    appendBackdrop();
+}
+
+function closeOffcanvas() {
+    offcanvasContainer.removeClass('open');
+    removeBackdrop();
+}
+
 $(function () {
-    let offcanvasContainer = $('#offcanvas');
-    let offcanvasCloseButton = offcanvasContainer.find('.offcanvas-close');
-    let offcanvasOpenButton = $('.header-burger-toggle');
-
-    function openOffcanvas() {
-        offcanvasContainer.addClass('open');
-        offcanvasContainer.addClass('transition');
-        appendBackdrop();
-    }
-
-    function closeOffcanvas() {
-        offcanvasContainer.removeClass('open');
-        removeBackdrop();
-    }
-
     $(offcanvasOpenButton).on('click', openOffcanvas);
     $(offcanvasCloseButton).on('click', closeOffcanvas);
 
