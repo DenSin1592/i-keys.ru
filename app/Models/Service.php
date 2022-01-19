@@ -3,9 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Service extends \Eloquent
 {
     use HasFactory;
 
@@ -23,7 +22,7 @@ class Service extends Model
         'meta_description',
     ];
 
-    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function products()
     {
         return $this->belongsToMany(Product::class);
     }

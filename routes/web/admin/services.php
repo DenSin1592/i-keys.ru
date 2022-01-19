@@ -2,6 +2,10 @@
 
 // Услуги
 
+Route::prefix('services')->name('services.')->group(function () {
+    Route::put('update-positions', 'ServicesController@updatePositions')->name('update-positions');
+});
+
 Route::resource('services', 'ServicesController')->except(['show'])->names([
     'index' => 'services.index',
     'create' => 'services.create',

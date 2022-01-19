@@ -26,6 +26,7 @@ class ServicesController extends Controller
     public function index()
     {
         $serviceList = $this->serviceRepository->all();
+
         return view('admin.services.index')->with('serviceList', $serviceList);
     }
 
@@ -59,6 +60,7 @@ class ServicesController extends Controller
     public function edit($serviceId)
     {
         $service = $this->getService($serviceId);
+
         if (is_null($service)) {
             \App::abort(404, 'Service not found');
         }
@@ -79,6 +81,7 @@ class ServicesController extends Controller
         }
 
         $success = $this->serviceFormProcessor->update($service, \Request::except('redirect_to'));
+
         if (!$success) {
             return \Redirect::route('cc.services.edit', [$service->id])
                 ->withErrors($this->serviceFormProcessor->errors())->withInput();
@@ -96,7 +99,6 @@ class ServicesController extends Controller
     public function destroy($serviceId)
     {
         $service = $this->getService($serviceId);
-
         $serviceRepository = $this->serviceRepository->delete($service);
 
         return \Redirect::route('cc.services.index')
@@ -117,5 +119,16 @@ class ServicesController extends Controller
         }
 
         return $service;
+    }
+
+    public function updatePositions()
+    {
+        $this->serviceRepository->updatePositions(\Request::get('positions', []));
+
+        if (\Request::ajax()) {
+            return \Response::json(['status' => 'alert_success']);
+        } else {
+            return \Redirect::back();
+        }
     }
 }
