@@ -60,6 +60,8 @@ return [
 
                 'html/js/initial.js',
                 'html/js/window_size_helper.js',
+                'html/js/fancybox.js',
+                'html/js/tooltip.js',
                 'html/js/backdrop.js',
                 'html/js/offcanvas.js',
                 'html/js/search.js',
@@ -68,8 +70,7 @@ return [
                 'html/js/sliders.js',
                 'html/js/product.js',
                 'html/js/cart.js',
-                'html/js/fancybox.js',
-                'html/js/tooltip.js',
+                
 
                 'js/client/helpers/Arrays.js',
                 'js/client/auth_menu.js',
