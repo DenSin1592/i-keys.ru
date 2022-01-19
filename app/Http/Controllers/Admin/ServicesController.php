@@ -102,7 +102,7 @@ class ServicesController extends Controller
         $serviceRepository = $this->serviceRepository->delete($service);
 
         return \Redirect::route('cc.services.index')
-            ->with('alert_success', 'Услуга будет удалёна в ближайшее время');
+            ->with('alert_success', 'Услуга удалёна');
     }
 
     /**
