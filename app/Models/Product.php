@@ -7,13 +7,17 @@ use App\Models\Product\CategoryTools;
 use App\Models\Product\HasAttributeValues;
 use App\Models\Features\AutoPublish;
 use App\Models\Helpers\DeleteHelpers;
+use App\Models\Product\Search;
+use Illuminate\Database\Eloquent\Model;
 
 
-class Product extends \Eloquent
+class Product extends Model
 {
     use AutoPublish;
     use HasAttributeValues;
     use CategoryTools;
+    use Search;
+
 
     const VIEW_LIST = 'list';
 
@@ -133,6 +137,113 @@ class Product extends \Eloquent
     public function getExistenceString(): string
     {
         return trans("validation.model_attributes.product.existence.{$this->existence}");
+    }
+
+
+    public function toSearchableArray()
+    {
+        $searchableArray = $this->only(
+            [
+                'name',
+                'code_1c',
+                'description',
+                'header',
+                'name_with_attributes',
+                'available',
+            ]
+        );
+
+        return $searchableArray;
+    }
+
+
+    public function getMapping()
+    {
+        $mappings = $this->sourceGetMapping();
+
+        $textFieldMapping = [
+            'type' => 'text',
+            'fields' => [
+                'russian' => [
+                    'type' => 'text',
+                    'analyzer' => 'russian_analyzer',
+                ],
+                'english' => [
+                    'type' => 'text',
+                    'analyzer' => 'english_analyzer',
+                ],
+            ]
+        ];
+
+        $booleanFieldMapping = [
+            'type' => 'boolean',
+        ];
+
+        $mappings = array_merge_recursive(
+            $mappings,
+            [
+                'properties' => [
+                    'code_1c' => $textFieldMapping,
+                    'name' => $textFieldMapping,
+                    'name_with_attributes' => $textFieldMapping,
+                    'available' => $booleanFieldMapping,
+                    'header' => collect($textFieldMapping)->put('boost', 0.1)->all(),
+                    'description' => collect($textFieldMapping)->put('boost', 0.1)->all(),
+                ]
+            ]
+        );
+
+        return $mappings;
+    }
+
+
+    public function generateNameWithAttributes(): void
+    {
+        $this->name_with_attributes = $this->getNameWithAttributes();
+    }
+
+
+    public function refreshNameWithAttributes(): void
+    {
+        $this->generateNameWithAttributes();
+        $this->save();
+    }
+
+
+    public function getNameWithAttributes()
+    {
+        $attributeValues = [];
+
+        $stringAttrValues = $this->attributeStringValues()->with('attribute')->get();
+        $integerAttrValues = $this->attributeIntegerValues()->with('attribute')->get();
+        $decimalAttrValues = $this->attributeDecimalValues()->with('attribute')->get();
+        $singeAttrValues = $this->attributeSingleValues()->with(['attribute', 'allowedValue'])->get();
+        $multipleAttrValues = $this->attributeMultipleValues()->with(['attribute', 'allowedValue'])->get();
+
+        foreach ([$stringAttrValues, $integerAttrValues, $decimalAttrValues] as $attrValues) {
+            foreach ($attrValues as $attrValue) {
+                $attributeValues[$attrValue->attribute->name][] = $attrValue->value;
+            }
+        }
+
+        foreach ([$singeAttrValues, $multipleAttrValues] as $attrValues) {
+            foreach ($attrValues as $attrValue) {
+                $attributeValues[$attrValue->attribute->name][] = $attrValue->allowedValue->value;
+            }
+        }
+
+        $attributesWithValues = '';
+        foreach ($attributeValues as $name => $value) {
+            $attributesWithValues .= " {$name} " . implode(' ', (array)$value);
+        }
+
+        return "{$this->name} {$attributesWithValues}";
+    }
+
+
+    public function shouldBeSearchable()
+    {
+        return $this->publish && $this->category->in_tree_publish;
     }
 
 

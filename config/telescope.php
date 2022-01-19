@@ -96,7 +96,12 @@ return [
     ],
 
     'ignore_commands' => [
-        //
+        'fileclip:update-attachments',
+        'app:exchange:import',
+        'app:exchange:export',
+        'app:sitemap-generate',
+        'app:refresh-names-with-attributes',
+        'scout:import',
     ],
 
     /*

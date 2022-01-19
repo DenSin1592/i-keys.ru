@@ -169,6 +169,8 @@ return [
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         Diol\LaravelErrorSender\ServiceProvider::class,
         Diol\LaravelMailer\ServiceProvider::class,
+        ScoutElastic\ScoutElasticServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
 
         /*

@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Models\MetaPage;
-use App\Models\Node;
 use App\Models\Product;
 use App\Services\Breadcrumbs\Factory as Breadcrumbs;
 use App\Services\DataProviders\ClientProductList\ClientProductList;
-use App\Services\Repositories\Node\EloquentNodeRepository;
 use App\Services\Search\Rule\ProductsSearchRule;
 use App\Services\Seo\MetaHelper;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -20,8 +17,7 @@ class SearchController extends Controller
     private const ELEMENTS_ON_PAGE = 12;
 
     public function __construct(
-//        EloquentNodeRepository $nodeRepository,
-//        ClientProductList $productListProvider,
+        private ClientProductList $productListProvider,
         private MetaHelper $metaHelper,
         private Breadcrumbs $breadcrumbs
     )
@@ -33,21 +29,25 @@ class SearchController extends Controller
         $breadcrumbs->add('Поиск');
         $metaData = $this->metaHelper->getRule()->metaForName('Поиск');
 
+        $query = Request::get('query');
+        if (!empty($query)) {
+            $paginator = Product::search($query)
+                ->rule(ProductsSearchRule::class)
+                ->paginate(self::ELEMENTS_ON_PAGE);
+
+        } else {
+            $paginator = new LengthAwarePaginator([], 0, self::ELEMENTS_ON_PAGE);
+        }
+        $productsData = $this->productListProvider->getProductListData($paginator->items());
+
         return \View::make('client.search_page.show', [
             'metaData' => $metaData,
             'breadcrumbs' => $breadcrumbs,
+            'productsData' => $productsData,
         ]);
 
 
-//        $query = Request::get('query');
-//        if (!empty($query)) {
-//            $paginator = Product::search($query)
-//                ->rule(ProductsSearchRule::class)
-//                ->paginate(self::ELEMENTS_ON_PAGE);
-//
-//        } else {
-//            $paginator = new LengthAwarePaginator([], 0, self::ELEMENTS_ON_PAGE);
-//        }
+
 
 
 //        $additionalDataForMeta = ['withoutCanonical' => true, 'paginator' => $paginator];
