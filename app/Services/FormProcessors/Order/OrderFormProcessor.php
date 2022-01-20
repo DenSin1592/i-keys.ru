@@ -106,14 +106,18 @@ class OrderFormProcessor
             }
         }
 
+        if (isset($data['document_remove'])) {
+            $data['document'] = null;
+        }
+
         if (isset($data['document']) && !is_null($data['document'])) {
             $file = $data['document'];
             $name =  date("Y-m-d_H-i-s") .'_'. $file->getClientOriginalName();
             $file = $file->move('uploads/document_legal_entity/', $name);
             $data['document'] = $name;
-        } else {
-            $data['document'] = null;
         }
+
+
 
         if (!isset($data['status'])) {
             $data['status'] = StatusConstants::NOVEL;

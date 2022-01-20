@@ -39,6 +39,7 @@ class OrdersController extends Controller
             return \Redirect::route('cart.show');
         }
         $inputData = $request->all();
+        $inputData = $this->addDeviceInfo($inputData);
 
         // Create order
         $order = $this->orderFormProcessor->create($inputData);
