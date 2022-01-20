@@ -268,6 +268,11 @@ return [
         'value_second_size_cylinder' => 'Второй типоразмер, мм',
     ],
 
+    'services'=> [
+        'name' => 'Услуга',
+        'image' => 'Изображение'
+    ],
+
     'model_attributes' => [
         'attribute' => [
             'hidden' => 'Скрытый атрибут',

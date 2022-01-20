@@ -24,6 +24,14 @@ class ServiceFormProcessor extends CreateUpdateFormProcessor
     {
         $data = $this->setAutoAlias($data);
         $data = parent::prepareInputData($data);
+
+        if (isset($data['image']) && !is_null($data['image'])) {
+            $file = $data['image'];
+            $name = $file->getClientOriginalName();
+            $file = $file->move('uploads/services/', $name);
+            $data['image'] = $name;
+        }
+
         foreach ($this->subProcessorList as $subProcessor) {
             $data = $subProcessor->prepareInputData($data);
         }

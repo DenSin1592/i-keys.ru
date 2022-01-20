@@ -18,6 +18,7 @@
             @include('admin.services._services_list', ['serviceList' => $serviceList, 'lvl' => 0])
         </div>
 
+        @include('admin.shared.resource_list.sorting._commit', ['updateUrl' => route('cc.services.update-positions'), 'reloadUrl' => route('cc.services.index')])
 
         <div>
             <a href="{{ route('cc.services.create') }}" class="btn btn-success btn-xs">Добавить услугу</a>

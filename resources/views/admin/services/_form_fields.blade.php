@@ -9,6 +9,10 @@
 {!! Form::tbText('alias') !!}
 {!! Form::tbFormGroupClose() !!}
 
+@include('admin.shared._header_meta_field')
+
+@include('admin.services._image_field')
+
 {!! Form::tbCheckboxBlock('publish') !!}
 
 {!! Form::tbFormGroupOpen('price') !!}
@@ -26,7 +30,7 @@
 {!! Form::tbTextarea('content') !!}
 {!! Form::tbFormGroupClose() !!}
 
-@include('admin.shared._header_meta_field')
+
 @include('admin.shared._form_meta_fields')
 
 @include('admin.shared._model_timestamps', ['model' => $formData['service']])

@@ -13,10 +13,13 @@ class Service extends Model
     use HasFactory;
 
     public const ADD_KEYS_ID = 1;
+    private string $noImageVersion = 'no-image-200x200.png';
+
 
     protected $fillable = [
         'name',
         'alias',
+        'image',
         'content',
         'position',
         'publish',
@@ -51,5 +54,13 @@ class Service extends Model
             }
 
         });
+    }
+
+    public function getImageOrStub(): string
+    {
+        if (! is_null($this->image)){
+            return asset('/uploads/services/' . $this->image);
+        }
+        return asset('/images/common/no-image/' . $this->noImageVersion);
     }
 }
