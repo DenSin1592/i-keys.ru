@@ -38,6 +38,11 @@ class ServicesController extends Controller
     public function show($alias): \Illuminate\Contracts\View\View
     {
         $service = Service::where('alias', $alias)->first();
+
+        if(is_null($service)) {
+            return abort(404);
+        }
+
         $breadcrumbs = $this->getBreadcrumbs();
         $breadcrumbs->add($service->header, route('service.show', $service->alias));
 
