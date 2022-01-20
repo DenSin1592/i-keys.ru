@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Jobs\ToggleSearchableForProductsInCategory;
 use App\Models\Features\AliasPath;
 use App\Models\Features\AutoPublish;
 use App\Models\Helpers\DeleteHelpers;
@@ -55,6 +56,11 @@ class Category extends \Eloquent
         'content_for_links_type',
     ];
 
+    protected $casts = [
+        'in_tree_publish' => 'boolean',
+        'publish' => 'boolean',
+    ];
+
     public static function getCatalogTypes()
     {
         return [
@@ -97,5 +103,12 @@ class Category extends \Eloquent
             $category->attributes()->detach();
             ProductTypePage::where('category_id', $category->id)->update(['category_id' => null, 'publish' => 0]);
         });
+
+        self::saving(function (self $category) {
+            if (collect($category->getDirty())->has('publish')) {
+                ToggleSearchableForProductsInCategory::dispatch($category)->onQueue('search');
+            }
+        });
+
     }
 }

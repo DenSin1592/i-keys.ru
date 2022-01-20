@@ -152,18 +152,25 @@ class MenuServiceProvider extends ServiceProvider
                     ['App\Controller\Admin\SubdomainsController']
                 ));*/
 
+                if (\Auth::guard('admin')->user() && \Auth::guard('admin')->user()->super) {
+                    $groupTech = new MenuGroup('Техническая информация', 'glyphicon-wrench');
+                    $menu->addMenuGroup($groupTech);
+                    $groupTech->addMenuElement(new MenuElement(
+                        'Логи (Telescope)',
+                        'glyphicon-calendar',
+                        url('telescope'),
+                        [],
+                        true
+                    ));
 
-
-
-                $groupLists = new MenuGroup('Техническая информация', 'glyphicon-wrench');
-                $menu->addMenuGroup($groupLists);
-                $groupLists->addMenuElement(new MenuElement(
-                    'Логи (Telescope)',
-                    'glyphicon-calendar',
-                    url('telescope'),
-                    [],
-                    true
-                ));
+                    $groupTech->addMenuElement(new MenuElement(
+                        'Очереди задач (Horizon)',
+                        'glyphicon-tasks',
+                        url('horizon'),
+                        [],
+                        true
+                    ));
+                }
 
                 return $menu;
             }

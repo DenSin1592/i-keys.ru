@@ -163,6 +163,54 @@ class TreeBuilder implements TreeBuilderInterface
         return $variantsArray;
     }
 
+
+    public function getListTreeVariantsForCurrentId(\Eloquent $modelTemplate, $currentId, $root = null)
+    {
+        $tree = $this->getTree($modelTemplate);
+
+        $lvlModelList = [];
+        $flatten = function ($tree, $lvl = 0) use ($currentId, &$flatten, &$lvlModelList) {
+            foreach ($tree as $treeElement) {
+                if ($currentId != $treeElement->id && $lvl == 0) {
+                    continue;
+                }
+                $piece = new \stdClass();
+                $piece->model = $treeElement;
+                $piece->lvl = $lvl;
+                $lvlModelList[] = $piece;
+
+                if (isset($treeElement->children)) {
+                    $flatten($treeElement->children, $lvl + 1);
+                }
+
+            }
+        };
+        $flatten($tree);
+
+        $variantsArray = [];
+        if (!is_null($root)) {
+            $variantsArray[null] = $root;
+            $startLvl = 1;
+        } else {
+            $startLvl = 0;
+        }
+
+        foreach ($lvlModelList as $lvlModel) {
+            $variantName = '';
+            for ($i = 0; $i < $startLvl + $lvlModel->lvl; $i += 1) {
+                $variantName .= '-';
+            }
+            if (!empty($variantName)) {
+                $variantName .= ' ';
+            }
+            $variantName .= $lvlModel->model->name;
+            $variantsArray[$lvlModel->model->id] = $variantName;
+        }
+
+        return $variantsArray;
+    }
+
+
     /**
      * @inheritDoc
      */

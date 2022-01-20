@@ -99,15 +99,16 @@
                     <span class="header-search-text">Поиск</span>
                 </button>
 
-                <form class="header-search search d-none d-lg-block">
-                    <input type="search" class="header-search-input search-input" placeholder="Поиск товаров" required>
+                {{ Form::open(['url' => route('search'), 'class' => 'header-search search d-none d-lg-block', 'method' => 'GET']) }}
+                    {{ Form::search('query', Request::get('query'), ['required' => '', 'placeholder' => 'Поиск товаров', 'class' => 'header-search-input search-input'])}}
+                    {{Form::hidden('category_for_search', Request::get('category_for_search', 'all'))}}
 
-                    <button type="button" class="header-search-button search-button">
+                    <button type="submit" class="header-search-button search-button">
                         <svg class="search-button-media" width="24" height="25">
                             <use xlink:href="{{asset('/images/client/sprite.svg#icon-search')}}"></use>
                         </svg>
                     </button>
-                </form>
+                {{ Form::close() }}
             </div>
 
             <div class="header-account-container col-auto">

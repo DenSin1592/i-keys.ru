@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('telescope:prune --hours=48')->daily();
+        $schedule->command('horizon:snapshot')->everyFiveMinutes();
         $schedule->command(Import::class)->everyFiveMinutes();
         $schedule->command(Export::class)->everyFiveMinutes();
     }

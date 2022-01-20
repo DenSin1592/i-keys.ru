@@ -169,6 +169,8 @@ return [
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         Diol\LaravelErrorSender\ServiceProvider::class,
         Diol\LaravelMailer\ServiceProvider::class,
+        ScoutElastic\ScoutElasticServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
 
         /*
@@ -178,6 +180,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\Admin\MenuServiceProvider::class,
         App\Providers\Admin\BreadcrumbsServiceProvider::class,
