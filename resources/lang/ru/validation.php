@@ -268,7 +268,8 @@ return [
     ],
 
     'services'=> [
-        'name' => 'Услуга'
+        'name' => 'Услуга',
+        'image' => 'Изображение'
     ],
 
     'model_attributes' => [
