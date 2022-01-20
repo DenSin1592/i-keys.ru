@@ -77,7 +77,7 @@
 
                     <div class="product-gallery-thumbnails-container col-12 col-sm-2 col-md-12 order-sm-0 order-md-1">
                         <div class="form-row">
-                            <div class="col col-sm-12 col-lg flex-grow-1">
+                            <div class="col col-sm-12 col-lg flex-grow-1 d-flex align-items-start justify-content-center justify-content-sm-start justify-content-md-center">
                                 <div class="swiper-product-thumbnails-cover d-inline-block">
                                     <div class="swiper-product-thumbnails swiper-container">
 
