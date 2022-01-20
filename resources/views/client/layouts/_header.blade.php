@@ -143,7 +143,7 @@
             <div class="header-devider w-100 d-none d-md-block"></div>
 
             <div class="header-catalog-container col d-none d-md-block order-lg-2">
-                <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between">
+                <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between justify-content-xl-end">
 
                     @foreach($categoriesHeaderMenu as $element)
                     <li class="header-catalog-item col-auto col-xxl {{ $element['active']  ? 'active' : '' }}">
