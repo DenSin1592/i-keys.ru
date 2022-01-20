@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     modal.on('click', '.change-count-additional-keys', (e) => {
         let count = modal.find('input#modalAddKeysQuantity').val()
 
-        if(!document.querySelector('button[data-in-cart="true"]')){
+        if(!document.querySelector('[data-in-cart="true"]')){
             setLabelAdditionalKeys(count);
             return;
         }
