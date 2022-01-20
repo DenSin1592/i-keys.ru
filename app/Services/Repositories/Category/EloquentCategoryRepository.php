@@ -9,6 +9,7 @@ use App\Services\RepositoryFeatures\Attribute\PositionUpdater;
 use App\Services\RepositoryFeatures\Order\OrderScopesInterface;
 use App\Services\RepositoryFeatures\Tree\TreeBuilderInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 
 class EloquentCategoryRepository
@@ -68,6 +69,16 @@ class EloquentCategoryRepository
                 return $query->treePublished();
             }
         );
+    }
+
+
+    public function getPublishedTreeIds(Category $category)
+    {
+        $theeList = $this->treeBuilder->getListTreeVariantsForCurrentId(
+            new Category(),
+            $category->id,
+        );
+        return array_keys($theeList);
     }
 
     public function create(array $data)

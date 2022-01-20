@@ -101,6 +101,7 @@
 
                 {{ Form::open(['url' => route('search'), 'class' => 'header-search search d-none d-lg-block', 'method' => 'GET']) }}
                     {{ Form::search('query', Request::get('query'), ['required' => '', 'placeholder' => 'Поиск товаров', 'class' => 'header-search-input search-input'])}}
+                    {{Form::hidden('category_for_search', Request::get('category_for_search', 'all'))}}
 
                     <button type="submit" class="header-search-button search-button">
                         <svg class="search-button-media" width="24" height="25">

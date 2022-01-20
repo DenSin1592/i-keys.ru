@@ -150,6 +150,7 @@ class Product extends Model
                 'header',
                 'name_with_attributes',
                 'available',
+                'category_id',
             ]
         );
 
