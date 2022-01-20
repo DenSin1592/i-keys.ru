@@ -26,7 +26,7 @@
                                 <div class="card-post">
                                     <div class="row">
                                         <div class="card-post-thumbnail-container col-sm-4 col-xl-6">
-                                            <a href="text-page.html" class="card-post-thumbnail">
+                                            <a href="{{route('service.show', $service->alias)}}" class="card-post-thumbnail">
                                                 <img loading="lazy" src="{{ $service->getImageOrStub() }}" width="395" height="287" alt="{{ $service->header }}" class="card-post-media">
                                             </a>
                                         </div>
@@ -86,7 +86,7 @@
                         <div class="card-post">
                             <div class="row">
                                 <div class="card-post-thumbnail-container col-sm-4 col-xl-6">
-                                    <a href="text-page.html" class="card-post-thumbnail">
+                                    <a href="{{route('service.show', $service->alias)}}" class="card-post-thumbnail">
                                         <img loading="lazy" src="{{ $service->getImageOrStub() }}" width="395" height="287" alt="{{ $service->header }}" class="card-post-media">
                                     </a>
                                 </div>
