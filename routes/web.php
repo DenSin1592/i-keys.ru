@@ -52,4 +52,6 @@ Route::namespace('Client')->group(function () {
     require_once 'web/client/catalog.php';
     require_once 'web/client/cart.php';
     require_once 'web/client/orders.php';
+
+    Route::get('/{url}', 'DynamicPagesController@show')->name('dynamic_page')->where('url', '.*');
 });

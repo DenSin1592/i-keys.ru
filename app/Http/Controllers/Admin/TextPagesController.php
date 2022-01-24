@@ -8,19 +8,10 @@ use App\Services\Repositories\TextPage\EloquentTextPageRepository;
 
 class TextPagesController extends Controller
 {
-    private $nodeRepository;
-    private $textPageRepository;
-    private $breadcrumbs;
-
     public function __construct(
-        EloquentNodeRepository $nodeRepository,
-        EloquentTextPageRepository $textPageRepository,
-        Breadcrumbs $breadcrumbs
-    ) {
-        $this->nodeRepository = $nodeRepository;
-        $this->textPageRepository = $textPageRepository;
-        $this->breadcrumbs = $breadcrumbs;
-    }
+        private EloquentNodeRepository $nodeRepository,
+        private Breadcrumbs $breadcrumbs
+    ) {}
 
     public function edit($nodeId)
     {

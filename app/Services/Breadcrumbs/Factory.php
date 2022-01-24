@@ -28,7 +28,7 @@ class Factory
     public function initFromCollection($collection, callable $urlGenerator)
     {
         $container = $this->init();
-
+        $container->add('Главная', route('home'));
         foreach ($collection as $index => $element) {
             $breadcrumb = $urlGenerator($element, $index);
             $container->add(\Arr::get($breadcrumb, 0), \Arr::get($breadcrumb, 1));

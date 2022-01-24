@@ -96,7 +96,7 @@ class StructureTypesServiceProvider extends ServiceProvider
                     )
                 );
 
-                /*$typeContainer->addType(
+                $typeContainer->addType(
                     Node::TYPE_TEXT_PAGE,
                     new Type(
                         'Текстовая страница',
@@ -106,7 +106,7 @@ class StructureTypesServiceProvider extends ServiceProvider
                             return route('dynamic_page', implode('/', $node->getAliasPath()));
                         }
                     )
-                );*/
+                );
 
                /* $typeContainer->addType(
                     Node::TYPE_ERROR_PAGE,
