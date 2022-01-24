@@ -35,6 +35,7 @@ trait Search
                 'name_with_attributes',
                 'available',
                 'search_article',
+                'category_id',
             ]
         );
 
