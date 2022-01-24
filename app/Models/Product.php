@@ -207,6 +207,7 @@ class Product extends Model
     public function refreshNameWithAttributes(): void
     {
         $this->generateNameWithAttributes();
+        $this->timestamps = false;
         $this->save();
     }
 
