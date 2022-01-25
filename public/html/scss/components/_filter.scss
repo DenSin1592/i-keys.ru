@@ -70,6 +70,16 @@
 }
 
 
+.filter-category-link {
+    font-size: 14px;
+    @include media-breakpoint-up(md) {
+        font-size: 15px;
+    }
+    @include media-breakpoint-up(xl) {
+        font-size: 17px;
+    }
+}
+
 // filter options
 .filter-options-list {
     margin-top: -2px;
