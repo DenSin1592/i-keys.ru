@@ -139,6 +139,53 @@ class Attribute extends \Eloquent
     }
 
 
+    public function delete()
+    {
+        $products = $this->getRelatedProducts();
+        parent::delete();
+
+        foreach ($products as $product) {
+            $product->refreshNameWithAttributes();
+        }
+    }
+
+
+    public function getRelatedProducts(): array
+    {
+        switch ($this->attribute_type) {
+            case self::TYPE_STRING:
+                $this->load('stringValues.product');
+                $products = data_get($this, 'stringValues.*.product');
+                break;
+            case self::TYPE_INTEGER:
+                $this->load('integerValues.product');
+                $products = data_get($this, 'integerValues.*.product');
+                break;
+            case self::TYPE_DECIMAL:
+                $this->load('decimalValues.product');
+                $products = data_get($this, 'decimalValues.*.product');
+                break;
+            case self::TYPE_SINGLE:
+                $this->load('singleValues.product');
+                $products = data_get($this, 'singleValues.*.product');
+                break;
+            case self::TYPE_MULTIPLE:
+                $this->load('multipleValues.product');
+                $products = data_get($this, 'multipleValues.*.product');
+                break;
+            default:
+                $products = [];
+                break;
+        }
+
+        parent::delete();
+
+        foreach ($products as $product) {
+            $product->refreshNameWithAttributes();
+        }
+    }
+
+
     protected static function boot()
     {
         parent::boot();

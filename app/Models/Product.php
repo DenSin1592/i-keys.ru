@@ -38,6 +38,9 @@ class Product extends Model
         'old_price',
         'best_prod',
         'existence',
+        'name_with_attributes',
+        'search_article',
+        'update_search',
     ];
 
 
@@ -143,63 +146,6 @@ class Product extends Model
     }
 
 
-    public function toSearchableArray()
-    {
-        $searchableArray = $this->only(
-            [
-                'name',
-                'code_1c',
-                'description',
-                'header',
-                'name_with_attributes',
-                'available',
-                'category_id',
-            ]
-        );
-
-        return $searchableArray;
-    }
-
-
-    public function getMapping()
-    {
-        $mappings = $this->sourceGetMapping();
-
-        $textFieldMapping = [
-            'type' => 'text',
-            'fields' => [
-                'russian' => [
-                    'type' => 'text',
-                    'analyzer' => 'russian_analyzer',
-                ],
-                'english' => [
-                    'type' => 'text',
-                    'analyzer' => 'english_analyzer',
-                ],
-            ]
-        ];
-
-        $booleanFieldMapping = [
-            'type' => 'boolean',
-        ];
-
-        $mappings = array_merge_recursive(
-            $mappings,
-            [
-                'properties' => [
-                    'code_1c' => $textFieldMapping,
-                    'name' => $textFieldMapping,
-                    'name_with_attributes' => $textFieldMapping,
-                    'available' => $booleanFieldMapping,
-                    'header' => collect($textFieldMapping)->put('boost', 0.1)->all(),
-                    'description' => collect($textFieldMapping)->put('boost', 0.1)->all(),
-                ]
-            ]
-        );
-
-        return $mappings;
-    }
-
 
     public function generateNameWithAttributes(): void
     {
@@ -210,6 +156,7 @@ class Product extends Model
     public function refreshNameWithAttributes(): void
     {
         $this->generateNameWithAttributes();
+        $this->timestamps = false;
         $this->save();
     }
 
@@ -251,6 +198,17 @@ class Product extends Model
     }
 
 
+    private function getSearchArticle()
+    {
+        $searchArticle = null;
+        if (isset($this->name) && preg_match('@[а-яА-Я\W]*(?P<article>([a-zA-Zа-яА-Я\-\.]*(\d+[\.\-]*)+[a-zA-Zа-яА-Я]*)+)@', $this->name, $matches)) {
+            $searchArticle = trim($matches['article']);
+        }
+
+        return $searchArticle;
+    }
+
+
     protected static function boot()
     {
         parent::boot();
@@ -270,6 +228,7 @@ class Product extends Model
 
         self::saving(function (self $product) {
             AliasHelpers::setAlias($product);
+            $product->search_article = $product->getSearchArticle();
         });
     }
 }

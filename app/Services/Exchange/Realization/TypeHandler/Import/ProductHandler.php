@@ -191,7 +191,7 @@ class ProductHandler implements ITypeHandler
                 $product->save();
             }
 
-            $this->productRepository->markUpdateSearchForProduct($product);
+//            $this->productRepository->markUpdateSearchForProduct($product);
             $this->logger->solveLogs($product->code_1c);
         }
 

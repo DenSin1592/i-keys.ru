@@ -30,6 +30,7 @@ return [
 
                 'css/client/auth_menu.css',
                 'css/client/cart.css',
+                'css/client/product.css',
             ],
             'filters' => ['css_min', 'embed_css', 'strip_bom', 'css_url_rebase'],
             'output' => 'css/compiled/client.css'
@@ -70,7 +71,7 @@ return [
                 'html/js/sliders.js',
                 'html/js/product.js',
                 'html/js/cart.js',
-                
+
 
                 'js/client/helpers/Arrays.js',
                 'js/client/auth_menu.js',

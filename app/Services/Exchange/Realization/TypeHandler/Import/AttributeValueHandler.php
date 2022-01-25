@@ -135,7 +135,7 @@ class AttributeValueHandler implements ITypeHandler
                         }
 
                         $this->attributeRepository->saveValue($product, $attribute, $attributeValue);
-//                        $this->productRepository->markUpdateSearchForProduct($product);
+                        $this->productRepository->markUpdateSearchForProduct($product);
                         $this->logger->solveLogs($attribute->code_1c, $product->code_1c);
                         if (!isset($attributeRelatedCategoriesIds[$attribute->id])) {
                             $attributeRelatedCategoriesIds[$attribute->id] = $attribute->categories()

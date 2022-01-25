@@ -24,13 +24,13 @@ class ProductFormProcessor extends CreateUpdateFormProcessor
     protected function afterSuccess($instance, array $data)
     {
         /** @var Product $instance */
-//        Product::withoutSyncingToSearch(
-//            function () use (&$instance, $data) {
+        Product::withoutSyncingToSearch(
+            function () use (&$instance, $data) {
                 foreach ($this->subProcessorList as $subProcessor) {
                     $subProcessor->save($instance, $data);
                 }
-//            }
-//        );
-//        $instance->refreshNameWithAttributes();
+            }
+        );
+        $instance->refreshNameWithAttributes();
     }
 }

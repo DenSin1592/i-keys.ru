@@ -55,7 +55,7 @@ class SizesCylinders implements ClientProductListPlugin
 
             $attrValues[] = [
                 'product_id' => $element->id,
-                'attr_value' => $element->value_second_size_cylinder . '*' . $element->value_second_size_cylinder . 'мм',
+                'attr_value' => $element->value_first_size_cylinder . '*' . $element->value_second_size_cylinder . 'мм',
                 'isActive' => $isActive,
             ];
         }
