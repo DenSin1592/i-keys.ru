@@ -23,6 +23,7 @@ class Category extends \Eloquent
     public const IMPORT_ID = 7;
 
     public const LOCKS_ALIAS = 'zamki';
+    public const CYLINDERS_ALIAS = 'tsilindry';
 
     public const LOCKS_1C_CODE = '000001';
     public const CILINDRY_1C_CODE = '000002';
