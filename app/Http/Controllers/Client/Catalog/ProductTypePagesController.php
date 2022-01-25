@@ -71,9 +71,11 @@ class ProductTypePagesController extends Controller
         $breadcrumbs = $this->getBreadcrumbsForCategories($this->breadcrumbs, $productTypePage->extractPath());
         $linksTypesContent = $productTypePage->content_for_links_type;
 
+
         if (!\Request::ajax()) {
             return \View::make('client.categories.show')
                 ->with($productListData)
+                ->with('topContent', $productTypePage->content)
                 ->with('breadcrumbs', $breadcrumbs)
                 ->with('authEditLink', route('cc.product-type-pages.edit', $productTypePage->id))
                 ->with('metaData', $metaData)

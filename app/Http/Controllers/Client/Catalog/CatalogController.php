@@ -48,6 +48,7 @@ class CatalogController extends Controller
         if (!\Request::ajax()) {
             return \View::make('client.categories.show')
                 ->with($productListData)
+                ->with('topContent', $category->top_content)
                 ->with('breadcrumbs', $breadcrumbs)
                 ->with('authEditLink', route('cc.categories.edit', $category->id))
                 ->with('metaData', $metaData)
