@@ -118,6 +118,9 @@ class Product extends Model
         if(is_null($this->getOldPrice())) return null;
 
         $sale = (int) (100 - ($this->price / $this->getOldPrice() * 100));
+
+        if ($sale === 0) return null;
+
         return "Экономия ${sale}%";
     }
 

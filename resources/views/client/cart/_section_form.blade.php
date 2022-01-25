@@ -168,12 +168,12 @@
                                                 <input type="radio" class="form-option-radio" name="delivery_method" value="{{ \App\Models\Order::DELIVERY_SELF }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header" id="checkout-delivery-self" name="{{ \App\Models\Order::DELIVERY_SELF }}">
                                                     <div class="form-option-title title-h4 font-weight-bold">Самовывоз из магазина в Москве</div>
-                                                    <div class="form-option-subtitle">Мы находимся в г. Москва, Каширское шоссе, 61/3А, ТЦ СтройМолл <br> <b class="text-lead" >Заказ можно забрать 17 июля 2021 с 10:00 до 21:00</b></div>
+                                                    <div class="form-option-subtitle">Мы находимся в г. Москва, Каширское шоссе, 61/3А, ТЦ СтройМолл <br> <b class="text-lead" >Заказ можно забрать 00 июля 2222 с 10:00 до 21:00</b></div>
                                                 </div>
 
                                                 <div class="form-option-content">
                                                     <div class="ckeckout-map-block">
-                                                        <img src="uploads/maps/map-pick-up-image.jpg" alt="Карта самовывоза">
+                                                        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aca78673cd5b5761c75bf31089595551a585c9d2a72cbf06f1587fd0a9e4f9752&amp;width=740&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
                                                     </div>
                                                 </div>
                                             </div>
