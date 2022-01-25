@@ -1,0 +1,39 @@
+.card-subcategory {
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    @include media-breakpoint-up(md) {
+        font-size: 15px;
+    }
+
+    .card-subcategory-thumbnail {
+        position: relative;
+        max-width: 205px;
+        height: 65px;
+        margin: 0 auto 10px;
+        @include media-breakpoint-up(md) {
+            height: 85px;
+        }
+        @include media-breakpoint-up(lg) {
+            height: 90px;
+        }
+        @include media-breakpoint-up(xxl) {
+            height: 165px;
+            margin-bottom: 5px;
+        }
+    }
+
+    .card-subcategory-media {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .card-subcategory-title {
+        color: currentColor;
+    }
+
+    &:hover {
+        color: $c-secondary;
+    }
+}
