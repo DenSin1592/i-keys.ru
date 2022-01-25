@@ -201,7 +201,7 @@
 
                                         <div class="product-scheme-thumbnail">
                                             <img loading="lazy"
-                                                 src="{{asset('images/client/scheme/product-scheme-type-1.png')}}"
+                                                 src="{{asset('images/client/scheme/product-scheme-type-2.png')}}"
                                                  width="262"
                                                  height="106" alt="" class="product-scheme-media">
                                         </div>
