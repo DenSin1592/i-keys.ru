@@ -146,7 +146,7 @@
                 <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between justify-content-xl-end">
 
                     @foreach($categoriesHeaderMenu as $element)
-                    <li class="header-catalog-item col-auto col-xxl {{ $element['active']  ? 'active' : '' }}">
+                    <li class="header-catalog-item col-auto col-xxl d-flex  {{ $element['active']  ? 'active' : '' }} {{empty( $element['megamenu']) ? '' : 'has-children'}}">
                         <a href="{{$element['url']}}" class="header-catalog-link d-flex align-items-center justify-content-center">
                             <div class="header-catalog-thumbnail">
                                 <svg class="header-catalog-media" width="26" height="25">
@@ -156,6 +156,8 @@
 
                             <div class="header-catalog-text">{{$element['name']}}</div>
                         </a>
+
+                        {!! $element['megamenu'] !!}
                     </li>
                     @endforeach
 

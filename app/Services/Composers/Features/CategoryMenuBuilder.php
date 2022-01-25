@@ -14,7 +14,9 @@ trait CategoryMenuBuilder
                 'name' => $elem->name,
                 'url' => $url,
                 'active' => \StringHelper::checkUrlIncludes(\URL::current(), $url),
-                'image_path' =>$elem->path_to_icon,
+                'image_path' => $elem->path_to_icon,
+                'megamenu' => $elem->content_for_submenu,
+
             ];
         }
         return $menu;

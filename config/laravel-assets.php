@@ -71,6 +71,7 @@ return [
                 'html/js/sliders.js',
                 'html/js/product.js',
                 'html/js/cart.js',
+                'html/js/compare.js',
 
 
                 'js/client/helpers/Arrays.js',
