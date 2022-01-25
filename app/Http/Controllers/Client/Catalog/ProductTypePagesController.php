@@ -109,6 +109,7 @@ class ProductTypePagesController extends Controller
             'sorting' => $contentData['sorting'],
             'filterContent' => $filterContent,
             'breadcrumbsContent' => $breadcrumbsContent,
+            'h1' => $metaData['h1'],
         ]);
     }
 

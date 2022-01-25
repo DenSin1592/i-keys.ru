@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     filterContainer.html(response['filterContent']);
                     filterContainer.find('[name="sorting"]').val(response['sorting']);
                     categoryContent.html(response['categoryContent']);
+                    $('h1').text(response['h1']);
                     that.initializers.init();
                 }).promise();
             },
