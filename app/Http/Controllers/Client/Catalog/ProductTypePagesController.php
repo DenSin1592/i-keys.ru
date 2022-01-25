@@ -84,6 +84,7 @@ class ProductTypePagesController extends Controller
 
         $contentData  = [
             'category' => $productListData['category'],
+            'topContent' => $productTypePage->content,
             'filter' => $productListData['filter'],
             'sorting' => $inputData['sort'],
             'productsData' => $productListData['productsData'],

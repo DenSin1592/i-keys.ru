@@ -57,6 +57,7 @@ class CatalogController extends Controller
 
         $contentData  = [
             'category' => $category,
+            'topContent' => $category->top_content,
             'filter' => $productListData['filter'],
             'sorting' => $inputData['sort'],
             'productsData' => $productListData['productsData'],
