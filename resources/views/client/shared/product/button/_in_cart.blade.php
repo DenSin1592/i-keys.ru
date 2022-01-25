@@ -1,5 +1,5 @@
 <a href="{{route('cart.show')}}"
-        class="product-control product-control-cart btn btn-lg d-flex align-items-center justify-content-center"
+        class="product-control product-control-cart active btn btn-lg d-flex align-items-center justify-content-center"
         data-in-cart="true"
 >
     <svg class="product-control-media" width="28" height="25">
