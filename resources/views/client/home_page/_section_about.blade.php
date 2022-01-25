@@ -38,7 +38,7 @@
                 <div class="section-title title-h1">Мы сертифицированы брендами</div>
             </div>
 
-            <div class="partners-grid row">
+            <div class="partners-grid row justify-content-center">
                 <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
                     <div class="card-partner">
                         <div class="card-partner-thumbnail">
