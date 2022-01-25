@@ -1,5 +1,47 @@
 {!! $linksTypesContent ?? '' !!}
 
+<div class="catalog-subcategories-grid row">
+    <div class="catalog-subcategory-item col-6 col-sm-3">
+        <a href="#link" class="card-subcategory d-block">
+            <span class="card-subcategory-thumbnail d-flex align-items-center justify-content-center">
+                <img loading="lazy" src="{{asset('images/client/subcategories/icon-subcategory-cylinder.svg')}}" width="128" height="135" alt="Цилиндры" class="card-subcategory-media">
+            </span>
+
+            <span class="card-subcategory-title">Цилиндры</span>
+        </a>
+    </div>
+
+    <div class="catalog-subcategory-item col-6 col-sm-3">
+        <a href="#link" class="card-subcategory d-block">
+            <span class="card-subcategory-thumbnail d-flex align-items-center justify-content-center">
+                <img loading="lazy" src="{{asset('images/client/subcategories/icon-subcategory-padlock.svg')}}" width="91" height="133" alt="Навесные замки" class="card-subcategory-media">
+            </span>
+
+            <span class="card-subcategory-title">Навесные замки</span>
+        </a>
+    </div>
+
+    <div class="catalog-subcategory-item col-6 col-sm-3">
+        <a href="#link" class="card-subcategory d-block">
+            <span class="card-subcategory-thumbnail d-flex align-items-center justify-content-center">
+                <img loading="lazy" src="{{asset('images/client/subcategories/icon-subcategory-morticelock.svg')}}" width="116" height="164" alt="Врезные замки" class="card-subcategory-media">
+            </span>
+
+            <span class="card-subcategory-title">Врезные замки</span>
+        </a>
+    </div>
+
+    <div class="catalog-subcategory-item col-6 col-sm-3">
+        <a href="#link" class="card-subcategory d-block">
+            <span class="card-subcategory-thumbnail d-flex align-items-center justify-content-center">
+                <img loading="lazy" src="{{asset('images/client/subcategories/icon-subcategory-overhead.svg')}}" width="209" height="122" alt="Накладные замки" class="card-subcategory-media">
+            </span>
+
+            <span class="card-subcategory-title">Накладные замки</span>
+        </a>
+    </div>
+</div>
+
 @if(!empty($filter['filterVariants']))
     @include('client.categories._selected_variants')
 @endif
