@@ -7,6 +7,9 @@
         <div class="filter-group-content">
             <ul class="filter-checkbox-list list-unstyled">
                 @foreach ($lensData['variants'] as $number => $variant)
+                    @if($lensData['key']==='lock_type' && $loop->first)
+                        <a href="#">Цилиндры</a>
+                    @endif
                     <li class="filter-checkbox-item">
                         <div class="filter-checkbox custom-control custom-checkbox">
 
