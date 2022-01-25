@@ -38,7 +38,9 @@ class Product extends Model
         'old_price',
         'best_prod',
         'existence',
+        'name_with_attributes',
         'search_article',
+        'update_search',
     ];
 
 

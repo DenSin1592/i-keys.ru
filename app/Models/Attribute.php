@@ -141,6 +141,17 @@ class Attribute extends \Eloquent
 
     public function delete()
     {
+        $products = $this->getRelatedProducts();
+        parent::delete();
+
+        foreach ($products as $product) {
+            $product->refreshNameWithAttributes();
+        }
+    }
+
+
+    public function getRelatedProducts(): array
+    {
         switch ($this->attribute_type) {
             case self::TYPE_STRING:
                 $this->load('stringValues.product');
