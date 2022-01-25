@@ -38,11 +38,11 @@
                 <div class="section-title title-h1">Мы сертифицированы брендами</div>
             </div>
 
-            <div class="partners-grid row">
+            <div class="partners-grid row justify-content-center">
                 <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
                     <div class="card-partner">
                         <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
+                            <img loading="lazy" src="{{asset('/images/client/sections/section-partners/l-k-Abus.png')}}" alt="Abus" class="card-partner-media">
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
                     <div class="card-partner">
                         <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
+                            <img loading="lazy" src="{{asset('/images/client/sections/section-partners/l-k-Cisa.png')}}" alt="Cisa" class="card-partner-media">
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
                     <div class="card-partner">
                         <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
+                            <img loading="lazy" src="{{asset('/images/client/sections/section-partners/l-k-Moturra.png')}}" alt="Moturra" class="card-partner-media">
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
                     <div class="card-partner">
                         <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
+                            <img loading="lazy" src="{{asset('/images/client/sections/section-partners/l-k-MTL.png')}}" alt="MTL" class="card-partner-media">
                         </div>
                     </div>
                 </div>
@@ -74,63 +74,7 @@
                 <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
                     <div class="card-partner">
                         <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
-                    <div class="card-partner">
-                        <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
-                    <div class="card-partner">
-                        <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
-                    <div class="card-partner">
-                        <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
-                    <div class="card-partner">
-                        <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
-                    <div class="card-partner">
-                        <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
-                    <div class="card-partner">
-                        <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="partner-item col-6 col-md-4 col-lg-3 col-xxl-2">
-                    <div class="card-partner">
-                        <div class="card-partner-thumbnail">
-                            <img loading="lazy" src="" alt="" class="card-partner-media">
+                            <img loading="lazy" src="{{asset('/images/client/sections/section-partners/l-k-Securemme.png')}}" alt="Securemme" class="card-partner-media">
                         </div>
                     </div>
                 </div>
