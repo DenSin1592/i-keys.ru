@@ -8,6 +8,7 @@ use App\Services\Catalog\Filter\Filter\CatalogFilterFactory;
 use App\Services\Catalog\Filter\Filter\FilterLensAggregator;
 use App\Services\Catalog\Filter\Filter\FilterLensWrapper;
 use App\Services\Catalog\Filter\Lens\ClassicListLens;
+use App\Services\Catalog\Filter\Lens\CylinderSeriesLens;
 use App\Services\Catalog\Filter\Lens\CylinderSizeLens;
 use App\Services\Catalog\Filter\Lens\OptionLens;
 use App\Services\Catalog\Filter\Lens\PriceLens;
@@ -203,22 +204,21 @@ class CatalogServiceProvider extends ServiceProvider
                 );
             }
         );
-
-//        $this->app->singleton(
-//            'catalog.filter_lens.cylinder_series',
-//            function () use ($attributeRepository, $allowedValueRepository) {
-//                return new FilterLensWrapper(
-//                    new ClassicListLens(
-//                        $attributeRepository,
-//                        $allowedValueRepository,
-//                        Attribute\AttributeConstants::CYLINDER_SERIES_1C_CODE
-//                    ),
-//                    'cylinder_series',
-//                    'Серия цилиндра',
-//                    'multiple_checkboxes'
-//                );
-//            }
-//        );
+        $this->app->singleton(
+            'catalog.filter_lens.cylinder_series',
+            function () use ($attributeRepository, $allowedValueRepository) {
+                return new FilterLensWrapper(
+                    new CylinderSeriesLens(
+                        $attributeRepository,
+                        $allowedValueRepository,
+                        Attribute\AttributeConstants::CYLINDER_SERIES_1C_CODE
+                    ),
+                    'cylinder_series',
+                    'Серия цилиндра',
+                    'multiple_checkboxes'
+                );
+            }
+        );
 
 
         /*$this->app->singleton(
@@ -288,6 +288,7 @@ class CatalogServiceProvider extends ServiceProvider
             'catalog.filter.cylinder_mechanisms',
             function () {
                 $filter = new FilterLensAggregator();
+                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_series'));
                 $filter->addLens($this->app->make('catalog.filter_lens.options'));
                 $filter->addLens($this->app->make('catalog.filter_lens.security_level'));
                 $filter->addLens($this->app->make('catalog.filter_lens.color'));
