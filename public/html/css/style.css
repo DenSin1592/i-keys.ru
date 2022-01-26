@@ -13879,7 +13879,7 @@ img {
 }
 .header-search .header-search-input::-webkit-search-cancel-button {
   position:relative;
-  right:20px;
+  right:0px;
   -webkit-appearance: none;
   color: #fff;
   height: 25px;
