@@ -59,17 +59,18 @@
     </div>
 
     <div class="offcanvas-body">
-        <div class="offcanvas-search-block">
-            <form class="offcanvas-search search">
-                <input type="search" class="offcanvas-search-input search-input" placeholder="Поиск товаров"
-                       required="">
 
-                <button type="button" class="offcanvas-search-button search-button">
+        <div class="offcanvas-search-block">
+            {{ Form::open(['url' => route('search'), 'class' => 'offcanvas-search search', 'method' => 'GET']) }}
+                {{ Form::search('query', Request::get('query'), ['required' => '', 'placeholder' => 'Поиск товаров', 'class' => 'offcanvas-search-input search-input'])}}
+                {{Form::hidden('category_for_search', Request::get('category_for_search', 'all'))}}
+
+                <button type="submit" class="offcanvas-search-button search-button">
                     <svg class="search-button-media" width="24" height="25">
                         <use xlink:href="{{asset('/images/client/sprite.svg#icon-search')}}"></use>
                     </svg>
                 </button>
-            </form>
+            {{ Form::close() }}
         </div>
 
         <div class="offcanvas-contact-block">
