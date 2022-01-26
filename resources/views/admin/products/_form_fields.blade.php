@@ -10,6 +10,11 @@
     {!! Form::tbText('name') !!}
 {!! Form::tbFormGroupClose() !!}
 
+{!! Form::tbFormGroupOpen('name_for_site') !!}
+    {!! Form::tbLabel('name_for_site', trans('validation.attributes.name_for_site')) !!}
+    {!! Form::tbText('name_for_site') !!}
+{!! Form::tbFormGroupClose() !!}
+
 {!! Form::tbFormGroupOpen('alias') !!}
 {!! Form::tbLabel('alias', trans('validation.attributes.alias')) !!}
 {!! Form::tbText('alias') !!}

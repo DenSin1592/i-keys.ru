@@ -168,6 +168,7 @@ return [
         'updated_at' => 'Дата редактирования',
 
         'name' => 'Название',
+        'name_for_site' => 'Название для сайта',
         'header' => 'Заголовок',
         'meta_title' => 'Meta title',
         'meta_description' => 'Meta description',
@@ -252,6 +253,7 @@ return [
         'id' => 'Номер',
         'exchange_status' => 'Статус обмена с 1С',
         '' => '',
+        'existence' => 'Статус',
 
         'city_name' => 'Город',
         'header_template' => 'Шаблон вставки региона заголовка h1 {{REG_HEADER}}',

@@ -24,6 +24,7 @@ class Product extends Model
     protected $fillable = [
         'category_id',
         'name',
+        'name_for_site',
         'alias',
         'position',
         'publish',
@@ -43,6 +44,18 @@ class Product extends Model
         'update_search',
     ];
 
+    public function getNameAttribute($value)
+    {
+        if (\Request::route()->getPrefix() === '/cc') {
+            return $value;
+        }
+
+        if (is_null($this->name_for_site) || empty(trim($this->name_for_site))) {
+            return $value;
+        }
+
+        return $this->name_for_site;
+    }
 
     public function getNameWithCode1cAttribute()
     {
