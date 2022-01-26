@@ -117,7 +117,7 @@
 
             @foreach($categoriesHeaderMenu as $element)
 
-                <li class="offcanvas-catalog-item {{ $element['active']  ? 'active' : '' }}">
+                <li class="offcanvas-catalog-item {{empty( $element['megamenu']) ? '' : 'has-children'}} d-flex flex-wrap align-items-center {{ $element['active']  ? 'active' : '' }}">
                     <a href="{{$element['url']}}" class="offcanvas-catalog-link d-flex align-items-center">
                         <span class="offcanvas-catalog-thumbnail">
                             <svg class="header-catalog-media" width="26" height="26">
@@ -127,6 +127,16 @@
 
                         <span class="offcanvas-catalog-text">{{$element['name']}}</span>
                     </a>
+
+                    @if(!empty( $element['megamenu']))
+                        <button type="button" class="offcanvas-catalog-megamenu-toggle d-flex align-items-center justify-content-center" >
+                        <svg class="offcanvas-catalog-megamenu-toggle-media" width="22" height="22">
+                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-angle-right')}}"></use>
+                        </svg>
+                    </button>
+                        {!! $element['megamenu'] !!}
+                    @endif
+
                 </li>
             @endforeach
 
