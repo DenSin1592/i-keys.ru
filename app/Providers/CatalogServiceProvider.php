@@ -7,7 +7,9 @@ use App\Models\Category;
 use App\Services\Catalog\Filter\Filter\CatalogFilterFactory;
 use App\Services\Catalog\Filter\Filter\FilterLensAggregator;
 use App\Services\Catalog\Filter\Filter\FilterLensWrapper;
+use App\Services\Catalog\Filter\Lens\BrandLens;
 use App\Services\Catalog\Filter\Lens\ClassicListLens;
+use App\Services\Catalog\Filter\Lens\CylinderBrandLens;
 use App\Services\Catalog\Filter\Lens\CylinderSeriesLens;
 use App\Services\Catalog\Filter\Lens\CylinderSizeLens;
 use App\Services\Catalog\Filter\Lens\OptionLens;
@@ -93,7 +95,7 @@ class CatalogServiceProvider extends ServiceProvider
                 return new FilterLensWrapper(
                     new PriceLens(),
                     'price',
-                    'Цена',
+                    'Цена (руб.)',
                     'range'
                 );
             }
@@ -175,6 +177,21 @@ class CatalogServiceProvider extends ServiceProvider
             }
         );
         $this->app->singleton(
+            'catalog.filter_lens.cylinder_brands',
+            function () use ($attributeRepository, $allowedValueRepository) {
+                return new FilterLensWrapper(
+                    new CylinderBrandLens(
+                        $attributeRepository,
+                        $allowedValueRepository,
+                        '000000001'
+                    ),
+                    'brands',
+                    'Бренд',
+                    'brands_and_series'
+                );
+            }
+        );
+        $this->app->singleton(
             'catalog.filter_lens.lock_type',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
@@ -215,7 +232,7 @@ class CatalogServiceProvider extends ServiceProvider
                     ),
                     'cylinder_series',
                     'Серия цилиндра',
-                    'multiple_checkboxes'
+                    'empty'
                 );
             }
         );
@@ -295,7 +312,7 @@ class CatalogServiceProvider extends ServiceProvider
                 $filter->addLens($this->app->make('catalog.filter_lens.cylinder_size'));
                 $filter->addLens($this->app->make('catalog.filter_lens.cylinder_mechanism'));
                 $filter->addLens($this->app->make('catalog.filter_lens.price'));
-                $filter->addLens($this->app->make('catalog.filter_lens.brands'));
+                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_brands'));
 
                 return $filter;
             }

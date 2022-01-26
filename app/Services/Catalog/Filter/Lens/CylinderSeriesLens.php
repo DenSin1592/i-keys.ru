@@ -15,14 +15,13 @@ class CylinderSeriesLens implements LensInterface
     use QueryHelpers;
 
     protected $attribute;
+    private ?array $variantsCache;
 
     public function __construct(
         protected EloquentAttributeRepository $attrRepo,
         protected EloquentAllowedValueRepository $allowedValueRepo,
         protected string $attrCode1c
-    )
-    {
-    }
+    ){}
 
 
     protected function getAttribute()
@@ -68,6 +67,10 @@ class CylinderSeriesLens implements LensInterface
 
     public function getVariants($query, $restrictedQuery, $lensData)
     {
+        if(!empty($this->variantsCache)){
+            return $this->variantsCache;
+        }
+
         if (!is_array($lensData)) {
             $lensData = [];
         }
@@ -78,8 +81,8 @@ class CylinderSeriesLens implements LensInterface
         }
 
 
-        $allowedIds = clone $query;
-        $allowedIds = $allowedIds
+        $allowedValues = clone $query;
+        $allowedValues = $allowedValues
             ->leftJoin(
                 'attribute_single_values as asv1',
                 function ($join) {
@@ -121,93 +124,20 @@ class CylinderSeriesLens implements LensInterface
             ->distinct()
             ->get();
 
-        $test = [];
-foreach ($allowedIds as $t){
-    $test[] = $t->brand_value;
-}
-
-        dd($test);
-
-
-        $allowedIds = clone $query;
-        $allowedIds = $allowedIds
-            ->join(
-                'attribute_single_values as asv1',
-                function ($join) {
-                    $join->on(
-                        'asv1.product_id',
-                        '=',
-                        'products.id'
-                    );
-                })
-            ->join(
-                'attribute_allowed_values as alv1',
-                'alv1.attribute_id',
-                '=',
-                'asv1.id')
-            ->join(
-                'attribute_single_values as asv2',
-                function ($join) {
-                    $join->on(
-                        'asv2.product_id',
-                        '=',
-                        'products.id'
-                    );
-                })
-            ->join(
-                'attribute_allowed_values as alv2',
-                'alv2.attribute_id',
-                '=',
-                'asv2.id')
-            ->where('alv1.attribute_id', Attribute\AttributeConstants::CYLINDER_SERIES_ID)
-            ->where('alv2.attribute_id', Attribute\AttributeConstants::BRAND_ID)
-            /* ->orWhere(function($query) {
-                 $query->where('attribute_single_values.attribute_id', Attribute\AttributeConstants::CYLINDER_SERIES_ID)
-                     ->where('attribute_single_values.attribute_id',   Attribute\AttributeConstants::BRAND_ID);
-             })*/
-
-            ->select(['alv1.*', 'alv2.*'])
-            ->distinct()
-//            ->pluck('value_id')
-            ->get();
-        dd($allowedIds);
-        $allowedValues = $this->allowedValueRepo->forAttributeByIds($attribute, $allowedIds);
-        $allowedValues = $attribute->allowedValues()
-            ->leftJoin(
-                'attribute_single_values AS t1',
-                function ($join) {
-                    $join->on(
-                        'attribute_allowed_values.attribute_id',
-                        '=',
-                        "t1.attribute_id"
-                    )->where("t1.attribute_id", '=', Attribute\AttributeConstants::BRAND_ID);
-                }
-            )->leftJoin(
-                'attribute_allowed_values AS t2',
-                function ($join) {
-                    $join->on(
-                        't1.attribute_id',
-                        '=',
-                        "t2.attribute_id"
-                    );
-                }
-            )
-            ->whereIn('attribute_allowed_values.id', $allowedIds)
-            ->select(['attribute_allowed_values.*', 't2.*'])
-            ->get();
-
-
         $availableIdList = $this->getValueIds($restrictedQuery);
 
         $variants = [];
         foreach ($allowedValues as $value) {
-            $available = in_array($value->id, $availableIdList);
-            $checked = in_array($value->id, $lensData) && $available;
+            $available = in_array($value->series_id, $availableIdList);
+            $checked = in_array($value->series_id, $lensData) && $available;
             $variants[] = [
-                'name' => $value->value,
-                'value' => $value->id,
+                'name' => $value->series_value,
+                'value' => $value->series_id,
                 'checked' => $checked,
                 'available' => $available,
+                'brand_id' => $value->brand_id,
+                'brand_name' => $value->brand_value,
+                'lens_key' => 'cylinder_series',
             ];
         }
 
@@ -215,7 +145,15 @@ foreach ($allowedIds as $t){
             $variants = null;
         }
 
-        return $variants;
+        $this->variantsCache = $variants;
+
+        return  $this->variantsCache;
+    }
+
+
+    public function getVariantsCache(): ?array
+    {
+        return $this->variantsCache;
     }
 
 
