@@ -134,6 +134,14 @@
         margin-left: 60px;
     }
 
+    a {
+        border-color: currentColor;
+
+        &:hover {
+            border-color: transparent;
+        }
+    }
+
     .service-contact-title {
         margin: 0 0 15px;
         font-family: $f-default;
