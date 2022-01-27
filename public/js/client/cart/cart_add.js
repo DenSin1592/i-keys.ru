@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let button = $(e.currentTarget);
         button.prop('disabled', true);
         button.addClass('loader');
-        document.modalMessage.modal('show');
 
         let data = {
             productId: button.data('product-id'),
@@ -21,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 data: data,
                 cache: false,
             }).done((response) => {
+                document.modalMessageShowNow(response['modal_title'], response['modal_body']);
                 button.replaceWith(response['button_in_cart']);
-                document.modalMessageShow(response['modal_title'], response['modal_body']);
                 customNumberButtonInit();
                 document.updateCartIcon(response['cartItemCount']);
                 }

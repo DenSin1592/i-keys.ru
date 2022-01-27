@@ -22,6 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 
+    document.modalMessageShowNow = (header, body) => {
+        document.modalMessage.find('h3').text(header);
+        document.modalMessage.find('.modal-body').replaceWith(body);
+        document.modalMessage.modal('show');
+        setTimeout(() => {customNumberButtonInit();},500)
+    };
+
+
     document.modalMessageErrorShow = async () => {
         closeAllModals().then(async () => {
             await new Promise((resolve, reject) => {setTimeout(resolve, 500)});
