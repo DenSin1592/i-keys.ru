@@ -65,7 +65,8 @@ class ServicesController extends Controller
     {
         $breadcrumbs = $this->getBreadcrumbs();
         $breadcrumbs->add($service->header, route('service.show', $service->alias));
-        $service->content = str_replace("{{H1}}", $service->header ?? $service->name, $service->content);
+        $header = (is_null($service->header) || empty(trim($service->header))) ? $service->name : $service->header;
+        $service->content = str_replace("{{H1}}", $header, $service->content);
         $service->content = str_replace("{{BREADCRUMBS}}",
                                         View::make('client.shared.breadcrumbs._breadcrumbs', ['breadcrumbs' => $breadcrumbs]),
                                         $service->content);
