@@ -24,6 +24,17 @@ class Category extends \Eloquent
 
     public const LOCKS_ALIAS = 'zamki';
     public const CYLINDERS_ALIAS = 'tsilindry';
+    public const FURNITURA_ALIAS = 'furnitura';
+    public const RUCHKI_ALIAS = 'ruchki';
+    public const KOPII_CLUCHEY_ALIAS = 'kopii-klyuchey';
+
+    public const MAPPING_ALIASES = [
+        self::LOCKS_ALIAS => 'Замки',
+        self::CYLINDERS_ALIAS => 'Цилиндры',
+        self::FURNITURA_ALIAS => 'Фурнитура',
+        self::RUCHKI_ALIAS => 'Ручки',
+        self::KOPII_CLUCHEY_ALIAS => 'Копии ключей',
+    ];
 
     public const LOCKS_1C_CODE = '000001';
     public const CILINDRY_1C_CODE = '000002';
