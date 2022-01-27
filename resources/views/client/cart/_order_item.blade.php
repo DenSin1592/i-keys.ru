@@ -53,12 +53,12 @@
 
                         <div class="card-order-info-item col-md-auto">
                             <span class="card-order-info-title d-inline-block" >Артикул</span>
-                            <span class="card-order-vendor-code font-weight-bold" >{{$item['product']->article}}</span>
+                            <span class="card-order-vendor-code font-weight-bold" >{{$item['product']->article ?? '-----'}}</span>
                         </div>
 
                         <div class="card-order-info-item col-md-auto">
                             <span class="card-order-info-title d-inline-block" >Код товара</span>
-                            <span class="card-order-product-code font-weight-bold" >{{$item['product']->code_1c}}</span>
+                            <span class="card-order-product-code font-weight-bold" >{{$item['product']->code_1c ?? '-----'}}</span>
                         </div>
                     </div>
                 </div>
