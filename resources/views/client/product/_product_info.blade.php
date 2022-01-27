@@ -121,6 +121,36 @@
                         </div>
                     </div>
 
+                    <div class="product-badges-container col-auto order-2">
+                        <div class="product-badges d-flex flex-column align-items-center">
+                            @if(!is_null($productData['product']->sale_string))
+                                <div class="product-badge">
+                                    <svg class="product-badge-media" width="44" height="44">
+                                        <use xlink:href="{{asset('/images/client/sprite.svg#icon-sale')}}"></use>
+                                    </svg>
+                                </div>
+                            @endif
+                            @if(false)
+                                <div class="product-badge">
+                                    <svg class="product-badge-media" width="48" height="44">
+                                        <use xlink:href="images/sprite.svg#icon-anti-fake"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="product-badge">
+                                    <svg class="product-badge-media" width="39" height="44">
+                                        <use xlink:href="images/sprite.svg#icon-coding"></use>
+                                    </svg>
+                                </div>
+
+                                <div class="product-badge">
+                                    <svg class="product-badge-media" width="44" height="44">
+                                        <use xlink:href="images/sprite.svg#icon-no-keys"></use>
+                                    </svg>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
 
