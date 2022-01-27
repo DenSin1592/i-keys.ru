@@ -1,7 +1,9 @@
  <div class="card-product card-product-portrait" data-card-number="{{$cardNumber}}">
 
         <div class="card-product-thumbnail">
-            <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$productData['product']->name}}" class="card-product-media">
+            <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">
+                <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$productData['product']->name}}" class="card-product-media">
+            </a>
         </div>
 
         <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">{!! $productData['productTypePageAdditionalInfo']['name'] ?? $productData['product']->highlighted_name !!}</a>

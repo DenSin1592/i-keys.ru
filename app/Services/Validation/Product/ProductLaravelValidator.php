@@ -13,6 +13,7 @@ class ProductLaravelValidator extends AbstractLaravelValidator
     {
         $rules = [];
         $rules['name'] = ['required_without:code_1c'];
+        $rules['name_for_site'] = 'required';
         $rules['code_1c'] = ['nullable', "unique:products,code_1c,{$this->currentId}"];
         $rules['category_id'] = ['required', "exists:categories,id"];
         $rules['publish'] = 'boolean';
