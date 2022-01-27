@@ -336,7 +336,6 @@ class CatalogServiceProvider extends ServiceProvider
                 foreach (
                     [
                         Category::CILINDRY_1C_CODE,
-                        Category::CILINDR_MEHANIZMY_CISA_1C_CODE,
                     ] as $catCode1c) {
                     $filterFactory->addFilter($catCode1c, $this->app->make('catalog.filter.cylinder_mechanisms'));
                 }
