@@ -62,8 +62,14 @@
         .card-banner-thumbnail {
             height: 36px;
             margin: 0;
-            @include media-breakpoint-up(xxl) {
-                height: 62px;
+            @include media-breakpoint-up(sm) {
+                height: 60px;
+            }
+            @include media-breakpoint-up(md) {
+                height: 55px;
+            }
+            @include media-breakpoint-up(xl) {
+                height: 60px;
             }
         }
 
