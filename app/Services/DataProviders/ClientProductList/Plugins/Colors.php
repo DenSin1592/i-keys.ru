@@ -21,6 +21,7 @@ class Colors implements ClientProductListPlugin
         $array = [];
 
         foreach ($products as $element) {
+            $result = [];
             if ($element->isCylinder()) {
                 $result = $this->getDataForCylinder($element);
             }
