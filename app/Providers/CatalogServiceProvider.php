@@ -12,6 +12,8 @@ use App\Services\Catalog\Filter\Lens\ClassicListLens;
 use App\Services\Catalog\Filter\Lens\CylinderBrandLens;
 use App\Services\Catalog\Filter\Lens\CylinderSeriesLens;
 use App\Services\Catalog\Filter\Lens\CylinderSizeLens;
+use App\Services\Catalog\Filter\Lens\LockBrandLens;
+use App\Services\Catalog\Filter\Lens\LockSeriesLens;
 use App\Services\Catalog\Filter\Lens\OptionLens;
 use App\Services\Catalog\Filter\Lens\PriceLens;
 use App\Services\Catalog\Filter\Lens\SecurityClassLens;
@@ -177,6 +179,21 @@ class CatalogServiceProvider extends ServiceProvider
             }
         );
         $this->app->singleton(
+            'catalog.filter_lens.lock_brands',
+            function () use ($attributeRepository, $allowedValueRepository) {
+                return new FilterLensWrapper(
+                    new LockBrandLens(
+                        $attributeRepository,
+                        $allowedValueRepository,
+                        '000000001'
+                    ),
+                    'brands',
+                    'Бренд',
+                    'brands_and_series'
+                );
+            }
+        );
+        $this->app->singleton(
             'catalog.filter_lens.cylinder_brands',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
@@ -222,6 +239,21 @@ class CatalogServiceProvider extends ServiceProvider
             }
         );
         $this->app->singleton(
+            'catalog.filter_lens.lock_series',
+            function () use ($attributeRepository, $allowedValueRepository) {
+                return new FilterLensWrapper(
+                    new LockSeriesLens(
+                        $attributeRepository,
+                        $allowedValueRepository,
+                        '000000028'
+                    ),
+                    'series',
+                    'Серия замка',
+                    'empty'
+                );
+            }
+        );
+        $this->app->singleton(
             'catalog.filter_lens.cylinder_series',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
@@ -236,39 +268,6 @@ class CatalogServiceProvider extends ServiceProvider
                 );
             }
         );
-
-
-        /*$this->app->singleton(
-            'catalog.filter_lens.series',
-            function () use ($attributeRepository, $allowedValueRepository) {
-                return new FilterLensWrapper(
-                    new ClassicListLens(
-                        $attributeRepository,
-                        $allowedValueRepository,
-                        '000000028'
-                    ),
-                    'series',
-                    'Серия замка',
-                    'multiple_checkboxes'
-                );
-            }
-        );*/
-
-        /*$this->app->singleton(
-            'catalog.filter_lens.latch',
-            function () use ($attributeRepository, $allowedValueRepository) {
-                return new FilterLensWrapper(
-                    new ClassicListLens(
-                        $attributeRepository,
-                        $allowedValueRepository,
-                        '000000025'
-                    ),
-                    'latch',
-                    'Наличие защелки',
-                    'multiple_checkboxes'
-                );
-            }
-        );*/
 
 
         $this->app->singleton(
@@ -289,12 +288,13 @@ class CatalogServiceProvider extends ServiceProvider
             'catalog.filter.locks',
             function () {
                 $filter = new FilterLensAggregator();
+                $filter->addLens($this->app->make('catalog.filter_lens.lock_series'));
                 $filter->addLens($this->app->make('catalog.filter_lens.options'));
                 $filter->addLens($this->app->make('catalog.filter_lens.color'));
                 $filter->addLens($this->app->make('catalog.filter_lens.price'));
                 $filter->addLens($this->app->make('catalog.filter_lens.lock_type'));
                 $filter->addLens($this->app->make('catalog.filter_lens.type_of_privacy_mechanism'));
-                $filter->addLens($this->app->make('catalog.filter_lens.brands'));
+                $filter->addLens($this->app->make('catalog.filter_lens.lock_brands'));
 
                 return $filter;
             }
