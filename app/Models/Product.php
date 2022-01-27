@@ -41,6 +41,7 @@ class Product extends Model
         'existence',
         'name_with_attributes',
         'search_article',
+        'article',
         'update_search',
     ];
 

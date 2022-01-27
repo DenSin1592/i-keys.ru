@@ -20,6 +20,11 @@
 {!! Form::tbText('alias') !!}
 {!! Form::tbFormGroupClose() !!}
 
+{!! Form::tbFormGroupOpen('article') !!}
+{!! Form::tbLabel('article', trans('validation.attributes.article')) !!}
+{!! Form::tbText('article') !!}
+{!! Form::tbFormGroupClose() !!}
+
 {!! Form::tbFormGroupOpen('code_1c') !!}
     {!! Form::tbLabel('code_1c', trans('validation.attributes.code_1c')) !!}
     {!! Form::tbText('code_1c') !!}

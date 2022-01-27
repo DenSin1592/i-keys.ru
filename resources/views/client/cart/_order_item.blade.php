@@ -53,7 +53,7 @@
 
                         <div class="card-order-info-item col-md-auto">
                             <span class="card-order-info-title d-inline-block" >Артикул</span>
-                            <span class="card-order-vendor-code font-weight-bold" >-----</span>
+                            <span class="card-order-vendor-code font-weight-bold" >{{$item['product']->article}}</span>
                         </div>
 
                         <div class="card-order-info-item col-md-auto">

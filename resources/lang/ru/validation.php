@@ -169,6 +169,7 @@ return [
 
         'name' => 'Название',
         'name_for_site' => 'Название для сайта',
+        'article' => 'Артикул',
         'header' => 'Заголовок',
         'meta_title' => 'Meta title',
         'meta_description' => 'Meta description',
