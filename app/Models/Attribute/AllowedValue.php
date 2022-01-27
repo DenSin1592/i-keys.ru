@@ -2,16 +2,21 @@
 
 namespace App\Models\Attribute;
 
+use App\Models\Features\Glue;
 use App\Models\Helpers\DeleteHelpers;
 use App\Models\Product;
 use App\Models\Service;
+use Diol\Fileclip\UploaderIntegrator;
+use Diol\Fileclip\Version\BoxVersion;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 class AllowedValue extends \Eloquent
 {
-    protected $table = 'attribute_allowed_values';
 
+    use Glue;
+
+    protected $table = 'attribute_allowed_values';
 
     protected $fillable = [
         'value',
@@ -19,6 +24,8 @@ class AllowedValue extends \Eloquent
         'position',
         'value_first_size_cylinder',
         'value_second_size_cylinder',
+        'icon_file',
+        'icon_remove',
     ];
 
 
@@ -67,5 +74,11 @@ class AllowedValue extends \Eloquent
             DeleteHelpers::deleteRelatedAll($allowedValue->multipleValues());
             $allowedValue->services()->detach();
         });
+
+        self::mountUploader('icon', UploaderIntegrator::getUploader(
+            'uploads/attribute/allowed_values/icon', [
+                    'thumb' => new BoxVersion(100, 100),
+                ])
+        );
     }
 }
