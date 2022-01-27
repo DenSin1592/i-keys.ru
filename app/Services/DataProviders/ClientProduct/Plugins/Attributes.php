@@ -193,8 +193,6 @@ class Attributes implements ClientProductPlugin
 
     private function getIcon(Attribute\AllowedValue $value): string
     {
-
-
         return match ($value->attribute_id){
             Attribute\AttributeConstants::CYLINDER_OPENING_TYPE_ID => $value->getSpriteSvgHtml('class="product-attribute-media" width="83" height="20"'),
             Attribute\AttributeConstants::SECURITY_CLASS_ID => $value->getSpriteSvgHtml('class="product-attribute-media" width="22" height="30"', (int)$value->value),
