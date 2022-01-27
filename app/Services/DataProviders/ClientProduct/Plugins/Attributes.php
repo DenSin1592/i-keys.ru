@@ -17,7 +17,6 @@ class Attributes implements ClientProductPlugin
     ){}
 
 
-    #[ArrayShape(['attributesData' => "array"])]
     public function getForProduct(Product $product): array
     {
         $attributes = $this->attributeRepository->all();
@@ -31,8 +30,14 @@ class Attributes implements ClientProductPlugin
 
     public function getAttributesDataForProductValues(array $productValues): array
     {
+
         $productAttributes = [];
         foreach ($productValues as $productValue) {
+
+            if(is_null($productValue['value'])){
+                continue;
+            }
+
             $attributeId = $productValue['attribute']->id;
             $attributeName = $productValue['attribute']->name;
 
@@ -40,12 +45,10 @@ class Attributes implements ClientProductPlugin
             switch ($productValue['attribute']->attribute_type) {
                 case Attribute::TYPE_STRING:
                 case Attribute::TYPE_INTEGER:
-                    if (!is_null($productValue['value'])) {
                         $values[] = $this->addUnits($productValue['attribute'], $productValue['value']->value);
-                    }
                     break;
                 case Attribute::TYPE_DECIMAL:
-                    if (!is_null($productValue['value'])) {
+
                         $values[] =  $this->addUnits(
                                 $productValue['attribute'],
                                 number_format(
@@ -54,16 +57,16 @@ class Attributes implements ClientProductPlugin
                                     '.',
                                     ''
                                 )
-                            )
-                        ;
-                    }
+                            );
+
                     break;
                 case Attribute::TYPE_SINGLE:
-                    if (!is_null($productValue['value'])) {
+
                         $values[] = $this->addUnits(
                                 $productValue['attribute'],
-                                $productValue['value']->allowedValue->value);
-                    }
+                                $productValue['value']->allowedValue->value
+                        );
+
                     break;
                 case Attribute::TYPE_MULTIPLE:
 //                    foreach ($productValue['values'] as $v) {
@@ -82,6 +85,7 @@ class Attributes implements ClientProductPlugin
                 'id' => $attributeId,
                 'name' => $attributeName,
                 'values' => $values,
+                'icon' => $this->getIcon($productValue['value']->allowedValue),
             ];
 
             if (count($productAttributeNote['values']) > 0) {
@@ -172,12 +176,6 @@ class Attributes implements ClientProductPlugin
 
     private function setTypeAttributes(array &$productAttributes, array $productAttributeNote): void
     {
-        if($productAttributeNote['id'] === Attribute\AttributeConstants::COLOR_ID
-            || $productAttributeNote['id'] === Attribute\AttributeConstants::SIZE_CYLINDER_ID
-        ){
-            return;
-        }
-
         if(in_array($productAttributeNote['id'], Attribute\AttributeConstants::MAIN_ATTRIBUTES, false)){
             $productAttributes[Attribute\AttributeConstants::MAIN][$productAttributeNote['id']] = $productAttributeNote;
         }
@@ -190,5 +188,18 @@ class Attributes implements ClientProductPlugin
         else{
             $productAttributes[Attribute\AttributeConstants::OTHER][Attribute\AttributeConstants::GENERAL][$productAttributeNote['id']] = $productAttributeNote;
         }
+    }
+
+
+    private function getIcon(Attribute\AllowedValue $value): string
+    {
+
+
+        return match ($value->attribute_id){
+            Attribute\AttributeConstants::CYLINDER_OPENING_TYPE_ID => $value->getSpriteSvgHtml('class="product-attribute-media" width="83" height="20"'),
+            Attribute\AttributeConstants::SECURITY_CLASS_ID => $value->getSpriteSvgHtml('class="product-attribute-media" width="22" height="30"', (int)$value->value),
+            Attribute\AttributeConstants::COUNT_KEYS_IN_SET_ID => $value->getSpriteSvgHtml('class="product-attribute-media" width="29" height="29"',  (int)$value->value),
+            default => $value->getSpriteSvgHtml(),
+        };
     }
 }

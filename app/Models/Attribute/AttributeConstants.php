@@ -79,6 +79,7 @@ class AttributeConstants
         self::CYLINDER_MECHANISM_TYPE_ID,
         self::REMOVING_KEY_HOLE_ID,
         self::FRAME_TEMPLATE_ID,
+        self::SIZE_CYLINDER_ID,
     ];
 
 

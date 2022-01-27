@@ -6,15 +6,16 @@
             <div class="product-attributes-grid row">
 
                 @foreach($productData['attributesData']['main'] as $elem)
+
                     <div class="product-attribute-item col-sm-6 col-md-4 col-xl-2">
                         <div class="product-attribute-thumbnail">
-{{--                            <img src="{{asset('images/client/icons/icon-key.svg')}}" width="83" height="20" alt=""--}}
-{{--                                 class="product-attribute-media">--}}
+                           {!! $elem['icon'] !!}
                         </div>
                         <div class="product-attribute-title">{{$elem['name']}}</div>
                         <div class="product-attribute-description">{{$elem['values'][0]}}</div>
-{{--                        <a href="javascript:void(0);" class="product-attribute-link text-muted">Посмотреть аналогичные серии других--}}
-{{--                            производителей от … руб</a>--}}
+                        @if($elem['id'] === \App\Models\Attribute\AttributeConstants::COUNT_KEYS_IN_SET_ID)
+                            <a href="{{route('service.show', \App\Models\Service::ADD_KEYS_ALIAS)}}" class="product-attribute-link text-muted">Вам недостаточно такого количества? Закажите сейчас со скидкой</a>
+                        @endif
                     </div>
                 @endforeach
 

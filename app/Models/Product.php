@@ -46,7 +46,7 @@ class Product extends Model
 
     public function getNameAttribute($value)
     {
-        if (\Request::route()->getPrefix() === '/cc') {
+        if (\Request::route()?->getPrefix() === '/cc') {
             return $value;
         }
 
