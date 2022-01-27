@@ -17,13 +17,13 @@
                             <ul class="product-info-list list-unstyled row">
                                 <li class="product-info-item col-auto">
                                     <span class="product-info-title">Артикул</span>
-                                    <span class="product-info-value font-weight-bold">{{$productData['product']->article}}</span>
+                                    <span class="product-info-value font-weight-bold">{{$productData['product']->article ?? '-----'}}</span>
                                 </li>
 
                                 <li class="product-info-item col-auto">
                                     <span class="product-info-title">Код товара</span>
                                     <span
-                                        class="product-info-value product-code">{{$productData['product']->code_1c}}</span>
+                                        class="product-info-value product-code">{{$productData['product']->code_1c ?? '-----'}}</span>
                                 </li>
                             </ul>
                         </div>
