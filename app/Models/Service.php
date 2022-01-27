@@ -13,6 +13,7 @@ class Service extends Model
     use HasFactory;
 
     public const ADD_KEYS_ID = 1;
+    public const ADD_KEYS_ALIAS = 'kopii-klyuchey';
     private string $noImageVersion = 'no-image-200x200.png';
 
 
