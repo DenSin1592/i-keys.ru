@@ -1,7 +1,7 @@
 <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
     <div class="filter-group">
         <div class="filter-group-header">
-            <div class="filter-group-title title-h4">{!! $lensData['name']  !!}</div>
+            <div class="filter-group-title">{!! $lensData['name']  !!}</div>
         </div>
 
         <div class="filter-group-content">
