@@ -113,11 +113,6 @@ final class CylinderSizeLens extends ClassicListLens
             return null;
         }
 
-        $attribute = $this->getAttribute();
-        if (is_null($attribute)) {
-            return null;
-        }
-
         $allowedIds = $this->getAllowedIdsAttributeValue($query, $attribute->id);
         $allowedValues = $this->allowedValueRepo->getAttributeValuesCylinderSecondSizeByIds($attribute, $allowedIds);
         $availableIdList = $this->getFirstOrSecondSizeValueIds($restrictedQuery, 'value_second_size_cylinder');

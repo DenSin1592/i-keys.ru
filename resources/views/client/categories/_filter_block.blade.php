@@ -16,15 +16,15 @@
     </div>
     <div class="filter-footer">
         <div class="form-row flex-nowrap justify-content-between">
-            @if(isset($filter['currentFilterQuery']['category']))
+            @isset($filter['currentFilterQuery']['category'])
                 <input type="hidden" name="category" value="{{ $filter['currentFilterQuery']['category'] }}"/>
-            @endif
+            @endisset
             <input type="hidden" name="sort" value="{{ $filter['currentFilterQuery']['sort'] }}"/>
             <input type="hidden" name="view" value="{{ $filter['currentFilterQuery']['view'] }}"/>
-            @if(isset($filter['currentFilterQuery']['product_type_page']))
+            @isset($filter['currentFilterQuery']['product_type_page'])
                 <input type="hidden" name="product_type_page"
                        value="{{ $filter['currentFilterQuery']['product_type_page'] }}"/>
-            @endif
+            @endisset
         </div>
     </div>
 </form>

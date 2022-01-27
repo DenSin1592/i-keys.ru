@@ -7,8 +7,13 @@ use App\Models\Category;
 use App\Services\Catalog\Filter\Filter\CatalogFilterFactory;
 use App\Services\Catalog\Filter\Filter\FilterLensAggregator;
 use App\Services\Catalog\Filter\Filter\FilterLensWrapper;
+use App\Services\Catalog\Filter\Lens\BrandLens;
 use App\Services\Catalog\Filter\Lens\ClassicListLens;
+use App\Services\Catalog\Filter\Lens\CylinderBrandLens;
+use App\Services\Catalog\Filter\Lens\CylinderSeriesLens;
 use App\Services\Catalog\Filter\Lens\CylinderSizeLens;
+use App\Services\Catalog\Filter\Lens\LockBrandLens;
+use App\Services\Catalog\Filter\Lens\LockSeriesLens;
 use App\Services\Catalog\Filter\Lens\OptionLens;
 use App\Services\Catalog\Filter\Lens\PriceLens;
 use App\Services\Catalog\Filter\Lens\SecurityClassLens;
@@ -92,7 +97,7 @@ class CatalogServiceProvider extends ServiceProvider
                 return new FilterLensWrapper(
                     new PriceLens(),
                     'price',
-                    'Цена',
+                    'Цена (руб.)',
                     'range'
                 );
             }
@@ -174,6 +179,36 @@ class CatalogServiceProvider extends ServiceProvider
             }
         );
         $this->app->singleton(
+            'catalog.filter_lens.lock_brands',
+            function () use ($attributeRepository, $allowedValueRepository) {
+                return new FilterLensWrapper(
+                    new LockBrandLens(
+                        $attributeRepository,
+                        $allowedValueRepository,
+                        '000000001'
+                    ),
+                    'brands',
+                    'Бренд',
+                    'brands_and_series'
+                );
+            }
+        );
+        $this->app->singleton(
+            'catalog.filter_lens.cylinder_brands',
+            function () use ($attributeRepository, $allowedValueRepository) {
+                return new FilterLensWrapper(
+                    new CylinderBrandLens(
+                        $attributeRepository,
+                        $allowedValueRepository,
+                        '000000001'
+                    ),
+                    'brands',
+                    'Бренд',
+                    'brands_and_series'
+                );
+            }
+        );
+        $this->app->singleton(
             'catalog.filter_lens.lock_type',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
@@ -203,55 +238,36 @@ class CatalogServiceProvider extends ServiceProvider
                 );
             }
         );
-
-//        $this->app->singleton(
-//            'catalog.filter_lens.cylinder_series',
-//            function () use ($attributeRepository, $allowedValueRepository) {
-//                return new FilterLensWrapper(
-//                    new ClassicListLens(
-//                        $attributeRepository,
-//                        $allowedValueRepository,
-//                        Attribute\AttributeConstants::CYLINDER_SERIES_1C_CODE
-//                    ),
-//                    'cylinder_series',
-//                    'Серия цилиндра',
-//                    'multiple_checkboxes'
-//                );
-//            }
-//        );
-
-
-        /*$this->app->singleton(
-            'catalog.filter_lens.series',
+        $this->app->singleton(
+            'catalog.filter_lens.lock_series',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
-                    new ClassicListLens(
+                    new LockSeriesLens(
                         $attributeRepository,
                         $allowedValueRepository,
                         '000000028'
                     ),
                     'series',
                     'Серия замка',
-                    'multiple_checkboxes'
+                    'empty'
                 );
             }
-        );*/
-
-        /*$this->app->singleton(
-            'catalog.filter_lens.latch',
+        );
+        $this->app->singleton(
+            'catalog.filter_lens.cylinder_series',
             function () use ($attributeRepository, $allowedValueRepository) {
                 return new FilterLensWrapper(
-                    new ClassicListLens(
+                    new CylinderSeriesLens(
                         $attributeRepository,
                         $allowedValueRepository,
-                        '000000025'
+                        Attribute\AttributeConstants::CYLINDER_SERIES_1C_CODE
                     ),
-                    'latch',
-                    'Наличие защелки',
-                    'multiple_checkboxes'
+                    'cylinder_series',
+                    'Серия цилиндра',
+                    'empty'
                 );
             }
-        );*/
+        );
 
 
         $this->app->singleton(
@@ -272,12 +288,13 @@ class CatalogServiceProvider extends ServiceProvider
             'catalog.filter.locks',
             function () {
                 $filter = new FilterLensAggregator();
+                $filter->addLens($this->app->make('catalog.filter_lens.lock_series'));
                 $filter->addLens($this->app->make('catalog.filter_lens.options'));
                 $filter->addLens($this->app->make('catalog.filter_lens.color'));
                 $filter->addLens($this->app->make('catalog.filter_lens.price'));
                 $filter->addLens($this->app->make('catalog.filter_lens.lock_type'));
                 $filter->addLens($this->app->make('catalog.filter_lens.type_of_privacy_mechanism'));
-                $filter->addLens($this->app->make('catalog.filter_lens.brands'));
+                $filter->addLens($this->app->make('catalog.filter_lens.lock_brands'));
 
                 return $filter;
             }
@@ -288,13 +305,14 @@ class CatalogServiceProvider extends ServiceProvider
             'catalog.filter.cylinder_mechanisms',
             function () {
                 $filter = new FilterLensAggregator();
+                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_series'));
                 $filter->addLens($this->app->make('catalog.filter_lens.options'));
                 $filter->addLens($this->app->make('catalog.filter_lens.security_level'));
                 $filter->addLens($this->app->make('catalog.filter_lens.color'));
                 $filter->addLens($this->app->make('catalog.filter_lens.cylinder_size'));
                 $filter->addLens($this->app->make('catalog.filter_lens.cylinder_mechanism'));
                 $filter->addLens($this->app->make('catalog.filter_lens.price'));
-                $filter->addLens($this->app->make('catalog.filter_lens.brands'));
+                $filter->addLens($this->app->make('catalog.filter_lens.cylinder_brands'));
 
                 return $filter;
             }
@@ -318,7 +336,6 @@ class CatalogServiceProvider extends ServiceProvider
                 foreach (
                     [
                         Category::CILINDRY_1C_CODE,
-                        Category::CILINDR_MEHANIZMY_CISA_1C_CODE,
                     ] as $catCode1c) {
                     $filterFactory->addFilter($catCode1c, $this->app->make('catalog.filter.cylinder_mechanisms'));
                 }
