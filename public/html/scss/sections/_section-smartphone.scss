@@ -101,6 +101,8 @@
 }
 
 .smartphone-media-figure {
+    position: relative;
+    z-index: -1;
     width: 290px;
     height: 345px;
     margin: auto auto 0;
