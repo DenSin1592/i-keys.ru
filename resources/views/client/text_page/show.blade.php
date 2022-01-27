@@ -22,9 +22,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xxl-10 offset-xxl-1">
-
-                        {!! $textPage->content !!}
-
+                        <article class="article-post">
+                            {!! $textPage->content !!}
+                        </article>
                     </div>
                 </div>
             </div>
