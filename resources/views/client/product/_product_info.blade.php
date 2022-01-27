@@ -272,12 +272,12 @@
                                         </button>
                                     </div>
 
-                                    <div class="col-12">
-                                        <div class="product-controls-hint text-danger">
-                                            <span class="product-controls-hint-media">!</span>
-                                            Только по предоплате
-                                        </div>
-                                    </div>
+{{--                                    <div class="col-12">--}}
+{{--                                        <div class="product-controls-hint text-danger">--}}
+{{--                                            <span class="product-controls-hint-media">!</span>--}}
+{{--                                            Только по предоплате--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
 
