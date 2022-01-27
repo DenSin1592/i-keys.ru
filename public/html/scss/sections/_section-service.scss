@@ -91,9 +91,9 @@
             padding-right: 50px;
         }
 
-        &:first-child {
+        &:nth-child(2n+2) {
             @include media-breakpoint-up(lg) {
-                border-right: 1px solid #dcdcdc;
+                border-left: 1px solid #dcdcdc;
             }
         }
     }
