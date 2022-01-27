@@ -1,5 +1,28 @@
  <div class="card-product card-product-portrait" data-card-number="{{$cardNumber}}">
 
+     <div class="card-product-badges d-flex">
+         @if(!is_null($productData['product']->sale_string))
+         <div class="card-product-badge">
+             <svg class="card-product-badge-media" width="45" height="45">
+                 <use xlink:href="{{asset('/images/client/sprite.svg#icon-sale')}}"></use>
+             </svg>
+         </div>
+         @endif
+         @if(false)
+             <div class="card-product-badge">
+                 <svg class="card-product-badge-media" width="39" height="45">
+                     <use xlink:href="images/sprite.svg#icon-coding"></use>
+                 </svg>
+             </div>
+
+             <div class="card-product-badge">
+                 <svg class="card-product-badge-media" width="45" height="45">
+                     <use xlink:href="images/sprite.svg#icon-no-keys"></use>
+                 </svg>
+             </div>
+         @endif
+     </div>
+
         <div class="card-product-thumbnail">
             <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">
                 <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$productData['product']->name}}" class="card-product-media">
