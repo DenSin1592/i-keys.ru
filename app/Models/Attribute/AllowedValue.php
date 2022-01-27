@@ -3,6 +3,7 @@
 namespace App\Models\Attribute;
 
 use App\Models\Features\Glue;
+use App\Models\Features\SvgPath;
 use App\Models\Helpers\DeleteHelpers;
 use App\Models\Product;
 use App\Models\Service;
@@ -13,8 +14,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class AllowedValue extends \Eloquent
 {
-
     use Glue;
+    use SvgPath;
 
     protected $table = 'attribute_allowed_values';
 
@@ -26,6 +27,7 @@ class AllowedValue extends \Eloquent
         'value_second_size_cylinder',
         'icon_file',
         'icon_remove',
+        'svg_path',
     ];
 
 
@@ -63,6 +65,7 @@ class AllowedValue extends \Eloquent
     {
         return $this->belongsToMany(Service::class, 'series_service', 'series_id', 'service_id');
     }
+
 
 
     protected static function boot()

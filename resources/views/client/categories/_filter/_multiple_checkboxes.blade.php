@@ -24,7 +24,9 @@
                                    @if (!$variant['available']) disabled="disabled" @endif>
 
                             <label for="filter_{{ $lensData['key'] . '_' . $variant['value'] }}"
-                                   class="custom-control-label">{{ $variant['name'] }}</label>
+                                   class="custom-control-label">{{ $variant['name'] }}
+                                {!! $variant['icon_sprite'] !!}
+                            </label>
                         </div>
                     </li>
                 @endforeach

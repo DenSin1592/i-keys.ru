@@ -11,19 +11,7 @@
 
 {{--    @include('admin.shared._model_image_field', ['model' => $allowedValue, 'field' => "allowed_values[{$allowedValueKey}][icon]"])--}}
 
-@if($code1c === \App\Models\Attribute\AttributeConstants::SIZE_CYLINDER_1C_CODE)
 
-        {!! Form::tbFormGroupOpen("allowed_values.{$allowedValueKey}.value_first_size_cylinder") !!}
-        {!! Form::tbLabel("allowed_values[{$allowedValueKey}][value_first_size_cylinder]", trans('validation.attributes.value_first_size_cylinder')) !!}
-        {!! Form::tbText("allowed_values[{$allowedValueKey}][value_first_size_cylinder]", $allowedValue->value_first_size_cylinder) !!}
-        {!! Form::tbFormGroupClose() !!}
-
-        {!! Form::tbFormGroupOpen("allowed_values.{$allowedValueKey}.value_second_size_cylinder") !!}
-        {!! Form::tbLabel("allowed_values[{$allowedValueKey}][value_second_size_cylinder]", trans('validation.attributes.value_second_size_cylinder')) !!}
-        {!! Form::tbText("allowed_values[{$allowedValueKey}][value_second_size_cylinder]", $allowedValue->value_second_size_cylinder) !!}
-        {!! Form::tbFormGroupClose() !!}
-
-    @endif
 
     <div class="full-info">
 
@@ -45,6 +33,25 @@
             @include('admin.shared._local_or_remote_file_field', ['field' => "allowed_values[{$allowedValueKey}][icon_file]"])
         </div>
         {!! Form::tbFormGroupClose() !!}
+
+        {!! Form::tbFormGroupOpen("allowed_values.{$allowedValueKey}.svg_path") !!}
+        {!! Form::tbLabel("allowed_values[{$allowedValueKey}][svg_path]", trans('validation.attributes.svg_path_sprite')) !!}
+        {!! Form::tbText("allowed_values[{$allowedValueKey}][svg_path]", $allowedValue->svg_path) !!}
+        {!! Form::tbFormGroupClose() !!}
+
+        @if($code1c === \App\Models\Attribute\AttributeConstants::SIZE_CYLINDER_1C_CODE)
+
+            {!! Form::tbFormGroupOpen("allowed_values.{$allowedValueKey}.value_first_size_cylinder") !!}
+            {!! Form::tbLabel("allowed_values[{$allowedValueKey}][value_first_size_cylinder]", trans('validation.attributes.value_first_size_cylinder')) !!}
+            {!! Form::tbText("allowed_values[{$allowedValueKey}][value_first_size_cylinder]", $allowedValue->value_first_size_cylinder) !!}
+            {!! Form::tbFormGroupClose() !!}
+
+            {!! Form::tbFormGroupOpen("allowed_values.{$allowedValueKey}.value_second_size_cylinder") !!}
+            {!! Form::tbLabel("allowed_values[{$allowedValueKey}][value_second_size_cylinder]", trans('validation.attributes.value_second_size_cylinder')) !!}
+            {!! Form::tbText("allowed_values[{$allowedValueKey}][value_second_size_cylinder]", $allowedValue->value_second_size_cylinder) !!}
+            {!! Form::tbFormGroupClose() !!}
+
+        @endif
 
     </div>
 </li>

@@ -8,15 +8,19 @@ trait Glue
 
     public function getImgPath(string $field, ?string $version, string $noImageVersion)
     {
-        if($this->getAttachment($field)?->exists($version))
-            return asset($this->getAttachment($field)->getUrl($version));
+        $attachment = $this->getAttachment($field);
+
+        if($attachment?->exists($version))
+            return asset($attachment->getUrl($version));
         return asset('/images/common/no-image/' . $noImageVersion);
     }
 
     public function getImgSourcePath(string $field, ?string $version, string $noImageVersion)
     {
-        if($this->getAttachment($field)?->exists())
-            return asset($this->getAttachment($field)->getRelativePath());
+        $attachment = $this->getAttachment($field);
+
+        if($attachment?->exists())
+            return asset($attachment->getRelativePath());
         return asset('/images/common/no-image/' . $noImageVersion);
     }
 }

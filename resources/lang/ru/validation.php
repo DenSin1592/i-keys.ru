@@ -209,6 +209,7 @@ return [
         'for_admin_filter' => 'Для фильтра администратора',
         'decimal_scale' => 'Количество знаков после запятой',
         'value' => 'Значение',
+        'svg_path_sprite' => 'Путь к svg#sprite',
         'allowed_values' => 'Разрешённые значения',
         'icon_file' => 'Изображение',
         'filter_name' => 'Название для фильтра',
