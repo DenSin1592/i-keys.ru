@@ -106,7 +106,8 @@ class ClassicListLens implements LensInterface
                 'available' => $available,
                 'icon' => asset($value->getImgSourcePath('icon', null, 'no-image-40x40.png')),
 
-                'icon_sprite' => $value->getSpriteSvgHtml('class="filter-option-media" width="66" height="16"')
+//                'icon_sprite' => $value->getSpriteSvgHtml('class="filter-option-media" width="66" height="16"')
+                'icon_sprite' => $this->getIconSpriteSvg($value)
             ];
         }
 
@@ -132,5 +133,15 @@ class ClassicListLens implements LensInterface
     protected function getValuesTable(): string
     {
         return 'attribute_single_values';
+    }
+
+    private function getIconSpriteSvg(Attribute\AllowedValue $value): string
+    {
+        return match ($value->id){
+            Attribute\AttributeConstants::CYLINDER_MECHANISM_TYPE_KEY_KEY => $value->getSpriteSvgHtml('class="product-attribute-media" width="76" height="16"'),
+            Attribute\AttributeConstants::CYLINDER_MECHANISM_TYPE_KEY_VERTUSHKA => $value->getSpriteSvgHtml('class="product-attribute-media" width="57" height="16"',),
+            Attribute\AttributeConstants::CYLINDER_MECHANISM_TYPE_KEY_SHTOCK => $value->getSpriteSvgHtml('class="product-attribute-media" width="70" height="16"',),
+            default => $value->getSpriteSvgHtml(),
+        };
     }
 }

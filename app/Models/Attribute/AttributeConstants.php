@@ -50,6 +50,11 @@ class AttributeConstants
     public const WIDTH_ID = 39;
 
 
+    public const CYLINDER_MECHANISM_TYPE_KEY_KEY = 14;
+    public const CYLINDER_MECHANISM_TYPE_KEY_VERTUSHKA = 17;
+    public const CYLINDER_MECHANISM_TYPE_KEY_SHTOCK = 24;
+
+
     public const MAIN_ATTRIBUTES = [
         self::BRAND_ID,
         self::SECURITY_CLASS_ID,
