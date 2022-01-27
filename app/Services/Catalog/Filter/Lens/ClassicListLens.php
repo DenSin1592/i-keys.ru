@@ -104,6 +104,7 @@ class ClassicListLens implements LensInterface
                 'value' => $value->id,
                 'checked' => $checked,
                 'available' => $available,
+                'icon' => asset($value->getImgSourcePath('icon', null, 'no-image-40x40.png'))
             ];
         }
 

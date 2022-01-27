@@ -20,19 +20,7 @@
                                class="custom-control-label">
 
                             <img loading="lazy"
-
-                                @switch($variant['value'])
-                                    @case(\App\Models\Attribute\AttributeConstants::COLOR_LATUN_ID)
-                                        src="{{asset('/uploads/colors/color-brown.png')}}"
-                                        @break
-                                    @case(\App\Models\Attribute\AttributeConstants::COLOR_NICKEL_ID)
-                                        src="{{asset('/uploads/colors/color-silver.png')}}"
-                                        @break
-                                    @default
-                                        src="{{asset('/images/common/no-image/no-image-40x40.png')}}"
-                                 @endswitch
-
-
+                                 src="{{$variant['icon']}}"
                                  alt="{{ $variant['name'] }}"
                                  class="custom-control-image">
                         </label>
