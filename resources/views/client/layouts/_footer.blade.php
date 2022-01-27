@@ -18,7 +18,7 @@
                 <ul class="footer-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between">
 
                     @foreach($categoriesFooterMenu as $element)
-                        <li class="footer-catalog-item col-auto col-xxl">
+                        <li class="footer-catalog-item col-auto col-xxl  {{ $element['active']  ? 'active' : '' }}">
                             <a href="{{$element['url']}}" class="footer-catalog-link d-flex align-items-center justify-content-center">
                                 <div class="footer-catalog-thumbnail">
                                     <svg class="footer-catalog-media" width="26" height="25">
