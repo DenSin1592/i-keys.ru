@@ -76,7 +76,7 @@ class AllowedValue extends \Eloquent
         });
 
         self::mountUploader('icon', UploaderIntegrator::getUploader(
-            'uploads/attribute/allowed_values/icon', [
+            'uploads/attributes/allowed_values/icon', [
                     'thumb' => new BoxVersion(100, 100),
                 ])
         );
