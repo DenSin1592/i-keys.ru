@@ -9,7 +9,12 @@
                 @foreach ($lensData['variants'] as $number => $variant)
                     @if($lensData['key']==='lock_type' && $loop->first)
                     <li class="filter-checkbox-item" >
-                        <a href="{{route('catalog', [\App\Models\Category::CYLINDERS_ALIAS])}}" class="filter-category-link" >Цилиндры</a>
+                        <a href="{{route('catalog', [\App\Models\Category::CYLINDERS_ALIAS])}}" class="filter-category-link d-flex align-items-center" >
+                            <svg class="filter-category-media" width="24" height="24">
+                                <use xlink:href="{{asset('/images/client/sprite.svg#icon-catalog-cylinder')}}"></use>
+                            </svg>
+                            <span class="filter-category-text" >Цилиндры</span>
+                        </a>
                     </li>
                     @endif
                     <li class="filter-checkbox-item">
