@@ -9,22 +9,22 @@
 
                     <ol class="list-steps list-unstyled">
                         <li>
-                            <p>Оформляете заявку и наш мастер выезжает в течение 5 минут после подтверждения</p>
+                            <div class="align-self-center" >Оформляете заявку и наш мастер выезжает в течение 5 минут после подтверждения</div>
                         </li>
                         <li>
-                            <p>Наш мастер приезжает со всем необходимым инструментом</p>
+                            <div class="align-self-center" >Наш мастер приезжает со всем необходимым инструментом</div>
                         </li>
                         <li>
-                            <p>Вскрывает и осматривает замок</p>
+                            <div class="align-self-center" >Вскрывает и осматривает замок</div>
                         </li>
                         <li>
-                            <p>Если ремонт возможен, то согласовывает условия <a href="javascript:void(0);">ремонта</a> или <a href="javascript:void(0);">перекодирует замок</a></p>
+                            <div class="align-self-center" >Если ремонт возможен, то согласовывает условия <a href="javascript:void(0);">ремонта</a> или <a href="javascript:void(0);">перекодирует замок</a></div>
                         </li>
                         <li>
-                            <p>Если нет, то мастер <a href="javascript:void(0);">меняет замок</a></p>
+                            <div class="align-self-center" >Если нет, то мастер <a href="javascript:void(0);">меняет замок</a></div>
                         </li>
                         <li>
-                            <p>Можете пользоваться!</p>
+                            <div class="align-self-center" >Можете пользоваться!</div>
                         </li>
                     </ol>
                 </div>
