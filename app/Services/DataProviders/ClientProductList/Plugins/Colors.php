@@ -2,9 +2,11 @@
 
 namespace App\Services\DataProviders\ClientProductList\Plugins;
 
-use App\Models\Attribute\AttributeConstants;
+use App\Models\Attribute\AllowedValue;
+use App\Models\Product;
 use App\Services\DataProviders\ClientProductList\ClientProductListPlugin;
 use App\Services\Product\Attribute\Color\DataProvider;
+use Illuminate\Database\Eloquent\Collection;
 
 
 class Colors implements ClientProductListPlugin
@@ -20,10 +22,15 @@ class Colors implements ClientProductListPlugin
 
         foreach ($products as $element) {
             if ($element->isCylinder()) {
-                $results = $this->getDataForCylinder($element);
+                $result = $this->getDataForCylinder($element);
             }
-            if (!empty($results)) {
-                $array[$element->id] = $results;
+
+            if(empty($result)){
+                $result = $this->getDefaultData($element);
+            }
+
+            if (!empty($result)) {
+                $array[$element->id] = $result;
             }
         }
 
@@ -31,21 +38,37 @@ class Colors implements ClientProductListPlugin
     }
 
 
-    private function getDataForCylinder($product)
+    private function getDataForCylinder($product): array
     {
-        $products = $this->dataProvider->getBuilderByProductSeries($product)
+        $products = $this->dataProvider->getBuilderByCylinderSeries($product)
             ->orderBy('attribute_allowed_values.value')
             ->select('products.*', 'attribute_allowed_values.id as attr_id', 'attribute_allowed_values.value as attr_value')
             ->get();
 
-        if ($products->count() === 0) {
-            $products = $this->dataProvider->getCollectionOneProductWithAttrValue($product);
-        }
+        return $this->getFinishData($product, $products);
+    }
 
+
+    private function getDefaultData($product): array
+    {
+        $products = $this->dataProvider->getCollectionOneProductWithAttrValue($product);
+
+        return $this->getFinishData($product, $products);
+    }
+
+
+    private function getFinishData(Product $product, Collection $products): array
+    {
         if ($products->count() === 0) {
             return [];
         }
 
+        $allowedValuesIds = [];
+        foreach ($products as $element) {
+            $allowedValuesIds[$element->attr_id] = $element->attr_id;
+        }
+
+        $allowedValues = AllowedValue::query()->find($allowedValuesIds);
 
         $colors = [];
         foreach ($products as $element) {
@@ -55,11 +78,15 @@ class Colors implements ClientProductListPlugin
                 'product_id' => $element->id,
                 'attr_value' => $element->attr_value,
                 'isActive' => $isActive,
-                'imgPath' => match ($element->attr_id) {
-                    AttributeConstants::COLOR_LATUN_ID => asset('/uploads/colors/color-brown.png'),
-                    AttributeConstants::COLOR_NICKEL_ID => asset('/uploads/colors/color-silver.png'),
-                    default => asset('/images/common/no-image/no-image-40x40.png'),
-                }
+                'imgPath' => (static function() use ($element, $allowedValues){
+                    foreach ($allowedValues as $value){
+                        if($element->attr_id === $value->id){
+                            return $value->getImgSourcePath('icon', null, 'no-image-40x40.png');
+                        }
+                    }
+                    return $value->getImgSourcePath('', null, 'no-image-40x40.png');
+                })(),
+
             ];
         }
 

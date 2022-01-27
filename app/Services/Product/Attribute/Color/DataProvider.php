@@ -31,7 +31,7 @@ class DataProvider
     }
 
 
-    public function getBuilderByProductSeries(Product $product): Builder
+    public function getBuilderByCylinderSeries(Product $product): Builder
     {
         $seriesCylinderValueId = $product->getIdSingleValues(AttributeConstants::CYLINDER_SERIES_ID);
         $cylinderOpeningTypeValueId = $product->getIdSingleValues(AttributeConstants::CYLINDER_OPENING_TYPE_ID);
