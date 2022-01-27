@@ -27,6 +27,7 @@
 
 {!! Form::tbFormGroupOpen('content') !!}
 {!! Form::tbLabel('content', trans('validation.attributes.content')) !!}
+<div>Для подстановки блока хлебных крошек используйте {{\App\Models\Service::BREADCRUMBS}}, текста H1 - {{\App\Models\Service::H1}}</div>
 {!! Form::tbTextarea('content') !!}
 {!! Form::tbFormGroupClose() !!}
 

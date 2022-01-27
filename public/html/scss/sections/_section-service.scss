@@ -91,9 +91,9 @@
             padding-right: 50px;
         }
 
-        &:first-child {
+        &:nth-child(2n+2) {
             @include media-breakpoint-up(lg) {
-                border-right: 1px solid #dcdcdc;
+                border-left: 1px solid #dcdcdc;
             }
         }
     }
@@ -132,6 +132,14 @@
     }
     @include media-breakpoint-up(xxl) {
         margin-left: 60px;
+    }
+
+    a {
+        border-color: currentColor;
+
+        &:hover {
+            border-color: transparent;
+        }
     }
 
     .service-contact-title {

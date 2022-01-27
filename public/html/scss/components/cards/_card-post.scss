@@ -29,6 +29,7 @@
         margin: 0 0 15px;
         padding: 0 0 72.5%;
         border: none;
+        background-color: $c-white;
         @include media-breakpoint-up(sm) {
             margin: 0;
         }
@@ -72,6 +73,7 @@
 
     &.card-post-featured {
         position: relative;
+        background-color: $c-default;
         background-position: center;
         background-size: cover;
         color: $c-white;

@@ -16,6 +16,8 @@ class Service extends Model
     public const ADD_KEYS_ALIAS = 'kopii-klyuchey';
     private string $noImageVersion = 'no-image-200x200.png';
 
+    public const H1 = '{{H1}}';
+    public const BREADCRUMBS = '{{BREADCRUMBS}}';
 
     protected $fillable = [
         'name',

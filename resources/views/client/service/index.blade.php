@@ -62,11 +62,11 @@
             </div>
 
             <div class="container">
-                <a href="#link" class="card-banner card-banner-landscape card-banner-whatsapp">
+                <a href="https://wa.me/{{Setting::get("site_content.wa_phone")}}" class="card-banner card-banner-landscape card-banner-whatsapp">
                     <div class="row">
                         <div class="card-banner-thumbnail-container col-2 col-md-1 d-flex justify-content-center">
                             <div class="card-banner-thumbnail">
-                                <img loading="lazy" src="images/icons/icon-whatsapp-white.svg" width="62" height="62" alt="Связаться по WhatsApp" class="card-banner-media">
+                                <img loading="lazy" src="{{asset('images/client/icons/icon-whatsapp-white.svg')}}" width="62" height="62" alt="Связаться по WhatsApp" class="card-banner-media">
                             </div>
                         </div>
 

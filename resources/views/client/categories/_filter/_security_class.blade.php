@@ -1,8 +1,8 @@
 <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
     <div class="filter-group">
         <div class="filter-group-header">
-            <div class="filter-group-title title-h4">
-                <div class="filter-group-title title-h4">{!! $lensData['name']  !!}
+            <div class="filter-group-title">
+                <div class="filter-group-title">{!! $lensData['name']  !!}
                     <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Далеко-далеко, за словесными.">?</button>
                 </div>
             </div>

@@ -9,6 +9,10 @@
     font-size: 16px;
     font-weight: 700;
 
+    &.active {
+        background: $c-secondary;
+    }
+
     .filter-toggle-media {
         margin-right: 5px;
     }
@@ -53,30 +57,51 @@
 
 .filter-group {
     margin-bottom: 25px;
-    @include media-breakpoint-up(xxl) {
+    @include media-breakpoint-up(xl) {
         margin-bottom: 55px;
     }
 
     .filter-group-title {
         margin: 0 0 10px;
+        font-size: 17px;
         font-weight: 600;
+        line-height: 25px;
+        @include media-breakpoint-up(xl) {
+            font-size: 20px;
+            line-height: 30px;
+        }
     }
 }
 
 .filter-category-group {
-    @include media-breakpoint-up(xxl) {
+    @include media-breakpoint-up(xl) {
         margin-bottom: 30px;
     }
 }
 
 
 .filter-category-link {
+    border: none;
     font-size: 14px;
     @include media-breakpoint-up(md) {
         font-size: 15px;
     }
     @include media-breakpoint-up(xl) {
         font-size: 17px;
+    }
+
+    .filter-category-media {
+        margin-right: 15px;
+    }
+
+    .filter-category-text {
+        border-bottom: 3px solid $c-secondary;
+    }
+
+    &:hover {
+        .filter-category-text {
+            border-color: transparent;
+        }
     }
 }
 
@@ -92,7 +117,7 @@
 }
 
 .filter-option {
-    @include media-breakpoint-up(xxl) {
+    @include media-breakpoint-up(xl) {
         font-size: 17px;
     }
     
@@ -224,7 +249,7 @@
 
     .filter-sheme-option-title {
         margin: 0;
-        @include media-breakpoint-up(xxl) {
+        @include media-breakpoint-up(xl) {
             font-size: 17px;
         }
     }

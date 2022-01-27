@@ -64,9 +64,10 @@ class ServicesController extends Controller
     private function processServiceContent(Service $service)
     {
         $breadcrumbs = $this->getBreadcrumbs();
-        $breadcrumbs->add($service->header, route('service.show', $service->alias));
-        $service->content = str_replace("{{H1}}", $service->header ?? $service->name, $service->content);
-        $service->content = str_replace("{{BREADCRUMBS}}",
+        $breadcrumbs->add($service->name, route('service.show', $service->alias));
+        $header = (is_null($service->header) || empty(trim($service->header))) ? $service->name : $service->header;
+        $service->content = str_replace(Service::H1, $header, $service->content);
+        $service->content = str_replace(Service::BREADCRUMBS,
                                         View::make('client.shared.breadcrumbs._breadcrumbs', ['breadcrumbs' => $breadcrumbs]),
                                         $service->content);
 

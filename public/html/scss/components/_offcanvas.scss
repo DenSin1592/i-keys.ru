@@ -148,6 +148,12 @@
     padding-bottom: 30px;
     border-top: 3px solid currentColor;
     border-bottom: 3px solid currentColor;
+
+    .offcanvas-catalog-item {
+        &.active {
+            color: $c-secondary;
+        }
+    }
 }
 
 .offcanvas-catalog-link {
