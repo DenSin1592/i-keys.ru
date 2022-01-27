@@ -7,6 +7,7 @@ use App\Services\Breadcrumbs\Container as BreadcrumbsContainer;
 use App\Services\Breadcrumbs\Factory as Breadcrumbs;
 use App\Services\Repositories\Node\EloquentNodeRepository;
 use App\Services\Seo\MetaHelper;
+use Illuminate\Support\Facades\View;
 
 class ServicesController extends Controller
 {
@@ -43,11 +44,9 @@ class ServicesController extends Controller
             return abort(404);
         }
 
-        $breadcrumbs = $this->getBreadcrumbs();
-        $breadcrumbs->add($service->header, route('service.show', $service->alias));
+        $service = $this->processServiceContent($service);
 
         return \View::make('client.service.show')
-            ->with('breadcrumbs', $breadcrumbs)
             ->with('authEditLink', route('cc.services.edit', $service->id))
             ->with('metaData', $this->metaHelper->getRule()->metaForObject($service))
             ->with('service', $service);
@@ -60,5 +59,17 @@ class ServicesController extends Controller
         $breadcrumbs->add('Услуги', route('services'));
 
         return $breadcrumbs;
+    }
+
+    private function processServiceContent(Service $service)
+    {
+        $breadcrumbs = $this->getBreadcrumbs();
+        $breadcrumbs->add($service->header, route('service.show', $service->alias));
+        $service->content = str_replace("{{H1}}", $service->header ?? $service->name, $service->content);
+        $service->content = str_replace("{{BREADCRUMBS}}",
+                                        View::make('client.shared.breadcrumbs._breadcrumbs', ['breadcrumbs' => $breadcrumbs]),
+                                        $service->content);
+
+        return $service;
     }
 }
