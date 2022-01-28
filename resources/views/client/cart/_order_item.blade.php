@@ -67,7 +67,7 @@
                     <div class="card-order-subtitle">Стоимость</div>
 
                     <div class="card-order-price-block d-flex flex-wrap">
-                        <span class="card-product-price"> {!! Helper::priceFormat($item['product']->price) !!}<span class="rouble">руб.</span></span>
+                        <span class="card-product-price text-nowrap"> {!! Helper::priceFormat($item['product']->price) !!}<span class="rouble">руб.</span></span>
                         @if(!is_null($oldPrice = $item['product']->getOldPrice()))
                         <span class="card-product-old-price">{!! Helper::priceFormat($oldPrice) !!}<span class="rouble">руб.</span></span>
                         <div class="card-product-sale-price text-danger font-weight-bold">{!! $item['product']->sale_string !!}</div>
