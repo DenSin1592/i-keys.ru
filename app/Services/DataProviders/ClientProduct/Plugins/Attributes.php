@@ -34,7 +34,7 @@ class Attributes implements ClientProductPlugin
         $productAttributes = [];
         foreach ($productValues as $productValue) {
 
-            if(is_null($productValue['value'])){
+            if(!isset($productValue['value']) && is_null($productValue['value'])){
                 continue;
             }
 
@@ -85,8 +85,13 @@ class Attributes implements ClientProductPlugin
                 'id' => $attributeId,
                 'name' => $attributeName,
                 'values' => $values,
-                'icon' => $this->getIcon($productValue['value']->allowedValue),
             ];
+
+            if($productValue['value']->allowedValue instanceof Attribute\AllowedValue){
+                $productAttributeNote['icon'] = $this->getIcon($productValue['value']->allowedValue);
+            }
+
+
 
             if (count($productAttributeNote['values']) > 0) {
                 $this->setTypeAttributes($productAttributes, $productAttributeNote);
