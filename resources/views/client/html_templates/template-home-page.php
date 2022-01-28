@@ -55,6 +55,10 @@
                 <div class="intro-item col-md-10 col-lg-3">
                     <div class="card card-intro">
                         <div class="row flex-nowrap">
+                            <div class="card-thumbnail col-auto">
+                                <img loading="lazy" src="/images/client/sections/section-intro/intro-key-image-4.jpg" width="114" height="114" alt="" class="card-media">
+                            </div>
+
                             <div class="card-content col align-self-center">
                                 <div class="card-text">Мы сможем изготовить ключ для практически любого замка!</div>
                             </div>
