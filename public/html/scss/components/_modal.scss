@@ -82,6 +82,25 @@
     }
 }
 
+.modal-thumbnail {
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 100%;
+
+    .modal-media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+        object-fit: contain;
+        object-position: center;
+    }
+}
+
 .modal-title {
     margin-right: 35px;
 }
