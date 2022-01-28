@@ -1,9 +1,10 @@
 <div class="megamenu-wrapper">
     <div class="megamenu-inner">
         <div class="row">
-            <div class="megamenu-column col-6 col-md-3 col-xl">
+            <div class="megamenu-column megamenu-fluid-column col-12">
                 <div class="megamenu-block">
-                    <ul class="megamenu-list list-unstyled">
+                    <div class="megamenu-title font-family-secondary">Изделие</div>
+                    <ul class="megamenu-list d-flex flex-wrap list-unstyled">
                         <li><a href="#link">Ручки</a></li>
                         <li><a href="#link">Петли</a></li>
                         <li><a href="#link">Накладки</a></li>

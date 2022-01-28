@@ -67,9 +67,12 @@
             padding-left: 15px;
             padding-right: 15px;
         }
-        @include media-breakpoint-up(xl) {
-            flex: 0 0 20%;
-            width: 20%;
+
+        &:not(.megamenu-fluid-column) {
+            @include media-breakpoint-up(xl) {
+                flex: 0 0 20%;
+                width: 20%;
+            }
         }
     }
 }
@@ -99,8 +102,12 @@
 }
 
 .megamenu-list {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0 -15px;
+
+    li {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 
     a {
         display: block;
