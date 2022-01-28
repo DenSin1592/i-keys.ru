@@ -2,13 +2,15 @@
     <form action="#" class="form-modal form">
         <div class="form-row">
             <div class="col-3 col-sm-2">
-                <div class="modal-thumbnail d-flex align-items-center justify-content-center">
+                {{-- todo: заменить ссылку --}}
+                <a href="#link" class="modal-thumbnail d-flex align-items-center justify-content-center">
                     <img loading="lazy" src="{{$product->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$product->name}}" class="modal-media">
-                </div>
+                </a>
             </div>
 
             <div class="col-9 col-sm-10 align-self-center">
-                <div id="modalAddToCardProductName" class="title-h4 text-secondary">{!! $product->name !!}</div>
+                {{-- todo: заменить ссылку --}}
+                <a href="#link" id="modalAddToCardProductName" class="title-h4 text-secondary">{!! $product->name !!}</a>
         
                 <div class="form-group d-flex align-items-center">
                     <label for="modalAddToCartQuantity" class="form-label form-label-column">Кол-во:</label>

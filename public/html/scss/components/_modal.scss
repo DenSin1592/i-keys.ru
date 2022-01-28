@@ -86,6 +86,7 @@
     position: relative;
     margin-bottom: 15px;
     padding-bottom: 100%;
+    border: none;
 
     .modal-media {
         position: absolute;
@@ -168,6 +169,7 @@
 
 // modal add to cart
 #modalAddToCardProductName {
+    border: none;
     @include media-breakpoint-up(xxl) {
         margin: 5px 0;
         font-size: 22px;
