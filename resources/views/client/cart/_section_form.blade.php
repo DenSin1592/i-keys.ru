@@ -91,7 +91,7 @@
                                             <div class="form-option input-group">
                                                 <input type="radio" class="form-option-radio" name="delivery_method" value="{{ \App\Models\Order::DELIVERY_CDEK }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header">
-                                                    <div class="form-option-title title-h4 font-weight-bold">Доставка СДЭКом <img loading="lazy" src="images/logo/logo-cdek.png" width="96" height="25" alt="СДЭК"></div>
+                                                    <div class="form-option-title title-h4 font-weight-bold">Доставка СДЭКом <img loading="lazy" src="{{asset('images/client/logo/logo-cdek.png')}}" width="96" height="25" alt="СДЭК"></div>
                                                     <div class="form-option-subtitle">Укажите адрес доставки. Если не хотите заполнять, менеджер позвонит вам и заполнит вместе с вами</div>
                                                 </div>
 
@@ -122,7 +122,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <p class="checkout-delivery-price font-weight-bold" >Стоимость доставки 1&nbsp;500&nbsp;<span class="rouble" ></span></p>
+                                                    <p class="checkout-delivery-price font-weight-bold" >Стоимость доставки 1&nbsp;500&nbsp;<span class="rouble" >руб.</span></p>
                                                 </div>
                                             </div>
 
@@ -160,7 +160,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <p class="checkout-delivery-price" ><b>Стоимость доставки 1 500 Р</b></p>
+                                                    <p class="checkout-delivery-price font-weight-bold" >Стоимость доставки 1&nbsp;500&nbsp;<span class="rouble" >руб.</span></p>
                                                 </div>
                                             </div>
 
@@ -181,12 +181,12 @@
                                             <div class="form-option">
                                                 <input type="radio" class="form-option-radio" name="delivery_method" value="{{ \App\Models\Order::DELIVERY_SELF_CDEK }}" autocomplete="off" hidden required>
                                                 <div class="form-option-header">
-                                                    <div class="form-option-title title-h4 font-weight-bold">Самовывоз СДЭК <img loading="lazy" src="images/logo/logo-cdek.png" width="96" height="25" alt="СДЭК"></div>
+                                                    <div class="form-option-title title-h4 font-weight-bold">Самовывоз СДЭК <img loading="lazy" src="{{asset('images/client/logo/logo-cdek.png')}}" width="96" height="25" alt="СДЭК"></div>
                                                 </div>
 
                                                 <div class="form-option-content">
                                                     <div class="ckeckout-map-block">
-                                                        <img src="uploads/maps/map-cdek-image.png" alt="Карта СДЭК">
+                                                        <img src="{{asset('images/client/uploads/map-cdek-image.png')}}" alt="Карта СДЭК">
                                                     </div>
                                                 </div>
                                             </div>
@@ -240,7 +240,7 @@
                                                         После подтверждения заказа на следующем шаге, вы будете перенаправлены на платформу онлайн-платежей.
                                                         Если вы не можете оплатить прямо сейчас, вам на почту вместе подтверждением заказа будет отправлена ссылка для оплаты
                                                     </p>
-                                                    <p><img src="images/logo/logo-payments-systems.png" width="331" height="50" alt="Платежные системы"></p>
+                                                    <p><img src="{{asset('images/client/logo/logo-payments-systems.png')}}" width="331" height="50" alt="Платежные системы"></p>
                                                 </div>
                                             </div>
 
@@ -270,7 +270,7 @@
 
                                                         <label for="checkout-attached-files" class="custom-file-label">
                                                             <svg class="custom-file-media" width="24" height="26">
-                                                                <use xlink:href="/images/sprite.svg#icon-attach"></use>
+                                                                <use xlink:href="{{asset('/images/client/sprite.svg#icon-attach')}}"></use>
                                                             </svg>
                                                             Прикрепить файл <span class="text-muted" >(принимаются файлы в формате jpg, pdf, doc и xls)</span>
                                                         </label>
