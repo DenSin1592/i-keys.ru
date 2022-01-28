@@ -30,7 +30,7 @@ use Illuminate\Support\ServiceProvider;
 class CatalogServiceProvider extends ServiceProvider
 {
 
-    public const MULTIPLE_VIEWS_FOR_SELECTED_BLOCK = ['multiple_checkboxes', 'color', 'security_class'];
+    public const MULTIPLE_VIEWS_FOR_SELECTED_BLOCK = ['multiple_checkboxes','security_class', 'color', 'brands_and_series', 'empty', ];
 
     public function register(): void
     {
