@@ -32,6 +32,8 @@ class CatalogServiceProvider extends ServiceProvider
 
     public const MULTIPLE_VIEWS_FOR_SELECTED_BLOCK = ['multiple_checkboxes','security_class', 'color', 'brands_and_series', 'empty', ];
 
+    public const CYLINDER_SIZE_KEY = 'cylinder_size';
+
     public function register(): void
     {
         $this->app->singleton(
@@ -141,7 +143,7 @@ class CatalogServiceProvider extends ServiceProvider
                         $allowedValueRepository,
                         Attribute\AttributeConstants::SIZE_CYLINDER_1C_CODE
                     ),
-                    'cylinder_size',
+                    self::CYLINDER_SIZE_KEY,
                     'Типоразмер',
                     'cylinder_size'
                 );

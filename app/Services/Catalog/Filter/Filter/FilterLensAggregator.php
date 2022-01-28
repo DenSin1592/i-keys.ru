@@ -1,5 +1,7 @@
 <?php namespace App\Services\Catalog\Filter\Filter;
 
+use App\Providers\CatalogServiceProvider;
+
 /**
  * Class FilterLensAggregator
  * Filter which aggregates lenses.
@@ -103,6 +105,12 @@ class FilterLensAggregator implements FilterInterface
     private function getLensData(array $filterData, FilterLensWrapper $lensWrapper)
     {
         $lensData = \Arr::get($filterData, $lensWrapper->getKey());
+
+        if( is_array($lensData) && $lensWrapper->getKey() === CatalogServiceProvider::CYLINDER_SIZE_KEY ){
+            if(is_null($lensData[0]) && is_null($lensData[1])){
+                $lensData = null;
+            }
+        }
 
         return $lensData;
     }
