@@ -173,6 +173,7 @@
                                         <label for="product-color-{{$key}}" class="custom-control-label">
                                             <img loading="lazy" src="{{$element['imgPath']}}"
                                                  alt="{{$element['attr_value']}}"
+                                                 title="{{$element['attr_value']}}"
                                                  class="custom-control-image">
                                         </label>
                                     </div>
