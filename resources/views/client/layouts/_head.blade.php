@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>{{$metaData['meta_title'] ?? 'l-keys.ru'}}</title>
@@ -16,5 +16,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     {!! Asset::includeCSS('client_css') !!}
+    <script id="ISDEKscript" type="text/javascript" src="{{ URL::asset('/js/client/cdek/widjet.js') }}"></script>
 </head>
 
