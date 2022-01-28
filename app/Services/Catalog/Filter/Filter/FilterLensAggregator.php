@@ -107,7 +107,7 @@ class FilterLensAggregator implements FilterInterface
         $lensData = \Arr::get($filterData, $lensWrapper->getKey());
 
         if( is_array($lensData) && $lensWrapper->getKey() === CatalogServiceProvider::CYLINDER_SIZE_KEY ){
-            if(is_null($lensData[0]) && is_null($lensData[1])){
+            if((empty($lensData[0]) && empty($lensData[1]))){
                 $lensData = null;
             }
         }
