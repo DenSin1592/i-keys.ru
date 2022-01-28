@@ -34,14 +34,21 @@ class OptionLens implements LensInterface
 
     public function getVariants($query, $restrictedQuery, $lensData)
     {
-
         $variants = [
             $this->getAllProductsVariant(clone $restrictedQuery, $lensData),
             $this->getBestProductsVariant(clone $restrictedQuery, $lensData),
             $this->getDiscountProductsVariant(clone $restrictedQuery, $lensData),
         ];
 
-        return $variants;
+        $result = [];
+
+        foreach ($variants as $array){
+            if(count($array)){
+                $result[] = $array;
+            }
+        }
+
+        return $result;
     }
 
 
@@ -74,6 +81,10 @@ class OptionLens implements LensInterface
 
         $checked = in_array(self::BEST_PRODUCT, $lensData);
         $count =  $restrictedQuery->where('products.best_prod', true)->select('products.*')->distinct()->get()->count();
+
+        if ($count === 0){
+            return [];
+        }
 
         $variant = [
             'name' => 'Показать лучшие товары',
