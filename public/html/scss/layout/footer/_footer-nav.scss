@@ -6,5 +6,9 @@
         &:not(:last-child) {
             margin-bottom: 20px;
         }
+
+        .active {
+            color: $c-secondary;
+        }
     }
 }

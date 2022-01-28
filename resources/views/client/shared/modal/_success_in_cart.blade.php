@@ -1,5 +1,6 @@
 <div class="modal-body" data-cart-product-id="{{$product->id}}">
     <form action="#" class="form-modal form">
+{{--        <img loading="lazy" src="{{$product->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$product->name}}" class="card-product-media">--}}
         <div id="modalAddToCardProductName" class="title-h4 text-secondary">{!! $product->name !!}</div>
 
         <div class="form-group d-flex align-items-center">

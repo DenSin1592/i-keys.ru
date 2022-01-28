@@ -225,6 +225,12 @@
     @include media-breakpoint-up(lg) {
         font-size: 17px;
     }
+
+    .offcanvas-nav-item {
+        &.active {
+            color: $c-secondary;
+        }
+    }
 }
 
 .offcanvas-nav-link {
