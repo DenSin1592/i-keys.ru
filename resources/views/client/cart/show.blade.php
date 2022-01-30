@@ -29,6 +29,8 @@
 @section('modals')
     @include('client.shared.modal._fast_order')
     @include('client.shared.modal._remove_in_cart')
-
+    @if (\Request::route()->getName() === "cart.show")
+        @include('client.shared.modal._cdek_cart_popup')
+    @endif
 @endsection
 

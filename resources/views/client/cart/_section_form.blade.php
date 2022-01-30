@@ -173,7 +173,7 @@
 
                                                 <div class="form-option-content">
                                                     <div class="ckeckout-map-block">
-                                                        <div id="forpvz" style="height:600px;"></div>
+                                                        <div class="btn btn-sm cdek-popup">Выбрать на карте</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,7 +186,7 @@
 
                                                 <div class="form-option-content">
                                                     <div class="ckeckout-map-block">
-                                                        <img src="uploads/maps/map-cdek-image.png" alt="Карта СДЭК">
+                                                        <div class="btn btn-sm cdek-popup">Выбрать на карте</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -319,6 +319,7 @@
         </div>
     </div>
 </section>
+
 
 
 
