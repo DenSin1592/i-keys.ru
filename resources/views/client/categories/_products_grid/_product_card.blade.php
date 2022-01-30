@@ -57,7 +57,7 @@
                             <div class="card-product-color custom-control custom-color custom-color-sm">
                                 <input type="radio" class="custom-control-input change-card" id="card-product-color-{{$cardNumber}}-{{$key}}" value="{{$element['product_id']}}" name="card-product-color-{{$cardNumber}}" @if($element['isActive'])checked @endif>
                                 <label for="card-product-color-{{$cardNumber}}-{{$key}}" class="custom-control-label">
-                                    <img loading="lazy" src="{{$element['imgPath']}}" alt="{{$element['attr_value']}}" class="custom-control-image">
+                                    <img loading="lazy" src="{{$element['imgPath']}}" alt="{{$element['attr_value']}}" title="{{$element['attr_value']}}" class="custom-control-image">
                                 </label>
                             </div>
 
