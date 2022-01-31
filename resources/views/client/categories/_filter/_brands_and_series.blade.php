@@ -1,7 +1,10 @@
 <div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
     <div class="filter-group">
         <div class="filter-group-header">
-            <div class="filter-group-title">{!! $lensData['name']  !!}</div>
+            <div class="filter-group-title">
+                {!! $lensData['name']  !!}
+                <button type="button" class="filter-tooltip-toggle tooltip-toggle" data-toggle="tooltip" data-placement="right" title="Выберите бренд, что бы увидеть серии.">?</button>
+            </div>
         </div>
 
         <div class="filter-group-content">

@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Check if filter is expanded
                 let filterExpanded = !filterContainer.find('.filter-expand').hasClass('collapsed');
-
                 this.changeUrl(url);
                 return $.ajax({
                     url: url,
@@ -348,6 +347,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         };
+
+        filterContainer.on('change', 'input', function (e) {
+            e.preventDefault();//prop attr
+            let input = $(e.currentTarget);
+
+            if(input.prop('checked') === false) {
+                input.closest('.filter-checkbox-list').find('input').prop('checked', false)
+            }
+
+        });
 
         filterContainer.on('submit', 'form', function (e) {
             e.preventDefault();

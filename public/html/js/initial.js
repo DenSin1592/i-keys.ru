@@ -23,3 +23,5 @@
         });
     });
 })(jQuery, window);
+
+const dump = (data) => { console.log(data)};
