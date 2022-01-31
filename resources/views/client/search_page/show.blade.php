@@ -20,17 +20,16 @@
                     </svg>
 
                     @if ($paginator->total() > 0)
-                        Найдено {{ trans_choice('messages.product', $paginator->total()) }} по запросу "{{ $query }}"{{Request::get('category_for_search') !== 'all' ? ' в разделе "'. \App\Models\Category::MAPPING_ALIASES[Request::get('category_for_search')].'"' : '' }}.
+                        Найдено {{ trans_choice('messages.product', $paginator->total()) }} по запросу "{{ $query }}"{{$categoryForSearch !== 'all' ? ' в разделе "'. \App\Models\Category::MAPPING_ALIASES[$categoryForSearch].'"' : '' }}.
                     @else
-                        <p>По запросу "{{ $query }}" не найдено ни одного товара{{Request::get('category_for_search') !== 'all' ? ' в разделе "'. \App\Models\Category::MAPPING_ALIASES[Request::get('category_for_search')].'"' : '' }}.</p>
+                        <p>По запросу "{{ $query }}" не найдено ни одного товара{{$categoryForSearch !== 'all' ? ' в разделе "'. \App\Models\Category::MAPPING_ALIASES[$categoryForSearch].'"' : '' }}.</p>
                     @endif
                 </div>
             </div>
         </section>
 
-        @if ($paginator->total() === 0 && (Request::get('category_for_search') === 'all'))
+        @if ($paginator->total() > 0)
 
-            @else
             <section class="section-search">
             <div class="container">
                 <div class="search-products-block">

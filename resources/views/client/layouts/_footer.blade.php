@@ -97,14 +97,18 @@
             </div>
 
             <div class="footer-search-container col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 offset-xl-1 offset-xxl-0 col order-md-7 float-lg-left">
-                <form class="footer-search search">
+
+                {{ Form::open(['url' => route('search'), 'class' => 'footer-search search', 'method' => 'GET']) }}
+                    {{ Form::search('query', Request::get('query'), ['required' => '', 'placeholder' => 'Поиск товаров', 'class' => 'header-search-input search-input'])}}
+                    {{Form::hidden('category_for_search', Request::get('category_for_search', 'all'))}}
+
                     <input type="search" class="footer-search-input search-input" placeholder="Поиск товаров" required="">
-                    <button type="button" class="footer-search-button search-button">
-                        <svg class="search-button-media" width="24" height="25">
-                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-search')}}"></use>
-                        </svg>
-                    </button>
-                </form>
+                        <button type="submit" class="footer-search-button search-button">
+                            <svg class="search-button-media" width="24" height="25">
+                                <use xlink:href="{{asset('/images/client/sprite.svg#icon-search')}}"></use>
+                            </svg>
+                        </button>
+                {{ Form::close() }}
             </div>
 
             <div class="footer-develop-container col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-1 offset-xl-1 order-md-8 float-lg-right">
