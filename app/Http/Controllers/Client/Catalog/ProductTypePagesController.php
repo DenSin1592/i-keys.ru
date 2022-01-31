@@ -14,12 +14,14 @@ use App\Services\Catalog\FilterUrlParser\FilterUrlParser;
 use App\Services\Catalog\ListSorting\SortingContainer;
 use App\Services\DataProviders\ClientProductList\ClientProductList;
 use App\Services\DataProviders\ProductListPage\FilterVariantsProvider;
+use App\Services\DataProviders\ProductListPage\ProductTypePage\DefaultProductTypePageProductList;
 use App\Services\DataProviders\ProductListPage\ProductTypePage\FilteredProductTypePageProductList;
 use App\Services\DataProviders\ProductListPage\ProductTypePage\ManualProductTypePageProductList;
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Repositories\ProductTypePage\EloquentProductTypePageRepository;
 use App\Services\Seo\MetaHelper;
 use \Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Http\JsonResponse;
 
 
@@ -114,7 +116,7 @@ class ProductTypePagesController extends Controller
     }
 
 
-    private function checkPathAndReturnCurrentTypePage(array $aliasPath): ProductTypePage
+    private function checkPathAndReturnCurrentTypePage(array $aliasPath): ?ProductTypePage
     {
         $typePages = $this->productTypePageRepository->getPublishedWithAliases($aliasPath);
         $parentPage = null;
@@ -138,7 +140,7 @@ class ProductTypePagesController extends Controller
     }
 
 
-    private function getFilteredProductDataProvider(ProductTypePage $productTypePage, $inputSort, $productsView): FilteredProductTypePageProductList
+    private function getFilteredProductDataProvider(ProductTypePage $productTypePage, $inputSort, $productsView): FilteredProductTypePageProductList|DefaultProductTypePageProductList
     {
         try {
             $parsedFilterString = $this->filterUrlParser->parseFilterUrl($productTypePage->filter_query ?? '');
@@ -149,8 +151,8 @@ class ProductTypePagesController extends Controller
             }
             $filterData = $parsedFilterString['filterData'];
             $pageSort = $parsedFilterString['sort'];
-
             $sort = !is_null($inputSort) ? $inputSort : $pageSort;
+
             $productListPageProvider = new FilteredProductTypePageProductList(
                 $this->productRepository,
                 $this->filterVariantsProvider,
@@ -162,7 +164,15 @@ class ProductTypePagesController extends Controller
                 $productsView
             );
         } catch (IncorrectFilterUrl $ex) {
-            \App::abort(404, 'Incorrect path to category');
+
+            $productListPageProvider = new DefaultProductTypePageProductList(
+                $this->filterVariantsProvider,
+                $this->productListProvider,
+                $productTypePage,
+                new Category(),
+                [],
+                'price_asc',
+                $productsView);
         }
 
         return $productListPageProvider;
