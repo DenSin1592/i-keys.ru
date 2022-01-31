@@ -22,7 +22,8 @@
         'blockName' => 'Товары этой серии',
         'relationsName' => 'products',
         'routeEdit' => 'cc.products.edit',
-        'terminalEnabled' => false
+        'terminalEnabled' => false,
+        'description' => 'Товары попадают в серию путём заполнения соответствующей характеристики на странице редактирования товара.'
     ])
 
 

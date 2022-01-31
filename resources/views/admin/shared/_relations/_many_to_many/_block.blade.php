@@ -2,7 +2,9 @@
     <legend>{{$blockName}}</legend>
 
     <div class="field-hint-block">
-        <p></p>
+        @isset($description)
+        <p>{{$description}}</p>
+        @endisset
     </div>
 
     <div id="{{"modal-".$relationsName."-current"}}">
