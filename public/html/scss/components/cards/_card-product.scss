@@ -19,7 +19,8 @@
     .card-product-thumbnail {
         position: relative;
         width: 100%;
-        padding-bottom: 68.5%;
+        // padding-bottom: 68.5%;
+        padding-bottom: 100%;
         border: none;
         @include media-breakpoint-up(sm) {
             padding-bottom: 95.5%;
@@ -154,6 +155,10 @@
     
     .card-product-cart {
         @extend .btn;
+        margin-top: 10px;
+        @include media-breakpoint-up(sm) {
+            margin-top: 0;
+        }
 
         .card-product-cart-media {
             margin-right: 5px;
