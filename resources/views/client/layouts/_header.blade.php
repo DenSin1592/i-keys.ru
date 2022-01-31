@@ -146,7 +146,7 @@
                 <ul class="header-catalog-list list-unstyled no-gutters d-flex flex-wrap justify-content-between justify-content-xl-end">
 
                     @foreach($categoriesHeaderMenu as $element)
-                    <li class="header-catalog-item col-auto col-xxl d-flex  {{ $element['active']  ? 'active' : '' }} {{empty( $element['megamenu']) ? '' : 'has-children'}}">
+                    <li class="header-catalog-item col-auto col-xxl d-flex @if($element['active'] || (isset($rootCategory) && $rootCategory == $element['id'])) active @endif {{empty( $element['megamenu']) ? '' : 'has-children'}}">
                         <a href="{{$element['url']}}" class="header-catalog-link d-flex align-items-center justify-content-center">
                             <div class="header-catalog-thumbnail">
                                 <svg class="header-catalog-media" width="26" height="25">

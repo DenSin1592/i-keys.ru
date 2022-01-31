@@ -17,6 +17,7 @@ trait CategoryMenuBuilder
                 ? route('service.show', \App\Models\Service::ADD_KEYS_ALIAS)
                 : \UrlBuilder::getUrl($elem);
             $menu[] = [
+                'id' => $elem->id,
                 'name' => $elem->name,
                 'url' => $url,
                 'active' => \StringHelper::checkUrlIncludes(\URL::current(), $url),
