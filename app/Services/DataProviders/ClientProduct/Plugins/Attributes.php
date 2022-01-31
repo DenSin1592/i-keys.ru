@@ -201,7 +201,7 @@ class Attributes implements ClientProductPlugin
         return match ($value->attribute_id){
             Attribute\AttributeConstants::CYLINDER_OPENING_TYPE_ID => $value->getSpriteSvgHtml('class="product-attribute-media" width="83" height="20"'),
             Attribute\AttributeConstants::SECURITY_CLASS_ID => $value->getSpriteSvgHtml('class="product-attribute-media" width="22" height="30"', (int)$value->value),
-            Attribute\AttributeConstants::COUNT_KEYS_IN_SET_ID => $value->getSpriteSvgHtml('class="product-attribute-media" width="29" height="29"',  (int)$value->value >= 5 ? (int)$value->value : 5),
+            Attribute\AttributeConstants::COUNT_KEYS_IN_SET_ID => $value->getSpriteSvgHtml('class="product-attribute-media" width="29" height="29"',  (int)$value->value <= 5 ? (int)$value->value : 5),
             default => $value->getSpriteSvgHtml(),
         };
     }
