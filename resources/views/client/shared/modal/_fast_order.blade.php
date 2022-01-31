@@ -15,8 +15,7 @@
             <div class="modal-body">
                 <form action="#" data-method="POST" data-action="{{route('order.fast.store')}}"
                       class="form-modal form" id="quick-order">
-
-                    <div class="form-group error"></div>
+                    <div class="error"></div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" name="name" id="form-quick-order-name"
@@ -25,12 +24,12 @@
 
                     <div class="form-group">
                         <input type="email" class="form-control" name="email" id="form-quick-order-email"
-                               placeholder="Почта *" required>
+                               placeholder="Почта *">
                     </div>
 
                     <div class="form-group">
                         <input type="tel" class="form-control" name="phone" id="form-quick-order-phone"
-                               placeholder="Телефон *" required>
+                               placeholder="Телефон *" data-client-phone-mask required>
                     </div>
 
                     <button type="submit" class="btn btn-lg">Отправить</button>
