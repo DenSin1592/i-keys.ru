@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         const QuikOrder = $('#quick-order');
         QuikOrder.validate({
             highlight: function(element) {
-                console.log($(element).parent())
                 $(element).parent().addClass("field-error");
             },
             unhighlight: function(element) {
