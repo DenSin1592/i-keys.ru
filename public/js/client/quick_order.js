@@ -10,26 +10,17 @@ document.addEventListener('DOMContentLoaded', function () {
         e.preventDefault();
         errorBlock.html('');
 
-
-
         if (QuikOrder.valid()) {
             submitBtn.prop('disabled', true);
             submitBtn.addClass('loader');
-            let promise = $.ajax({
+            $.ajax({
                 url: quickOrderForm.data('action'),
                 type: quickOrderForm.data('method'),
                 data: quickOrderForm.serialize(),
                 success: function (response) {
                     if (response['status'] === 'success') {
-                        modalQuickOrderContainer.modal('hide')
-                        document.updateCartIcon(0);
-                        document.modalMessage.on('hidden.bs.modal', () => {
-                            window.location.reload();
-                        });
-                    } else {
                         document.modalMessageShow(response['modal_title'], response['modal_body']);
-                    }
-                    if (response['status'] === 'error') {
+                    } else if (response['status'] === 'error') {
                         let errors = response['errors'];
                         for (let field in errors) {
                             for (let key in errors[field]) {
@@ -45,6 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     submitBtn.removeClass('loader');
                     document.modalMessageErrorShow();
                 }
+            });
+
+            $(document).ajaxComplete(function(){
+                document.modalMessage.on('hidden.bs.modal', () => {
+                    window.location.reload();
+                });
             });
         }
     });

@@ -173,7 +173,7 @@
 
                                                 <div class="form-option-content">
                                                     <div class="ckeckout-map-block">
-                                                        <div class="btn btn-sm cdek-popup">Выбрать на карте</div>
+                                                        <div class="btn btn-sm map-popup">Показать на карте</div>
                                                     </div>
                                                 </div>
                                             </div>
