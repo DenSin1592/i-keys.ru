@@ -1,4 +1,4 @@
-<div class="filter-column col-12 col-sm-6 col-md-4 col-xl-12">
+<div class="filter-column col-12 col-sm-6 col-md-4 col-lg-12">
     <div class="filter-group filter-category-group">
         <div class="filter-group-content">
             <ul class="filter-options-list list-unstyled">

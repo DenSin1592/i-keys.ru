@@ -118,6 +118,7 @@ function closeFilter() {
     $('body').removeClass('filter-open');
     filterToggle.removeClass('active');
     filterContainer.slideUp();
+    setFilterPosition();
     removeBackdrop();
 }
 

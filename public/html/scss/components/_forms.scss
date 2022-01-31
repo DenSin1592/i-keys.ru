@@ -247,7 +247,7 @@ textarea.form-control {
             height: 100%;
             &:checked {
                 + .custom-control-label {
-                    border-color: $c-white;
+                    border-color: currentColor;
                 }
             }
         }

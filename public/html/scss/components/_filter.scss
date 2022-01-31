@@ -24,19 +24,20 @@
     z-index: 9;
     overflow-y: auto;
     top: 100%;
-    left: -15px;
-    right: -15px;
+    left: -5px;
+    right: -5px;
     max-height: calc(100vh - 180px);
-    padding: 15px 30px;
+    padding: 15px 30px 30px;
     background-color: $c-black;
     color: $c-white;
+    @include media-breakpoint-up(sm) {
+        left: 0;
+        right: 0;
+    }
     @include media-breakpoint-up(md) {
         max-height: calc(100vh - 215px);
     }
     @include media-breakpoint-up(lg) {
-        max-height: calc(100vh - 240px);
-    }
-    @include media-breakpoint-up(xl) {
         position: static;
         overflow: visible;
         display: block !important;

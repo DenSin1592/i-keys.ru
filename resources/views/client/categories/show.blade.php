@@ -12,9 +12,9 @@
             <div class="container">
                 <div class="row">
 
-                    <div class="catalog-aside-container col-xl-3" >
+                    <div class="catalog-aside-container col-lg-3" >
                         @if(!empty($filter['filterVariants']))
-                            <button type="button" class="filter-toggle btn d-block d-xl-none text-center" >
+                            <button type="button" class="filter-toggle btn d-block d-lg-none text-center" >
                                 <svg class="filter-toggle-media" width="24" height="24">
                                     <use xlink:href="{{asset('/images/client/sprite.svg#icon-filter')}}"></use>
                                 </svg>
@@ -27,7 +27,7 @@
                         @endif
                     </div>
 
-                    <div class="catalog-content-container col-xl-9" id="category-content">
+                    <div class="catalog-content-container col-lg-9" id="category-content">
                         @include('client.categories._category_content')
                     </div>
 
