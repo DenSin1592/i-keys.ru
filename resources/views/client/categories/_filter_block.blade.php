@@ -1,4 +1,4 @@
-<div class="filter-header d-none d-xl-block">
+<div class="filter-header d-none d-lg-block">
     <div class="filter-title title-h3 text-uppercase">
         <svg class="filter-title-media" width="33" height="30">
             <use xlink:href="{{asset('/images/client/sprite.svg#icon-filter')}}"></use>
