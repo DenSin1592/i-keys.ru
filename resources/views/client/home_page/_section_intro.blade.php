@@ -1,7 +1,7 @@
 <section class="section-intro section-dark" style="background-image: url({{asset('/images/client/sections/section-intro/intro-bg.jpg')}});" >
     <div class="container">
         <div class="section-header">
-            <div class="section-title title-h1 text-uppercase">Вскрытие замка</div>
+            <div class="section-title title-h1 text-uppercase">Вскрытие замка двери</div>
         </div>
 
         <div class="intro-block">
