@@ -23,18 +23,16 @@
          @endif
      </div>
 
-        <div class="card-product-thumbnail">
-            <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">
-                <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$productData['product']->name}}" class="card-product-media">
-            </a>
-        </div>
+        <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-thumbnail">
+            <img loading="lazy" src="{{$productData['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$productData['product']->name}}" class="card-product-media">
+        </a>
 
         <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">{!! $productData['productTypePageAdditionalInfo']['name'] ?? $productData['product']->highlighted_name !!}</a>
 
         <div class="card-product-info-list">
 
             @if(isset($productData['sizes_cylinder']))
-                <div class="card-product-size-block card-product-info-block d-flex align-items-center">
+                <div class="card-product-size-block card-product-info-block d-flex flex-wrap align-items-center">
                     <label for="card-product-size-{{$cardNumber}}" class="card-product-info-title card-product-size-title">Типоразмер</label>
 
                     <select name="" id="card-product-size-{{$cardNumber}}" class="card-product-size custom-control custom-select change-card custom-select-inline" style="width: auto;">
@@ -45,7 +43,7 @@
                 </div>
             @endif
 
-            <div class="card-product-color-block card-product-info-block d-flex align-items-center">
+            <div class="card-product-color-block card-product-info-block d-flex flex-wrap align-items-center">
 
                 @if(isset($productData['colors']))
                     <label for="" class="card-product-info-title card-product-color-title">Цвет</label>
@@ -69,8 +67,8 @@
         </div>
 
         <div class="card-product-order-block mt-auto">
-            <div class="form-row flex-nowrap">
-                <div class="card-product-price-container col">
+            <div class="form-row flex-sm-nowrap">
+                <div class="card-product-price-container col-12 col-sm">
                     <div class="card-product-price-block d-flex flex-wrap">
                         <div class="card-product-price"> {!! Helper::priceFormat($productData['product']->price, false, true) !!}</div>
                         @if(!is_null($oldPrice = $productData['product']->getOldPrice()))
