@@ -107,6 +107,10 @@
     li {
         margin-left: 15px;
         margin-right: 15px;
+
+        &.active {
+            color: $c-secondary;
+        }
     }
 
     a {
