@@ -24,7 +24,7 @@
 
                     <div class="form-group">
                         <input type="email" class="form-control" name="email" id="form-quick-order-email"
-                               placeholder="Почта *">
+                               placeholder="Почта">
                     </div>
 
                     <div class="form-group">

@@ -57,7 +57,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input name="email" type="email" class="form-control" placeholder="Почта *" id="checkout-user-email">
+                                            <input name="email" type="email" class="form-control" placeholder="Почта" id="checkout-user-email">
                                         </div>
 
                                         <div class="form-hint text-danger"><span class="form-hint-media" >!</span> Укажите реальную почту, на нее мы вам пришлем номер заказа и его детали, а также ссылку для оплаты</div>
