@@ -348,14 +348,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        filterContainer.on('change', 'input', function (e) {
+        filterContainer.on('change', 'input.parent-element', function (e) {
             e.preventDefault();//prop attr
             let input = $(e.currentTarget);
 
             if(input.prop('checked') === false) {
                 input.closest('.filter-checkbox-list').find('input').prop('checked', false)
             }
-
         });
 
         filterContainer.on('submit', 'form', function (e) {

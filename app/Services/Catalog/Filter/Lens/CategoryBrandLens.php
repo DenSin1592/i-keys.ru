@@ -30,8 +30,12 @@ abstract class CategoryBrandLens extends ClassicListLens
 
         foreach ($variants as $keyVariants => $valueVariants) {
             foreach ($seriesVariants as $keySeries => $valueSeries) {
-                if ($valueVariants['value'] === $valueSeries['brand_id'] && ($valueVariants['checked'])) {
-                    $variants[$keyVariants]['series_variants'][] = $valueSeries;
+                if ($valueVariants['value'] === $valueSeries['brand_id']) {
+                    $variants[$keyVariants]['there_is_series_variants'] = true;
+                    if(($valueVariants['checked'])){
+                        $variants[$keyVariants]['series_variants'][] = $valueSeries;
+                    }
+
                     unset($seriesVariants[$keySeries]);
                 }
             }

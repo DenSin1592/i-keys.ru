@@ -15,13 +15,15 @@
 
                             <input type="checkbox"
                                    id="filter_{{ $lensData['key'] . '_' . $variant['value'] }}"
-                                   class="custom-control-input"
+                                   class="custom-control-input parent-element"
                                    name="filter[{{ $lensData['key'] }}][]"
                                    {{ $variant['checked'] ? 'checked="checked"' : '' }}
                                    value="{{ $variant['value'] }}"
-                                   @if (!$variant['available']) disabled="disabled" @endif>
+                                   @if (!$variant['available']) disabled="disabled" @endif
+                            >
 
                             <label for="filter_{{ $lensData['key'] . '_' . $variant['value'] }}"
+                                   @isset($variant['there_is_series_variants']) style="text-decoration-line: underline" @endif
                                    class="custom-control-label">{{ $variant['name'] }}</label>
                         </div>
 
