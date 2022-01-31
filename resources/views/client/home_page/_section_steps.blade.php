@@ -9,7 +9,7 @@
 
                     <ol class="list-steps list-unstyled">
                         <li>
-                            <div class="align-self-center" >Оформляете заявку и наш мастер выезжает в течение 5 минут после подтверждения</div>
+                            <div class="align-self-center" >Оформляете заявку в <a href="https://wa.me/{{Setting::get("site_content.wa_phone")}}">WA</a> или по телефону <a href="tel:{{ Setting::get("site_content.phone") }}">{{ Setting::get("site_content.phone") }}</a> и наш мастер выезжает в течение 5 минут после подтверждения</div>
                         </li>
                         <li>
                             <div class="align-self-center" >Наш мастер приезжает со всем необходимым инструментом</div>
