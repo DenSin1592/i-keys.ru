@@ -105,8 +105,11 @@ class OptionLens implements LensInterface
         }
 
         $checked = in_array(self::DISCOUNT_PRODUCTS, $lensData);
-
         $count =  $restrictedQuery->whereColumn('products.price', '<', 'products.old_price')->select('products.*')->distinct()->get()->count();
+
+        if ($count === 0){
+            return [];
+        }
 
         $variant = [
             'name' => 'Показать товары со скидками',
