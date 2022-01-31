@@ -77,6 +77,7 @@ return [
                 'js/client/helpers/Arrays.js',
                 'js/client/auth_menu.js',
                 'js/client/quick_order.js',
+                'js/client/nav.js',
                 'js/client/modal_message.js',
                 'js/client/filter.js',
                 'js/client/cart/cart_init.js',
