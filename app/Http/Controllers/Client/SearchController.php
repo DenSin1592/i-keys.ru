@@ -34,34 +34,29 @@ class SearchController extends Controller
     public function show()
     {
         try {
-            $paginator = Product::search($this->query)
-                ->rule(ProductsSearchRule::class);
+            $queryBuilder = Product::search($this->query)->rule(ProductsSearchRule::class);
 
             if($this->categoryForSearch !== self::DEFAULT_CATEGORY_FOR_SEARCH){
                 $category = Category::query()->where('alias', '=', $this->categoryForSearch)->first();
                 $categoryIds = resolve(EloquentCategoryRepository::class)->getPublishedTreeIds($category);
-                $paginator = $paginator->whereIn('category_id', $categoryIds);
-
+                $queryBuilder->whereIn('category_id', $categoryIds);
             }
 
-            $paginator = $paginator->paginate(self::ELEMENTS_ON_PAGE);
+            $paginator = $queryBuilder->paginate(self::ELEMENTS_ON_PAGE);
         }catch (\Throwable $e){
-            \Log::error($e->getMessage());
             resolve(Handler::class)->report($e);
             $paginator = new LengthAwarePaginator([], 0, self::ELEMENTS_ON_PAGE);
         }
-        $paginator = $paginator->withQueryString();
-
-        $productsData = $this->productListProvider->getProductListData($paginator->items());
 
         if($paginator->total() === 0 && $this->categoryForSearch !== self::DEFAULT_CATEGORY_FOR_SEARCH){
-            Request::replace(['category_for_search' => self::DEFAULT_CATEGORY_FOR_SEARCH]);
-            return redirect(route('search'));
+            return redirect(route('search').'?query='.$this->query);
         }
 
+        $productsData = $this->productListProvider->getProductListData($paginator->items());
+        $paginator->withQueryString();
         $breadcrumbs = $this->getBreadcrumbs();
         $metaData = $this->metaHelper->getRule()->metaForName('Поиск');
-        $tabsData = $this->getCategoryTabs();
+        $tabsData = $paginator->total() > 0 ? $this->getCategoryTabs() : [];
 
         return \View::make('client.search_page.show', [
             'metaData' => $metaData,
@@ -80,7 +75,7 @@ class SearchController extends Controller
         $tabsData = [];
         $tabsData[] = [
             'name' => 'Все',
-            'url'=> route('search').'?query='.$this->query.'&category_for_search=all',
+            'url'=> route('search').'?query='.$this->query,
             'isActive' => $this->categoryForSearch === self::DEFAULT_CATEGORY_FOR_SEARCH
         ];
 
@@ -91,6 +86,16 @@ class SearchController extends Controller
             ->get();
 
         foreach ($category as $element){
+
+            $count = Product::search($this->query)
+                ->rule(ProductsSearchRule::class)
+                ->where('category_id', $element->id)
+                ->count();
+
+            if($count === 0){
+                continue;
+            }
+
             $tabsData[] = [
                 'name' => $element->name,
                 'url'=> route('search').'?query='.$this->query.'&category_for_search='.$element->alias,

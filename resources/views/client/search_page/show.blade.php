@@ -28,9 +28,8 @@
             </div>
         </section>
 
-        @if ($paginator->total() === 0)
+        @if ($paginator->total() > 0)
 
-            @else
             <section class="section-search">
             <div class="container">
                 <div class="search-products-block">
