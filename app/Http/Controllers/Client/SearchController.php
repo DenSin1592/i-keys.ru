@@ -17,6 +17,7 @@ use Request;
 
 class SearchController extends Controller
 {
+    private const DEFAULT_CATEGORY_FOR_SEARCH = 'all';
     private const ELEMENTS_ON_PAGE = 12;
     private string $query;
     private string $categoryForSearch;
@@ -26,7 +27,7 @@ class SearchController extends Controller
         private MetaHelper $metaHelper,
     ){
         $this->query = Request::get('query','') ?? '';
-        $this->categoryForSearch = Request::get('category_for_search', 'all') ?? 'all';
+        $this->categoryForSearch = Request::get('category_for_search', self::DEFAULT_CATEGORY_FOR_SEARCH) ?? self::DEFAULT_CATEGORY_FOR_SEARCH;
     }
 
 
@@ -36,7 +37,7 @@ class SearchController extends Controller
             $paginator = Product::search($this->query)
                 ->rule(ProductsSearchRule::class);
 
-            if($this->categoryForSearch !== 'all'){
+            if($this->categoryForSearch !== self::DEFAULT_CATEGORY_FOR_SEARCH){
                 $category = Category::query()->where('alias', '=', $this->categoryForSearch)->first();
                 $categoryIds = resolve(EloquentCategoryRepository::class)->getPublishedTreeIds($category);
                 $paginator = $paginator->whereIn('category_id', $categoryIds);
@@ -52,6 +53,12 @@ class SearchController extends Controller
         $paginator = $paginator->withQueryString();
 
         $productsData = $this->productListProvider->getProductListData($paginator->items());
+
+        if($paginator->total() === 0 && $this->categoryForSearch !== self::DEFAULT_CATEGORY_FOR_SEARCH){
+            Request::replace(['category_for_search' => self::DEFAULT_CATEGORY_FOR_SEARCH]);
+            return redirect(route('search'));
+        }
+
         $breadcrumbs = $this->getBreadcrumbs();
         $metaData = $this->metaHelper->getRule()->metaForName('Поиск');
         $tabsData = $this->getCategoryTabs();
@@ -63,6 +70,7 @@ class SearchController extends Controller
             'paginator' => $paginator,
             'query' => $this->query,
             'tabsData' => $tabsData,
+            'categoryForSearch' => $this->categoryForSearch,
         ]);
     }
 
@@ -73,7 +81,7 @@ class SearchController extends Controller
         $tabsData[] = [
             'name' => 'Все',
             'url'=> route('search').'?query='.$this->query.'&category_for_search=all',
-            'isActive' => $this->categoryForSearch === 'all'
+            'isActive' => $this->categoryForSearch === self::DEFAULT_CATEGORY_FOR_SEARCH
         ];
 
         $category = Category::query()
