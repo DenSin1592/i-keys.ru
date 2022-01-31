@@ -44,7 +44,7 @@
                                 <div class="card-order-color custom-control custom-color custom-color-sm">
                                     <input type="radio" class="custom-control-input" id="card-order-color-1-1" name="card-order-color-1" checked >
                                     <label for="card-order-color-1-1" class="custom-control-label">
-                                        <img loading="lazy" src="{{$item['color']['imgPath']}}" alt="{{$item['color']['name']}}" class="custom-control-image">
+                                        <img loading="lazy" src="{{$item['color']['imgPath']}}" alt="{{$item['color']['name']}}" title="{{$item['color']['name']}}" class="custom-control-image">
                                     </label>
                                 </div>
                             </div>

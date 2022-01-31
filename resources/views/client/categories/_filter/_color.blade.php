@@ -22,6 +22,7 @@
                             <img loading="lazy"
                                  src="{{$variant['icon']}}"
                                  alt="{{ $variant['name'] }}"
+                                 title="{{ $variant['name'] }}"
                                  class="custom-control-image">
                         </label>
                     </div>
