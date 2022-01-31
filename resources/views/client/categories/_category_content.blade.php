@@ -29,5 +29,5 @@
 {!! $paginator->onEachSide(1)->links('client.shared.pagination.client') !!}
 
 
-@include('client.categories._content._bottom', ['model' => $category])
+@include('client.categories._content._bottom')
 

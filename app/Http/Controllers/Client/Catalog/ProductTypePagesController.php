@@ -78,6 +78,7 @@ class ProductTypePagesController extends Controller
             return \View::make('client.categories.show')
                 ->with($productListData)
                 ->with('topContent', $productTypePage->content)
+                ->with('bottomContent', $productTypePage->bottom_content)
                 ->with('breadcrumbs', $breadcrumbs)
                 ->with('authEditLink', route('cc.product-type-pages.edit', $productTypePage->id))
                 ->with('metaData', $metaData)
