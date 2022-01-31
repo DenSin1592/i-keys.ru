@@ -10,10 +10,10 @@
         margin-bottom: -20px;
     }
     @include media-breakpoint-up(md) {
-        margin-left: -15px;
-        margin-right: -15px;
     }
     @include media-breakpoint-up(xl) {
+        margin-left: -15px;
+        margin-right: -15px;
         margin-bottom: -30px;
     }
 
@@ -25,10 +25,10 @@
             margin-bottom: 20px;
         }
         @include media-breakpoint-up(md) {
-            padding-left: 15px;
-            padding-right: 15px;
         }
         @include media-breakpoint-up(xl) {
+            padding-left: 15px;
+            padding-right: 15px;
             margin-bottom: 30px;
         }
     }

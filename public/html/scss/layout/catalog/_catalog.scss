@@ -1,18 +1,22 @@
 .section-catalog {
     position: relative;
-    overflow: hidden;
-    -webkit-overflow-scrolling: touch;
     background: $c-gray;
-
-    .catalog-aside-container,
-    .catalog-content-container {
-        position: relative;
-        z-index: 1;
+    @include media-breakpoint-up(lg) {
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
     }
 
     .catalog-aside-container {
+        position: -webkit-sticky;
+        position: sticky;
         z-index: 9;
-        @include media-breakpoint-up(xl) {
+        top: 60px;
+        @include media-breakpoint-up(md) {
+            top: 125px;
+        }
+        @include media-breakpoint-up(lg) {
+            position: relative;
+            top: 0;
             padding-top: 20px;
             padding-bottom: 40px;
             background-color: $c-black;
@@ -37,13 +41,15 @@
     }
 
     .catalog-content-container {
+        position: relative;
+        z-index: 1;
         padding-top: 20px;
         padding-bottom: 40px;
         @include media-breakpoint-up(lg) {
             padding-top: 20px;
             padding-bottom: 40px;
         }
-        @include media-breakpoint-up(xl) {
+        @include media-breakpoint-up(lg) {
             padding-left: 20px;
             padding-right: 20px;
         }
