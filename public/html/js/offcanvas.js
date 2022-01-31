@@ -27,3 +27,7 @@ $(function () {
         target.next().slideToggle();
     });
 })
+
+document.addEventListener('DOMContentLoaded', function (){
+    $(document).on('click', '.backdrop', closeOffcanvas);
+})
