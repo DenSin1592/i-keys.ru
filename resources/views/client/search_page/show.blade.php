@@ -20,9 +20,9 @@
                     </svg>
 
                     @if ($paginator->total() > 0)
-                        Найдено {{ trans_choice('messages.product', $paginator->total()) }} по запросу "{{ $query }}" {{Request::get('category_for_search') !== 'all' ? 'в разделе "'. \App\Models\Category::MAPPING_ALIASES[Request::get('category_for_search')].'"' : '' }}.
+                        Найдено {{ trans_choice('messages.product', $paginator->total()) }} по запросу "{{ $query }}"{{Request::get('category_for_search') !== 'all' ? ' в разделе "'. \App\Models\Category::MAPPING_ALIASES[Request::get('category_for_search')].'"' : '' }}.
                     @else
-                        <p>По запросу "{{ $query }}" не найдено ни одного товара {{Request::get('category_for_search') !== 'all' ? 'в разделе "'. \App\Models\Category::MAPPING_ALIASES[Request::get('category_for_search')].'"' : '' }}.</p>
+                        <p>По запросу "{{ $query }}" не найдено ни одного товара{{Request::get('category_for_search') !== 'all' ? ' в разделе "'. \App\Models\Category::MAPPING_ALIASES[Request::get('category_for_search')].'"' : '' }}.</p>
                     @endif
                 </div>
             </div>
