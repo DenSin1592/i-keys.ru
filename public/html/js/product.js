@@ -91,8 +91,6 @@ $(function () {
         });
 
         // product fancybox
-        console.log('fancybox init');
-
         $().fancybox({
             selector : '.swiper-product-gallery .swiper-slide:not(.swiper-slide-duplicate) .product-media-link',
             backFocus : false,
