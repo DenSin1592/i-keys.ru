@@ -23,7 +23,7 @@
                             >
 
                             <label for="filter_{{ $lensData['key'] . '_' . $variant['value'] }}"
-                                   @isset($variant['there_is_series_variants']) style="text-decoration-line: underline" @endif
+                                   @isset($variant['there_is_series_variants']) style="border-bottom: 1px dashed white" @endif
                                    class="custom-control-label">{{ $variant['name'] }}</label>
                         </div>
 
