@@ -121,6 +121,12 @@
     }
 }
 
+.product-attribute-media {
+    &.product-attribute-key {
+        margin-right: -2px;
+    }
+}
+
 .product-attribute-title {
     margin: 0 0 5px;
     font-size: 14px;
