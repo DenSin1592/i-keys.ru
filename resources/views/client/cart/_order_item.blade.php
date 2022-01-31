@@ -18,7 +18,7 @@
                         {{--                                            </div>--}}
                     </div>
 
-                    <a {{\UrlBuilder::getUrl($item['product'])}} class="card-order-thumbnail d-flex align-items-center justify-content-center">
+                    <a href="{{\UrlBuilder::getUrl($item['product'])}}" class="card-order-thumbnail d-flex align-items-center justify-content-center">
                         <img src="{{$item['product']->getFirstImagePath('image', 'catalog', 'no-image-200x200.png')}}" alt="{{$item['product']->name}}" class="card-order-media">
                     </a>
                 </div>
