@@ -138,9 +138,9 @@ class ClassicListLens implements LensInterface
     private function getIconSpriteSvg(Attribute\AllowedValue $value): string
     {
         return match ($value->id){
-            Attribute\AttributeConstants::CYLINDER_MECHANISM_TYPE_KEY_KEY => $value->getSpriteSvgHtml('class="product-attribute-media" width="76" height="16"'),
-            Attribute\AttributeConstants::CYLINDER_MECHANISM_TYPE_KEY_VERTUSHKA => $value->getSpriteSvgHtml('class="product-attribute-media" width="57" height="16"',),
-            Attribute\AttributeConstants::CYLINDER_MECHANISM_TYPE_KEY_SHTOCK => $value->getSpriteSvgHtml('class="product-attribute-media" width="70" height="16"',),
+            Attribute\AttributeConstants::CYLINDER_MECHANISM_TYPE_KEY_KEY => $value->getSpriteSvgHtml('class="filter-media" width="76" height="16"'),
+            Attribute\AttributeConstants::CYLINDER_MECHANISM_TYPE_KEY_VERTUSHKA => $value->getSpriteSvgHtml('class="filter-media" width="57" height="16"',),
+            Attribute\AttributeConstants::CYLINDER_MECHANISM_TYPE_KEY_SHTOCK => $value->getSpriteSvgHtml('class="filter-media" width="70" height="16"',),
             default => $value->getSpriteSvgHtml(),
         };
     }

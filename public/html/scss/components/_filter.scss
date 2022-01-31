@@ -73,6 +73,10 @@
     }
 }
 
+.filter-media {
+    margin-left: 8px;
+}
+
 .filter-category-group {
     @include media-breakpoint-up(xl) {
         margin-bottom: 30px;
