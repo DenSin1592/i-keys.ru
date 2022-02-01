@@ -49,7 +49,7 @@ class FilterVariantsProvider
                 continue;
             }
 
-            if ($filterVariant['view'] === 'range') {
+            if ($filterVariant['view'] === 'range' && $filterVariant['variants']['disabled'] === false) {
                 $filterVariant['optional']['checked'] =
                     $filterVariant['variants']['min'] < $filterVariant['variants']['from']
                     || $filterVariant['variants']['max'] > $filterVariant['variants']['to'];

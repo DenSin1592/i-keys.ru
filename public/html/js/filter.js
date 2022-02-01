@@ -10,12 +10,12 @@ let initFilterRangeSlider = function () {
         max = parseFloat(toInput.data('border'));
         fromValue = parseFloat(fromInput.val());
         toValue = parseFloat(toInput.val());
-
         decimals = slider.data('decimals');
         sliderStep = 1;
         for (i = 0; i < decimals; i += 1) {
             sliderStep = sliderStep / 10;
         }
+
         slider.slider({
             range: true,
             animate: true,
@@ -23,6 +23,7 @@ let initFilterRangeSlider = function () {
             max: max,
             step: sliderStep,
             values: [fromValue, toValue],
+            disabled: (slider.attr('disabled') === 'disabled'),
             slide: function (event, ui) {
                 fromInput.val(ui.values[0].toFixed(decimals));
                 toInput.val(ui.values[1].toFixed(decimals));
@@ -31,6 +32,8 @@ let initFilterRangeSlider = function () {
                 fromInput.trigger('change');
             }
         });
+
+
 
         changeInput = function () {
             let fromVal, toVal, fromValSlider, toValSlider;

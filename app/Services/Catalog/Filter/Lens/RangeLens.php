@@ -51,10 +51,10 @@ abstract class RangeLens implements LensInterface
         }
 
         if ($min === $max) {
-            return null;
-        } else {
-            return ['min' => $min, 'max' => $max, 'from' => $fromValue, 'to' => $toValue, 'units' => $this->getUnits()];
+            return ['min' => $fromValue -10, 'max' => $toValue +10, 'from' => $fromValue, 'to' => $toValue, 'units' => $this->getUnits(), 'disabled' => true];
         }
+        return ['min' => $min, 'max' => $max, 'from' => $fromValue, 'to' => $toValue, 'units' => $this->getUnits(), 'disabled' => false];
+
     }
 
     /**
