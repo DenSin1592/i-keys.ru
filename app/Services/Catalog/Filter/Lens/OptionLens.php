@@ -25,7 +25,7 @@ class OptionLens implements LensInterface
         }
 
         if(in_array(self::DISCOUNT_PRODUCTS, $lensData)){
-            $query->whereColumn('products.price', '<', 'products.old_price');
+            $query->whereRaw('100 - (products.price / products.old_price * 100) >= 1');
         }
 
         return $query;
@@ -105,7 +105,7 @@ class OptionLens implements LensInterface
         }
 
         $checked = in_array(self::DISCOUNT_PRODUCTS, $lensData);
-        $count =  $restrictedQuery->whereColumn('products.price', '<', 'products.old_price')->select('products.*')->distinct()->get()->count();
+        $count =  $restrictedQuery->whereRaw('100 - (products.price / products.old_price * 100) > 0.9')->select('products.*')->distinct()->get()->count();
 
         if ($count === 0){
             return [];

@@ -136,9 +136,7 @@ class Product extends Model
 
         $sale = 100 - ($this->price / $this->getOldPrice() * 100);
 
-        if ($sale < 1) return 'Экономия ' . round($sale, 2) . '%';
-
-        if ($sale == 0) return null;
+        if ($sale < 1) return null;
 
         return 'Экономия ' . (int)round($sale) . '%';
     }
