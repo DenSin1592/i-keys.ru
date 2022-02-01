@@ -16,5 +16,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     {!! Asset::includeCSS('client_css') !!}
+
+    @if (\Request::route()->getName() === "cart.show")
+        <script defer id="ISDEKscript" type="text/javascript" src="{{ URL::asset('/js/client/cdek/widjet.min.js') }}"></script>
+    @endif
 </head>
 

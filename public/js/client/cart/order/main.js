@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             $('.form-option-radio[value="cash"]'));
 
         forms.each(function (index, form) {
-            $(form).validate( {
+            $(form).validate({
                 highlight: function(element) {
                     $(element).parent().addClass("field-error");
                     order.disableButtons();
@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                      if (typeof errorList[0] !== "undefined") {
                         const position = $(errorList[0].element).offset().top;
                         $('html, body').animate({
-                            scrollTop: position - 100
-                        }, 800);
+                            scrollTop: position - 180
+                        }, 300);
                     }
                     this.defaultShowErrors(); // keep error messages next to each input element
                 },
@@ -56,7 +56,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
                     }
                 }
             });
-        })
+        });
+
+        const QuikOrder = $('#quick-order');
+        QuikOrder.validate({
+            highlight: function(element) {
+                $(element).parent().addClass("field-error");
+            },
+            unhighlight: function(element) {
+                $(element).parent().removeClass("field-error");
+            },
+            rules: {
+                email: {
+                    email: true
+                },
+                phone: {
+                    requiredPhone: true,
+                    minLenghtPhone: 10
+                },
+            }
+        });
     } catch (e) {
         console.warn('main.js not working', e);
     }

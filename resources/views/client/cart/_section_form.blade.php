@@ -57,7 +57,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <input name="email" type="email" class="form-control" placeholder="Почта *" id="checkout-user-email" required>
+                                            <input name="email" type="email" class="form-control" placeholder="Почта" id="checkout-user-email">
                                         </div>
 
                                         <div class="form-hint text-danger"><span class="form-hint-media" >!</span> Укажите реальную почту, на нее мы вам пришлем номер заказа и его детали, а также ссылку для оплаты</div>
@@ -173,7 +173,7 @@
 
                                                 <div class="form-option-content">
                                                     <div class="ckeckout-map-block">
-                                                        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aca78673cd5b5761c75bf31089595551a585c9d2a72cbf06f1587fd0a9e4f9752&amp;width=100%&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>
+                                                        <div class="btn btn-sm map-popup">Показать на карте</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -186,7 +186,7 @@
 
                                                 <div class="form-option-content">
                                                     <div class="ckeckout-map-block">
-                                                        <img src="{{asset('images/client/uploads/map-cdek-image.png')}}" alt="Карта СДЭК">
+                                                        <div class="btn btn-sm cdek-popup">Выбрать на карте</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -319,3 +319,7 @@
         </div>
     </div>
 </section>
+
+
+
+

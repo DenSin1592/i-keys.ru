@@ -71,6 +71,7 @@
 }
 
 .modal-footer {
+    margin-top: 20px;
     display: block;
 
     > .row {
@@ -174,4 +175,12 @@
         margin: 5px 0;
         font-size: 22px;
     }
+}
+
+.modal-full {
+    max-width: 1200px;
+}
+
+.CDEK-widget__popup-mask {
+    z-index: 999;
 }

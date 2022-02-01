@@ -94,6 +94,9 @@ return [
                 'js/client/assets/uploadFile.js',
                 'js/client/cart/order/services/cartStepsOrder.js',
                 'js/client/cart/order/main.js',
+                'js/client/cdek/scripts/ipjq.js',
+                'js/client/cdek/scripts/jquery.mCustomScrollbar.concat.min.js',
+                'js/client/cdek/main.js',
                 'js/client/change_product_page_when_changing_size_cylinder.js',
 
             ],
