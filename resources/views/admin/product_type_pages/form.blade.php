@@ -35,7 +35,10 @@
     {!! Form::tbTinymceTextareaBlock('content') !!}
     {!! Form::tbTinymceTextareaBlock('bottom_content') !!}
 
-    {!! Form::hidden('category_id', 1) !!}
+    {!! Form::tbFormGroupOpen('category_id') !!}
+    {!! Form::tbLabel('category_id', trans('validation.attributes.filter_category_id')) !!}
+    {!! Form::tbSelect2('category_id', $categoryVariants) !!}
+    {!! Form::tbFormGroupClose() !!}
 
     @include('admin.product_type_pages.products._products')
 
