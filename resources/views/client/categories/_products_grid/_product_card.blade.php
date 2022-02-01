@@ -33,7 +33,13 @@
 
             @if(isset($productData['sizes_cylinder']))
                 <div class="card-product-size-block card-product-info-block d-flex flex-wrap align-items-center">
-                    <label for="card-product-size-{{$cardNumber}}" class="card-product-info-title card-product-size-title">Типоразмер</label>
+                    <label for="card-product-size-{{$cardNumber}}" class="card-product-info-title card-product-size-title">
+                        {-- todo: запрограммировать вывод нужной иконки: icon-type-1, icon-type-2, icon-type-3  --}
+                        <svg class="custom-number-button-media" width="32" height="16">
+                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-type-1')}}"></use>
+                        </svg>
+                        Типоразмер
+                    </label>
 
                     <select name="" id="card-product-size-{{$cardNumber}}" class="card-product-size custom-control custom-select change-card custom-select-inline" style="width: auto;">
                         @foreach($productData['sizes_cylinder'] as $element)
