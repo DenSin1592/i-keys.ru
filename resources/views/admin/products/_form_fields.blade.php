@@ -57,6 +57,10 @@
 {!! Form::tbTinymceTextarea('extra_description') !!}
 {!! Form::tbFormGroupClose() !!}
 
+{!! Form::tbFormGroupOpen('price_copy_key') !!}
+{!! Form::tbLabel('price_copy_key', trans('validation.attributes.price_copy_key')) !!}
+{!! Form::tbText('price_copy_key') !!}
+{!! Form::tbFormGroupClose() !!}
 
 <fieldset class="bordered-group">
     <legend>Характеристики</legend>
