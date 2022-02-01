@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         filterContainer.on('change', 'input.parent-element', function (e) {
-            e.preventDefault();//prop attr
+            e.preventDefault();
             let input = $(e.currentTarget);
 
             if(input.prop('checked') === false) {
