@@ -40,13 +40,13 @@ class CatalogServiceProvider extends ServiceProvider
             'catalog.sorting',
             function () {
                 $sortingContainer = new SortingContainer();
-               /* $sortingContainer->addSorting(
+                $sortingContainer->addSorting(
                     new PositionSorting(
                         'По популярности',
                         'popular',
                         Sorting::DIRECTION_ASC
                     )
-                );*/
+                );
                 $sortingContainer->addSorting(
                     new PriceSorting(
                         'Сначала дешёвые',
