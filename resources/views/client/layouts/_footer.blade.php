@@ -102,7 +102,6 @@
                     {{ Form::search('query', Request::get('query'), ['required' => '', 'placeholder' => 'Поиск товаров', 'class' => 'header-search-input search-input'])}}
                     {{Form::hidden('category_for_search', Request::get('category_for_search', 'all'))}}
 
-                    <input type="search" class="footer-search-input search-input" placeholder="Поиск товаров" required="">
                         <button type="submit" class="footer-search-button search-button">
                             <svg class="search-button-media" width="24" height="25">
                                 <use xlink:href="{{asset('/images/client/sprite.svg#icon-search')}}"></use>
