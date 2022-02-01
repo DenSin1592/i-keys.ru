@@ -25,7 +25,7 @@ class Attributes implements ProductSubForm
         $category = $this->extractCategory($product, $oldInput);
 
         $attributes = $this->attributeRepository->allowedForCategory($category);
-        $attributes->load('allowedValues');
+        $attributes->load(['allowedValues' => static function ($q){ $q->orderBy('attribute_allowed_values.value'); }]);
         $productValues = $this->attributeRepository->getValues($product, $attributes);
         $attributeListData = [];
         foreach ($productValues as $value) {
