@@ -83,10 +83,13 @@ class ProductTypePagesController extends Controller
                 ->with('authEditLink', route('cc.product-type-pages.edit', $productTypePage->id))
                 ->with('metaData', $metaData)
                 ->with('linksTypesContent', $linksTypesContent)
-                ->with('rootCategory', $productTypePage->category_id);
+                ->with('rootCategory', $productTypePage->category_id)
+                ->with('productTypePage', $productTypePage)
+                ;
         }
 
         $contentData  = [
+            'productTypePage' => $productTypePage,
             'category' => $productListData['category'],
             'topContent' => $productTypePage->content,
             'filter' => $productListData['filter'],

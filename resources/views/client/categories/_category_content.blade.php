@@ -20,7 +20,7 @@
     <div class="font-weight-bold">
         К сожалению, по выбранным Вами параметрам не найдено ни одного товара. <br>
         Попробуйте расширить критерии поиска или посмотреть весь <a
-            href="{{ UrlBuilder::getUrl($category) }}">каталог</a>.
+            href="{{ UrlBuilder::getUrl($productTypePage?->category ?? $category) }}">каталог</a>.
     </div>
 @endif
 
