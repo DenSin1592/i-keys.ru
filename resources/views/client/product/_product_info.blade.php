@@ -157,6 +157,7 @@
             <div class="product-typography-container col-12 section-dark">
                 <form action="" class="form-product-order">
                     <div class="row">
+                        @if(isset($productData['colors']) || isset($productData['sizesCylinder']))
                         <div class="product-details-container col-sm-6 col-lg-5">
 
                             @if(isset($productData['colors']))
@@ -254,6 +255,7 @@
                                 </a>
                             @endif
                         </div>
+                        @endif
 
                         <div class="product-order-container col-sm-6 col-lg-7">
                             <div class="product-order-block">
