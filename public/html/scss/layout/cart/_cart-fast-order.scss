@@ -1,4 +1,8 @@
 .cart-fast-order-block {
+    max-width: 290px;
+    @include media-breakpoint-up(sm) {
+        max-width: none;
+    }
     @include media-breakpoint-up(xl) {
         font-size: 15px;
     }

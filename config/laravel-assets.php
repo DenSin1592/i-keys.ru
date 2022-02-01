@@ -64,6 +64,7 @@ return [
                 'html/js/fancybox.js',
                 'html/js/tooltip.js',
                 'html/js/offcanvas.js',
+                'html/js/smooth_scroll.js',
                 'html/js/search.js',
                 'html/js/backdrop.js',
                 'html/js/forms.js',
