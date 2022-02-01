@@ -36,7 +36,7 @@
                                         <input
                                             type="checkbox"
                                             id="filter_{{ $seriesVariant['lens_key'] . '_' . $seriesVariant['value'] }}"
-                                            class="custom-control-input"
+                                            class="custom-control-input child-element"
                                             name="filter[{{ $seriesVariant['lens_key'] }}][]"
                                             {{ $seriesVariant['checked'] ? 'checked="checked"' : '' }}
                                             value="{{ $seriesVariant['value'] }}"

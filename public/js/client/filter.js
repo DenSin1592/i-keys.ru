@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let input = $(e.currentTarget);
 
             if(input.prop('checked') === false) {
-                input.closest('.filter-checkbox-list').find('input').prop('checked', false)
+                input.closest('.filter-checkbox-list').find('input.child-element').prop('checked', false)
             }
         });
 
