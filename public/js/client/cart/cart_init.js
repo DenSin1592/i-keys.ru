@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 url: CART_UPDATE_SUMMARY_URI,
                 cache: false
             }).done((response) => {
-                $('.summary-container').replaceWith(response);
+                $('.summary-container').html(response['cartSummaryContent']);
+                $('#total-price-content').html(response['totalPriceContent']);
             }).fail(() => {
                 document.modalMessageErrorShow();
             });

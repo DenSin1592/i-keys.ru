@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let input = $(e.currentTarget);
         let itemCard = input.closest('[data-cart-product-id]');
+        // let totalPrice = input.closest('[data-cart-product-id]');
         let productId = itemCard.data('cartProductId')
         let count = parseFloat(input.val())
 

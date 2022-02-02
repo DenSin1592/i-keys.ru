@@ -91,7 +91,7 @@ class CartController extends Controller
 
         return \Response::json([
             'itemSummaryContent' => $itemSummaryContent,
-            'cartItemCount' => $this->cart->summaryCount(),
+            'cartItemCount' => $this->cart->summaryCount()
         ]);
     }
 
@@ -110,13 +110,19 @@ class CartController extends Controller
     }
 
 
-    public function updateSummary(): View
+    public function updateSummary(): JsonResponse
     {
         if (!\Request::ajax()){
             \App::abort(404, 'Page not found');
         }
 
-        return \View::make('client.cart._summary_block');
+        $cartSummaryContent = \View('client.cart._summary_block')->render();
+        $totalPriceContent = \View('client.cart._total_price_block')->render();
+
+        return \Response::json([
+            'cartSummaryContent' => $cartSummaryContent,
+            'totalPriceContent' => $totalPriceContent,
+        ]);
     }
 
 
