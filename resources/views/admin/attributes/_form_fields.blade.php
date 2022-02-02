@@ -6,17 +6,7 @@
     {!! Form::tbText('code_1c') !!}
 {!! Form::tbFormGroupClose() !!}
 
-@include('admin.shared._model_image_field', ['model' => $formData['attribute'], 'field' => 'icon'])
-
-{!! Form::tbCheckboxBlock('hidden', trans('validation.model_attributes.attribute.hidden'), null, ['hint' => 'Параметр не будет выводиться на странице товара, но по прежнему может участвовать в фильтре.']) !!}
-
 @include('admin.attributes.form._attribute_type', ['formData' => $formData])
-
-{!! Form::tbCheckboxBlock('use_in_filter') !!}
-
-{!! Form::tbCheckboxBlock('for_admin_filter', null, null, ['hint' => 'Параметр доступен только в фильтре администратора. В обычном фильтре клиента скрыто.']) !!}
-
-{!! Form::tbTextBlock('filter_name') !!}
 
 {!! Form::tbTextBlock('alias', null, null, [
     'hint' => "Псевдоним URL для формирования адреса фильтра. Используется для числовых параметров: [псевдоним]-ot-500-do-9000." .

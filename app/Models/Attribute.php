@@ -36,7 +36,16 @@ class Attribute extends \Eloquent
         self::TYPE_DECIMAL => 'дробное число',
     ];
 
-    protected $fillable = ['attribute_type', 'name', 'position', 'decimal_scale', 'units', 'code_1c', 'icon_file', 'icon_remove', 'use_in_filter', 'for_admin_filter', 'filter_name', 'alias', 'hidden', 'imported'];
+    protected $fillable = [
+        'attribute_type',
+        'name',
+        'position',
+        'decimal_scale',
+        'units',
+        'code_1c',
+        'alias',
+        'imported'
+    ];
 
 
     /**
@@ -189,10 +198,6 @@ class Attribute extends \Eloquent
     protected static function boot()
     {
         parent::boot();
-
-        self::mountUploader('icon', UploaderIntegrator::getUploader('uploads/attributes/icons', [
-            'thumb' => new OutBoundVersion(50, 50),
-        ]));
 
         self::deleting(function (self $attribute) {
             DeleteHelpers::deleteRelatedAll($attribute->allowedValues());
