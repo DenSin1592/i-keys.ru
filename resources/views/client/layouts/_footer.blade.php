@@ -99,7 +99,7 @@
             <div class="footer-search-container col-sm-6 col-md-4 col-lg-4 col-xl-3 col-xxl-2 offset-xl-1 offset-xxl-0 col order-md-7 float-lg-left">
 
                 {{ Form::open(['url' => route('search'), 'class' => 'footer-search search', 'method' => 'GET']) }}
-                    {{ Form::search('query', Request::get('query'), ['required' => '', 'placeholder' => 'Поиск товаров', 'class' => 'header-search-input search-input'])}}
+                    {{ Form::search('query', Request::get('query'), ['required' => '', 'placeholder' => 'Поиск товаров', 'class' => 'footer-search-input search-input'])}}
                     {{Form::hidden('category_for_search', Request::get('category_for_search', 'all'))}}
 
                         <button type="submit" class="footer-search-button search-button">
