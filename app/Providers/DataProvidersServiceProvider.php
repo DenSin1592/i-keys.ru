@@ -89,6 +89,7 @@ class DataProvidersServiceProvider extends ServiceProvider
                 $productProvider->addPlugin(\App::make(Colors::class));
                 $productProvider->addPlugin(\App::make(SizesCylinders::class));
                 $productProvider->addPlugin(\App::make(\App\Services\DataProviders\ClientProduct\Plugins\Services::class));
+                $productProvider->addPlugin(\App::make(\App\Services\DataProviders\ClientProduct\Plugins\CylinderOpeningType::class));
 
                 return $productProvider;
             }

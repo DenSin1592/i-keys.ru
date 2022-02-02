@@ -231,12 +231,15 @@
                                             </div>
                                         </div>
 
+                                        @isset($productData['image_opening_cylinder_type'])
                                         <div class="product-scheme-thumbnail">
                                             <img loading="lazy"
-                                                 src="{{asset('images/client/scheme/product-scheme-type-2.png')}}"
+                                                 src="{{$productData['image_opening_cylinder_type']['src']}}"
                                                  width="262"
-                                                 height="106" alt="" class="product-scheme-media">
+                                                 height="106"
+                                                 alt="{{$productData['image_opening_cylinder_type']['alt']}}" class="product-scheme-media">
                                         </div>
+                                        @endisset
                                     </div>
                                 </div>
 
