@@ -34,10 +34,13 @@
             @if(isset($productData['sizes_cylinder']))
                 <div class="card-product-size-block card-product-info-block d-flex flex-wrap align-items-center">
                     <label for="card-product-size-{{$cardNumber}}" class="card-product-info-title card-product-size-title">
-                        {-- todo: запрограммировать вывод нужной иконки: icon-type-1, icon-type-2, icon-type-3  --}
+
+                        @isset($productData['cylinder_opening_type'])
                         <svg class="custom-number-button-media" width="32" height="16">
-                            <use xlink:href="{{asset('/images/client/sprite.svg#icon-type-1')}}"></use>
+                            <use xlink:href="{{$productData['cylinder_opening_type']['svg_path']}}"></use>
                         </svg>
+                        @endisset
+
                         Типоразмер
                     </label>
 
