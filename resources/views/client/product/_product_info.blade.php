@@ -197,7 +197,7 @@
                                     <div class="product-scheme-block product-scheme-type-1">
                                         <div class="product-scheme-options-block">
                                             <div class="row flex-nowrap no-gutters">
-                                                <div class="product-scheme-option-column col-5">
+                                                <div class="product-scheme-option-column">
                                                     <div class="product-scheme-option-group">
                                                         <label for="product-scheme-option-1"
                                                                class="product-scheme-option-title">Внеш.</label>
@@ -213,7 +213,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="product-scheme-option-column col-7">
+                                                <div class="product-scheme-option-column">
                                                     <div class="product-scheme-option-group">
                                                         <label for="product-scheme-option-2"
                                                                class="product-scheme-option-title">Внутр.</label>
