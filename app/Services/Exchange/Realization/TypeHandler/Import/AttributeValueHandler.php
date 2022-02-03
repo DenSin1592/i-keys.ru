@@ -115,6 +115,9 @@ class AttributeValueHandler implements ITypeHandler
                 if (is_null($product)) {
                     $errorMessage = "Товар с 1с кодом = " . $productCode1c . " не существует.";
                 } else {
+                    if($product->attributes_imported){
+                        continue;
+                    }
                     $attribute = $this->attributeRepository->findByCode1c($attributeCode1c);
                     if (is_null($attribute)) {
                         $errorMessage = "Параметр с 1с кодом = " . $attributeCode1c . " не существует.";
@@ -136,6 +139,7 @@ class AttributeValueHandler implements ITypeHandler
 
                         $this->attributeRepository->saveValue($product, $attribute, $attributeValue);
                         $this->productRepository->markUpdateSearchForProduct($product);
+                        $product->update(['attributes_imported' => true]);
                         $this->logger->solveLogs($attribute->code_1c, $product->code_1c);
                         if (!isset($attributeRelatedCategoriesIds[$attribute->id])) {
                             $attributeRelatedCategoriesIds[$attribute->id] = $attribute->categories()

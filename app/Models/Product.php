@@ -43,6 +43,7 @@ class Product extends Model
         'search_article',
         'article',
         'update_search',
+        'attributes_imported',
     ];
 
     public function getNameAttribute($value)
