@@ -20,9 +20,8 @@
                                     <div class="title-h3">Итого:</div>
                                 </div>
 
-                                <div class="col-auto" id="total-price-content">
+                                <div class="col-auto col-xl-12" id="total-price-content">
                                     @include('client.cart._total_price_block')
-{{--                                    <div class="title-h3 font-weight-bold">{!! Helper::priceFormat(\Cart::totalPrice()) !!}<span class="rouble" >руб.</span></div>--}}
                                 </div>
                             </div>
                         </div>
