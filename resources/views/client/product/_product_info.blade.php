@@ -334,7 +334,7 @@
                                         {{\Lang::choice('ключ|ключа|ключей', $productData['count_keys_in_set'])}}
                                     </span>
 
-                                    @isset($productData['services']['add_keys'])
+                                    @isset($productData['services'][\App\Models\Service::ADD_KEYS_ALIAS])
                                         <button type="button" class="product-included-toggle"
                                                 data-toggle="modal"
                                                 data-target="#modalAddKeys">Добавить еще ключи на всю семью
