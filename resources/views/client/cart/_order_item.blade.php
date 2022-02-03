@@ -126,7 +126,7 @@
                                 </svg>
                             </div>
 
-                            <div class="card-order-include-title">В комплекте</div>
+                            <div class="card-order-include-title">В комплекте {{$item['countKeysInSet']}} {!! Lang::choice('ключ|ключа|ключей', $item['countKeysInSet']) !!}. Сделать копий:</div>
 
                             <div class="card-order-include-quantity-block">
                                 <div
@@ -140,8 +140,8 @@
 
                                     <input type="number" class="custom-number-input cart-add-keys-service-count"
                                            data-service-id="{{\App\Models\Service::ADD_KEYS_ID}}"
-                                           value="{{$item['finalCountKeysInSet']}}"
-                                           data-min-value="{{$item['defaultCountKeysInSet']}}">
+                                           value="{{$item['countAdditionalKeys']}}"
+                                           data-min-value="{{$item['countAdditionalKeys']}}">
 
                                     <button type="button"
                                             class="custom-number-button custom-number-increase d-flex align-items-center justify-content-center">

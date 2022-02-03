@@ -54,8 +54,8 @@ class ItemListBuilder
             'color' => $color,
             'services' => $services,
             'finalProductPrice' => $finalProductPrice,
-            'defaultCountKeysInSet' => $countKeysInSet,
-            'finalCountKeysInSet' => $countKeysInSet + $countAdditionalKeys,
+            'countKeysInSet' => $countKeysInSet,
+            'countAdditionalKeys' =>$countAdditionalKeys,
         ];
     }
 }
