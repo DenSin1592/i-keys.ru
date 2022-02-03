@@ -148,7 +148,7 @@ class AttributeHandler implements ITypeHandler
             $attributesToDelete = $this->attributeRepository->getAllNotImportedWithNotEmptyCode1c();
             foreach ($attributesToDelete as $attr) {
                 $deletedAttrData[] = "{$attr->code_1c}: {$attr->name}";
-//                $this->productRepository->markUpdateSearchByRelatedAttribute($attr);
+                $this->productRepository->markUpdateSearchByRelatedAttribute($attr);
                 $this->attributeRepository->delete($attr);
             }
 

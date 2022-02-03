@@ -2,6 +2,7 @@
 
 namespace App\Services\Repositories\Product;
 
+use App\Models\Attribute;
 use App\Models\Attribute\AttributeConstants;
 use App\Models\Category;
 use App\Models\Product;
@@ -13,6 +14,7 @@ use App\Services\RepositoryFeatures\Attribute\EloquentAttributeToggler;
 use App\Services\RepositoryFeatures\Attribute\PositionUpdater;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\LazyCollection;
 
 
 class EloquentProductRepository
@@ -519,6 +521,28 @@ class EloquentProductRepository
         }
 
         \DB::table('products')->where('id', $product->id)->update(['update_search' => true]);
+    }
+
+
+    public function markUpdateSearchByRelatedAttribute(Attribute $attribute): void
+    {
+        $products = $attribute->getRelatedProducts();
+        $productIds = data_get($products, '*.id');
+        if (count($productIds) === 0) {
+            return;
+        }
+
+        \DB::table('products')->whereIn('id', $productIds)->update(['update_search' => true]);
+    }
+
+    public function unmarkUpdateSearchForAll(): void
+    {
+        \DB::table('products')->where('update_search', true)->update(['update_search' => false]);
+    }
+
+    public function getAllForUpdateSearch(): LazyCollection
+    {
+        return Product::where(['update_search' => true])->cursor();
     }
 
 

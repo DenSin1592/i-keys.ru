@@ -27,21 +27,21 @@ class ImportRunner extends BasicRunner
         $this->productRepository = $productRepository;
     }
 
-   /* protected function exchangeRunner(): void
+    protected function exchangeRunner(): void
     {
-//        Product::withoutSyncingToSearch(
-//            function () {
+        Product::withoutSyncingToSearch(
+            function () {
                 parent::exchangeRunner();
-//            }
-//        );
-      //  $this->updateProductSearchIndex();
-    }*/
+            }
+        );
+        $this->updateProductSearchIndex();
+    }
 
-    /*private function updateProductSearchIndex(): void
+    private function updateProductSearchIndex(): void
     {
         $products = $this->productRepository->getAllForUpdateSearch();
         foreach ($products as $product) {
-
+            /** @var Product $product */
             // search index will be changed automatically
             $product->refreshNameWithAttributes();
             // if there is no need in $product->refreshNameWithAttributes()
@@ -53,5 +53,5 @@ class ImportRunner extends BasicRunner
 //            }
         }
         $this->productRepository->unmarkUpdateSearchForAll();
-    }*/
+    }
 }

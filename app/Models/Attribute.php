@@ -187,11 +187,7 @@ class Attribute extends \Eloquent
                 break;
         }
 
-        parent::delete();
-
-        foreach ($products as $product) {
-            $product->refreshNameWithAttributes();
-        }
+        return $products;
     }
 
 
