@@ -44,6 +44,7 @@ class Product extends Model
         'article',
         'update_search',
         'price_copy_key',
+        'attributes_imported',
     ];
 
     public function getNameAttribute($value)
