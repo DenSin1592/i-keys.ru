@@ -1,4 +1,6 @@
-<?php namespace App\Services\DataProviders\ServiceForm;
+<?php
+
+namespace App\Services\DataProviders\ServiceForm;
 
 use App\Models\Service;
 
@@ -17,11 +19,4 @@ interface ServiceSubForm
      */
     public function provideDataFor(Service $attribute, array $oldInput);
 
-
-    /**
-     * Check if it is type data provider.
-     *
-     * @return bool
-     */
-    public function isTypeDataProvider();
 }

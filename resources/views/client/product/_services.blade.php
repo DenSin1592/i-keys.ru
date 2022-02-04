@@ -18,7 +18,7 @@
                     <div class="card card-service-related">
                         <div class="row flex-nowrap">
                             <div class="card-thumbnail col-auto">
-                                <img loading="lazy" src="/images/common/no-image/no-image-100x100.png"
+                                <img loading="lazy" src="{{$element->getImgPath('icon', 'thumb', 'no-image-200x200.png')}}"
                                      width="100" height="100" alt="{{$element->name}}" class="card-media">
                             </div>
 
