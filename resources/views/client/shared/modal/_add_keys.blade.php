@@ -22,9 +22,9 @@
                         <div class="col-auto">
                             <div class="form-group m-xxl-0">
                                 <span class="form-label" >Стоимость одно ключа</span>
-                                @isset($productData['services'][\App\Models\Service::ADD_KEYS_ALIAS])
-                                    @if($productData['services'][\App\Models\Service::ADD_KEYS_ALIAS]->price > 0)
-                                        <div class="modal-price font-family-secondary">{!!  Helper::priceFormat($productData['services'][\App\Models\Service::ADD_KEYS_ALIAS]->price) !!} руб.</div>
+                                @isset($productData['services']['add_keys'])
+                                    @if($productData['services']['add_keys']->price > 0)
+                                        <div class="modal-price font-family-secondary">{!!  Helper::priceFormat($productData['services']['add_keys']->price) !!} руб.</div>
                                     @else
                                         <div class="modal-price font-family-secondary">Цена договорная</div>
                                     @endif
