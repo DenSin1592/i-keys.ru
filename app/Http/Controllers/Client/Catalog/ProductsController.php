@@ -22,6 +22,7 @@ class ProductsController extends Controller
         private  Breadcrumbs $breadcrumbs
     ){}
 
+
     public function getResponse(Product $product)
     {
         $productData = $this->productProvider->getProductData($product);
@@ -38,7 +39,7 @@ class ProductsController extends Controller
     }
 
 
-    public function getUrlWhenChangingSizeCylinder()
+    public function getContentWhenChangingSizeCylinder(): JsonResponse
     {
         $productId = (int)\Request::get('productId');
         $firstSize = (int)\Request::get('firstSize');
@@ -47,9 +48,26 @@ class ProductsController extends Controller
 
         $searchedProduct = (new GetProductByCylinderSizes($productId, $firstSize, $secondSize, $selectedSelectNumber,))->getProductWhenChangingSizes();
 
-        $productData = $this->productProvider->getProductData($searchedProduct);
-        $breadcrumbs = $this->getBreadcrumbs($searchedProduct);
-        $metaData = $this->metaHelper->getRule()->metaForObject($searchedProduct);
+        return $this->getJsonForProductWhenChangigColorOrSize($searchedProduct);
+    }
+
+
+    public function getContentWhenChangingColor(): JsonResponse
+    {
+        $productId = (int)\Request::get('productId');
+
+        $product = Product::find($productId);
+
+        return $this->getJsonForProductWhenChangigColorOrSize($product);
+
+    }
+
+
+    private function getJsonForProductWhenChangigColorOrSize($product): JsonResponse
+    {
+        $productData = $this->productProvider->getProductData($product);
+        $breadcrumbs = $this->getBreadcrumbs($product);
+        $metaData = $this->metaHelper->getRule()->metaForObject($product);
 
         $contentHTML = \View::make('client.product._inner_show', [
             'productData' => $productData,

@@ -72,7 +72,7 @@ class Colors implements ClientProductPlugin
             $isActive = $product->id === $element->id;
 
             $colors[] = [
-                'link' => \UrlBuilder::getUrl($element),
+                'productId' => $element->id,
                 'attr_value' => $element->attr_value,
                 'isActive' => $isActive,
                 'imgPath' => (static function() use ($element, $allowedValues){

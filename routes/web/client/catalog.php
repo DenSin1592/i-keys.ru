@@ -14,7 +14,9 @@ Route::namespace('Catalog')
                ->name('filter-proxy');
 
            Route::post('change-product-card','CatalogController@getNewProductCard');
-           Route::post('change-product-page-when-changing-size-cylinder','ProductsController@getUrlWhenChangingSizeCylinder');
+
+           Route::post('change-product-page-when-changing-size-cylinder','ProductsController@getContentWhenChangingSizeCylinder');
+           Route::post('change-product-page-when-changing-color','ProductsController@getContentWhenChangingColor');
         }
     );
 

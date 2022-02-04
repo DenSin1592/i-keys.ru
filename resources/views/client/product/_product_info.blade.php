@@ -169,7 +169,7 @@
                                     @foreach($productData['colors'] as $key => $element)
                                     <div class="product-color custom-control custom-color">
                                         <input type="radio" class="custom-control-input reset-card" id="product-color-{{$key}}"
-                                               name="product-color" @if($element['isActive']) checked @endif data-url="{{$element['link']}}">
+                                               name="product-color" @if($element['isActive']) checked @endif data-product-id="{{$element['productId']}}">
 
                                         <label for="product-color-{{$key}}" class="custom-control-label">
                                             <img loading="lazy" src="{{$element['imgPath']}}"
