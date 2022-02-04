@@ -213,7 +213,7 @@ return [
         'value' => 'Значение',
         'svg_path_sprite' => 'Путь к svg#sprite',
         'allowed_values' => 'Разрешённые значения',
-        'icon_file' => 'Изображение',
+        'icon_file' => 'Иконка',
         'filter_name' => 'Название для фильтра',
         'filter_category_id' => 'Категория для фильтра(Для товаров набранных вручную)',
         'product_list_way' => 'Способ формирования списка товаров',
