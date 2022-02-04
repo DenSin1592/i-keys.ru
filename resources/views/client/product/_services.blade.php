@@ -18,8 +18,10 @@
                     <div class="card card-service-related">
                         <div class="row flex-nowrap">
                             <div class="card-thumbnail col-auto">
-                                <img loading="lazy" src="{{$element->getImgPath('icon', 'thumb', 'no-image-200x200.png')}}"
-                                     width="100" height="100" alt="{{$element->name}}" class="card-media">
+                                <a href="{{route('service.show', $element->alias)}}">
+                                    <img loading="lazy" src="{{$element->getImgPath('icon', 'thumb', 'no-image-200x200.png')}}"
+                                         width="100" height="100" alt="{{$element->name}}" class="card-media">
+                                </a>
                             </div>
 
                             <div class="card-content col align-self-center">
