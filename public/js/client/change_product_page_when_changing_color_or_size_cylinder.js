@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
             customNumberButtonInit();
             showOrHideLabelAdditionalKeys();
             document.initChangeCountAdditionalKeys();
+            document.swiperProductsInit();
         }).fail(() => {
             document.modalMessageErrorShow();
         });
