@@ -3,18 +3,24 @@
 namespace App\Models;
 
 use App\Models\Attribute\AllowedValue;
+use App\Models\Features\Glue;
+use App\Models\Helpers\AliasHelpers;
+use App\Services\FormProcessors\Features\AutoAlias;
+use Diol\Fileclip\UploaderIntegrator;
+use Diol\Fileclip\Version\BoxVersion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
-class Service extends Model
+class Service extends \Eloquent
 {
+    use Glue;
     use HasFactory;
+    use AutoAlias;
 
     public const ADD_KEYS_ID = 1;
     public const ADD_KEYS_ALIAS = 'kopii-klyuchey';
-    private string $noImageVersion = 'no-image-200x200.png';
 
     public const H1 = '{{H1}}';
     public const BREADCRUMBS = '{{BREADCRUMBS}}';
@@ -22,7 +28,8 @@ class Service extends Model
     protected $fillable = [
         'name',
         'alias',
-        'image',
+        'image_file',
+        'image_remove',
         'content',
         'position',
         'publish',
@@ -32,6 +39,8 @@ class Service extends Model
         'meta_title',
         'meta_keywords',
         'meta_description',
+        'icon_file',
+        'icon_remove',
     ];
 
 
@@ -49,21 +58,24 @@ class Service extends Model
     {
         parent::boot();
 
+        self::mountUploader(
+            'image',
+            UploaderIntegrator::getWatermarkedUploader(
+                'uploads/services/images',
+                [
+                    'thumb' => new BoxVersion(100, 100),
+                    'list' => new BoxVersion(400, 300),
+                ]
+            )
+        );
+
+        self::saving(static function (self $product) {
+            AliasHelpers::setAlias($product);
+        });
+
         self::deleting(static function (self $model) {
             $model->series()->detach();
-
-            foreach ($model->orderItems as $el){
-                $el->update(['service_id' => null]);
-            }
-
+            foreach ($model->orderItems as $el){$el->update(['service_id' => null]);}
         });
-    }
-
-    public function getImageOrStub(): string
-    {
-        if (! is_null($this->image)){
-            return asset('/uploads/services/' . $this->image);
-        }
-        return asset('/images/common/no-image/' . $this->noImageVersion);
     }
 }

@@ -11,7 +11,7 @@
 
 @include('admin.shared._header_meta_field')
 
-@include('admin.services._image_field')
+@include('admin.shared._model_image_field', ['model' => $formData['service'], 'field' => 'image'])
 
 {!! Form::tbCheckboxBlock('publish') !!}
 
