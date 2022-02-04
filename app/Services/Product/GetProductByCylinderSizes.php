@@ -2,13 +2,12 @@
 
 namespace App\Services\Product;
 
-use App\Models\Attribute\AttributeConstants;
 use App\Models\Product;
 use App\Services\Product\Attribute\SizesCylinder\DataProvider;
 use Illuminate\Database\Eloquent\Builder;
 
 
-class ProductUrlBuilder
+class GetProductByCylinderSizes
 {
     private Builder $productBuilder;
 
@@ -23,6 +22,7 @@ class ProductUrlBuilder
     public function getProductWhenChangingSizes(): Product
     {
         $product = Product::find($this->productId);
+        $this->productBuilder = DataProvider::getBuilderByProductSeries($product);
 
         $newProduct = $this->geProductByTwoSizes($product);
 
@@ -36,30 +36,30 @@ class ProductUrlBuilder
 
     private function geProductByTwoSizes(Product $product): ?Product
     {
-        $this->productBuilder = DataProvider::getBuilderByProductSeries($product);
-
         $productBuilder = clone $this->productBuilder;
 
-        $product = $productBuilder->where('attribute_allowed_values.value_first_size_cylinder', '=', $this->firstSize)
+        return $productBuilder->where('attribute_allowed_values.value_first_size_cylinder', '=', $this->firstSize)
             ->where('attribute_allowed_values.value_second_size_cylinder', '=', $this->secondSize)
+            ->select('products.*')
             ->first();
-
-        return $product;
     }
 
 
     private function getFirstProductByOneSize(): Product
     {
+        $productBuilder = clone $this->productBuilder;
+
         if($this->selectedSelectNumber === 1){
-            $product = $this->productBuilder
-                ->where('attribute_allowed_values.value_first_size_cylinder', '=', $this->firstSize)
-                ->first();
+            $productBuilder = $productBuilder
+                ->where('attribute_allowed_values.value_first_size_cylinder', '=', $this->firstSize);
         }else{
-            $product = $this->productBuilder
-                ->where('attribute_allowed_values.value_second_size_cylinder', '=', $this->secondSize)
-                ->first();
+            $productBuilder = $productBuilder
+                ->where('attribute_allowed_values.value_second_size_cylinder', '=', $this->secondSize);
+
         }
 
-        return $product;
+        return $productBuilder
+            ->select('products.*')
+            ->first();
     }
 }

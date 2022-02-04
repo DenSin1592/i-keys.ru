@@ -24,8 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 data: data,
                 cache: false
             }).done((response) => {
-                document.location.href = response;
+                $('main').replaceWith(response['content']);
+                $('#modalAddKeys').replaceWith(response['modal_add_keys']);
+                initSelect2();
+                customNumberButtonInit();
+                showOrHideLabelAdditionalKeys();
+                document.initChangeCountAdditionalKeys();
             });
+
         }catch (error){
             document.modalMessageErrorShow();
             console.warn('change_product_page_when_changing_size_cylinder.js: ', error)
