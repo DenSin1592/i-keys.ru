@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
+
+    showOrHideLabelAdditionalKeys();
+    document.initChangeCountAdditionalKeys();
+
 });
 
 
@@ -57,5 +61,4 @@ let showOrHideLabelAdditionalKeys = () => {
     }
 };
 
-showOrHideLabelAdditionalKeys();
-document.initChangeCountAdditionalKeys();
+
