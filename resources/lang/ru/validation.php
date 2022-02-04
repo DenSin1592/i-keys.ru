@@ -202,7 +202,6 @@ return [
         'catalog_type' => 'Тип каталога',
         'category_id' => 'Категория',
         'price' => 'Цена',
-        'price_copy_key' => 'Цена одной копии ключа',
         'old_price' => 'Старая цена',
 
         'attribute_type' => 'Тип параметра',

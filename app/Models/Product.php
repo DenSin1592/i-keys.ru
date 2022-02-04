@@ -43,7 +43,6 @@ class Product extends Model
         'search_article',
         'article',
         'update_search',
-        'price_copy_key',
         'attributes_imported',
     ];
 
