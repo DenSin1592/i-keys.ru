@@ -9,7 +9,7 @@ class ServiceLaravelValidator extends AbstractLaravelValidator
     {
         $rules = [];
         $rules['name'] = ['required'];
-        $rules['alias'] = ['required', "unique:services,alias, {$this->currentId},id"];
+        $rules['alias'] = ['nullable', "unique:services,alias, {$this->currentId},id"];
         $rules['publish'] = 'boolean';
         $rules['position'] = ['nullable', 'integer'];
         $rules['price'] = ['nullable', 'numeric'];

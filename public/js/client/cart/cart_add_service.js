@@ -1,36 +1,40 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+
     let modal = $('#modalAddKeys')
 
-    modal.on('click', '.change-count-additional-keys', (e) => {
-        let count = modal.find('input#modalAddKeysQuantity').val()
+    document.initChangeCountAdditionalKeys = () => {
+        modal.on('click', '.change-count-additional-keys', (e) => {
+            let count = modal.find('input#modalAddKeysQuantity').val()
 
-        if(!document.querySelector('[data-in-cart="true"]')){
-            setLabelAdditionalKeys(count);
-            return;
-        }
+            if(!document.querySelector('[data-in-cart="true"]')){
+                setLabelAdditionalKeys(count);
+                return;
+            }
 
-        let data = {
-            productId: modal.data('product-id'),
-            serviceId: modal.data('service-id'),
-            count: count,
-        };
+            let data = {
+                productId: modal.data('product-id'),
+                serviceId: modal.data('service-id'),
+                count: count,
+            };
 
-        promiseQueue.add('change-cart', () => {
-            $.ajax({
-                method: 'POST',
-                url: CART_ADD_SERVICE_URI,
-                data: data,
-                cache: false,
-            }).done((response) => {
-                    setLabelAdditionalKeys(response['count']);
-                }
-            ).fail(() => {
-                document.modalMessageErrorShow();
-            })
+            promiseQueue.add('change-cart', () => {
+                $.ajax({
+                    method: 'POST',
+                    url: CART_ADD_SERVICE_URI,
+                    data: data,
+                    cache: false,
+                }).done((response) => {
+                        setLabelAdditionalKeys(response['count']);
+                    }
+                ).fail(() => {
+                    document.modalMessageErrorShow();
+                })
+            });
+
         });
+    };
 
-    });
 });
 
 
@@ -54,3 +58,4 @@ let showOrHideLabelAdditionalKeys = () => {
 };
 
 showOrHideLabelAdditionalKeys();
+document.initChangeCountAdditionalKeys();

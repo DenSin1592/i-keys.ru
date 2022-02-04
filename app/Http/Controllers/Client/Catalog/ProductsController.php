@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Client\Catalog;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Services\DataProviders\ClientProduct\ClientProduct;
+use App\Services\Product\GetProductByCylinderSizes;
 use App\Services\Product\ProductUrlBuilder;
 use App\Services\Seo\MetaHelper;
 use App\Services\Breadcrumbs\Factory as Breadcrumbs;
+use Illuminate\Http\JsonResponse;
 
 
 class ProductsController extends Controller
@@ -19,6 +21,7 @@ class ProductsController extends Controller
         private  MetaHelper $metaHelper,
         private  Breadcrumbs $breadcrumbs
     ){}
+
 
     public function getResponse(Product $product)
     {
@@ -36,18 +39,50 @@ class ProductsController extends Controller
     }
 
 
-    public function getUrlWhenChangingSizeCylinder(): string
+    public function getContentWhenChangingSizeCylinder(): JsonResponse
     {
         $productId = (int)\Request::get('productId');
         $firstSize = (int)\Request::get('firstSize');
         $secondSize = (int)\Request::get('secondSize');
         $selectedSelectNumber = (int)\Request::get('selectedSelectNumber');
 
-        $productUrlBuilder = new ProductUrlBuilder($productId, $firstSize, $secondSize, $selectedSelectNumber,);
+        $searchedProduct = (new GetProductByCylinderSizes($productId, $firstSize, $secondSize, $selectedSelectNumber,))->getProductWhenChangingSizes();
 
-        $searchedProduct = $productUrlBuilder->getProductWhenChangingSizes();
+        return $this->getJsonForProductWhenChangigColorOrSize($searchedProduct);
+    }
 
-        return \UrlBuilder::buildProductUrl($searchedProduct);
+
+    public function getContentWhenChangingColor(): JsonResponse
+    {
+        $productId = (int)\Request::get('productId');
+
+        $product = Product::find($productId);
+
+        return $this->getJsonForProductWhenChangigColorOrSize($product);
+
+    }
+
+
+    private function getJsonForProductWhenChangigColorOrSize($product): JsonResponse
+    {
+        $productData = $this->productProvider->getProductData($product);
+        $breadcrumbs = $this->getBreadcrumbs($product);
+        $metaData = $this->metaHelper->getRule()->metaForObject($product);
+
+        $contentHTML = \View::make('client.product._inner_show', [
+            'productData' => $productData,
+            'breadcrumbs' => $breadcrumbs,
+            'metaData' => $metaData,
+        ])->render();
+
+        $modalAddKeysHTML = \View::make('client.shared.modal._add_keys', [
+            'productData' => $productData,
+        ])->render();
+
+        return \Response::json([
+            'content' => $contentHTML,
+            'modal_add_keys' => $modalAddKeysHTML,
+        ]);
     }
 
 
@@ -59,3 +94,7 @@ class ProductsController extends Controller
         return $breadcrumbs;
     }
 }
+
+
+
+
