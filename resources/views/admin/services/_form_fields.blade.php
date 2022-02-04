@@ -13,6 +13,8 @@
 
 @include('admin.shared._model_image_field', ['model' => $formData['service'], 'field' => 'image'])
 
+@include('admin.shared._model_image_field', ['model' => $formData['service'], 'field' => 'icon'])
+
 {!! Form::tbCheckboxBlock('publish') !!}
 
 {!! Form::tbFormGroupOpen('price') !!}

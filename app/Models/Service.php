@@ -69,6 +69,16 @@ class Service extends \Eloquent
             )
         );
 
+        self::mountUploader(
+            'icon',
+            UploaderIntegrator::getWatermarkedUploader(
+                'uploads/services/images/icons',
+                [
+                    'thumb' => new BoxVersion(100, 100),
+                ]
+            )
+        );
+
         self::saving(static function (self $product) {
             AliasHelpers::setAlias($product);
         });
