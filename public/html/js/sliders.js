@@ -1,4 +1,4 @@
-document.addEventListener('DomContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
 
     document.swiperProductsInit = function () {
 
@@ -49,7 +49,7 @@ document.addEventListener('DomContentLoaded', function () {
 
     }
 
-    document.swiperProductsInit();
+     document.swiperProductsInit();
 
 })
 
