@@ -216,6 +216,8 @@
 
 // filter sheme
 .filter-sheme-block {
+    max-width: 323px;
+
     .filter-sheme-thumbnail {
         position: relative;
 
@@ -227,6 +229,7 @@
 }
 
 .filter-sheme-options-block {
+    max-width: 312px;
     margin-left: 5px;
     margin-right: 5px;
 }
