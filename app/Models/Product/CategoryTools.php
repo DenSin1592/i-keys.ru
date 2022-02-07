@@ -24,8 +24,7 @@ trait CategoryTools
 
     public function isArmorplate(): bool
     {
-        $categoryPath = $this->category->extractPath();
-        return $categoryPath[0]->id === Category::FINDINGS_ID && $categoryPath[1]->code_1c === Category::ARMORPLATE_CISA_1C_CODE;
+        return false;
     }
 
 

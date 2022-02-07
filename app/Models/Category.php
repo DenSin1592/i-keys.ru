@@ -38,8 +38,6 @@ class Category extends \Eloquent
 
     public const LOCKS_1C_CODE = '000001';
     public const CILINDRY_1C_CODE = '000002';
-    public const CILINDR_MEHANIZMY_CISA_1C_CODE = '21741';
-    public const ARMORPLATE_CISA_1C_CODE = '21739';
 
     use Glue;
     use InTreePublish;
