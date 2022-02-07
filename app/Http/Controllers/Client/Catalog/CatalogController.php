@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Client\Catalog;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Service;
 use App\Services\Breadcrumbs\Factory as Breadcrumbs;
 use App\Services\Catalog\ListSorting\SortingContainer;
 use App\Services\DataProviders\ClientProductList\ClientProductList;
 use App\Services\DataProviders\ProductListPage\Catalog\FilteredProductList;
 use App\Services\DataProviders\ProductListPage\FilterVariantsProvider;
 use App\Services\Repositories\Product\EloquentProductRepository;
+use App\Services\Repositories\Service\EloquentServiceRepository;
 use App\Services\Seo\MetaHelper;
 use \Illuminate\Contracts\View\View;
 use \Illuminate\Http\JsonResponse;
@@ -44,6 +46,7 @@ class CatalogController extends Controller
         $breadcrumbs = $this->getBreadcrumbsForCategories($this->breadcrumbs, $category->extractPath());
         $metaData = $this->metaHelper->getRule()->metaForObject($category);
         $linksTypesContent = $category->content_for_links_type;
+        $services = resolve(EloquentServiceRepository::class)->getACertainNumberOfModels(3);
 
         if (!\Request::ajax()) {
             return \View::make('client.categories.show')
@@ -52,6 +55,7 @@ class CatalogController extends Controller
                 ->with('breadcrumbs', $breadcrumbs)
                 ->with('authEditLink', route('cc.categories.edit', $category->id))
                 ->with('metaData', $metaData)
+                ->with('services', $services)
                 ->with('linksTypesContent', $linksTypesContent);
         }
 

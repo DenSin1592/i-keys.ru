@@ -19,6 +19,7 @@ use App\Services\DataProviders\ProductListPage\ProductTypePage\FilteredProductTy
 use App\Services\DataProviders\ProductListPage\ProductTypePage\ManualProductTypePageProductList;
 use App\Services\Repositories\Product\EloquentProductRepository;
 use App\Services\Repositories\ProductTypePage\EloquentProductTypePageRepository;
+use App\Services\Repositories\Service\EloquentServiceRepository;
 use App\Services\Seo\MetaHelper;
 use \Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Model;
@@ -72,6 +73,7 @@ class ProductTypePagesController extends Controller
         $metaData = $this->metaHelper->getRule()->metaForObject($productTypePage);
         $breadcrumbs = $this->getBreadcrumbsForCategories($this->breadcrumbs, $productTypePage->extractPath());
         $linksTypesContent = $productTypePage->content_for_links_type;
+        $services = resolve(EloquentServiceRepository::class)->getACertainNumberOfModels(3);
 
 
         if (!\Request::ajax()) {
@@ -84,6 +86,7 @@ class ProductTypePagesController extends Controller
                 ->with('metaData', $metaData)
                 ->with('linksTypesContent', $linksTypesContent)
                 ->with('rootCategory', $productTypePage->category_id)
+                ->with('services', $services)
                 ->with('productTypePage', $productTypePage)
                 ;
         }

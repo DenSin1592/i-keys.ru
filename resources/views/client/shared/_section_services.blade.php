@@ -1,4 +1,4 @@
-<section class="section-product-services section-services-related">
+<section class="{{$additionalClass ?? ''}} section-services-related">
     <div class="container">
         <div class="section-header">
             <div class="row justify-content-between">

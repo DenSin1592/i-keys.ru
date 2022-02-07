@@ -35,7 +35,13 @@
             </div>
         </section>
 
-        @include('client.categories._section_services')
+
+        @isset($services)
+            @include('client.shared._section_services', [
+                'services' => $services,
+                'additionalClass' => ''
+            ])
+        @endisset
 
     </main>
 @stop

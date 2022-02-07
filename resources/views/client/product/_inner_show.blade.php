@@ -23,7 +23,10 @@
         @endif
 
         @if(isset($productData['services']['general']))
-            @include('client.product._services', ['services' => $productData['services']['general']])
+            @include('client.shared._section_services', [
+                'services' => $productData['services']['general'],
+                'additionalClass' => 'section-product-services'
+            ])
         @endif
 
 

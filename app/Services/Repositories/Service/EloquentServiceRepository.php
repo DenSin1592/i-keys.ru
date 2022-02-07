@@ -523,6 +523,12 @@ class EloquentServiceRepository
     }
 
 
+    public function getACertainNumberOfModels(int $count): Collection
+    {
+        return Service::limit($count)->get() ?? Collection::make([]);
+    }
+
+
     private function allByIds(array $ids): Collection
     {
         if (count($ids) === 0){
