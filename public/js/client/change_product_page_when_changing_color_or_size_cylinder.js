@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+
     const URL_REFRESH_SIZE_CYLINDER = '/change-product-page-when-changing-size-cylinder';
     const URL_REFRESH_COLOR = '/change-product-page-when-changing-color';
 
@@ -20,13 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 selectedSelectNumber: selectedSelectNumber,
             };
 
-            changeContent(data, URL_REFRESH_SIZE_CYLINDER)
+            changeContent(data, URL_REFRESH_SIZE_CYLINDER);
 
         } catch (error) {
             document.modalMessageErrorShow();
             console.warn('change_product_page_when_changing_size_cylinder.js: ', error)
         }
-
     });
 
 
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 productId: productId,
             };
 
-            changeContent(data, URL_REFRESH_COLOR)
+            changeContent(data, URL_REFRESH_COLOR);
 
         } catch (error) {
             document.modalMessageErrorShow();
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     let changeContent = (data, url) => {
-        $.ajax({
+         $.ajax({
             method: 'POST',
             url: url,
             data: data,
@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }).done((response) => {
             $('main').replaceWith(response['content']);
             $('#modalAddKeys').replaceWith(response['modal_add_keys']);
+            history.pushState({}, '', response['new_url']);
             initSelect2();
             customNumberButtonInit();
             showOrHideLabelAdditionalKeys();
@@ -67,6 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
             document.modalMessageErrorShow();
         });
     };
+
+
+    addEventListener('popstate', (event) => {
+        window.location.reload();
+    });
 
 
 });

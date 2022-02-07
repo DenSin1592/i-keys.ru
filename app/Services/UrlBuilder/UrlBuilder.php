@@ -31,7 +31,7 @@ class UrlBuilder
     }
 
 
-    public function buildProductUrl(Product $product): string
+    private function buildProductUrl(Product $product): string
     {
         $aliasPath = [];
         foreach ($product->category->extractParentPath() as $category) {

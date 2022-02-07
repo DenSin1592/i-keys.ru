@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Client\Catalog;
 
+use App\Facades\UrlBuilder;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Services\DataProviders\ClientProduct\ClientProduct;
@@ -48,7 +49,7 @@ class ProductsController extends Controller
 
         $searchedProduct = (new GetProductByCylinderSizes($productId, $firstSize, $secondSize, $selectedSelectNumber,))->getProductWhenChangingSizes();
 
-        return $this->getJsonForProductWhenChangigColorOrSize($searchedProduct);
+        return $this->getJsonForProductWhenChangingColorOrSize($searchedProduct);
     }
 
 
@@ -58,12 +59,12 @@ class ProductsController extends Controller
 
         $product = Product::find($productId);
 
-        return $this->getJsonForProductWhenChangigColorOrSize($product);
+        return $this->getJsonForProductWhenChangingColorOrSize($product);
 
     }
 
 
-    private function getJsonForProductWhenChangigColorOrSize($product): JsonResponse
+    private function getJsonForProductWhenChangingColorOrSize($product): JsonResponse
     {
         $productData = $this->productProvider->getProductData($product);
         $breadcrumbs = $this->getBreadcrumbs($product);
@@ -79,9 +80,12 @@ class ProductsController extends Controller
             'productData' => $productData,
         ])->render();
 
+        $newUrl = UrlBuilder::getUrl($product);
+
         return \Response::json([
             'content' => $contentHTML,
             'modal_add_keys' => $modalAddKeysHTML,
+            'new_url' => $newUrl,
         ]);
     }
 
