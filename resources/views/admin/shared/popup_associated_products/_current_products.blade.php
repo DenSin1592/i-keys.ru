@@ -7,11 +7,11 @@
                 <li data-associated-products="current-product-element"
                     data-product-name="{{ $associatedProduct['product']->name }}">
                     <input data-product-element="product_id" type="hidden"
-                           name="{{ "{$fieldGroup}[".$associatedProductKey+$loop->parent->index."][product_id]" }}"
+                           name="{{ "{$fieldGroup}[".$loop->parent->index.$associatedProductKey."][product_id]" }}"
                            value="{{ $associatedProduct['product']->id }}"/>
                     @if (empty($disableSorting))
                         <input data-product-element="position" type="hidden"
-                               name="{{ "{$fieldGroup}[".$associatedProductKey+$loop->parent->index."][position]" }}"
+                               name="{{ "{$fieldGroup}[".$loop->parent->index.$associatedProductKey."][position]" }}"
                                value="{{ $associatedProduct['position'] }}"/>
                     @endif
                     <a href="{{ route('cc.products.edit', [$associatedProduct['product']->category_id, $associatedProduct['product']->id]) }}"
