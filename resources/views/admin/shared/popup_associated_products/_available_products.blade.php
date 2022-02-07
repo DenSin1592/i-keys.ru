@@ -13,7 +13,7 @@
     </div>
 
     <div class="form-group has-feedback">
-        <input class="form-control" placeholder="Фильтр" type="text"
+        <input class="form-control" placeholder="Поиск" type="text"
                data-associated-products="filter-available"
                data-filter-url="{{ route('cc.associated-products.filter-available', isset($productId) ? $productId : null) }}"
                data-product-list-filter="#available_products_tab_content_{{ \Helper::replaceSquareBrackets($fieldGroup, '_') }}" />

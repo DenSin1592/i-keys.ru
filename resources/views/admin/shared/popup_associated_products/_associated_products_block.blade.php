@@ -43,7 +43,7 @@
                             <div class="top-padding">
                                 <div class="categories-list"></div>
                                 <div class="form-group has-feedback filter-container">
-                                    <input class="form-control filter-input" placeholder="Фильтр" type="text"
+                                    <input class="form-control filter-input" placeholder="Поиск" type="text"
                                            autocomplete="off"
                                            data-associated-products="filter-selected"
                                            data-filter-url="{{ route('cc.associated-products.filter-selected') }}"
