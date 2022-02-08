@@ -11,26 +11,39 @@
         @include('client.product._other_characteristics')
 
 
-        @if(isset($productData['relatedProductsData']['locks']))
+        @isset($productData['relatedProductsData']['locks'])
             @include('client.product._special_related', [
-                'header' => 'Замки для этого товара',
-                'subheader' => 'Мы рекомендуем покупать замок и комплектующие одного производителя',
+                'header' => 'Замки для этого цилиндра',
+                'subheader' => '<span class="section-alert-media">!</span> Мы рекомендуем покупать замок и комплектующие одного производителя',
                 'relatedProducts' => $productData['relatedProductsData']['locks'],
                 'catalogLink' => route('catalog', \App\Models\Category::LOCKS_ALIAS),
                 'catalogImgPath' => asset('/images/client/sprite.svg#icon-catalog-lock'),
                 'catalogText' => 'Посмотреть все замки',
             ])
-        @endif
+        @endisset
 
-        @if(isset($productData['services']['general']))
+
+        @isset($productData['relatedProductsData']['cylinders'])
+            @include('client.product._special_related', [
+                'header' => 'Цилиндры для этого замка',
+                'subheader' => 'Мы рекомендуем покупать замок и комплектующие одного производителя',
+                'relatedProducts' => $productData['relatedProductsData']['cylinders'],
+                'catalogLink' => route('catalog', \App\Models\Category::CYLINDERS_ALIAS),
+                'catalogImgPath' => asset('/images/client/sprite.svg#icon-catalog-cylinder'),
+                'catalogText' => 'Посмотреть все цилиндры',
+            ])
+        @endisset
+
+
+        @isset($productData['services']['general'])
             @include('client.shared._section_services', [
                 'services' => $productData['services']['general'],
                 'additionalClass' => 'section-product-services'
             ])
-        @endif
+        @endisset
 
 
-        @if(isset($productData['relatedProductsData']['armorplate']))
+        @isset($productData['relatedProductsData']['armorplate'])
             @include('client.product._special_related', [
                 'header' => 'Хотите повысить взломостойкость, купите броненакладку',
                 'relatedProducts' => $productData['relatedProductsData']['armorplate'],
@@ -38,14 +51,14 @@
                 'catalogImgPath' => asset('/images/client/sprite.svg#icon-catalog'),
                 'catalogText' => 'Посмотреть все броненакладки',
             ])
-        @endif
+        @endisset
 
     </section>
 
-    @if(isset($productData['relatedProductsData']['default']))
+    @isset($productData['relatedProductsData']['default'])
         @include('client.product._default_related', [
             'relatedProducts' => $productData['relatedProductsData']['default'],
         ])
-    @endif
+    @endisset
 
 </main>

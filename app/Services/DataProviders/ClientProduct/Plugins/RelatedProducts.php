@@ -23,6 +23,8 @@ class RelatedProducts implements ClientProductPlugin
 
         if($product->isCylinder()){
             $relatedProductsFinal = $this->getForCylinder($relatedProductsData);
+        }elseif($product->isLock()) {
+            $relatedProductsFinal = $this->getForLock($relatedProductsData);
         }else{
             $relatedProductsFinal = $this->getDefaultRelatedProduct($relatedProductsData);
         }
@@ -55,6 +57,24 @@ class RelatedProducts implements ClientProductPlugin
     }
 
 
+    private function getForLock(array $relatedProductsData): array
+    {
+        $array = [];
+
+        foreach ($relatedProductsData as $key => $element){
+            if($element['product']->isCylinder()){
+                $array['cylinders'][] = $element;
+                unset($relatedProductsData[$key]);
+                continue;
+            }
+        }
+
+        $array = array_merge($array, $this->getDefaultRelatedProduct($relatedProductsData));
+
+        return $array;
+    }
+
+
     private function getDefaultRelatedProduct(array $relatedProductsData): array
     {
         $array = [];
@@ -78,7 +98,6 @@ class RelatedProducts implements ClientProductPlugin
             }
 
             $array['other'][] = $element;
-            continue;
         }
 
         return !empty($array) ? ['default' => $array] : [];

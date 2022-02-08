@@ -3,9 +3,9 @@
         <div class="section-header">
             <div class="section-title title-h3 font-family-secondary">{{$header}}</div>
 
-            @if(isset($subheader))
-                <div class="section-alert text-danger"><span class="section-alert-media">!</span> {{$subheader}}</div>
-            @endif
+            @isset($subheader)
+                <div class="section-alert text-danger"> {!! $subheader !!}</div>
+            @endisset
 
         </div>
 
