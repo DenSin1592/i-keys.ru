@@ -29,7 +29,7 @@
 
         <a href="{{\UrlBuilder::getUrl($productData['product'])}}" class="card-product-title">{!! $productData['productTypePageAdditionalInfo']['name'] ?? $productData['product']->highlighted_name !!}</a>
 
-        <div class="card-product-info-list">
+        <div class="card-product-info-list mt-auto">
 
             @if(isset($productData['sizes_cylinder']))
                 <div class="card-product-size-block card-product-info-block d-flex flex-wrap align-items-center">
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div class="card-product-order-block mt-auto">
+        <div class="card-product-order-block">
             <div class="form-row flex-sm-nowrap">
                 <div class="card-product-price-container col-12 col-sm">
                     <div class="card-product-price-block d-flex flex-wrap">
