@@ -36,19 +36,31 @@ class RelatedProducts implements ClientProductPlugin
     private function getForCylinder(array $relatedProductsData): array
     {
         $array = [];
+        $countLocks = 0;
+        $countArmorplate = 0;
 
         foreach ($relatedProductsData as $key => $element){
+            if($key > 2){
+                break;
+            }
             if($element['product']->isLock()){
+                if($countLocks > 2){
+                    continue;
+                }
                 $array['locks'][] = $element;
                 unset($relatedProductsData[$key]);
+                $countLocks++;
                 continue;
             }
             if($element['product']->isArmorplate()){
+                if($countArmorplate > 2){
+                    continue;
+                }
                 $array['armorplate'][] = $element;
                 unset($relatedProductsData[$key]);
+                $countArmorplate++;
                 continue;
             }
-
         }
 
         $array = array_merge($array, $this->getDefaultRelatedProduct($relatedProductsData));
@@ -60,11 +72,16 @@ class RelatedProducts implements ClientProductPlugin
     private function getForLock(array $relatedProductsData): array
     {
         $array = [];
+        $countCylinders = 0;
 
         foreach ($relatedProductsData as $key => $element){
             if($element['product']->isCylinder()){
+                if($countCylinders > 2){
+                    continue;
+                }
                 $array['cylinders'][] = $element;
                 unset($relatedProductsData[$key]);
+                $countCylinders++;
                 continue;
             }
         }
