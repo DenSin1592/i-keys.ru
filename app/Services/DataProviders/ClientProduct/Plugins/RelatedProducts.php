@@ -40,9 +40,6 @@ class RelatedProducts implements ClientProductPlugin
         $countArmorplate = 0;
 
         foreach ($relatedProductsData as $key => $element){
-            if($key > 2){
-                break;
-            }
             if($element['product']->isLock()){
                 if($countLocks > 2){
                     continue;
