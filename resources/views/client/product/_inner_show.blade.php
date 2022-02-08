@@ -26,7 +26,7 @@
         @isset($productData['relatedProductsData']['cylinders'])
             @include('client.product._special_related', [
                 'header' => 'Цилиндры для этого замка',
-                'subheader' => 'Мы рекомендуем покупать замок и комплектующие одного производителя',
+                'subheader' => 'Мы рекомендуем покупать цилиндр и комплектующие одного производителя',
                 'relatedProducts' => $productData['relatedProductsData']['cylinders'],
                 'catalogLink' => route('catalog', \App\Models\Category::CYLINDERS_ALIAS),
                 'catalogImgPath' => asset('/images/client/sprite.svg#icon-catalog-cylinder'),
